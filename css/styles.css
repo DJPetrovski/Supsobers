@@ -1213,3 +1213,14 @@ html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .1
 .rw-scene { overflow: hidden; border-radius: 12px; }
 .rw-scene img { height: 100%; width: auto; max-width: none; object-fit: cover; display: block; pointer-events: none; }
 @media (max-width: 700px) { .rw-scene img { height: 100%; } }
+
+/* merch: product alone under the spotlight */
+.mc-runway { height: 340px; }
+.mc-runway::before { content: ""; position: absolute; left: 50%; top: -20px; width: 420px; height: 380px; margin-left: -210px; background: linear-gradient(rgba(255,255,255,.26), rgba(255,255,255,0)); clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); mix-blend-mode: screen; pointer-events: none; }
+.rw-beam { display: none; }
+.rw-spot { position: absolute; inset: 14px 0 22px; display: flex; align-items: center; justify-content: center; animation: rw-rise .5s ease-out both; }
+.rw-spot img { max-height: 100%; max-width: min(92%, 420px); object-fit: contain; display: block; border-radius: 8px; filter: drop-shadow(0 12px 22px rgba(0,0,0,.65)); position: relative; z-index: 1; pointer-events: none; }
+.rw-pedestal { position: absolute; bottom: -4px; left: 50%; width: 300px; height: 30px; margin-left: -150px; border-radius: 50%; background: radial-gradient(rgba(255,255,255,.28), rgba(255,42,53,.18) 45%, rgba(0,0,0,0) 72%); }
+@keyframes rw-rise { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+@media (max-width: 600px) { .mc-runway { height: 250px; } .mc-runway::before { width: 300px; margin-left: -150px; } }
+.htv-screen.can-pick { cursor: pointer; }

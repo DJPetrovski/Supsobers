@@ -76,7 +76,7 @@
     if (/mug|bag|blanky|towel|desk pad|pad|flag/.test(n)) return 'carry';
     return 'wear';
   }
-  function runway(it) {
+  function runwayModel(it) {
     if (!stage) return;
     clearTimeout(rwT);
     rwT = setTimeout(function () {
@@ -111,6 +111,16 @@
       setTimeout(function () { m.classList.remove('walking'); m.classList.add('posing'); }, 3100);
       setTimeout(function () { m.classList.remove('posing'); m.classList.add('walking'); }, 4960);
     }, 380);
+  }
+  // For now: the product sits alone under the spotlight (the walking model / scenes are parked in runwayModel).
+  function runway(it) {
+    if (!stage) return;
+    clearTimeout(rwT);
+    rwT = setTimeout(function () {
+      var cast = stage.querySelector('.rw-cast'); cast.textContent = '';
+      var box = el('div', 'rw-spot'), im = el('img'); im.src = it.images[0]; im.alt = ''; im.draggable = false;
+      box.appendChild(im); box.appendChild(el('div', 'rw-pedestal')); cast.appendChild(box);
+    }, 120);
   }
   track.addEventListener('scroll', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }, { passive: true });
   window.addEventListener('resize', function () { go(cur, true); frame(); });

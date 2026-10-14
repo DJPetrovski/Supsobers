@@ -42,14 +42,14 @@
     screen.classList.add('tuning');
     tuneT = setTimeout(function () {
       prev.innerHTML = '<div class="pv" data-k="' + key + '">' + CONTENT[key]() + '</div>';
-      prev.classList.add('on');
+      prev.classList.add('on'); screen.classList.add('can-pick');
       if (started) screen.classList.remove('tuning');
     }, 170);
   }
   function hide() {
     clearTimeout(tuneT);
     screen.classList.add('tuning');
-    tuneT = setTimeout(function () { prev.classList.remove('on'); prev.innerHTML = ''; if (started) screen.classList.remove('tuning'); }, 140);
+    tuneT = setTimeout(function () { prev.classList.remove('on'); screen.classList.remove('can-pick'); prev.innerHTML = ''; if (started) screen.classList.remove('tuning'); }, 140);
     armed = null;
     hint.textContent = IDLE;
   }
@@ -70,6 +70,15 @@
   });
   rig.querySelector('.remote').addEventListener('mouseleave', function () { if (!touch) later(); });
   rig.querySelector('.remote').addEventListener('mouseenter', function () { clearTimeout(leaveT); });
+
+  // Tap or click the screen while a preview is showing to pick it, same as pressing the key.
+  screen.addEventListener('click', function () {
+    var pv = prev.classList.contains('on') && prev.querySelector('.pv'); if (!pv || diving) return;
+    var key = pv.getAttribute('data-k');
+    for (var i = 0; i < keys.length; i++) if (keys[i].getAttribute('data-key') === key) { armed = key; keys[i].click(); return; }
+  });
+  screen.addEventListener('mouseenter', function () { if (prev.classList.contains('on')) clearTimeout(leaveT); });
+  screen.addEventListener('mouseleave', function () { if (!touch && prev.classList.contains('on')) later(); });
 
   // Pulled into the screen: the TV zooms until the glass fills the window, then the page changes.
   function enter(key, href) {
