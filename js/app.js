@@ -106,7 +106,9 @@
     paintRelated(v);
     document.dispatchEvent(new Event('ss:playeropen'));
     document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'player', level: 0 } }));
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0';
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
+    // phones sometimes show a play button instead of starting: nudge it a few times
+    frame.onload = function () { [300, 1200, 2600].forEach(function (ms) { setTimeout(function () { if (!dlg.open || window.SS.now !== v) return; try { frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*'); } catch (e) {} }, ms); }); };
     frame.title = v.title || 'Video';
     $('#player-yt').href = 'https://www.youtube.com/watch?v=' + v.id;
     if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); setTunnel(v); }
@@ -118,7 +120,7 @@
   }
   $('#player-close').addEventListener('click', closePlayer);
   dlg.addEventListener('close', function () {
-    frame.src = 'about:blank';
+    frame.onload = null; frame.src = 'about:blank';
     if (ptun) ptun.stop();
     document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'player', level: null } }));
     window.SS.now = null;

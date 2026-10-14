@@ -290,12 +290,12 @@
   var pvT = 0, pvEl = null, pvCap = null;
   function duck(key, level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: key, level: level } })); }
   function previewOff() {
-    clearTimeout(pvT);
+    clearTimeout(pvT); if (tapHold) { tapHold(false); tapHold = null; tapV = null; }
     if (pvCap) { pvCap.remove(); pvCap = null; }
     hole.classList.remove('pv-on');
     if (pvEl) { pvEl.remove(); pvEl = null; duck('preview', null); }
   }
-  function previewOn(v, node) {
+  function previewOn(v, node, now) {
     previewOff();
     if (!v || !ID_RE.test(v.id || '') || near) return;
     pvT = setTimeout(function () {
@@ -312,9 +312,24 @@
       if (r.bottom + 70 < window.innerHeight) pvCap.style.top = (r.bottom + 6) + 'px'; else pvCap.style.bottom = (window.innerHeight - r.top + 6) + 'px';
       hole.appendChild(pvCap); hole.classList.add('pv-on');
       duck('preview', 0);
-    }, 700);
+    }, now ? 60 : 700);
   }
   document.addEventListener('ss:playeropen', previewOff);
+
+  // Phones: press and hold a video = its preview plays right there in the tunnel (a plain tap opens it in the pop-up).
+  var tapV = null, tapHold = null;
+  function tapRelease() { if (tapHold) { tapHold(false); tapHold = null; } tapV = null; }
+  function onTouchHold(v, node, hold) {
+    if (!v || !ID_RE.test(v.id || '')) return;
+    tapRelease(); previewOn(v, node, true);
+    tapV = v; tapHold = hold; hold(true);
+  }
+  // tapping anywhere else (not the preview or its bar) lets the tunnel move again
+  hole.addEventListener('pointerdown', function (e) {
+    if (!tapV) return;
+    if (e.target.closest && (e.target.closest('.hole-tile'))) return;
+    tapRelease(); previewOff();
+  });
 
   // The scanner: type a word and the tunnel dims everything that doesn't match; Enter drops you into the first hit.
   var find = $('#hole-find'), findN = $('#hole-find-n'), scanPaused = false;
@@ -383,7 +398,7 @@
     isOpen = true;
     hole.hidden = false;
     if (!holeApi) {
-      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand, onHover: previewOn, onHoverEnd: previewOff });
+      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand, onHover: previewOn, onHoverEnd: previewOff, onTouchHold: onTouchHold });
     }
     holeApi.start({ boost: 1300 });
     phoneStart(); armTip();

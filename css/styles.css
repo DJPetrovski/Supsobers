@@ -1595,3 +1595,8 @@ html.gs-open { overflow: hidden; }
 .rm-rest .rm-half { white-space: nowrap; }
 .rm-colors .rm-key:not(.rm-rect) .rm-ic { width: 2.1em; height: 2.1em; }
 .rm-colors .rm-rect .rm-ic { width: 1.5em; height: 1.5em; }
+
+/* phone tap-preview: the preview and its title bar can be tapped to open the video */
+.hole-preview.tap { pointer-events: auto; }
+.hole-preview.tap iframe { pointer-events: none; }
+.hole-preview-cap.tap { pointer-events: auto; cursor: pointer; font-weight: 700; font-size: .95rem; border-color: #ff2a35; }

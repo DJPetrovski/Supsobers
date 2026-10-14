@@ -180,8 +180,17 @@
       var tileEl = e.target.closest ? e.target.closest('.hole-tile') : null;
       if (onHold && tileEl && tileEl.__v) {
         holdNode = tileEl;
+        var touchHold = e.pointerType && e.pointerType !== 'mouse' && opts.onTouchHold;
         holdTimer = setTimeout(function () {
           if (dragMoved || !holdNode) return;
+          // finger: press and hold plays a preview right where the video is (a plain tap still opens it)
+          if (touchHold) {
+            dragMoved = true;   // swallow the click that follows the release
+            opts.onTouchHold(holdNode.__v, holdNode, function (on) { hovering = !!on; if (!on) showTitle(null); });
+            hovering = true; showTitle(holdNode.__v, holdNode.__idx);
+            holdNode.classList.add('holding'); var hn = holdNode; setTimeout(function () { hn.classList.remove('holding'); }, 300);
+            return;
+          }
           holding = true;
           var r = holdNode.getBoundingClientRect();
           holdNode.classList.add('holding');
