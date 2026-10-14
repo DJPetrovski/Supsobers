@@ -439,3 +439,14 @@
       }).then(function () { btn.disabled = false; });
   });
 })();
+
+/* the laptop's keyboard: rows of keys, built once */
+(function () {
+  var host = document.getElementById('lp-keys'); if (!host) return;
+  var rows = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1.5], [1.5,1,1,1,1,1,1,1,1,1,1,1,1,1], [1.8,1,1,1,1,1,1,1,1,1,1,1,2.2], [2.3,1,1,1,1,1,1,1,1,1,1,2.7], [1.3,1.3,1.3,6,1.3,1.3,1.3]];
+  rows.forEach(function (r, i) {
+    var row = document.createElement('div'); row.className = 'lp-krow' + (i === 0 ? ' fn' : '');
+    r.forEach(function (w) { var k = document.createElement('i'); k.style.flexGrow = w; row.appendChild(k); });
+    host.appendChild(row);
+  });
+})();
