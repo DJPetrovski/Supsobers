@@ -61,6 +61,7 @@
 
   /* ---------- picking a video inside the hole ---------- */
   function pick(v) {
+    armTip();
     if (v && ID_RE.test(v.id || '')) {
       if (holeApi) holeApi.hold(true);
       if (phoneLive) level(0, 0.3);
@@ -212,9 +213,15 @@
     setTimeout(function () { if (!phoneLive && holeTv) holeTv.stop(); }, 600);
   }
 
+  // After 15 seconds with no video picked, a small bubble asks "Can't decide?" and points at the figure.
+  var idleT = 0;
+  function armTip() {
+    clearTimeout(idleT); tip.classList.remove('on');
+    idleT = setTimeout(function () { if (isOpen && !near) tip.classList.add('on'); }, 15000);
+  }
   function pullCloser() {
     if (near || !isOpen) return;
-    near = true;
+    near = true; clearTimeout(idleT); tip.classList.remove('on');
     if (holeApi) holeApi.hold(true);
     var w = phoneEl.getBoundingClientRect().width;
     var target = Math.min(window.innerWidth * 0.94, window.innerHeight * 0.74 * 1.024, 640);
@@ -226,6 +233,7 @@
     if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
   function putBack() {
+    armTip();
     if (!near) return;
     near = false;
     phoneEl.classList.remove('near');
@@ -368,7 +376,7 @@
       holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand, onHover: previewOn, onHoverEnd: previewOff });
     }
     holeApi.start({ boost: 1300 });
-    phoneStart();
+    phoneStart(); armTip();
     duck('hole', 0.25);
     pauseBtn.textContent = 'Pause';
     pauseBtn.setAttribute('aria-pressed', 'false');
@@ -400,6 +408,7 @@
   }
 
   function climb(afterFn) {
+    clearTimeout(idleT); tip.classList.remove('on');
     document.dispatchEvent(new Event('ss:holeclosed'));
     if (!isOpen) return;
     isOpen = false;

@@ -1342,3 +1342,11 @@ html.gs-open { overflow: hidden; }
 .htv-osd { left: auto; right: 7%; text-align: right; }
 .htv-screen.has-ch { cursor: pointer; }
 .rm-s-pt { background: linear-gradient(#2a2a2a, #000); border-bottom-color: #000; }
+
+/* the figure at the bottom is small and quiet: you can tell something is there, not what. The ring throbs; after 15 idle seconds a bubble asks "Can't decide?" */
+.hole-phone { width: clamp(38px, 5vmin, 58px); }
+.hole-phone::before { inset: -45%; opacity: .45; }
+.hole-phone-tip { position: absolute; left: 50%; top: calc(100% + 16px); margin: 0; transform: translateX(-50%) translateY(6px); opacity: 0; pointer-events: none; animation: none; white-space: nowrap; padding: 7px 12px; border-radius: 14px; background: rgba(12,0,2,.88); border: 1px solid rgba(255,90,98,.7); color: #ffd6d9; font-size: .8rem; letter-spacing: .06em; text-transform: none; transition: opacity .5s, transform .5s; }
+.hole-phone-tip::before { content: ""; position: absolute; left: 50%; top: -6px; width: 10px; height: 10px; background: rgba(12,0,2,.95); border-left: 1px solid rgba(255,90,98,.7); border-top: 1px solid rgba(255,90,98,.7); transform: translateX(-50%) rotate(45deg); }
+.hole-phone-tip.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+.hole-phone.near .hole-phone-tip { display: none; }
