@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791954455">
+  <link rel="stylesheet" href="css/styles.css?v=1791955344">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -29,6 +29,7 @@
       <a href="#home" data-route="home">Home</a>
       <a href="#videos" data-route="videos">Videos</a>
       <a href="#web" data-route="web">It's All Connected</a>
+      <a href="#merch" data-route="merch">Merch</a>
       <a href="#members" data-route="members" class="nav-club">Members Club</a>
       <a href="#archives" data-route="archives">Archives</a>
       <a href="#books" data-route="books">Books</a>
@@ -104,6 +105,7 @@
             <a class="rm-key rm-gray" data-key="about" href="#about">About</a>
             <a class="rm-key rm-gray rm-wide rm-red" data-key="youtube" href="https://www.youtube.com/@Sobersector" target="_blank" rel="noopener">YouTube</a>
             <a class="rm-key rm-gray rm-wide rm-blue" data-key="patreon" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Patreon</a>
+            <a class="rm-key rm-gray rm-wide rm-merch" data-key="merch" href="#merch">Merch</a>
           </div>
           <p class="rm-logo">Sup Sobers</p>
         </div>
@@ -215,6 +217,22 @@
       <div class="cards" id="archive-list"></div>
     </section>
 
+    <!-- MERCH -->
+    <section class="view page merch" data-view="merch" aria-labelledby="merch-title" hidden>
+      <h2 id="merch-title">Merch</h2>
+      <p class="page-lede">Official Sobering Stories gear. Swipe through, pick one, and you go straight to checkout.</p>
+      <div class="mc-stage" id="mc-stage">
+        <button type="button" class="mc-arrow" id="mc-prev" aria-label="Previous product">&#8249;</button>
+        <div class="mc-track" id="mc-track" tabindex="0" aria-label="Merch. Use the arrow keys to browse."></div>
+        <button type="button" class="mc-arrow" id="mc-next" aria-label="Next product">&#8250;</button>
+      </div>
+      <div class="mc-info" id="mc-info" aria-live="polite"></div>
+      <div class="mc-links" id="mc-links">
+        <a class="btn" href="https://www.americanpatriot.ltd/search?keyword=Sobering+stories" target="_blank" rel="noopener">See everything on American Patriot</a>
+      </div>
+      <p class="empty" id="mc-empty" hidden>Merch is loading in. Check back soon.</p>
+    </section>
+
     <!-- BOOKS -->
     <section class="view page" data-view="books" aria-labelledby="books-title" hidden>
       <h2 id="books-title">Books</h2>
@@ -310,13 +328,14 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791954455" defer></script>
-  <script src="js/app.js?v=1791954455" defer></script>
-  <script src="js/hole.js?v=1791954455" defer></script>
-  <script src="js/pill.js?v=1791954455" defer></script>
-  <script src="js/tv.js?v=1791954455" defer></script>
-  <script src="js/web.js?v=1791954455" defer></script>
-  <script src="js/home.js?v=1791954455" defer></script>
-  <script src="js/music.js?v=1791954455" defer></script>
+  <script src="js/rain.js?v=1791955344" defer></script>
+  <script src="js/app.js?v=1791955344" defer></script>
+  <script src="js/hole.js?v=1791955344" defer></script>
+  <script src="js/pill.js?v=1791955344" defer></script>
+  <script src="js/tv.js?v=1791955344" defer></script>
+  <script src="js/merch.js?v=1791955344" defer></script>
+  <script src="js/web.js?v=1791955344" defer></script>
+  <script src="js/home.js?v=1791955344" defer></script>
+  <script src="js/music.js?v=1791955344" defer></script>
 </body>
 </html>

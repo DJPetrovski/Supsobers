@@ -29,6 +29,7 @@
     web: function () { return '<h3>It\'s All<br>Connected</h3>' + WEB + '<p>See how it all links up</p>'; },
     members: function () { return '<h3 class="pv-neon">Members<br>Only</h3><p>Off the record</p>'; },
     archives: function () { return '<h3>Archives</h3><p>Timelines and source records</p>'; },
+    merch: function () { var m = (window.SS && SS.merch || []).slice(0, 3); return '<h3>Merch</h3><p>Shirts, hoodies, stickers</p><div class="pv-strip">' + m.map(function (x) { return '<img src="' + x.images[0] + '" alt="">'; }).join('') + '</div>'; },
     books: function () { return '<h3>Books</h3><p>Reading from the library</p>'; },
     about: function () { return '<h3>About</h3><p>Trust those who seek the truth</p>'; },
     youtube: function () { return '<h3>YouTube</h3><p>@Sobersector</p><div class="pv-strip one">' + thumbs(1) + '</div>'; },
