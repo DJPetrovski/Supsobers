@@ -1337,3 +1337,6 @@ html.gs-open { overflow: hidden; }
 .rm-socrow .rm-soc-key img { width: 62%; height: 62%; object-fit: contain; pointer-events: none; filter: drop-shadow(0 1px 1px rgba(0,0,0,.45)); }
 .rm-s-ru { background: linear-gradient(#ffffff, #d6dbd0); border-bottom-color: #7b8272; }
 .rm-s-pt { background: linear-gradient(#ff7a68, #e0402c); }
+
+/* channel / volume readout lives in the top-right of the glass so it never overlaps the preview title */
+.htv-osd { left: auto; right: 7%; text-align: right; }
