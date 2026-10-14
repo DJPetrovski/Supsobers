@@ -1585,4 +1585,4 @@ html.gs-open { overflow: hidden; }
 
 /* phone: a smaller remote so the TV and the CH / VOL buttons fit on one screen */
 @media (max-width: 760px) { .remote { width: calc(min(50%, 182px) * var(--rs)); } }
-@media (max-width: 760px) { .rm-colors .rm-key { font-size: 2.9cqw; letter-spacing: 0; } }
+@media (max-width: 760px) { .rm-colors .rm-key { font-size: 5.2cqw; letter-spacing: 0; } }
