@@ -222,7 +222,7 @@
   }
   function pullCloser() {
     if (near || !isOpen) return;
-    near = true; clearTimeout(idleT); tip.classList.remove('on'); previewOff();
+    near = true; hideFound(); clearTimeout(idleT); tip.classList.remove('on'); previewOff();
     if (holeApi) holeApi.hold(true);
     var w = phoneEl.getBoundingClientRect().width;
     var target = Math.min(window.innerWidth * 0.94, window.innerHeight * 0.74 * 1.024, 640);
@@ -339,11 +339,38 @@
   function scan() {
     var fn = scanMatch(find.value);
     if (holeApi) holeApi.highlight(fn);
-    if (!fn) { findN.textContent = ''; if (scanPaused && holeApi) { holeApi.setPaused(false); scanPaused = false; } return; }
-    var n = (SS.videos || []).filter(fn).length;
+    if (!fn) { findN.textContent = ''; hideFound(); if (scanPaused && holeApi) { holeApi.setPaused(false); scanPaused = false; } return; }
+    var hits = (SS.videos || []).filter(fn), n = hits.length;
     findN.textContent = n ? n + (n === 1 ? ' hit' : ' hits') : 'no hits';
     if (holeApi && n && !holeApi.isPaused()) { holeApi.setPaused(true); scanPaused = true; }
+    showFound(hits);
   }
+  // the hits come to the front of the screen: a tray of cards over the dimmed tunnel (not a pop-up)
+  var foundEl = null, foundKey = '';
+  function hideFound() { if (foundEl) { foundEl.classList.remove('on'); foundKey = ''; } }
+  function showFound(hits) {
+    if (!hits || !hits.length || near) { hideFound(); return; }
+    var show = hits.filter(function (v) { return ID_RE.test(v.id || ''); }).slice(0, 12), key = show.map(function (v) { return v.id; }).join(',');
+    if (!show.length) { hideFound(); return; }
+    if (!foundEl) { foundEl = document.createElement('div'); foundEl.className = 'hole-found'; foundEl.setAttribute('role', 'list'); foundEl.setAttribute('aria-label', 'Videos that match your search'); hole.appendChild(foundEl); }
+    if (key !== foundKey) {
+      foundKey = key; foundEl.innerHTML = ''; previewOff();
+      show.forEach(function (v) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'hf-card'; b.setAttribute('role', 'listitem');
+        b.innerHTML = '<img alt="" loading="lazy" src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg"><span></span>'; b.lastChild.textContent = v.title || '';
+        b.addEventListener('click', function () { previewOff(); pick(v); });
+        b.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') previewOn(v, b); });
+        b.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') previewOff(); });
+        foundEl.appendChild(b);
+      });
+      if (hits.length > show.length) { var more = document.createElement('p'); more.className = 'hf-more'; more.textContent = '+' + (hits.length - show.length) + ' more. Narrow your search to see them.'; foundEl.appendChild(more); }
+      foundEl.style.setProperty('--hf-w', show.length === 1 ? 'min(520px, 92vw)' : show.length <= 3 ? 'min(780px, 94vw)' : 'min(960px, 95vw)');
+      foundEl.scrollTop = 0;
+    }
+    foundEl.classList.add('on');
+  }
+  document.addEventListener('ss:playeropen', function () { if (foundEl) foundEl.classList.remove('on'); });
+  document.addEventListener('ss:playerclosed', function () { if (find && find.value) scan(); });
   if (find) {
     find.addEventListener('input', scan);
     find.addEventListener('keydown', function (e) {
