@@ -109,10 +109,10 @@
     function layout() {
       W = root.clientWidth || global.innerWidth;
       H = root.clientHeight || global.innerHeight;
-      R = Math.min(W, H) * (W < 700 ? 0.5 : 0.43);
+      R = Math.min(W, H) * (W < 700 ? 0.34 : 0.43);   // phones: a narrower tunnel so the hole in the middle stays visible, not a pile
       th = 2 * Math.PI * R / N / 1.75;
       tw = th * 16 / 9;
-      spacing = tw * 1.25;
+      spacing = tw * (W < 700 ? 1.7 : 1.25);
       loop = spacing * K;
       P = Math.max(W, H) * 0.95;
       scene.style.perspective = Math.round(P) + 'px';

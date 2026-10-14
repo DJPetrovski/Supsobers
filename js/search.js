@@ -106,7 +106,7 @@
     input.value = q || ''; render(); setTimeout(function () { input.focus(); }, 30);
   }
   function closePanel() { panel.hidden = true; document.documentElement.classList.remove('gs-open'); try { if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); } catch (e) {} }
-  window.SS = window.SS || {}; SS.openSearch = openPanel; SS.closeSearch = closePanel;
+  window.SS = window.SS || {}; SS.openSearch = openPanel; SS.closeSearch = closePanel; SS.searchAll = search;
   document.addEventListener('ss:videos', function () { if (!panel.hidden) render(); });
   document.addEventListener('ss:merch', function () { if (!panel.hidden) render(); });
 

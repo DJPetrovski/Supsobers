@@ -42,6 +42,7 @@
     half: function () { return '<h3>My Better<br>Half</h3><p>Kim: Reverie Revival Colorado</p>'; },
     contact: function () { return '<h3>Contact</h3><p>Open the laptop. Send a message.</p>'; },
     discord: function () { return '<h3>Discord</h3><p>Join the server</p>'; },
+    voice: function () { return '<h3>Voice</h3><p>Say what you want. Press again to talk.</p>'; },
     search: function () { return '<h3>Search</h3><p>Find any video, product or page</p>'; }
   };
 
@@ -72,6 +73,7 @@
     k.addEventListener('click', function (e) {
       var external = k.target === '_blank';
       if (touch && armed !== key) { e.preventDefault(); armed = key; show(key); hint.textContent = external ? 'Tap again to open.' : 'Tap again to go in.'; later(); return; }
+      if (key === 'voice') { e.preventDefault(); if (window.SS && SS.openAssistant) SS.openAssistant(true); return; }
       if (key === 'search') { e.preventDefault(); if (window.SS && SS.openSearch) SS.openSearch(); return; }
       if (external) return;               // normal link in a new tab
       e.preventDefault();

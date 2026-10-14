@@ -102,6 +102,7 @@
 
   function openPlayer(v) {
     if (!v || !ID_RE.test(v.id || '')) return;
+    window.SS.now = v;
     paintRelated(v);
     document.dispatchEvent(new Event('ss:playeropen'));
     document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'player', level: 0 } }));
@@ -120,6 +121,7 @@
     frame.src = 'about:blank';
     if (ptun) ptun.stop();
     document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'player', level: null } }));
+    window.SS.now = null;
     document.dispatchEvent(new Event('ss:playerclosed'));
   });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) closePlayer(); });
