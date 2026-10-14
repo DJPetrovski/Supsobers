@@ -382,13 +382,25 @@
 /* ---------- socials: a bank of channels ---------- */
 (function () {
   var host = document.getElementById('sc-bank'); if (!host) return;
+
+  var LOGO = {
+    youtube: '<svg viewBox="0 0 24 24"><rect x="2" y="5.5" width="20" height="13" rx="4" fill="#e62117"/><path d="M10 9.2v5.6l5-2.8z" fill="#fff"/></svg>',
+    patreon: '<img src="img/social/patreon.png" alt="" style="filter:invert(0)">',
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg>',
+    x: '<svg viewBox="0 0 24 24"><path d="M4 3.5h4.6l11.4 17h-4.6z" fill="#fff"/><path d="M19.2 3.5 13 10.6M4.8 20.5l6.2-7.1" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    rumble: '<img src="img/social/rumble.png" alt="">',
+    spotify: '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><circle cx="12" cy="12" r="10" fill="#1db954"/><path d="M6.6 9.4c3.8-1.1 8-.7 11.3 1.2M7.2 12.5c3.2-.9 6.6-.5 9.5 1.1M7.9 15.3c2.6-.7 5.2-.4 7.5.9" stroke="#000" stroke-width="1.8"/></svg>',
+    discord: '<svg viewBox="0 0 24 24"><path d="M5.2 6.2c1.9-1 3.7-1.5 3.7-1.5l.5 1.1c1.5-.2 3.2-.2 4.7 0l.5-1.1s1.8.5 3.7 1.5c1.9 3.1 2.9 6.4 2.7 10.2-1.6 1.2-3.1 1.8-4.5 2.2l-1-1.7c.6-.2 1.1-.5 1.6-.8-.1-.1-.3-.2-.4-.3-2.8 1.2-5.8 1.2-8.6 0-.1.1-.3.2-.4.3.5.3 1 .6 1.6.8l-1 1.7c-1.4-.4-2.9-1-4.5-2.2-.2-3.8.8-7.1 2.700-10.200z" fill="#5865F2"/><ellipse cx="9" cy="12.4" rx="1.3" ry="1.5" fill="#fff"/><ellipse cx="15" cy="12.4" rx="1.3" ry="1.5" fill="#fff"/></svg>',
+    tiktok: '<svg viewBox="0 0 24 24"><path d="M14 3v11.2a3.4 3.4 0 1 1-3.4-3.4" fill="none" stroke="#25f4ee" stroke-width="2.6" stroke-linecap="round" transform="translate(-.9 .6)"/><path d="M14 3v11.2a3.4 3.4 0 1 1-3.4-3.4" fill="none" stroke="#fe2c55" stroke-width="2.6" stroke-linecap="round" transform="translate(.9 -.6)"/><path d="M14 3v11.2a3.4 3.4 0 1 1-3.4-3.4M14 3c.4 2.400 2.100 4.100 4.500 4.300" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>'
+  };
   function card(s, i) {
     var a = document.createElement('a');
     a.className = 'sc-ch'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
     a.setAttribute('aria-label', s.name + (s.handle ? ' ' + s.handle : ''));
     var n = (i + 1 < 10 ? '0' : '') + (i + 1);
     a.innerHTML = '<span class="sc-num">CH ' + n + '</span><span class="sc-screen"><b class="sc-mark"></b></span><span class="sc-name"></span><span class="sc-handle"></span><span class="sc-blurb"></span><span class="sc-go">Tune in \u2192</span>';
-    a.querySelector('.sc-mark').textContent = s.mark || s.name.slice(0, 2).toUpperCase();
+    var mk = a.querySelector('.sc-mark'), lg = LOGO[(s.name || '').toLowerCase()];
+    if (lg) { mk.innerHTML = lg; mk.classList.add('logo'); } else mk.textContent = s.mark || s.name.slice(0, 2).toUpperCase();
     a.querySelector('.sc-name').textContent = s.name;
     a.querySelector('.sc-handle').textContent = s.handle || '';
     a.querySelector('.sc-blurb').textContent = s.blurb || '';
@@ -423,19 +435,19 @@
   if ((location.hash || '') === '#contact') setTimeout(function () { lap.classList.add('open'); }, 300);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var f = form.elements, name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
+    var f = form.elements, name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim(), subj = f.subject.value.trim() || 'Message from supsobers.com';
     if (f._honey.value) return;
     if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !msg) { st.textContent = 'Fill in your name, a valid email and a message.'; st.className = 'lp-status bad'; return; }
     btn.disabled = true; st.className = 'lp-status'; st.textContent = 'Sending...';
     fetch('https://formsubmit.co/ajax/' + to, {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, message: msg, _subject: 'Message from supsobers.com', _replyto: email, _captcha: 'false', _template: 'table' })
+      body: JSON.stringify({ name: name, email: email, subject: subj, message: msg, _subject: 'supsobers.com: ' + subj, _replyto: email, _captcha: 'false', _template: 'table' })
     }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === 'false' || j.success === false) throw new Error('x'); }); })
       .then(function () { st.className = 'lp-status ok'; st.textContent = 'Sent. Thank you, I will get back to you.'; form.reset(); })
       .catch(function () {
         st.className = 'lp-status bad'; st.innerHTML = '';
         st.appendChild(document.createTextNode('Could not send from here. '));
-        var a = document.createElement('a'); a.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Message from supsobers.com') + '&body=' + encodeURIComponent(msg + '\n\n' + name + ' (' + email + ')'); a.textContent = 'Email me instead'; st.appendChild(a);
+        var a = document.createElement('a'); a.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(msg + '\n\n' + name + ' (' + email + ')'); a.textContent = 'Email me instead'; st.appendChild(a);
       }).then(function () { btn.disabled = false; });
   });
 })();
