@@ -8,6 +8,10 @@
       video = document.getElementById('htv-video'), prev = document.getElementById('htv-preview'),
       soundBtn = document.getElementById('htv-sound'), hint = document.getElementById('remote-hint'),
       keys = Array.prototype.slice.call(rig.querySelectorAll('.rkey'));
+  var hero = document.querySelector('.home-hero');
+  if (window.IntersectionObserver && hero) new IntersectionObserver(function (en) { hero.classList.toggle('offscreen', en[0].intersectionRatio < 0.05); document.dispatchEvent(new CustomEvent('ss:homevis', { detail: { on: en[0].intersectionRatio >= 0.05 } })); }, { threshold: [0, 0.05, 0.2] }).observe(hero);
+  var scrT = 0;
+  window.addEventListener('scroll', function () { document.documentElement.classList.add('is-scrolling'); clearTimeout(scrT); scrT = setTimeout(function () { document.documentElement.classList.remove('is-scrolling'); }, 140); }, { passive: true });
   var touch = window.matchMedia && matchMedia('(hover: none)').matches;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var onHome = true, armed = null, leaveT = 0, tuneT = 0, diving = false;

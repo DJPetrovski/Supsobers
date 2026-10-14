@@ -57,6 +57,7 @@
     ambientApi.start({ boost: 0 });
   }
   function stopAmbient() { if (ambientApi) ambientApi.stop(); }
+  document.addEventListener('ss:homevis', function (e) { if (current !== 'home') return; if (e.detail.on) startAmbient(); else stopAmbient(); });
 
   /* ---------- picking a video inside the hole ---------- */
   function pick(v) {
