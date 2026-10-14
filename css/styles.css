@@ -859,57 +859,88 @@ html.is-sucking .top, html.is-sucking .foot, html.is-sucking .remote, html.is-su
   filter: drop-shadow(0 0 14px rgba(255, 42, 53, 0.55)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.75)); }
 .tv-sticker img { display: block; width: 100%; height: auto; }
 
-/* the remote: black matte plastic, printed labels, round rubber keys */
-.remote { flex: 0 0 auto; width: clamp(150px, 15vw, 200px); padding: 18px 14px 20px; border-radius: 26px / 30px; position: relative;
-  background: linear-gradient(100deg, #1d1d20 0%, #0b0b0d 38%, #161619 100%);
-  box-shadow: 0 0 0 1px #000, inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 2px 0 3px rgba(255, 255, 255, 0.06), inset -3px 0 5px rgba(0, 0, 0, 0.8),
-    -14px 18px 30px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 42, 53, 0.12);
-  transform: rotateY(-16deg) rotateX(6deg) rotateZ(3deg); transform-origin: 0% 50%; }
-.remote::before { content: ""; position: absolute; left: 12%; right: 12%; top: 0; height: 9px; border-radius: 0 0 8px 8px; background: linear-gradient(#2c0508, #0a0102); box-shadow: inset 0 -2px 4px rgba(255, 42, 53, 0.5); }
-.remote::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 16px; height: 1px; background: rgba(255, 255, 255, 0.08); box-shadow: 0 1px 0 #000; }
-.remote-top { display: flex; align-items: center; justify-content: space-between; margin: 6px 4px 14px; }
-.remote-top span { font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: #8d8d93; }
-.remote-led { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff6b74, #b30010 60%, #4a0008); border: 1px solid #000; box-shadow: 0 0 10px rgba(255, 42, 53, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4); animation: pulse 2.2s ease-in-out infinite; }
-.remote-keys { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 10px; padding-bottom: 14px; }
-.rkey { display: flex; flex-direction: column; align-items: center; gap: 7px; text-decoration: none; cursor: pointer; outline: none; }
-.rkey .cap { display: block; width: 56px; height: 56px; border-radius: 50%; position: relative;
-  background: radial-gradient(circle at 36% 28%, #55555b, #2a2a2e 55%, #17171a); border: 1px solid #000; border-bottom-width: 4px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 3px 5px rgba(0, 0, 0, 0.7); transition: transform 0.08s, filter 0.15s;
-  animation: keybob 2.6s ease-in-out infinite; }
-.rkey .lbl { font: 700 0.66rem var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: #cfcac6; text-align: center; line-height: 1.15; }
-/* a tiny printed glyph on each key */
-.rkey .cap::after { content: attr(data-g); position: absolute; inset: 0; display: grid; place-items: center; font: 700 1.05rem var(--body); color: rgba(255, 255, 255, 0.88); text-shadow: 0 1px 2px #000; }
-.rkey-red .cap { background: radial-gradient(circle at 36% 28%, #ff6770, #c40012 58%, #5a000a); }
-.rkey-neon .cap { background: radial-gradient(circle at 36% 28%, #5a1a20, #240608 60%, #100203); box-shadow: inset 0 0 12px rgba(255, 42, 53, 0.7), 0 0 14px rgba(255, 42, 53, 0.5); }
-.rkey-neon .lbl { color: #ffb3b8; text-shadow: 0 0 8px rgba(255, 42, 53, 0.8); }
-.rkey-yt .cap { background: radial-gradient(circle at 36% 28%, #ff6a6a, #d01818 58%, #6a0a0a); }
-.rkey-pt .cap { background: radial-gradient(circle at 36% 28%, #7aa5ff, #2a52d8 58%, #0f2278); }
-.rkey:nth-child(2) .cap { animation-delay: .25s; } .rkey:nth-child(3) .cap { animation-delay: .5s; } .rkey:nth-child(4) .cap { animation-delay: .75s; }
-.rkey:nth-child(5) .cap { animation-delay: 1s; } .rkey:nth-child(6) .cap { animation-delay: 1.25s; } .rkey:nth-child(7) .cap { animation-delay: 1.5s; } .rkey:nth-child(8) .cap { animation-delay: 1.75s; }
-.rkey:hover .cap, .rkey:focus-visible .cap { animation: none; filter: brightness(1.35); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 18px rgba(255, 255, 255, 0.35); }
-.rkey:active .cap { animation: none; transform: translateY(3px); border-bottom-width: 1px; }
-.remote-hint { margin: 4px 2px 0; text-align: center; font-size: 0.66rem; line-height: 1.35; color: #8d8d93; min-height: 2.7em; }
-@keyframes keybob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-
 @media (max-width: 760px) {
   .home-rig { flex-direction: column; gap: 10px; perspective: none; }
   .home-tvwrap { flex: none; width: 100%; }
   .home-rig .tv { width: min(100%, 520px, max(260px, calc((100svh - 330px) * 1.5))); }
   .home-copy h1 { font-size: clamp(1.9rem, 9vw, 2.8rem); }
-  .remote { width: min(100%, 380px); transform: rotateX(14deg); transform-origin: 50% 0; padding: 20px 12px 12px; }
-  .remote-top { margin-bottom: 8px; }
-  .remote-keys { grid-template-columns: repeat(4, 1fr); gap: 12px 6px; padding-bottom: 8px; }
-  .rkey .cap { width: 50px; height: 50px; }
   .tv-sticker { width: 34%; right: -2%; top: -12%; }
 }
 
 /* smoother scrolling: stop paying for effects nobody can see */
-.home-hero.offscreen .remote .cap, .home-hero.offscreen .tv-static, .home-hero.offscreen .tv-roll, .home-hero.offscreen .tv-glass { animation-play-state: paused; }
-html.is-scrolling .rkey .cap, html.is-scrolling .tv-glass, html.is-scrolling .tv-roll { animation-play-state: paused; }
+.home-hero.offscreen .remote .rm-key, .home-hero.offscreen .tv-static, .home-hero.offscreen .tv-roll, .home-hero.offscreen .tv-glass { animation-play-state: paused; }
+html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrolling .tv-roll { animation-play-state: paused; }
 .tv-static { will-change: transform; } .tv-glass { will-change: opacity; }
 .ambient { contain: strict; }
-@media (prefers-reduced-motion: reduce) { .rkey .cap, .remote-led { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .rm-key { animation: none !important; } }
 
-.remote { transform-origin: 50% 50%; transform: rotateY(-12deg) rotateX(5deg) rotateZ(3deg); margin-right: 10px; }
-@media (max-width: 760px) { .remote { margin-right: 0; transform: rotateX(14deg); transform-origin: 50% 0; } }
 .home-copy h1 br { display: none; }
+
+/* =====================================================================
+   Smart remote
+   ===================================================================== */
+.home-rig { align-items: flex-start; }
+.home-tvwrap { align-self: flex-start; }
+.remote { flex: 0 0 auto; width: clamp(150px, 14vw, 178px); padding: 22px 16px 26px; position: relative; border-radius: 30px 30px 40px 40px / 26px 26px 52px 52px;
+  background: linear-gradient(95deg, #202023 0%, #0c0c0e 35%, #0a0a0c 65%, #1b1b1e 100%);
+  box-shadow: 0 0 0 1px #000, inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 3px 0 4px rgba(255, 255, 255, 0.07), inset -4px 0 6px rgba(0, 0, 0, 0.85),
+    -16px 22px 34px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 42, 53, 0.1);
+  transform: rotateY(-10deg) rotateZ(2deg); transform-origin: 50% 0; }
+.remote::before { content: ""; position: absolute; left: 30%; right: 30%; top: 0; height: 7px; border-radius: 0 0 7px 7px; background: linear-gradient(#3a060a, #0a0102); box-shadow: inset 0 -2px 4px rgba(255, 42, 53, 0.6); }
+.rm-power { display: block; margin: 6px 0 12px auto; width: 30px; height: 30px; border-radius: 50%; border: 1px solid #000; border-bottom-width: 3px;
+  background: radial-gradient(circle at 36% 28%, #ff6b74, #b30010 60%, #4a0008); box-shadow: 0 0 12px rgba(255, 42, 53, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4); animation: pulse 2.2s ease-in-out infinite; }
+.rm-colors { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.rm-key { display: flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; cursor: pointer; outline: none; border: 1px solid #000; border-bottom-width: 4px;
+  font: 700 0.64rem/1.1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 3px 5px rgba(0, 0, 0, 0.7); transition: transform 0.08s, filter 0.15s; animation: keybob 2.6s ease-in-out infinite; }
+.rm-color { min-height: 40px; border-radius: 12px; padding: 4px; }
+.rm-red { background: linear-gradient(#ff5a63, #b3000f); border-bottom-color: #55000a; }
+.rm-green { background: linear-gradient(#3ed46a, #0d7a30); border-bottom-color: #063d17; }
+.rm-yellow { background: linear-gradient(#ffd84a, #b88a00); border-bottom-color: #5c4500; color: #2a1d00; text-shadow: none; }
+.rm-blue { background: linear-gradient(#5b92ff, #1a3fb0); border-bottom-color: #0a1d5a; }
+.rm-gray { background: linear-gradient(#4b4b51, #2a2a2f); border-bottom-color: #0b0b0d; min-height: 34px; border-radius: 12px; }
+.rm-wide { grid-column: 1 / -1; min-height: 34px; border-radius: 17px; }
+.rm-colors .rm-key:nth-child(2) { animation-delay: .3s; } .rm-colors .rm-key:nth-child(3) { animation-delay: .6s; } .rm-colors .rm-key:nth-child(4) { animation-delay: .9s; }
+.rm-rest .rm-key:nth-child(1) { animation-delay: 1.1s; } .rm-rest .rm-key:nth-child(2) { animation-delay: 1.3s; } .rm-rest .rm-key:nth-child(3) { animation-delay: 1.5s; } .rm-rest .rm-key:nth-child(4) { animation-delay: 1.7s; }
+.rm-key:hover, .rm-key:focus-visible { animation: none; filter: brightness(1.3); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 16px rgba(255, 255, 255, 0.3); }
+.rm-key:active { animation: none; transform: translateY(3px); border-bottom-width: 1px; }
+.rm-neon { background: linear-gradient(#3a0a10, #190306); border-bottom-color: #000; color: #ffd1d4; text-shadow: 0 0 8px #ff2a35; box-shadow: inset 0 0 12px rgba(255, 42, 53, 0.6), 0 0 12px rgba(255, 42, 53, 0.45); }
+
+/* d-pad: up/down = channel, left/right = volume, centre = open what's playing */
+.rm-dpad { position: relative; width: 128px; height: 128px; margin: 4px auto 16px; border-radius: 50%; background: radial-gradient(circle at 40% 30%, #2d2d32, #131316 70%); border: 1px solid #000;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.12), inset 0 -4px 8px rgba(0, 0, 0, 0.8), 0 4px 8px rgba(0, 0, 0, 0.6); }
+.rm-d { position: absolute; display: grid; place-items: center; width: 38px; height: 38px; margin: 0; padding: 0; border: 0; background: none; color: #e7e1dc; font: 700 0.62rem var(--body); letter-spacing: 0.06em; cursor: pointer; border-radius: 50%; }
+.rm-d small { display: block; font-size: 0.5rem; opacity: 0.65; letter-spacing: 0.1em; margin-top: -1px; }
+.rm-d:hover, .rm-d:focus-visible { background: rgba(255, 255, 255, 0.14); outline: none; }
+.rm-d:active { background: rgba(255, 42, 53, 0.4); }
+.rm-up { left: 45px; top: 6px; } .rm-down { left: 45px; bottom: 6px; } .rm-left { left: 6px; top: 45px; } .rm-right { right: 6px; top: 45px; }
+.rm-ok { position: absolute; left: 43px; top: 43px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid #000; border-bottom-width: 3px; cursor: pointer; font: 800 0.7rem var(--body); color: #fff;
+  background: radial-gradient(circle at 36% 28%, #55555b, #232327); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.rm-ok:hover, .rm-ok:focus-visible { filter: brightness(1.4); outline: none; }
+.rm-rest { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rm-logo { margin: 16px 0 0; text-align: center; font-size: 0.56rem; letter-spacing: 0.36em; text-transform: uppercase; color: #6f6f76; }
+@keyframes keybob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+.htv-bar #htv-now, .htv-bar #htv-next { display: none !important; }
+.htv-osd { position: absolute; left: 7%; top: 8%; z-index: 5; pointer-events: none; opacity: 0; transition: opacity 0.25s; font-family: var(--display); font-size: clamp(1rem, 3vw, 2rem); letter-spacing: 0.08em; color: #7dff9a; text-shadow: 0 0 8px rgba(80, 255, 120, 0.9), 0 0 2px #000; }
+.htv-osd.on { opacity: 1; }
+
+@media (max-width: 760px) {
+  .home-rig { align-items: center; }
+  .remote { width: min(76%, 220px); transform: rotateX(8deg); transform-origin: 50% 0; }
+}
+
+/* how it works */
+.home-how { padding-top: 12px; }
+.how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.how-step { padding: 16px 16px 18px; border: 1px solid var(--line); background: rgba(6, 1, 2, 0.7); border-radius: 6px; }
+.how-step b { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin-bottom: 10px; border-radius: 50%; border: 1.5px solid #c9c4c0; font: italic 700 0.9rem Georgia, serif; color: #c9c4c0; }
+.how-step h3 { margin: 0 0 6px; font-size: 1rem; color: var(--bone); }
+.how-step p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: #c9c4c0; }
+
+/* the same lesson, floating at the top of the tunnel */
+.hole-hint { background: none; }
+.hole-hint ul { list-style: none; margin: 0 auto; padding: 14px 18px; max-width: 460px; text-align: left; background: rgba(0, 0, 0, 0.74); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 12px; }
+.hole-hint li { position: relative; padding: 4px 0 4px 26px; font-size: 0.85rem; line-height: 1.4; color: #e4dfdb; }
+.hole-hint li::before { content: "i"; position: absolute; left: 0; top: 5px; width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid #c9c4c0; text-align: center; font: italic 700 11px/14px Georgia, serif; color: #c9c4c0; }
+.hole-hint.gone { opacity: 0; }

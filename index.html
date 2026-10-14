@@ -58,6 +58,7 @@
                   <video class="htv-video" id="htv-video" src="media/trailer.mp4" muted playsinline preload="auto" aria-label="Sup Sobers trailer"></video>
                   <iframe class="htv-yt" id="htv-yt" title="Sobering Stories playing on the TV" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" hidden></iframe>
                   <div class="htv-preview" id="htv-preview" aria-live="polite"></div>
+                  <div class="htv-osd" id="htv-osd" aria-hidden="true"></div>
                   <div class="tv-static" aria-hidden="true"></div>
                   <div class="tv-roll" aria-hidden="true"></div>
                   <div class="tv-glass" aria-hidden="true"></div>
@@ -80,19 +81,38 @@
           </div>
         </div>
         <div class="remote" id="remote">
-          <div class="remote-top"><i class="remote-led" aria-hidden="true"></i><span>Sup Sobers</span></div>
-          <nav class="remote-keys" aria-label="Main menu">
-            <a class="rkey rkey-red" data-key="videos" href="#videos"><span class="cap" data-g="▶"></span><span class="lbl">Videos</span></a>
-            <a class="rkey " data-key="web" href="#web"><span class="cap" data-g="◎"></span><span class="lbl">The Web</span></a>
-            <a class="rkey rkey-neon" data-key="members" href="#members"><span class="cap" data-g="★"></span><span class="lbl">Members</span></a>
-            <a class="rkey " data-key="archives" href="#archives"><span class="cap" data-g="≡"></span><span class="lbl">Archives</span></a>
-            <a class="rkey " data-key="books" href="#books"><span class="cap" data-g="▤"></span><span class="lbl">Books</span></a>
-            <a class="rkey " data-key="about" href="#about"><span class="cap" data-g="i"></span><span class="lbl">About</span></a>
-            <a class="rkey rkey-yt" data-key="youtube" href="https://www.youtube.com/@Sobersector" target="_blank" rel="noopener"><span class="cap" data-g="▷"></span><span class="lbl">YouTube</span></a>
-            <a class="rkey rkey-pt" data-key="patreon" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener"><span class="cap" data-g="P"></span><span class="lbl">Patreon</span></a>
+          <button type="button" class="rm-power" id="rm-power" aria-label="Power light"></button>
+          <nav class="rm-colors" aria-label="Main menu">
+            <a class="rm-key rm-color rm-red" data-key="videos" href="#videos">Videos</a>
+            <a class="rm-key rm-color rm-green" data-key="web" href="#web">The Web</a>
+            <a class="rm-key rm-color rm-yellow" data-key="members" href="#members">Members</a>
+            <a class="rm-key rm-color rm-blue" data-key="archives" href="#archives">Archives</a>
           </nav>
-          <p class="remote-hint" id="remote-hint">Pick up the remote.</p>
+          <div class="rm-dpad" role="group" aria-label="TV controls">
+            <button type="button" class="rm-d rm-up" data-act="chup" aria-label="Channel up">CH<small>+</small></button>
+            <button type="button" class="rm-d rm-down" data-act="chdown" aria-label="Channel down">CH<small>-</small></button>
+            <button type="button" class="rm-d rm-left" data-act="voldown" aria-label="Volume down">VOL<small>-</small></button>
+            <button type="button" class="rm-d rm-right" data-act="volup" aria-label="Volume up">VOL<small>+</small></button>
+            <button type="button" class="rm-ok" data-act="ok" aria-label="Open the video that is playing">OK</button>
+          </div>
+          <div class="rm-rest">
+            <a class="rm-key rm-gray" data-key="books" href="#books">Books</a>
+            <a class="rm-key rm-gray" data-key="about" href="#about">About</a>
+            <a class="rm-key rm-gray rm-wide rm-red" data-key="youtube" href="https://www.youtube.com/@Sobersector" target="_blank" rel="noopener">YouTube</a>
+            <a class="rm-key rm-gray rm-wide rm-blue" data-key="patreon" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Patreon</a>
+          </div>
+          <p class="rm-logo">Sup Sobers</p>
         </div>
+      </div>
+    </section>
+
+    <section class="view page home-how" data-view="home" aria-labelledby="how-title" hidden>
+      <h2 id="how-title">How the rabbit hole works</h2>
+      <div class="how-grid">
+        <div class="how-step"><b>1</b><h3>Press Videos</h3><p>Use the red key on the remote and the TV pulls you in. You fall through every long video on the channel, newest first.</p></div>
+        <div class="how-step"><b>2</b><h3>Look around</h3><p>Drag to look at the videos around you. Scroll or swipe to fall faster. Point at one to stop and read its title.</p></div>
+        <div class="how-step"><b>3</b><h3>Tap to watch</h3><p>Tap a video and it plays in the middle, with a tunnel of the videos connected to it spinning all around it.</p></div>
+        <div class="how-step"><b>4</b><h3>Hold to go deeper</h3><p>Press and hold any video, then let go, and its connections become the new tunnel. Use Back up to return.</p></div>
       </div>
     </section>
 
@@ -248,6 +268,7 @@
       <button type="button" class="pill" id="hole-back" hidden>Back up</button>
       <button type="button" class="pill" id="phone-back" hidden>Put it back</button>
       <span class="hole-ui-right">
+        <button type="button" class="pill" id="hole-help" aria-label="How the tunnel works">?</button>
         <button type="button" class="pill" id="hole-sound" aria-pressed="true">Sound on</button>
         <button type="button" class="pill" id="hole-list">List view</button>
         <button type="button" class="pill" id="hole-pause" aria-pressed="false">Pause</button>
@@ -259,7 +280,11 @@
     </div>
     <p class="hole-trail" id="hole-trail" aria-live="polite"></p>
     <p class="hole-title" id="hole-title" aria-hidden="true"></p>
-    <p class="hole-hint" id="hole-hint">Drag to look around. Scroll to fall faster. Point at a video to stop. Click to watch. Press and hold one to follow its connections down a new hole.</p>
+    <div class="hole-hint" id="hole-hint" aria-live="polite"><ul>
+      <li>Drag to look around the tunnel. Scroll or swipe to fall faster.</li>
+      <li>Point at a video to stop on it. Tap it to watch.</li>
+      <li>Press and hold a video, then let go, to follow its connections down a new hole.</li>
+    </ul></div>
   </div>
 
   <dialog id="player" aria-label="Video player">

@@ -6,8 +6,8 @@
   if (!rig) return;
   var tvEl = document.getElementById('htv'), screen = document.getElementById('htv-screen'),
       video = document.getElementById('htv-video'), prev = document.getElementById('htv-preview'),
-      soundBtn = document.getElementById('htv-sound'), hint = document.getElementById('remote-hint'),
-      keys = Array.prototype.slice.call(rig.querySelectorAll('.rkey'));
+      soundBtn = document.getElementById('htv-sound'), hint = document.createElement('span'),
+      keys = Array.prototype.slice.call(rig.querySelectorAll('[data-key]'));
   var hero = document.querySelector('.home-hero');
   if (window.IntersectionObserver && hero) new IntersectionObserver(function (en) { hero.classList.toggle('offscreen', en[0].intersectionRatio < 0.05); document.dispatchEvent(new CustomEvent('ss:homevis', { detail: { on: en[0].intersectionRatio >= 0.05 } })); }, { threshold: [0, 0.05, 0.2] }).observe(hero);
   var scrT = 0;
@@ -112,7 +112,9 @@
   function setSound(on) { soundOn = !!on; applySound(); if (on && onTrailer && started && video.paused) video.play().catch(function () {}); }
   soundBtn.addEventListener('click', function () { setSound(!soundOn); });
 
-  var seen = [];
+  var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0;
+  var osd = document.getElementById('htv-osd');
+  function showOsd(t) { osd.textContent = t; osd.classList.add('on'); clearTimeout(osdT); osdT = setTimeout(function () { osd.classList.remove('on'); }, 1800); }
   function pickRandom() {
     var all = (window.SS && SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || '') && (v.seconds || 0) >= 1800; });
     if (!all.length) return null;
@@ -122,9 +124,12 @@
     seen.push(v.id);
     return v;
   }
-  function channel() {
+  function channel(back) {
     clearTimeout(chanT);
-    var v = pickRandom();
+    var v;
+    if (back === true && hist.length > 1) { hist.pop(); v = hist[hist.length - 1]; chNo = Math.max(1, chNo - 1); }
+    else { v = pickRandom(); if (v) { hist.push(v); chNo++; } }
+    if (v) showOsd('CH ' + (chNo < 10 ? '0' : '') + chNo);
     if (!v) { document.addEventListener('ss:videos', function once() { document.removeEventListener('ss:videos', once); if (onHome && !onTrailer) channel(); }); return; }
     cur = v;
     var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
@@ -139,9 +144,20 @@
   }
   function stopChannels() { clearTimeout(chanT); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; nowBtn.hidden = nextBtn.hidden = true; cur = null; }
   nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
-  nextBtn.addEventListener('click', channel);
+  nextBtn.addEventListener('click', function () { channel(); });
   document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
   document.addEventListener('ss:playerclosed', function () { if (onHome && !yt.hidden) ytCmd('playVideo'); });
+
+  Array.prototype.forEach.call(rig.querySelectorAll('[data-act]'), function (b) {
+    b.addEventListener('click', function () {
+      var a = b.getAttribute('data-act');
+      if (a === 'chup') { if (onTrailer) { clearTimeout(introT); started = true; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; onTrailer = false; } channel(); }
+      else if (a === 'chdown') { if (onTrailer) { onTrailer = false; clearTimeout(introT); started = true; video.pause(); video.style.opacity = '0'; channel(); } else channel(true); }
+      else if (a === 'volup') { setSound(true); showOsd('VOL +'); }
+      else if (a === 'voldown') { setSound(false); showOsd('MUTE'); }
+      else if (a === 'ok') { if (cur) SS.openPlayer(cur); else showOsd('NO SIGNAL'); }
+    });
+  });
 
   function searching() {
     clearTimeout(introT); stopChannels(); started = false; onTrailer = true;
@@ -149,13 +165,16 @@
     video.pause(); try { video.currentTime = 0; } catch (e) {}
     video.style.opacity = '0';
     screen.classList.add('tuning', 'htv-search');
+    var first = !trailerDone;
     introT = setTimeout(function () {
       started = true;
+      if (!first) { screen.classList.remove('htv-search'); toChannels(); return; }
+      trailerDone = true;
       screen.classList.remove('tuning', 'htv-search');
       video.style.opacity = '';
       if (onHome) { var p = video.play(); if (p && p.catch) p.catch(function () { toChannels(); }); }
       applySound();
-    }, reduce ? 800 : SEARCH_MS);
+    }, reduce ? 800 : (first ? SEARCH_MS : 1600));
   }
   function toChannels() {
     if (!onHome || !onTrailer) return;

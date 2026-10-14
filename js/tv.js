@@ -313,6 +313,9 @@
   }
   document.addEventListener('ss:playeropen', previewOff);
 
+  var helpBtn = $('#hole-help'), helpT = 0;
+  if (helpBtn) helpBtn.addEventListener('click', function () { clearTimeout(helpT); hint.classList.toggle('gone'); if (!hint.classList.contains('gone')) helpT = setTimeout(function () { hint.classList.add('gone'); }, 9000); });
+
   /* ---------- the dive ---------- */
   function dive() {
     if (diving) return;
@@ -367,7 +370,7 @@
     void hole.offsetWidth;
     hole.classList.add('on');
     hint.classList.remove('gone');
-    later(function () { hint.classList.add('gone'); }, 8000);
+    later(function () { hint.classList.add('gone'); }, 9000);
     later(function () {
       tv.style.visibility = 'hidden';
       screenEl.classList.remove('glitch');
