@@ -772,3 +772,9 @@ dialog#player .hole-title { z-index: 3; }
 .hole.dream .hole-world { filter: hue-rotate(200deg) saturate(1.3); transition: filter 2s; }
 .hole.dream .hole-ui, .hole.dream .hole-phone, .hole.dream .hole-hint { opacity: 0; pointer-events: none; transition: opacity 1.5s; }
 .pillbtn { max-width: 190px; font-size: 0.8rem; }
+
+/* info text in the video card: calm gray with an "i" icon, not a warning label */
+.rel-meta, .player-card .rel-hint { color: #c9c4c0; opacity: 1; }
+.rel-meta { font-size: 0.8rem; padding: 10px 14px 0; }
+.player-card .rel-hint { position: relative; padding: 6px 14px 12px 40px; font-size: 0.76rem; line-height: 1.4; }
+.player-card .rel-hint::before { content: "i"; position: absolute; left: 14px; top: 5px; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c9c4c0; text-align: center; font: italic 700 12px/15px Georgia, serif; color: #c9c4c0; }

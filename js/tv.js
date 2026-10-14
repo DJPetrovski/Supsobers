@@ -223,7 +223,7 @@
     backPhone.hidden = false;
     offer.hidden = false;
     hole.classList.add('pill-near');
-    fine.textContent = 'Red: a random video, a different one every time. Blue: no choices, just keep falling.';
+    fine.textContent = 'Red: the deep end of the hole. Blue: a lighter trip to Wonderland. A different video every time.';
     redBtn.disabled = blueBtn.disabled = false;
     if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
@@ -245,18 +245,14 @@
   });
   phoneEl.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && !near) { e.preventDefault(); pullCloser(); } });
   backPhone.addEventListener('click', putBack);
-  // Blue pill: Wonderland mode. The buttons melt away and the hole just drifts, tinted blue, until you touch it.
-  var dreamT = 0;
-  function dreamEnd() { clearTimeout(dreamT); hole.classList.remove('dream'); }
   blueBtn.addEventListener('click', function () {
+    var v = window.Pill && Pill.random('blue');
+    if (!v) return;
     putBack();
-    hole.classList.add('dream');
-    clearTimeout(dreamT);
-    dreamT = setTimeout(dreamEnd, 45000);
-    setTimeout(function () { hole.addEventListener('pointerdown', dreamEnd, { once: true }); }, 600);
+    pick(v);
   });
   redBtn.addEventListener('click', function () {
-    var v = window.Pill && Pill.random();
+    var v = window.Pill && Pill.random('red');
     if (!v) return;
     putBack();
     pick(v);
@@ -284,9 +280,9 @@
   function popClose() { if (!pop) return; pop.hidden = true; if (popTv) popTv.stop(); }
   if (aboutVid && pop) {
     aboutVid.addEventListener('ended', popOpen);
-    $('#pop-blue').addEventListener('click', popClose);
+    $('#pop-blue').addEventListener('click', function () { var v = Pill.random('blue'); if (!v) return; popClose(); SS.openPlayer(v); });
     $('#pop-red').addEventListener('click', function () {
-      var v = Pill.random();
+      var v = Pill.random('red');
       if (!v) return;
       popClose();
       SS.openPlayer(v);
@@ -358,7 +354,6 @@
 
   function cleanup() {
     resetBranches();
-    dreamEnd();
     putBack();
     phoneStop();
     html.classList.remove('is-diving');
