@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791972569">
+  <link rel="stylesheet" href="css/styles.css?v=1791973038">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -105,7 +105,7 @@
             <a class="rm-key rm-color rm-blue" data-key="archives" href="#archives">Archives</a>
             <a class="rm-key rm-color rm-rect rm-orange" data-key="merch" href="#merch">Merch</a>
             <a class="rm-key rm-color rm-rect rm-purple" data-key="craving" href="#craving">Games</a>
-            <a class="rm-key rm-color rm-rect rm-music" data-key="music" href="#music" aria-label="Music player: DJ mixes on SoundCloud">&#9835; Music</a>
+            <a class="rm-key rm-color rm-rect rm-music" data-key="music" href="#music" aria-label="SoundCloud player: DJ mixes"><svg class="rm-sclogo" viewBox="0 0 142 32" aria-hidden="true"><g fill="#fff"><path d="M2 17h2v8H2zM6 14h2v11H6zM10 12.500h2V25h-2zM14 10.500h2V25h-2zM18 9h2v16h-2z"/><path d="M22 8.500c1.400-1 3.200-1.600 5-1.600 4.600 0 8.400 3.500 8.800 8h.7a4.800 4.800 0 0 1 0 9.600H22z"/></g><text x="45" y="23" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14" fill="#fff" letter-spacing=".2">SOUNDCLOUD</text></svg></a>
           </nav>
           <div class="rm-dpad" role="group" aria-label="TV controls">
             <button type="button" class="rm-d rm-up" data-act="chup" aria-label="Channel up">CH<small>+</small></button>
@@ -437,9 +437,13 @@
   </div>
 
   <aside class="scd" id="scd" hidden aria-label="Music player">
-    <div class="scd-top"><b>DJ mixes</b><a href="https://soundcloud.com/djpetrovski" target="_blank" rel="noopener">SoundCloud</a><button type="button" id="scd-min" aria-label="Minimize player">&ndash;</button><button type="button" id="scd-close" aria-label="Close player">&times;</button></div>
+    <div class="scd-top">
+      <span class="scd-title"><svg class="scd-logo" viewBox="0 0 32 20" aria-hidden="true"><path fill="currentColor" d="M1 11h1.6v6H1zM4 9h1.6v8H4zM7 8h1.6v9H7zM10 6.500h1.600V17H10zM13 5.500h1.600V17H13zM16 4.500c1-.7 2.200-1.100 3.400-1.100 3.200 0 5.800 2.400 6.100 5.500h.5a3.500 3.500 0 0 1 0 7.100H16z"/></svg>DJ mixes</span>
+      <a class="scd-follow" href="https://soundcloud.com/djpetrovski" target="_blank" rel="noopener" aria-label="Follow DJ on SoundCloud">+ Follow</a>
+      <button type="button" id="scd-min" aria-label="Minimize player">&ndash;</button><button type="button" id="scd-close" aria-label="Close player">&times;</button>
+    </div>
     <div class="scd-body">
-      <iframe id="scd-frame" title="DJ Petrovski on SoundCloud" allow="autoplay" scrolling="no" frameborder="no" height="166"></iframe>
+      <div class="scd-fw"><iframe id="scd-frame" title="DJ Petrovski on SoundCloud" allow="autoplay" scrolling="no" frameborder="no" width="420" height="166"></iframe></div>
       <div class="scd-ctl" role="group" aria-label="Player controls">
         <button type="button" data-sc="prev" aria-label="Previous track">&#9198;</button>
         <button type="button" data-sc="back" aria-label="Rewind 15 seconds">&#9194;</button>
@@ -450,19 +454,19 @@
       <p class="scd-hint">Home remote: CH = tracks, VOL &#9664; &#9654; = rewind / forward, OK = play / pause</p>
     </div>
   </aside>
-  <script src="js/rain.js?v=1791972569" defer></script>
-  <script src="js/app.js?v=1791972569" defer></script>
-  <script src="js/hole.js?v=1791972569" defer></script>
-  <script src="js/pill.js?v=1791972569" defer></script>
-  <script src="js/tv.js?v=1791972569" defer></script>
-  <script src="js/search.js?v=1791972569" defer></script>
-  <script src="js/merch.js?v=1791972569" defer></script>
-  <script src="js/web.js?v=1791972569" defer></script>
-  <script src="js/home.js?v=1791972569" defer></script>
-  <script src="js/remote.js?v=1791972569" defer></script>
-  <script src="js/craving.js?v=1791972569" defer></script>
-  <script src="js/scplayer.js?v=1791972569" defer></script>
-  <script src="js/assistant.js?v=1791972569" defer></script>
-  <script src="js/music.js?v=1791972569" defer></script>
+  <script src="js/rain.js?v=1791973038" defer></script>
+  <script src="js/app.js?v=1791973038" defer></script>
+  <script src="js/hole.js?v=1791973038" defer></script>
+  <script src="js/pill.js?v=1791973038" defer></script>
+  <script src="js/tv.js?v=1791973038" defer></script>
+  <script src="js/search.js?v=1791973038" defer></script>
+  <script src="js/merch.js?v=1791973038" defer></script>
+  <script src="js/web.js?v=1791973038" defer></script>
+  <script src="js/home.js?v=1791973038" defer></script>
+  <script src="js/remote.js?v=1791973038" defer></script>
+  <script src="js/craving.js?v=1791973038" defer></script>
+  <script src="js/scplayer.js?v=1791973038" defer></script>
+  <script src="js/assistant.js?v=1791973038" defer></script>
+  <script src="js/music.js?v=1791973038" defer></script>
 </body>
 </html>

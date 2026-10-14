@@ -1546,24 +1546,30 @@ html.gs-open { overflow: hidden; }
 .es-dim { position: absolute; inset: 14px; border-radius: 4px; background: #3f423d; box-shadow: inset 0 0 22px rgba(0,0,0,.6); }
 #es-canvas { position: relative; }
 
-/* ---------- Music dock (SoundCloud) ---------- */
-.rm-music { grid-column: 1 / -1; background: linear-gradient(#ff8a3d, #e04a00); color: #fff; border-bottom-color: #6a2200; }
-.scd { position: fixed; z-index: 55; left: 50%; bottom: 12px; transform: translateX(-50%); width: min(560px, calc(100vw - 20px)); border-radius: 14px; background: rgba(10, 6, 8, .96);
-  border: 1px solid rgba(255, 42, 53, .6); box-shadow: 0 10px 40px rgba(0,0,0,.7), 0 0 30px rgba(255, 42, 53, .25); overflow: hidden; }
+/* ---------- Music (SoundCloud): inside the home TV, a corner dock elsewhere ---------- */
+.rm-music { grid-column: 1 / -1; background: linear-gradient(#ff7a1f, #f04d00); border-bottom-color: #6a2200; padding: 0 10%; }
+.rm-sclogo { width: 100%; height: auto; max-height: 100%; display: block; }
+.scd { position: fixed; z-index: 45; display: flex; flex-direction: column; background: rgba(10, 6, 8, .97); border: 1px solid rgba(255, 85, 0, .65); overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,.7), 0 0 30px rgba(255, 85, 0, .25); }
 .scd[hidden] { display: none; }
-.scd-top { display: flex; align-items: center; gap: 10px; padding: 6px 10px; font-size: .85rem; }
-.scd-top b { flex: 1; font-family: var(--display); letter-spacing: .05em; font-weight: 400; text-transform: uppercase; }
-.scd-top a { color: #ff8a3d; font-size: .78rem; }
-.scd-top button { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--bone); font-size: 1.05rem; cursor: pointer; line-height: 1; }
-.scd-body iframe { display: block; width: 100%; height: 166px; border: 0; }
-.scd-ctl { display: flex; justify-content: center; gap: 10px; padding: 8px 10px 4px; }
-.scd-ctl button { min-width: 48px; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: #1b1114; color: var(--bone); font-size: 1.1rem; cursor: pointer; }
-.scd-ctl .scd-play { background: #c1121f; border-color: #ff5a62; min-width: 64px; }
+.scd.morph { transition: left .55s cubic-bezier(.3,.8,.3,1), top .55s cubic-bezier(.3,.8,.3,1), width .55s cubic-bezier(.3,.8,.3,1), height .55s cubic-bezier(.3,.8,.3,1), border-radius .55s; }
+.scd-top { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: .82rem; flex: 0 0 auto; }
+.scd-title { flex: 1; display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); letter-spacing: .06em; text-transform: uppercase; color: #ff7a1f; }
+.scd-logo { width: 26px; height: auto; }
+.scd-follow { padding: 4px 12px; border-radius: 999px; background: #ff5500; color: #fff; font-weight: 700; font-size: .78rem; text-decoration: none; white-space: nowrap; }
+.scd-follow:hover { filter: brightness(1.15); }
+.scd-top button { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--bone); font-size: 1rem; cursor: pointer; line-height: 1; }
+.scd-body { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; }
+.scd-fw { overflow: hidden; border-radius: 4px; flex: 0 0 auto; }
+.scd-fw iframe { display: block; width: 420px; height: 166px; border: 0; transform-origin: 0 0; transform: scale(var(--sc-s, 1)); }
+.scd-ctl { display: flex; justify-content: center; gap: 8px; padding: 8px 10px 4px; }
+.scd-ctl button { min-width: 44px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: #1b1114; color: var(--bone); font-size: 1.05rem; cursor: pointer; }
+.scd-ctl .scd-play { background: #f04d00; border-color: #ff8a3d; min-width: 60px; }
 .scd-ctl button:hover { filter: brightness(1.3); }
-.scd-hint { margin: 0; padding: 2px 12px 9px; text-align: center; font-size: .72rem; opacity: .6; }
-.scd.min .scd-body { display: none; }
-.scd.min { width: 220px; }
-.scd.min .scd-body { display: block; }
-.scd.min iframe, .scd.min .scd-hint { display: none; }
-.scd.min .scd-ctl { padding-bottom: 8px; }
-html.scd-on body { padding-bottom: 60px; }
+.scd-hint { margin: 0; padding: 2px 12px 8px; text-align: center; font-size: .7rem; opacity: .6; }
+/* TV mode: it IS the screen */
+.scd.tv { background: radial-gradient(ellipse at 50% 40%, #1d0d08, #070304 75%); border: 0; box-shadow: inset 0 0 40px rgba(0,0,0,.9), 0 0 24px rgba(255, 85, 0, .25); }
+.scd.tv::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px), var(--noise) 0 0 / 128px 128px; opacity: .22; mix-blend-mode: screen; }
+.scd.tv #scd-min, .scd.tv .scd-hint { display: none; }
+@media (max-width: 760px) { .scd.tv .scd-hint { display: none; } .scd.tv .scd-ctl button { min-width: 36px; height: 32px; } .scd.tv .scd-top { padding: 3px 8px; } }
+.scd.dockd.min .scd-fw, .scd.dockd.min .scd-hint { display: none; }

@@ -201,6 +201,7 @@
   nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
   nextBtn.addEventListener('click', function () { channel(); });
   document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
+  document.addEventListener('ss:musicopen', function () { if (!yt.hidden) ytCmd('pauseVideo'); try { video.pause(); } catch (e) {} });
   document.addEventListener('ss:playerclosed', function () { if (onHome && !yt.hidden) ytCmd('playVideo'); });
 
   Array.prototype.forEach.call(rig.querySelectorAll('[data-act]'), function (b) {
