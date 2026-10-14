@@ -298,15 +298,15 @@
   document.addEventListener('keyup', function (e) { if (isDive(e)) pressed = false; });
 
   /* tabs: pick a game */
-  var es = document.getElementById('es'), tabEs = document.getElementById('cvt-es'), tabWg = document.getElementById('cvt-wg');
+  var es = document.getElementById('es'), tabEs = document.getElementById('cvt-es'), tabWg = document.getElementById('cvt-wg'), tabDd = document.getElementById('cvt-dd'), ddEl = document.getElementById('dd');
   function pick(which) {
-    var wg = which === 'wg';
-    es.hidden = wg; root.hidden = !wg; tabEs.classList.toggle('on', !wg); tabWg.classList.toggle('on', wg);
-    tabEs.setAttribute('aria-selected', String(!wg)); tabWg.setAttribute('aria-selected', String(wg));
+    var wg = which === 'wg', dd = which === 'dd';
+    es.hidden = which !== 'es'; root.hidden = !wg; if (ddEl) ddEl.hidden = !dd;
+    [[tabEs, which === 'es'], [tabWg, wg], [tabDd, dd]].forEach(function (t) { if (t[0]) { t[0].classList.toggle('on', t[1]); t[0].setAttribute('aria-selected', String(t[1])); } });
     document.dispatchEvent(new CustomEvent('ss:cvgame', { detail: which }));
     if (wg) { if (!st) reset(); play(); } else pause();
   }
-  tabEs.addEventListener('click', function () { pick('es'); }); tabWg.addEventListener('click', function () { pick('wg'); });
+  tabEs.addEventListener('click', function () { pick('es'); }); tabWg.addEventListener('click', function () { pick('wg'); }); if (tabDd) tabDd.addEventListener('click', function () { pick('dd'); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
   window.__wg = function () { return { pools: pools, cps: cps, st: st, pressed: pressed, started: started, diff: diff() }; };
