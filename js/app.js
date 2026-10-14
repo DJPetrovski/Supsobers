@@ -326,7 +326,8 @@
       if (it.meta) kids.push(el('p', { 'class': 'meta', text: it.meta }));
       if (it.description) kids.push(el('p', { text: it.description }));
       if (it.url) {
-        kids.push(el('a', { 'class': 'btn btn-primary', href: it.url, target: '_blank', rel: 'noopener', text: it.cta || 'Open' }));
+        var ext = /^https?:/.test(it.url);
+        kids.push(el('a', ext ? { 'class': 'btn btn-primary', href: it.url, target: '_blank', rel: 'noopener', text: it.cta || 'Open' } : { 'class': 'btn btn-primary', href: it.url, text: it.cta || 'Open' }));
       } else if (it.status) {
         kids.push(el('p', { 'class': 'status', text: it.status }));
       }
