@@ -545,3 +545,42 @@ html.is-diving .tv { z-index: 35; }
 .pb-c { left: -3px; top: 198px; height: 48px; }
 .pb-r { right: -3px; top: 150px; height: 74px; }
 @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+
+/* =====================================================================
+   Connections: newest, storylines, "keep falling"
+   ===================================================================== */
+dialog#player { max-height: 94vh; overflow-y: auto; }
+.related { padding: 14px 14px 18px; border-top: 1px solid var(--line); }
+.related h3 { margin: 0 0 10px; font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0.03em; text-transform: uppercase;
+  -webkit-text-stroke: 0.05em #000; paint-order: stroke fill; text-shadow: 0 0 18px rgba(255, 42, 53, 0.45); }
+.related-row { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x proximity; }
+.rel { position: relative; flex: 0 0 min(220px, 62vw); padding: 0; text-align: left; background: #120305; color: var(--bone);
+  border: 1px solid rgba(255, 42, 53, 0.35); cursor: pointer; font: inherit; scroll-snap-align: start; }
+.rel:hover, .rel:focus-visible { border-color: var(--ember); box-shadow: 0 0 22px rgba(255, 42, 53, 0.5); }
+.rel img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.rel-tag { position: absolute; top: 6px; left: 6px; padding: 2px 8px; border-radius: 99px; background: rgba(6, 1, 2, 0.85);
+  border: 1px solid var(--ember); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.rel-title { display: block; padding: 8px 10px 10px; font-size: 0.85rem; line-height: 1.25; }
+
+.tile { position: relative; }
+.badge-new { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 3px 9px; border-radius: 99px; background: var(--ember); color: #fff;
+  font: 700 0.7rem var(--body); letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 0 14px rgba(255, 42, 53, 0.7); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+.chip { padding: 6px 14px; border-radius: 99px; background: rgba(6, 1, 2, 0.7); color: var(--bone); border: 1px solid var(--line);
+  font: 500 0.88rem var(--body); cursor: pointer; }
+.chip:hover { border-color: var(--ember); }
+.chip[aria-pressed="true"] { background: var(--ember); border-color: var(--ember); color: #fff; }
+
+.home-latest { max-width: 1100px; margin: 0 auto; padding-top: 24px; }
+.home-latest .sub-h { margin-top: 44px; }
+.thread-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.thread-card { position: relative; padding: 0; overflow: hidden; text-align: left; background: #120305; color: var(--bone);
+  border: 1px solid rgba(255, 42, 53, 0.4); cursor: pointer; font: inherit; }
+.thread-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; opacity: 0.55; filter: saturate(0.8); transition: opacity 0.3s; }
+.thread-card:hover img, .thread-card:focus-visible img { opacity: 0.9; }
+.thread-card:hover, .thread-card:focus-visible { border-color: var(--ember); box-shadow: 0 0 26px rgba(255, 42, 53, 0.55); }
+.thread-name { position: absolute; left: 12px; right: 12px; bottom: 30px; font-family: var(--display); font-size: 1.5rem; line-height: 1;
+  text-transform: uppercase; -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; text-shadow: 0 0 18px rgba(255, 42, 53, 0.6); }
+.thread-count { position: absolute; left: 12px; bottom: 9px; font-size: 0.78rem; color: var(--bone); opacity: 0.85; }

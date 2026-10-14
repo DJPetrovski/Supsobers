@@ -52,6 +52,14 @@
       </div>
     </section>
 
+    <section class="view page home-latest" data-view="home" aria-labelledby="latest-title" hidden>
+      <h2 id="latest-title">Newest</h2>
+      <div class="grid" id="latest-row"></div>
+      <h2 class="sub-h">Follow a story down the hole</h2>
+      <p class="page-lede">Each storyline connects the videos that belong together. Pick one and keep falling.</p>
+      <div class="thread-row" id="thread-row"></div>
+    </section>
+
     <!-- VIDEOS -->
     <section class="view page videos-view" data-view="videos" aria-labelledby="videos-title" hidden>
       <div class="tv-stage">
@@ -85,6 +93,7 @@
       <div id="video-list">
         <h2 id="videos-title">All videos</h2>
         <p class="page-lede">Every Sobering Stories episode. Tap one to watch it here.</p>
+        <div class="chips" id="thread-chips" aria-label="Filter by storyline"></div>
         <label class="search">
           <span class="sr">Search videos</span>
           <input id="search" type="search" placeholder="Search by name or topic" autocomplete="off">
@@ -160,6 +169,10 @@
       <button type="button" id="player-close" aria-label="Close player">Close</button>
     </div>
     <div class="player-frame"><iframe id="player-iframe" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <div class="related" id="related" hidden>
+      <h3>Keep falling</h3>
+      <div class="related-row" id="related-row"></div>
+    </div>
   </dialog>
 
   <script src="js/rain.js" defer></script>

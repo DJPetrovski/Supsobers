@@ -45,3 +45,9 @@ Without a key the daily update picks up your latest ~15 videos and keeps everyth
 - Videos: a TV shows static, then zooms into the screen and drops you into the hole. "Skip to the list" and "List view" go straight to the plain grid. Escape or "Climb out" returns to the TV.
 - A shared link straight to `#videos` shows the TV without auto-diving.
 - Visitors with reduced-motion settings get no zoom; they see the TV and the list.
+
+## Only full episodes, and storylines
+
+- The daily update only keeps videos 30 minutes or longer (clips stay off the site). Change `MIN_SECONDS` in `scripts/fetch_videos.py` to adjust.
+- Without a YouTube API key the update sees the channel's most recent ~30 uploads. Add the `YOUTUBE_API_KEY` secret (see above) to bring in every long video you have ever posted.
+- `data/threads.json` groups videos into storylines. Add a video's id to a thread and it appears in that story's "Keep falling" strip. Videos with similar titles are also suggested automatically.

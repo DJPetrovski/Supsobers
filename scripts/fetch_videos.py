@@ -8,12 +8,14 @@ them into whatever is already in videos.json, so the catalog never shrinks.
 import datetime
 import json
 import os
+import re
 import sys
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
 CHANNEL_ID = "UCSJ4pxGHNTVl5J1I22s7agA"
+MIN_SECONDS = 30 * 60   # only full episodes: anything shorter is a clip and stays off the site
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "videos.json")
 
 
@@ -36,6 +38,21 @@ def from_rss():
     return out
 
 
+def seconds(text):
+    """'44:26' -> 2666, '1:02:03' -> 3723"""
+    total = 0
+    for part in text.split(":"):
+        total = total * 60 + int(part)
+    return total
+
+
+def iso_seconds(iso):
+    """YouTube API duration 'PT1H2M3S' -> seconds"""
+    m = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$", iso or "")
+    h, mi, se = (int(x or 0) for x in m.groups()) if m else (0, 0, 0)
+    return h * 3600 + mi * 60 + se
+
+
 def from_page():
     """Fallback when the RSS feed is unavailable (YouTube sometimes returns 404 to it).
     Reads the public channel Videos page, newest first. Dates are approximate (newest = today)."""
@@ -53,7 +70,9 @@ def from_page():
             lv = o.get("lockupViewModel")
             if isinstance(lv, dict) and lv.get("contentType") == "LOCKUP_CONTENT_TYPE_VIDEO":
                 try:
-                    found.append((lv["contentId"], lv["metadata"]["lockupMetadataViewModel"]["title"]["content"]))
+                    texts = re.findall(r'"(\d{1,2}:\d{2}(?::\d{2})?)"', json.dumps(lv))
+                    found.append((lv["contentId"], lv["metadata"]["lockupMetadataViewModel"]["title"]["content"],
+                                  seconds(texts[0]) if texts else 0))
                 except KeyError:
                     pass
             for x in o.values():
@@ -64,8 +83,8 @@ def from_page():
 
     walk(data)
     today = datetime.date.today()
-    return [{"id": i, "title": t, "published": (today - datetime.timedelta(days=n)).isoformat()}
-            for n, (i, t) in enumerate(found)]
+    return [{"id": i, "title": t, "published": (today - datetime.timedelta(days=n)).isoformat(), "seconds": d}
+            for n, (i, t, d) in enumerate(found)]
 
 
 def from_api(key):
@@ -87,19 +106,22 @@ def from_api(key):
             })
         token = data.get("nextPageToken", "")
         if not token:
-            return out
+            break
+    for n in range(0, len(out), 50):
+        chunk = out[n:n + 50]
+        q = {"part": "contentDetails", "id": ",".join(v["id"] for v in chunk), "key": key}
+        info = json.loads(get("https://www.googleapis.com/youtube/v3/videos?" + urllib.parse.urlencode(q)))
+        secs = {i["id"]: iso_seconds(i["contentDetails"].get("duration")) for i in info.get("items", [])}
+        for v in chunk:
+            v["seconds"] = secs.get(v["id"], 0)
+    return out
 
 
 def main():
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
-    if key:
-        fresh = from_api(key)
-    else:
-        try:
-            fresh = from_rss()
-        except Exception as e:
-            print("RSS feed failed (%s); reading the channel page instead." % e)
-            fresh = from_page()
+    # The channel page and the API both report lengths; the RSS feed does not, so it is not used.
+    fresh = from_api(key) if key else from_page()
+    fresh = [v for v in fresh if v.get("seconds", 0) >= MIN_SECONDS]
     if not fresh:
         print("No videos returned; leaving videos.json untouched.")
         return 0
@@ -110,7 +132,7 @@ def main():
     except (OSError, ValueError):
         old = []
 
-    merged = {v["id"]: v for v in old if v.get("id") and not v.get("sample")}
+    merged = {v["id"]: v for v in old if v.get("id") and not v.get("sample") and v.get("seconds", 0) >= MIN_SECONDS}
     for v in fresh:
         merged[v["id"]] = v
     videos = sorted(merged.values(), key=lambda v: v["published"], reverse=True)
