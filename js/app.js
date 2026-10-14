@@ -73,23 +73,20 @@
   }
   function memberUrl(m) { return m.url || ('https://www.youtube.com/watch?v=' + m.id); }
 
+  var ptun = null;
   function paintRelated(v) {
     var cta = $('#club-cta'), m = memberFor(v);
     if (cta) { cta.hidden = !m; if (m) cta.href = memberUrl(m); }
-    var box = $('#related'), row = $('#related-row');
-    if (!box) return;
-    row.textContent = '';
-    var list = related(v, 8);
-    box.hidden = !list.length;
-    list.forEach(function (r) {
-      var b = el('button', { type: 'button', 'class': 'rel', 'aria-label': r.v.title }, [
-        el('img', { src: 'https://i.ytimg.com/vi/' + r.v.id + '/mqdefault.jpg', alt: '', loading: 'lazy' }),
-        el('span', { 'class': 'rel-tag', text: r.tag }),
-        el('span', { 'class': 'rel-title', text: r.v.title })
-      ]);
-      b.addEventListener('click', function () { openPlayer(r.v); $('#player').scrollTop = 0; });
-      row.appendChild(b);
-    });
+  }
+  // The videos that connect to this one spiral around it in their own tunnel.
+  function setTunnel(v) {
+    if (!window.HoleTunnel) return;
+    var list = [v].concat(related(v, 16).map(function (r) { return r.v; }));
+    (window.SS.videos || []).forEach(function (o) { if (list.length < 8 && list.indexOf(o) < 0) list.push(o); });
+    if (!ptun) {
+      ptun = HoleTunnel.create({ scene: $('#ph-scene'), world: $('#ph-world'), videos: list, titleEl: $('#player-title'), onPick: function (o) { openPlayer(o); } });
+    } else ptun.setVideos(list);
+    ptun.start({ boost: 400 });
   }
 
   function openPlayer(v) {
@@ -98,7 +95,7 @@
     frame.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0';
     frame.title = v.title || 'Video';
     $('#player-yt').href = 'https://www.youtube.com/watch?v=' + v.id;
-    if (typeof dlg.showModal === 'function') dlg.showModal();
+    if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); setTunnel(v); }
     else window.open('https://www.youtube.com/watch?v=' + v.id, '_blank', 'noopener');
   }
   function closePlayer() {
@@ -108,6 +105,7 @@
   $('#player-close').addEventListener('click', closePlayer);
   dlg.addEventListener('close', function () {
     frame.src = 'about:blank';
+    if (ptun) ptun.stop();
     document.dispatchEvent(new Event('ss:playerclosed'));
   });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) closePlayer(); });

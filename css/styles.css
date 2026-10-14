@@ -661,3 +661,42 @@ dialog#player { max-height: 94vh; overflow-y: auto; }
   text-transform: uppercase; -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; text-shadow: 0 0 14px rgba(255, 42, 53, 0.9); }
 .hole-trail { position: absolute; left: 16px; right: 16px; top: calc(62px + env(safe-area-inset-top, 0px)); margin: 0; text-align: left; font-size: 0.85rem; color: #ff9aa0; pointer-events: none; z-index: 3;
   text-shadow: 0 0 8px #000, 0 0 8px #000; }
+
+
+/* =====================================================================
+   Player: the video sits inside a tunnel of the videos connected to it
+   ===================================================================== */
+dialog#player { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; border: 0; background: rgba(2, 0, 1, 0.9); overflow: hidden; }
+.player-hole { position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; }
+.player-card { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(880px, 92vw); max-height: 94dvh; overflow-y: auto;
+  background: var(--void); border: 1px solid var(--ember); box-shadow: 0 0 0 1px #000, 0 0 70px rgba(255, 42, 53, 0.5), 0 30px 80px #000; }
+.rel-hint { margin: 0; padding: 12px 14px 14px; font-size: 0.85rem; color: #ff9aa0; }
+.related { padding: 0; border-top: 1px solid var(--line); }
+.club-cta { margin: 12px 14px 0; }
+dialog#player .hole-title { z-index: 3; }
+@media (max-width: 700px) { .player-card { top: 8px; transform: translate(-50%, 0); } }
+
+/* =====================================================================
+   The bottom of the hole: a phone you never reach
+   ===================================================================== */
+.hole-phone { position: absolute; z-index: 2; left: 50%; top: 50%; width: clamp(88px, 15vmin, 170px); transform: translate(-50%, -50%); cursor: pointer;
+  transition: transform 0.9s cubic-bezier(.2, .8, .2, 1); outline: none; }
+.hole-phone .phone { width: 100%; animation: phonefloat 6s ease-in-out infinite, psy 14s linear infinite; }
+.hole-phone .phone-body { padding: 5px; border-radius: 22%/10%; }
+.hole-phone .phone-screen { border-radius: 18%/8%; }
+.hole-phone .phone-island { height: 6px; top: 4px; }
+.hole-phone .phone-btn { width: 2px; }
+.hole-phone::before { content: ""; position: absolute; inset: -60%; z-index: -1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 42, 53, 0.45), rgba(120, 20, 255, 0.18) 45%, transparent 70%); animation: psy 14s linear infinite, pulse 4s ease-in-out infinite; }
+.hole-phone-tip { display: block; margin-top: 12px; text-align: center; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #ff9aa0; text-shadow: 0 0 8px #000; transition: opacity 0.4s; }
+.hole-phone.near { cursor: default; z-index: 5; }
+.hole-phone.near::before { inset: -20%; }
+.hole-phone.near .hole-phone-tip { opacity: 0; }
+.hole-phone.near .phone { animation: psy 14s linear infinite; }
+@keyframes phonefloat { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+@keyframes psy { to { filter: hue-rotate(360deg) drop-shadow(0 0 18px rgba(255, 42, 53, 0.8)); } }
+@keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .hole-phone .phone, .hole-phone::before { animation: none; } }
+
+.hole-ui { z-index: 7; }
+.hole-phone.near { z-index: 5; }

@@ -191,10 +191,19 @@
 
   <div class="hole" id="hole" role="dialog" aria-modal="true" aria-label="The rabbit hole: every video on the channel" hidden>
     <div class="hole-scene"><div class="hole-world"></div></div>
+    <div class="hole-phone" id="hole-phone" role="button" tabindex="0" aria-label="Pull the video at the bottom of the hole closer">
+      <div class="phone">
+        <div class="phone-btn pb-a"></div><div class="phone-btn pb-b"></div><div class="phone-btn pb-c"></div><div class="phone-btn pb-r"></div>
+        <div class="phone-body"><div class="phone-screen"><span class="phone-island" aria-hidden="true"></span><video id="hole-video" src="media/trailer.mp4" loop playsinline preload="none"></video></div></div>
+      </div>
+      <span class="hole-phone-tip" id="phone-tip">Tap to pull it closer</span>
+    </div>
     <div class="hole-ui">
       <button type="button" class="pill" id="hole-exit">Climb out</button>
       <button type="button" class="pill" id="hole-back" hidden>Back up</button>
+      <button type="button" class="pill" id="phone-back" hidden>Put it back</button>
       <span class="hole-ui-right">
+        <button type="button" class="pill" id="hole-sound" aria-pressed="true">Sound on</button>
         <button type="button" class="pill" id="hole-list">List view</button>
         <button type="button" class="pill" id="hole-pause" aria-pressed="false">Pause</button>
       </span>
@@ -209,16 +218,21 @@
   </div>
 
   <dialog id="player" aria-label="Video player">
-    <div class="player-bar">
-      <a id="player-yt" href="#" target="_blank" rel="noopener">Open on YouTube</a>
-      <button type="button" id="player-close" aria-label="Close player">Close</button>
+    <div class="player-hole" id="player-hole" aria-hidden="true">
+      <div class="hole-scene" id="ph-scene"><div class="hole-world" id="ph-world"></div></div>
     </div>
-    <div class="player-frame"><iframe id="player-iframe" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-    <div class="related" id="related" hidden>
-      <a class="btn btn-primary club-cta" id="club-cta" href="#members" target="_blank" rel="noopener" hidden>Watch the uncensored version (members)</a>
-      <h3>Keep falling</h3>
-      <div class="related-row" id="related-row"></div>
+    <div class="player-card">
+      <div class="player-bar">
+        <a id="player-yt" href="#" target="_blank" rel="noopener">Open on YouTube</a>
+        <button type="button" id="player-close" aria-label="Close player">Close</button>
+      </div>
+      <div class="player-frame"><iframe id="player-iframe" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="related" id="related">
+        <a class="btn btn-primary club-cta" id="club-cta" href="#members" target="_blank" rel="noopener" hidden>Watch the uncensored version (members)</a>
+        <p class="rel-hint">The tunnel around this video holds the ones that connect to it. Tap one to fall deeper.</p>
+      </div>
     </div>
+    <p class="hole-title" id="player-title" aria-hidden="true"></p>
   </dialog>
 
   <script src="js/rain.js" defer></script>

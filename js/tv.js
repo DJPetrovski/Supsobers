@@ -62,12 +62,16 @@
   function pick(v) {
     if (v && ID_RE.test(v.id || '')) {
       if (holeApi) holeApi.hold(true);
+      if (phoneLive) { level(0, 0.3); vid.pause(); }
       SS.openPlayer(v);
     } else {
       window.open('https://www.youtube.com/@Sobersector', '_blank', 'noopener');
     }
   }
-  document.addEventListener('ss:playerclosed', function () { if (holeApi) holeApi.hold(false); });
+  document.addEventListener('ss:playerclosed', function () {
+    if (holeApi && !near) holeApi.hold(false);
+    if (phoneLive && isOpen) { vid.play().catch(function () {}); level(soundOn ? (near ? 0.9 : 0.32) : 0, 1.5); }
+  });
 
   /* ---------- branching: hold a video to fall down its own rabbit hole ---------- */
   var branchEl = $('#hole-branch'), backBtn = $('#hole-back'), trailEl = $('#hole-trail'), branchLabel = $('#branch-label');
@@ -141,6 +145,113 @@
     paintTrail();
   }
 
+  /* ---------- the bottom of the hole: a phone you never reach ---------- */
+  var phoneEl = $('#hole-phone'), vid = $('#hole-video'), soundBtn = $('#hole-sound'), backPhone = $('#phone-back'), tip = $('#phone-tip');
+  var actx = null, master = null, dry = null, wet = null, near = false, soundOn = true, phoneLive = false;
+
+  // A made-up cathedral: noise that fades out over a few seconds.
+  function impulse(ctx, seconds, decay) {
+    var len = Math.floor(ctx.sampleRate * seconds), buf = ctx.createBuffer(2, len, ctx.sampleRate);
+    for (var ch = 0; ch < 2; ch++) {
+      var d = buf.getChannelData(ch);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay);
+    }
+    return buf;
+  }
+
+  function audioGraph() {
+    if (actx) return true;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC || !vid) return false;
+      actx = new AC();
+      var src = actx.createMediaElementSource(vid);
+      var lp = actx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3400;
+      dry = actx.createGain(); dry.gain.value = 0.55;
+      wet = actx.createGain(); wet.gain.value = 0.9;
+      var conv = actx.createConvolver(); conv.buffer = impulse(actx, 3.6, 2.6);
+      var delay = actx.createDelay(1.5); delay.delayTime.value = 0.38;
+      var fb = actx.createGain(); fb.gain.value = 0.4;
+      var echo = actx.createGain(); echo.gain.value = 0.35;
+      master = actx.createGain(); master.gain.value = 0;
+      src.connect(lp);
+      lp.connect(dry); dry.connect(master);
+      lp.connect(conv); conv.connect(wet); wet.connect(master);
+      lp.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(echo); echo.connect(master);
+      master.connect(actx.destination);
+      return true;
+    } catch (e) { actx = null; return false; }
+  }
+
+  function level(v, secs) {
+    if (!actx || !master) return;
+    var now = actx.currentTime;
+    master.gain.cancelScheduledValues(now);
+    master.gain.setValueAtTime(master.gain.value, now);
+    master.gain.linearRampToValueAtTime(v, now + (secs || 1.2));
+  }
+
+  function phoneStart() {
+    if (!vid || phoneLive) return;
+    phoneLive = true;
+    var ok = audioGraph();
+    if (actx && actx.state === 'suspended') actx.resume().catch(function () {});
+    vid.volume = 1;
+    var p = vid.play();
+    if (p && p.catch) p.catch(function () { tip.textContent = 'Tap for sound'; });
+    if (ok) level(soundOn ? (near ? 0.9 : 0.32) : 0, 2.5);
+  }
+  function phoneStop() {
+    if (!vid) return;
+    phoneLive = false;
+    level(0, 0.5);
+    setTimeout(function () { if (!phoneLive) vid.pause(); }, 600);
+  }
+
+  function pullCloser() {
+    if (near || !isOpen) return;
+    near = true;
+    if (holeApi) holeApi.hold(true);
+    var w = phoneEl.getBoundingClientRect().width;
+    var target = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.44, 420);
+    phoneEl.classList.add('near');
+    phoneEl.style.transform = 'translate(-50%, -50%) scale(' + (target / w).toFixed(2) + ')';
+    vid.controls = true;
+    backPhone.hidden = false;
+    if (actx) { dry.gain.value = 1; wet.gain.value = 0.25; level(soundOn ? 0.9 : 0, 0.8); }
+    if (vid.paused) vid.play().catch(function () {});
+  }
+  function putBack() {
+    if (!near) return;
+    near = false;
+    phoneEl.classList.remove('near');
+    phoneEl.style.transform = '';
+    vid.controls = false;
+    backPhone.hidden = true;
+    if (actx) { dry.gain.value = 0.55; wet.gain.value = 0.9; level(soundOn ? 0.32 : 0, 1); }
+    if (holeApi) holeApi.hold(false);
+  }
+
+  phoneEl.addEventListener('click', function (e) {
+    if (!near) { pullCloser(); return; }
+    e.stopPropagation();
+  });
+  phoneEl.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && !near) { e.preventDefault(); pullCloser(); } });
+  backPhone.addEventListener('click', putBack);
+  soundBtn.addEventListener('click', function () {
+    soundOn = !soundOn;
+    soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
+    soundBtn.setAttribute('aria-pressed', String(soundOn));
+    if (actx && actx.state === 'suspended') actx.resume().catch(function () {});
+    level(soundOn ? (near ? 0.9 : 0.32) : 0, 0.6);
+    if (soundOn && vid.paused && phoneLive) vid.play().catch(function () {});
+  });
+  // A blocked autoplay recovers on the first touch inside the hole.
+  hole.addEventListener('pointerdown', function () {
+    if (phoneLive && actx && actx.state === 'suspended') actx.resume().catch(function () {});
+    if (phoneLive && vid.paused) vid.play().then(function () { tip.textContent = 'Tap to pull it closer'; }).catch(function () {});
+  });
+
   /* ---------- the dive ---------- */
   function dive() {
     if (diving) return;
@@ -188,6 +299,7 @@
       holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand });
     }
     holeApi.start({ boost: 1300 });
+    phoneStart();
     pauseBtn.textContent = 'Pause';
     pauseBtn.setAttribute('aria-pressed', 'false');
     void hole.offsetWidth;
@@ -203,6 +315,8 @@
 
   function cleanup() {
     resetBranches();
+    putBack();
+    phoneStop();
     html.classList.remove('is-diving');
     screenEl.classList.remove('zooming', 'glitch');
     tv.style.visibility = '';
@@ -216,6 +330,7 @@
   function climb(afterFn) {
     if (!isOpen) return;
     isOpen = false;
+    phoneStop();
     clearTimers();
     hole.classList.remove('on');
     tv.style.visibility = 'visible';
@@ -282,7 +397,7 @@
 
   document.addEventListener('keydown', function (e) {
     if (!isOpen || document.querySelector('dialog[open]')) return;
-    if (e.key === 'Escape') { climb(); }
+    if (e.key === 'Escape') { if (near) putBack(); else climb(); }
     else if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); holeApi.nudge(250); }
     else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); holeApi.nudge(-250); }
   });
