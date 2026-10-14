@@ -102,13 +102,13 @@
   var yt = document.getElementById('htv-yt'), nowBtn = document.getElementById('htv-now'), nextBtn = document.getElementById('htv-next');
   function duck(level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'trailer', level: level } })); }
   function ytCmd(fn, args) { try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: args || [] }), '*'); } catch (e) {} }
-  var volume = 60, knobCh = document.getElementById('htv-knob-ch'), knobVol = document.getElementById('htv-knob-vol'), volRot = -135;
-  var vdial = 0;
+  var STEPS = [0, 25, 75, 100], vIdx = 0, lastIdx = 2, volume = 0, knobCh = document.getElementById('htv-knob-ch'), knobVol = document.getElementById('htv-knob-vol'), volRot = -135;
+  var vAngle = 0;
   function paintVol() {
-    if (!(knobVol && knobVol.__drag)) vdial = soundOn ? volume : 0;
-    volRot = soundOn ? -135 + volume * 2.7 : -135;
-    if (knobVol && !knobVol.__drag) knobVol.style.setProperty('--rot', volRot + 'deg');
-    if (knobVol) knobVol.setAttribute('aria-valuenow', soundOn ? volume : 0);
+    if (!(knobVol && knobVol.__drag)) vAngle = vIdx * 90;
+    volRot = -135 + vIdx * 90;
+    if (knobVol) knobVol.style.setProperty('--rot', volRot + 'deg');
+    if (knobVol) knobVol.setAttribute('aria-valuenow', STEPS[vIdx]);
   }
   function applySound() {
     video.muted = !soundOn;
@@ -119,14 +119,16 @@
     soundBtn.setAttribute('aria-pressed', String(soundOn));
     duck(soundOn && started ? 0 : null);
   }
-  function setVol(v, osdOn) {
-    volume = Math.max(0, Math.min(100, Math.round(v)));
-    if (volume <= 3) { soundOn = false; volume = Math.max(volume, 0); } else soundOn = true;
+  // Four volume settings: mute, 25%, 75%, 100%.
+  function setVolIdx(i, osdOn) {
+    vIdx = Math.max(0, Math.min(STEPS.length - 1, i));
+    volume = STEPS[vIdx]; soundOn = vIdx > 0;
+    if (soundOn) lastIdx = vIdx;
     applySound();
     if (started && onTrailer && soundOn && video.paused) video.play().catch(function () {});
     if (osdOn !== false) showOsd(soundOn ? 'VOL ' + volume : 'MUTE');
   }
-  function setSound(on) { soundOn = !!on; applySound(); if (on && onTrailer && started && video.paused) video.play().catch(function () {}); }
+  function setSound(on) { setVolIdx(on ? (lastIdx || 2) : 0, false); }
   soundBtn.addEventListener('click', function () { setSound(!soundOn); });
 
   var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0;
@@ -170,8 +172,8 @@
       var a = b.getAttribute('data-act');
       if (a === 'chup') { if (onTrailer) { clearTimeout(introT); started = true; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; onTrailer = false; } channel(); }
       else if (a === 'chdown') { if (onTrailer) { onTrailer = false; clearTimeout(introT); started = true; video.pause(); video.style.opacity = '0'; channel(); } else channel(true); }
-      else if (a === 'volup') { setVol(volume + 15, true); }
-      else if (a === 'voldown') { setVol(soundOn ? volume - 15 : 0, true); }
+      else if (a === 'volup') { setVolIdx(vIdx + 1); }
+      else if (a === 'voldown') { setVolIdx(vIdx - 1); }
       else if (a === 'ok') { if (cur) SS.openPlayer(cur); else showOsd('NO SIGNAL'); }
     });
   });
@@ -215,10 +217,10 @@
     }
   }, function () { document.querySelector('[data-act=chup]').click(); });
   dial(knobVol, function (d) {
-    vdial = Math.max(0, Math.min(100, vdial + d / 2.7));
-    knobVol.style.setProperty('--rot', (-135 + vdial * 2.7) + 'deg');
-    setVol(vdial, true);
-  }, function () { setVol(soundOn ? 0 : 60, true); });
+    vAngle = Math.max(0, Math.min(270, vAngle + d));
+    var i = Math.round(vAngle / 90);
+    if (i !== vIdx) setVolIdx(i);
+  }, function () { setVolIdx((vIdx + 1) % STEPS.length); });
 
   function searching() {
     clearTimeout(introT); stopChannels(); started = false; onTrailer = true;
