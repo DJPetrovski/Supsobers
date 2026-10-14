@@ -4,7 +4,7 @@
   var dock = document.getElementById('scd'); if (!dock) return;
   var frame = document.getElementById('scd-frame'), playBtn = dock.querySelector('[data-sc=play]'), fw = dock.querySelector('.scd-fw');
   var URL_ = 'https://soundcloud.com/djpetrovski', w = null, loading = false, ready = false, playing = false, queue = [], root = document.documentElement;
-  var route = (location.hash || '#home').slice(1) || 'home', mode = '', trackT = 0, minimized = false;
+  var userPos = null, route = (location.hash || '#home').slice(1) || 'home', mode = '', trackT = 0, minimized = false;
   function duck(l) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'sc', level: l } })); }
   function run(fn) { if (ready && w) fn(); else queue.push(fn); }
   function boot() {
@@ -49,10 +49,31 @@
       fw.style.setProperty('--sc-s', fit.toFixed(3)); fw.style.height = (166 * fit) + 'px'; fw.style.width = (420 * fit) + 'px';
     } else {
       var wd = Math.min(360, vw - 20), sc = (wd - 16) / 420, hh = minimized ? 98 : 40 + 166 * sc + 70 + 28;
-      setBox(vw - wd - 10, vh - hh - 10, wd, hh, '14px');
+      var L = vw - wd - 10, T = vh - hh - 10;
+      if (userPos) { L = Math.max(4, Math.min(vw - wd - 4, userPos.l)); T = Math.max(4, Math.min(vh - hh - 4, userPos.t)); }
+      setBox(L, T, wd, hh, '14px');
       fw.style.setProperty('--sc-s', sc.toFixed(3)); fw.style.height = (166 * sc) + 'px'; fw.style.width = (420 * sc) + 'px';
     }
   }
+  // press and hold the title bar (or the empty space around the buttons), then drag the dock anywhere
+  (function () {
+    var sx, sy, ol, ot, down = false, drag = false, holdT = 0, pid;
+    function begin(e) {
+      if (mode !== 'dock' || e.button > 0 || e.target.closest('button, a, iframe')) return;
+      down = true; drag = false; sx = e.clientX; sy = e.clientY; ol = dock.offsetLeft; ot = dock.offsetTop; pid = e.pointerId;
+      holdT = setTimeout(function () { if (down) startDrag(); }, 220);
+    }
+    function startDrag() { drag = true; dock.classList.add('dragging'); try { dock.setPointerCapture(pid); } catch (x) {} }
+    dock.addEventListener('pointerdown', begin);
+    dock.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      if (!drag && Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy) > 8) { clearTimeout(holdT); startDrag(); }
+      if (!drag) return;
+      e.preventDefault(); userPos = { l: ol + e.clientX - sx, t: ot + e.clientY - sy }; layout();
+    });
+    function end() { clearTimeout(holdT); down = false; if (drag) { drag = false; dock.classList.remove('dragging'); } }
+    dock.addEventListener('pointerup', end); dock.addEventListener('pointercancel', end);
+  })();
   function track() { cancelAnimationFrame(trackT); (function f() { layout(); if (!dock.hidden && route === 'home') trackT = requestAnimationFrame(f); })(); }
   function open() {
     if (dock.hidden) { dock.hidden = false; mode = ''; root.classList.add('scd-on'); }
@@ -71,7 +92,7 @@
   // a YouTube video opening in the site player takes over the sound
   document.addEventListener('ss:playeropen', function () { if (ready && playing) w.pause(); });
   // the home remote drives the player while it is open: CH = tracks, VOL left/right = rewind / forward, OK = play/pause
-  var MAP = { chup: 'next', chdown: 'prev', volup: 'fwd', voldown: 'back', ok: 'play' };
+  var MAP = { volup: 'fwd', voldown: 'back', ok: 'play' };   // CH up/down now change the TV channel (SoundCloud is one of them)
   var remote = document.getElementById('remote');
   if (remote) remote.addEventListener('click', function (e) {
     var b = e.target.closest('[data-act]'); if (!b || dock.hidden) return;

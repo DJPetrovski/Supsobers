@@ -1573,3 +1573,12 @@ html.gs-open { overflow: hidden; }
 .scd.tv #scd-min, .scd.tv .scd-hint { display: none; }
 @media (max-width: 760px) { .scd.tv .scd-hint { display: none; } .scd.tv .scd-ctl button { min-width: 36px; height: 32px; } .scd.tv .scd-top { padding: 3px 8px; } }
 .scd.dockd.min .scd-fw, .scd.dockd.min .scd-hint { display: none; }
+
+/* remote SoundCloud key: let it grow to fit the logo + word */
+.rm-colors .rm-rect.rm-music { min-height: 0; height: auto; padding: 7px 9%; display: flex; align-items: center; justify-content: center; }
+.rm-colors .rm-music .rm-sclogo { width: 100%; max-height: none; height: auto; }
+/* draggable SoundCloud dock */
+.scd.dockd .scd-top { cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+.scd.dragging, .scd.dragging .scd-top { cursor: grabbing; }
+.scd.dragging { box-shadow: 0 10px 34px rgba(0,0,0,.7), 0 0 0 2px #ff5500; }
+.scd.dragging iframe { pointer-events: none; }

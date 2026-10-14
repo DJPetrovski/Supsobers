@@ -164,6 +164,7 @@
 
   // Quiet television hiss with a long echo, so the bottom of the hole sounds far away.
   function audioGraph() {
+    return false;   // the scratchy TV hiss is gone: the site has music now
     if (actx) return true;
     try {
       var AC = window.AudioContext || window.webkitAudioContext;
