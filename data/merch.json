@@ -10,10 +10,10 @@
    "url": "https://www.americanpatriot.ltd/Sup-Sobers-Sticker-Large-SUP-Board-p800946208",
    "store": "americanpatriot",
    "soldOut": false,
-   "scene": "img/scene/sup-sobers-sticker-large-sup-board.webp",
    "cutouts": [
     "img/merch/sup-sobers-sticker-large-sup-board-0.webp"
-   ]
+   ],
+   "sceneOff": "img/scene/sup-sobers-sticker-large-sup-board.webp"
   },
   {
    "name": "Sobering Stories 9/11 Decal",
@@ -24,10 +24,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-9-11-Decal-p825992482",
    "store": "americanpatriot",
    "soldOut": false,
-   "scene": "img/scene/sobering-stories-9-11-decal.webp",
    "cutouts": [
     "img/merch/sobering-stories-9-11-decal-0.webp"
-   ]
+   ],
+   "sceneOff": "img/scene/sobering-stories-9-11-decal.webp"
   },
   {
    "name": "Sobering Stories Might Mean Somethin' Stickers",
@@ -38,10 +38,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-Stickers-p822846886",
    "store": "americanpatriot",
    "soldOut": false,
-   "scene": "img/scene/sobering-stories-might-mean-somethin-stickers.webp",
    "cutouts": [
     "img/merch/sobering-stories-might-mean-somethin-stickers-0.webp"
-   ]
+   ],
+   "sceneOff": "img/scene/sobering-stories-might-mean-somethin-stickers.webp"
   },
   {
    "name": "Sobering Stories Might Mean Somethin' Hoodie (Blk)",
@@ -122,10 +122,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Sticker-p781605951",
    "store": "americanpatriot",
    "soldOut": false,
-   "scene": "img/scene/sobering-stories-sticker.webp",
    "cutouts": [
     "img/merch/sobering-stories-sticker-0.webp"
-   ]
+   ],
+   "sceneOff": "img/scene/sobering-stories-sticker.webp"
   },
   {
    "name": "Sobering Stories Specific Ocean Red S/S",
