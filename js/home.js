@@ -192,5 +192,15 @@
     if (document.hidden) { video.pause(); if (!yt.hidden) ytCmd('pauseVideo'); }
     else if (onHome && started) { if (onTrailer) video.play().catch(function () {}); else ytCmd('playVideo'); }
   });
+  // every so often (20 to 45 seconds) the picture tears for a third of a second
+  (function glitchLoop() {
+    setTimeout(function () {
+      if (onHome && started && !reduce && !document.hidden) {
+        screen.classList.add('glitching');
+        setTimeout(function () { screen.classList.remove('glitching'); }, 360);
+      }
+      glitchLoop();
+    }, 20000 + Math.random() * 25000);
+  })();
   searching();
 })();
