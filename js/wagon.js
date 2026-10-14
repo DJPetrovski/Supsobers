@@ -11,7 +11,7 @@
   var over = document.getElementById('wg-over'), overTitle = document.getElementById('wg-over-t'), overSub = document.getElementById('wg-over-s'), overBtn = document.getElementById('wg-go');
   var toast = document.getElementById('wg-toast');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var G = 380, DIVE = 3.4, AIRG = 0.55, JUMP = 330, FR = 0.012, MAXV = 1250, DAY = 30;
+  var G = 380, DIVE = 3.4, AIRG = 0.55, JUMP = 330, FR = 0.012, MAXV = 1000, DAY = 30;
 
   var POOL = [['#d9892a', '#8a4a0a'], ['#f2c94c', '#b8860b'], ['#9fd6ff', '#4e8fc4'], ['#5fe08a', '#1f8f4a']];   // whiskey, beer, vodka, absinthe
   function rnd(a, b) { return a + Math.random() * (b - a); }
