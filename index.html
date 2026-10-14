@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791967863">
+  <link rel="stylesheet" href="css/styles.css?v=1791968422">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -47,6 +47,7 @@
       <div class="ambient" id="ambient" aria-hidden="true">
         <div class="hole-scene" id="ambient-scene"><div class="hole-world" id="ambient-world"></div></div>
       </div>
+      <button type="button" class="pill rm-show" id="rm-show" hidden>Show remote</button>
       <div class="home-copy">
         <h1 id="home-title" class="sr">Sobering Stories</h1>
       </div>
@@ -89,6 +90,7 @@
           </div>
         </div>
         <div class="remote" id="remote">
+          <button type="button" class="rm-grip" id="rm-grip" aria-label="Move, resize or hide the remote" aria-haspopup="true" title="Drag to move the remote. Tap for options."></button>
           <div class="rm-top">
             <a class="rm-key rm-gray rm-find" data-key="search" href="#search" aria-label="Search the site"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M14.6 14.6 21 21" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></a>
             <button type="button" class="rm-power" id="rm-power" aria-label="Power"></button>
@@ -381,15 +383,16 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791967863" defer></script>
-  <script src="js/app.js?v=1791967863" defer></script>
-  <script src="js/hole.js?v=1791967863" defer></script>
-  <script src="js/pill.js?v=1791967863" defer></script>
-  <script src="js/tv.js?v=1791967863" defer></script>
-  <script src="js/search.js?v=1791967863" defer></script>
-  <script src="js/merch.js?v=1791967863" defer></script>
-  <script src="js/web.js?v=1791967863" defer></script>
-  <script src="js/home.js?v=1791967863" defer></script>
-  <script src="js/music.js?v=1791967863" defer></script>
+  <script src="js/rain.js?v=1791968422" defer></script>
+  <script src="js/app.js?v=1791968422" defer></script>
+  <script src="js/hole.js?v=1791968422" defer></script>
+  <script src="js/pill.js?v=1791968422" defer></script>
+  <script src="js/tv.js?v=1791968422" defer></script>
+  <script src="js/search.js?v=1791968422" defer></script>
+  <script src="js/merch.js?v=1791968422" defer></script>
+  <script src="js/web.js?v=1791968422" defer></script>
+  <script src="js/home.js?v=1791968422" defer></script>
+  <script src="js/remote.js?v=1791968422" defer></script>
+  <script src="js/music.js?v=1791968422" defer></script>
 </body>
 </html>

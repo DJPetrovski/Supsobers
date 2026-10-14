@@ -1406,3 +1406,25 @@ html.gs-open { overflow: hidden; }
 .sc-mark.logo { display: grid; place-items: center; width: 100%; height: 100%; }
 .sc-mark.logo svg, .sc-mark.logo img { width: 42%; max-height: 62%; object-fit: contain; filter: drop-shadow(0 0 14px rgba(255,40,50,.55)) drop-shadow(2px 2px 0 #000); transition: transform .25s; }
 .sc-ch:hover .sc-mark.logo svg, .sc-ch:hover .sc-mark.logo img { transform: scale(1.1); }
+
+/* movable remote */
+.remote { --rs: 1; --ry: 0px; --dx: 0px; --dy: 0px; --rry: 13deg; --rrz: -3deg;
+  width: calc(clamp(170px, 16vw, 210px) * var(--rs)); transform: translate(var(--dx), calc(var(--ry) + var(--dy))) rotateY(var(--rry)) rotateZ(var(--rrz)); }
+.remote.dragging { z-index: 60; cursor: grabbing; transition: none; filter: drop-shadow(0 20px 28px rgba(0,0,0,.7)); }
+.remote.is-off { display: none; }
+.home-rig.remote-left { flex-direction: row-reverse; }
+.home-rig.remote-left .remote { --rry: -13deg; --rrz: 3deg; margin-left: 0; margin-right: calc(-1 * clamp(10px, 6.5vw, 90px)); }
+@media (max-width: 760px) {
+  .remote { width: calc(min(82%, 260px) * var(--rs)); transform: rotateX(8deg); }
+}
+.rm-grip { position: absolute; z-index: 6; top: -6px; left: 50%; width: 34%; height: 22px; transform: translateX(-50%); padding: 0; border: 0; background: transparent; cursor: grab; touch-action: none; }
+.rm-grip::after { content: ""; position: absolute; left: 50%; top: 9px; width: 42%; height: 4px; border-radius: 3px; transform: translateX(-50%); background: rgba(255,255,255,.28); box-shadow: 0 6px 0 rgba(255,255,255,.18); }
+.rm-grip:hover::after, .rm-grip:focus-visible::after { background: rgba(255,90,98,.9); }
+.rm-show { position: fixed; right: 16px; bottom: 16px; z-index: 40; }
+.rm-show[hidden] { display: none; }
+.rm-menu { position: fixed; z-index: 120; display: grid; gap: 6px; padding: 10px; width: 220px; border-radius: 14px; background: rgba(12,0,2,.96); border: 1px solid rgba(255,90,98,.6); box-shadow: 0 10px 40px rgba(0,0,0,.8), 0 0 24px rgba(255,40,50,.25); }
+.rm-menu[hidden] { display: none; }
+.rm-menu > div { display: flex; gap: 6px; }
+.rm-menu button { flex: 1; white-space: nowrap; padding: 8px 4px; border-radius: 9px; border: 1px solid #4a1a20; background: #1a0508; color: #f4eee8; font: 600 .82rem var(--body); cursor: pointer; }
+.rm-menu button.sq { flex: 0 0 34px; }
+.rm-menu button:hover, .rm-menu button:focus-visible { border-color: #ff5a62; background: #2b0a0e; }
