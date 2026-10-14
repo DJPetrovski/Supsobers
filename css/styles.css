@@ -1402,3 +1402,4 @@ html.gs-open { overflow: hidden; }
 .laptop::before { content: ""; position: absolute; inset: -12% -14% -8%; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 50% 55%, rgba(255,36,48,.55), rgba(190,10,24,.22) 45%, transparent 70%); filter: blur(14px); }
 .lp-bezel { border-color: #4a4a4a; box-shadow: 0 0 0 1px #000, 0 0 28px rgba(255,40,50,.55), 0 -6px 50px rgba(255,30,40,.35); }
 .lp-base { box-shadow: 0 0 26px rgba(255,40,50,.5), 0 14px 30px rgba(0,0,0,.7); }
+.rm-half { background: linear-gradient(#5ff0dc, #109c92); color: #012421; text-shadow: none; border-bottom-color: #05423d; }
