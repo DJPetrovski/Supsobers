@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791980163">
+  <link rel="stylesheet" href="css/styles.css?v=1791980910">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -324,9 +324,10 @@
         <div class="wg-stage">
           <canvas id="wg-canvas" aria-label="Wagon Run game: hold to dive down hills, let go to launch"></canvas>
           <p class="wg-toast" id="wg-toast" role="status" aria-live="polite"></p>
-          <div class="wg-over" id="wg-over"><div><h3 id="wg-over-t">Wagon Run</h3><p id="wg-over-s">Ride a little red wagon over endless hills. Hold to dive down the slope, let go to launch off the top. Stay on the wagon.</p><button type="button" class="btn btn-primary" id="wg-go">Start rolling</button></div></div>
+          <button type="button" class="wg-jump" id="wg-jump" aria-label="Jump">JUMP</button>
+          <div class="wg-over" id="wg-over"><div><h3 id="wg-over-t">Wagon Run</h3><p id="wg-over-s">Ride a little red wagon from hill to hill. Hold B (or press and hold the screen) to dive and gain speed. Press Shift (or the JUMP button) to jump. Don\u2019t fall off the wagon.</p><button type="button" class="btn btn-primary" id="wg-go">Start rolling</button></div></div>
         </div>
-        <p class="es-help">Press and hold anywhere on the game (or hold the space bar or down arrow) to dive. Let go to launch off the next hill. Grab the gold chips. It starts calm and slowly gets steeper, shorter and rockier. If you fall off the wagon, climb back on.</p>
+        <p class="es-help">Hold <b>B</b> (or press and hold the screen) to dive and gain speed. Let go near the top of a hill to launch, and tap <b>Shift</b> (or the JUMP button) to jump. Grab the gold chips. It starts calm and slowly gets steeper, shorter and rockier. If you fall off the wagon, climb back on.</p>
       </div>
       <p class="cv-note">More games coming. If you are struggling right now, the free 24/7 SAMHSA helpline is 1-800-662-4357.</p>
     </section>
@@ -464,20 +465,20 @@
       <p class="scd-hint">Hold the title bar to move me. Home remote: CH = change channel, VOL = rewind / forward, OK = play / pause</p>
     </div>
   </aside>
-  <script src="js/rain.js?v=1791980163" defer></script>
-  <script src="js/app.js?v=1791980163" defer></script>
-  <script src="js/hole.js?v=1791980163" defer></script>
-  <script src="js/pill.js?v=1791980163" defer></script>
-  <script src="js/tv.js?v=1791980163" defer></script>
-  <script src="js/search.js?v=1791980163" defer></script>
-  <script src="js/merch.js?v=1791980163" defer></script>
-  <script src="js/web.js?v=1791980163" defer></script>
-  <script src="js/home.js?v=1791980163" defer></script>
-  <script src="js/remote.js?v=1791980163" defer></script>
-  <script src="js/craving.js?v=1791980163" defer></script>
-  <script src="js/wagon.js?v=1791980163" defer></script>
-  <script src="js/scplayer.js?v=1791980163" defer></script>
-  <script src="js/assistant.js?v=1791980163" defer></script>
-  <script src="js/music.js?v=1791980163" defer></script>
+  <script src="js/rain.js?v=1791980910" defer></script>
+  <script src="js/app.js?v=1791980910" defer></script>
+  <script src="js/hole.js?v=1791980910" defer></script>
+  <script src="js/pill.js?v=1791980910" defer></script>
+  <script src="js/tv.js?v=1791980910" defer></script>
+  <script src="js/search.js?v=1791980910" defer></script>
+  <script src="js/merch.js?v=1791980910" defer></script>
+  <script src="js/web.js?v=1791980910" defer></script>
+  <script src="js/home.js?v=1791980910" defer></script>
+  <script src="js/remote.js?v=1791980910" defer></script>
+  <script src="js/craving.js?v=1791980910" defer></script>
+  <script src="js/wagon.js?v=1791980910" defer></script>
+  <script src="js/scplayer.js?v=1791980910" defer></script>
+  <script src="js/assistant.js?v=1791980910" defer></script>
+  <script src="js/music.js?v=1791980910" defer></script>
 </body>
 </html>

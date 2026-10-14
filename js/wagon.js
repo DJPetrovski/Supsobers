@@ -11,7 +11,7 @@
   var over = document.getElementById('wg-over'), overTitle = document.getElementById('wg-over-t'), overSub = document.getElementById('wg-over-s'), overBtn = document.getElementById('wg-go');
   var toast = document.getElementById('wg-toast');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var G = 380, DIVE = 2.6, FR = 0.05, MAXV = 950, DAY = 30;
+  var G = 380, DIVE = 3.0, AIRG = 0.7, JUMP = 330, FR = 0.05, MAXV = 1000, DAY = 30;
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
   function lerp(a, b, k) { return a + (b - a) * k; }
@@ -25,7 +25,7 @@
 
   /* ---------- terrain: cosine-smoothed hills, generated ahead of the wagon ---------- */
   function addHill() {
-    var a = cps[cps.length - 1], d = diff(), L = lerp(640, 330, d) * rnd(0.88, 1.12), A = lerp(150, 285, d) * rnd(0.8, 1.2), p;
+    var a = cps[cps.length - 1], d = diff(), L = lerp(760, 400, d) * rnd(0.88, 1.12), A = lerp(200, 310, d) * rnd(0.85, 1.2), p;
     if (nextPeak) {
       p = { x: a.x + L, y: a.y - A * rnd(0.82, 0.94) };
       var n = 3 + Math.floor(Math.random() * 3);   // a little arc of chips floating over the crest
@@ -46,7 +46,7 @@
   /* ---------- state ---------- */
   function reset() {
     cps = [{ x: -500, y: 0 }]; nextPeak = false; rocks = []; chips = []; parts = [];
-    st = { t: 0, x: -120, y: 0, vx: 0, vy: 0, v: 70, air: false, ang: 0, dead: false, deadT: 0, rider: null, camX: -120, camY: 0, sc: 1, still: 0, chips: 0, day: 0, dist: 0, msgs: 0, toastT: 0, flash: 0 };
+    st = { lean: 0, jumpQ: false, t: 0, x: -120, y: 0, vx: 0, vy: 0, v: 70, air: false, ang: 0, dead: false, deadT: 0, rider: null, camX: -120, camY: 0, sc: 1, still: 0, chips: 0, day: 0, dist: 0, msgs: 0, toastT: 0, flash: 0 };
     extend(-120); st.y = ground(st.x); st.camY = st.y;
     paintHud();
   }
@@ -65,16 +65,27 @@
   }
   function showOver() {
     var mins = Math.floor(st.t / 60), days = st.day;
-    overTitle.textContent = 'You fell off the wagon.';
-    overSub.textContent = 'You rode ' + fmt(st.t) + ' (' + (days === 1 ? '1 day' : days + ' days') + ') and grabbed ' + st.chips + ' chips. ' +
-      (st.t >= 120 ? 'That is longer than most cravings last. ' : 'Most cravings fade in two to five minutes, so try again. ') + 'Falling off just means you climb back on.';
+    overTitle.textContent = 'Game over';
+    overSub.textContent = 'You fell off the wagon. You rode ' + fmt(st.t) + ' (' + (days === 1 ? '1 day' : days + ' days') + ') and grabbed ' + st.chips + ' chips. ' +
+      (st.t >= 120 ? 'That is longer than most cravings last. ' : 'Most cravings fade in two to five minutes, so try again. ') + 'Falling off just means you climb back on. Don\u2019t fall off the wagon!';
     overBtn.textContent = 'Get back on'; over.hidden = false; paintHud();
   }
 
   /* ---------- physics ---------- */
   function step(dt) {
     var s = st; s.t += dt; extend(s.x);
-    var d = diff(), g = G * (pressed && !s.dead ? DIVE : 1);
+    var d = diff(), g = G * (pressed && !s.dead ? DIVE : 1) * (s.air && !pressed ? AIRG : 1);
+    s.coyote = Math.max(0, (s.coyote || 0) - dt); s.jcd = Math.max(0, (s.jcd || 0) - dt); s.jflash = Math.max(0, (s.jflash || 0) - dt * 3);
+    s.lean += ((pressed && !s.dead ? 1 : 0) - s.lean) * Math.min(1, dt * 12);
+    if (s.jumpQ) {   // Shift / JUMP button: a hop off the ground (or just after leaving it), strongest from the top of a hill
+      s.jumpQ = false;
+      if (!s.dead && s.jcd <= 0 && (!s.air || s.coyote > 0)) {
+        var jsl = slope(s.x), jl = Math.sqrt(1 + jsl * jsl), jnx = jsl / jl, jny = -1 / jl;
+        if (!s.air) { s.vx = s.v / jl; s.vy = s.v * jsl / jl; s.air = true; }
+        s.vx += jnx * JUMP * 0.5; s.vy += jny * JUMP; s.coyote = 0; s.jcd = 0.35; s.jflash = 1; s.y -= 2;
+        for (var jk = 0; jk < 6; jk++) parts.push({ x: s.x, y: s.y, vx: rnd(-70, 70), vy: rnd(-60, 10), l: 0.45 });
+      }
+    }
     if (!s.dead) {
       if (Math.floor(s.t / DAY) > s.day) { s.day++; if (s.day === 1) say('Day 1 done. Breathe. Keep rolling.'); }
       if (s.msgs === 0 && s.t > 75) { s.msgs = 1; say('Cravings usually peak and fade in 2 to 5 minutes.'); }
@@ -87,7 +98,7 @@
       if (!s.dead) { var minV = lerp(120, 45, d), assist = lerp(150, 0, d); if (s.v < minV && tx > 0.45) s.v += assist * dt; }
       s.v = clamp(s.v, -260, MAXV);
       var vx = s.v * tx, vy = s.v * ty, nx = s.x + vx * dt, ny = ground(nx), by = s.y + vy * dt + 0.5 * g * dt * dt;
-      if (by < ny - 0.01 && vx > 40) { s.air = true; s.vx = vx; s.vy = vy + g * dt; s.x += vx * dt; s.y = by; }
+      if (by < ny - 0.01 && vx > 40) { s.air = true; s.coyote = 0.12; s.vx = vx; s.vy = vy + g * dt; s.x += vx * dt; s.y = by; }
       else { s.x = nx; s.y = ny; }
       if (!s.dead) { if (s.v < 22) s.still += dt; else if (s.v > 60) s.still = 0; if (s.still > 1.5) crash('Rolled to a stop.'); }
     } else {
@@ -105,7 +116,7 @@
     s.dist = Math.max(s.dist, s.x);
     // angle: follow the ground when rolling, the flight path in the air
     var tgt = s.air ? Math.atan2(s.vy, Math.max(80, s.vx)) * 0.55 : Math.atan(slope(s.x));
-    s.ang += (tgt - s.ang) * Math.min(1, dt * (s.air ? 5 : 14));
+    if (!s.dead) s.ang += (tgt - s.ang) * Math.min(1, dt * (s.air ? 5 : 14)); else s.ang += dt * (s.air ? 5 : 1.4);
     if (!s.dead) {
       for (var i = 0; i < chips.length; i++) { var c = chips[i]; if (!c.got && Math.abs(c.x - s.x) < 40 && Math.abs(c.y - (s.y - 22)) < 40) { c.got = true; s.chips++; paintHud(); for (var q = 0; q < 6; q++) parts.push({ x: c.x, y: c.y, vx: rnd(-120, 120), vy: rnd(-140, 40), l: 0.5, c: '#ffd45a' }); } }
       for (var j = 0; j < rocks.length; j++) {
@@ -132,13 +143,15 @@
     for (var x = 0; x <= W; x += 14) { var wx = x + st.camX * par; ctx.lineTo(x, base + Math.sin(wx / wl) * amp + Math.sin(wx / (wl * 0.37) + 2) * amp * 0.35 - st.camY * par * 0.12); }
     ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
   }
-  function drawWagon(x, y, a, withRider) {
+  function drawWagon(x, y, a, withRider, lean) {
+    lean = lean || 0;
     ctx.save(); ctx.translate(x, y); ctx.rotate(a);
     // handle
-    ctx.strokeStyle = '#d9d9d9'; ctx.lineWidth = 2.2; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(18, -9); ctx.lineTo(34, -16); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(32, -19); ctx.lineTo(37, -13); ctx.stroke();
+    ctx.strokeStyle = '#d9d9d9'; ctx.lineWidth = 2.2; ctx.lineCap = 'round'; var hx = lerp(34, 29, lean), hy = lerp(-16, 2, lean);   // pulling: the handle drops down toward the ground
+    ctx.beginPath(); ctx.moveTo(18, -9); ctx.lineTo(hx, hy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hx - 2, hy - 3); ctx.lineTo(hx + 3, hy + 3); ctx.stroke();
     // rider (sits inside the wagon)
-    if (withRider) drawRider(0, -13, 0);
+    if (withRider) drawRider(2 * lean, -13, lean * 0.55);
     // body
     ctx.fillStyle = '#d3131c'; ctx.strokeStyle = '#6e060c'; ctx.lineWidth = 1.6;
     ctx.beginPath(); ctx.moveTo(-23, -17); ctx.lineTo(23, -17); ctx.lineTo(19, -4); ctx.lineTo(-19, -4); ctx.closePath(); ctx.fill(); ctx.stroke();
@@ -153,6 +166,15 @@
     ctx.fillStyle = '#e8c9a8'; ctx.beginPath(); ctx.arc(0, -19, 6, 0, 6.3); ctx.fill(); // head
     ctx.fillStyle = '#0d0d0d'; ctx.beginPath(); ctx.arc(0, -20, 6.2, Math.PI, 0); ctx.fill(); ctx.fillRect(-9, -21, 6, 2);   // backwards cap
     ctx.fillStyle = '#111'; ctx.fillRect(0.5, -20.5, 6, 2.6);                      // shades
+    ctx.restore();
+  }
+  function keycap(x, y, label, tip, on) {
+    ctx.save(); ctx.globalAlpha = on ? 1 : 0.62;
+    var w = label.length > 1 ? 50 : 28;
+    ctx.fillStyle = on ? '#ff3a45' : '#1c0a0e'; ctx.strokeStyle = on ? '#fff' : '#ff2a35'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, 26, 6) : ctx.rect(x, y, w, 26); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.font = '700 12px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, x + w / 2, y + 13.5);
+    ctx.textAlign = 'left'; ctx.font = '700 11px system-ui, sans-serif'; ctx.fillStyle = on ? '#fff' : '#ffb3b8'; ctx.fillText(tip, x + w + 6, y + 13.5);
     ctx.restore();
   }
   function draw() {
@@ -185,10 +207,12 @@
     var pulse = 1 + Math.sin(s.t * 6) * 0.07;
     chips.forEach(function (c) { if (c.got || c.x < x0 - 30 || c.x > x1 + 30) return; ctx.save(); ctx.translate(c.x, c.y); ctx.scale(pulse, pulse); ctx.shadowColor = '#ffb020'; ctx.shadowBlur = 10; ctx.fillStyle = '#ffd45a'; ctx.beginPath(); ctx.arc(0, 0, 9, 0, 6.3); ctx.fill(); ctx.shadowBlur = 0; ctx.strokeStyle = '#a56a00'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, 5.2, 0, 6.3); ctx.stroke(); ctx.restore(); });
     // wagon + rider
-    drawWagon(s.x, s.y, s.ang, !s.dead);
+    if (pressed && !s.dead) { ctx.strokeStyle = 'rgba(255,200,200,.55)'; ctx.lineWidth = 1.6 / k; for (var li = 0; li < 4; li++) { var ly = s.y - 6 - li * 7 - (s.air ? 4 : 0); ctx.beginPath(); ctx.moveTo(s.x - 30 - li * 3, ly); ctx.lineTo(s.x - 56 - li * 7 - (s.t * 90 % 14), ly); ctx.stroke(); } }
+    drawWagon(s.x, s.y, s.ang, !s.dead, s.lean);
     if (s.dead && s.rider) drawRider(s.rider.x, s.rider.y, s.rider.rot);
     parts.forEach(function (p) { ctx.globalAlpha = clamp(p.l * 2, 0, 1); ctx.fillStyle = p.c || '#b8a89a'; ctx.fillRect(p.x - 2, p.y - 2, 4, 4); }); ctx.globalAlpha = 1;
     ctx.restore();
+    keycap(14, H - 40, 'B', 'DIVE', pressed && !s.dead); keycap(122, H - 40, 'SHIFT', 'JUMP', s.jflash > 0.2);
     if (s.flash > 0) { ctx.fillStyle = 'rgba(255,40,50,' + (s.flash * 0.28) + ')'; ctx.fillRect(0, 0, W, H); }
   }
 
@@ -204,16 +228,21 @@
   function begin() { reset(); started = true; over.hidden = true; toast.classList.remove('on'); say(reduce ? 'Hold to dive. Let go to launch.' : 'Hold to dive down the hills. Let go to launch off the top.'); }
   overBtn.addEventListener('click', function () { begin(); });
 
-  function down(e) { if (e && e.cancelable) e.preventDefault(); if (!started) { return; } pressed = true; }
   function up() { pressed = false; }
+  function jump() { if (!started) begin(); if (st) st.jumpQ = true; }
   cv.addEventListener('pointerdown', function (e) { e.preventDefault(); try { cv.setPointerCapture(e.pointerId); } catch (x) {} if (!started) begin(); pressed = true; });
   cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up); cv.addEventListener('lostpointercapture', up);
   cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  var jb = document.getElementById('wg-jump');
+  if (jb) { jb.addEventListener('pointerdown', function (e) { e.preventDefault(); jump(); }); jb.addEventListener('contextmenu', function (e) { e.preventDefault(); }); }
+  function isDive(e) { return e.key === 'b' || e.key === 'B' || e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowRight'; }
   document.addEventListener('keydown', function (e) {
     if (root.hidden || document.querySelector('[data-view="craving"]').hidden) return;
-    if (e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowRight') { var t = e.target; if (t && /^(input|textarea|select|button)$/i.test(t.tagName)) return; e.preventDefault(); if (!started) begin(); pressed = true; }
+    var t = e.target; if (t && /^(input|textarea|select)$/i.test(t.tagName)) return;
+    if (e.key === 'Shift') { jump(); return; }
+    if (isDive(e)) { if (e.key === ' ' && t && /^button$/i.test(t.tagName)) return; e.preventDefault(); if (!started) begin(); pressed = true; }
   });
-  document.addEventListener('keyup', function (e) { if (e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowRight') pressed = false; });
+  document.addEventListener('keyup', function (e) { if (isDive(e)) pressed = false; });
 
   /* tabs: pick a game */
   var es = document.getElementById('es'), tabEs = document.getElementById('cvt-es'), tabWg = document.getElementById('cvt-wg');
