@@ -1586,3 +1586,12 @@ html.gs-open { overflow: hidden; }
 /* phone: a smaller remote so the TV and the CH / VOL buttons fit on one screen */
 @media (max-width: 760px) { .remote { width: calc(min(50%, 182px) * var(--rs)); } }
 @media (max-width: 760px) { .rm-colors .rm-key { font-size: 5.2cqw; letter-spacing: 0; } }
+
+/* little silhouette icons on the remote's word keys */
+.rm-key .rm-ic { flex: 0 0 auto; width: 1.25em; height: 1.25em; margin-right: .35em; filter: drop-shadow(0 1px 1px rgba(0,0,0,.45)); opacity: .92; }
+.rm-key > span { min-width: 0; }
+.rm-colors .rm-key:not(.rm-rect) { flex-direction: column; gap: 2px; }
+.rm-colors .rm-key:not(.rm-rect) .rm-ic { margin: 0; width: 1.5em; height: 1.5em; }
+.rm-rest .rm-half { white-space: nowrap; }
+.rm-colors .rm-key:not(.rm-rect) .rm-ic { width: 2.1em; height: 2.1em; }
+.rm-colors .rm-rect .rm-ic { width: 1.5em; height: 1.5em; }
