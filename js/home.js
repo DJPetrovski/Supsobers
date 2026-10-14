@@ -80,7 +80,10 @@
 
   // Tap or click the screen while a preview is showing to pick it, same as pressing the key.
   screen.addEventListener('click', function () {
-    var pv = prev.classList.contains('on') && prev.querySelector('.pv'); if (!pv || diving) return;
+    var pv = prev.classList.contains('on') && prev.querySelector('.pv'); if (diving) return;
+    // No preview showing: the picture is a channel playing, so a click goes to that video on YouTube
+    // (this also covers age-restricted videos, which cannot play inside the TV).
+    if (!pv) { if (powered && cur && !yt.hidden && /^[\w-]{11}$/.test(cur.id || '')) window.open('https://www.youtube.com/watch?v=' + cur.id, '_blank', 'noopener'); return; }
     var key = pv.getAttribute('data-k');
     for (var i = 0; i < keys.length; i++) if (keys[i].getAttribute('data-key') === key) { armed = key; keys[i].click(); return; }
   });
@@ -174,7 +177,7 @@
     cur = v;
     var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
     screen.classList.add('tuning');
-    yt.hidden = false;
+    yt.hidden = false; screen.classList.add('has-ch');
     yt.onload = function () {
       // some browsers show a big play button instead of starting; nudge it a few times, muted-safe
       [400, 1200, 2500, 4500].forEach(function (ms) { setTimeout(function () { if (yt.hidden || cur !== v) return; ytCmd('playVideo'); applySound(); }, ms); });
@@ -186,7 +189,7 @@
     nowBtn.textContent = 'Watch this one';
     chanT = setTimeout(channel, CHANNEL_MS);
   }
-  function stopChannels() { clearTimeout(chanT); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; nowBtn.hidden = nextBtn.hidden = true; cur = null; }
+  function stopChannels() { clearTimeout(chanT); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); nowBtn.hidden = nextBtn.hidden = true; cur = null; }
   nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
   nextBtn.addEventListener('click', function () { channel(); });
   document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
@@ -265,7 +268,7 @@
     screen.classList.remove('tuning', 'htv-search', 'crt-on');
     root.classList.add('tv-off'); screen.classList.add('crt-off');
     offT = setTimeout(function () {
-      yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; video.style.opacity = '0'; cur = null; nowBtn.hidden = nextBtn.hidden = true;
+      yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); video.style.opacity = '0'; cur = null; nowBtn.hidden = nextBtn.hidden = true;
       screen.classList.remove('crt-off'); screen.classList.add('standby');
     }, reduce ? 0 : 650);
   }

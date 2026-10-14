@@ -1340,3 +1340,4 @@ html.gs-open { overflow: hidden; }
 
 /* channel / volume readout lives in the top-right of the glass so it never overlaps the preview title */
 .htv-osd { left: auto; right: 7%; text-align: right; }
+.htv-screen.has-ch { cursor: pointer; }
