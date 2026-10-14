@@ -668,35 +668,100 @@ dialog#player { max-height: 94vh; overflow-y: auto; }
    ===================================================================== */
 dialog#player { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; border: 0; background: rgba(2, 0, 1, 0.9); overflow: hidden; }
 .player-hole { position: absolute; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; }
-.player-card { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(880px, 92vw); max-height: 94dvh; overflow-y: auto;
+.player-card { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(500px, 82vw); max-height: 86dvh; overflow-y: auto;
   background: var(--void); border: 1px solid var(--ember); box-shadow: 0 0 0 1px #000, 0 0 70px rgba(255, 42, 53, 0.5), 0 30px 80px #000; }
 .rel-hint { margin: 0; padding: 12px 14px 14px; font-size: 0.85rem; color: #ff9aa0; }
 .related { padding: 0; border-top: 1px solid var(--line); }
 .club-cta { margin: 12px 14px 0; }
 dialog#player .hole-title { z-index: 3; }
-@media (max-width: 700px) { .player-card { top: 8px; transform: translate(-50%, 0); } }
+.rel-meta { margin: 0; padding: 10px 14px 0; font-size: 0.78rem; letter-spacing: 0.04em; color: var(--bone); opacity: 0.85; }
+.player-card .rel-hint { font-size: 0.74rem; padding-top: 6px; }
+.player-bar { padding: 6px 10px; }
 
 /* =====================================================================
    The bottom of the hole: a phone you never reach
    ===================================================================== */
-.hole-phone { position: absolute; z-index: 2; left: 50%; top: 50%; width: clamp(88px, 15vmin, 170px); transform: translate(-50%, -50%); cursor: pointer;
+.hole-phone { position: absolute; z-index: 2; left: 50%; top: 50%; width: clamp(84px, 13vmin, 150px); transform: translate(-50%, -50%); cursor: pointer;
   transition: transform 0.9s cubic-bezier(.2, .8, .2, 1); outline: none; }
-.hole-phone .phone { width: 100%; animation: phonefloat 6s ease-in-out infinite, psy 14s linear infinite; }
-.hole-phone .phone-body { padding: 5px; border-radius: 22%/10%; }
-.hole-phone .phone-screen { border-radius: 18%/8%; }
-.hole-phone .phone-island { height: 6px; top: 4px; }
-.hole-phone .phone-btn { width: 2px; }
-.hole-phone::before { content: ""; position: absolute; inset: -60%; z-index: -1; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 42, 53, 0.45), rgba(120, 20, 255, 0.18) 45%, transparent 70%); animation: psy 14s linear infinite, pulse 4s ease-in-out infinite; }
-.hole-phone-tip { display: block; margin-top: 12px; text-align: center; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #ff9aa0; text-shadow: 0 0 8px #000; transition: opacity 0.4s; }
+.hole-phone #hole-tv { animation: phonefloat 6s ease-in-out infinite; }
+/* a pulsing red ring and a tip so people know it can be tapped */
+.hole-phone::before { content: ""; position: absolute; inset: -34%; z-index: -1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 42, 53, 0.55), rgba(255, 42, 53, 0.12) 55%, transparent 72%); animation: pulse 2.2s ease-in-out infinite; }
+.hole-phone::after { content: ""; position: absolute; inset: -14%; z-index: -1; border-radius: 50%; border: 2px solid rgba(255, 90, 98, 0.9); pointer-events: none; animation: ring 2.2s ease-out infinite; }
+.hole-phone-tip { display: block; margin-top: 14px; text-align: center; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb3b8; text-shadow: 0 0 8px #000, 0 0 14px rgba(255, 42, 53, 0.8); transition: opacity 0.4s; animation: nudge 1.6s ease-in-out infinite; }
+.hole-phone:hover, .hole-phone:focus-visible { filter: brightness(1.25); }
 .hole-phone.near { cursor: default; z-index: 5; }
 .hole-phone.near::before { inset: -20%; }
-.hole-phone.near .hole-phone-tip { opacity: 0; }
-.hole-phone.near .phone { animation: psy 14s linear infinite; }
+.hole-phone.near::after, .hole-phone.near .hole-phone-tip { display: none; }
+.hole-phone.near #hole-tv { animation: none; }
 @keyframes phonefloat { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
-@keyframes psy { to { filter: hue-rotate(360deg) drop-shadow(0 0 18px rgba(255, 42, 53, 0.8)); } }
 @keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .hole-phone .phone, .hole-phone::before { animation: none; } }
+@keyframes ring { 0% { transform: scale(0.8); opacity: 0.9; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .hole-phone #hole-tv, .hole-phone::before, .hole-phone::after, .hole-phone-tip { animation: none; } }
+
+/* ---- the little television ---- */
+.pilltv { width: 100%; }
+.pilltv-body { position: relative; padding: 6% 6% 9%; border-radius: 10%; background: linear-gradient(160deg, #3b3b3b, #121212); box-shadow: 0 0 0 1px #000, 0 6px 24px #000; }
+.pilltv-screen { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12% / 14%; background: #000; box-shadow: inset 0 0 18px #000; }
+.pilltv-static, .pilltv .pf { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pilltv-static { image-rendering: pixelated; opacity: 0.9; }
+.pilltv .pf { filter: contrast(1.05); animation: tvflick 3.4s infinite; mix-blend-mode: normal; }
+.pilltv .pf-bw { filter: grayscale(1) contrast(1.15); opacity: 0.9; }
+.pilltv .pf-pill { filter: drop-shadow(0 0 5px currentColor); }
+.pilltv .pf-red { color: #ff2a35; animation: glowr 1.8s ease-in-out infinite; }
+.pilltv .pf-blue { color: #3d7bff; animation: glowr 1.8s ease-in-out infinite 0.9s; }
+.pilltv-scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.28) 0 1px, transparent 1px 3px); box-shadow: inset 0 0 30px rgba(0,0,0,0.8); }
+.pilltv-knob { position: absolute; right: 7%; bottom: 2.4%; width: 5%; aspect-ratio: 1; border-radius: 50%; background: #777; }
+.pilltv-knob.k2 { right: 14%; }
+@keyframes tvflick { 0%, 100% { opacity: 1; } 47% { opacity: 1; } 49% { opacity: 0.55; } 51% { opacity: 1; } 78% { opacity: 0.8; } 80% { opacity: 1; } }
+@keyframes glowr { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+
+/* ---- the offer ---- */
+.pill-offer { position: absolute; z-index: 6; left: 50%; bottom: max(70px, 10dvh); transform: translateX(-50%); width: min(420px, 90vw); text-align: center; text-shadow: 0 0 10px #000; }
+.pill-line { margin: 0 0 12px; font-size: 1.05rem; line-height: 1.35; color: var(--bone); }
+.pill-row { display: flex; gap: 12px; justify-content: center; }
+.pillbtn { flex: 1; max-width: 170px; padding: 13px 10px; border-radius: 999px; border: 1px solid #000; font: inherit; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; cursor: pointer; }
+.pillbtn.red { background: linear-gradient(#ff4a55, #a30010); box-shadow: 0 0 22px rgba(255, 42, 53, 0.8); }
+.pillbtn.blue { background: linear-gradient(#5b92ff, #0a2fa8); box-shadow: 0 0 22px rgba(61, 123, 255, 0.8); }
+.pillbtn:disabled { opacity: 0.5; cursor: default; }
+.pillbtn:hover:not(:disabled) { filter: brightness(1.2); }
+.pill-fine { margin: 12px 0 0; font-size: 0.78rem; color: #ffb3b8; }
+
+/* ---- trailer-ended pop-up ---- */
+.pill-pop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; background: rgba(0, 0, 0, 0.82); }
+.pill-pop-card { width: min(420px, 94vw); text-align: center; }
+.pill-pop-card .pilltv { margin-bottom: 18px; }
 
 .hole-ui { z-index: 7; }
 .hole-phone.near { z-index: 5; }
+
+/* =====================================================================
+   Members Only: the back-room marquee
+   ===================================================================== */
+.marquee { width: min(560px, 94vw); margin: 8px auto 30px; }
+.marquee-top { display: flex; justify-content: space-between; padding: 8px 18px; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #ffcf8a; background: #120306; border: 2px solid #3a0a10; border-bottom: 0;
+  text-shadow: 0 0 8px rgba(255, 180, 80, 0.7); }
+.marquee-top span:last-child { animation: neon 3.1s infinite 0.6s; }
+.marquee-sign { position: relative; padding: 34px 20px 30px; background: #0a0204; border: 2px solid #3a0a10;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 42, 53, 0.3); }
+/* chasing bulbs around the edge */
+.marquee-sign::before, .marquee-sign::after { content: ""; position: absolute; left: 8px; right: 8px; height: 8px; pointer-events: none;
+  background: radial-gradient(circle, #ffd9a0 0 2.5px, rgba(255, 150, 60, 0.0) 3.5px) 0 0 / 22px 8px repeat-x; animation: bulbs 1.1s steps(2) infinite; }
+.marquee-sign::before { top: 6px; } .marquee-sign::after { bottom: 6px; animation-delay: 0.55s; }
+@keyframes bulbs { 0% { opacity: 1; } 50% { opacity: 0.3; } }
+.marquee .arch-kicker { color: #ff7a82; text-shadow: 0 0 10px rgba(255, 42, 53, 0.9); animation: neon 5.2s infinite 1.2s; }
+.marquee h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(2.6rem, 11vw, 4.4rem); line-height: 0.9; text-transform: uppercase; color: #ffd1d4;
+  -webkit-text-stroke: 0.05em #000; paint-order: stroke fill;
+  text-shadow: 0 0 6px #ff2a35, 0 0 24px #ff2a35, 0 0 70px rgba(255, 42, 53, 0.9); animation: neon 3.8s infinite; }
+.marquee .arch-sub { color: #ffb3b8; }
+.marquee-ticket { width: fit-content; margin: -10px auto 0; padding: 6px 22px; transform: rotate(-3deg); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700; color: #1a0306; background: #e8c27a; border: 2px dashed #7a4b12; position: relative; top: 14px; }
+@media (prefers-reduced-motion: reduce) { .marquee h2, .marquee .arch-kicker, .marquee-top span, .marquee-sign::before, .marquee-sign::after { animation: none; } }
+
+.pilltv.has-photo .pf-head > :not(image), .pilltv.has-photo .pf-shades { display: none; }
+
+.pill-offer { padding: 16px 14px 12px; border-radius: 14px; background: rgba(0, 0, 0, 0.78); box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); }
+.hole.pill-near .hole-hint { display: none; }
+.hole-phone-tip { width: max-content; max-width: 70vw; position: relative; left: 50%; transform: translateX(-50%); }
+@media (prefers-reduced-motion: no-preference) { .hole-phone-tip { animation: none; } }
+@media (max-width: 520px) { .hole-ui { gap: 4px; } .hole-ui .pill { padding: 7px 10px; font-size: 0.7rem; white-space: nowrap; } .hole-ui-right { gap: 4px; } }

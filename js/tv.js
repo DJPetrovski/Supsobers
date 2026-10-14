@@ -62,7 +62,7 @@
   function pick(v) {
     if (v && ID_RE.test(v.id || '')) {
       if (holeApi) holeApi.hold(true);
-      if (phoneLive) { level(0, 0.3); vid.pause(); }
+      if (phoneLive) level(0, 0.3);
       SS.openPlayer(v);
     } else {
       window.open('https://www.youtube.com/@Sobersector', '_blank', 'noopener');
@@ -70,7 +70,7 @@
   }
   document.addEventListener('ss:playerclosed', function () {
     if (holeApi && !near) holeApi.hold(false);
-    if (phoneLive && isOpen) { vid.play().catch(function () {}); level(soundOn ? (near ? 0.9 : 0.32) : 0, 1.5); }
+    if (phoneLive && isOpen) level(soundOn ? (near ? NEAR : FAR) : 0, 1.5);
   });
 
   /* ---------- branching: hold a video to fall down its own rabbit hole ---------- */
@@ -145,9 +145,11 @@
     paintTrail();
   }
 
-  /* ---------- the bottom of the hole: a phone you never reach ---------- */
-  var phoneEl = $('#hole-phone'), vid = $('#hole-video'), soundBtn = $('#hole-sound'), backPhone = $('#phone-back'), tip = $('#phone-tip');
+  /* ---------- the bottom of the hole: a small television you never reach ---------- */
+  var phoneEl = $('#hole-phone'), soundBtn = $('#hole-sound'), backPhone = $('#phone-back'), tip = $('#phone-tip');
+  var offer = $('#pill-offer'), redBtn = $('#pill-red'), blueBtn = $('#pill-blue'), fine = $('#pill-fine');
   var actx = null, master = null, dry = null, wet = null, near = false, soundOn = true, phoneLive = false;
+  var holeTv = window.Pill ? Pill.build($('#hole-tv')) : null;
 
   // A made-up cathedral: noise that fades out over a few seconds.
   function impulse(ctx, seconds, decay) {
@@ -159,26 +161,30 @@
     return buf;
   }
 
+  // Quiet television hiss with a long echo, so the bottom of the hole sounds far away.
   function audioGraph() {
     if (actx) return true;
     try {
       var AC = window.AudioContext || window.webkitAudioContext;
-      if (!AC || !vid) return false;
+      if (!AC) return false;
       actx = new AC();
-      var src = actx.createMediaElementSource(vid);
-      var lp = actx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3400;
-      dry = actx.createGain(); dry.gain.value = 0.55;
-      wet = actx.createGain(); wet.gain.value = 0.9;
+      var nb = actx.createBuffer(1, actx.sampleRate * 2, actx.sampleRate), nd = nb.getChannelData(0);
+      for (var i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+      var src = actx.createBufferSource(); src.buffer = nb; src.loop = true;
+      var lp = actx.createBiquadFilter(); lp.type = 'bandpass'; lp.frequency.value = 2200; lp.Q.value = 0.5;
+      dry = actx.createGain(); dry.gain.value = 0.5;
+      wet = actx.createGain(); wet.gain.value = 1;
       var conv = actx.createConvolver(); conv.buffer = impulse(actx, 3.6, 2.6);
-      var delay = actx.createDelay(1.5); delay.delayTime.value = 0.38;
-      var fb = actx.createGain(); fb.gain.value = 0.4;
-      var echo = actx.createGain(); echo.gain.value = 0.35;
+      var delay = actx.createDelay(1.5); delay.delayTime.value = 0.42;
+      var fb = actx.createGain(); fb.gain.value = 0.45;
+      var echo = actx.createGain(); echo.gain.value = 0.4;
       master = actx.createGain(); master.gain.value = 0;
       src.connect(lp);
       lp.connect(dry); dry.connect(master);
       lp.connect(conv); conv.connect(wet); wet.connect(master);
       lp.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(echo); echo.connect(master);
       master.connect(actx.destination);
+      src.start();
       return true;
     } catch (e) { actx = null; return false; }
   }
@@ -190,22 +196,20 @@
     master.gain.setValueAtTime(master.gain.value, now);
     master.gain.linearRampToValueAtTime(v, now + (secs || 1.2));
   }
+  var FAR = 0.05, NEAR = 0.12;
 
   function phoneStart() {
-    if (!vid || phoneLive) return;
+    if (phoneLive) return;
     phoneLive = true;
+    if (holeTv) holeTv.start();
     var ok = audioGraph();
     if (actx && actx.state === 'suspended') actx.resume().catch(function () {});
-    vid.volume = 1;
-    var p = vid.play();
-    if (p && p.catch) p.catch(function () { tip.textContent = 'Tap for sound'; });
-    if (ok) level(soundOn ? (near ? 0.9 : 0.32) : 0, 2.5);
+    if (ok) level(soundOn ? (near ? NEAR : FAR) : 0, 2.5);
   }
   function phoneStop() {
-    if (!vid) return;
     phoneLive = false;
     level(0, 0.5);
-    setTimeout(function () { if (!phoneLive) vid.pause(); }, 600);
+    setTimeout(function () { if (!phoneLive && holeTv) holeTv.stop(); }, 600);
   }
 
   function pullCloser() {
@@ -213,22 +217,25 @@
     near = true;
     if (holeApi) holeApi.hold(true);
     var w = phoneEl.getBoundingClientRect().width;
-    var target = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.44, 420);
+    var target = Math.min(window.innerWidth * 0.84, window.innerHeight * 0.4, 400);
     phoneEl.classList.add('near');
-    phoneEl.style.transform = 'translate(-50%, -50%) scale(' + (target / w).toFixed(2) + ')';
-    vid.controls = true;
+    phoneEl.style.transform = 'translate(-50%, -62%) scale(' + (target / w).toFixed(2) + ')';
     backPhone.hidden = false;
-    if (actx) { dry.gain.value = 1; wet.gain.value = 0.25; level(soundOn ? 0.9 : 0, 0.8); }
-    if (vid.paused) vid.play().catch(function () {});
+    offer.hidden = false;
+    hole.classList.add('pill-near');
+    fine.textContent = 'Red drops you into a random video. Blue keeps you where you are.';
+    redBtn.disabled = blueBtn.disabled = false;
+    if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
   function putBack() {
     if (!near) return;
     near = false;
     phoneEl.classList.remove('near');
     phoneEl.style.transform = '';
-    vid.controls = false;
     backPhone.hidden = true;
-    if (actx) { dry.gain.value = 0.55; wet.gain.value = 0.9; level(soundOn ? 0.32 : 0, 1); }
+    offer.hidden = true;
+    hole.classList.remove('pill-near');
+    if (actx) { dry.gain.value = 0.5; wet.gain.value = 1; level(soundOn ? FAR : 0, 1); }
     if (holeApi) holeApi.hold(false);
   }
 
@@ -238,19 +245,50 @@
   });
   phoneEl.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && !near) { e.preventDefault(); pullCloser(); } });
   backPhone.addEventListener('click', putBack);
+  blueBtn.addEventListener('click', function () {
+    fine.textContent = 'The story ends. You wake up in your bed and believe whatever you want to believe.';
+    redBtn.disabled = blueBtn.disabled = true;
+    setTimeout(putBack, 1800);
+  });
+  redBtn.addEventListener('click', function () {
+    var v = window.Pill && Pill.random();
+    if (!v) return;
+    putBack();
+    pick(v);
+  });
   soundBtn.addEventListener('click', function () {
     soundOn = !soundOn;
     soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
     soundBtn.setAttribute('aria-pressed', String(soundOn));
     if (actx && actx.state === 'suspended') actx.resume().catch(function () {});
-    level(soundOn ? (near ? 0.9 : 0.32) : 0, 0.6);
-    if (soundOn && vid.paused && phoneLive) vid.play().catch(function () {});
+    level(soundOn ? (near ? NEAR : FAR) : 0, 0.6);
   });
   // A blocked autoplay recovers on the first touch inside the hole.
   hole.addEventListener('pointerdown', function () {
     if (phoneLive && actx && actx.state === 'suspended') actx.resume().catch(function () {});
-    if (phoneLive && vid.paused) vid.play().then(function () { tip.textContent = 'Tap to pull it closer'; }).catch(function () {});
   });
+
+  /* ---------- pop-up when the trailer ends ---------- */
+  var pop = $('#pill-pop'), aboutVid = $('#about-video'), popTv = null;
+  function popOpen() {
+    if (!pop || !window.Pill) return;
+    if (!popTv) popTv = Pill.build($('#pop-tv'));
+    pop.hidden = false; popTv.start();
+    try { $('#pop-red').focus({ preventScroll: true }); } catch (e) {}
+  }
+  function popClose() { if (!pop) return; pop.hidden = true; if (popTv) popTv.stop(); }
+  if (aboutVid && pop) {
+    aboutVid.addEventListener('ended', popOpen);
+    $('#pop-blue').addEventListener('click', popClose);
+    $('#pop-red').addEventListener('click', function () {
+      var v = Pill.random();
+      if (!v) return;
+      popClose();
+      SS.openPlayer(v);
+    });
+    pop.addEventListener('click', function (e) { if (e.target === pop) popClose(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) popClose(); });
+  }
 
   /* ---------- the dive ---------- */
   function dive() {

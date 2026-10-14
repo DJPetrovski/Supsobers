@@ -77,6 +77,15 @@
   function paintRelated(v) {
     var cta = $('#club-cta'), m = memberFor(v);
     if (cta) { cta.hidden = !m; if (m) cta.href = memberUrl(m); }
+    var meta = $('#rel-meta');
+    if (meta) {
+      var bits = [];
+      if (v.published) bits.push(new Date(v.published + 'T12:00:00').toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }));
+      if (v.seconds) bits.push(Math.round(v.seconds / 60) + ' min');
+      var tn = threadsOf(v.id).filter(function (t) { return !t.auto; }).map(function (t) { return t.title || t.name; }).filter(Boolean);
+      if (tn.length) bits.push('Storyline: ' + tn.slice(0, 2).join(', '));
+      meta.textContent = bits.join('  |  ');
+    }
   }
   // The videos that connect to this one spiral around it in their own tunnel.
   function setTunnel(v) {

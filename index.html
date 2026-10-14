@@ -124,14 +124,14 @@
 
     <!-- MEMBERS CLUB -->
     <section class="view page club" data-view="members" aria-labelledby="club-title" hidden>
-      <div class="arch" aria-hidden="false">
-        <div class="arch-frame">
-          <div class="arch-door">
-            <p class="arch-kicker">Behind the curtain</p>
-            <h2 id="club-title">Members<br>Only Club</h2>
-            <p class="arch-sub">The raw, uncensored versions</p>
-          </div>
+      <div class="marquee" aria-hidden="false">
+        <div class="marquee-top"><span>Now showing</span><span>Adults only</span></div>
+        <div class="marquee-sign">
+          <p class="arch-kicker">Off the record</p>
+          <h2 id="club-title">Members<br>Only Club</h2>
+          <p class="arch-sub">Raw. Uncensored. Straight to the back room.</p>
         </div>
+        <div class="marquee-ticket">Admit one</div>
       </div>
       <p class="page-lede club-lede">Every episode you see on the public channel, plus the cut we can't post for everyone. Members get the full, unfiltered version.</p>
       <p class="actions club-actions">
@@ -191,12 +191,17 @@
 
   <div class="hole" id="hole" role="dialog" aria-modal="true" aria-label="The rabbit hole: every video on the channel" hidden>
     <div class="hole-scene"><div class="hole-world"></div></div>
-    <div class="hole-phone" id="hole-phone" role="button" tabindex="0" aria-label="Pull the video at the bottom of the hole closer">
-      <div class="phone">
-        <div class="phone-btn pb-a"></div><div class="phone-btn pb-b"></div><div class="phone-btn pb-c"></div><div class="phone-btn pb-r"></div>
-        <div class="phone-body"><div class="phone-screen"><span class="phone-island" aria-hidden="true"></span><video id="hole-video" src="media/trailer.mp4" loop playsinline preload="none"></video></div></div>
+    <div class="hole-phone" id="hole-phone" role="button" tabindex="0" aria-label="A small television flickers at the bottom of the hole. Tap it.">
+      <div id="hole-tv"></div>
+      <span class="hole-phone-tip" id="phone-tip">Something is down there. Tap it.</span>
+    </div>
+    <div class="pill-offer" id="pill-offer" hidden>
+      <p class="pill-line">Too many options? Why not try the red pill or the blue pill?</p>
+      <div class="pill-row">
+        <button type="button" class="pillbtn red" id="pill-red">Red pill</button>
+        <button type="button" class="pillbtn blue" id="pill-blue">Blue pill</button>
       </div>
-      <span class="hole-phone-tip" id="phone-tip">Tap to pull it closer</span>
+      <p class="pill-fine" id="pill-fine">Red drops you into a random video. Blue keeps you where you are.</p>
     </div>
     <div class="hole-ui">
       <button type="button" class="pill" id="hole-exit">Climb out</button>
@@ -229,15 +234,29 @@
       <div class="player-frame"><iframe id="player-iframe" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
       <div class="related" id="related">
         <a class="btn btn-primary club-cta" id="club-cta" href="#members" target="_blank" rel="noopener" hidden>Watch the uncensored version (members)</a>
+        <p class="rel-meta" id="rel-meta"></p>
         <p class="rel-hint">The tunnel around this video holds the ones that connect to it. Tap one to fall deeper.</p>
       </div>
     </div>
     <p class="hole-title" id="player-title" aria-hidden="true"></p>
   </dialog>
 
+  <div class="pill-pop" id="pill-pop" role="dialog" aria-modal="true" aria-label="Red pill or blue pill" hidden>
+    <div class="pill-pop-card">
+      <div id="pop-tv"></div>
+      <p class="pill-line">Too many options? Why not try the red pill or the blue pill?</p>
+      <div class="pill-row">
+        <button type="button" class="pillbtn red" id="pop-red">Red pill</button>
+        <button type="button" class="pillbtn blue" id="pop-blue">Blue pill</button>
+      </div>
+      <p class="pill-fine">Red drops you into a random video. Blue sends you back.</p>
+    </div>
+  </div>
+
   <script src="js/rain.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/hole.js" defer></script>
+  <script src="js/pill.js" defer></script>
   <script src="js/tv.js" defer></script>
   <script src="js/web.js" defer></script>
 </body>
