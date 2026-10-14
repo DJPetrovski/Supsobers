@@ -1224,3 +1224,11 @@ html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .1
 @keyframes rw-rise { from { opacity: 0; transform: translateY(14px) scale(.96); } }
 @media (max-width: 600px) { .mc-runway { height: 250px; } .mc-runway::before { width: 300px; margin-left: -150px; } }
 .htv-screen.can-pick { cursor: pointer; }
+/* spotlight: you wearing it (cropped to show the print), a sticker on the car, or the cut-out product */
+.rw-spot.rw-body, .rw-spot.rw-head { align-items: flex-start; }
+.rw-body img, .rw-head img { max-width: none; max-height: none; border-radius: 0; object-fit: cover; filter: drop-shadow(0 8px 18px rgba(0,0,0,.6)); }
+.rw-body { overflow: hidden; } .rw-head { overflow: hidden; }
+.rw-body img { height: 195%; width: auto; margin-top: 0; }
+.rw-head img { height: 360%; width: auto; margin-top: 2%; }
+.rw-scenic img { max-width: min(96%, 560px); border-radius: 12px; box-shadow: 0 10px 34px rgba(0,0,0,.6); }
+.mc-card img { padding: 8%; }

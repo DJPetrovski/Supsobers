@@ -17,7 +17,7 @@
     track.textContent = '';
     items.forEach(function (it, i) {
       var a = el('a', 'mc-card'); a.href = it.url; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('data-i', i);
-      var img = el('img'); img.src = it.images[0]; img.alt = it.name; img.loading = i < 5 ? 'eager' : 'lazy'; img.decoding = 'async'; img.draggable = false;
+      var img = el('img'); img.src = (it.cutouts && it.cutouts[0]) || it.images[0]; img.alt = it.name; img.loading = i < 5 ? 'eager' : 'lazy'; img.decoding = 'async'; img.draggable = false;
       a.appendChild(img);
       if (it.soldOut) a.appendChild(el('span', 'mc-badge', 'Sold out'));
       a.addEventListener('click', function (e) { if (i !== cur) { e.preventDefault(); go(i); } });
@@ -55,7 +55,7 @@
         var t = el('button', 'mc-angle' + (k === 0 ? ' on' : '')); t.type = 'button'; t.setAttribute('aria-label', 'Angle ' + (k + 1));
         var im = el('img'); im.src = src; im.alt = ''; im.loading = 'lazy'; t.appendChild(im);
         t.addEventListener('click', function () {
-          var main = cards[cur] && cards[cur].querySelector('img'); if (main) main.src = src;
+          var main = cards[cur] && cards[cur].querySelector('img'); if (main) main.src = (it.cutouts && it.cutouts[k]) || src;
           Array.prototype.forEach.call(th.children, function (c) { c.classList.toggle('on', c === t); });
         });
         th.appendChild(t);
@@ -118,7 +118,10 @@
     clearTimeout(rwT);
     rwT = setTimeout(function () {
       var cast = stage.querySelector('.rw-cast'); cast.textContent = '';
-      var box = el('div', 'rw-spot'), im = el('img'); im.src = it.images[0]; im.alt = ''; im.draggable = false;
+      var box = el('div', 'rw-spot'), im = el('img'); im.alt = ''; im.draggable = false;
+      if (it.model) { box.classList.add(/hat|cap/i.test(it.name) ? 'rw-head' : 'rw-body'); im.src = it.model; }
+      else if (it.scene) { box.classList.add('rw-scenic'); im.src = it.scene; }
+      else im.src = (it.cutouts && it.cutouts[0]) || it.images[0];
       box.appendChild(im); box.appendChild(el('div', 'rw-pedestal')); cast.appendChild(box);
     }, 120);
   }

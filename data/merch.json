@@ -1,6 +1,20 @@
 {
- "updated": "2026-10-13",
+ "updated": "2026-10-14",
  "americanpatriot": [
+  {
+   "name": "Sup Sobers Sticker Large (SUP Board)",
+   "price": "$4.49",
+   "images": [
+    "https://d2j6dbq0eux0bg.cloudfront.net/images/40118369/5442193329.png"
+   ],
+   "url": "https://www.americanpatriot.ltd/Sup-Sobers-Sticker-Large-SUP-Board-p800946208",
+   "store": "americanpatriot",
+   "soldOut": false,
+   "scene": "img/scene/sup-sobers-sticker-large-sup-board.webp",
+   "cutouts": [
+    "img/merch/sup-sobers-sticker-large-sup-board-0.webp"
+   ]
+  },
   {
    "name": "Sobering Stories 9/11 Decal",
    "price": "$9.99",
@@ -11,9 +25,8 @@
    "store": "americanpatriot",
    "soldOut": false,
    "scene": "img/scene/sobering-stories-9-11-decal.webp",
-   "focus": [
-    0.334,
-    0.797
+   "cutouts": [
+    "img/merch/sobering-stories-9-11-decal-0.webp"
    ]
   },
   {
@@ -26,9 +39,8 @@
    "store": "americanpatriot",
    "soldOut": false,
    "scene": "img/scene/sobering-stories-might-mean-somethin-stickers.webp",
-   "focus": [
-    0.705,
-    0.6
+   "cutouts": [
+    "img/merch/sobering-stories-might-mean-somethin-stickers-0.webp"
    ]
   },
   {
@@ -40,7 +52,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-Hoodie-Blk-p822840778",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/sobering-stories-might-mean-somethin-hoodie-blk.webp"
+   "model": "img/model/sobering-stories-might-mean-somethin-hoodie-blk.webp",
+   "cutouts": [
+    null
+   ]
   },
   {
    "name": "Sobering Stories Might Mean Somethin' S/S (White)",
@@ -51,7 +66,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-S-S-White-p822836208",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/sobering-stories-might-mean-somethin-s-s-white.webp"
+   "model": "img/model/sobering-stories-might-mean-somethin-s-s-white.webp",
+   "cutouts": [
+    null
+   ]
   },
   {
    "name": "Sobering Stories Might Mean Somethin' S/S (Black)",
@@ -62,7 +80,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-S-S-Black-p822840762",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/sobering-stories-might-mean-somethin-s-s-black.webp"
+   "model": "img/model/sobering-stories-might-mean-somethin-s-s-black.webp",
+   "cutouts": [
+    null
+   ]
   },
   {
    "name": "Just a Coincidence S/S (Sobering Stories)",
@@ -73,7 +94,10 @@
    "url": "https://www.americanpatriot.ltd/Just-a-Coincidence-S-S-Sobering-Stories-p805877108",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/just-a-coincidence-s-s-sobering-stories.webp"
+   "model": "img/model/just-a-coincidence-s-s-sobering-stories.webp",
+   "cutouts": [
+    null
+   ]
   },
   {
    "name": "Sobering Stories Specific Ocean S/S (White)",
@@ -84,7 +108,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Specific-Ocean-S-S-White-p805437902",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/sobering-stories-specific-ocean-s-s-white.webp"
+   "model": "img/model/sobering-stories-specific-ocean-s-s-white.webp",
+   "cutouts": [
+    null
+   ]
   },
   {
    "name": "Sobering Stories Sticker",
@@ -96,9 +123,8 @@
    "store": "americanpatriot",
    "soldOut": false,
    "scene": "img/scene/sobering-stories-sticker.webp",
-   "focus": [
-    0.715,
-    0.7
+   "cutouts": [
+    "img/merch/sobering-stories-sticker-0.webp"
    ]
   },
   {
@@ -110,7 +136,10 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Specific-Ocean-Red-S-S-p776969939",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/sobering-stories-specific-ocean-red-s-s.webp"
+   "model": "img/model/sobering-stories-specific-ocean-red-s-s.webp",
+   "cutouts": [
+    null
+   ]
   },
   {
    "name": "Sobering Stories Specific Ocean (Black) S/S",
@@ -121,7 +150,24 @@
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Specific-Ocean-Black-S-S-p776982013",
    "store": "americanpatriot",
    "soldOut": false,
-   "model": "img/model/sobering-stories-specific-ocean-black-s-s.webp"
+   "model": "img/model/sobering-stories-specific-ocean-black-s-s.webp",
+   "cutouts": [
+    null
+   ]
+  },
+  {
+   "name": "Sup Sobers Black (Front/Back) S/S",
+   "price": "$29.99",
+   "images": [
+    "https://d2j6dbq0eux0bg.cloudfront.net/images/40118369/4981885300.jpg"
+   ],
+   "url": "https://www.americanpatriot.ltd/Sup-Sobers-Black-Front-Back-S-S-p759628195",
+   "store": "americanpatriot",
+   "soldOut": false,
+   "model": "img/model/sup-sobers-black-front-back-s-s.webp",
+   "cutouts": [
+    null
+   ]
   }
  ],
  "fourthwallStore": "https://the-sober-sector-shop.fourthwall.com",
@@ -136,7 +182,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/members-only-jacket-dj-edition",
    "store": "fourthwall",
-   "soldOut": true
+   "soldOut": true,
+   "cutouts": [
+    "img/merch/members-only-jacket-dj-edition-0.webp",
+    "img/merch/members-only-jacket-dj-edition-1.webp",
+    "img/merch/members-only-jacket-dj-edition-2.webp"
+   ]
   },
   {
    "name": "YouTube Or Die Hoodie",
@@ -149,7 +200,12 @@
    "url": "https://the-sober-sector-shop.fourthwall.com/products/youtube-or-die-hoodie",
    "store": "fourthwall",
    "soldOut": true,
-   "model": "img/model/youtube-or-die-hoodie.webp"
+   "model": "img/model/youtube-or-die-hoodie.webp",
+   "cutouts": [
+    "img/merch/youtube-or-die-hoodie-0.webp",
+    "img/merch/youtube-or-die-hoodie-1.webp",
+    "img/merch/youtube-or-die-hoodie-2.webp"
+   ]
   },
   {
    "name": "Sup Sobers Corduroy Dad Hat",
@@ -161,7 +217,13 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sup-sobers-corduroy-dad-hat",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sup-sobers-corduroy-dad-hat.webp",
+   "cutouts": [
+    "img/merch/sup-sobers-corduroy-dad-hat-0.webp",
+    "img/merch/sup-sobers-corduroy-dad-hat-1.webp",
+    "img/merch/sup-sobers-corduroy-dad-hat-2.webp"
+   ]
   },
   {
    "name": "Sober Trucker Hat",
@@ -173,7 +235,13 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-trucker-hat",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sober-trucker-hat.webp",
+   "cutouts": [
+    "img/merch/sober-trucker-hat-0.webp",
+    "img/merch/sober-trucker-hat-1.webp",
+    "img/merch/sober-trucker-hat-2.webp"
+   ]
   },
   {
    "name": "We Subscribe T-Shirt",
@@ -185,7 +253,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/we-subscribe-t-shirt",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "The Sober Bag",
@@ -197,7 +270,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/the-sober-bag",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "The Sober Bag",
@@ -209,7 +287,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/the-sober-bag-2",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "Sober Sector Crewneck",
@@ -221,7 +304,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-crewneck",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    "img/merch/sober-sector-crewneck-0.webp",
+    "img/merch/sober-sector-crewneck-1.webp",
+    null
+   ]
   },
   {
    "name": "Sober Sector Courdoroy Dad Hat",
@@ -233,7 +321,13 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-courdoroy-dad-hat",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sober-sector-courdoroy-dad-hat.webp",
+   "cutouts": [
+    "img/merch/sober-sector-courdoroy-dad-hat-0.webp",
+    "img/merch/sober-sector-courdoroy-dad-hat-1.webp",
+    "img/merch/sober-sector-courdoroy-dad-hat-2.webp"
+   ]
   },
   {
    "name": "Effeminate Members Only Jacket (Sober Edition)",
@@ -245,7 +339,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/effeminate-members-only-jacket-sober-edition",
    "store": "fourthwall",
-   "soldOut": true
+   "soldOut": true,
+   "cutouts": [
+    "img/merch/effeminate-members-only-jacket-sober-edition-0.webp",
+    "img/merch/effeminate-members-only-jacket-sober-edition-1.webp",
+    "img/merch/effeminate-members-only-jacket-sober-edition-2.webp"
+   ]
   },
   {
    "name": "YouTube Shorts Shorts (Athletic/Swim Edition)",
@@ -257,7 +356,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/youtube-shorts-shorts-athletic-swim-edition",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "Might Mean Somethin' Tee",
@@ -270,7 +374,12 @@
    "url": "https://the-sober-sector-shop.fourthwall.com/products/might-mean-somethin-tee",
    "store": "fourthwall",
    "soldOut": false,
-   "model": "img/model/might-mean-somethin-tee.webp"
+   "model": "img/model/might-mean-somethin-tee.webp",
+   "cutouts": [
+    null,
+    null,
+    "img/merch/might-mean-somethin-tee-2.webp"
+   ]
   },
   {
    "name": "DJ Desk Pad",
@@ -282,7 +391,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/dj-desk-pad",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    "img/merch/dj-desk-pad-0.webp",
+    "img/merch/dj-desk-pad-1.webp",
+    null
+   ]
   },
   {
    "name": "You're A Towel",
@@ -292,23 +406,9 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/youre-a-towel",
    "store": "fourthwall",
-   "soldOut": false
-  },
-  {
-   "name": "Sober Sector Sticket Sheet",
-   "price": "$15.00",
-   "images": [
-    "https://imgproxy.fourthwall.dev/BRJ23_O_HqCQEvQn79Rl6Fo-UGWRJoP7XtSLGh6ep7M/w:1920/sm:1/enc/pakgbfhiu93vQbTv/nu0SrYSCCHMNjHtb/6zLUgR4HvAk_RKw-/GNjCxPkJW6D1008R/gTDsV9y7sbiGOssp/dNyIBa08nZmrkaHk/B6rn8YZp79Gh2Z1M/JJkNRLOdaZw7rqPX/w1qHeSxTm6AgJfnf/dlgTLJOWHn180R5N/dXUBmNRhk5OZ68PL/wZWsrjOyyU4X0e48/MIHwURD79AjgjEju/ypeZU3ty3W7axCLT/-ThBmMInBQA.jpg",
-    "https://imgproxy.fourthwall.dev/MQWsC7ugY2NrczAv9walwM9cAuG5kajb-MnG1bPuLj4/w:1920/sm:1/enc/sWM_D5hnh2_kd_8W/KztitPqc4SgRg5Ad/9OTuhHT8t7MBb7L0/qpzNzEix2zwJKntQ/ZzvF10Pc2V0IPVBu/xMoQuEw42NFntg7v/igAoWDH9jbdA4q7D/cG_dQyUPdICcBo7C/2baaVVRsZglJdkkX/k_Eb2YSGjWJDgsE2/6RT4ThlSrUJq5ivr/ypZup9JqBuNJCfq6/AdMdaWk0Tel2-w-T/daPNSekD3wqvU3rC/XizNLl2-REI.jpg",
-    "https://imgproxy.fourthwall.dev/o-iwYUWdhg7bJ5jIekSamOkv30tYH2h-IsQFyI5COKI/w:1920/sm:1/enc/QkKjuae0Y-P-htoO/BhDJEGshU2gaDD64/vA-F3uO4buC0rzCq/db3UWV0u4j33HBwS/vR0YLmO4QhFX4V3V/FkFNCW_O7-txh1Dp/pF30j5_X2zgXRNNt/OOqpwrXxfLsWGRrW/T_oPBTOJJC0ZdReI/0XGVN0Zx7hgZJyN8/lVUHRlcq4Ni-Uha_/Bxq5vQsXrjWdhzao/IQBTINqfRRwJxnqc/jVhpVBYGcW-7mCKx/TusxYaVqAEY.jpg"
-   ],
-   "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-sticket-sheet",
-   "store": "fourthwall",
    "soldOut": false,
-   "scene": "img/scene/sober-sector-sticket-sheet.webp",
-   "focus": [
-    0.572,
-    0.54
+   "cutouts": [
+    "img/merch/youre-a-towel-0.webp"
    ]
   },
   {
@@ -321,7 +421,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/coffee-mug",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    "img/merch/coffee-mug-0.webp",
+    "img/merch/coffee-mug-1.webp",
+    "img/merch/coffee-mug-2.webp"
+   ]
   },
   {
    "name": "Sup Sobers Hoodie",
@@ -334,7 +439,12 @@
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sup-sobers-hoodie",
    "store": "fourthwall",
    "soldOut": false,
-   "model": "img/model/sup-sobers-hoodie.webp"
+   "model": "img/model/sup-sobers-hoodie.webp",
+   "cutouts": [
+    "img/merch/sup-sobers-hoodie-0.webp",
+    "img/merch/sup-sobers-hoodie-1.webp",
+    null
+   ]
   },
   {
    "name": "Show That Belly Top",
@@ -346,7 +456,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/show-that-belly-top",
    "store": "fourthwall",
-   "soldOut": true
+   "soldOut": true,
+   "cutouts": [
+    "img/merch/show-that-belly-top-0.webp",
+    "img/merch/show-that-belly-top-1.webp",
+    "img/merch/show-that-belly-top-2.webp"
+   ]
   },
   {
    "name": "YouTube Shorts Shorts (Booty Edition)",
@@ -358,7 +473,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/youtube-shorts-shorts-booty-edition",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "Kids Sober Sector T-shirt",
@@ -370,7 +490,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/kids-sober-sector-t-shirt",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "SUP-Board Heavyweight Tee",
@@ -383,7 +508,12 @@
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sup-board-heavyweight-tee",
    "store": "fourthwall",
    "soldOut": false,
-   "model": "img/model/sup-board-heavyweight-tee.webp"
+   "model": "img/model/sup-board-heavyweight-tee.webp",
+   "cutouts": [
+    "img/merch/sup-board-heavyweight-tee-0.webp",
+    "img/merch/sup-board-heavyweight-tee-1.webp",
+    null
+   ]
   },
   {
    "name": "YouTube Shorts Hoochie Daddy Shorts (Hoochie Daddy Edition)",
@@ -395,7 +525,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/youtube-shorts-hoochie-daddy-shorts-hoochie-daddy-edition",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    null,
+    null
+   ]
   },
   {
    "name": "Chalk Outline Tee",
@@ -408,40 +543,11 @@
    "url": "https://the-sober-sector-shop.fourthwall.com/products/chalk-outline-tee",
    "store": "fourthwall",
    "soldOut": false,
-   "model": "img/model/chalk-outline-tee.webp"
-  },
-  {
-   "name": "Sober Sector Decal",
-   "price": "$10.00",
-   "images": [
-    "https://imgproxy.fourthwall.dev/jNxKLqaluGgDRv1scV1CUqEX82rbmU6D8GMyvun2iqU/w:1920/sm:1/enc/JiRm7o0S6CdTcDKz/8SIqKrn0kkrzM1Us/pjv2iqTr56iHett3/nAYYphtyo1NTPZ7M/JUHnt3bXq0YiopcE/aMJ64bkJ2M856DVu/LeVaXCaoBbwZ2-Et/Cm_KxIM7Xfaj6C28/1VZZzAyumRidR21u/ZGVPpGFj1vmF79qG/N0Qg9gggJ5BGjtAn/vD5hjrTzOHv2h-Ym/4qYHVcWpUVkbAHOn/rP08_Y4fge_DsE6u/H8cqX3BT2AU.jpg",
-    "https://imgproxy.fourthwall.dev/egPa0eRpTazmH_BCv1whaVJBofWa1sdQNtGfC6AU-TM/w:1920/sm:1/enc/BVClln1FEPuw-55v/ffiBezG4E0C4ua_6/7F9JBY-GEgy0VngU/cmRurGr8HdYRZqyv/KcPJFgEvH6yB66eB/jXU0KQ3dNbhl4B2D/sfG1sm_0q7kIBR5E/7hp__sYT7oRU0BX1/QL9yJUa_UkMx8CUt/-Tv5YPenCi6DhAxG/mjevV9tJU3RtHkmk/L4nXmpuy9nv_ZZoc/GUiAV_HgORKpc6UH/p94IOq2kma-6vFSW/_Z9otijYPA8.jpg",
-    "https://imgproxy.fourthwall.dev/Sfq2ElCIKHyOxG7mz0rpenNDFeyIPzmiWQmHQ476aig/w:1920/sm:1/enc/RbTimstSxmeDB7C6/fkyYJU-iQKBihDaE/9JAW5prRkIptiFOw/MdCHKxTOcyXv4NHI/Pqt2qQ73kIgNA5_x/DrcbS5AZBb4b7Dmy/lFGldMSSNSNQDjsk/HHOOp-0HDyk_i287/Mzdxps9TLHpK6KgT/E5aBbnStsNCB_9x6/lncXKafJvHzfeHn6/0aRCpiTbFM6ZkKLy/OE3OBgT5v1tP_Ik4/NQCT7sSIhsXOqEo6/AjphxSUk9VM.jpg"
-   ],
-   "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-decal",
-   "store": "fourthwall",
-   "soldOut": false,
-   "scene": "img/scene/sober-sector-decal.webp",
-   "focus": [
-    0.4275,
-    0.5
-   ]
-  },
-  {
-   "name": "DJ Petrovski Holographic Sticker",
-   "price": "$9.00",
-   "images": [
-    "https://imgproxy.fourthwall.dev/OBygZ_ljv-uD6gMekl-HCll5MX2iz25WScZQUV41CMI/w:1920/sm:1/enc/uEIzd78IQvwz9KKv/rdeVg248lwz-_hFZ/drHIMUL4WXZxQ492/ro9oyaRUN6xwLMAB/TyjcIhwS5kQDz9Qc/01iTyWNk0TGyRbuV/XAFKBqA4VNqWS8FX/my_apXAAlpUmZNRC/w5Kq_F77HbwAlG7D/DHv5XneRCT0XMuxR/bDI57E2qnxN-AfsT/HrT1nETwE9XOiiCT/qpAXvSewDq15ylt6/rWDmIiihTRtpwrId/RzZqcszBkgM.jpg",
-    "https://imgproxy.fourthwall.dev/kpbnBdTkD9Os6SMt47ZA4_OlJ-JC6fKHp2kdqkQcFBc/w:1920/sm:1/enc/exEOfs-doUIHGHA7/fn0JTp6xlRBrvgAc/K9QdXVqUm34JYw1m/t6rI6PpJ3103A7Yh/A8c4kKJhLIWt2Gny/LvCk2dpuU3eJxhxL/GLyOzZE1F6xhcQ-a/AF6vpdVtznsASydX/MycspPxVhdr4iAIr/Y6NFahUBAnyZE31I/ulEsVTZ7sYQyJqyH/OUPnR1YZW9NokSfC/IbEwMSAUWoNXpgV-/iXdSe-hqOjlGbNWc/3wCTXRiX64Q.jpg",
-    "https://imgproxy.fourthwall.dev/KwNen8SUQPHx_jNOWLihOiJzJWOYVGwohIfF25EQinQ/w:1920/sm:1/enc/L5p0g96n9e2RUHXA/9VsihDqkIkBxL6BK/Sgs0emcRC1x42jdr/3szoNsAk1J0RAhL_/tQWJ0Kmy_a1-o9dv/pMRPuwu8GLzFjhIo/fpWBzV2duikPZr7X/WjtfeRJJ0eBCMnnv/lT6olKJh2cZON1rW/lZnk1cJI9yqK_BF4/e8_1FoAjxb5pdPwa/n_KAS85hsmJbI8yq/WolhFvBvVOVrMOIa/FQrJXW-0dQ4l7s63/z5gQoWzpI4Y.jpg"
-   ],
-   "url": "https://the-sober-sector-shop.fourthwall.com/products/dj-petrovski-holographic-sticker",
-   "store": "fourthwall",
-   "soldOut": false,
-   "scene": "img/scene/dj-petrovski-holographic-sticker.webp",
-   "focus": [
-    0.572,
-    0.4
+   "model": "img/model/chalk-outline-tee.webp",
+   "cutouts": [
+    "img/merch/chalk-outline-tee-0.webp",
+    "img/merch/chalk-outline-tee-1.webp",
+    "img/merch/chalk-outline-tee-2.webp"
    ]
   },
   {
@@ -454,7 +560,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-blanky",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "cutouts": [
+    null,
+    "img/merch/sober-sector-blanky-1.webp",
+    "img/merch/sober-sector-blanky-2.webp"
+   ]
   }
  ]
 }

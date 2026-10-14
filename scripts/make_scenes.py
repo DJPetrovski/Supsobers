@@ -14,6 +14,12 @@ def cut(img, mode):
         x0, y0, x1, y1 = [float(v) for v in mode[5:].split(',')]
         c = img[int(y0 * h):int(y1 * h), int(x0 * w):int(x1 * w)]
         return c, np.ones(c.shape[:2], np.float32)
+    if mode == 'textstroke':                  # words only, with a black stroke round them (no background block)
+        bright = (img.max(2) > 70).astype(np.uint8); bright = cv2.morphologyEx(bright, cv2.MORPH_OPEN, np.ones((2, 2), np.uint8))
+        stroke = cv2.dilate(bright, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (13, 13)))
+        out = np.where(bright[..., None] > 0, img, 0).astype(np.uint8)
+        ys, xs = np.where(stroke > 0); y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+        return out[y0:y1, x0:x1], cv2.GaussianBlur(stroke[y0:y1, x0:x1].astype(np.float32), (0, 0), 1.2)
     if mode == 'bright':                      # sheet/panel lighter than its surroundings
         g = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY); m = (g > 243).astype(np.uint8)
         m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
@@ -50,15 +56,14 @@ def place(scene, st, al, cx, cy, wfrac, rot=0, cyl=None):
     return np.clip(out, 0, 255).astype(np.uint8)
 
 # which photo each sticker goes on, how, and where (fractions of the photo)
-CAR = dict(img='car.jpg'); BOTTLE = dict(img='bottles.jpg')
+CAR = dict(img='car2.jpg')
 CFG = {
- 'Sobering Stories 9/11 Decal':                      dict(CAR, cut='whole', at=(.334, .797), w=.14, rot=-1),
- "Sobering Stories Might Mean Somethin' Stickers":   dict(CAR, cut='whole', at=(.705, .60), w=.10, rot=-3),
- 'Sobering Stories Sticker':                         dict(CAR, cut='flood', at=(.715, .70), w=.055, rot=4),
- 'Sober Sector Sticket Sheet':                       dict(BOTTLE, cut='bright', at=(.572, .54), w=.088, rot=-4, cyl=.62),
- 'Sober Sector Decal':                               dict(BOTTLE, cut='crop:.13,.30,.85,.74', at=(.4275, .50), w=.095, rot=3, cyl=.62),
- 'DJ Petrovski Holographic Sticker':                 dict(BOTTLE, cut='flood', at=(.572, .40), w=.08, rot=-6, cyl=.62),
+ 'Sobering Stories 9/11 Decal':                      dict(CAR, cut='whole', at=(.26, .545), w=.28),
+ "Sobering Stories Might Mean Somethin' Stickers":   dict(CAR, cut='textstroke', at=(.26, .545), w=.27, rot=-2),
+ 'Sobering Stories Sticker':                         dict(CAR, cut='flood', at=(.76, .552), w=.105, rot=3),
+ 'Sup Sobers Sticker Large (SUP Board)':             dict(CAR, cut='flood', at=(.37, .385), w=.19, rot=-1),
 }
+CROP = (.31, .70)    # vertical slice of the photo to show
 if __name__ == '__main__':
     from PIL import Image
     dp = os.path.join(ROOT, 'data/merch.json'); d = json.load(open(dp))
@@ -68,7 +73,8 @@ if __name__ == '__main__':
         sc = cv2.imread(os.path.join(UP, c['img']))
         st, al = cut(fetch(it['images'][0]), c['cut'])
         out = place(sc, st, al, c['at'][0], c['at'][1], c['w'], c.get('rot', 0), c.get('cyl'))
+        H0 = out.shape[0]; out = out[int(CROP[0] * H0):int(CROP[1] * H0)]
         out = cv2.resize(out, (1100, int(1100 * out.shape[0] / out.shape[1])), interpolation=cv2.INTER_AREA)
         fn = 'img/scene/%s.webp' % slug(it['url']); Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGR2RGB)).save(os.path.join(ROOT, fn), quality=86, method=6)
-        it['scene'] = fn; it['focus'] = [c['at'][0], c['at'][1]]; print('ok', it['name'])
+        it['scene'] = fn; it.pop('focus', None); print('ok', it['name'])
     json.dump(d, open(dp, 'w'), indent=1)

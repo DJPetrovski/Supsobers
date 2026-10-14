@@ -11,12 +11,13 @@ OUT = os.path.join(os.path.dirname(__file__), '..', 'data', 'merch.json')
 def get(u):
     return urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}), timeout=30).read().decode('utf8', 'replace')
 
-urls = [u for u in re.findall(r'<loc>([^<]+)</loc>', get(SITE + '/ecstore-1-sitemap.xml')) if 'sobering' in u.lower()]
+urls = [u for u in re.findall(r'<loc>([^<]+)</loc>', get(SITE + '/ecstore-1-sitemap.xml')) if re.search(r'sobering|sup-sobers', u.lower())]
 print(len(urls), 'candidate products')
 items = []
 with sync_playwright() as p:
     b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1280, 'height': 900})
     for u in urls:
+      for attempt in range(2):
         try:
             pg.goto(u, wait_until='domcontentloaded', timeout=30000)
             pg.wait_for_selector('h1.product-details__product-title', state='attached', timeout=20000); pg.wait_for_timeout(2500)
@@ -27,13 +28,13 @@ with sync_playwright() as p:
               const body = document.body.innerText;
               return {name:t.trim(), price:(pr.textContent||pr.content||'').trim(), imgs, out:/out of stock|sold out/i.test(body.slice(0,6000))};
             }""")
-            if 'sobering' not in d['name'].lower(): print('skip', d['name']); continue
+            if not re.search(r'sobering|sup sobers', d['name'].lower()): print('skip', d['name']); break
             imgs = []
             for s in d['imgs']:
                 s = re.sub(r'/(\d+x\d+|[a-z]\d+)/', '/', s)
                 if s not in imgs: imgs.append(s)
             items.append({'name': d['name'], 'price': d['price'], 'images': imgs[:6], 'url': u, 'store': 'americanpatriot', 'soldOut': d['out']})
-            print('ok', d['name'], d['price'], len(imgs))
+            print('ok', d['name'], d['price'], len(imgs)); break
         except Exception as e:
             print('fail', u, e)
     b.close()
@@ -46,6 +47,7 @@ def fget(u):
     b = r.read()
     if r.headers.get('Content-Encoding') == 'gzip': b = gzip.decompress(b)
     return b.decode('utf8', 'replace')
+EXCLUDE = ('Sober Sector Sticket Sheet', 'Sober Sector Decal', 'DJ Petrovski Holographic Sticker')   # no longer sold
 fw = []
 try:
     for u in re.findall(r'<loc>([^<]*/products/[^<]+)</loc>', fget(FW + '/sitemap.xml')):
@@ -59,6 +61,7 @@ try:
                 price = o.get('price') or (o.get('lowPrice') if isinstance(o, dict) else '')
                 imgs = d.get('image') or []
                 if isinstance(imgs, str): imgs = [imgs]
+                if d['name'] in EXCLUDE: break
                 fw.append({'name': d['name'], 'price': ('$%.2f' % float(price)) if price else '', 'images': imgs[:4], 'url': u, 'store': 'fourthwall',
                            'soldOut': 'OutOfStock' in json.dumps(o)})
                 print('ok fw', d['name']); break
