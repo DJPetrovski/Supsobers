@@ -944,3 +944,53 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
 .hole-hint li { position: relative; padding: 4px 0 4px 26px; font-size: 0.85rem; line-height: 1.4; color: #e4dfdb; }
 .hole-hint li::before { content: "i"; position: absolute; left: 0; top: 5px; width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid #c9c4c0; text-align: center; font: italic 700 11px/14px Georgia, serif; color: #c9c4c0; }
 .hole-hint.gone { opacity: 0; }
+
+/* =====================================================================
+   The pill figure: DJ with a pill in each hand
+   ===================================================================== */
+.hole-phone { width: clamp(90px, 15vmin, 160px); }
+.pillfig { position: relative; width: 100%; aspect-ratio: 800 / 781; }
+.pillfig-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; user-select: none;
+  filter: drop-shadow(0 0 22px rgba(255, 42, 53, 0.45)); animation: tvflick 6s steps(1) infinite; }
+.pillfig-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: overlay; background: var(--noise) 0 0 / 128px 128px; animation: tvnoise 0.3s steps(6) infinite; }
+.pp { position: absolute; top: 83.6%; width: 38%; height: 26%; transform: translate(-50%, -50%); padding: 0; border: 0; background: none; cursor: pointer; outline: none; }
+.pp-blue { left: 19.5%; } .pp-red { left: 80.6%; }
+.pp .gem { position: absolute; left: 50%; top: 50%; width: 36%; height: 21%; margin: -10.5% 0 0 -18%; border-radius: 999px; pointer-events: none;
+  transition: transform 0.45s cubic-bezier(.2, .9, .25, 1.2), filter 0.3s; animation: gemglow 1.9s ease-in-out infinite; }
+.pp-red .gem { background: radial-gradient(circle at 32% 26%, #ffc0c4, #ff2a35 42%, #7a000a); box-shadow: 0 0 22px 6px rgba(255, 42, 53, 0.75); transform: rotate(-10deg); }
+.pp-blue .gem { background: radial-gradient(circle at 32% 26%, #cfe0ff, #3d7bff 42%, #06217a); box-shadow: 0 0 22px 6px rgba(61, 123, 255, 0.75); transform: rotate(12deg); animation-delay: 0.9s; }
+.pp:hover .gem, .pp:focus-visible .gem { animation: none; filter: brightness(1.25); }
+.pp-red:hover .gem, .pp-red:focus-visible .gem { transform: translateY(-75%) scale(2.7) rotate(0); box-shadow: 0 0 34px 12px rgba(255, 42, 53, 0.9); }
+.pp-blue:hover .gem, .pp-blue:focus-visible .gem { transform: translateY(-75%) scale(2.7) rotate(0); box-shadow: 0 0 34px 12px rgba(61, 123, 255, 0.9); }
+.pp-cap { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 6px); width: 150%; text-align: center; font-size: 0.74rem; line-height: 1.25; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; text-shadow: 0 0 10px #000, 0 0 4px #000; opacity: 0.85; transition: opacity 0.3s; pointer-events: none; }
+.pp-red .pp-cap { color: #ff9aa0; } .pp-blue .pp-cap { color: #9ec0ff; }
+.pp:hover .pp-cap, .pp:focus-visible .pp-cap { opacity: 1; }
+@keyframes gemglow { 0%, 100% { filter: brightness(0.9); } 50% { filter: brightness(1.3); } }
+/* far away in the hole the captions would be unreadable specks; show them once it is close */
+.hole-phone:not(.near) .pp-cap { display: none; }
+.hole-phone:not(.near) .pp { pointer-events: none; }
+.hole-phone.near .pp-cap { font-size: clamp(0.62rem, 1.7vw, 0.8rem); }
+.pill-pop-card { width: min(520px, 94vw); }
+.pill-pop-card .pillfig { margin: 0 auto 30px; }
+.pill-pop-card .pp-cap { font-size: 0.7rem; }
+.pill-pop-card .pillfig-img { mix-blend-mode: normal; }
+
+/* the logo on the TV */
+.tv-logo { padding: 0; background: none; border: 0; box-shadow: none; aspect-ratio: 1; }
+.tv-logo svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)); }
+.lg-t { font-family: var(--display); font-size: 21px; letter-spacing: 3px; fill: #d9cfc8; stroke: #000; stroke-width: 2.4px; paint-order: stroke fill; }
+.lg-b { font-size: 15.5px; letter-spacing: 1.8px; fill: #ff6068; }
+
+.hole-phone.near .pp-cap { font-size: calc(0.82rem / var(--s, 1)); letter-spacing: 0.1em; transform: translate(-50%, calc(8px / var(--s, 1))); }
+.pp-red:hover .gem, .pp-red:focus-visible .gem { box-shadow: 0 0 18px 5px rgba(255, 42, 53, 0.85); transform: translateY(-70%) scale(2.2); }
+.pp-blue:hover .gem, .pp-blue:focus-visible .gem { box-shadow: 0 0 18px 5px rgba(61, 123, 255, 0.85); transform: translateY(-70%) scale(2.2); }
+.hole-phone::before { opacity: 0.6; }
+.pp-red:hover .gem, .pp-red:focus-visible .gem, .pp-blue:hover .gem, .pp-blue:focus-visible .gem { transform: translateY(-62%) scale(1.8); }
+.pp-cap { width: 115%; }
+.pp-blue .pp-cap { left: 62%; } .pp-red .pp-cap { left: 38%; }
+@media (max-width: 520px) {
+  .hole-ui { left: 6px; right: 6px; top: 8px; gap: 3px; }
+  .hole-ui .pill { padding: 6px 8px; font-size: 0.64rem; }
+  .hole-ui-right { gap: 3px; }
+  .hole-phone.near .pp-cap { font-size: calc(0.7rem / var(--s, 1)); }
+}

@@ -50,7 +50,6 @@
         <div class="home-tvwrap">
           <div class="tv htv" id="htv">
             <div class="tv-ant" aria-hidden="true"><i></i></div>
-            <div class="tv-sticker" aria-hidden="true"><img src="img/dj.png" alt="" width="998" height="663"></div>
             <div class="tv-body">
               <div class="tv-vents" aria-hidden="true"></div>
               <div class="tv-frame">
@@ -65,7 +64,20 @@
                 </div>
               </div>
               <div class="tv-panel" aria-hidden="true">
-                <div class="tv-badge">Sup<br>Sobers</div>
+                <div class="tv-badge tv-logo" aria-label="Sup Sobers">
+                  <svg viewBox="0 0 200 200" aria-hidden="true">
+                    <defs>
+                      <path id="lg-top" d="M 24 108 A 76 76 0 0 1 176 108"/>
+                      <path id="lg-bot" d="M 22 116 A 78 78 0 0 0 178 116"/>
+                      <clipPath id="lg-clip"><circle cx="100" cy="100" r="57"/></clipPath>
+                    </defs>
+                    <circle cx="100" cy="100" r="97" fill="#0c0204" stroke="#b5a8a1" stroke-width="3"/>
+                    <circle cx="100" cy="100" r="60" fill="#2a070c" stroke="#ff2a35" stroke-width="2.5"/>
+                    <image href="img/dj.png" x="40" y="62" width="120" height="80" clip-path="url(#lg-clip)" preserveAspectRatio="xMidYMid meet"/>
+                    <text class="lg-t"><textPath href="#lg-top" startOffset="50%" text-anchor="middle">SUP SOBERS</textPath></text>
+                    <text class="lg-t lg-b"><textPath href="#lg-bot" startOffset="50%" text-anchor="middle">SOBERING STORIES</textPath></text>
+                  </svg>
+                </div>
                 <div class="tv-knob"></div>
                 <div class="tv-knob tv-knob-b"></div>
                 <div class="tv-grille"></div>
@@ -257,12 +269,6 @@
       <div id="hole-tv"></div>
       <span class="hole-phone-tip" id="phone-tip">Something is down there. Tap it.</span>
     </div>
-    <div class="pill-offer" id="pill-offer" hidden>
-      <div class="pill-row">
-        <button type="button" class="pillbtn red" id="pill-red"><i class="cap"></i><span>See how far this rabbit hole goes</span></button>
-        <button type="button" class="pillbtn blue" id="pill-blue"><i class="cap"></i><span>Stay in Wonderland</span></button>
-      </div>
-    </div>
     <div class="hole-ui">
       <button type="button" class="pill" id="hole-exit">Climb out</button>
       <button type="button" class="pill" id="hole-back" hidden>Back up</button>
@@ -309,10 +315,6 @@
   <div class="pill-pop" id="pill-pop" role="dialog" aria-modal="true" aria-label="Red pill or blue pill" hidden>
     <div class="pill-pop-card">
       <div id="pop-tv"></div>
-      <div class="pill-row">
-        <button type="button" class="pillbtn red" id="pop-red"><i class="cap"></i><span>See how far this rabbit hole goes</span></button>
-        <button type="button" class="pillbtn blue" id="pop-blue"><i class="cap"></i><span>Stay in Wonderland</span></button>
-      </div>
     </div>
   </div>
 

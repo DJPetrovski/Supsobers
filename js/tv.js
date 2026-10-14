@@ -148,9 +148,8 @@
 
   /* ---------- the bottom of the hole: a small television you never reach ---------- */
   var phoneEl = $('#hole-phone'), soundBtn = $('#hole-sound'), backPhone = $('#phone-back'), tip = $('#phone-tip');
-  var offer = $('#pill-offer'), redBtn = $('#pill-red'), blueBtn = $('#pill-blue');
   var actx = null, master = null, dry = null, wet = null, near = false, soundOn = true, phoneLive = false;
-  var holeTv = window.Pill ? Pill.build($('#hole-tv')) : null;
+  var holeTv = window.Pill ? Pill.build($('#hole-tv'), { onPick: function (kind) { if (near) choose(kind); } }) : null;
 
   // A made-up cathedral: noise that fades out over a few seconds.
   function impulse(ctx, seconds, decay) {
@@ -218,11 +217,11 @@
     near = true;
     if (holeApi) holeApi.hold(true);
     var w = phoneEl.getBoundingClientRect().width;
-    var target = Math.min(window.innerWidth * 0.84, window.innerHeight * 0.4, 400);
+    var target = Math.min(window.innerWidth * 0.94, window.innerHeight * 0.74 * 1.024, 640);
     phoneEl.classList.add('near');
-    phoneEl.style.transform = 'translate(-50%, -62%) scale(' + (target / w).toFixed(2) + ')';
+    phoneEl.style.setProperty('--s', (target / w).toFixed(2));
+    phoneEl.style.transform = 'translate(-50%, -50%) scale(' + (target / w).toFixed(2) + ')';
     backPhone.hidden = false;
-    offer.hidden = false;
     hole.classList.add('pill-near');
     if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
@@ -232,7 +231,6 @@
     phoneEl.classList.remove('near');
     phoneEl.style.transform = '';
     backPhone.hidden = true;
-    offer.hidden = true;
     hole.classList.remove('pill-near');
     if (actx) { dry.gain.value = 0.5; wet.gain.value = 1; level(soundOn ? FAR : 0, 1); }
     if (holeApi) holeApi.hold(false);
@@ -244,18 +242,13 @@
   });
   phoneEl.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && !near) { e.preventDefault(); pullCloser(); } });
   backPhone.addEventListener('click', putBack);
-  blueBtn.addEventListener('click', function () {
-    var v = window.Pill && Pill.random('blue');
+  // Red pill = the deep end, blue pill = a lighter trip. Different video every time.
+  function choose(kind) {
+    var v = window.Pill && Pill.random(kind);
     if (!v) return;
     putBack();
     pick(v);
-  });
-  redBtn.addEventListener('click', function () {
-    var v = window.Pill && Pill.random('red');
-    if (!v) return;
-    putBack();
-    pick(v);
-  });
+  }
   soundBtn.addEventListener('click', function () {
     soundOn = !soundOn;
     soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
@@ -272,21 +265,13 @@
   var pop = $('#pill-pop'), aboutVid = $('#about-video'), popTv = null;
   function popOpen() {
     if (!pop || !window.Pill) return;
-    if (!popTv) popTv = Pill.build($('#pop-tv'));
+    if (!popTv) popTv = Pill.build($('#pop-tv'), { onPick: function (kind) { var v = Pill.random(kind); if (!v) return; popClose(); SS.openPlayer(v); } });
     pop.hidden = false; popTv.start();
-    try { $('#pop-red').focus({ preventScroll: true }); } catch (e) {}
   }
   function popClose() { if (!pop) return; pop.hidden = true; if (popTv) popTv.stop(); }
   document.addEventListener('ss:pill', popOpen);
   if (aboutVid && pop) {
     aboutVid.addEventListener('ended', popOpen);
-    $('#pop-blue').addEventListener('click', function () { var v = Pill.random('blue'); if (!v) return; popClose(); SS.openPlayer(v); });
-    $('#pop-red').addEventListener('click', function () {
-      var v = Pill.random('red');
-      if (!v) return;
-      popClose();
-      SS.openPlayer(v);
-    });
     pop.addEventListener('click', function (e) { if (e.target === pop) popClose(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) popClose(); });
   }
