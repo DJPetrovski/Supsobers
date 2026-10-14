@@ -1070,3 +1070,9 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
 @keyframes vglitchyt { 0% { margin-left: 0; } 12% { margin-left: -4%; } 26% { margin-left: 3%; } 40% { margin-left: -1.5%; } 58% { margin-left: 5%; } 74% { margin-left: -2%; } 100% { margin-left: 0; } }
 @keyframes tearmove { 0% { transform: translateY(0); } 25% { transform: translateY(-80%); } 50% { transform: translateY(150%); } 75% { transform: translateY(60%); } 100% { transform: translateY(-20%); } }
 @media (prefers-reduced-motion: reduce) { .htv-screen.glitching .htv-video, .htv-screen.glitching .htv-yt, .htv-screen.glitching .htv-tear { animation: none; opacity: 0; } }
+
+/* working dials */
+.htv-knob { cursor: grab; touch-action: none; outline: none; -webkit-tap-highlight-color: transparent; }
+.htv-knob:active { cursor: grabbing; }
+.htv-knob:hover, .htv-knob:focus-visible { filter: brightness(1.25); }
+.htv-knob:focus-visible { box-shadow: 0 9px 12px rgba(0, 0, 0, 0.8), 0 0 0 3px #fff; }

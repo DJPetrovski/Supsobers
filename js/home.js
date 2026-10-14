@@ -101,13 +101,30 @@
   var introT = 0, SEARCH_MS = 5500, CHANNEL_MS = 180000, started = false, soundOn = false, chanT = 0, onTrailer = true, cur = null;
   var yt = document.getElementById('htv-yt'), nowBtn = document.getElementById('htv-now'), nextBtn = document.getElementById('htv-next');
   function duck(level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'trailer', level: level } })); }
-  function ytCmd(fn) { try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: [] }), '*'); } catch (e) {} }
+  function ytCmd(fn, args) { try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: args || [] }), '*'); } catch (e) {} }
+  var volume = 60, knobCh = document.getElementById('htv-knob-ch'), knobVol = document.getElementById('htv-knob-vol'), volRot = -135;
+  var vdial = 0;
+  function paintVol() {
+    if (!(knobVol && knobVol.__drag)) vdial = soundOn ? volume : 0;
+    volRot = soundOn ? -135 + volume * 2.7 : -135;
+    if (knobVol && !knobVol.__drag) knobVol.style.setProperty('--rot', volRot + 'deg');
+    if (knobVol) knobVol.setAttribute('aria-valuenow', soundOn ? volume : 0);
+  }
   function applySound() {
     video.muted = !soundOn;
-    if (!yt.hidden) ytCmd(soundOn ? 'unMute' : 'mute');
+    video.volume = Math.max(0, Math.min(1, volume / 100));
+    if (!yt.hidden) { ytCmd(soundOn ? 'unMute' : 'mute'); if (soundOn) ytCmd('setVolume', [volume]); }
+    paintVol();
     soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
     soundBtn.setAttribute('aria-pressed', String(soundOn));
     duck(soundOn && started ? 0 : null);
+  }
+  function setVol(v, osdOn) {
+    volume = Math.max(0, Math.min(100, Math.round(v)));
+    if (volume <= 3) { soundOn = false; volume = Math.max(volume, 0); } else soundOn = true;
+    applySound();
+    if (started && onTrailer && soundOn && video.paused) video.play().catch(function () {});
+    if (osdOn !== false) showOsd(soundOn ? 'VOL ' + volume : 'MUTE');
   }
   function setSound(on) { soundOn = !!on; applySound(); if (on && onTrailer && started && video.paused) video.play().catch(function () {}); }
   soundBtn.addEventListener('click', function () { setSound(!soundOn); });
@@ -153,11 +170,55 @@
       var a = b.getAttribute('data-act');
       if (a === 'chup') { if (onTrailer) { clearTimeout(introT); started = true; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; onTrailer = false; } channel(); }
       else if (a === 'chdown') { if (onTrailer) { onTrailer = false; clearTimeout(introT); started = true; video.pause(); video.style.opacity = '0'; channel(); } else channel(true); }
-      else if (a === 'volup') { setSound(true); showOsd('VOL +'); }
-      else if (a === 'voldown') { setSound(false); showOsd('MUTE'); }
+      else if (a === 'volup') { setVol(volume + 15, true); }
+      else if (a === 'voldown') { setVol(soundOn ? volume - 15 : 0, true); }
       else if (a === 'ok') { if (cur) SS.openPlayer(cur); else showOsd('NO SIGNAL'); }
     });
   });
+
+  // The two round dials on the TV work: top = channel, bottom = volume.
+  function dial(knob, onTurn, onTap) {
+    if (!knob) return;
+    var center, last, moved, total, startX, startY;
+    function ang(e) { return Math.atan2(e.clientY - center.y, e.clientX - center.x) * 180 / Math.PI; }
+    knob.addEventListener('pointerdown', function (e) {
+      var r = knob.getBoundingClientRect(); center = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      last = ang(e); moved = 0; total = 0; startX = e.clientX; startY = e.clientY; knob.__drag = true;
+      knob.style.transition = 'none'; knob.setPointerCapture(e.pointerId); e.preventDefault();
+    });
+    knob.addEventListener('pointermove', function (e) {
+      if (!knob.__drag) return;
+      var a = ang(e), d = a - last; if (d > 180) d -= 360; if (d < -180) d += 360;
+      last = a; moved += Math.abs(d); total += d;
+      onTurn(d);
+    });
+    function up(e) {
+      if (!knob.__drag) return;
+      knob.__drag = false; knob.style.transition = '';
+      if (moved < 6 && Math.abs(e.clientX - startX) < 6 && Math.abs(e.clientY - startY) < 6) onTap();
+      paintVol();
+    }
+    knob.addEventListener('pointerup', up); knob.addEventListener('pointercancel', up);
+    knob.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); onTurn(30, true); }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); onTurn(-30, true); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onTap(); }
+    });
+  }
+  var chRot = 25, chAcc = 0;
+  dial(knobCh, function (d, key) {
+    chRot += d; knobCh.style.setProperty('--rot', chRot + 'deg'); chAcc += d;
+    if (Math.abs(chAcc) >= 40 || key) {
+      var back = chAcc < 0; chAcc = 0;
+      if (onTrailer) { clearTimeout(introT); started = true; onTrailer = false; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; channel(); }
+      else channel(back);
+    }
+  }, function () { document.querySelector('[data-act=chup]').click(); });
+  dial(knobVol, function (d) {
+    vdial = Math.max(0, Math.min(100, vdial + d / 2.7));
+    knobVol.style.setProperty('--rot', (-135 + vdial * 2.7) + 'deg');
+    setVol(vdial, true);
+  }, function () { setVol(soundOn ? 0 : 60, true); });
 
   function searching() {
     clearTimeout(introT); stopChannels(); started = false; onTrailer = true;
