@@ -39,7 +39,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-Hoodie-Blk-p822840778",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sobering-stories-might-mean-somethin-hoodie-blk.webp"
   },
   {
    "name": "Sobering Stories Might Mean Somethin' S/S (White)",
@@ -147,7 +148,8 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/youtube-or-die-hoodie",
    "store": "fourthwall",
-   "soldOut": true
+   "soldOut": true,
+   "model": "img/model/youtube-or-die-hoodie.webp"
   },
   {
    "name": "Sup Sobers Corduroy Dad Hat",
@@ -331,7 +333,8 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sup-sobers-hoodie",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sup-sobers-hoodie.webp"
   },
   {
    "name": "Show That Belly Top",

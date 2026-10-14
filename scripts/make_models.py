@@ -3,22 +3,24 @@ prints the design from the listing photo on the chest. Output: img/model/<slug>.
 Run: python3 scripts/make_models.py   (needs opencv-python, numpy, pillow)"""
 import cv2, json, os, re, urllib.request, numpy as np
 ROOT = os.path.join(os.path.dirname(__file__), '..')
-M = cv2.imread(os.path.join(ROOT, 'img/model/model.png'), cv2.IMREAD_UNCHANGED)
-BGR, A = M[..., :3], M[..., 3] / 255.0
-H, W = A.shape
-G = cv2.cvtColor(BGR, cv2.COLOR_BGR2GRAY); S = cv2.cvtColor(BGR, cv2.COLOR_BGR2HSV)[..., 1]
-
-# --- shirt mask (the plain white tee) ---
-cand = ((A > .5) & (G > 185) & (S < 32)).astype(np.uint8); cand[:150] = 0; cand[560:] = 0
-cand = cv2.morphologyEx(cand, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
-n, lab, st, _ = cv2.connectedComponentsWithStats(cand); k = 1 + np.argmax(st[1:, 4]); sh = (lab == k).astype(np.uint8)
-sh = cv2.morphologyEx(sh, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
-cnt, _ = cv2.findContours(sh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE); f = np.zeros_like(sh); cv2.drawContours(f, cnt, -1, 1, -1); sh = f
-sh = cv2.dilate(sh, np.ones((3, 3), np.uint8)) * (A > .5)
-SM = cv2.GaussianBlur(sh.astype(np.float32), (0, 0), 1.0)
-ys, xs = np.where(sh > 0); X0, X1, Y0, Y1 = xs.min(), xs.max(), ys.min(), ys.max()
-SW, SH = X1 - X0, Y1 - Y0
-SHADE = np.clip(cv2.GaussianBlur(G.astype(np.float32), (0, 0), 1.3) / float(np.median(G[sh > 0])), .35, 1.25)
+def setup(path, ymin=150, ymax=560, gmin=185, smax=32, dil=3):
+    """load a cut-out model and find the plain white garment on it"""
+    global BGR, A, H, W, G, S, SM, X0, X1, Y0, Y1, SW, SH, SHADE
+    M = cv2.imread(os.path.join(ROOT, path), cv2.IMREAD_UNCHANGED)
+    BGR, A = M[..., :3], M[..., 3] / 255.0
+    H, W = A.shape
+    G = cv2.cvtColor(BGR, cv2.COLOR_BGR2GRAY); S = cv2.cvtColor(BGR, cv2.COLOR_BGR2HSV)[..., 1]
+    cand = ((A > .5) & (G > gmin) & (S < smax)).astype(np.uint8); cand[:ymin] = 0; cand[ymax:] = 0
+    cand = cv2.morphologyEx(cand, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+    n, lab, st, _ = cv2.connectedComponentsWithStats(cand); k = 1 + np.argmax(st[1:, 4]); sh = (lab == k).astype(np.uint8)
+    sh = cv2.morphologyEx(sh, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
+    cnt, _ = cv2.findContours(sh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE); f = np.zeros_like(sh); cv2.drawContours(f, cnt, -1, 1, -1); sh = f
+    sh = cv2.dilate(sh, np.ones((dil, dil), np.uint8)) * (A > .5)
+    SM = cv2.GaussianBlur(sh.astype(np.float32), (0, 0), 1.0)
+    ys, xs = np.where(sh > 0); X0, X1, Y0, Y1 = xs.min(), xs.max(), ys.min(), ys.max()
+    SW, SH = X1 - X0, Y1 - Y0
+    SHADE = np.clip(cv2.GaussianBlur(G.astype(np.float32), (0, 0), 1.3) / float(np.median(G[sh > 0])), .35, 1.25)
+setup('img/model/model.png')
 
 # product -> where the print is in the listing photo, the shirt colour patch, and where it goes on the model
 # box / patch are fractions (x0,y0,x1,y1) / (x,y) of the listing image; w = print width as a fraction of the shirt, cy = print centre
@@ -67,14 +69,23 @@ def dress(listing, c):
     out[oy0:oy1, ox0:ox1] = out[oy0:oy1, ox0:ox1] * (1 - a[..., None]) + d * a[..., None]
     return np.dstack([np.clip(out, 0, 255).astype(np.uint8), (A * 255).astype(np.uint8)])
 
+HOODIE = {
+ "Might-Mean-Somethin-Hoodie":  dict(box=(.42,.40,.88,.70), patch=(.62,.30), w=.52, cy=.42),
+ "YouTube-Or-Die-Hoodie":       dict(box=(.29,.22,.45,.38), patch=(.60,.55), w=.15, cy=.34, cx=-.20),
+ "Sup-Sobers-Hoodie":           dict(box=(.50,.33,.65,.42), patch=(.45,.65), w=.11, cy=.34, cx=.17),
+}
 if __name__ == '__main__':
     from PIL import Image
     dp = os.path.join(ROOT, 'data/merch.json'); d = json.load(open(dp))
     for it in d['americanpatriot'] + d['fourthwall']:
-        key = find(it['name'], CFG) or find(slug(it['url']), CFG)
+        key = find(it['name'], CFG) or find(slug(it['url']), CFG); cfg = CFG.get(key) if key else None
+        if not key:
+            key = find(it['name'], HOODIE) or find(slug(it['url']), HOODIE); cfg = HOODIE.get(key) if key else None
+            if key: setup('img/model/model_hoodie.png', 120, 545, 165, 35)
+        else: setup('img/model/model.png')
         if not key: it.pop('model', None); continue
         try:
-            out = dress(fetch(it['images'][0]), CFG[key]); fn = 'img/model/%s.webp' % slug(it['url'])
+            out = dress(fetch(it['images'][0]), cfg); fn = 'img/model/%s.webp' % slug(it['url'])
             Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGRA2RGBA)).save(os.path.join(ROOT, fn), quality=88, method=6)
             it['model'] = fn; print('ok', it['name'])
         except Exception as e: print('skip', it['name'], e)
