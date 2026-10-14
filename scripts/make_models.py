@@ -3,9 +3,10 @@ prints the design from the listing photo on the chest. Output: img/model/<slug>.
 Run: python3 scripts/make_models.py   (needs opencv-python, numpy, pillow)"""
 import cv2, json, os, re, urllib.request, numpy as np
 ROOT = os.path.join(os.path.dirname(__file__), '..')
-def setup(path, ymin=150, ymax=560, gmin=185, smax=32, dil=3):
+UP = 3   # the cut-out is upscaled this much before dressing, so prints are drawn at high resolution
+def setup(path, ymin=150, ymax=560, gmin=185, smax=32, dil=3, up=1):
     """load a cut-out model and find the plain white garment on it"""
-    global BGR, A, H, W, G, S, SM, X0, X1, Y0, Y1, SW, SH, SHADE, TX
+    global BGR, A, H, W, G, S, SM, X0, X1, Y0, Y1, SW, SH, SHADE, TX, SH_MASK
     M = cv2.imread(os.path.join(ROOT, path), cv2.IMREAD_UNCHANGED)
     BGR, A = M[..., :3], M[..., 3] / 255.0
     H, W = A.shape
@@ -26,21 +27,26 @@ def setup(path, ymin=150, ymax=560, gmin=185, smax=32, dil=3):
         if len(c) > 20: mids.append((c.min() + c.max()) / 2)
     TX = float(np.median(mids)) if mids else (X0 + X1) / 2
     SHADE = np.clip(cv2.GaussianBlur(G.astype(np.float32), (0, 0), 1.3) / float(np.median(G[sh > 0])), .35, 1.25)
+    if up > 1:
+        def big(a, interp=cv2.INTER_CUBIC): return cv2.resize(a, (W * up, H * up), interpolation=interp)
+        b = big(BGR).astype(np.float32); BGR = np.clip(b + .6 * (b - cv2.GaussianBlur(b, (0, 0), 2.0)), 0, 255).astype(np.uint8)
+        A = np.clip(big(A.astype(np.float32)), 0, 1); SM = cv2.GaussianBlur(big(SM), (0, 0), 2.2); SM = np.clip((SM - .5) * 2.6 + .5, 0, 1); SHADE = big(SHADE)
+        H, W = H * up, W * up; X0, X1, Y0, Y1, SW, SH, TX = X0 * up, X1 * up, Y0 * up, Y1 * up, SW * up, SH * up, TX * up
 setup('img/model/model.png')
 
 # product -> where the print is in the listing photo, the shirt colour patch, and where it goes on the model
 # box / patch are fractions (x0,y0,x1,y1) / (x,y) of the listing image; w = print width as a fraction of the shirt, cy = print centre
 # (fraction of shirt height from the collar), cx = shift right of centre (fraction of shirt width)
 CFG = {
- 'Might-Mean-Somethin-S-S-White': dict(box=(.40,.40,.92,.74), patch=(.55,.88), w=.62, cy=.30),
- 'Might-Mean-Somethin-S-S-Black': dict(box=(.40,.40,.92,.74), patch=(.55,.88), w=.62, cy=.30),
- 'Just-a-Coincidence':           dict(box=(.24,.24,.74,.44), patch=(.50,.75), w=.50, cy=.27),
- 'Specific-Ocean-S-S-White':     dict(box=(.26,.26,.74,.53), patch=(.45,.78), w=.50, cy=.33),
- 'Specific-Ocean-Red-S-S':       dict(box=(.28,.30,.78,.58), patch=(.50,.68), w=.50, cy=.33),
- 'Specific-Ocean-Black-S-S':     dict(box=(.28,.33,.76,.56), patch=(.50,.72), w=.50, cy=.33),
- 'Sup-Sobers-Black-Front-Back-S-S': dict(box=(.20,.30,.42,.47), patch=(.25,.78), w=.26, cy=.26),
- 'Might-Mean-Somethin-Tee':      dict(box=(.36,.32,.65,.46), patch=(.50,.55), w=.55, cy=.30),
- 'SUP-Board-Heavyweight-Tee':    dict(box=(.32,.32,.62,.45), patch=(.50,.62), w=.30, cy=.26),
+ 'Might-Mean-Somethin-S-S-White': dict(box=(.40,.37,.94,.77), patch=(.55,.88), w=.62, cy=.30),
+ 'Might-Mean-Somethin-S-S-Black': dict(box=(.40,.37,.94,.77), patch=(.55,.88), w=.62, cy=.30),
+ 'Just-a-Coincidence':           dict(box=(.24,.24,.76,.46), patch=(.50,.75), w=.50, cy=.27),
+ 'Specific-Ocean-S-S-White':     dict(box=(.26,.24,.75,.62), patch=(.45,.78), w=.50, cy=.33),
+ 'Specific-Ocean-Red-S-S':       dict(box=(.25,.26,.77,.61), patch=(.50,.68), w=.50, cy=.33),
+ 'Specific-Ocean-Black-S-S':     dict(box=(.26,.30,.76,.63), patch=(.50,.72), w=.50, cy=.33),
+ 'Sup-Sobers-Black-Front-Back-S-S': dict(box=(.19,.29,.415,.52), patch=(.25,.78), w=.26, cy=.26),
+ 'Might-Mean-Somethin-Tee':      dict(box=(.35,.29,.65,.53), patch=(.50,.55), w=.55, cy=.30),
+ 'SUP-Board-Heavyweight-Tee':    dict(box=(.34,.30,.67,.48), patch=(.50,.62), w=.30, cy=.26),
  'Chalk-Outline-Tee':            dict(box=(.53,.18,.65,.31), patch=(.50,.70), w=.13, cy=.20, cx=.20),
 }
 def find(name, cfgs):
@@ -55,7 +61,16 @@ def dress(listing, c):
     px, py = int(c['patch'][0] * w), int(c['patch'][1] * h)
     col = np.median(listing[max(0, py - 12):py + 12, max(0, px - 12):px + 12].reshape(-1, 3), axis=0)
     x0, y0, x1, y1 = c['box']; crop = listing[int(y0 * h):int(y1 * h), int(x0 * w):int(x1 * w)].astype(np.float32)
-    dist = np.sqrt(((crop - col) ** 2).sum(2)); al = np.clip((dist - 38) / 60, 0, 1)
+    dist = np.sqrt(((crop - col) ** 2).sum(2))
+    thr = 140 if col.mean() > 190 else (90 if col.mean() < 70 else 40)      # light shirts: folds and shadows must not count as print
+    al = np.clip((dist - thr) / 60, 0, 1)
+    # drop specks and stray patches so the print's bounding box (used for centring) is only the real design
+    m = (al > .3).astype(np.uint8)
+    cl = cv2.dilate(m, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (27, 27)))      # merge letters of one design into one cluster
+    n, lab, st, _ = cv2.connectedComponentsWithStats(cl)
+    cnt = np.array([int(m[lab == i].sum()) for i in range(n)]); cnt[0] = 0; big = cnt.max() if n > 1 else 0
+    keep = cnt >= max(30, big * .12)
+    al = al * keep[lab]
     al = cv2.GaussianBlur(al, (0, 0), .8)
     ys_, xs_ = np.where(al > .25)
     if len(xs_) < 20: raise ValueError('no design found')
@@ -137,8 +152,8 @@ if __name__ == '__main__':
             continue
         if not key:
             key = find(it['name'], HOODIE) or find(slug(it['url']), HOODIE); cfg = HOODIE.get(key) if key else None
-            if key: setup('img/model/model_hoodie.png', 120, 545, 165, 35)
-        else: setup('img/model/model.png')
+            if key: setup('img/model/model_hoodie.png', 120, 545, 165, 35, up=UP)
+        else: setup('img/model/model.png', up=UP)
         if not key: it.pop('model', None); continue
         try:
             out = dress(fetch(it['images'][0]), cfg); fn = 'img/model/%s.webp' % slug(it['url'])
