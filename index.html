@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sup Sobers | Sobering Stories</title>
+  <meta name="description" content="True crime, conspiracies, and the dark side of fame. The home of the Sobering Stories YouTube channel: videos, archives, and books.">
+  <meta name="theme-color" content="#060102">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sup Sobers">
+  <meta property="og:title" content="Sup Sobers | Sobering Stories">
+  <meta property="og:description" content="True crime, conspiracies, and the dark side of fame. New videos every Friday.">
+  <meta property="og:url" content="https://supsobers.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="#home">Sup Sobers</a>
+    <nav id="nav" aria-label="Main">
+      <a href="#home" data-route="home">Home</a>
+      <a href="#videos" data-route="videos">Videos</a>
+      <a href="#archives" data-route="archives">Archives</a>
+      <a href="#books" data-route="books">Books</a>
+      <a href="#about" data-route="about">About</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- HOME -->
+    <section class="view home-hero" data-view="home" aria-labelledby="home-title">
+      <div class="ambient" id="ambient" aria-hidden="true">
+        <div class="hole-scene" id="ambient-scene"><div class="hole-world" id="ambient-world"></div></div>
+      </div>
+      <div class="home-copy">
+        <img class="home-dj" src="img/dj.png" width="998" height="663" alt="DJ Petrovski floating in mid-air">
+        <h1 id="home-title" class="flicker">Sobering<br>Stories</h1>
+        <p class="actions">
+          <a class="btn btn-primary" href="#videos">Watch the videos</a>
+          <a class="btn" href="https://www.youtube.com/@Sobersector" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Patreon</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="view page videos-view" data-view="videos" aria-labelledby="videos-title" hidden>
+      <div class="tv-stage">
+        <div class="tv" id="tv">
+          <div class="tv-ant" aria-hidden="true"><i></i></div>
+          <div class="tv-body">
+            <div class="tv-vents" aria-hidden="true"></div>
+            <div class="tv-frame">
+              <div class="tv-screen tuning" id="tv-screen">
+                <div class="tv-static" aria-hidden="true"></div>
+                <div class="tv-roll" aria-hidden="true"></div>
+                <div class="tv-glass" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="tv-panel" aria-hidden="true">
+              <div class="tv-badge">Sup<br>Sobers</div>
+              <div class="tv-knob" id="knob-a"></div>
+              <div class="tv-knob tv-knob-b"></div>
+              <div class="tv-grille"></div>
+              <div class="tv-led"></div>
+            </div>
+          </div>
+          <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
+        </div>
+        <div class="tv-ctrl">
+          <button type="button" class="btn btn-primary" id="dive">Go down the rabbit hole</button>
+          <button type="button" class="pill" id="tv-skip">Skip to the list</button>
+        </div>
+      </div>
+
+      <div id="video-list">
+        <h2 id="videos-title">All videos</h2>
+        <p class="page-lede">Every Sobering Stories episode. Tap one to watch it here.</p>
+        <label class="search">
+          <span class="sr">Search videos</span>
+          <input id="search" type="search" placeholder="Search by name or topic" autocomplete="off">
+        </label>
+        <div class="grid" id="video-grid"></div>
+        <p class="empty" id="video-empty" hidden>No videos match that search.</p>
+      </div>
+    </section>
+
+    <!-- ARCHIVES -->
+    <section class="view page" data-view="archives" aria-labelledby="archives-title" hidden>
+      <h2 id="archives-title">Archives</h2>
+      <p class="page-lede">Timeline-organized video and photo records. Each entry links to its original source.</p>
+      <div class="cards" id="archive-list"></div>
+    </section>
+
+    <!-- BOOKS -->
+    <section class="view page" data-view="books" aria-labelledby="books-title" hidden>
+      <h2 id="books-title">Books</h2>
+      <p class="page-lede">Reading from the Sobering Stories library.</p>
+      <div class="cards" id="book-list"></div>
+      <p class="empty" id="book-empty" hidden>Books are coming soon.</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="view page about" data-view="about" aria-labelledby="about-title" hidden>
+      <div class="about-grid">
+        <div class="phone" aria-label="Sobering Stories video">
+          <div class="phone-btn pb-a"></div><div class="phone-btn pb-b"></div><div class="phone-btn pb-c"></div><div class="phone-btn pb-r"></div>
+          <div class="phone-body">
+            <div class="phone-screen">
+              <span class="phone-island" aria-hidden="true"></span>
+              <video id="about-video" src="media/trailer.mp4" controls playsinline preload="metadata"></video>
+            </div>
+          </div>
+        </div>
+        <div class="prose">
+          <h2 id="about-title">About</h2>
+          <p>Sobering Stories is a true crime and conspiracy channel about the dark side of fame, and the addiction and substance abuse behind so many of the headlines. Each video is a deep dive built on documented facts, with the sources behind it.</p>
+          <blockquote>Trust those who seek the truth but doubt those who say they have found it.<cite>Andr&eacute; Gide</cite></blockquote>
+          <p>New videos come out on Fridays.</p>
+          <p class="actions">
+            <a class="btn btn-primary" href="https://www.youtube.com/@Sobersector" target="_blank" rel="noopener">YouTube</a>
+            <a class="btn" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Patreon</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <p>&copy; <span id="year">2026</span> Sobering Stories. All rights reserved.</p>
+    <p class="fine">Archive entries link to their original publishers. Footage and photos belong to their owners.</p>
+  </footer>
+
+  <div class="hole" id="hole" role="dialog" aria-modal="true" aria-label="The rabbit hole: every video on the channel" hidden>
+    <div class="hole-scene"><div class="hole-world"></div></div>
+    <div class="hole-ui">
+      <button type="button" class="pill" id="hole-exit">Climb out</button>
+      <span class="hole-ui-right">
+        <button type="button" class="pill" id="hole-list">List view</button>
+        <button type="button" class="pill" id="hole-pause" aria-pressed="false">Pause</button>
+      </span>
+    </div>
+    <p class="hole-title" id="hole-title" aria-hidden="true"></p>
+    <p class="hole-hint" id="hole-hint">Scroll to fall faster. Point at a video to stop. Click to watch. The deeper you go, the older they get.</p>
+  </div>
+
+  <dialog id="player" aria-label="Video player">
+    <div class="player-bar">
+      <a id="player-yt" href="#" target="_blank" rel="noopener">Open on YouTube</a>
+      <button type="button" id="player-close" aria-label="Close player">Close</button>
+    </div>
+    <div class="player-frame"><iframe id="player-iframe" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  </dialog>
+
+  <script src="js/rain.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/hole.js" defer></script>
+  <script src="js/tv.js" defer></script>
+</body>
+</html>
