@@ -5,6 +5,8 @@
   var frame = document.getElementById('scd-frame'), playBtn = dock.querySelector('[data-sc=play]'), fw = dock.querySelector('.scd-fw');
   var URL_ = 'https://soundcloud.com/djpetrovski', w = null, loading = false, ready = false, playing = false, queue = [], root = document.documentElement;
   var userPos = null, route = (location.hash || '#home').slice(1) || 'home', mode = '', trackT = 0, minimized = false, wasPlaying = false;
+  var autoP = false;
+  function state() { document.dispatchEvent(new CustomEvent('ss:musicstate', { detail: { playing: playing } })); }
   function duck(l) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'sc', level: l } })); }
   function run(fn) { if (ready && w) fn(); else queue.push(fn); }
   function boot() {
@@ -13,9 +15,9 @@
     var go = function () {
       w = SC.Widget(frame);
       w.bind(SC.Widget.Events.READY, function () { ready = true; queue.splice(0).forEach(function (f) { f(); }); });
-      w.bind(SC.Widget.Events.PLAY, function () { playing = true; paint(); duck(0); });
-      w.bind(SC.Widget.Events.PAUSE, function () { playing = false; paint(); duck(null); });
-      w.bind(SC.Widget.Events.FINISH, function () { playing = false; paint(); });
+      w.bind(SC.Widget.Events.PLAY, function () { playing = true; paint(); duck(0); state(); });
+      w.bind(SC.Widget.Events.PAUSE, function () { playing = false; if (!autoP) wasPlaying = false; autoP = false; paint(); duck(null); state(); });
+      w.bind(SC.Widget.Events.FINISH, function () { playing = false; wasPlaying = false; paint(); state(); });
     };
     if (window.SC && SC.Widget) go();
     else { var sc = document.createElement('script'); sc.src = 'https://w.soundcloud.com/player/api.js'; sc.onload = go; sc.onerror = function () { loading = false; }; document.head.appendChild(sc); }
@@ -77,24 +79,17 @@
     document.dispatchEvent(new CustomEvent('ss:musicopen'));
   }
   function close() {
-    run(function () { w.pause(); }); wasPlaying = false; dock.hidden = true; root.classList.remove('scd-on', 'scd-tv'); playing = false; paint(); duck(null); mode = '';
+    wasPlaying = false; run(function () { w.pause(); }); dock.hidden = true; root.classList.remove('scd-on', 'scd-tv'); playing = false; paint(); duck(null); mode = '';
     document.dispatchEvent(new CustomEvent('ss:musicclosed'));
   }
   document.getElementById('scd-close').addEventListener('click', close);
   document.getElementById('scd-min').addEventListener('click', function () { minimized = !minimized; dock.classList.toggle('min', minimized); layout(); });
   document.addEventListener('ss:route', function (e) { route = e.detail.name; mode = mode; layout(); track(); });
   window.addEventListener('resize', layout); window.addEventListener('scroll', layout, { passive: true });
-  window.SS = window.SS || {}; SS.openMusic = open; SS.closeMusic = close; SS.pauseMusic = function () { if (!dock.hidden) run(function () { w.pause(); }); }; SS.musicOn = function () { return !dock.hidden; };
+  window.SS = window.SS || {}; SS.openMusic = open; SS.closeMusic = close; SS.pauseMusic = function () { wasPlaying = false; if (!dock.hidden) run(function () { w.pause(); }); }; SS.musicPlaying = function () { return playing; }; SS.musicOn = function () { return !dock.hidden; };
   // a YouTube video opening in the site player takes over the sound
-  document.addEventListener('ss:playeropen', function () { if (ready && playing) { wasPlaying = true; w.pause(); } });
+  document.addEventListener('ss:playeropen', function () { if (ready && playing) { wasPlaying = true; autoP = true; w.pause(); } });
   document.addEventListener('ss:playerclosed', function () { if (wasPlaying && !dock.hidden && ready) { wasPlaying = false; w.play(); } });
-  // the home remote drives the player while it is open: CH = tracks, VOL left/right = rewind / forward, OK = play/pause
-  var MAP = { volup: 'fwd', voldown: 'back', ok: 'play' };   // CH up/down now change the TV channel 
-  var remote = document.getElementById('remote');
-  if (remote) remote.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-act]'); if (!b || dock.hidden) return;
-    var a = MAP[b.getAttribute('data-act')]; if (!a) return;
-    e.stopPropagation(); e.stopImmediatePropagation(); ACT[a]();
-  }, true);
+  // The remote's CH and VOL keys always belong to the TV; the pop-up has its own buttons.
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dock.hidden && dock.contains(document.activeElement)) close(); });
 })();

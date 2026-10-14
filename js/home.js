@@ -139,13 +139,20 @@
     if (knobVol) knobVol.setAttribute('aria-valuenow', STEPS[vIdx]);
   }
   function applySound() {
-    video.muted = !soundOn;
+    var audible = soundOn && !(window.SS && SS.musicPlaying && SS.musicPlaying());   // the music pop-up and the TV never play at the same time
+    video.muted = !audible;
     video.volume = Math.max(0, Math.min(1, volume / 100));
-    if (!yt.hidden) { ytCmd(soundOn ? 'unMute' : 'mute'); if (soundOn) ytCmd('setVolume', [volume]); }
+    if (!yt.hidden) { ytCmd(audible ? 'unMute' : 'mute'); if (audible) ytCmd('setVolume', [volume]); }
     paintVol();
     soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
     soundBtn.setAttribute('aria-pressed', String(soundOn));
     duck(soundOn && started ? 0 : null);
+  }
+  // Music and TV share the speakers: starting the music mutes the channel, changing the channel pauses the music and brings the TV sound up.
+  document.addEventListener('ss:musicstate', function () { applySound(); });
+  function takeover() {
+    if (window.SS && SS.musicPlaying && SS.musicPlaying()) SS.pauseMusic();
+    if (!soundOn) setVolIdx(lastIdx || 2, false); else applySound();
   }
   // Four volume settings: mute, 25%, 75%, 100%.
   function setVolIdx(i, osdOn) {
@@ -203,7 +210,7 @@
   }
   function stopChannels() { clearTimeout(chanT); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); nowBtn.hidden = nextBtn.hidden = true; cur = null; }
   nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
-  nextBtn.addEventListener('click', function () { channel(); });
+  nextBtn.addEventListener('click', function () { takeover(); channel(); });
   document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
   document.addEventListener('ss:playerclosed', function () { if (onHome && !yt.hidden) ytCmd('playVideo'); });
 
@@ -211,6 +218,7 @@
     b.addEventListener('click', function () {
       var a = b.getAttribute('data-act');
       if (!powered) { powerOn(); return; }
+      if (a === 'chup' || a === 'chdown') takeover();
       if (a === 'chup') { if (onTrailer) { clearTimeout(introT); started = true; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; onTrailer = false; } channel(); }
       else if (a === 'chdown') { if (onTrailer) { onTrailer = false; clearTimeout(introT); started = true; video.pause(); video.style.opacity = '0'; channel(); } else channel(true); }
       else if (a === 'volup') { setVolIdx(vIdx + 1); }
@@ -252,7 +260,7 @@
   dial(knobCh, function (d, key) {
     chRot += d; knobCh.style.setProperty('--rot', chRot + 'deg'); chAcc += d;
     if (Math.abs(chAcc) >= 40 || key) {
-      var back = chAcc < 0; chAcc = 0;
+      var back = chAcc < 0; chAcc = 0; takeover();
       if (onTrailer) { clearTimeout(introT); started = true; onTrailer = false; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; channel(); }
       else channel(back);
     }
