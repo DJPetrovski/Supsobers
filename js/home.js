@@ -26,7 +26,7 @@
   var WEB = '<svg viewBox="0 0 200 110" class="pv-web" aria-hidden="true"><g stroke="#ff2a35" stroke-width="1.2" opacity=".8"><path d="M100 55 L40 25 M100 55 L160 22 M100 55 L50 88 M100 55 L158 86 M40 25 L50 88 M160 22 L158 86 M40 25 L160 22"/></g><g fill="#ff2a35"><circle cx="100" cy="55" r="7"/><circle cx="40" cy="25" r="4.5"/><circle cx="160" cy="22" r="4.5"/><circle cx="50" cy="88" r="4.5"/><circle cx="158" cy="86" r="4.5"/></g></svg>';
   var CONTENT = {
     videos: function () { return '<h3>Videos</h3><p>Go down the rabbit hole</p><div class="pv-strip">' + thumbs(3) + '</div>'; },
-    web: function () { return '<h3>The Web</h3>' + WEB + '<p>See how it all connects</p>'; },
+    web: function () { return '<h3>It\'s All<br>Connected</h3>' + WEB + '<p>See how it all links up</p>'; },
     members: function () { return '<h3 class="pv-neon">Members<br>Only</h3><p>Off the record</p>'; },
     archives: function () { return '<h3>Archives</h3><p>Timelines and source records</p>'; },
     books: function () { return '<h3>Books</h3><p>Reading from the library</p>'; },
