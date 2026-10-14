@@ -15,9 +15,32 @@
 
   var nodes = [], edges = [], topics = [], hub = null, theory = false;
   var built = false, running = false, raf = 0, cfg = null;
-  var yaw = 0.6, pitch = -0.25, zoom = 1.5, z0 = 1.5, W = 0, H = 0, dpr = 1;
+  var yaw = 0.6, pitch = -0.25, D0 = 1020, W = 0, H = 0, dpr = 1;
+  // A free camera: C is where you are, yaw and pitch are where you look. Far away it orbits the web; scroll or pinch to fly in, straight through the middle and out the far side.
+  // Past the far side you come back in from the opposite side, so the zoom never ends. Inside the web, dragging turns you around where you stand.
+  var C = [0, 0, 0], cy = 1, sy = 0, cp = 1, sp = 0, R_IN = 430, WRAPR = 640, MAXD = 3200, NEAR = 14, hint = document.getElementById('web-hint'), turnBtn = document.getElementById('web-turn');
+  function trig() { cy = Math.cos(yaw); sy = Math.sin(yaw); cp = Math.cos(pitch); sp = Math.sin(pitch); }
+  function toView(x, y, z) { var x1 = x * cy - z * sy, z1 = x * sy + z * cy; return [x1, y * cp - z1 * sp, y * sp + z1 * cp]; }
+  function fromView(v) { var y = v[1] * cp + v[2] * sp, z1 = -v[1] * sp + v[2] * cp; return [v[0] * cy + z1 * sy, y, -v[0] * sy + z1 * cy]; }
+  function camLen() { return Math.hypot(C[0], C[1], C[2]); }
+  function homeCam() { trig(); var f = fromView([0, 0, D0]); C = [-f[0], -f[1], -f[2]]; }
+  // turn the view by dy / dp: orbit the web from outside, turn on the spot from inside
+  function rot(dy, dp) {
+    trig(); var outside = camLen() > R_IN, v0 = outside ? toView(-C[0], -C[1], -C[2]) : null;
+    yaw += dy; pitch = Math.max(-1.4, Math.min(1.4, pitch + dp)); trig();
+    if (outside) { var f = fromView(v0); C = [-f[0], -f[1], -f[2]]; }
+  }
+  function nearestDist() { var b = 1e9; nodes.forEach(function (n) { var d = Math.hypot(n.x - C[0], n.y - C[1], n.z - C[2]); if (d < b) b = d; }); return b; }
+  function dolly(s) {
+    trig(); var f = fromView([0, 0, 1]), nc = [C[0] + f[0] * s, C[1] + f[1] * s, C[2] + f[2] * s], d = Math.hypot(nc[0], nc[1], nc[2]);
+    if (s < 0 && d > MAXD && d > camLen()) return;
+    C = nc;
+    if (s > 0 && d > WRAPR && C[0] * f[0] + C[1] * f[1] + C[2] * f[2] > 0) C = [-C[0], -C[1], -C[2]];   // out the far side, back in from the other
+    if (hint) hint.hidden = camLen() > R_IN;
+  }
+  function wheelStep(dir) { return dir * Math.max(18, Math.min(260, nearestDist() * 0.17)); }
   var hover = null, focus = null, dragging = false, moved = false, lx = 0, ly = 0, idle = 0, heat = 1;
-  var imgs = {}, loading = 0;
+  var imgs = {}, loading = 0, zRef = 1000;
 
   function fetchJSON(p) { return fetch(p, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(p); return r.json(); }); }
 
@@ -86,11 +109,9 @@
   }
 
   function project(n) {
-    var cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
-    var x = n.x * cy - n.z * sy, z = n.x * sy + n.z * cy, y = n.y * cp - z * sp;
-    z = n.y * sp + z * cp;
-    var P = 900 / zoom, s = P / (P + z + 420);
-    n.sx = W / 2 + x * s * zoom * 1.05; n.sy = H / 2 + y * s * zoom * 1.05; n.sz = z; n.s = s * zoom;
+    var v = toView(n.x - C[0], n.y - C[1], n.z - C[2]), z = v[2];
+    n.sz = z; n.vis = z > NEAR;
+    if (n.vis) { var k = 1 / z; n.sx = W / 2 + v[0] * 950 * k; n.sy = H / 2 + v[1] * 950 * k; n.s = 900 * k; }
   }
 
   function lit(n) {
@@ -117,11 +138,12 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
     var list = theory ? nodes.concat([hub]) : nodes;
-    list.forEach(project);
+    trig(); zRef = Math.max(0, Math.min(camLen(), 1400)); list.forEach(project);
     edges.forEach(function (e) {
       if (e.k === 3 && !theory) return;
+      if (!e.a.vis || !e.b.vis) return;
       var on = lit(e.a) && lit(e.b) && (!focus || focus.kind === 'hub' || e.a === focus || e.b === focus);
-      var depth = Math.max(0.12, Math.min(1, 0.75 - (e.a.sz + e.b.sz) / 1800));
+      var depth = Math.max(0.12, Math.min(1, 0.75 - (e.a.sz + e.b.sz - 2 * zRef) / 1800));
       ctx.beginPath(); ctx.moveTo(e.a.sx, e.a.sy); ctx.lineTo(e.b.sx, e.b.sy);
       if (e.k === 3) { ctx.setLineDash([4, 6]); ctx.strokeStyle = 'rgba(255,200,120,' + (on ? 0.55 : 0.1) + ')'; }
       else { ctx.setLineDash([]); ctx.strokeStyle = e.k === 2 ? 'rgba(255,230,160,' + (on ? 0.7 : 0.1) + ')' : 'rgba(255,42,53,' + (on ? depth * (focus && focus.kind !== 'hub' ? 0.9 : 0.5) : 0.04) + ')'; }
@@ -131,10 +153,11 @@
     ctx.setLineDash([]);
     list.sort(function (a, b) { return b.sz - a.sz; });
     list.forEach(function (n) {
-      var on = lit(n), a = on ? Math.max(0.3, Math.min(1, 0.95 - n.sz / 1500)) : 0.12;
+      if (!n.vis) return;
+      var on = lit(n), a = on ? Math.max(0.3, Math.min(1, 0.95 - (n.sz - zRef) / 1500)) : 0.12;
       ctx.globalAlpha = a;
       if (n.kind === 'video') {
-        var r = Math.max(2.2, 3.6 * n.s * (n.deg > 1 ? 1.5 : 1)), big = r * 4.5 > 24 || n === hover || (focus && on);
+        var r = Math.min(46, Math.max(2.2, 3.6 * n.s * (n.deg > 1 ? 1.5 : 1))), big = r * 4.5 > 24 || n === hover || (focus && on);
         if (big && on) {
           var w = Math.max(34, Math.min(120, r * 11)), h = w * 9 / 16, im = thumb(n);
           if (im) { ctx.drawImage(im, n.sx - w / 2, n.sy - h / 2, w, h); ctx.strokeStyle = n === hover ? '#fff' : 'rgba(255,42,53,.9)'; ctx.lineWidth = 1.2; ctx.strokeRect(n.sx - w / 2, n.sy - h / 2, w, h); n.hr = w / 2; return; }
@@ -143,7 +166,7 @@
         ctx.fillStyle = n.deg > 1 ? '#ffd9a0' : '#f3e9e4'; ctx.shadowColor = '#ff2a35'; ctx.shadowBlur = n === hover ? 18 : (n.deg > 1 ? 10 : 4); ctx.fill(); ctx.shadowBlur = 0;
         n.hr = r + 4;
       } else {
-        var R = (n.kind === 'hub' ? 26 : 12 + Math.sqrt(n.kids.length) * 2.2) * n.s;
+        var R = Math.min(110, (n.kind === 'hub' ? 26 : 12 + Math.sqrt(n.kids.length) * 2.2) * n.s);
         var g = ctx.createRadialGradient(n.sx, n.sy, 0, n.sx, n.sy, R * 2.4);
         var hot = n.kind === 'hub' ? '255,190,90' : '255,42,53';
         g.addColorStop(0, 'rgba(' + hot + ',0.95)'); g.addColorStop(0.35, 'rgba(' + hot + ',0.4)'); g.addColorStop(1, 'rgba(' + hot + ',0)');
@@ -163,7 +186,7 @@
 
   function loop() {
     raf = requestAnimationFrame(loop);
-    if (!dragging && !hover && !focus && !reduce) { idle++; yaw += 0.0016; }
+    if (!dragging && !hover && !focus && !reduce && camLen() > R_IN) { idle++; rot(0.0016, 0); }
     if (heat > 0.02) { step(); heat *= 0.995; }
     draw();
   }
@@ -172,7 +195,7 @@
     dpr = Math.min(2, window.devicePixelRatio || 1);
     var first = !W;
     W = stage.clientWidth; H = stage.clientHeight;
-    if (first) { z0 = W < 700 ? 1.0 : 1.5; zoom = z0; }
+    if (first) { D0 = W < 700 ? 1320 : 1020; homeCam(); }
     cv.width = W * dpr; cv.height = H * dpr;
     cv.style.width = W + 'px'; cv.style.height = H + 'px';
   }
@@ -180,7 +203,7 @@
   function pick(mx, my) {
     var best = null, bd = 1e9;
     (theory ? nodes.concat([hub]) : nodes).forEach(function (n) {
-      if (!lit(n)) return;
+      if (!lit(n) || !n.vis) return;
       var d = Math.hypot(n.sx - mx, n.sy - my), r = (n.hr || 6) + 4;
       if (d < r && d - r < bd) { bd = d - r; best = n; }
     });
@@ -208,7 +231,7 @@
     if (dragging) {
       var dx = p.x - lx, dy = p.y - ly;
       if (Math.abs(dx) + Math.abs(dy) > 2) moved = true;
-      yaw += dx * 0.006; pitch = Math.max(-1.4, Math.min(1.4, pitch + dy * 0.006)); lx = p.x; ly = p.y; return;
+      rot(dx * 0.006, dy * 0.006); lx = p.x; ly = p.y; return;
     }
     hover = pick(p.x, p.y);
     cv.style.cursor = hover ? 'pointer' : 'grab';
@@ -228,12 +251,12 @@
     } else { focus = (focus === n) ? null : n; panelText(); }
   });
   cv.addEventListener('pointerleave', function () { hover = null; tip.hidden = true; });
-  cv.addEventListener('wheel', function (e) { e.preventDefault(); zoom = Math.max(0.5, Math.min(4, zoom * (e.deltaY < 0 ? 1.12 : 0.89))); }, { passive: false });
+  cv.addEventListener('wheel', function (e) { e.preventDefault(); dolly(wheelStep(e.deltaY < 0 ? 1 : -1)); }, { passive: false });
   var pinch = 0;
   cv.addEventListener('touchmove', function (e) {
     if (e.touches.length === 2) {
       var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-      if (pinch) zoom = Math.max(0.5, Math.min(4, zoom * d / pinch));
+      if (pinch) dolly(Math.max(-400, Math.min(400, (d / pinch - 1) * Math.max(260, nearestDist() * 4))));
       pinch = d; e.preventDefault();
     }
   }, { passive: false });
@@ -243,7 +266,10 @@
     theoryBtn.textContent = theory ? 'Hide the theory' : 'Show the theory';
     heat = 0.6; focus = theory ? hub : null; panelText();
   });
-  resetBtn.addEventListener('click', function () { focus = null; zoom = z0; yaw = 0.6; pitch = -0.25; panelText(); });
+  resetBtn.addEventListener('click', function () { focus = null; yaw = 0.6; pitch = -0.25; homeCam(); if (hint) hint.hidden = true; panelText(); });
+  if (turnBtn) turnBtn.addEventListener('click', function () { rot(Math.PI, 0); });
+  // the pop-out window: the caption comes with it
+  document.addEventListener('ss:popoutchange', function (e) { if (e.detail.el !== stage) return; if (e.detail.on) { stage.appendChild(panel); panel.classList.add('in-stage'); } else { stage.parentNode.insertBefore(panel, stage.nextSibling); panel.classList.remove('in-stage'); } setTimeout(function () { if (running) size(); }, 140); });
   window.addEventListener('resize', function () { if (running) size(); });
   document.addEventListener('keydown', function (e) { if (running && e.key === 'Escape' && focus) { focus = null; panelText(); } });
 

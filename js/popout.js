@@ -28,7 +28,7 @@
     el.classList.toggle('po', on); html.classList.toggle('po-lock', on); close.hidden = !on;
     if (on) el.appendChild(close); else document.body.appendChild(close);   // inside the element, so it stays visible when the browser's own full screen is on
     var b = el.querySelector('.po-btn'); if (b) { b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'Close' : 'Pop out'; }
-    nativeFs(el, on); rotateHint(on);
+    nativeFs(el, on); rotateHint(on); document.dispatchEvent(new CustomEvent('ss:popoutchange', { detail: { el: el, on: on } }));
     window.dispatchEvent(new Event('resize'));
     setTimeout(function () { window.dispatchEvent(new Event('resize')); fitWagon(); }, 120); fitWagon();
   }
@@ -61,6 +61,10 @@
   }
   wire('es', '.es-top', '.es-screenwrap', 'Tap to play');
   wire('wg', '.wg-top', '.wg-stage', 'Tap to play');
+  (function () {   // the web: the Pop out button is already in its control row
+    var st = document.getElementById('web-stage'), b = document.getElementById('web-pop'); if (!st || !b) return;
+    b.addEventListener('click', function () { popOut(st, !st.classList.contains('po')); });
+  })();
 
   // wagon: a DIVE button next to JUMP in the pop-out, so both thumbs have a job
   (function () {

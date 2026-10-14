@@ -1837,3 +1837,13 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .wg.po.wg-fill .wg-stage { position: absolute; inset: 0; display: block; }
 .wg.po.wg-fill #wg-canvas { width: 100%; height: 100%; }
 @media (prefers-reduced-motion: reduce) { .coin.pop { animation: none; } }
+
+/* the web: pop-out window and the inside-the-web hint */
+.web-hint { position: absolute; z-index: 3; left: 12px; top: 10px; margin: 0; padding: 5px 12px; border-radius: 999px; background: rgba(0,0,0,.62); border: 1px solid rgba(255,200,120,.5); color: #ffe0b0; font-size: .78rem; pointer-events: none; max-width: 80%; }
+.web-hint[hidden] { display: none; }
+.web-stage.po { height: auto !important; min-height: 0 !important; padding: 0 !important; border: 0; background: radial-gradient(ellipse at 50% 50%, rgba(60,4,10,.7), #050102 72%); }
+.web-stage.po .web-ctrl { right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+.web-stage.po .web-hint { top: calc(10px + env(safe-area-inset-top, 0px)); }
+.web-panel.in-stage { position: absolute; z-index: 3; left: calc(10px + env(safe-area-inset-left, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 330px; margin: 0; min-height: 0; padding: 8px 12px; border-radius: 10px; background: rgba(0,0,0,.6); font-size: .82rem; max-height: 30%; overflow: auto; }
+@media (max-width: 760px) { .web-panel.in-stage { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(58px + env(safe-area-inset-bottom, 0px)); } .web-ctrl { flex-wrap: wrap; justify-content: flex-end; max-width: 72%; } }
+.web-stage.po #web-pop { display: none; }
