@@ -25,18 +25,20 @@
   /* ---------- tabs ---------- */
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
-  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', merch: 'Merch | Sup Sobers', socials: 'Socials | Sup Sobers', web: "It's All Connected | Sup Sobers", about: 'About | Sup Sobers' };
+  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', merch: 'Merch | Sup Sobers', socials: 'Socials | Sup Sobers', half: 'My Better Half | Sup Sobers', contact: 'Contact | Sup Sobers', web: "It's All Connected | Sup Sobers", about: 'About | Sup Sobers' };
 
   function route() {
     var name = (location.hash || '#home').slice(1);
     if (!titles[name]) name = 'home';
-    views.forEach(function (v) { v.hidden = v.getAttribute('data-view') !== name; });
+    var shown = name === 'half' ? 'socials' : name;      // #half is the Socials page, scrolled to Kim's links
+    views.forEach(function (v) { v.hidden = v.getAttribute('data-view') !== shown; });
     links.forEach(function (a) {
-      if (a.getAttribute('data-route') === name) a.setAttribute('aria-current', 'page');
+      if (a.getAttribute('data-route') === shown) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
     document.title = titles[name];
     window.scrollTo(0, 0);
+    if (name === 'half') setTimeout(function () { var k = document.getElementById('sc-kim'); if (k && !k.hidden) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
     document.dispatchEvent(new CustomEvent('ss:route', { detail: { name: name } }));
   }
   window.addEventListener('hashchange', route);
@@ -196,9 +198,17 @@
     }
     if (tr) {
       tr.textContent = '';
-      threads.filter(function (t) { return !t.auto; }).forEach(function (t) {
-        var vs = videos.filter(function (v) { return t.videos.indexOf(v.id) >= 0; });
-        if (!vs.length) return;
+      // every storyline: the hand-made ones plus every topic on the "It's all connected" map, merged by name
+      var seenNames = {}, all = [];
+      threads.forEach(function (t) {
+        var k = (t.name || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(), vs = videos.filter(function (v) { return t.videos.indexOf(v.id) >= 0; });
+        if (!vs.length || (t.auto && vs.length < 2)) return;
+        if (seenNames[k]) { if (vs.length > seenNames[k].vs.length) seenNames[k].vs = vs; return; }
+        seenNames[k] = { t: t, vs: vs }; all.push(seenNames[k]);
+      });
+      all.sort(function (a, b) { return b.vs.length - a.vs.length; });
+      all.forEach(function (o) {
+        var t = o.t, vs = o.vs;
         var b = el('button', { type: 'button', 'class': 'thread-card' }, [
           el('img', { src: 'https://i.ytimg.com/vi/' + vs[0].id + '/mqdefault.jpg', alt: '', loading: 'lazy' }),
           el('span', { 'class': 'thread-name', text: t.name }),
@@ -372,22 +382,60 @@
 /* ---------- socials: a bank of channels ---------- */
 (function () {
   var host = document.getElementById('sc-bank'); if (!host) return;
+  function card(s, i) {
+    var a = document.createElement('a');
+    a.className = 'sc-ch'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('aria-label', s.name + (s.handle ? ' ' + s.handle : ''));
+    var n = (i + 1 < 10 ? '0' : '') + (i + 1);
+    a.innerHTML = '<span class="sc-num">CH ' + n + '</span><span class="sc-screen"><b class="sc-mark"></b></span><span class="sc-name"></span><span class="sc-handle"></span><span class="sc-blurb"></span><span class="sc-go">Tune in \u2192</span>';
+    a.querySelector('.sc-mark').textContent = s.mark || s.name.slice(0, 2).toUpperCase();
+    a.querySelector('.sc-name').textContent = s.name;
+    a.querySelector('.sc-handle').textContent = s.handle || '';
+    a.querySelector('.sc-blurb').textContent = s.blurb || '';
+    a.style.setProperty('--d', (i * 70) + 'ms');
+    return a;
+  }
   fetch('data/socials.json').then(function (r) { return r.json(); }).then(function (d) {
     var list = (d.socials || []).filter(function (s) { return s.url; });
     window.SS = window.SS || {}; window.SS.socials = list;
-    list.forEach(function (s, i) {
-      var a = document.createElement('a');
-      a.className = 'sc-ch'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
-      a.setAttribute('aria-label', s.name + (s.handle ? ' ' + s.handle : ''));
-      var n = (i + 1 < 10 ? '0' : '') + (i + 1);
-      a.innerHTML = '<span class="sc-num">CH ' + n + '</span><span class="sc-screen"><b class="sc-mark"></b></span><span class="sc-name"></span><span class="sc-handle"></span><span class="sc-blurb"></span><span class="sc-go">Tune in \u2192</span>';
-      a.querySelector('.sc-mark').textContent = s.mark || s.name.slice(0, 2).toUpperCase();
-      a.querySelector('.sc-name').textContent = s.name;
-      a.querySelector('.sc-handle').textContent = s.handle || '';
-      a.querySelector('.sc-blurb').textContent = s.blurb || '';
-      a.style.setProperty('--d', (i * 70) + 'ms');
-      host.appendChild(a);
-    });
+    list.forEach(function (s, i) { host.appendChild(card(s, i)); });
+    var k = d.kim;
+    if (k && (k.links || []).length) {
+      document.getElementById('kim-title').textContent = k.title || k.name;
+      document.getElementById('kim-blurb').textContent = k.blurb || '';
+      var kb = document.getElementById('kim-bank'); kb.textContent = '';
+      k.links.forEach(function (s, i) { kb.appendChild(card(s, i)); });
+      document.getElementById('sc-kim').hidden = false;
+    }
     document.dispatchEvent(new Event('ss:socials'));
   }).catch(function () {});
+})();
+
+/* ---------- contact: the laptop opens when the page is shown; the form posts to the site's inbox ---------- */
+(function () {
+  var lap = document.getElementById('laptop'), form = document.getElementById('contact-form');
+  if (!lap || !form) return;
+  var to = 'supsobers@gmail.com', st = document.getElementById('contact-status'), btn = document.getElementById('contact-send');
+  document.addEventListener('ss:route', function (e) {
+    if (e.detail.name === 'contact') { lap.classList.remove('open'); void lap.offsetWidth; setTimeout(function () { lap.classList.add('open'); }, 250); }
+    else lap.classList.remove('open');
+  });
+  if ((location.hash || '') === '#contact') setTimeout(function () { lap.classList.add('open'); }, 300);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements, name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
+    if (f._honey.value) return;
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !msg) { st.textContent = 'Fill in your name, a valid email and a message.'; st.className = 'lp-status bad'; return; }
+    btn.disabled = true; st.className = 'lp-status'; st.textContent = 'Sending...';
+    fetch('https://formsubmit.co/ajax/' + to, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: msg, _subject: 'Message from supsobers.com', _replyto: email, _captcha: 'false', _template: 'table' })
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === 'false' || j.success === false) throw new Error('x'); }); })
+      .then(function () { st.className = 'lp-status ok'; st.textContent = 'Sent. Thank you, I will get back to you.'; form.reset(); })
+      .catch(function () {
+        st.className = 'lp-status bad'; st.innerHTML = '';
+        st.appendChild(document.createTextNode('Could not send from here. '));
+        var a = document.createElement('a'); a.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Message from supsobers.com') + '&body=' + encodeURIComponent(msg + '\n\n' + name + ' (' + email + ')'); a.textContent = 'Email me instead'; st.appendChild(a);
+      }).then(function () { btn.disabled = false; });
+  });
 })();

@@ -10,6 +10,8 @@
     { title: 'Videos', route: 'videos', kw: 'episodes rabbit hole tunnel list watch documentary' },
     { title: "It's All Connected", route: 'web', kw: 'web map storylines connections graph' },
     { title: 'Socials', route: 'socials', kw: 'instagram x twitter rumble spotify podcast youtube patreon follow links' },
+    { title: 'Contact', route: 'contact', kw: 'email message write laptop reach' },
+    { title: 'My Better Half', route: 'half', kw: 'kim fiancee reverie revival colorado tiktok instagram' },
     { title: 'Merch', route: 'merch', kw: 'shirts hoodies hats stickers store shop tee clothing' },
     { title: 'Members Club', route: 'members', kw: 'members only patreon join uncensored off the record' },
     { title: 'Archives', route: 'archives', kw: 'timeline records sources september 10 charlie kirk' },

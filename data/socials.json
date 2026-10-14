@@ -15,6 +15,13 @@
       "mark": "P"
     },
     {
+      "name": "Discord",
+      "handle": "Join the server",
+      "url": "https://discord.gg/ycsn67W5UB",
+      "blurb": "Talk it over with the community.",
+      "mark": "DC"
+    },
+    {
       "name": "Instagram",
       "handle": "@djpetrovski",
       "url": "https://instagram.com/djpetrovski",
@@ -42,5 +49,30 @@
       "blurb": "The podcast, in your ears.",
       "mark": "SP"
     }
-  ]
+  ],
+  "kim": {
+    "name": "Kim",
+    "title": "My Better Half",
+    "blurb": "My fianc\u00e9e Kim runs Reverie Revival Colorado. Follow her, share her, and help her grow.",
+    "links": [
+      {
+        "name": "Instagram",
+        "handle": "@reverierevivalcolorado",
+        "url": "https://instagram.com/reverierevivalcolorado",
+        "mark": "IG"
+      },
+      {
+        "name": "YouTube",
+        "handle": "@reverierevivalcolorado",
+        "url": "https://youtube.com/@reverierevivalcolorado",
+        "mark": "YT"
+      },
+      {
+        "name": "TikTok",
+        "handle": "@reverierevivalco",
+        "url": "https://www.tiktok.com/@reverierevivalco",
+        "mark": "TT"
+      }
+    ]
+  }
 }

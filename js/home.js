@@ -39,6 +39,9 @@
     x: function () { return '<h3>X</h3><p>@djpetrovski12</p>'; },
     rumble: function () { return '<h3>Rumble</h3><p>Videos without the algorithm</p>'; },
     spotify: function () { return '<h3>Spotify</h3><p>The podcast</p>'; },
+    half: function () { return '<h3>My Better<br>Half</h3><p>Kim: Reverie Revival Colorado</p>'; },
+    contact: function () { return '<h3>Contact</h3><p>Open the laptop. Send a message.</p>'; },
+    discord: function () { return '<h3>Discord</h3><p>Join the server</p>'; },
     search: function () { return '<h3>Search</h3><p>Find any video, product or page</p>'; }
   };
 

@@ -1350,3 +1350,37 @@ html.gs-open { overflow: hidden; }
 .hole-phone-tip::before { content: ""; position: absolute; left: 50%; top: -6px; width: 10px; height: 10px; background: rgba(12,0,2,.95); border-left: 1px solid rgba(255,90,98,.7); border-top: 1px solid rgba(255,90,98,.7); transform: translateX(-50%) rotate(45deg); }
 .hole-phone-tip.on { opacity: 1; transform: translateX(-50%) translateY(0); }
 .hole-phone.near .hole-phone-tip { display: none; }
+
+/* remote: seven round socials wrap and centre; Better Half + Contact keys */
+.rm-socrow { display: flex; flex-wrap: wrap; justify-content: center; gap: 4cqw; }
+.rm-socrow .rm-soc-key { flex: 0 0 22cqw; width: 22cqw; height: 22cqw; }
+.rm-s-dc { background: linear-gradient(#7a86ff, #3a45c9); border-bottom-color: #151b66; }
+.rm-half { background: linear-gradient(#ff8fb8, #c7336f); color: #fff; border-bottom-color: #5f0f33; }
+.rm-contact { color: #fff; }
+
+/* socials: Kim's section */
+.sc-kim { margin-top: 44px; padding-top: 26px; border-top: 1px solid #3a1014; scroll-margin-top: 80px; }
+.sc-kim h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: 2.4rem; letter-spacing: .03em; }
+.sc-kim[hidden] { display: none; }
+
+/* contact: a black laptop that opens */
+.laptop { --o: 0; width: min(760px, 100%); margin: 30px auto 10px; perspective: 1400px; }
+.lp-lid { pointer-events: none; transform-origin: 50% 100%; transform: rotateX(-84deg); transition: transform 1.3s cubic-bezier(.2,.8,.2,1); transform-style: preserve-3d; opacity: .0; }
+.laptop.open .lp-lid { pointer-events: auto; transform: rotateX(-4deg); opacity: 1; transition: transform 1.3s cubic-bezier(.2,.8,.2,1), opacity .2s; }
+.lp-bezel { position: relative; padding: 16px 16px 20px; border-radius: 16px 16px 4px 4px; background: linear-gradient(#222, #0a0a0a); border: 2px solid #333; box-shadow: 0 0 0 1px #000, 0 -8px 40px rgba(255,30,40,.18); }
+.lp-cam { position: absolute; top: 6px; left: 50%; width: 5px; height: 5px; border-radius: 50%; background: #1a2a3a; box-shadow: 0 0 0 2px #111; }
+.lp-screen { background: #f4f1ec; color: #111; border-radius: 4px; overflow: hidden; box-shadow: inset 0 0 0 1px #000; min-height: 280px; }
+.lp-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #e3ded6; border-bottom: 1px solid #cfc8bd; font: 600 .82rem var(--body); color: #444; }
+.lp-bar span { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; } .lp-bar span:nth-child(2) { background: #febc2e; } .lp-bar span:nth-child(3) { background: #28c840; }
+.lp-bar b { margin-left: 10px; font-weight: 600; }
+.lp-form { display: grid; gap: 10px; padding: 14px 16px 16px; }
+.lp-form label { display: grid; gap: 4px; font-size: .78rem; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: .06em; }
+.lp-form input, .lp-form textarea { font: 400 1rem var(--body); color: #111; background: #fff; border: 1px solid #c9c2b6; border-radius: 6px; padding: 9px 10px; width: 100%; box-sizing: border-box; resize: vertical; }
+.lp-form input:focus, .lp-form textarea:focus { outline: 2px solid #c1121f; outline-offset: 1px; }
+.lp-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.lp-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.lp-status { font-size: .9rem; color: #333; } .lp-status.ok { color: #0a7a2f; } .lp-status.bad { color: #b00020; } .lp-status a { color: #b00020; font-weight: 600; }
+.lp-base { position: relative; height: 16px; margin: 0 -3%; border-radius: 0 0 22px 22px / 0 0 14px 14px; background: linear-gradient(#3a3a3a, #111 60%, #000); box-shadow: 0 14px 30px rgba(0,0,0,.7); }
+.lp-notch { position: absolute; left: 50%; top: 0; width: 18%; height: 6px; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #0a0a0a; }
+@media (max-width: 560px) { .lp-bezel { padding: 10px 10px 14px; } .lp-screen { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .lp-lid { transition: none; } }
