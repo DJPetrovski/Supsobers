@@ -39,7 +39,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-S-S-White-p822836208",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sobering-stories-might-mean-somethin-s-s-white.webp"
   },
   {
    "name": "Sobering Stories Might Mean Somethin' S/S (Black)",
@@ -49,7 +50,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-S-S-Black-p822840762",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sobering-stories-might-mean-somethin-s-s-black.webp"
   },
   {
    "name": "Just a Coincidence S/S (Sobering Stories)",
@@ -59,7 +61,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Just-a-Coincidence-S-S-Sobering-Stories-p805877108",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/just-a-coincidence-s-s-sobering-stories.webp"
   },
   {
    "name": "Sobering Stories Specific Ocean S/S (White)",
@@ -69,7 +72,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Specific-Ocean-S-S-White-p805437902",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sobering-stories-specific-ocean-s-s-white.webp"
   },
   {
    "name": "Sobering Stories Sticker",
@@ -89,7 +93,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Specific-Ocean-Red-S-S-p776969939",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sobering-stories-specific-ocean-red-s-s.webp"
   },
   {
    "name": "Sobering Stories Specific Ocean (Black) S/S",
@@ -99,7 +104,8 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Specific-Ocean-Black-S-S-p776982013",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sobering-stories-specific-ocean-black-s-s.webp"
   }
  ],
  "fourthwallStore": "https://the-sober-sector-shop.fourthwall.com",
@@ -246,7 +252,8 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/might-mean-somethin-tee",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/might-mean-somethin-tee.webp"
   },
   {
    "name": "DJ Desk Pad",
@@ -352,7 +359,8 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sup-board-heavyweight-tee",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/sup-board-heavyweight-tee.webp"
   },
   {
    "name": "YouTube Shorts Hoochie Daddy Shorts (Hoochie Daddy Edition)",
@@ -376,7 +384,8 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/chalk-outline-tee",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "model": "img/model/chalk-outline-tee.webp"
   },
   {
    "name": "Sober Sector Decal",

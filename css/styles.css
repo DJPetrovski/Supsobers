@@ -1190,3 +1190,22 @@ html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .1
 .rw-car { width: 200px; }
 .rw-beam { height: 220px; width: 150px; }
 @media (max-width: 600px) { .mc-runway { height: 150px; } .rw-model { width: 58px; height: 116px; } .rw-car { width: 150px; } }
+
+/* ---- runway: the real model ---- */
+.mc-runway { height: 400px; }
+.rw-real { width: 118px; height: 360px; bottom: 26px; }
+.rw-person { width: 100%; height: 100%; object-fit: contain; display: block; transform-origin: 50% 100%; filter: drop-shadow(0 6px 14px rgba(0,0,0,.6)); pointer-events: none; user-select: none; }
+.rw-shadow { position: absolute; left: 6%; right: 6%; bottom: -6px; height: 14px; border-radius: 50%; background: radial-gradient(rgba(0,0,0,.65), rgba(0,0,0,0) 70%); }
+.rw-real.walking .rw-person { animation: rw-step .62s ease-in-out infinite; }
+@keyframes rw-step { 0% { transform: translateY(0) rotate(-1.1deg); } 25% { transform: translateY(-5px) rotate(0deg); } 50% { transform: translateY(0) rotate(1.1deg); } 75% { transform: translateY(-5px) rotate(0deg); } 100% { transform: translateY(0) rotate(-1.1deg); } }
+.rw-real.posing .rw-person { animation: rw-strike 1.5s ease-in-out; filter: drop-shadow(0 0 18px rgba(255,255,255,.6)) drop-shadow(0 6px 14px rgba(0,0,0,.6)); }
+@keyframes rw-strike { 0% { transform: scale(1); } 30% { transform: scale(1.1) rotate(-2deg); } 65% { transform: scale(1.1) rotate(2deg); } 100% { transform: scale(1); } }
+.rw-card { position: absolute; left: 100%; top: 38%; margin-left: 10px; width: 120px; padding: 6px; border-radius: 10px; background: rgba(8,2,3,.85); border: 1px solid var(--ember); box-shadow: 0 0 22px rgba(255,42,53,.55); animation: rw-pop .5s ease-out both; }
+.rw-card img { width: 100%; display: block; border-radius: 6px; }
+@keyframes rw-pop { from { opacity: 0; transform: scale(.4) translateY(20px); } }
+@media (max-width: 600px) { .mc-runway { height: 290px; } .rw-real { width: 88px; height: 262px; } .rw-card { width: 84px; } }
+.mc-runway { height: 450px; }
+.rw-real { width: 131px; height: 400px; bottom: 28px; }
+.rw-real.posing .rw-person { transform-origin: 50% 32%; animation: rw-strike2 1.8s ease-in-out; }
+@keyframes rw-strike2 { 0% { transform: scale(1); } 25% { transform: scale(1.38) rotate(-1.5deg); } 75% { transform: scale(1.38) rotate(1.5deg); } 100% { transform: scale(1); } }
+@media (max-width: 600px) { .mc-runway { height: 310px; } .rw-real { width: 92px; height: 275px; } }

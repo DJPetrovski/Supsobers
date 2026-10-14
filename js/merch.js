@@ -76,17 +76,6 @@
     if (/mug|bag|blanky|towel|desk pad|pad|flag/.test(n)) return 'carry';
     return 'wear';
   }
-  function figure(it, k) {
-    var img = it.images[0], id = 'rwc' + Math.floor(Math.random() * 1e6);
-    var shirt = k === 'wear' ? '<clipPath id="' + id + '"><path d="M17 27 Q30 22 43 27 L46 60 L14 60 Z"/></clipPath><path d="M17 27 Q30 22 43 27 L46 60 L14 60 Z" fill="#241014"/><image href="' + img + '" x="8" y="22" width="44" height="42" preserveAspectRatio="xMidYMid slice" clip-path="url(#' + id + ')"/>' : '<path d="M17 27 Q30 22 43 27 L46 60 L14 60 Z" fill="#1a0a0d"/>';
-    return '<svg viewBox="0 0 60 120" class="rw-fig" aria-hidden="true">' +
-      '<g class="rw-legL"><rect x="19" y="58" width="9" height="56" rx="4" fill="#0b0204" stroke="#ff2a35" stroke-opacity=".5"/></g>' +
-      '<g class="rw-legR"><rect x="32" y="58" width="9" height="56" rx="4" fill="#0b0204" stroke="#ff2a35" stroke-opacity=".5"/></g>' +
-      '<g class="rw-armL"><rect x="9" y="27" width="7" height="30" rx="3.5" fill="#12070a" stroke="#ff2a35" stroke-opacity=".5"/></g>' +
-      '<g class="rw-armR"><rect x="44" y="27" width="7" height="30" rx="3.5" fill="#12070a" stroke="#ff2a35" stroke-opacity=".5"/></g>' +
-      shirt + '<circle cx="30" cy="14" r="9.5" fill="#12070a" stroke="#ff2a35" stroke-opacity=".6"/>' +
-      '<path d="M22 11 Q30 2 38 11 Q30 8 22 11Z" fill="#000"/><rect x="21" y="12" width="18" height="4" rx="2" fill="#000" opacity=".9"/></svg>';
-  }
   function runway(it) {
     if (!stage) return;
     clearTimeout(rwT);
@@ -102,17 +91,18 @@
         var a = car.animate([{ transform: 'translateX(' + (w + 40) + 'px)' }, { transform: 'translateX(' + (mid - 80) + 'px)', offset: .42 }, { transform: 'translateX(' + (mid - 80) + 'px)', offset: .75 }, { transform: 'translateX(-260px)' }], { duration: 4200, easing: 'ease-in-out', fill: 'forwards' });
         car.style.left = '0'; rwAnims.push(a); return;
       }
-      var m = el('div', 'rw-model'); m.innerHTML = figure(it, k);
-      if (k === 'hat') { var h = el('img', 'rw-hat'); h.src = it.images[0]; h.alt = ''; m.appendChild(h); }
-      if (k === 'carry') { var c = el('div', 'rw-carry'); var ci = el('img'); ci.src = it.images[0]; ci.alt = ''; c.appendChild(ci); m.appendChild(c); }
+      var m = el('div', 'rw-model rw-real'), pic = el('img', 'rw-person'); pic.src = it.model || 'img/model/model.png'; pic.alt = ''; pic.draggable = false;
+      m.appendChild(pic); m.appendChild(el('div', 'rw-shadow'));
+      if (!it.model) { var cd = el('div', 'rw-card'); var ci = el('img'); ci.src = it.images[0]; ci.alt = ''; cd.appendChild(ci); m.appendChild(cd); }
       cast.appendChild(m); m.style.left = '0';
-      if (reduceM) { m.style.transform = 'translateX(' + (mid - 30) + 'px)'; return; }
+      var mw = m.offsetWidth || 110;
+      if (reduceM) { m.style.transform = 'translateX(' + (mid - mw / 2) + 'px)'; return; }
       m.classList.add('walking');
-      var from = -80, to = mid - 30;
-      var walk = m.animate([{ transform: 'translateX(' + from + 'px)' }, { transform: 'translateX(' + to + 'px)', offset: .5 }, { transform: 'translateX(' + to + 'px)', offset: .78 }, { transform: 'translateX(' + (w + 80) + 'px)' }], { duration: 5200, easing: 'linear', fill: 'forwards' });
+      var from = -mw - 40, to = mid - mw / 2;
+      var walk = m.animate([{ transform: 'translateX(' + from + 'px)' }, { transform: 'translateX(' + to + 'px)', offset: .5 }, { transform: 'translateX(' + to + 'px)', offset: .8 }, { transform: 'translateX(' + (w + 40) + 'px)' }], { duration: 6200, easing: 'linear', fill: 'forwards' });
       rwAnims.push(walk);
-      setTimeout(function () { m.classList.remove('walking'); m.classList.add('posing'); }, 2500);
-      setTimeout(function () { m.classList.remove('posing'); m.classList.add('walking'); }, 4050);
+      setTimeout(function () { m.classList.remove('walking'); m.classList.add('posing'); }, 3100);
+      setTimeout(function () { m.classList.remove('posing'); m.classList.add('walking'); }, 4960);
     }, 380);
   }
   track.addEventListener('scroll', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }, { passive: true });
