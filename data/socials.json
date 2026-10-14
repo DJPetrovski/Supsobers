@@ -1,0 +1,10 @@
+{
+  "socials": [
+    { "name": "YouTube", "handle": "@Sobersector", "url": "https://www.youtube.com/@Sobersector", "blurb": "The full episodes. Start here.", "mark": "YT" },
+    { "name": "Patreon", "handle": "SoberingStories", "url": "https://patreon.com/SoberingStories", "blurb": "The uncensored versions.", "mark": "P" },
+    { "name": "Instagram", "handle": "", "url": "", "blurb": "Clips and behind the scenes.", "mark": "IG" },
+    { "name": "X", "handle": "", "url": "", "blurb": "Short takes and updates.", "mark": "X" },
+    { "name": "Rumble", "handle": "", "url": "", "blurb": "Videos without the algorithm.", "mark": "RU" },
+    { "name": "Spotify", "handle": "", "url": "", "blurb": "The podcast, in your ears.", "mark": "SP" }
+  ]
+}

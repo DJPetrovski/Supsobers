@@ -25,7 +25,7 @@
   /* ---------- tabs ---------- */
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
-  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', merch: 'Merch | Sup Sobers', web: "It's All Connected | Sup Sobers", about: 'About | Sup Sobers' };
+  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', merch: 'Merch | Sup Sobers', socials: 'Socials | Sup Sobers', web: "It's All Connected | Sup Sobers", about: 'About | Sup Sobers' };
 
   function route() {
     var name = (location.hash || '#home').slice(1);
@@ -367,4 +367,27 @@
 
   getJSON('data/books.json').then(function (d) { var b = d.books || []; $('#book-shelf').hidden = !b.length; $('#book-list').hidden = !b.length; buildCards('#book-list', b, ''); })
     .catch(function () { buildCards('#book-list', [], '#book-empty'); });
+})();
+
+/* ---------- socials: a bank of channels ---------- */
+(function () {
+  var host = document.getElementById('sc-bank'); if (!host) return;
+  fetch('data/socials.json').then(function (r) { return r.json(); }).then(function (d) {
+    var list = (d.socials || []).filter(function (s) { return s.url; });
+    window.SS = window.SS || {}; window.SS.socials = list;
+    list.forEach(function (s, i) {
+      var a = document.createElement('a');
+      a.className = 'sc-ch'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', s.name + (s.handle ? ' ' + s.handle : ''));
+      var n = (i + 1 < 10 ? '0' : '') + (i + 1);
+      a.innerHTML = '<span class="sc-num">CH ' + n + '</span><span class="sc-screen"><b class="sc-mark"></b></span><span class="sc-name"></span><span class="sc-handle"></span><span class="sc-blurb"></span><span class="sc-go">Tune in \u2192</span>';
+      a.querySelector('.sc-mark').textContent = s.mark || s.name.slice(0, 2).toUpperCase();
+      a.querySelector('.sc-name').textContent = s.name;
+      a.querySelector('.sc-handle').textContent = s.handle || '';
+      a.querySelector('.sc-blurb').textContent = s.blurb || '';
+      a.style.setProperty('--d', (i * 70) + 'ms');
+      host.appendChild(a);
+    });
+    document.dispatchEvent(new Event('ss:socials'));
+  }).catch(function () {});
 })();
