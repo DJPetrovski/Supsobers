@@ -778,3 +778,66 @@ dialog#player .hole-title { z-index: 3; }
 .rel-meta { font-size: 0.8rem; padding: 10px 14px 0; }
 .player-card .rel-hint { position: relative; padding: 6px 14px 12px 40px; font-size: 0.76rem; line-height: 1.4; }
 .player-card .rel-hint::before { content: "i"; position: absolute; left: 14px; top: 5px; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c9c4c0; text-align: center; font: italic 700 12px/15px Georgia, serif; color: #c9c4c0; }
+
+/* =====================================================================
+   Home: the TV and the remote
+   ===================================================================== */
+.home-hero { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(8px, 2vh, 22px); padding: 12px 16px 28px; }
+.home-hero .ambient { opacity: 0.32; }
+.home-copy h1 { font-size: clamp(2.6rem, 8vw, 5.4rem); line-height: 0.84; }
+.home-rig { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 4vw, 54px); width: min(100%, 1040px); --ant: clamp(34px, 5vw, 60px); padding-top: calc(var(--ant) * 0.85); }
+.home-tvwrap { display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 1 1 0; min-width: 0; }
+.home-rig .tv { width: min(100%, 620px, max(240px, calc((100svh - 300px) * 1.36))); }
+.htv-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; filter: contrast(1.08) saturate(0.9); }
+.htv-screen { cursor: default; }
+.htv-preview { position: absolute; inset: 0; z-index: 1; opacity: 0; pointer-events: none; transition: opacity 0.12s; background: radial-gradient(ellipse at 50% 40%, #2b0509, #070102 78%); }
+.htv-preview.on { opacity: 1; }
+.pv { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; padding: 8%; color: var(--bone); }
+.pv h3 { margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.7rem, 6.4vw, 3.6rem); line-height: 0.9; -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; text-shadow: 0 0 18px rgba(255, 42, 53, 0.8); }
+.pv p { margin: 0; font-size: clamp(0.6rem, 1.9vw, 0.95rem); letter-spacing: 0.18em; text-transform: uppercase; color: #ffb3b8; }
+.pv-neon { color: #ffd1d4; text-shadow: 0 0 6px #ff2a35, 0 0 24px #ff2a35, 0 0 60px #ff2a35 !important; animation: neon 3.4s infinite; }
+.pv-strip { display: flex; gap: 3%; width: 94%; margin-top: 6px; }
+.pv-strip img { flex: 1; min-width: 0; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid rgba(255, 42, 53, 0.6); box-shadow: 0 0 14px rgba(255, 42, 53, 0.4); }
+.pv-strip.one img { max-width: 56%; margin: 0 auto; flex: none; }
+.pv-web { width: 62%; filter: drop-shadow(0 0 8px rgba(255, 42, 53, 0.9)); }
+.htv-sound { font-size: 0.78rem; padding: 5px 14px; }
+
+/* the remote */
+.remote { flex: 0 0 auto; width: clamp(210px, 22vw, 250px); padding: 16px 16px 18px; border-radius: 34px;
+  background: linear-gradient(165deg, #2a2a2e, #0e0e11 60%, #1a1a1d);
+  box-shadow: 0 0 0 1px #000, inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -3px 8px rgba(0, 0, 0, 0.7), 0 22px 50px rgba(0, 0, 0, 0.85), 0 0 60px rgba(255, 42, 53, 0.18);
+  transform: rotate(2deg); }
+.remote-top { display: flex; align-items: center; justify-content: space-between; margin: 0 4px 12px; font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase; color: #8a8a90; }
+.remote-led { width: 9px; height: 9px; border-radius: 50%; background: #ff2a35; box-shadow: 0 0 10px #ff2a35; animation: pulse 2.2s ease-in-out infinite; }
+.remote-keys { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rkey { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 8px 6px; border-radius: 14px; text-align: center; text-decoration: none; cursor: pointer;
+  font: 700 0.76rem var(--body); letter-spacing: 0.1em; text-transform: uppercase; color: #e7e1dc;
+  background: linear-gradient(#4a4a50, #2c2c31); border: 1px solid #000; border-bottom: 5px solid #0b0b0d;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 3px 6px rgba(0, 0, 0, 0.6); transition: transform 0.08s, border-bottom-width 0.08s, filter 0.15s; }
+.rkey-wide { grid-column: 1 / -1; min-height: 52px; font-size: 0.9rem; }
+.rkey-red { background: linear-gradient(#ff4a55, #a30010); border-bottom-color: #4a0008; color: #fff; }
+.rkey-neon { color: #ffd1d4; text-shadow: 0 0 8px #ff2a35; background: linear-gradient(#3a0a10, #1a0306); border-bottom-color: #000; box-shadow: inset 0 0 12px rgba(255, 42, 53, 0.5), 0 0 12px rgba(255, 42, 53, 0.35); }
+.rkey-yt { background: linear-gradient(#e03a3a, #8f1111); border-bottom-color: #3d0606; color: #fff; }
+.rkey-pt { background: linear-gradient(#5b92ff, #1a3fb0); border-bottom-color: #0a1d5a; color: #fff; }
+.rkey:hover, .rkey:focus-visible { filter: brightness(1.28); outline: none; }
+.rkey:active { transform: translateY(3px); border-bottom-width: 2px; }
+.remote-hint { margin: 12px 4px 0; text-align: center; font-size: 0.72rem; line-height: 1.35; color: #a9a4a0; min-height: 2.7em; }
+
+/* pulled into the screen */
+html.is-sucking { overflow: hidden; }
+html.is-sucking .top, html.is-sucking .foot, html.is-sucking .remote, html.is-sucking .home-copy, html.is-sucking .htv-sound { opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+.suck-flash { position: fixed; inset: 0; z-index: 70; pointer-events: none; opacity: 0; transition: opacity 0.4s; background: var(--noise) 0 0 / 128px 128px, #000; animation: tvnoise 0.3s steps(6) infinite; }
+.suck-flash.on { opacity: 1; }
+
+@media (max-width: 760px) {
+  .home-rig { flex-direction: column; gap: 16px; }
+  .home-tvwrap { flex: none; width: 100%; }
+  .home-rig .tv { width: min(100%, 460px, max(240px, calc((100svh - 470px) * 1.36))); }
+  .remote { width: min(100%, 360px); transform: none; padding: 14px; border-radius: 28px; }
+  .remote-keys { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rkey { min-height: 42px; font-size: 0.72rem; }
+  .rkey-wide { min-height: 46px; }
+  .home-rig { padding-top: calc(var(--ant) * 1.1); }
+  .remote-top { margin-bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .remote-led, .pv-neon { animation: none; } }

@@ -66,7 +66,7 @@
     return out.slice(0, max || 8);
   }
 
-  var members = [];
+  var members = [], manualMembers = [], autoMembers = [], clubCfg = {};
   function memberFor(v) {
     for (var i = 0; i < members.length; i++) if (members[i].publicId === v.id) return members[i];
     return null;
@@ -209,9 +209,13 @@
 
   /* ---------- members only club ---------- */
   function buildClub(d) {
-    members = (d.videos || []).filter(function (m) { return m.id || m.url; });
-    if (d.joinYouTube) $('#club-join-yt').href = d.joinYouTube;
-    if (d.joinPatreon) $('#club-join-pt').href = d.joinPatreon;
+    if (d) {
+      clubCfg = d;
+      manualMembers = (d.videos || []).filter(function (m) { return m.id || m.url; });
+    }
+    members = manualMembers.concat(autoMembers);
+    if (clubCfg.joinYouTube) $('#club-join-yt').href = clubCfg.joinYouTube;
+    if (clubCfg.joinPatreon) $('#club-join-pt').href = clubCfg.joinPatreon;
     var grid = $('#club-grid');
     grid.textContent = '';
     $('#club-empty').hidden = members.length > 0;
@@ -224,6 +228,25 @@
       ]);
       grid.appendChild(a);
     });
+  }
+
+  // A video with "Members Only" in its title goes to the Members Club, paired with its public twin.
+  var MEMBER_RE = /[\[(|\-:\s]*\bmembers?[\s-]*only\b[\])|\-:\s]*/ig;
+  function norm(t) { return (t || '').replace(MEMBER_RE, ' ').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+  function splitMembers(vids) {
+    var pub = [], mem = [];
+    vids.forEach(function (v) { (/\bmembers?[\s-]*only\b/i.test(v.title || '') ? mem : pub).push(v); });
+    autoMembers = mem.map(function (m) {
+      var key = norm(m.title), twin = null, best = 0, kw = key.split(' ');
+      pub.forEach(function (p) {
+        var pk = norm(p.title);
+        if (pk === key) { twin = p; best = 99; return; }
+        var pw = pk.split(' '), n = kw.filter(function (w) { return w.length > 3 && pw.indexOf(w) >= 0; }).length;
+        if (best < 99 && n > best && n >= Math.max(3, kw.length * 0.6)) { best = n; twin = p; }
+      });
+      return { id: m.id, title: (m.title || '').replace(MEMBER_RE, ' ').replace(/\s+/g, ' ').trim() || m.title, publicId: twin ? twin.id : '' };
+    });
+    return pub;
   }
 
   /* ---------- archives + books ---------- */
@@ -259,8 +282,9 @@
   getJSON('data/videos.json').then(function (d) {
     return threadsReady.then(function () { return d; });
   }).then(function (d) {
-    var vids = (d.videos || []).slice();
+    var vids = splitMembers((d.videos || []).slice());
     window.SS.videos = vids;
+    buildClub();
     (window.SS.topicDefs || []).forEach(function (t) {
       var ids = vids.filter(function (v) {
         var low = (v.title || '').toLowerCase();
