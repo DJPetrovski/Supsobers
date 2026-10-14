@@ -7,14 +7,21 @@
   function el(t, c, txt) { var e = document.createElement(t); if (c) e.className = c; if (txt) e.textContent = txt; return e; }
 
   function fill(d) {
-    items = (d.americanpatriot || []).concat((d.fourthwall || []).map(function (x) { x.store = 'fourthwall'; return x; }))
+    ALL = (d.americanpatriot || []).concat((d.fourthwall || []).map(function (x) { x.store = 'fourthwall'; return x; }))
       .filter(function (x) { return x && x.url && x.images && x.images.length; });
-    window.SS = window.SS || {}; window.SS.merch = items;
+    items = ALL; window.SS = window.SS || {}; window.SS.merch = ALL;
     document.dispatchEvent(new Event('ss:merch'));
     var links = document.getElementById('mc-links');
     if (d.fourthwallStore) { var a = el('a', 'btn', 'Fourthwall shop'); a.href = d.fourthwallStore; a.target = '_blank'; a.rel = 'noopener'; links.appendChild(a); }
-    if (!items.length) { document.getElementById('mc-empty').hidden = false; document.getElementById('mc-stage').hidden = true; info.hidden = true; return; }
-    track.textContent = '';
+    if (!ALL.length) { document.getElementById('mc-empty').hidden = false; document.getElementById('mc-stage').hidden = true; info.hidden = true; return; }
+    render(ALL, Math.min(1, ALL.length - 1));
+  }
+  var ALL = [];
+  function render(list, start) {
+    items = list; cards = []; cur = -1; track.textContent = '';
+    var none = document.getElementById('mc-none'); if (none) none.hidden = !!list.length;
+    info.hidden = !list.length; document.getElementById('mc-stage').style.visibility = list.length ? '' : 'hidden';
+    if (!list.length) { stage && (stage.querySelector('.rw-cast').textContent = ''); return; }
     items.forEach(function (it, i) {
       var a = el('a', 'mc-card'); a.href = it.url; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('data-i', i);
       var img = el('img'); img.src = (it.cutouts && it.cutouts[0]) || it.images[0]; img.alt = it.name; img.loading = i < 5 ? 'eager' : 'lazy'; img.decoding = 'async'; img.draggable = false;
@@ -23,8 +30,18 @@
       a.addEventListener('click', function (e) { if (i !== cur) { e.preventDefault(); go(i); } });
       track.appendChild(a); cards.push(a);
     });
-    setTimeout(function () { go(Math.min(1, items.length - 1), true); frame(); }, 60);
+    setTimeout(function () { go(start || 0, true); frame(); }, 60);
   }
+  var filt = document.getElementById('mc-filter');
+  if (filt) filt.addEventListener('input', function () {
+    var t = filt.value.toLowerCase().split(/\s+/).filter(Boolean);
+    render(ALL.filter(function (m) { var x = (m.name + ' ' + (m.store === 'fourthwall' ? 'fourthwall' : 'american patriot')).toLowerCase(); return t.every(function (w) { return x.indexOf(w) >= 0; }); }), 0);
+  });
+  window.SS = window.SS || {};
+  window.SS.merchGo = function (idx) {
+    var m = ALL[idx]; if (!m) return;
+    if (filt && filt.value) { filt.value = ''; render(ALL, idx); } else setTimeout(function () { go(idx, false); }, 50);
+  };
 
   function go(i, instant) {
     i = Math.max(0, Math.min(items.length - 1, i));

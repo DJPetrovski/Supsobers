@@ -33,7 +33,8 @@
     books: function () { return '<h3>Books</h3><p>Reading from the library</p>'; },
     about: function () { return '<h3>About</h3><p>Trust those who seek the truth</p>'; },
     youtube: function () { return '<h3>YouTube</h3><p>@Sobersector</p><div class="pv-strip one">' + thumbs(1) + '</div>'; },
-    patreon: function () { return '<h3>Patreon</h3><p>Join the club</p>'; }
+    patreon: function () { return '<h3>Patreon</h3><p>Join the club</p>'; },
+    search: function () { return '<h3>Search</h3><p>Find any video, product or page</p>'; }
   };
 
   function show(key) {
@@ -63,6 +64,7 @@
     k.addEventListener('click', function (e) {
       var external = key === 'youtube' || key === 'patreon';
       if (touch && armed !== key) { e.preventDefault(); armed = key; show(key); hint.textContent = external ? 'Tap again to open.' : 'Tap again to go in.'; later(); return; }
+      if (key === 'search') { e.preventDefault(); if (window.SS && SS.openSearch) SS.openSearch(); return; }
       if (external) return;               // normal link in a new tab
       e.preventDefault();
       enter(key, k.getAttribute('href'));

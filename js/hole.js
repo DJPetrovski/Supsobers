@@ -45,8 +45,10 @@
       titleEl.textContent = v ? (v.title || ('Video ' + pad(idx + 1))) : '';
     }
 
+    var hl = null;   // optional filter: tiles whose video fails it are dimmed, matches glow
     function setVideo(node, v, idx) {
       node.__v = v; node.__idx = idx;
+      var hit = hl ? !!(v && hl(v)) : null; node.classList.toggle('hl-dim', hit === false); node.classList.toggle('hl-hit', hit === true);
       var img = node.firstChild, ph = node.lastChild;
       if (v && ID_RE.test(v.id || '')) {
         img.src = 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg';
@@ -242,6 +244,7 @@
         }
       },
       stop: function () { running = false; cancelAnimationFrame(raf); },
+      highlight: function (fn) { hl = fn || null; rings.forEach(assign); },
       setPaused: function (b) { paused = !!b; },
       isPaused: function () { return paused; },
       hold: function (b) { held = !!b; },

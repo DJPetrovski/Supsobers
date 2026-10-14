@@ -298,6 +298,26 @@
   }
   document.addEventListener('ss:playeropen', previewOff);
 
+  // The scanner: type a word and the tunnel dims everything that doesn't match; Enter drops you into the first hit.
+  var find = $('#hole-find'), findN = $('#hole-find-n'), scanPaused = false;
+  function scanMatch(q) { var t = (q || '').toLowerCase().split(/\s+/).filter(Boolean); return t.length ? function (v) { var x = (v.title || '').toLowerCase(); return t.every(function (w) { return x.indexOf(w) >= 0; }); } : null; }
+  function scan() {
+    var fn = scanMatch(find.value);
+    if (holeApi) holeApi.highlight(fn);
+    if (!fn) { findN.textContent = ''; if (scanPaused && holeApi) { holeApi.setPaused(false); scanPaused = false; } return; }
+    var n = (SS.videos || []).filter(fn).length;
+    findN.textContent = n ? n + (n === 1 ? ' hit' : ' hits') : 'no hits';
+    if (holeApi && n && !holeApi.isPaused()) { holeApi.setPaused(true); scanPaused = true; }
+  }
+  if (find) {
+    find.addEventListener('input', scan);
+    find.addEventListener('keydown', function (e) {
+      e.stopPropagation();
+      if (e.key === 'Enter') { var fn = scanMatch(find.value); var hit = fn && (SS.videos || []).filter(fn)[0]; if (hit) { find.blur(); pick(hit); } }
+      else if (e.key === 'Escape') { find.value = ''; scan(); find.blur(); }
+    });
+    document.addEventListener('ss:holeclosed', function () { find.value = ''; scan(); });
+  }
   var helpBtn = $('#hole-help'), helpT = 0;
   if (helpBtn) helpBtn.addEventListener('click', function () { clearTimeout(helpT); hint.classList.toggle('gone'); if (!hint.classList.contains('gone')) helpT = setTimeout(function () { hint.classList.add('gone'); }, 9000); });
 
@@ -380,6 +400,7 @@
   }
 
   function climb(afterFn) {
+    document.dispatchEvent(new Event('ss:holeclosed'));
     if (!isOpen) return;
     isOpen = false;
     phoneStop();

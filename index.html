@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791961820">
+  <link rel="stylesheet" href="css/styles.css?v=1791962220">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -35,6 +35,7 @@
       <a href="#books" data-route="books">Books</a>
       <a href="#about" data-route="about">About</a>
     </nav>
+    <button type="button" class="nav-search" id="nav-search" aria-label="Search the whole site" title="Search (press /)"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   </header>
 
   <main id="main">
@@ -47,6 +48,7 @@
       <div class="home-copy">
         <h1 id="home-title" class="sr">Sobering Stories</h1>
       </div>
+      <button type="button" class="home-search" id="home-search"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Search every video, product and page</span><kbd>/</kbd></button>
       <div class="home-rig" id="home-rig">
         <div class="home-tvwrap">
           <div class="tv htv" id="htv">
@@ -106,6 +108,7 @@
             <a class="rm-key rm-gray rm-wide rm-red" data-key="youtube" href="https://www.youtube.com/@Sobersector" target="_blank" rel="noopener">YouTube</a>
             <a class="rm-key rm-gray rm-wide rm-blue" data-key="patreon" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Patreon</a>
             <a class="rm-key rm-gray rm-wide rm-merch" data-key="merch" href="#merch">Merch</a>
+            <a class="rm-key rm-gray rm-wide rm-search" data-key="search" href="#search">Search</a>
           </div>
           <p class="rm-logo">Sup Sobers</p>
         </div>
@@ -196,6 +199,7 @@
         <a class="btn btn-primary" id="club-join-yt" href="https://www.youtube.com/@Sobersector/join" target="_blank" rel="noopener">Join on YouTube</a>
         <a class="btn" id="club-join-pt" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Join on Patreon</a>
       </p>
+      <label class="search page-search"><span class="sr">Search members-only videos</span><input type="search" data-filter="#club-grid" placeholder="Search members-only videos" autocomplete="off"></label>
       <div class="grid club-grid" id="club-grid"></div>
       <p class="empty" id="club-empty" hidden>The doors open soon. Members-only episodes will line up here.</p>
     </section>
@@ -204,6 +208,7 @@
     <section class="view page" data-view="archives" aria-labelledby="archives-title" hidden>
       <h2 id="archives-title">Archives</h2>
       <p class="page-lede">Timeline-organized video and photo records. Each entry links to its original source.</p>
+      <label class="search page-search"><span class="sr">Search archives</span><input type="search" data-filter="#archive-list" placeholder="Search the archives" autocomplete="off"></label>
       <div class="cards" id="archive-list"></div>
     </section>
 
@@ -211,6 +216,7 @@
     <section class="view page merch" data-view="merch" aria-labelledby="merch-title" hidden>
       <h2 id="merch-title">Merch</h2>
       <p class="page-lede">Official Sobering Stories gear. Swipe through, pick one, and you go straight to checkout.</p>
+      <label class="search page-search"><span class="sr">Search merch</span><input type="search" id="mc-filter" placeholder="Search merch" autocomplete="off"></label>
       <div class="mc-runway" id="mc-runway" aria-hidden="true"><div class="rw-beam rw-b1"></div><div class="rw-beam rw-b2"></div><div class="rw-cast"></div><div class="rw-floor"></div></div>
       <div class="mc-stage" id="mc-stage">
         <button type="button" class="mc-arrow" id="mc-prev" aria-label="Previous product">&#8249;</button>
@@ -221,6 +227,7 @@
       <div class="mc-links" id="mc-links">
         <a class="btn" href="https://www.americanpatriot.ltd/search?keyword=Sobering+stories" target="_blank" rel="noopener">See everything on American Patriot</a>
       </div>
+      <p class="empty" id="mc-none" hidden>Nothing in the shop matches that search.</p>
       <p class="empty" id="mc-empty" hidden>Merch is loading in. Check back soon.</p>
     </section>
 
@@ -228,6 +235,7 @@
     <section class="view page" data-view="books" aria-labelledby="books-title" hidden>
       <h2 id="books-title">Books</h2>
       <p class="page-lede">Reading from the Sobering Stories library.</p>
+      <label class="search page-search"><span class="sr">Search books</span><input type="search" data-filter="#book-list" placeholder="Search books" autocomplete="off"></label>
       <div class="cards" id="book-list"></div>
       <p class="empty" id="book-empty" hidden>Books are coming soon.</p>
     </section>
@@ -275,6 +283,7 @@
       <button type="button" class="pill" id="hole-back" hidden>Back up</button>
       <button type="button" class="pill" id="phone-back" hidden>Put it back</button>
       <span class="hole-ui-right">
+        <label class="hole-find"><span class="sr">Scan the tunnel for a video</span><input id="hole-find" type="search" placeholder="Scan the hole" autocomplete="off" enterkeyhint="go"><span id="hole-find-n" class="hole-find-n"></span></label>
         <button type="button" class="pill" id="hole-help" aria-label="How the tunnel works">?</button>
         <button type="button" class="pill" id="hole-sound" aria-pressed="true">Sound on</button>
         <button type="button" class="pill" id="hole-list">List view</button>
@@ -319,14 +328,15 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791961820" defer></script>
-  <script src="js/app.js?v=1791961820" defer></script>
-  <script src="js/hole.js?v=1791961820" defer></script>
-  <script src="js/pill.js?v=1791961820" defer></script>
-  <script src="js/tv.js?v=1791961820" defer></script>
-  <script src="js/merch.js?v=1791961820" defer></script>
-  <script src="js/web.js?v=1791961820" defer></script>
-  <script src="js/home.js?v=1791961820" defer></script>
-  <script src="js/music.js?v=1791961820" defer></script>
+  <script src="js/rain.js?v=1791962220" defer></script>
+  <script src="js/app.js?v=1791962220" defer></script>
+  <script src="js/hole.js?v=1791962220" defer></script>
+  <script src="js/pill.js?v=1791962220" defer></script>
+  <script src="js/tv.js?v=1791962220" defer></script>
+  <script src="js/search.js?v=1791962220" defer></script>
+  <script src="js/merch.js?v=1791962220" defer></script>
+  <script src="js/web.js?v=1791962220" defer></script>
+  <script src="js/home.js?v=1791962220" defer></script>
+  <script src="js/music.js?v=1791962220" defer></script>
 </body>
 </html>
