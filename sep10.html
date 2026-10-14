@@ -338,6 +338,25 @@
   .fsbtn { position: absolute; right: 14px; bottom: 46px; z-index: 6; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; color: #f3e9d2; background: rgba(7,13,31,.7); border: 1px solid rgba(243,233,210,.4); border-radius: 999px; padding: 6px 13px; backdrop-filter: blur(4px); }
   .fsbtn:hover { background: rgba(243,233,210,.22); }
   html.fs-lock, html.fs-lock body { overflow: hidden; }
+
+  /* phones: a draggable divider between the description and the timeline */
+  .splitter { display: none; }
+  @media (max-width: 700px) {
+    :root { --info-h: 34dvh; }
+    .splitter { display: flex; align-items: center; justify-content: center; height: 30px; margin: 4px 0; border-radius: 10px; background: #e9e5da; border: 1px solid var(--line, #cfc8b8); color: #3a3a3a; cursor: row-resize; touch-action: none; user-select: none; -webkit-user-select: none; }
+    .splitter.drag { background: #d8d2c2; }
+    .spl-grip { display: inline-flex; padding: 0 30px; }
+    .infopane { height: var(--info-h); overflow-y: auto; overscroll-behavior: contain; }
+    .infopane.collapsed { display: none; }
+    .infopane { display: flex; flex-direction: column; } .infopane .controls { order: -1; margin-bottom: 8px; }
+    .stage:not(.fs) { height: max(280px, calc(100dvh - var(--info-h) - 82px - env(safe-area-inset-bottom, 0px))); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; justify-content: flex-end; padding-top: clamp(70px, 14vh, 150px); }
+    .stage:not(.fs) .ctx { flex: none; margin-bottom: 8px; }
+    .stage:not(.fs) .disc { position: static; flex: none; }
+    .stage:not(.fs) #timeline-root { flex: 1 1 auto; min-height: 0; align-content: center; }
+    .stage:not(.fs) .stage-title b { font-size: 24px; margin: 0; }
+    .stage:not(.fs) .stage-title { top: 12px; }
+    .stage:not(.fs) .stage-title small { font-size: 9px; }
+  }
   .stage.fs { position: fixed; inset: 0; z-index: 100; margin: 0; border-radius: 0; overflow-y: auto; overscroll-behavior: contain; padding-top: clamp(96px, 20vh, 190px); display: flex; flex-direction: column; justify-content: flex-end; }
   .stage.fs .ctx { flex: none; }
   .stage.fs .disc { position: static; flex: none; }
@@ -371,6 +390,7 @@
 </head><body>
 <div class="wrap">
   <a class="toplink" href="./#archives">&larr; Back to Sup Sobers Archives</a>
+  <div class="infopane" id="infopane">
   <header class="top">
     <p class="eyebrow">Research archive · not affiliated with any outlet</p>
     <h1>September 10 Archive</h1>
@@ -397,6 +417,8 @@
       </div>
     </div>
   </nav>
+  </div>
+  <div class="splitter" id="splitter" role="separator" aria-orientation="horizontal" aria-label="Drag up or down to resize the description and the timeline" tabindex="0"><span class="spl-grip"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l5-5 5 5M4 14l5 5 5-5"/></svg></span></div>
 
   <main>
         <div class="stage">
@@ -986,6 +1008,20 @@
   })();
   if (state.tab === "map") setCtx(Date.parse("2025-09-10T18:23:30Z"));
 })();
+
+  // phones: drag the divider to give the description or the timeline more room (tap it to collapse or restore the description)
+  (function () {
+    var sp = document.getElementById("splitter"), pane = document.getElementById("infopane"); if (!sp || !pane) return;
+    var root = document.documentElement, mq = window.matchMedia("(max-width: 700px)"), start = null, startH = 0, moved = false;
+    function vh() { return window.innerHeight; }
+    function setH(px) { px = Math.max(0, Math.min(px, vh() * 0.78)); pane.classList.toggle("collapsed", px < 24); root.style.setProperty("--info-h", Math.round(px) + "px"); try { localStorage.setItem("sep10-info-h", String(Math.round(px))); } catch (e) {} }
+    try { var sv = +localStorage.getItem("sep10-info-h"); if (sv >= 0 && localStorage.getItem("sep10-info-h") !== null) { pane.classList.toggle("collapsed", sv < 24); root.style.setProperty("--info-h", sv + "px"); } } catch (e) {}
+    sp.addEventListener("pointerdown", function (e) { if (!mq.matches) return; start = e.clientY; startH = pane.classList.contains("collapsed") ? 0 : pane.offsetHeight; moved = false; sp.classList.add("drag"); try { sp.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); });
+    sp.addEventListener("pointermove", function (e) { if (start === null) return; var d = e.clientY - start; if (Math.abs(d) > 5) moved = true; if (moved) setH(startH + d); });
+    function end() { if (start === null) return; start = null; sp.classList.remove("drag"); if (!moved) { var open = !pane.classList.contains("collapsed"); setH(open ? 0 : vh() * 0.34); } }
+    sp.addEventListener("pointerup", end); sp.addEventListener("pointercancel", end);
+    sp.addEventListener("keydown", function (e) { if (e.key === "ArrowUp" || e.key === "ArrowDown") { e.preventDefault(); setH((pane.classList.contains("collapsed") ? 0 : pane.offsetHeight) + (e.key === "ArrowDown" ? 40 : -40)); } });
+  })();
 </script>
 
 </body></html>

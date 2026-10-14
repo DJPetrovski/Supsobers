@@ -5,7 +5,9 @@
   var frame = document.getElementById('scd-frame'), playBtn = dock.querySelector('[data-sc=play]'), fw = dock.querySelector('.scd-fw');
   var URL_ = 'https://soundcloud.com/djpetrovski', w = null, loading = false, ready = false, playing = false, queue = [], root = document.documentElement;
   var userPos = null, route = (location.hash || '#home').slice(1) || 'home', mode = '', trackT = 0, minimized = false, wasPlaying = false;
-  var autoP = false;
+  var autoP = false, userW = 0, MINW = 150, FULLW = 250;
+  try { var sv = JSON.parse(localStorage.getItem('ss-scd') || 'null'); if (sv) { userW = +sv.w || 0; if (sv.l != null) userPos = { l: +sv.l, t: +sv.t }; } } catch (e) {}
+  function persist() { try { localStorage.setItem('ss-scd', JSON.stringify({ w: userW, l: userPos && userPos.l, t: userPos && userPos.t })); } catch (e) {} }
   function state() { document.dispatchEvent(new CustomEvent('ss:musicstate', { detail: { playing: playing } })); }
   function duck(l) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'sc', level: l } })); }
   function run(fn) { if (ready && w) fn(); else queue.push(fn); }
@@ -42,9 +44,11 @@
       dock.classList.add('morph'); setTimeout(function () { dock.classList.remove('morph'); }, 650);
       mode = m; dock.classList.toggle('tv', m === 'tv'); dock.classList.toggle('dockd', m === 'dock'); root.classList.toggle('scd-tv', m === 'tv');
     }
-    var vw = window.innerWidth, vh = window.innerHeight;
+    var vw = window.innerWidth, vh = window.innerHeight, maxW = Math.min(560, vw - 8);
     {
-      var wd = Math.min(360, vw - 20), sc = (wd - 16) / 420, hh = minimized ? 98 : 40 + 166 * sc + 70 + 28;
+      var wd = Math.max(MINW, Math.min(maxW, userW || Math.min(360, vw - 20))), cmp = wd < FULLW, sc = (wd - 16) / 420;
+      dock.classList.toggle('cmp', cmp);
+      var hh = cmp ? 84 : (minimized ? 98 : 40 + 166 * sc + 70 + 28);
       var L = vw - wd - 10, T = vh - hh - 10;
       if (userPos) { L = Math.max(4, Math.min(vw - wd - 4, userPos.l)); T = Math.max(4, Math.min(vh - hh - 4, userPos.t)); }
       setBox(L, T, wd, hh, '14px');
@@ -67,8 +71,22 @@
       if (!drag) return;
       e.preventDefault(); userPos = { l: ol + e.clientX - sx, t: ot + e.clientY - sy }; layout();
     });
-    function end() { clearTimeout(holdT); down = false; if (drag) { drag = false; dock.classList.remove('dragging'); } }
+    function end() { clearTimeout(holdT); down = false; if (drag) { drag = false; dock.classList.remove('dragging'); persist(); } }
     dock.addEventListener('pointerup', end); dock.addEventListener('pointercancel', end);
+  })();
+  // drag the corner to make the player any size from a bare strip of buttons to a big one
+  (function () {
+    var h = dock.querySelector('.scd-rs'); if (!h) return;
+    var sx, sw, down = false;
+    h.addEventListener('pointerdown', function (e) {
+      e.preventDefault(); e.stopPropagation(); down = true; sx = e.clientX; sw = dock.offsetWidth;
+      userPos = { l: dock.offsetLeft, t: dock.offsetTop };   // pin the top-left corner so the handle stays under the finger
+      try { h.setPointerCapture(e.pointerId); } catch (x) {} dock.classList.add('dragging');
+    });
+    h.addEventListener('pointermove', function (e) { if (!down) return; e.preventDefault(); userW = Math.round(sw + e.clientX - sx); layout(); });
+    function end() { if (!down) return; down = false; dock.classList.remove('dragging'); userW = dock.offsetWidth; persist(); }
+    h.addEventListener('pointerup', end); h.addEventListener('pointercancel', end);
+    h.addEventListener('dblclick', function () { userW = 0; userPos = null; persist(); layout(); });
   })();
   function track() {}
   function open(play) {
@@ -84,7 +102,9 @@
   }
   document.getElementById('scd-close').addEventListener('click', close);
   document.getElementById('scd-min').addEventListener('click', function () { minimized = !minimized; dock.classList.toggle('min', minimized); layout(); });
-  document.addEventListener('ss:route', function (e) { route = e.detail.name; mode = mode; layout(); track(); });
+  document.addEventListener('ss:route', function (e) { route = e.detail.name; mode = mode;
+    if (!dock.hidden && !playing && !wasPlaying) { close(); return; }   // it only follows you around while it is playing
+    layout(); track(); });
   window.addEventListener('resize', layout); window.addEventListener('scroll', layout, { passive: true });
   window.SS = window.SS || {}; SS.openMusic = open; SS.closeMusic = close; SS.pauseMusic = function () { wasPlaying = false; if (!dock.hidden) run(function () { w.pause(); }); }; SS.musicPlaying = function () { return playing; }; SS.musicOn = function () { return !dock.hidden; };
   // a YouTube video opening in the site player takes over the sound
