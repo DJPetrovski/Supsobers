@@ -227,8 +227,9 @@
     var w = phoneEl.getBoundingClientRect().width;
     var target = Math.min(window.innerWidth * 0.94, window.innerHeight * 0.74 * 1.024, 640);
     phoneEl.classList.add('near');
-    phoneEl.style.setProperty('--s', (target / w).toFixed(2));
-    phoneEl.style.transform = 'translate(-50%, -50%) scale(' + (target / w).toFixed(2) + ')';
+    // grow by changing the real width (not a CSS scale), so the picture is redrawn sharp at the new size
+    phoneEl.style.setProperty('--s', '1');
+    phoneEl.style.width = Math.round(target) + 'px';
     backPhone.hidden = false;
     hole.classList.add('pill-near');
     if (!hole.querySelector('.hole-haze')) { var hz = document.createElement('div'); hz.className = 'hole-haze'; hz.setAttribute('aria-hidden', 'true'); hole.appendChild(hz); }
@@ -239,7 +240,8 @@
     if (!near) return;
     near = false;
     phoneEl.classList.remove('near');
-    phoneEl.style.transform = '';
+    phoneEl.style.width = '';
+    phoneEl.style.removeProperty('--s');
     backPhone.hidden = true;
     hole.classList.remove('pill-near');
     if (actx) { dry.gain.value = 0.5; wet.gain.value = 1; level(soundOn ? FAR : 0, 1); }

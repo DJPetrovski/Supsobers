@@ -682,7 +682,7 @@ dialog#player .hole-title { z-index: 3; }
    The bottom of the hole: a phone you never reach
    ===================================================================== */
 .hole-phone { position: absolute; z-index: 2; left: 50%; top: 50%; width: clamp(84px, 13vmin, 150px); transform: translate(-50%, -50%); cursor: pointer;
-  transition: transform 0.9s cubic-bezier(.2, .8, .2, 1); outline: none; }
+  transition: transform 0.9s cubic-bezier(.2, .8, .2, 1), width 0.9s cubic-bezier(.2, .8, .2, 1); outline: none; }
 .hole-phone #hole-tv { animation: phonefloat 6s ease-in-out infinite; }
 /* a pulsing red ring and a tip so people know it can be tapped */
 .hole-phone::before { content: ""; position: absolute; inset: -34%; z-index: -1; border-radius: 50%; pointer-events: none;
@@ -1600,3 +1600,7 @@ html.gs-open { overflow: hidden; }
 .hole-preview.tap { pointer-events: auto; }
 .hole-preview.tap iframe { pointer-events: none; }
 .hole-preview-cap.tap { pointer-events: auto; cursor: pointer; font-weight: 700; font-size: .95rem; border-color: #ff2a35; }
+
+/* the pill figure: no grain overlay once it is brought close (it was being enlarged and looked dirty) */
+.hole-phone.near .pillfig-grain, .pill-pop-card .pillfig-grain { display: none; }
+.pillfig-img { image-rendering: auto; }
