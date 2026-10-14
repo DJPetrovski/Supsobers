@@ -217,7 +217,8 @@
       // the next channel was already loaded behind the picture, so it appears (and plays) at once
       queued = null; var old = yt; yt = pre.frame;
       yt.classList.remove('pre'); yt.hidden = false; screen.classList.add('has-ch');
-      ytCmd('playVideo'); applySound(); setTimeout(function () { if (!yt.hidden && cur === v) { ytCmd('playVideo'); applySound(); } }, 500);
+      ytCmd('playVideo'); applySound();
+      [150, 400, 900, 1800, 3500].forEach(function (ms) { setTimeout(function () { if (!yt.hidden && cur === v) { ytCmd('playVideo'); applySound(); } }, ms); });
       old.onload = null; old.src = 'about:blank'; old.hidden = true; spare = old;
     } else {
       screen.classList.add('tuning');
