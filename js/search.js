@@ -10,7 +10,7 @@
     { title: 'Videos', route: 'videos', kw: 'episodes rabbit hole tunnel list watch documentary' },
     { title: "It's All Connected", route: 'web', kw: 'web map storylines connections graph' },
     { title: 'Socials', route: 'socials', kw: 'instagram x twitter rumble spotify podcast youtube patreon follow links' },
-    { title: 'Craving Corner', route: 'craving', kw: 'games game etch a sketch maze craving urge distraction sober sobriety play' },
+    { title: 'Kraving Killer', route: 'craving', kw: 'craving corner games game etch a sketch maze craving urge distraction sober sobriety play' },
     { title: 'Contact', route: 'contact', kw: 'email message write laptop reach' },
     { title: 'My Better Half', route: 'half', kw: 'kim fiancee reverie revival colorado tiktok instagram' },
     { title: 'Merch', route: 'merch', kw: 'shirts hoodies hats stickers store shop tee clothing' },

@@ -25,7 +25,7 @@
   /* ---------- tabs ---------- */
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
-  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', merch: 'Merch | Sup Sobers', socials: 'Socials | Sup Sobers', half: 'My Better Half | Sup Sobers', contact: 'Contact | Sup Sobers', craving: 'Craving Corner | Sup Sobers', web: "It's All Connected | Sup Sobers", about: 'About | Sup Sobers' };
+  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', merch: 'Merch | Sup Sobers', socials: 'Socials | Sup Sobers', half: 'My Better Half | Sup Sobers', contact: 'Contact | Sup Sobers', craving: 'Kraving Killer | Sup Sobers', web: "It's All Connected | Sup Sobers", about: 'About | Sup Sobers' };
 
   function route() {
     var name = (location.hash || '#home').slice(1);
