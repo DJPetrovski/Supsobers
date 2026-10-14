@@ -4,6 +4,7 @@
 (function () {
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
+  var SHOW_FIGURE = false; // flip to true once the new character image is in
   var PHOTO = 'img/pill-dj.png'; // optional head-and-shoulders cutout; drop one in and it is used
 
   function figureSVG() {
@@ -39,10 +40,19 @@
         '<ellipse cx="22" cy="222" rx="15" ry="9" fill="#8c8c8c"/>' +
         '<ellipse cx="218" cy="222" rx="15" ry="9" fill="#8c8c8c"/>' +
       '</g>' +
-      // the pills keep their colour
       '<g class="pf-pill pf-red"><ellipse cx="26" cy="204" rx="21" ry="11" fill="url(#pg-r)" transform="rotate(-25 26 204)"/></g>' +
       '<g class="pf-pill pf-blue"><ellipse cx="214" cy="204" rx="21" ry="11" fill="url(#pg-b)" transform="rotate(25 214 204)"/></g>' +
       '</svg>';
+  }
+  var uid = 0;
+  function pillsSVG() {
+    var u = 'u' + (++uid);
+    return ( '<svg class="pf pf-only" viewBox="0 0 240 180" xmlns="' + NS + '" aria-hidden="true"><defs>' +
+      '<radialGradient id="pp-r' + u + '" cx="35%" cy="28%"><stop offset="0" stop-color="#ffb0b5"/><stop offset=".45" stop-color="#ff2a35"/><stop offset="1" stop-color="#7a000a"/></radialGradient>' +
+      '<radialGradient id="pp-b' + u + '" cx="35%" cy="28%"><stop offset="0" stop-color="#b8d4ff"/><stop offset=".45" stop-color="#3d7bff"/><stop offset="1" stop-color="#06217a"/></radialGradient></defs>' +
+      '<g class="pf-pill pf-red" style="color:#ff2a35"><rect x="12" y="62" width="96" height="46" rx="23" fill="url(#pp-r' + u + ')" transform="rotate(-24 60 85)"/><path d="M30 76 C44 66 64 62 84 64" stroke="#fff" stroke-opacity=".6" stroke-width="3" fill="none" stroke-linecap="round" transform="rotate(-24 60 85)"/></g>' +
+      '<g class="pf-pill pf-blue" style="color:#3d7bff"><rect x="132" y="72" width="96" height="46" rx="23" fill="url(#pp-b' + u + ')" transform="rotate(24 180 95)"/><path d="M150 86 C164 76 184 72 204 74" stroke="#fff" stroke-opacity=".6" stroke-width="3" fill="none" stroke-linecap="round" transform="rotate(24 180 95)"/></g>' +
+      '</svg>');
   }
 
   // Build the TV inside `el`. Returns {start, stop}.
@@ -50,7 +60,7 @@
     el.classList.add('pilltv');
     el.innerHTML =
       '<div class="pilltv-body"><div class="pilltv-screen">' +
-        '<canvas class="pilltv-static" width="120" height="90"></canvas>' + figureSVG() +
+        '<canvas class="pilltv-static" width="120" height="90"></canvas>' + (SHOW_FIGURE ? figureSVG() : pillsSVG()) +
         '<span class="pilltv-scan"></span>' +
       '</div><span class="pilltv-knob"></span><span class="pilltv-knob k2"></span></div>';
     var cv = el.querySelector('canvas'), ctx = cv.getContext('2d');

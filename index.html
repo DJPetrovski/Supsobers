@@ -54,7 +54,7 @@
               <div class="tv-vents" aria-hidden="true"></div>
               <div class="tv-frame">
                 <div class="tv-screen htv-screen" id="htv-screen">
-                  <video class="htv-video" id="htv-video" src="media/trailer.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Sup Sobers trailer"></video>
+                  <video class="htv-video" id="htv-video" src="media/trailer.mp4" muted playsinline preload="auto" aria-label="Sup Sobers trailer"></video>
                   <div class="htv-preview" id="htv-preview" aria-live="polite"></div>
                   <div class="tv-static" aria-hidden="true"></div>
                   <div class="tv-roll" aria-hidden="true"></div>
@@ -232,12 +232,10 @@
       <span class="hole-phone-tip" id="phone-tip">Something is down there. Tap it.</span>
     </div>
     <div class="pill-offer" id="pill-offer" hidden>
-      <p class="pill-line">Too many options? Take the red pill and see just how far down this rabbit hole really goes. Or take the blue pill and go to Wonderland.</p>
       <div class="pill-row">
-        <button type="button" class="pillbtn red" id="pill-red">Red pill: go deeper</button>
-        <button type="button" class="pillbtn blue" id="pill-blue">Blue pill: to Wonderland</button>
+        <button type="button" class="pillbtn red" id="pill-red"><i class="cap"></i><span>See how far this rabbit hole goes</span></button>
+        <button type="button" class="pillbtn blue" id="pill-blue"><i class="cap"></i><span>Stay in Wonderland</span></button>
       </div>
-      <p class="pill-fine" id="pill-fine">Red: the deep end of the hole. Blue: a lighter trip to Wonderland. A different video every time.</p>
     </div>
     <div class="hole-ui">
       <button type="button" class="pill" id="hole-exit">Climb out</button>
@@ -280,12 +278,10 @@
   <div class="pill-pop" id="pill-pop" role="dialog" aria-modal="true" aria-label="Red pill or blue pill" hidden>
     <div class="pill-pop-card">
       <div id="pop-tv"></div>
-      <p class="pill-line">Too many options? Take the red pill and see just how far down this rabbit hole really goes. Or take the blue pill and go to Wonderland.</p>
       <div class="pill-row">
-        <button type="button" class="pillbtn red" id="pop-red">Red pill: go deeper</button>
-        <button type="button" class="pillbtn blue" id="pop-blue">Blue pill: to Wonderland</button>
+        <button type="button" class="pillbtn red" id="pop-red"><i class="cap"></i><span>See how far this rabbit hole goes</span></button>
+        <button type="button" class="pillbtn blue" id="pop-blue"><i class="cap"></i><span>Stay in Wonderland</span></button>
       </div>
-      <p class="pill-fine">Red: the deep end of the hole. Blue: a lighter trip to Wonderland. A different video every time.</p>
     </div>
   </div>
 
@@ -296,5 +292,6 @@
   <script src="js/tv.js" defer></script>
   <script src="js/web.js" defer></script>
   <script src="js/home.js" defer></script>
+  <script src="js/music.js" defer></script>
 </body>
 </html>

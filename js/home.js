@@ -38,13 +38,13 @@
     tuneT = setTimeout(function () {
       prev.innerHTML = '<div class="pv" data-k="' + key + '">' + CONTENT[key]() + '</div>';
       prev.classList.add('on');
-      screen.classList.remove('tuning');
+      if (started) screen.classList.remove('tuning');
     }, 170);
   }
   function hide() {
     clearTimeout(tuneT);
     screen.classList.add('tuning');
-    tuneT = setTimeout(function () { prev.classList.remove('on'); prev.innerHTML = ''; screen.classList.remove('tuning'); }, 140);
+    tuneT = setTimeout(function () { prev.classList.remove('on'); prev.innerHTML = ''; if (started) screen.classList.remove('tuning'); }, 140);
     armed = null;
     hint.textContent = IDLE;
   }
@@ -92,19 +92,36 @@
     };
   }
 
-  // Trailer: starts muted (browsers insist); the Sound button turns it up.
+  // Trailer: a glitchy, searching screen for ~5.5 seconds, then the picture comes in (muted: browsers insist; Sound turns it up).
+  var introT = 0, SEARCH_MS = 5500, started = false;
+  function duck(level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'trailer', level: level } })); }
   function setSound(on) {
     video.muted = !on;
     soundBtn.textContent = on ? 'Sound on' : 'Sound off';
     soundBtn.setAttribute('aria-pressed', String(on));
-    if (on && video.paused) video.play().catch(function () {});
+    duck(on && started ? 0 : null);
+    if (on && started && video.paused) video.play().catch(function () {});
   }
   soundBtn.addEventListener('click', function () { setSound(video.muted); });
-  function play() { if (onHome) { var p = video.play(); if (p && p.catch) p.catch(function () {}); } }
+
+  function searching() {
+    clearTimeout(introT); started = false;
+    video.pause(); try { video.currentTime = 0; } catch (e) {}
+    video.style.opacity = '0';
+    screen.classList.add('tuning', 'htv-search');
+    introT = setTimeout(function () {
+      started = true;
+      screen.classList.remove('tuning', 'htv-search');
+      video.style.opacity = '';
+      if (onHome) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+      if (!video.muted) duck(0);
+    }, reduce ? 800 : SEARCH_MS);
+  }
+  video.addEventListener('ended', function () { duck(null); document.dispatchEvent(new Event('ss:pill')); });
   document.addEventListener('ss:route', function (e) {
     onHome = e.detail.name === 'home';
-    if (onHome) play(); else { video.pause(); setSound(false); }
+    if (onHome) searching(); else { clearTimeout(introT); video.pause(); setSound(false); }
   });
-  document.addEventListener('visibilitychange', function () { if (document.hidden) video.pause(); else play(); });
-  play();
+  document.addEventListener('visibilitychange', function () { if (document.hidden) video.pause(); else if (onHome && started) video.play().catch(function () {}); });
+  searching();
 })();

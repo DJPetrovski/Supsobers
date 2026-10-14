@@ -73,10 +73,12 @@
       b.addEventListener('pointerenter', function (e) {
         if (ambient || e.pointerType !== 'mouse') return;
         hovering = true; showTitle(b.__v, b.__idx);
+        if (opts.onHover) opts.onHover(b.__v, b);
       });
       b.addEventListener('pointerleave', function (e) {
         if (ambient || e.pointerType !== 'mouse') return;
         hovering = false; showTitle(null);
+        if (opts.onHoverEnd) opts.onHoverEnd();
       });
       return b;
     }

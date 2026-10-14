@@ -841,3 +841,39 @@ html.is-sucking .top, html.is-sucking .foot, html.is-sucking .remote, html.is-su
   .remote-top { margin-bottom: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { .remote-led, .pv-neon { animation: none; } }
+
+/* ---- pills screen: just two pills, each with a short caption ---- */
+.pill-row { align-items: flex-start; }
+.pillbtn { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; max-width: 190px; padding: 0; background: none !important; border: 0; box-shadow: none !important; border-radius: 0;
+  font-weight: 600; font-size: 0.74rem; line-height: 1.3; letter-spacing: 0.12em; text-transform: uppercase; text-shadow: 0 0 10px #000; }
+.pillbtn .cap { display: block; width: 78px; height: 36px; border-radius: 999px; transform: rotate(-24deg); transition: transform 0.25s, filter 0.25s; }
+.pillbtn.red .cap { background: radial-gradient(circle at 30% 25%, #ffb0b5, #ff2a35 45%, #7a000a); box-shadow: 0 0 26px rgba(255, 42, 53, 0.9); }
+.pillbtn.blue .cap { transform: rotate(24deg); background: radial-gradient(circle at 30% 25%, #b8d4ff, #3d7bff 45%, #06217a); box-shadow: 0 0 26px rgba(61, 123, 255, 0.9); }
+.pillbtn.red { color: #ffb3b8; } .pillbtn.blue { color: #a9c6ff; }
+.pillbtn:hover .cap, .pillbtn:focus-visible .cap { transform: rotate(0) scale(1.15); filter: brightness(1.2); }
+.pill-offer { background: rgba(0, 0, 0, 0.7); }
+.pill-pop-card .pill-row { margin-top: 6px; }
+
+/* ---- home TV: searching for a signal ---- */
+.htv-video { transition: opacity 0.9s; }
+.tv-screen.htv-search .tv-static { animation: tvnoise 0.3s steps(6) infinite, searchflick 2.1s steps(1) infinite; }
+.tv-screen.htv-search::after { content: ''; }
+.tv-screen.htv-search .tv-roll { height: 38%; animation-duration: 2.4s; }
+@keyframes searchflick { 0% { opacity: 0.95; } 14% { opacity: 0.55; } 22% { opacity: 1; } 47% { opacity: 0.7; } 52% { opacity: 0.3; } 55% { opacity: 1; } 80% { opacity: 0.8; } 100% { opacity: 0.95; } }
+
+/* ---- remote keys bob gently so people know they can be pressed ---- */
+.rkey { animation: keybob 2.6s ease-in-out infinite; }
+.rkey:nth-child(2) { animation-delay: .25s; } .rkey:nth-child(3) { animation-delay: .5s; } .rkey:nth-child(4) { animation-delay: .75s; }
+.rkey:nth-child(5) { animation-delay: 1s; } .rkey:nth-child(6) { animation-delay: 1.25s; } .rkey:nth-child(7) { animation-delay: 1.5s; } .rkey:nth-child(8) { animation-delay: 1.75s; }
+.rkey:hover, .rkey:focus-visible, .rkey:active { animation: none; }
+@keyframes keybob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .rkey { animation: none; } }
+
+/* ---- hover preview in the tunnel ---- */
+.hole-preview { position: fixed; z-index: 8; pointer-events: none; overflow: hidden; background: #000; box-shadow: 0 0 40px rgba(255, 42, 53, 0.7); border: 1px solid var(--ember); }
+.hole-preview iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.music-btn { position: fixed; left: 12px; bottom: 12px; z-index: 30; font-size: 0.74rem; padding: 5px 12px; }
+
+.pillbtn { outline: none; }
+.pillbtn:focus-visible .cap { box-shadow: 0 0 0 3px #fff, 0 0 30px currentColor; }

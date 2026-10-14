@@ -147,7 +147,7 @@
 
   /* ---------- the bottom of the hole: a small television you never reach ---------- */
   var phoneEl = $('#hole-phone'), soundBtn = $('#hole-sound'), backPhone = $('#phone-back'), tip = $('#phone-tip');
-  var offer = $('#pill-offer'), redBtn = $('#pill-red'), blueBtn = $('#pill-blue'), fine = $('#pill-fine');
+  var offer = $('#pill-offer'), redBtn = $('#pill-red'), blueBtn = $('#pill-blue');
   var actx = null, master = null, dry = null, wet = null, near = false, soundOn = true, phoneLive = false;
   var holeTv = window.Pill ? Pill.build($('#hole-tv')) : null;
 
@@ -223,8 +223,6 @@
     backPhone.hidden = false;
     offer.hidden = false;
     hole.classList.add('pill-near');
-    fine.textContent = 'Red: the deep end of the hole. Blue: a lighter trip to Wonderland. A different video every time.';
-    redBtn.disabled = blueBtn.disabled = false;
     if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
   function putBack() {
@@ -278,6 +276,7 @@
     try { $('#pop-red').focus({ preventScroll: true }); } catch (e) {}
   }
   function popClose() { if (!pop) return; pop.hidden = true; if (popTv) popTv.stop(); }
+  document.addEventListener('ss:pill', popOpen);
   if (aboutVid && pop) {
     aboutVid.addEventListener('ended', popOpen);
     $('#pop-blue').addEventListener('click', function () { var v = Pill.random('blue'); if (!v) return; popClose(); SS.openPlayer(v); });
@@ -290,6 +289,28 @@
     pop.addEventListener('click', function (e) { if (e.target === pop) popClose(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) popClose(); });
   }
+
+  /* ---------- hover a tile and its first seconds play, like YouTube ---------- */
+  var pvT = 0, pvEl = null;
+  function duck(key, level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: key, level: level } })); }
+  function previewOff() {
+    clearTimeout(pvT);
+    if (pvEl) { pvEl.remove(); pvEl = null; duck('preview', null); }
+  }
+  function previewOn(v, node) {
+    previewOff();
+    if (!v || !ID_RE.test(v.id || '') || near) return;
+    pvT = setTimeout(function () {
+      var r = node.getBoundingClientRect();
+      pvEl = document.createElement('div');
+      pvEl.className = 'hole-preview';
+      pvEl.style.cssText = 'left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px';
+      pvEl.innerHTML = '<iframe title="Preview" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"></iframe>';
+      hole.appendChild(pvEl);
+      duck('preview', 0);
+    }, 700);
+  }
+  document.addEventListener('ss:playeropen', previewOff);
 
   /* ---------- the dive ---------- */
   function dive() {
@@ -335,10 +356,11 @@
     isOpen = true;
     hole.hidden = false;
     if (!holeApi) {
-      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand });
+      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand, onHover: previewOn, onHoverEnd: previewOff });
     }
     holeApi.start({ boost: 1300 });
     phoneStart();
+    duck('hole', 0.25);
     pauseBtn.textContent = 'Pause';
     pauseBtn.setAttribute('aria-pressed', 'false');
     void hole.offsetWidth;
@@ -356,6 +378,8 @@
     resetBranches();
     putBack();
     phoneStop();
+    previewOff();
+    duck('hole', null);
     html.classList.remove('is-diving');
     screenEl.classList.remove('zooming', 'glitch');
     tv.style.visibility = '';
@@ -370,6 +394,8 @@
     if (!isOpen) return;
     isOpen = false;
     phoneStop();
+    previewOff();
+    duck('hole', null);
     clearTimers();
     hole.classList.remove('on');
     tv.style.visibility = 'visible';
