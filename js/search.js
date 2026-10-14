@@ -29,10 +29,12 @@
     return s;
   }
   function search(q) {
-    var t = toks(q), out = { videos: [], merch: [], story: [], pages: [], more: [] };
+    var t = toks(q), out = { videos: [], merch: [], story: [], pages: [], more: [], ab: [] };
     if (!t.length) return out;
     ((window.SS && SS.videos) || []).forEach(function (v) { var s = score(v.title, t); if (s) out.videos.push({ s: s, v: v }); });
     out.videos.sort(function (a, b) { return b.s - a.s; });
+    ((window.SS && SS.audiobooks) || []).forEach(function (b) { (b.chapters || []).forEach(function (v) { var s = score(b.title + ' audiobook ' + v.title, t); if (s) out.ab.push({ s: s, b: b, v: v }); }); });
+    out.ab.sort(function (a, b) { return b.s - a.s; });
     ((window.SS && SS.merch) || []).forEach(function (m, i) { var s = score(m.name + ' ' + (m.store === 'fourthwall' ? 'fourthwall' : 'american patriot'), t); if (s) out.merch.push({ s: s, m: m, i: i }); });
     out.merch.sort(function (a, b) { return b.s - a.s; });
     ((window.SS && SS.topicDefs) || []).forEach(function (d) { var s = score(d.name + ' ' + (d.match || []).join(' '), t); if (s) out.story.push({ s: s, d: d }); });
@@ -79,6 +81,7 @@
     } else {
       var r = search(q);
       group('Videos' + (r.videos.length > 8 ? ' (' + r.videos.length + ')' : ''), r.videos.slice(0, 8).map(function (x) { return row(/^[\w-]{11}$/.test(x.v.id || '') ? 'https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg' : '', x.v.title, x.v.members ? 'Members only' : '', 'Video', function () { openVideo(x.v); }); }));
+      group('Audiobooks', r.ab.slice(0, 5).map(function (x) { return row('https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg', x.v.title, x.b.title, 'Audiobook', function () { openVideo(x.v); }); }));
       group('Merch', r.merch.slice(0, 5).map(function (x) { return row((x.m.cutouts && x.m.cutouts[0]) || x.m.images[0], x.m.name, x.m.price + (x.m.soldOut ? ' · sold out' : ''), 'Merch', function () { A.merch(x.i); }); }));
       group('Storylines', r.story.slice(0, 4).map(function (x) { return row('', x.d.name, 'See the videos', 'Story', function () { A.story(x.d); }); }));
       group('Archives and books', r.more.slice(0, 4).map(function (x) { return row('', x.a.title, x.a.meta || '', x.kind, function () { if (x.a.url) window.open(x.a.url, '_blank', 'noopener'); else go(x.kind === 'Book' ? 'books' : 'archives'); }); }));
@@ -116,9 +119,12 @@
   /* ---------- a search box on each page: filters that page's cards ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('input[data-filter]'), function (inp) {
     inp.addEventListener('input', function () {
-      var host = $(inp.getAttribute('data-filter')), t = toks(inp.value); if (!host) return;
-      Array.prototype.forEach.call(host.children, function (c) { c.hidden = !!t.length && score(c.textContent, t) === 0; });
+      var t = toks(inp.value);
+      Array.prototype.forEach.call(document.querySelectorAll(inp.getAttribute('data-filter')), function (host) {
+        Array.prototype.forEach.call(host.children, function (c) { c.hidden = !!t.length && score(c.textContent, t) === 0; });
+      });
     });
     document.addEventListener('ss:videos', function () { inp.dispatchEvent(new Event('input')); });
+    document.addEventListener('ss:audiobooks', function () { inp.dispatchEvent(new Event('input')); });
   });
 })();

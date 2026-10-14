@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791962220">
+  <link rel="stylesheet" href="css/styles.css?v=1791962619">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -235,7 +235,10 @@
     <section class="view page" data-view="books" aria-labelledby="books-title" hidden>
       <h2 id="books-title">Books</h2>
       <p class="page-lede">Reading from the Sobering Stories library.</p>
-      <label class="search page-search"><span class="sr">Search books</span><input type="search" data-filter="#book-list" placeholder="Search books" autocomplete="off"></label>
+      <label class="search page-search"><span class="sr">Search books</span><input type="search" data-filter="#ab-list, #book-list" placeholder="Search audiobooks and books" autocomplete="off"></label>
+      <h3 class="shelf-title">Audiobooks</h3>
+      <div class="cards ab-list" id="ab-list"></div>
+      <h3 class="shelf-title" id="book-shelf" hidden>Books</h3>
       <div class="cards" id="book-list"></div>
       <p class="empty" id="book-empty" hidden>Books are coming soon.</p>
     </section>
@@ -328,15 +331,15 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791962220" defer></script>
-  <script src="js/app.js?v=1791962220" defer></script>
-  <script src="js/hole.js?v=1791962220" defer></script>
-  <script src="js/pill.js?v=1791962220" defer></script>
-  <script src="js/tv.js?v=1791962220" defer></script>
-  <script src="js/search.js?v=1791962220" defer></script>
-  <script src="js/merch.js?v=1791962220" defer></script>
-  <script src="js/web.js?v=1791962220" defer></script>
-  <script src="js/home.js?v=1791962220" defer></script>
-  <script src="js/music.js?v=1791962220" defer></script>
+  <script src="js/rain.js?v=1791962619" defer></script>
+  <script src="js/app.js?v=1791962619" defer></script>
+  <script src="js/hole.js?v=1791962619" defer></script>
+  <script src="js/pill.js?v=1791962619" defer></script>
+  <script src="js/tv.js?v=1791962619" defer></script>
+  <script src="js/search.js?v=1791962619" defer></script>
+  <script src="js/merch.js?v=1791962619" defer></script>
+  <script src="js/web.js?v=1791962619" defer></script>
+  <script src="js/home.js?v=1791962619" defer></script>
+  <script src="js/music.js?v=1791962619" defer></script>
 </body>
 </html>

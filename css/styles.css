@@ -1278,3 +1278,15 @@ html.gs-open { overflow: hidden; }
 .hole-tile.hl-hit { box-shadow: 0 0 0 3px var(--ember), 0 0 34px 6px rgba(255,42,53,.95); animation: hl-pulse 1s ease-in-out infinite alternate; }
 @keyframes hl-pulse { to { box-shadow: 0 0 0 3px #fff, 0 0 46px 12px rgba(255,42,53,.95); } }
 @media (max-width: 700px) { .hole-find input { width: 96px; } .hole-find input:focus { width: 150px; } .hole-find-n { display: none; } }
+
+/* audiobooks shelf */
+.shelf-title { margin: 28px 0 12px; font-family: var(--display); font-weight: 400; font-size: 1.6rem; letter-spacing: .06em; color: var(--bone); text-transform: uppercase; }
+.ab-card { gap: 10px; }
+.ab-cover { position: relative; display: block; width: 100%; padding: 0; border: 1px solid #5a1016; border-radius: 10px; overflow: hidden; background: #000; cursor: pointer; aspect-ratio: 16/9; }
+.ab-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s, filter .3s; filter: saturate(.85); }
+.ab-cover:hover img, .ab-cover:focus-visible img { transform: scale(1.05); filter: none; }
+.ab-play { position: absolute; inset: 0; margin: auto; width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: rgba(160,10,20,.88); color: #fff; font-size: 1.2rem; padding-left: 4px; box-shadow: 0 0 24px rgba(255,30,40,.5); }
+.ab-chapters { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; }
+.ab-chapters button { width: 100%; display: flex; justify-content: space-between; gap: 12px; align-items: center; text-align: left; padding: 9px 12px; border: 1px solid #3a1014; border-radius: 8px; background: rgba(255,255,255,.03); color: var(--bone); font: inherit; font-size: .92rem; cursor: pointer; }
+.ab-chapters button:hover, .ab-chapters button:focus-visible { border-color: #c01822; background: rgba(160,10,20,.18); }
+.ab-chapters em { font-style: normal; color: var(--ash); font-size: .82rem; white-space: nowrap; }

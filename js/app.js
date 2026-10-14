@@ -252,6 +252,56 @@
     return pub;
   }
 
+  /* ---------- audiobooks: pulled out of the video list, shown on the Books page ---------- */
+  var abConfig = [];
+  function splitAudiobooks(vids) {
+    var rest = [];
+    abConfig.forEach(function (b) { b.chapters = []; });
+    vids.forEach(function (v) {
+      var low = (v.title || '').toLowerCase().replace(/\s+/g, ' '), hit = null;
+      abConfig.forEach(function (b) { if (!hit && (b.match || []).some(function (k) { return low.indexOf(k) >= 0; })) hit = b; });
+      if (hit) hit.chapters.push(v); else rest.push(v);
+    });
+    abConfig.forEach(function (b) {
+      b.chapters.sort(function (a, c) { return (a.published || '').localeCompare(c.published || '') || (a.title || '').localeCompare(c.title || ''); });
+    });
+    window.SS.audiobooks = abConfig;
+    buildAudiobooks();
+    return rest;
+  }
+  function fmtDur(sec) { var h = Math.floor(sec / 3600), m = Math.round((sec % 3600) / 60); return h ? h + ' hr ' + (m < 10 ? '0' : '') + m + ' min' : m + ' min'; }
+  function chapterLabel(b, v) {
+    var t = (v.title || '').replace(/\s+/g, ' ').trim(), m = t.match(/(forward\s*&\s*chapter\s*\d+|chapter\s*\d+)\s*:?\s*(.*)$/i);
+    if (m) return m[1].replace(/\b\w/g, function (c) { return c.toUpperCase(); }) + (m[2] ? ': ' + m[2] : '');
+    return b.chapters.length > 1 ? t : 'Listen to the full audiobook';
+  }
+  function buildAudiobooks() {
+    var host = $('#ab-list'); if (!host) return;
+    host.textContent = '';
+    abConfig.filter(function (b) { return b.chapters.length; }).forEach(function (b) {
+      var first = b.chapters[0], total = b.chapters.reduce(function (n, v) { return n + (v.seconds || 0); }, 0);
+      var play = function (v) { openPlayer(v); };
+      var kids = [
+        el('button', { type: 'button', 'class': 'ab-cover', 'aria-label': 'Play ' + b.title }, [
+          el('img', { src: 'https://i.ytimg.com/vi/' + first.id + '/hqdefault.jpg', alt: '', loading: 'lazy' }),
+          el('span', { 'class': 'ab-play', text: '\u25B6' })]),
+        el('h3', { text: b.title }),
+        el('p', { 'class': 'meta', text: 'Audiobook \u00B7 ' + (b.chapters.length > 1 ? b.chapters.length + ' parts \u00B7 ' : '') + fmtDur(total) }),
+        el('p', { text: b.blurb || '' })
+      ];
+      kids[0].addEventListener('click', function () { play(first); });
+      var ul = el('ul', { 'class': 'ab-chapters' });
+      b.chapters.forEach(function (v) {
+        var li = el('li'), btn = el('button', { type: 'button' }, [el('span', { text: chapterLabel(b, v) }), el('em', { text: fmtDur(v.seconds || 0) })]);
+        btn.addEventListener('click', function () { play(v); });
+        li.appendChild(btn); ul.appendChild(li);
+      });
+      kids.push(ul);
+      host.appendChild(el('article', { 'class': 'card ab-card' }, kids));
+    });
+    document.dispatchEvent(new Event('ss:audiobooks'));
+  }
+
   /* ---------- archives + books ---------- */
   function buildCards(hostSel, items, emptySel) {
     var host = $(hostSel);
@@ -282,10 +332,14 @@
       window.SS.topicDefs = d.topics || [];
     }).catch(function () {});
 
+  var abReady = getJSON('data/audiobooks.json').then(function (d) { abConfig = d.audiobooks || []; }).catch(function () {});
   getJSON('data/videos.json').then(function (d) {
-    return threadsReady.then(function () { return d; });
+    return abReady.then(function () { return threadsReady; }).then(function () { return d; });
+  }).then(function (d) {
+    return d;
   }).then(function (d) {
     var vids = splitMembers((d.videos || []).slice());
+    vids = splitAudiobooks(vids);
     window.SS.videos = vids;
     buildClub();
     (window.SS.topicDefs || []).forEach(function (t) {
@@ -311,6 +365,6 @@
   getJSON('data/archives.json').then(function (d) { buildCards('#archive-list', d.archives || []); })
     .catch(function () { buildCards('#archive-list', []); });
 
-  getJSON('data/books.json').then(function (d) { buildCards('#book-list', d.books || [], '#book-empty'); })
+  getJSON('data/books.json').then(function (d) { var b = d.books || []; $('#book-shelf').hidden = !b.length; $('#book-list').hidden = !b.length; buildCards('#book-list', b, ''); })
     .catch(function () { buildCards('#book-list', [], '#book-empty'); });
 })();

@@ -1,0 +1,8 @@
+{
+  "audiobooks": [
+    { "title": "Bloodlines of the Illuminati", "match": ["bloodlines of the illuminati"],
+      "blurb": "The full audiobook, read chapter by chapter." },
+    { "title": "The Search for the Manchurian Candidate", "match": ["search for the manchurian candidate"],
+      "blurb": "The CIA and mind control: the secret history of the behavioral sciences, read in full." }
+  ]
+}
