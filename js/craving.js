@@ -11,9 +11,10 @@
   var frame = document.getElementById('es'), msg = document.getElementById('es-msg'), clockEl = document.getElementById('es-clock');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var BG = '#b7bbb2', WALL = '#6a6e66', INK = '#1d1d1d';
-  var mode = 'maze', ink = INK, hue = 0, phase = 'idle', raf = 0, run = 0, outline = null, level = 0, lvl = null;
+  var fog = 0, mode = 'maze', ink = INK, hue = 0, phase = 'idle', raf = 0, run = 0, outline = null, level = 0, lvl = null;
   var px = 0, py = 0, lastX = 0, lastY = 0, startedAt = 0, clockT = 0, tries = 0, keys = {};
-  var CELLS = [52, 44, 36, 30];
+  function cellFor(lv) { return Math.max(18, 54 - lv * 4); }
+  function fogFor(lv) { return lv >= 9 ? Math.max(70, 250 - (lv - 9) * 20) : 0; }   // from level 10 on, only a lantern-sized circle around the stylus is visible
 
   function say(t) { msg.textContent = t; }
   function clear() { ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H); }
@@ -102,10 +103,16 @@
     for (x = 0; x <= L.cols; x++) for (y = 0; y < L.rows; y++) { var o = x > 0 && x < L.cols && L.right[y][x - 1]; if (!o) { g.moveTo(L.ox + x * c, L.oy + y * c); g.lineTo(L.ox + x * c, L.oy + (y + 1) * c); } }
   }
   function maze(lv) {
-    cancelAnimationFrame(raf); var id = ++run; level = Math.min(lv, CELLS.length - 1); lvl = buildMaze(CELLS[level]); tries = 0; keys = {};
+    cancelAnimationFrame(raf); var id = ++run; level = lv; lvl = buildMaze(cellFor(level)); fog = fogFor(level); tries = 0; keys = {};
     mctx.clearRect(0, 0, W, H); mctx.lineWidth = 5; mctx.lineCap = 'square'; mctx.strokeStyle = '#000'; wallPath(mctx, lvl); mctx.stroke();
-    phase = 'maze'; startedAt = startedAt || 0; resetStylus(true); say('Your turn. Get to the red flag without touching a wall.');
+    phase = 'maze'; startedAt = startedAt || 0; resetStylus(true); setFog(); say('Level ' + (level + 1) + (fog ? '. The lights are dim: only a little circle around you is visible.' : '. Get to the red flag without touching a wall.'));
     loop(id);
+  }
+  function setFog() {
+    var m = '';
+    if (fog && phase !== 'free') { var r = cv.getBoundingClientRect(), k = r.width / W, c = 'radial-gradient(circle at ' + (px * k).toFixed(0) + 'px ' + (py * k).toFixed(0) + 'px, #000 ' + (fog * k).toFixed(0) + 'px, rgba(0,0,0,0) ' + ((fog + 28) * k).toFixed(0) + 'px)'; m = c; }
+    cv.style.webkitMaskImage = cv.style.maskImage = m;
+    var lvEl = document.getElementById('es-lv'); if (lvEl) lvEl.textContent = phase === 'free' ? 'Free draw' : 'Level ' + (level + 1);
   }
   function drawBoard() {
     clear(); ctx.lineWidth = 4; ctx.lineCap = 'square'; ctx.strokeStyle = WALL; wallPath(ctx, lvl); ctx.stroke();
@@ -129,6 +136,7 @@
       if (ink === 'rainbow') { hue = (hue + 2.2) % 360; ctx.strokeStyle = 'hsl(' + hue + ',85%,38%)'; } else ctx.strokeStyle = ink; ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(nx, ny); ctx.stroke();
       trail.push([nx, ny]); px = nx; py = ny;
     }
+    if (fog) setFog();
     if (phase !== 'maze') return;
     var gx = lvl.ox + (lvl.cols - .5) * lvl.cell, gy = lvl.oy + (lvl.rows - .5) * lvl.cell;
     if (Math.hypot(px - gx, py - gy) < lvl.cell * .35) win();
@@ -139,12 +147,13 @@
   }
   function win() {
     phase = 'win'; keys = {}; dot();
-    say('Out! That one is beaten. Craving a little weaker? Next maze...');
+    say('Level ' + (level + 1) + ' cleared! Next one is a little harder...');
     setTimeout(function () { if (phase === 'win') wipe(function () { maze(level + 1); }); }, reduce ? 600 : 1800);
   }
 
   /* ---------- free draw ---------- */
   function freeDraw(erase) {
+    fog = 0; cv.style.webkitMaskImage = cv.style.maskImage = ''; var lv0 = document.getElementById('es-lv'); if (lv0) lv0.textContent = 'Free draw';
     cancelAnimationFrame(raf); var id = ++run; keys = {};
     function go() { if (id !== run) return; clear(); phase = 'free'; px = lastX = W / 2; py = lastY = H / 2; dot(); say('Free draw. Twist the knobs or drag on the screen. Pick any sand color, even mid-line.'); loop(id); }
     if (erase && phase === 'free') { phase = 'crash'; say('Shaking...'); shake(function () { wipe(go); }); } else { phase = 'crash'; go(); }
@@ -235,5 +244,6 @@
     else if (phase !== 'idle') { run++; cancelAnimationFrame(raf); stopClock(); phase = 'paused'; }
   });
   if ((location.hash || '') === '#craving') setTimeout(sketch, 400);
+  window.__esLevel = function (n) { maze(n); };
   window.__es = function () { return { lvl: lvl, phase: phase, px: px, py: py, level: level, tries: tries }; };
 })();

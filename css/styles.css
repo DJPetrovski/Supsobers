@@ -1542,3 +1542,6 @@ html.gs-open { overflow: hidden; }
 @keyframes rbshadow { 0%, 100% { transform: scaleX(1); opacity: .6; } 50% { transform: scaleX(.6); opacity: .25; } }
 .tv-screen.zooming .tv-rabbit, .tv-screen.glitch .tv-rabbit { opacity: .0; transition: opacity .5s; }
 @media (prefers-reduced-motion: reduce) { .rb-run, .rb-hop, .rb-shadow, .rb-wave, .rb-come, .rb-arm { animation: none; } .rb-run { left: 38%; } .rb-wave, .rb-come { display: none; } }
+.es-lvl { display: inline-flex; gap: 12px; align-items: baseline; } .es-lvl b { font-weight: 700; }
+.es-dim { position: absolute; inset: 14px; border-radius: 4px; background: #3f423d; box-shadow: inset 0 0 22px rgba(0,0,0,.6); }
+#es-canvas { position: relative; }
