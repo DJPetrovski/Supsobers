@@ -28,6 +28,7 @@
     <nav id="nav" aria-label="Main">
       <a href="#home" data-route="home">Home</a>
       <a href="#videos" data-route="videos">Videos</a>
+      <a href="#members" data-route="members" class="nav-club">Members Club</a>
       <a href="#archives" data-route="archives">Archives</a>
       <a href="#books" data-route="books">Books</a>
       <a href="#about" data-route="about">About</a>
@@ -103,6 +104,26 @@
       </div>
     </section>
 
+    <!-- MEMBERS CLUB -->
+    <section class="view page club" data-view="members" aria-labelledby="club-title" hidden>
+      <div class="arch" aria-hidden="false">
+        <div class="arch-frame">
+          <div class="arch-door">
+            <p class="arch-kicker">Behind the curtain</p>
+            <h2 id="club-title">Members<br>Only Club</h2>
+            <p class="arch-sub">The raw, uncensored versions</p>
+          </div>
+        </div>
+      </div>
+      <p class="page-lede club-lede">Every episode you see on the public channel, plus the cut we can't post for everyone. Members get the full, unfiltered version.</p>
+      <p class="actions club-actions">
+        <a class="btn btn-primary" id="club-join-yt" href="https://www.youtube.com/@Sobersector/join" target="_blank" rel="noopener">Join on YouTube</a>
+        <a class="btn" id="club-join-pt" href="https://patreon.com/SoberingStories" target="_blank" rel="noopener">Join on Patreon</a>
+      </p>
+      <div class="grid club-grid" id="club-grid"></div>
+      <p class="empty" id="club-empty" hidden>The doors open soon. Members-only episodes will line up here.</p>
+    </section>
+
     <!-- ARCHIVES -->
     <section class="view page" data-view="archives" aria-labelledby="archives-title" hidden>
       <h2 id="archives-title">Archives</h2>
@@ -170,6 +191,7 @@
     </div>
     <div class="player-frame"><iframe id="player-iframe" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
     <div class="related" id="related" hidden>
+      <a class="btn btn-primary club-cta" id="club-cta" href="#members" target="_blank" rel="noopener" hidden>Watch the uncensored version (members)</a>
       <h3>Keep falling</h3>
       <div class="related-row" id="related-row"></div>
     </div>

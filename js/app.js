@@ -25,7 +25,7 @@
   /* ---------- tabs ---------- */
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var links = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
-  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', about: 'About | Sup Sobers' };
+  var titles = { home: 'Sup Sobers | Sobering Stories', videos: 'Videos | Sup Sobers', archives: 'Archives | Sup Sobers', books: 'Books | Sup Sobers', members: 'Members Only Club | Sup Sobers', about: 'About | Sup Sobers' };
 
   function route() {
     var name = (location.hash || '#home').slice(1);
@@ -66,7 +66,16 @@
     return out.slice(0, max || 8);
   }
 
+  var members = [];
+  function memberFor(v) {
+    for (var i = 0; i < members.length; i++) if (members[i].publicId === v.id) return members[i];
+    return null;
+  }
+  function memberUrl(m) { return m.url || ('https://www.youtube.com/watch?v=' + m.id); }
+
   function paintRelated(v) {
+    var cta = $('#club-cta'), m = memberFor(v);
+    if (cta) { cta.hidden = !m; if (m) cta.href = memberUrl(m); }
     var box = $('#related'), row = $('#related-row');
     if (!box) return;
     row.textContent = '';
@@ -191,6 +200,25 @@
     }
   }
 
+  /* ---------- members only club ---------- */
+  function buildClub(d) {
+    members = (d.videos || []).filter(function (m) { return m.id || m.url; });
+    if (d.joinYouTube) $('#club-join-yt').href = d.joinYouTube;
+    if (d.joinPatreon) $('#club-join-pt').href = d.joinPatreon;
+    var grid = $('#club-grid');
+    grid.textContent = '';
+    $('#club-empty').hidden = members.length > 0;
+    members.forEach(function (m) {
+      var thumb = m.thumb || (m.id ? 'https://i.ytimg.com/vi/' + m.id + '/hqdefault.jpg' : '');
+      var a = el('a', { 'class': 'tile club-tile', href: memberUrl(m), target: '_blank', rel: 'noopener', 'aria-label': (m.title || 'Members video') + ' (members only)' }, [
+        thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { 'class': 'ph', text: 'Members' }),
+        el('span', { 'class': 'lock', text: 'Members only' }),
+        el('span', { 'class': 'cap', text: m.title || '' })
+      ]);
+      grid.appendChild(a);
+    });
+  }
+
   /* ---------- archives + books ---------- */
   function buildCards(hostSel, items, emptySel) {
     var host = $(hostSel);
@@ -230,6 +258,8 @@
     $('#video-empty').textContent = 'Videos could not load. Refresh the page to try again.';
     $('#video-empty').hidden = false;
   });
+
+  getJSON('data/members.json').then(buildClub).catch(function () { buildClub({}); });
 
   getJSON('data/archives.json').then(function (d) { buildCards('#archive-list', d.archives || []); })
     .catch(function () { buildCards('#archive-list', []); });

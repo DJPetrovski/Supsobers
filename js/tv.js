@@ -192,7 +192,7 @@
   document.addEventListener('ss:route', function (e) { onRoute(e.detail.name); });
   document.addEventListener('ss:videos', function () { if (current === 'home') startAmbient(); });
   var startTab = (location.hash || '#home').slice(1);
-  onRoute(['home', 'videos', 'archives', 'books', 'about'].indexOf(startTab) >= 0 ? startTab : 'home');
+  onRoute(['home', 'videos', 'members', 'archives', 'books', 'about'].indexOf(startTab) >= 0 ? startTab : 'home');
 
   diveBtn.addEventListener('click', dive);
   screenEl.addEventListener('click', dive);

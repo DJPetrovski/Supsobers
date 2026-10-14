@@ -1,0 +1,6 @@
+{
+  "note": "Members-only episodes. For each one add: title, id (the members video's YouTube id) and publicId (the id of the public version, so the public video shows an 'uncensored version' button). Optional: url, thumb.",
+  "joinYouTube": "https://www.youtube.com/@Sobersector/join",
+  "joinPatreon": "https://patreon.com/SoberingStories",
+  "videos": []
+}

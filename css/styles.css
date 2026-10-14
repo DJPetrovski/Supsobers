@@ -584,3 +584,45 @@ dialog#player { max-height: 94vh; overflow-y: auto; }
 .thread-name { position: absolute; left: 12px; right: 12px; bottom: 30px; font-family: var(--display); font-size: 1.5rem; line-height: 1;
   text-transform: uppercase; -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; text-shadow: 0 0 18px rgba(255, 42, 53, 0.6); }
 .thread-count { position: absolute; left: 12px; bottom: 9px; font-size: 0.78rem; color: var(--bone); opacity: 0.85; }
+
+
+/* =====================================================================
+   Members Only Club: the archway
+   ===================================================================== */
+.nav-club { color: var(--ember) !important; }
+.nav-club:hover { text-shadow: 0 0 14px rgba(255, 42, 53, 0.8); }
+.club { text-align: center; }
+.arch { display: flex; justify-content: center; margin: 8px auto 28px; }
+.arch-frame {
+  position: relative; width: min(440px, 92vw); padding: 14px 14px 0; border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, #8d1019, #3a050a 70%, #1c0306);
+  box-shadow: 0 0 0 1px #000, 0 0 60px rgba(255, 42, 53, 0.45), 0 0 140px rgba(255, 42, 53, 0.2), inset 0 0 18px rgba(0, 0, 0, 0.7);
+}
+.arch-frame::before { content: ""; position: absolute; inset: 6px 6px 0; border-radius: 999px 999px 0 0; border: 1px solid rgba(255, 150, 156, 0.35); pointer-events: none; }
+.arch-door {
+  position: relative; overflow: hidden; border-radius: 999px 999px 0 0; padding: 72px 20px 34px; min-height: 300px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255, 42, 53, 0.35), transparent 62%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0 14px, rgba(60, 4, 10, 0.55) 14px 28px),
+    #12020a;
+  box-shadow: inset 0 0 50px #000;
+}
+.arch-door::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.55), transparent 35%, transparent 70%, rgba(0,0,0,0.6)); pointer-events: none; }
+.arch-door > * { position: relative; z-index: 1; }
+.arch-kicker { margin: 0 0 6px; font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: #ff9aa0; }
+.club .arch-door h2 {
+  margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(2.6rem, 11vw, 4.6rem); line-height: 0.88; text-transform: uppercase;
+  -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; color: var(--bone);
+  text-shadow: 0 0 22px rgba(255, 42, 53, 0.8), 0 0 60px rgba(255, 42, 53, 0.4); animation: neon 4.5s infinite;
+}
+.arch-sub { margin: 14px 0 0; font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone); opacity: 0.9; }
+@keyframes neon { 0%, 100% { opacity: 1; } 46% { opacity: 1; } 48% { opacity: 0.55; } 50% { opacity: 1; } 53% { opacity: 0.7; } 55% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .club .arch-door h2 { animation: none; } }
+.club-lede { margin-left: auto; margin-right: auto; max-width: 52ch; }
+.club-actions { justify-content: center; margin: 18px 0 34px; }
+.club-grid { text-align: left; }
+.club-tile { display: block; text-decoration: none; color: inherit; }
+.lock { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 3px 9px; border-radius: 99px; background: rgba(6, 1, 2, 0.88); border: 1px solid var(--ember);
+  font: 700 0.68rem var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+.club-cta { display: inline-block; margin: 0 0 14px; }
