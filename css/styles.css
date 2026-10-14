@@ -1604,3 +1604,22 @@ html.gs-open { overflow: hidden; }
 /* the pill figure: no grain overlay once it is brought close (it was being enlarged and looked dirty) */
 .hole-phone.near .pillfig-grain, .pill-pop-card .pillfig-grain { display: none; }
 .pillfig-img { image-rendering: auto; }
+
+/* ---------- Kraving Killer: game tabs + Wagon Run ---------- */
+.cv-tabs { display: flex; gap: 8px; justify-content: center; margin: 4px auto 16px; flex-wrap: wrap; }
+.cv-tabs button { padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: #140609; color: var(--bone); font: inherit; font-weight: 700; letter-spacing: .06em; cursor: pointer; }
+.cv-tabs button.on { background: linear-gradient(#ff4a55, #a30010); border-color: #000; color: #fff; box-shadow: 0 0 16px rgba(255, 42, 53, .55); }
+.wg { width: min(760px, 100%); margin: 0 auto; padding: 14px; border-radius: 18px; background: linear-gradient(#1a0508, #0a0204); border: 1px solid var(--line); box-shadow: 0 0 40px rgba(255, 42, 53, .18); }
+.wg[hidden] { display: none; }
+.wg-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 2px 4px 10px; font-family: var(--display); letter-spacing: .08em; text-transform: uppercase; }
+.wg-hud { display: inline-flex; gap: 14px; font-family: inherit; font-size: .9rem; color: #ffd1d4; }
+.wg-hud b { color: #fff; }
+.wg-bestl { opacity: .75; }
+.wg-stage { position: relative; border-radius: 12px; overflow: hidden; line-height: 0; }
+#wg-canvas { display: block; width: 100%; aspect-ratio: 720 / 420; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; cursor: pointer; background: #07010a; }
+.wg-toast { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; max-width: 88%; padding: 7px 14px; border-radius: 999px; background: rgba(0,0,0,.72); border: 1px solid rgba(255,42,53,.5); color: #ffe3e5; font-size: .85rem; line-height: 1.3; text-align: center; opacity: 0; transition: opacity .4s; pointer-events: none; }
+.wg-toast.on { opacity: 1; }
+.wg-over { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; background: rgba(5, 1, 6, .72); line-height: 1.4; text-align: center; }
+.wg-over[hidden] { display: none; }
+.wg-over h3 { margin: 0 0 8px; font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 6vw, 2.4rem); text-transform: uppercase; color: #fff; text-shadow: 0 0 18px #ff2a35; }
+.wg-over p { margin: 0 auto 14px; max-width: 34em; color: #ffd1d4; font-size: .95rem; }

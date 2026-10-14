@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791979150">
+  <link rel="stylesheet" href="css/styles.css?v=1791980163">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -303,6 +303,7 @@
     <section class="view page craving" data-view="craving" aria-labelledby="craving-title" hidden>
       <h2 id="craving-title">Kraving Killer</h2>
       <p class="lede">Having a craving? Most last two to five minutes. Play something dumb until it passes.</p>
+      <div class="cv-tabs" role="tablist" aria-label="Pick a game"><button type="button" role="tab" id="cvt-es" class="on" aria-selected="true">Etch A Sketch</button><button type="button" role="tab" id="cvt-wg" aria-selected="false">Wagon Run</button></div>
       <div class="es" id="es">
         <div class="es-top"><b>Sober Etch A Sketch</b><span class="es-lvl"><b id="es-lv">Level 1</b> <span class="es-clock" id="es-clock" aria-live="off">0:00</span></span></div>
         <div class="es-screenwrap"><i class="es-dim"></i><canvas id="es-canvas" width="480" height="340" aria-label="Etch A Sketch maze game"></canvas><i class="es-glare"></i></div>
@@ -317,6 +318,15 @@
           <div class="es-knobcol"><div class="es-knob" id="es-ky" role="slider" aria-label="Right knob: move up and down" tabindex="0"><i></i></div><span>Up / Down</span></div>
         </div>
         <p class="es-help">Twist the knobs (drag them in a circle) or use the arrow keys. In Maze, touch a wall and it shakes and resets, so reach the red flag. In Free draw, make anything, switch the sand color whenever you like, and shake to erase.</p>
+      </div>
+      <div class="wg" id="wg" hidden>
+        <div class="wg-top"><b>Wagon Run</b><span class="wg-hud"><span id="wg-day">Day 1</span><span id="wg-time">0:00</span><span>&#9679; <b id="wg-chips">0</b></span><span class="wg-bestl">Best <b id="wg-best">--</b></span></span></div>
+        <div class="wg-stage">
+          <canvas id="wg-canvas" aria-label="Wagon Run game: hold to dive down hills, let go to launch"></canvas>
+          <p class="wg-toast" id="wg-toast" role="status" aria-live="polite"></p>
+          <div class="wg-over" id="wg-over"><div><h3 id="wg-over-t">Wagon Run</h3><p id="wg-over-s">Ride a little red wagon over endless hills. Hold to dive down the slope, let go to launch off the top. Stay on the wagon.</p><button type="button" class="btn btn-primary" id="wg-go">Start rolling</button></div></div>
+        </div>
+        <p class="es-help">Press and hold anywhere on the game (or hold the space bar or down arrow) to dive. Let go to launch off the next hill. Grab the gold chips. It starts calm and slowly gets steeper, shorter and rockier. If you fall off the wagon, climb back on.</p>
       </div>
       <p class="cv-note">More games coming. If you are struggling right now, the free 24/7 SAMHSA helpline is 1-800-662-4357.</p>
     </section>
@@ -454,19 +464,20 @@
       <p class="scd-hint">Hold the title bar to move me. Home remote: CH = change channel, VOL = rewind / forward, OK = play / pause</p>
     </div>
   </aside>
-  <script src="js/rain.js?v=1791979150" defer></script>
-  <script src="js/app.js?v=1791979150" defer></script>
-  <script src="js/hole.js?v=1791979150" defer></script>
-  <script src="js/pill.js?v=1791979150" defer></script>
-  <script src="js/tv.js?v=1791979150" defer></script>
-  <script src="js/search.js?v=1791979150" defer></script>
-  <script src="js/merch.js?v=1791979150" defer></script>
-  <script src="js/web.js?v=1791979150" defer></script>
-  <script src="js/home.js?v=1791979150" defer></script>
-  <script src="js/remote.js?v=1791979150" defer></script>
-  <script src="js/craving.js?v=1791979150" defer></script>
-  <script src="js/scplayer.js?v=1791979150" defer></script>
-  <script src="js/assistant.js?v=1791979150" defer></script>
-  <script src="js/music.js?v=1791979150" defer></script>
+  <script src="js/rain.js?v=1791980163" defer></script>
+  <script src="js/app.js?v=1791980163" defer></script>
+  <script src="js/hole.js?v=1791980163" defer></script>
+  <script src="js/pill.js?v=1791980163" defer></script>
+  <script src="js/tv.js?v=1791980163" defer></script>
+  <script src="js/search.js?v=1791980163" defer></script>
+  <script src="js/merch.js?v=1791980163" defer></script>
+  <script src="js/web.js?v=1791980163" defer></script>
+  <script src="js/home.js?v=1791980163" defer></script>
+  <script src="js/remote.js?v=1791980163" defer></script>
+  <script src="js/craving.js?v=1791980163" defer></script>
+  <script src="js/wagon.js?v=1791980163" defer></script>
+  <script src="js/scplayer.js?v=1791980163" defer></script>
+  <script src="js/assistant.js?v=1791980163" defer></script>
+  <script src="js/music.js?v=1791980163" defer></script>
 </body>
 </html>

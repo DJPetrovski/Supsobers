@@ -240,7 +240,11 @@
 
   /* start the show when the page is opened; pause everything when it is left */
   document.addEventListener('ss:route', function (e) {
-    if (e.detail.name === 'craving') { if (phase === 'idle' || phase === 'paused') { startedAt = 0; clockEl.textContent = '0:00'; sketch(); } }
+    if (e.detail.name === 'craving') { if (document.getElementById('es').hidden) return; if (phase === 'idle' || phase === 'paused') { startedAt = 0; clockEl.textContent = '0:00'; sketch(); } }
+    else if (phase !== 'idle') { run++; cancelAnimationFrame(raf); stopClock(); phase = 'paused'; }
+  });
+  document.addEventListener('ss:cvgame', function (e) {
+    if (e.detail === 'es') { if (phase === 'idle' || phase === 'paused') { startedAt = 0; clockEl.textContent = '0:00'; sketch(); } }
     else if (phase !== 'idle') { run++; cancelAnimationFrame(raf); stopClock(); phase = 'paused'; }
   });
   if ((location.hash || '') === '#craving') setTimeout(sketch, 400);
