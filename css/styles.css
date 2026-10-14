@@ -1031,3 +1031,7 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
 .rm-dpad { margin: 4cqw auto 8cqw; }
 .remote { padding-top: 7cqw; padding-bottom: 9cqw; }
 .rm-logo { margin-top: 7cqw; }
+
+/* the YouTube picture fills the 4:3 glass and its title bar / logo are cropped away */
+.htv-yt { position: absolute; left: -35%; top: -15%; right: auto; bottom: auto; width: 170%; height: 130%; }
+.htv-yt[hidden] { display: none; }
