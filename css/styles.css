@@ -1076,3 +1076,13 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
 .htv-knob:active { cursor: grabbing; }
 .htv-knob:hover, .htv-knob:focus-visible { filter: brightness(1.25); }
 .htv-knob:focus-visible { box-shadow: 0 9px 12px rgba(0, 0, 0, 0.8), 0 0 0 3px #fff; }
+
+/* the whole video fits the glass: 16:9 screen, picture shown uncropped */
+.htv-screen { aspect-ratio: 16 / 9; }
+.htv-yt { left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; }
+.htv-video { object-fit: contain; }
+.htv-bug { font-size: clamp(0.9rem, 2.6vw, 1.9rem); }
+.home-rig .tv { width: min(100%, 980px, max(300px, calc((100svh - 150px) * 1.75))); }
+@media (max-width: 760px) { .home-rig .tv { width: min(100%, 640px, max(280px, calc((100svh - 300px) * 1.75))); } }
+.home-rig .tv { width: min(100%, 920px, max(300px, calc((100svh - 150px) * 1.75))); }
+@media (max-width: 760px) { .home-rig .tv { width: min(100%, 640px, max(280px, calc((100svh - 300px) * 1.75))); } }
