@@ -30,8 +30,16 @@
     var b = el.querySelector('.po-btn'); if (b) { b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'Close' : 'Pop out'; }
     nativeFs(el, on); rotateHint(on);
     window.dispatchEvent(new Event('resize'));
-    setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 120);
+    setTimeout(function () { window.dispatchEvent(new Event('resize')); fitWagon(); }, 120); fitWagon();
   }
+  // the wagon fills the whole screen when the phone is sideways: ask the game for a picture with the screen's shape
+  function fitWagon() {
+    var wg = document.getElementById('wg'); if (!wg) return;
+    var on = wg.classList.contains('po'), a = window.innerWidth / Math.max(1, window.innerHeight), fill = on && a >= 1.3;
+    wg.classList.toggle('wg-fill', fill);
+    document.dispatchEvent(new CustomEvent('ss:wgaspect', { detail: fill ? a : 720 / 420 }));
+  }
+  window.addEventListener('resize', function () { if (open) fitWagon(); }); window.addEventListener('orientationchange', function () { setTimeout(fitWagon, 200); });
   close.addEventListener('click', function () { if (open) popOut(open, false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) popOut(open, false); });
   document.addEventListener('fullscreenchange', function () { if (!document.fullscreenElement && open) popOut(open, false); });
@@ -78,5 +86,8 @@
     var es = document.getElementById('es'), wg = document.getElementById('wg');
     if (es && !es.hidden) popOut(es, true); else if (wg && !wg.hidden) popOut(wg, true);
   }
+  // landing on a game with the phone already sideways does the same
+  document.addEventListener('ss:cvgame', function () { setTimeout(onLand, 150); });
+  document.addEventListener('ss:route', function (e) { if (e.detail && e.detail.name === 'craving') setTimeout(onLand, 400); });
   if (land.addEventListener) land.addEventListener('change', onLand); else if (land.addListener) land.addListener(onLand);
 })();

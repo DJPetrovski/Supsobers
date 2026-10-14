@@ -1815,3 +1815,25 @@ html.po-lock, html.po-lock body { overflow: hidden; }
   .lp-screen { border-radius: 18px; }
   .lp-bar { justify-content: center; padding: 8px 12px; } .lp-bar span { display: none; } .lp-bar b { margin-left: 0; }
 }
+
+/* wagon: AA-style chips for rank, and a full-screen picture on a sideways phone */
+.wg-coin { position: absolute; left: 10px; top: 10px; z-index: 3; display: flex; align-items: center; gap: 8px; pointer-events: none; line-height: 1.2; }
+.wg-coin span { font-size: .7rem; font-weight: 700; color: #fff; background: rgba(0,0,0,.55); border-radius: 999px; padding: 3px 9px; }
+.coin { --c: #f1efe8; --cl: #ffffff; --ct: #3a3a3a; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-style: normal; background: radial-gradient(circle at 35% 28%, var(--cl), var(--c) 62%); border: 3px solid rgba(0,0,0,.4); box-shadow: inset 0 0 0 3px rgba(255,255,255,.38), 0 3px 10px rgba(0,0,0,.65); transition: transform .3s; }
+.coin b { font: 800 .56rem/1.05 system-ui, sans-serif; letter-spacing: .02em; color: var(--ct); text-align: center; max-width: 36px; text-shadow: 0 1px 0 rgba(255,255,255,.35); }
+.coin.none { --c: #3a3236; --cl: #5b5256; --ct: #e8dede; opacity: .8; }
+.coin.white { --c: #e9e6dd; --cl: #fff; --ct: #333; }
+.coin.red { --c: #c8222b; --cl: #ee5a62; --ct: #fff; }
+.coin.gold { --c: #d9a521; --cl: #ffe07a; --ct: #3a2a00; }
+.coin.green { --c: #278a4e; --cl: #5fd08a; --ct: #fff; }
+.coin.blue { --c: #2a62cf; --cl: #6f9cf5; --ct: #fff; }
+.coin.purple { --c: #6b3bc2; --cl: #a07df0; --ct: #fff; }
+.coin.bronze { --c: #a8662c; --cl: #e0a063; --ct: #fff; }
+.coin.pop { animation: coinPop .9s ease-out; }
+@keyframes coinPop { 0% { transform: scale(.4) rotate(-180deg); } 60% { transform: scale(1.35) rotate(20deg); } 100% { transform: scale(1) rotate(0); } }
+.wg.po .wg-coin { top: 46px; left: calc(10px + env(safe-area-inset-left, 0px)); }
+.wg.po.wg-fill { touch-action: none; }
+.wg.po.wg-fill .wg-top { position: absolute; left: 0; right: 0; top: 0; z-index: 4; padding-top: calc(4px + env(safe-area-inset-top, 0px)); background: linear-gradient(rgba(0,0,0,.6), transparent); pointer-events: none; }
+.wg.po.wg-fill .wg-stage { position: absolute; inset: 0; display: block; }
+.wg.po.wg-fill #wg-canvas { width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .coin.pop { animation: none; } }

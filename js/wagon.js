@@ -7,6 +7,11 @@
   var cv = document.getElementById('wg-canvas'), ctx = cv.getContext('2d');
   var W = 720, H = 420, dpr = Math.min(window.devicePixelRatio || 1, 2);
   cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // the pop-out player asks for a wider picture on a phone turned sideways, so the game fills the whole screen
+  document.addEventListener('ss:wgaspect', function (e) {
+    var nw = Math.max(560, Math.min(1100, Math.round(H * (e.detail || 720 / 420)))); if (nw === W) return;
+    W = nw; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  });
   var elTime = document.getElementById('wg-time'), elDay = document.getElementById('wg-day'), elChips = document.getElementById('wg-chips'), elBest = document.getElementById('wg-best');
   var over = document.getElementById('wg-over'), overTitle = document.getElementById('wg-over-t'), overSub = document.getElementById('wg-over-s'), overBtn = document.getElementById('wg-go');
   var toast = document.getElementById('wg-toast');
@@ -61,9 +66,25 @@
     extend(-120); st.y = ground(st.x); st.camY = st.y;
     paintHud();
   }
+  // AA-style chips: your rank is how long you have gone. Game time is compressed (a game day is 30 seconds).
+  var COINS = [[30, 'white', '24 HRS'], [75, 'red', '30 DAYS'], [120, 'gold', '60 DAYS'], [180, 'green', '90 DAYS'], [270, 'blue', '6 MOS'], [360, 'purple', '9 MOS'], [480, 'bronze', '1 YR']];
+  var elCoin = document.getElementById('wg-coin-c'), elCoinT = document.getElementById('wg-coin-t'), elCoinN = document.getElementById('wg-coin-n'), coinNow = -2;
+  function coinFor(t) {
+    var i = -1; for (var k = 0; k < COINS.length; k++) if (t >= COINS[k][0]) i = k;
+    if (i === COINS.length - 1) { var yrs = 1 + Math.floor((t - 480) / 240); return { i: 100 + yrs, c: 'bronze', l: yrs + (yrs === 1 ? ' YR' : ' YRS'), next: 480 + yrs * 240 }; }
+    return i < 0 ? { i: -1, c: 'none', l: 'NEW', next: COINS[0][0] } : { i: i, c: COINS[i][1], l: COINS[i][2], next: COINS[i + 1][0] };
+  }
+  function paintCoin(announce) {
+    if (!elCoin) return; var c = coinFor(st.t);
+    if (c.i !== coinNow) {
+      var up = coinNow !== -2 && c.i > coinNow; coinNow = c.i; elCoin.className = 'coin ' + c.c; elCoinT.textContent = c.l;
+      if (up && announce) { elCoin.classList.add('pop'); say('You earned your ' + c.l.toLowerCase() + ' chip.'); }
+    }
+    elCoinN.textContent = 'Next chip in ' + fmt(Math.max(0, c.next - st.t));
+  }
   function fmt(t) { t = Math.floor(t); return Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2); }
   function paintHud() {
-    elTime.textContent = fmt(st.t); elDay.textContent = 'Day ' + (st.day + 1); elChips.textContent = st.chips; elBest.textContent = best ? fmt(best) : '--';
+    elTime.textContent = fmt(st.t); elDay.textContent = 'Day ' + (st.day + 1); elChips.textContent = st.chips; elBest.textContent = best ? fmt(best) : '--'; paintCoin(true);
   }
   function say(t) { toast.textContent = t; toast.classList.add('on'); clearTimeout(st.toastT); st.toastT = setTimeout(function () { toast.classList.remove('on'); }, 3800); }
 
@@ -78,6 +99,7 @@
     var mins = Math.floor(st.t / 60), days = st.day;
     overTitle.textContent = 'Game over';
     overSub.textContent = (st.why ? st.why + ' ' : '') + 'You fell off the wagon. You rode ' + fmt(st.t) + ' (' + (days === 1 ? '1 day' : days + ' days') + ') and grabbed ' + st.chips + ' chips. ' +
+      (coinFor(st.t).i >= 0 ? 'Your rank: the ' + coinFor(st.t).l.toLowerCase() + ' chip. ' : '') +
       (st.t >= 120 ? 'That is longer than most cravings last. ' : 'Most cravings fade in two to five minutes, so try again. ') + 'Falling off just means you climb back on. Don\u2019t fall off the wagon!';
     overBtn.textContent = 'Get back on'; over.hidden = false; paintHud();
   }
