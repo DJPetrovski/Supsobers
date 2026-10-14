@@ -333,6 +333,38 @@
   .toplink { display: inline-block; margin: 0 0 10px; font-size: 12.5px; color: var(--ink-dim); }
   @media (max-width: 560px) { .bgbar { max-width: 100%; left: 14px; top: 10px; justify-content: flex-start; } .bgnow { display: none; } .stage-title { top: 54px; } .stage { padding-top: 205px; } .ctx { padding: 10px; gap: 10px; } .ctx .dial { width: 44px; height: 44px; } }
 
+
+  /* ---------- full screen / landscape / tablet ---------- */
+  .fsbtn { position: absolute; right: 14px; bottom: 46px; z-index: 6; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; color: #f3e9d2; background: rgba(7,13,31,.7); border: 1px solid rgba(243,233,210,.4); border-radius: 999px; padding: 6px 13px; backdrop-filter: blur(4px); }
+  .fsbtn:hover { background: rgba(243,233,210,.22); }
+  html.fs-lock, html.fs-lock body { overflow: hidden; }
+  .stage.fs { position: fixed; inset: 0; z-index: 100; margin: 0; border-radius: 0; overflow-y: auto; overscroll-behavior: contain; padding-top: clamp(96px, 20vh, 190px); display: flex; flex-direction: column; justify-content: flex-end; }
+  .stage.fs .ctx { flex: none; }
+  .stage.fs .disc { position: static; flex: none; }
+  .stage.fs #timeline-root { flex: 1 1 auto; min-height: 0; align-content: center; }
+  @media (max-height: 520px) {
+    .stage.fs { padding: 50px 10px 0; }
+    .stage.fs .stage-title { top: 8px; left: 14px; }
+    .stage.fs .stage-title small { display: none; }
+    .stage.fs .stage-title b { font-size: 22px; margin: 0; }
+    .stage.fs .bgbar { top: 8px; right: 10px; max-width: 70%; }
+    .stage.fs .bgnow, .stage.fs .map-hint, .stage.fs .ctx-more, .stage.fs .ctx-src { display: none; }
+    .stage.fs .ctx { min-height: 0; padding: 6px 10px; margin-bottom: 6px; }
+    .stage.fs .ctx .dial { width: 36px; height: 36px; }
+    .stage.fs .ctx-now { font-size: 12.5px; margin: 1px 0; }
+    .stage.fs .ctx-when { font-size: 10px; }
+    .stage.fs #timeline-root { padding: 4px calc(50% - 105px) 8px; }
+    .stage.fs #timeline-root .entry { width: 210px; gap: 6px; }
+    .stage.fs #timeline-root .entry time { font-size: 11px; padding-top: 8px; }
+    .stage.fs #timeline-root .card-media { max-height: 64px; overflow: hidden; }
+    .stage.fs #timeline-root .card-media img { width: 100%; height: 64px; object-fit: cover; }
+    .stage.fs #timeline-root .card .source-line, .stage.fs #timeline-root .card p.desc { display: none; }
+    .stage.fs #timeline-root .card h3, .stage.fs #timeline-root .card .title { font-size: 13px; }
+    .fsbtn { bottom: 40px; }
+  }
+  /* tablets: the tooltip sits as a bottom sheet like the phone, and tap targets are larger */
+  @media (min-width: 561px) and (max-width: 1100px) { .tip { max-width: 420px; } .mk.thumb { width: 44px; height: 26px; } .tab { padding: 8px 14px; } }
+  @media (hover: none) { .fsbtn, .bgbar button { padding: 9px 14px; } }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
@@ -342,7 +374,7 @@
   <header class="top">
     <p class="eyebrow">Research archive · not affiliated with any outlet</p>
     <h1>September 10 Archive</h1>
-    <p class="lede">A chronological, source-linked record of video and photo coverage of the assassination of Charlie Kirk on September&nbsp;10, 2025, and the days that followed — built so researchers and journalists can move through the case in the order it happened rather than however a search engine surfaces it. The Shot-moment map lines up raw clips on the moment of the shot so angles can be compared. Every entry links out to its original source; where a broadcast has an Internet Archive TV News copy, that's listed too, so a link going dead on the original site doesn't take the record with it.</p>
+    <p class="lede">A chronological, source-linked record of video and photo coverage of the assassination of Charlie Kirk on September&nbsp;10, 2025, and the days that followed — built so researchers and journalists can move through the case in the order it happened rather than however a search engine surfaces it. The Compare angles tab lines up raw clips on the moment of the shot so angles can be compared. Every entry links out to its original source; where a broadcast has an Internet Archive TV News copy, that's listed too, so a link going dead on the original site doesn't take the record with it.</p>
     <div class="stat-row">
       <span class="stat"><strong id="stat-count">0</strong> entries logged</span>
       <span class="stat"><strong id="stat-range">—</strong></span>
@@ -352,8 +384,8 @@
 
   <nav class="controls">
     <div class="tabs" role="tablist" aria-label="Media type">
-      <button class="tab" data-tab="map" aria-pressed="true">Shot-moment map</button>
-      <button class="tab" data-tab="all" aria-pressed="false">Timeline</button>
+      <button class="tab" data-tab="all" aria-pressed="true">3D timeline</button>
+      <button class="tab" data-tab="map" aria-pressed="false">Compare angles</button>
       <button class="tab" data-tab="video" aria-pressed="false">Videos</button>
       <button class="tab" data-tab="photo" aria-pressed="false">Photos</button>
     </div>
@@ -371,6 +403,7 @@
 <div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
 <div class="bgbar" id="bgbar"><button type="button" id="bg-play">Pause background</button><button type="button" id="bg-sound">Sound on</button><button type="button" id="bg-hide">Hide video</button></div>
 <div class="bgnow" id="bgnow" aria-live="off"></div>
+<button type="button" class="fsbtn" id="fs-btn" aria-pressed="false">Full screen</button>
 <svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 <defs>
 <linearGradient id="bk-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070d1f"/><stop offset=".45" stop-color="#1b2c58"/><stop offset=".72" stop-color="#8a4a49"/><stop offset=".88" stop-color="#e09a58"/><stop offset="1" stop-color="#f4c47c"/></linearGradient>
@@ -503,7 +536,7 @@
   }
 
   var state = {
-    tab: "map",
+    tab: "all",
     activeCats: new Set(Object.keys(CATEGORIES)),
     query: ""
   };
@@ -801,6 +834,13 @@
   }
   tl.addEventListener("scroll", function () { if (!raf3) raf3 = requestAnimationFrame(function () { raf3 = 0; update3d(); }); }, { passive: true });
   window.addEventListener("resize", update3d);
+  function centerShot() {
+    var es = tl.querySelectorAll(".entry"), best = null, bd = 1e18, shot = Date.parse("2025-09-10T18:23:30Z");
+    es.forEach(function (e) { var d = Math.abs(Date.parse(e.dataset.ts) - shot); if (d < bd) { bd = d; best = e; } });
+    if (!best) { tl.scrollLeft = 0; return; }
+    var ox = 0, n = best; while (n && n !== tl) { ox += n.offsetLeft; n = n.offsetParent; }
+    tl.scrollLeft = ox + best.offsetWidth / 2 - tl.clientWidth / 2;
+  }
   function applyTab() {
     var isMap = state.tab === "map";
     document.getElementById("map-root").hidden = !isMap;
@@ -808,7 +848,7 @@
     var sr = document.querySelector(".search"); if (sr) sr.parentNode.hidden = isMap;
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
-    if (isMap) renderMap(); else { tl.scrollLeft = 0; requestAnimationFrame(update3d); }
+    if (isMap) renderMap(); else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
@@ -929,6 +969,19 @@
     });
   })();
 
+    // ---------- full screen, and landscape on a phone ----------
+  (function () {
+    var btn = document.getElementById("fs-btn"), root = document.documentElement, auto = window.matchMedia && matchMedia("(orientation: landscape) and (max-height: 520px) and (pointer: coarse)");
+    function setFs(on, native) {
+      stage.classList.toggle("fs", on); root.classList.toggle("fs-lock", on); btn.setAttribute("aria-pressed", on ? "true" : "false"); btn.textContent = on ? "Exit full screen" : "Full screen";
+      if (native) { try { if (on && stage.requestFullscreen) stage.requestFullscreen().catch(function () {}); else if (!on && document.fullscreenElement) document.exitFullscreen(); } catch (er) {} }
+      setTimeout(function () { update3d(); if (state.tab === "map") renderMap(); }, 60);
+    }
+    btn.addEventListener("click", function () { setFs(!stage.classList.contains("fs"), true); });
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && stage.classList.contains("fs")) setFs(false, false); });
+    document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && stage.classList.contains("fs") && !(auto && auto.matches)) setFs(false, false); });
+    if (auto) { var onTurn = function () { setFs(auto.matches, false); }; if (auto.addEventListener) auto.addEventListener("change", onTurn); else if (auto.addListener) auto.addListener(onTurn); if (auto.matches) onTurn(); }
+  })();
   if (state.tab === "map") setCtx(Date.parse("2025-09-10T18:23:30Z"));
 })();
 </script>
