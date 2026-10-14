@@ -1664,3 +1664,4 @@ html.gs-open { overflow: hidden; }
 .hf-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .hf-card span { padding: 0 10px 10px; font-size: .82rem; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .hf-more { grid-column: 1 / -1; margin: 0; text-align: center; font-size: .8rem; color: #ffb3b8; }
+.htv-yt.pre { opacity: 0; pointer-events: none; }

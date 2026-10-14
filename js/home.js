@@ -129,7 +129,7 @@
   var introT = 0, SEARCH_MS = 5500, CHANNEL_MS = 180000, started = false, soundOn = false, chanT = 0, onTrailer = true, cur = null;
   var yt = document.getElementById('htv-yt'), nowBtn = document.getElementById('htv-now'), nextBtn = document.getElementById('htv-next');
   function duck(level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'trailer', level: level } })); }
-  function ytCmd(fn, args) { try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: args || [] }), '*'); } catch (e) {} }
+  function ytCmd(fn, args, frame) { try { (frame || yt).contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: args || [] }), '*'); } catch (e) {} }
   var STEPS = [0, 25, 75, 100], vIdx = 0, lastIdx = 2, volume = 0, knobCh = document.getElementById('htv-knob-ch'), knobVol = document.getElementById('htv-knob-vol'), volRot = -135;
   var vAngle = 0;
   function paintVol() {
@@ -185,30 +185,56 @@
     seen.push(v.id);
     return v;
   }
+  var spare = document.createElement('iframe'), queued = null;
+  spare.className = 'htv-yt pre'; spare.id = 'htv-yt-b'; spare.title = ''; spare.setAttribute('aria-hidden', 'true'); spare.tabIndex = -1; spare.hidden = true;
+  spare.setAttribute('allow', 'autoplay; encrypted-media'); spare.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  yt.parentNode.insertBefore(spare, yt.nextSibling);
+  function embed(v) {
+    var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
+    return 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '&start=' + start;
+  }
+  // Load the next random channel invisibly so a channel change shows picture and sound with no wait.
+  function preload() {
+    if (!powered || yt.hidden || queued || !onHome) return;
+    var v = pickRandom(); if (!v) return;
+    var f = spare, q = { v: v, frame: f }; queued = q;
+    f.classList.add('pre'); f.hidden = false;
+    f.onload = function () { setTimeout(function () { if (queued === q) ytCmd('mute', [], f); }, 300); setTimeout(function () { if (queued === q) ytCmd('pauseVideo', [], f); }, 3500); };
+    f.src = embed(v);
+  }
+  function killPre() { queued = null; spare.onload = null; spare.src = 'about:blank'; spare.hidden = true; }
   function channel(back) {
     if (!powered) return;
     clearTimeout(chanT);
     var v;
     if (back === true && hist.length > 1) { hist.pop(); v = hist[hist.length - 1]; chNo = Math.max(1, chNo - 1); }
-    else { v = pickRandom(); if (v) { hist.push(v); chNo++; } }
+    else { v = (queued && queued.v) || pickRandom(); if (v) { hist.push(v); chNo++; } }
     if (v) showOsd('CH ' + (chNo < 10 ? '0' : '') + chNo + '');
     if (!v) { document.addEventListener('ss:videos', function once() { document.removeEventListener('ss:videos', once); if (onHome && !onTrailer) channel(); }); return; }
     cur = v;
-    var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
-    screen.classList.add('tuning');
-    yt.hidden = false; screen.classList.add('has-ch');
-    yt.onload = function () {
-      // some browsers show a big play button instead of starting; nudge it a few times, muted-safe
-      [400, 1200, 2500, 4500].forEach(function (ms) { setTimeout(function () { if (yt.hidden || cur !== v) return; ytCmd('playVideo'); applySound(); }, ms); });
-      setTimeout(function () { screen.classList.remove('tuning'); }, 900);
-    };
-    yt.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '&start=' + start;
+    var pre = (back !== true && queued && queued.v === v) ? queued : null;
+    if (pre) {
+      // the next channel was already loaded behind the picture, so it appears (and plays) at once
+      queued = null; var old = yt; yt = pre.frame;
+      yt.classList.remove('pre'); yt.hidden = false; screen.classList.add('has-ch');
+      ytCmd('playVideo'); applySound(); setTimeout(function () { if (!yt.hidden && cur === v) { ytCmd('playVideo'); applySound(); } }, 500);
+      old.onload = null; old.src = 'about:blank'; old.hidden = true; spare = old;
+    } else {
+      screen.classList.add('tuning');
+      yt.hidden = false; screen.classList.add('has-ch');
+      yt.onload = function () {
+        [250, 900, 2000, 4000].forEach(function (ms) { setTimeout(function () { if (yt.hidden || cur !== v) return; ytCmd('playVideo'); applySound(); }, ms); });
+        setTimeout(function () { screen.classList.remove('tuning'); }, 500);
+      };
+      yt.src = embed(v);
+    }
+    setTimeout(preload, 2500);
     nowBtn.hidden = nextBtn.hidden = false;
     nowBtn.title = v.title || '';
     nowBtn.textContent = 'Watch this one';
     chanT = setTimeout(channel, CHANNEL_MS);
   }
-  function stopChannels() { clearTimeout(chanT); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); nowBtn.hidden = nextBtn.hidden = true; cur = null; }
+  function stopChannels() { clearTimeout(chanT); killPre(); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); nowBtn.hidden = nextBtn.hidden = true; cur = null; }
   nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
   nextBtn.addEventListener('click', function () { takeover(); channel(); });
   document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
@@ -288,7 +314,7 @@
     screen.classList.remove('tuning', 'htv-search', 'crt-on');
     root.classList.add('tv-off'); screen.classList.add('crt-off');
     offT = setTimeout(function () {
-      yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); video.style.opacity = '0'; cur = null; nowBtn.hidden = nextBtn.hidden = true;
+      killPre(); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; screen.classList.remove('has-ch'); video.style.opacity = '0'; cur = null; nowBtn.hidden = nextBtn.hidden = true;
       screen.classList.remove('crt-off'); screen.classList.add('standby');
     }, reduce ? 0 : 650);
   }
@@ -300,7 +326,7 @@
     channel();
   }
   function setLate(on) {
-    lateNight = on; root.classList.toggle('late-night', on);
+    lateNight = on; root.classList.toggle('late-night', on); killPre();
     if (!powered) powerOn(); else channel();
     showOsd(on ? 'LATE NIGHT' : 'SIGN ON');
   }
