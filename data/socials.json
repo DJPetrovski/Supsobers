@@ -1,10 +1,46 @@
 {
   "socials": [
-    { "name": "YouTube", "handle": "@Sobersector", "url": "https://www.youtube.com/@Sobersector", "blurb": "The full episodes. Start here.", "mark": "YT" },
-    { "name": "Patreon", "handle": "SoberingStories", "url": "https://patreon.com/SoberingStories", "blurb": "The uncensored versions.", "mark": "P" },
-    { "name": "Instagram", "handle": "", "url": "", "blurb": "Clips and behind the scenes.", "mark": "IG" },
-    { "name": "X", "handle": "", "url": "", "blurb": "Short takes and updates.", "mark": "X" },
-    { "name": "Rumble", "handle": "", "url": "", "blurb": "Videos without the algorithm.", "mark": "RU" },
-    { "name": "Spotify", "handle": "", "url": "", "blurb": "The podcast, in your ears.", "mark": "SP" }
+    {
+      "name": "YouTube",
+      "handle": "@Sobersector",
+      "url": "https://www.youtube.com/@Sobersector",
+      "blurb": "The full episodes. Start here.",
+      "mark": "YT"
+    },
+    {
+      "name": "Patreon",
+      "handle": "SoberingStories",
+      "url": "https://patreon.com/SoberingStories",
+      "blurb": "The uncensored versions.",
+      "mark": "P"
+    },
+    {
+      "name": "Instagram",
+      "handle": "@djpetrovski",
+      "url": "https://instagram.com/djpetrovski",
+      "blurb": "Clips and behind the scenes.",
+      "mark": "IG"
+    },
+    {
+      "name": "X",
+      "handle": "@djpetrovski12",
+      "url": "https://x.com/djpetrovski12",
+      "blurb": "Short takes and updates.",
+      "mark": "X"
+    },
+    {
+      "name": "Rumble",
+      "handle": "djpetrovski",
+      "url": "https://rumble.com/user/djpetrovski",
+      "blurb": "Videos without the algorithm.",
+      "mark": "RU"
+    },
+    {
+      "name": "Spotify",
+      "handle": "Sobering Stories podcast",
+      "url": "https://open.spotify.com/show/7cuV8tDi2Gdw66upnljFIs",
+      "blurb": "The podcast, in your ears.",
+      "mark": "SP"
+    }
   ]
 }
