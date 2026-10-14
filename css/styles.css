@@ -626,3 +626,16 @@ dialog#player { max-height: 94vh; overflow-y: auto; }
 .lock { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 3px 9px; border-radius: 99px; background: rgba(6, 1, 2, 0.88); border: 1px solid var(--ember);
   font: 700 0.68rem var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
 .club-cta { display: inline-block; margin: 0 0 14px; }
+
+
+/* =====================================================================
+   The Web
+   ===================================================================== */
+.web-view { max-width: 1280px; margin: 0 auto; padding: 28px 16px 40px; }
+.web-head h2 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 8vw, 4rem); line-height: 0.95; text-transform: uppercase;
+  -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; text-shadow: 0 0 22px rgba(255, 42, 53, 0.5); }
+.web-stage { position: relative; height: min(72svh, 720px); min-height: 380px; border: 1px solid var(--line); background: radial-gradient(ellipse at 50% 50%, rgba(60, 4, 10, 0.55), rgba(6, 1, 2, 0.88) 70%); overflow: hidden; touch-action: none; }
+.web-stage canvas { display: block; cursor: grab; touch-action: none; }
+.web-tip { position: absolute; z-index: 3; max-width: 260px; padding: 6px 10px; background: rgba(6, 1, 2, 0.92); border: 1px solid var(--ember); font-size: 0.82rem; pointer-events: none; }
+.web-ctrl { position: absolute; z-index: 3; right: 12px; bottom: 12px; display: flex; gap: 8px; }
+.web-panel { margin: 12px 2px 0; min-height: 3em; color: var(--bone); font-size: 0.95rem; line-height: 1.4; }

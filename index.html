@@ -28,6 +28,7 @@
     <nav id="nav" aria-label="Main">
       <a href="#home" data-route="home">Home</a>
       <a href="#videos" data-route="videos">Videos</a>
+      <a href="#web" data-route="web">The Web</a>
       <a href="#members" data-route="members" class="nav-club">Members Club</a>
       <a href="#archives" data-route="archives">Archives</a>
       <a href="#books" data-route="books">Books</a>
@@ -102,6 +103,23 @@
         <div class="grid" id="video-grid"></div>
         <p class="empty" id="video-empty" hidden>No videos match that search.</p>
       </div>
+    </section>
+
+    <!-- THE WEB -->
+    <section class="view web-view" data-view="web" aria-labelledby="web-title" hidden>
+      <div class="web-head">
+        <h2 id="web-title">The Web</h2>
+        <p class="page-lede">Every video, pulled toward the storylines it touches. Drag to spin. Scroll or pinch to zoom. Tap to explore.</p>
+      </div>
+      <div class="web-stage" id="web-stage">
+        <canvas id="web-canvas" aria-label="Interactive 3D map connecting every video to its storylines"></canvas>
+        <div class="web-tip" id="web-tip" hidden></div>
+        <div class="web-ctrl">
+          <button type="button" class="pill" id="web-theory" aria-pressed="false">Show the theory</button>
+          <button type="button" class="pill" id="web-reset">Reset view</button>
+        </div>
+      </div>
+      <p class="web-panel" id="web-panel" aria-live="polite"></p>
     </section>
 
     <!-- MEMBERS CLUB -->
@@ -201,5 +219,6 @@
   <script src="js/app.js" defer></script>
   <script src="js/hole.js" defer></script>
   <script src="js/tv.js" defer></script>
+  <script src="js/web.js" defer></script>
 </body>
 </html>

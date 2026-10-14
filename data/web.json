@@ -1,0 +1,261 @@
+{
+  "note": "The Web. Each topic is a hub; a video attaches to a topic when its title contains one of the topic's keywords (lowercase). Also add 'links' as [videoIdA, videoIdB, 'why they connect'] to draw a direct line between two videos. 'theory' is the optional central node, shown only when a visitor flips the switch.",
+  "theory": {
+    "name": "The Network",
+    "blurb": "DJ's theory: one hidden elite behind the stories."
+  },
+  "topics": [
+    {
+      "name": "Epstein & 9/11",
+      "match": [
+        "epstein",
+        "sepstein",
+        "ghislaine",
+        "giuffre",
+        "9/11"
+      ]
+    },
+    {
+      "name": "Diddy",
+      "match": [
+        "diddy",
+        "kim porter",
+        "pink cocaine"
+      ]
+    },
+    {
+      "name": "Music Industry Deaths",
+      "match": [
+        "kurt",
+        "cobain",
+        "chester",
+        "bennington",
+        "cornell",
+        "sid vicious",
+        "nancy spungen",
+        "mac miller",
+        "27 club",
+        "hedberg",
+        "ozzy",
+        "elvis",
+        "hutchence",
+        "michael jackson",
+        "juice wrld",
+        "eazy",
+        "dmx",
+        "avicii",
+        "aaron carter",
+        "liam payne",
+        "whitney",
+        "prince",
+        "artist formerly",
+        "mitch",
+        "sid & nancy"
+      ]
+    },
+    {
+      "name": "Fame & the Industry",
+      "match": [
+        "heath ledger",
+        "robin williams",
+        "paul walker",
+        "perry",
+        "heche",
+        "saget",
+        "twitch",
+        "brittany",
+        "kate spade",
+        "bourdain",
+        "carradine",
+        "trachtenberg",
+        "reiner",
+        "hanks",
+        "carrey",
+        "kaufman",
+        "marilyn",
+        "anna nicole",
+        "britney",
+        "bieber",
+        "selena",
+        "hayden",
+        "oliver tree",
+        "dolly",
+        "kevin hart",
+        "ellen",
+        "jellyroll",
+        "tmz",
+        "trevor moore",
+        "oddi",
+        "kubrick"
+      ]
+    },
+    {
+      "name": "Assassins & Political Violence",
+      "match": [
+        "assassin",
+        "crooks",
+        "routh",
+        "vem miller",
+        "jfk",
+        "oval office",
+        "biden"
+      ]
+    },
+    {
+      "name": "Charlie Kirk",
+      "match": [
+        "kirk",
+        "tyler robinson",
+        "erika",
+        "utah valley",
+        "twiggs"
+      ]
+    },
+    {
+      "name": "Mind Control & Black Ops",
+      "match": [
+        "mk-ultra",
+        "mk ultra",
+        "manchurian",
+        "gate program",
+        "from gate",
+        "hypnotized",
+        "mind control",
+        "hantavirus",
+        "gene hacking",
+        "cia"
+      ]
+    },
+    {
+      "name": "Illuminati & Elite Bloodlines",
+      "match": [
+        "illuminati",
+        "bloodlines",
+        "elite",
+        "billionaires",
+        "skywalkers",
+        "podesta",
+        "laundering",
+        "white van",
+        "trafficking",
+        "secret club",
+        "crimes against humanity"
+      ]
+    },
+    {
+      "name": "Trials & True Crime",
+      "match": [
+        "trial",
+        "murder",
+        "killer",
+        "clancy",
+        "boone",
+        "shirilla",
+        "kenna",
+        "nixon",
+        "hernandez",
+        "deadpool",
+        "bride",
+        "gregg",
+        "komoroski",
+        "barber",
+        "reasonable doubt",
+        "livestream confession",
+        "soccer mom",
+        "insanity",
+        "hearing",
+        "pretrial",
+        "nolan wells",
+        "lego",
+        "tanning bed",
+        "spit mask",
+        "grandma",
+        "husband theory",
+        "ben saga",
+        "who makes money on crime"
+      ]
+    },
+    {
+      "name": "Space & Hidden Tech",
+      "match": [
+        "nasa",
+        "artemis",
+        "apollo",
+        "moon",
+        "drones",
+        "pigeons",
+        "ticks",
+        "wilcock",
+        "eskridge",
+        "mccasland",
+        "codes",
+        "lucid",
+        "time speeding",
+        "dolphins",
+        "pacific",
+        "tesla"
+      ]
+    },
+    {
+      "name": "Missing & Unexplained",
+      "match": [
+        "madeleine",
+        "disappear",
+        "missing",
+        "guthrie",
+        "kristal",
+        "ossebaard",
+        "titan",
+        "titanic",
+        "vanished",
+        "gone",
+        "crestone",
+        "simon andriesz",
+        "pass himself away"
+      ]
+    },
+    {
+      "name": "Truth Tellers & the Silenced",
+      "match": [
+        "silenced",
+        "wild bill",
+        "hunter s",
+        "wilcock",
+        "eskridge",
+        "last warning",
+        "predicted",
+        "final message",
+        "kappy",
+        "chester",
+        "hedberg"
+      ]
+    },
+    {
+      "name": "Media & Propaganda",
+      "match": [
+        "tiktok",
+        "wayfair",
+        "netflix",
+        "propaganda",
+        "ai addiction",
+        "matrix",
+        "tylenol",
+        "altman",
+        "pizzagate",
+        "youtube paid",
+        "monetize",
+        "freedom or safety",
+        "eating people"
+      ]
+    },
+    {
+      "name": "The Sober Sobers",
+      "match": [
+        "sober sobers",
+        "sober talk",
+        "recovery group"
+      ]
+    }
+  ],
+  "links": []
+}
