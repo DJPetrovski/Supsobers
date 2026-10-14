@@ -1,25 +1,43 @@
 /* Disc flight physics for the disc golf game (Disc-ipline). Pure functions, no DOM, so it can be tested in Node.
    World: x = right, y = forward (tee toward basket), z = up, metres and seconds.
-   Model: lift and drag from angle of attack (Potts and Crowther style coefficients), the lift vector tilts with the disc's bank
-   (hyzer / anhyzer), and the bank itself drifts: high speed turns the disc over (anhyzer), low speed makes it fade back (hyzer). */
+   Model: lift and drag from angle of attack (Potts and Crowther style coefficients). The lift vector tilts with the disc's bank
+   (hyzer / anhyzer), which gives the sideways force. The bank itself is not free: at high speed a disc turns over a little (anhyzer),
+   at low speed it settles back to a bounded hyzer (fade) and drops. That makes the real S-curve and keeps the flight from ever
+   spiralling like a boomerang. Each disc's four published numbers (speed, glide, turn, fade) set how it behaves. */
 (function (root) {
   'use strict';
   var RHO = 1.2, AREA = 0.0346, MASS = 0.175, GRAV = 9.81;
-  var T = { thetaOff: 0, cl: 0.45, fadeK: 0.8, turnK: 0.3, fadeBase: 0.55, dragK: 0.62, lat: 2.2, pitchK: 0.7, trim: 0.03 };
+  var T = { cl: 0.45, dragK: 0.76, pitchK: 0.7, trim: 0.03, kRoll: 1.2, turnK: 0.55, turnMax: 0.42, fadeCap: 0.07, fadeCapK: 0.05, hyzerMax: 0.62 };
   var CL0 = 0.188, CLA = 2.37, CD0 = 0.08, CDA = 2.72, A0 = -0.052;
 
-  // speed / glide / turn / fade are the same four numbers real discs carry. vmax = hardest throw (m/s) a pro can make with it.
-  var DISCS = {
-    putter:  { id: 'putter',  name: 'Putter',          speed: 3,  glide: 3, turn: 0,  fade: 1, vmax: 22, col: '#f2f2f2' },
-    mid:     { id: 'mid',     name: 'Midrange',        speed: 5,  glide: 4, turn: -1, fade: 1, vmax: 25, col: '#4a9bff' },
-    fairway: { id: 'fairway', name: 'Fairway Driver',  speed: 9,  glide: 5, turn: -2, fade: 2, vmax: 29, col: '#ffd45a' },
-    driver:  { id: 'driver',  name: 'Distance Driver', speed: 12, glide: 5, turn: -3, fade: 3, vmax: 36, col: '#ff4a55' }
-  };
+  // Real molds with the flight numbers their makers publish (speed | glide | turn | fade). The game only approximates how they fly.
+  // vmax is the hardest throw (m/s) a strong thrower can make with that class of disc.
+  function mk(id, brand, name, kind, speed, glide, turn, fade, vmax, col, rim) { return { id: id, brand: brand, name: name, kind: kind, speed: speed, glide: glide, turn: turn, fade: fade, vmax: vmax, col: col, rim: rim || '#ffffff' }; }
+  var LIST = [
+    mk('aviar',      'Innova',    'Aviar',      'Putter',          2, 3,  0, 1, 22, '#f2f2f2', '#d33'),
+    mk('judge',      'Dynamic Discs', 'Judge',  'Putter',          2, 4,  0, 1, 22, '#7ec8ff', '#fff'),
+    mk('buzzz',      'Discraft',  'Buzzz',      'Midrange',        5, 4, -1, 1, 26, '#4a9bff', '#fff'),
+    mk('mako3',      'Innova',    'Mako3',      'Midrange',        5, 5,  0, 0, 26, '#3ecf8e', '#fff'),
+    mk('roc3',       'Innova',    'Roc3',       'Midrange',        5, 4,  0, 3, 26, '#ff9a3c', '#fff'),
+    mk('leopard3',   'Innova',    'Leopard3',   'Fairway driver',  7, 5, -2, 1, 30, '#c58bff', '#fff'),
+    mk('teebird',    'Innova',    'Teebird',    'Fairway driver',  7, 5,  0, 2, 30, '#ffd45a', '#222'),
+    mk('firebird',   'Innova',    'Firebird',   'Fairway driver',  9, 3,  0, 4, 31, '#ff5a3c', '#fff'),
+    mk('wraith',     'Innova',    'Wraith',     'Distance driver', 11, 5, -1, 3, 35, '#2fd0d0', '#fff'),
+    mk('destroyer',  'Innova',    'Destroyer',  'Distance driver', 12, 5, -1, 3, 36, '#ff4a55', '#fff'),
+    mk('zeus',       'Discraft',  'Zeus',       'Distance driver', 12, 5, -1, 3, 36, '#e8d84a', '#222'),
+    mk('shryke',     'Innova',    'Shryke',     'Distance driver', 13, 6, -2, 2, 37, '#9a5cff', '#fff')
+  ];
+  var DISCS = {};
+  LIST.forEach(function (d) { DISCS[d.id] = d; });
+  // old keys still work (a few older bits of the game ask for a class by name)
+  DISCS.putter = DISCS.aviar; DISCS.mid = DISCS.buzzz; DISCS.fairway = DISCS.teebird; DISCS.driver = DISCS.destroyer;
 
   function sstep(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
   function len(v) { return Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]); }
   function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
   function norm(v) { var l = len(v) || 1; return [v[0] / l, v[1] / l, v[2] / l]; }
+  // the speed (m/s) this disc is designed to be thrown at: it turns above about 70% of this and fades below about 50%
+  function designSpeed(d) { return 13 + 2.1 * d.speed; }
 
   // Start a throw. power 0..1, aim = heading in radians (0 = +y, positive = to the right), hyzer in radians (positive = hyzer),
   // launch = nose-up angle in radians, spin +1 backhand (right hand) / -1 forehand.
@@ -27,9 +45,10 @@
     noise = noise || 0;
     var v = disc.vmax * (0.18 + 0.82 * power);
     var h = aim + noise * 0.4, la = launchAng + noise * 0.15;
+    var b0 = Math.max(-T.hyzerMax, Math.min(T.hyzerMax, hyzer + noise * 0.1));
     return {
       p: [x, y, 1.2], v: [Math.sin(h) * Math.cos(la) * v, Math.cos(h) * Math.cos(la) * v, Math.sin(la) * v],
-      bank: hyzer + noise * 0.1, theta: la + T.thetaOff + 0.01 * (disc.glide - 4), spin: spin || 1, t: 0, vref: disc.vmax * (0.18 + 0.82 * power), power: power, disc: disc
+      bank: b0, bank0: b0, theta: la + 0.01 * (disc.glide - 4), spin: spin || 1, t: 0, vref: v, power: power, disc: disc, rot: 0
     };
   }
 
@@ -43,23 +62,29 @@
     var u = cross(r, f);
     var gamma = Math.asin(Math.max(-1, Math.min(1, f[2])));
     var alpha = s.theta - gamma;
-    var gk = 0.72 + 0.1 * d.glide;                              // glide rating scales the lift
+    var gk = 0.8 + 0.1 * d.glide;                              // glide rating scales the lift
     var cl = T.cl * gk * (CL0 + CLA * Math.min(alpha, 0.38)) - (alpha > 0.38 ? (alpha - 0.38) * 5 : 0);
     var cd = CD0 + CDA * (alpha - A0) * (alpha - A0);
-    var q = 0.5 * RHO * sp * sp * AREA, L = q * cl, D = q * cd * T.dragK * (1.1 - 0.035 * d.speed);
+    var q = 0.5 * RHO * sp * sp * AREA, L = q * cl, D = q * cd * T.dragK * (0.92 - 0.012 * d.speed);
     var cb = Math.cos(s.bank), sb = Math.sin(s.bank);
-    var ax = (L * (u[0] * cb - T.lat * s.spin * r[0] * sb) - D * f[0]) / MASS;
-    var ay = (L * (u[1] * cb - T.lat * s.spin * r[1] * sb) - D * f[1]) / MASS;
-    var az = (L * (u[2] * cb - T.lat * s.spin * r[2] * sb) - D * f[2]) / MASS - GRAV;
+    // lift acts square to the disc: up when flat, tilted toward the low (inside) edge on hyzer, toward the high edge on anhyzer
+    var ax = (L * (u[0] * cb - s.spin * r[0] * sb) - D * f[0]) / MASS;
+    var ay = (L * (u[1] * cb - s.spin * r[1] * sb) - D * f[1]) / MASS;
+    var az = (L * (u[2] * cb - s.spin * r[2] * sb) - D * f[2]) / MASS - GRAV;
     s.v[0] += ax * dt; s.v[1] += ay * dt; s.v[2] += az * dt;
     s.p[0] += s.v[0] * dt; s.p[1] += s.v[1] * dt; s.p[2] += s.v[2] * dt;
-    // bank drift: speed relative to this throw's launch speed decides turn (fast) vs fade (slow)
-    var sn = sp / Math.max(8, s.vref);
-    var turnRate = T.turnK * d.turn * 0.28 * sstep(0.62, 0.92, sn) * (s.bank > -0.25 ? 1 : 0.3);   // turn is negative: rolls toward anhyzer
-    var fadeRate = T.fadeK * (T.fadeBase + d.fade * 0.5) * sstep(0.75, 0.38, sn);
-    s.bank += (turnRate + fadeRate) * dt;
-    s.bank = Math.max(-0.9, Math.min(1.1, s.bank));
+
+    // Bank: bounded, never free-running.
+    //  turn: fast for this disc -> rolls toward anhyzer, but only as far as turnMax and only for turny discs
+    //  fade: slow for this disc -> relaxes toward a modest hyzer set by its fade rating (never past about 25 degrees)
+    var sn = sp / designSpeed(d), tn = -d.turn;
+    var fast = sstep(0.66, 1.0, sn), slow = sstep(0.8, 0.42, sn);
+    var turnRate = T.turnK * (0.15 + 0.85 * Math.min(tn, 4) / 4 * 1.0) * fast * (tn > 0 || sn > 0.9 ? 1 : 0.35) * (s.bank > -T.turnMax ? 1 : 0);
+    var cap = T.fadeCap + T.fadeCapK * d.fade;
+    s.bank += (-turnRate * (tn > 0 ? 1 : 0.4) * dt) + T.kRoll * slow * (cap - s.bank) * dt;
+    s.bank = Math.max(-T.turnMax - 0.05, Math.min(T.hyzerMax, s.bank));
     s.theta += (gamma + T.trim - s.theta) * T.pitchK * dt;   // the nose follows the flight path
+    s.rot += 120 * dt;                                       // visual spin (about 19 rev/s)
     s.t += dt;
     return s;
   }
@@ -83,6 +108,6 @@
     return [(hx * c + hy * sn) * dist, (hy * c - hx * sn) * dist];
   }
 
-  root.DiscPhys = { T: T, DISCS: DISCS, launch: launch, step: step, flyOut: flyOut, rollOut: rollOut, RHO: RHO };
+  root.DiscPhys = { T: T, DISCS: DISCS, LIST: LIST, launch: launch, step: step, flyOut: flyOut, rollOut: rollOut, designSpeed: designSpeed, RHO: RHO };
   if (typeof module !== 'undefined' && module.exports) module.exports = root.DiscPhys;
 })(typeof window !== 'undefined' ? window : this);
