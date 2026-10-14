@@ -30,47 +30,52 @@
   }
 
   /* ---------- phase 1: sketch the outline ---------- */
+  var textData = null;
   function loadOutline(cb) {
-    if (outline) return cb();
-    fetch('data/sketch-outline.json').then(function (r) { return r.json(); }).then(function (d) { outline = d; cb(); }).catch(function () { outline = { ar: 1.5, pts: [[.1, .5], [.5, .1], [.9, .5], [.5, .9]] }; cb(); });
+    function more() { if (textData) return cb(); fetch('data/sketch-text.json').then(function (r) { return r.json(); }).then(function (d) { textData = d; cb(); }).catch(function () { textData = { ar: 3.6, strokes: [] }; cb(); }); }
+    if (outline) return more();
+    fetch('data/sketch-outline.json').then(function (r) { return r.json(); }).then(function (d) { outline = d; more(); }).catch(function () { outline = { ar: 1.5, pts: [[.1, .5], [.5, .1], [.9, .5], [.5, .9]] }; more(); });
   }
   function sketch() {
     cancelAnimationFrame(raf); var id = ++run; phase = 'sketch'; clear(); tries = 0;
     say('Watch the sketch...');
     loadOutline(function () {
       if (id !== run) return;
-      var bw = W - 90, bh = H - 92, sc = Math.min(bw, bh * outline.ar), ow = sc, oh = sc / outline.ar, ox = (W - ow) / 2, oy = 12;
+      var bw = W - 90, bh = H - 88, sc = Math.min(bw, bh * outline.ar), ow = sc, oh = sc / outline.ar, ox = (W - ow) / 2, oy = 8;
       var pts = outline.pts.map(function (p) { return [ox + p[0] * ow, oy + p[1] * oh]; }); pts.push(pts[0]);
-      // after the body, the stylus writes SUP SOBERS along the bottom (single-stroke block letters)
-      var GL = { S: [[4,1],[3,0],[1,0],[0,1],[0,2],[1,3],[3,3],[4,4],[4,5],[3,6],[1,6],[0,5]], U: [[0,0],[0,5],[1,6],[3,6],[4,5],[4,0]], P: [[0,6],[0,0],[3,0],[4,1],[4,2],[3,3],[0,3]],
-        O: [[1,0],[3,0],[4,1],[4,5],[3,6],[1,6],[0,5],[0,1],[1,0]], B: [[0,6],[0,0],[3,0],[4,1],[4,2],[3,3],[0,3],[3,3],[4,4],[4,5],[3,6],[0,6]], E: [[4,0],[0,0],[0,3],[3,3],[0,3],[0,6],[4,6]], R: [[0,6],[0,0],[3,0],[4,1],[4,2],[3,3],[0,3],[4,6]] };
-      var word = 'SUP SOBERS', u = 5.2, gap = 3.2, wordW = 0, ci; for (ci = 0; ci < word.length; ci++) wordW += (word[ci] === ' ' ? 3 : 4) * u + gap; wordW -= gap;
-      var strokes = [pts], cx0 = (W - wordW) / 2, ty = H - 6 * u - 16;
-      for (ci = 0; ci < word.length; ci++) { var ch = word[ci]; if (ch !== ' ') strokes.push(GL[ch].map(function (q) { return [cx0 + q[0] * u, ty + q[1] * u]; })); cx0 += (ch === ' ' ? 3 : 4) * u + gap; }
-      var lens = strokes.map(function (st) { var l = 0, j; for (j = 1; j < st.length; j++) l += Math.hypot(st[j][0] - st[j - 1][0], st[j][1] - st[j - 1][1]); return l; });
-      var total = lens.reduce(function (a, b) { return a + b; }, 0), i;
-      var dur = reduce ? 600 : Math.round(total / 0.2) + 400, t0 = performance.now();
-      ctx.lineWidth = 2.4; ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = INK;
+      // the lettering (SUP SOBERS in the site's 3rd Man face, traced as outlines) is sketched at the same time as the body
+      var th = Math.min(60, (W - 120) / (textData.ar || 3.6)), tw = th * (textData.ar || 3.6), tx0 = (W - tw) / 2, ty0 = H - th - 12;
+      var tstrokes = (textData.strokes || []).filter(function (st) { var mx = 0, my = 0, nx = 9, ny = 9; st.forEach(function (q) { mx = Math.max(mx, q[0]); my = Math.max(my, q[1]); nx = Math.min(nx, q[0]); ny = Math.min(ny, q[1]); }); return Math.max(mx - nx, my - ny) > 0.16; }).map(function (st) { return st.map(function (q) { return [tx0 + q[0] * th, ty0 + q[1] * th]; }); });
+      function lensOf(list) { return list.map(function (st) { var l = 0, j; for (j = 1; j < st.length; j++) l += Math.hypot(st[j][0] - st[j - 1][0], st[j][1] - st[j - 1][1]); return l; }); }
+      var groups = [{ strokes: [pts], w: 2.4 }, { strokes: tstrokes, w: 1.8 }];
+      groups.forEach(function (g) { g.lens = lensOf(g.strokes); g.total = g.lens.reduce(function (a, b) { return a + b; }, 0); });
+      var dur = reduce ? 600 : 3200, t0 = performance.now(), i;
+      ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = INK;
       (function f(now) {
         if (id !== run) return;
-        var k = Math.min(1, (now - t0) / dur), goal = k * total, x = pts[0][0], y = pts[0][1], si, acc = 0;
+        var k = Math.min(1, (now - t0) / dur), dots = [];
         clear();
-        for (si = 0; si < strokes.length && goal > 0; si++) {
-          var st = strokes[si], left = Math.min(goal, lens[si]); goal -= lens[si];
-          ctx.beginPath(); ctx.moveTo(st[0][0], st[0][1]); x = st[0][0]; y = st[0][1];
-          for (i = 1; i < st.length; i++) {
-            var d = Math.hypot(st[i][0] - st[i - 1][0], st[i][1] - st[i - 1][1]);
-            if (left >= d) { ctx.lineTo(st[i][0], st[i][1]); left -= d; x = st[i][0]; y = st[i][1]; }
-            else { var r = left / d; x = st[i - 1][0] + (st[i][0] - st[i - 1][0]) * r; y = st[i - 1][1] + (st[i][1] - st[i - 1][1]) * r; ctx.lineTo(x, y); break; }
+        groups.forEach(function (g) {
+          var goal = k * g.total, x = g.strokes[0] ? g.strokes[0][0][0] : 0, y = g.strokes[0] ? g.strokes[0][0][1] : 0, si;
+          ctx.lineWidth = g.w;
+          for (si = 0; si < g.strokes.length && goal > 0; si++) {
+            var st = g.strokes[si], left = Math.min(goal, g.lens[si]); goal -= g.lens[si];
+            ctx.beginPath(); ctx.moveTo(st[0][0], st[0][1]); x = st[0][0]; y = st[0][1];
+            for (i = 1; i < st.length; i++) {
+              var d = Math.hypot(st[i][0] - st[i - 1][0], st[i][1] - st[i - 1][1]);
+              if (left >= d) { ctx.lineTo(st[i][0], st[i][1]); left -= d; x = st[i][0]; y = st[i][1]; }
+              else { var r = left / d; x = st[i - 1][0] + (st[i][0] - st[i - 1][0]) * r; y = st[i - 1][1] + (st[i][1] - st[i - 1][1]) * r; ctx.lineTo(x, y); break; }
+            }
+            ctx.stroke();
           }
-          ctx.stroke();
-        }
-        ctx.fillStyle = '#2b2b2b'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 7); ctx.fill();
+          dots.push([x, y]);
+        });
+        ctx.fillStyle = '#2b2b2b'; dots.forEach(function (p) { ctx.beginPath(); ctx.arc(p[0], p[1], 3.2, 0, 7); ctx.fill(); });
         if (k < 1) requestAnimationFrame(f);
         else setTimeout(function () {
           if (id !== run) return; say('Uh oh...');
           shake(function () { if (id !== run) return; wipe(function () { if (id !== run) return; maze(0); }); });
-        }, reduce ? 100 : 900);
+        }, reduce ? 100 : 700);
       })(t0);
     });
   }
