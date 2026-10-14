@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791971303">
+  <link rel="stylesheet" href="css/styles.css?v=1791971499">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -152,7 +152,19 @@
                 <div class="tv-static" aria-hidden="true"></div>
                 <div class="tv-roll" aria-hidden="true"></div>
                 <div class="tv-rabbit">
-                  <p class="rb-text" aria-hidden="true">Follow the white rabbit<i></i></p>
+                  <canvas class="rb-rain" id="rb-rain" aria-hidden="true"></canvas>
+                  <p class="rb-text" id="rb-text" aria-hidden="true">Follow the white rabbit<i></i></p>
+                  <p class="rb-come" aria-hidden="true">Come on.</p>
+                  <button type="button" class="rb-wave" id="rb-wave" aria-label="Follow the white rabbit down the hole" tabindex="-1">
+                    <svg viewBox="0 0 100 112" aria-hidden="true">
+                      <ellipse cx="38" cy="107" rx="10" ry="4.2" fill="#fff"/><ellipse cx="62" cy="107" rx="10" ry="4.2" fill="#fff"/>
+                      <ellipse cx="50" cy="82" rx="22" ry="26" fill="#fff"/><ellipse cx="31" cy="80" rx="5" ry="14" transform="rotate(12 31 80)" fill="#fff"/>
+                      <ellipse cx="40" cy="15" rx="5.6" ry="17" transform="rotate(-7 40 15)" fill="#fff"/><ellipse cx="60" cy="15" rx="5.6" ry="17" transform="rotate(7 60 15)" fill="#fff"/>
+                      <ellipse cx="40" cy="16" rx="2.2" ry="11.5" transform="rotate(-7 40 16)" fill="#ffb6c1"/><ellipse cx="60" cy="16" rx="2.2" ry="11.5" transform="rotate(7 60 16)" fill="#ffb6c1"/>
+                      <circle cx="50" cy="44" r="18" fill="#fff"/><circle cx="43" cy="41" r="2.3" fill="#d3201a"/><circle cx="57" cy="41" r="2.3" fill="#d3201a"/><ellipse cx="50" cy="49" rx="2.4" ry="1.7" fill="#ffb6c1"/>
+                      <g class="rb-arm"><ellipse cx="80" cy="46" rx="5" ry="15" transform="rotate(-22 80 46)" fill="#fff"/></g>
+                    </svg>
+                  </button>
                   <button type="button" class="rb-run" id="rb-run" aria-label="Follow the white rabbit down the hole" tabindex="-1">
                     <span class="rb-hop"><svg viewBox="0 0 130 100" aria-hidden="true">
                       <ellipse cx="62" cy="68" rx="32" ry="17" fill="#fff"/><circle cx="38" cy="64" r="17" fill="#fff"/><circle cx="21" cy="62" r="6.5" fill="#f4f4f4"/>
@@ -423,18 +435,18 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791971303" defer></script>
-  <script src="js/app.js?v=1791971303" defer></script>
-  <script src="js/hole.js?v=1791971303" defer></script>
-  <script src="js/pill.js?v=1791971303" defer></script>
-  <script src="js/tv.js?v=1791971303" defer></script>
-  <script src="js/search.js?v=1791971303" defer></script>
-  <script src="js/merch.js?v=1791971303" defer></script>
-  <script src="js/web.js?v=1791971303" defer></script>
-  <script src="js/home.js?v=1791971303" defer></script>
-  <script src="js/remote.js?v=1791971303" defer></script>
-  <script src="js/craving.js?v=1791971303" defer></script>
-  <script src="js/assistant.js?v=1791971303" defer></script>
-  <script src="js/music.js?v=1791971303" defer></script>
+  <script src="js/rain.js?v=1791971499" defer></script>
+  <script src="js/app.js?v=1791971499" defer></script>
+  <script src="js/hole.js?v=1791971499" defer></script>
+  <script src="js/pill.js?v=1791971499" defer></script>
+  <script src="js/tv.js?v=1791971499" defer></script>
+  <script src="js/search.js?v=1791971499" defer></script>
+  <script src="js/merch.js?v=1791971499" defer></script>
+  <script src="js/web.js?v=1791971499" defer></script>
+  <script src="js/home.js?v=1791971499" defer></script>
+  <script src="js/remote.js?v=1791971499" defer></script>
+  <script src="js/craving.js?v=1791971499" defer></script>
+  <script src="js/assistant.js?v=1791971499" defer></script>
+  <script src="js/music.js?v=1791971499" defer></script>
 </body>
 </html>

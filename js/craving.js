@@ -39,21 +39,32 @@
     say('Watch the sketch...');
     loadOutline(function () {
       if (id !== run) return;
-      var bw = W - 90, bh = H - 40, sc = Math.min(bw, bh * outline.ar), ow = sc, oh = sc / outline.ar, ox = (W - ow) / 2, oy = (H - oh) / 2;
+      var bw = W - 90, bh = H - 92, sc = Math.min(bw, bh * outline.ar), ow = sc, oh = sc / outline.ar, ox = (W - ow) / 2, oy = 12;
       var pts = outline.pts.map(function (p) { return [ox + p[0] * ow, oy + p[1] * oh]; }); pts.push(pts[0]);
-      var seg = [], total = 0, i;
-      for (i = 1; i < pts.length; i++) { var d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); seg.push(d); total += d; }
-      var dur = reduce ? 600 : 4200, t0 = performance.now(), drawn = 0;
+      // after the body, the stylus writes SUP SOBERS along the bottom (single-stroke block letters)
+      var GL = { S: [[4,1],[3,0],[1,0],[0,1],[0,2],[1,3],[3,3],[4,4],[4,5],[3,6],[1,6],[0,5]], U: [[0,0],[0,5],[1,6],[3,6],[4,5],[4,0]], P: [[0,6],[0,0],[3,0],[4,1],[4,2],[3,3],[0,3]],
+        O: [[1,0],[3,0],[4,1],[4,5],[3,6],[1,6],[0,5],[0,1],[1,0]], B: [[0,6],[0,0],[3,0],[4,1],[4,2],[3,3],[0,3],[3,3],[4,4],[4,5],[3,6],[0,6]], E: [[4,0],[0,0],[0,3],[3,3],[0,3],[0,6],[4,6]], R: [[0,6],[0,0],[3,0],[4,1],[4,2],[3,3],[0,3],[4,6]] };
+      var word = 'SUP SOBERS', u = 5.2, gap = 3.2, wordW = 0, ci; for (ci = 0; ci < word.length; ci++) wordW += (word[ci] === ' ' ? 3 : 4) * u + gap; wordW -= gap;
+      var strokes = [pts], cx0 = (W - wordW) / 2, ty = H - 6 * u - 16;
+      for (ci = 0; ci < word.length; ci++) { var ch = word[ci]; if (ch !== ' ') strokes.push(GL[ch].map(function (q) { return [cx0 + q[0] * u, ty + q[1] * u]; })); cx0 += (ch === ' ' ? 3 : 4) * u + gap; }
+      var lens = strokes.map(function (st) { var l = 0, j; for (j = 1; j < st.length; j++) l += Math.hypot(st[j][0] - st[j - 1][0], st[j][1] - st[j - 1][1]); return l; });
+      var total = lens.reduce(function (a, b) { return a + b; }, 0), i;
+      var dur = reduce ? 600 : Math.round(total / 0.2) + 400, t0 = performance.now();
       ctx.lineWidth = 2.4; ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = INK;
       (function f(now) {
         if (id !== run) return;
-        var k = Math.min(1, (now - t0) / dur), goal = k * total, acc = 0, x = pts[0][0], y = pts[0][1];
-        clear(); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
-        for (i = 0; i < seg.length; i++) {
-          if (acc + seg[i] <= goal) { ctx.lineTo(pts[i + 1][0], pts[i + 1][1]); acc += seg[i]; x = pts[i + 1][0]; y = pts[i + 1][1]; }
-          else { var r = (goal - acc) / seg[i]; x = pts[i][0] + (pts[i + 1][0] - pts[i][0]) * r; y = pts[i][1] + (pts[i + 1][1] - pts[i][1]) * r; ctx.lineTo(x, y); break; }
+        var k = Math.min(1, (now - t0) / dur), goal = k * total, x = pts[0][0], y = pts[0][1], si, acc = 0;
+        clear();
+        for (si = 0; si < strokes.length && goal > 0; si++) {
+          var st = strokes[si], left = Math.min(goal, lens[si]); goal -= lens[si];
+          ctx.beginPath(); ctx.moveTo(st[0][0], st[0][1]); x = st[0][0]; y = st[0][1];
+          for (i = 1; i < st.length; i++) {
+            var d = Math.hypot(st[i][0] - st[i - 1][0], st[i][1] - st[i - 1][1]);
+            if (left >= d) { ctx.lineTo(st[i][0], st[i][1]); left -= d; x = st[i][0]; y = st[i][1]; }
+            else { var r = left / d; x = st[i - 1][0] + (st[i][0] - st[i - 1][0]) * r; y = st[i - 1][1] + (st[i][1] - st[i - 1][1]) * r; ctx.lineTo(x, y); break; }
+          }
+          ctx.stroke();
         }
-        ctx.stroke();
         ctx.fillStyle = '#2b2b2b'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 7); ctx.fill();
         if (k < 1) requestAnimationFrame(f);
         else setTimeout(function () {

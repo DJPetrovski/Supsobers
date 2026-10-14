@@ -24,7 +24,7 @@
   var listBtn = $('#hole-list');
   var hint = $('#hole-hint');
 
-  var AUTO_DIVE_MS = 4200;   // how long the TV shows static before it drops you in
+  var AUTO_DIVE_MS = 15000;   // how long the TV shows static before it drops you in
   var holeApi = null, ambientApi = null, anim = null, spacer = null;
   var diving = false, isOpen = false, current = '', timers = [], autoTimer = 0;
 
@@ -477,7 +477,42 @@
 
   diveBtn.addEventListener('click', dive);
   screenEl.addEventListener('click', dive);
-  var rbRun = $('#rb-run'); if (rbRun) rbRun.addEventListener('click', function () { diveBtn.click(); });
+  var rbRun = $('#rb-run'), rbWave = $('#rb-wave'); if (rbRun) rbRun.addEventListener('click', function () { diveBtn.click(); }); if (rbWave) rbWave.addEventListener('click', function () { diveBtn.click(); });
+
+  /* ---------- the Matrix-style screen on the Videos page: green code rain + a typed message ---------- */
+  (function () {
+    var cvs = $('#rb-rain'), txt = $('#rb-text'); if (!cvs || !txt) return;
+    var g = cvs.getContext('2d'), cols = [], FS = 13, on = false, typeId = 0, last = 0;
+    var CH = '01アイウエオカキクケコサシスセソタチツテトナニヌネハヒフヘマミムメヤユヨラリルレロワ';
+    function size() { cvs.width = Math.max(120, cvs.clientWidth); cvs.height = Math.max(90, cvs.clientHeight); cols = []; for (var i = 0; i < Math.floor(cvs.width / FS); i++) cols.push(Math.random() * -40); g.fillStyle = '#000'; g.fillRect(0, 0, cvs.width, cvs.height); }
+    function frame(now) {
+      if (!on) return;
+      requestAnimationFrame(frame);
+      if (now - last < 55) return; last = now;
+      g.fillStyle = 'rgba(0,0,0,.14)'; g.fillRect(0, 0, cvs.width, cvs.height); g.font = FS + 'px monospace';
+      for (var i = 0; i < cols.length; i++) {
+        var y = cols[i] * FS; g.fillStyle = '#b8ffc8'; g.fillText(CH[(Math.random() * CH.length) | 0], i * FS, y);
+        g.fillStyle = '#25ff6a'; g.fillText(CH[(Math.random() * CH.length) | 0], i * FS, y - FS);
+        cols[i] = (y > cvs.height && Math.random() > .97) ? 0 : cols[i] + 1;
+      }
+    }
+    var LINES = ['Wake up...', 'The rabbit hole is real.', 'Follow the white rabbit.'];
+    function type() {
+      clearTimeout(typeId); var li = 0, ci = 0, erasing = false;
+      (function step() {
+        if (!on) return;
+        var line = LINES[li];
+        if (!erasing) { ci++; txt.innerHTML = line.slice(0, ci) + '<i></i>'; if (ci >= line.length) { if (li === LINES.length - 1) return; erasing = true; typeId = setTimeout(step, 1500); return; } typeId = setTimeout(step, 70); }
+        else { ci = 0; erasing = false; li++; txt.innerHTML = '<i></i>'; typeId = setTimeout(step, 350); }
+      })();
+    }
+    document.addEventListener('ss:route', function (e) {
+      var v = e.detail.name === 'videos';
+      if (v && !on) { on = true; size(); requestAnimationFrame(frame); txt.innerHTML = '<i></i>'; type(); }
+      else if (!v) { on = false; clearTimeout(typeId); }
+    });
+    window.addEventListener('resize', function () { if (on) size(); });
+  })();
   skipBtn.addEventListener('click', function () { clearTimeout(autoTimer); scrollToList(); });
   exitBtn.addEventListener('click', function () { climb(); });
   listBtn.addEventListener('click', function () { climb(scrollToList); });

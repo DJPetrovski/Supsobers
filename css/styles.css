@@ -1518,18 +1518,27 @@ html.gs-open { overflow: hidden; }
 
 /* ---------- Videos page TV: the white rabbit ---------- */
 .tv-rabbit { position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; }
-.tv-rabbit::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,.84), rgba(0,0,0,.5) 80%); }
+.tv-rabbit::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,.8), rgba(0,0,0,.55) 80%); }
 .rb-text { position: absolute; left: 0; right: 0; top: 24%; margin: 0; text-align: center; font-family: var(--display); text-transform: uppercase; letter-spacing: .06em;
   font-size: clamp(.9rem, 2.6vw, 1.7rem); color: #8dffa8; text-shadow: 0 0 10px rgba(80,255,130,.85), 0 0 2px #000, 0 0 22px #000; white-space: nowrap; }
 .rb-text i { display: inline-block; width: .5em; height: 1em; margin-left: .15em; vertical-align: -.12em; background: #8dffa8; animation: rbcaret .8s steps(1) infinite; }
 @keyframes rbcaret { 50% { opacity: 0; } }
 .rb-run { position: absolute; left: 0; bottom: 12%; width: 22%; min-width: 58px; padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto;
-  animation: rbrun 8.5s linear infinite; }
-.rb-hop { display: block; animation: rbhop .85s cubic-bezier(.3,.7,.4,1) infinite; transform-origin: 50% 90%; filter: drop-shadow(0 0 8px rgba(255,255,255,.7)); }
+  animation: rbtravel 16s linear infinite; transform-origin: 50% 100%; }
+.rb-hop { display: block; transform-origin: 50% 100%; animation: rbhop .85s cubic-bezier(.3,.7,.4,1) infinite; transform-origin: 50% 90%; filter: drop-shadow(0 0 8px rgba(255,255,255,.7)); }
 .rb-hop svg { display: block; width: 100%; height: auto; }
 .rb-shadow { position: absolute; left: 12%; right: 12%; bottom: -3%; height: 8%; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(3px); animation: rbshadow .85s cubic-bezier(.3,.7,.4,1) infinite; }
-@keyframes rbrun { 0% { transform: translateX(-130%); } 100% { transform: translateX(480%); } }
+@keyframes rbtravel { 0% { transform: translate(-130%, 0) scale(1); opacity: 1; } 55% { transform: translate(250%, -34%) scale(.5); opacity: 1; } 56%, 100% { transform: translate(250%, -34%) scale(.5); opacity: 0; } }
+.rb-rain { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .6; }
+.rb-wave { position: absolute; left: 57%; bottom: 20%; width: 22%; min-width: 58px; padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; transform-origin: 50% 100%; transform: scale(.5); opacity: 0;
+  animation: rbwave 16s linear infinite; filter: drop-shadow(0 0 8px rgba(255,255,255,.7)); }
+.rb-wave svg { display: block; width: 100%; height: auto; }
+.rb-arm { transform-box: view-box; transform-origin: 72px 66px; animation: rbarm .5s ease-in-out infinite alternate; }
+@keyframes rbarm { from { transform: rotate(-18deg); } to { transform: rotate(26deg); } }
+@keyframes rbwave { 0%, 54% { opacity: 0; } 58% { opacity: 1; } 92% { opacity: 1; } 98%, 100% { opacity: 0; } }
+.rb-come { position: absolute; left: 50%; top: 52%; margin: 0; width: 34%; text-align: center; font-family: var(--display); text-transform: uppercase; font-size: clamp(.8rem, 2vw, 1.3rem); color: #fff; text-shadow: 0 0 8px rgba(80,255,130,.9), 0 0 14px #000; opacity: 0; animation: rbcome 16s linear infinite; }
+@keyframes rbcome { 0%, 58% { opacity: 0; } 62% { opacity: 1; } 90% { opacity: 1; } 96%, 100% { opacity: 0; } }
 @keyframes rbhop { 0% { transform: translateY(0) scale(1.08, .9) rotate(0); } 18% { transform: translateY(-14%) scale(.95, 1.06) rotate(-9deg); } 50% { transform: translateY(-48%) scale(.96, 1.04) rotate(-2deg); } 82% { transform: translateY(-12%) rotate(8deg); } 100% { transform: translateY(0) scale(1.08, .9) rotate(0); } }
 @keyframes rbshadow { 0%, 100% { transform: scaleX(1); opacity: .6; } 50% { transform: scaleX(.6); opacity: .25; } }
 .tv-screen.zooming .tv-rabbit, .tv-screen.glitch .tv-rabbit { opacity: .0; transition: opacity .5s; }
-@media (prefers-reduced-motion: reduce) { .rb-run, .rb-hop, .rb-shadow { animation: none; } .rb-run { left: 38%; } }
+@media (prefers-reduced-motion: reduce) { .rb-run, .rb-hop, .rb-shadow, .rb-wave, .rb-come, .rb-arm { animation: none; } .rb-run { left: 38%; } .rb-wave, .rb-come { display: none; } }
