@@ -193,13 +193,19 @@
     <div class="hole-scene"><div class="hole-world"></div></div>
     <div class="hole-ui">
       <button type="button" class="pill" id="hole-exit">Climb out</button>
+      <button type="button" class="pill" id="hole-back" hidden>Back up</button>
       <span class="hole-ui-right">
         <button type="button" class="pill" id="hole-list">List view</button>
         <button type="button" class="pill" id="hole-pause" aria-pressed="false">Pause</button>
       </span>
     </div>
+    <div class="hole-branch" id="hole-branch" aria-hidden="true">
+      <div class="hole-scene" id="branch-scene"><div class="hole-world" id="branch-world"></div></div>
+      <span class="branch-label" id="branch-label"></span>
+    </div>
+    <p class="hole-trail" id="hole-trail" aria-live="polite"></p>
     <p class="hole-title" id="hole-title" aria-hidden="true"></p>
-    <p class="hole-hint" id="hole-hint">Scroll to fall faster. Point at a video to stop. Click to watch. The deeper you go, the older they get.</p>
+    <p class="hole-hint" id="hole-hint">Drag to look around. Scroll to fall faster. Point at a video to stop. Click to watch. Press and hold one to follow its connections down a new hole.</p>
   </div>
 
   <dialog id="player" aria-label="Video player">

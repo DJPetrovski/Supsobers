@@ -69,6 +69,78 @@
   }
   document.addEventListener('ss:playerclosed', function () { if (holeApi) holeApi.hold(false); });
 
+  /* ---------- branching: hold a video to fall down its own rabbit hole ---------- */
+  var branchEl = $('#hole-branch'), backBtn = $('#hole-back'), trailEl = $('#hole-trail'), branchLabel = $('#branch-label');
+  var branchApi = null, branching = null, stack = [], landTimer = 0;
+
+  function connected(v) {
+    var list = (SS.related ? SS.related(v, 16) : []).filter(function (o) { return o.id !== v.id; });
+    if (list.length < 3) {
+      // thin connections: pad with the newest videos so the hole is never empty
+      SS.videos.forEach(function (o) { if (list.length < 8 && o.id !== v.id && list.indexOf(o) < 0) list.push(o); });
+    }
+    return [v].concat(list);
+  }
+
+  function branchOpen(v, pt) {
+    if (branching) return;
+    var list = connected(v);
+    branching = { v: v, list: list };
+    if (holeApi) holeApi.hold(true);
+    branchEl.style.left = pt.x + 'px';
+    branchEl.style.top = pt.y + 'px';
+    branchLabel.textContent = 'Down from: ' + (v.title || '');
+    if (branchApi) { branchApi.setVideos(list); }
+    else branchApi = HoleTunnel.create({ scene: $('#branch-scene'), world: $('#branch-world'), videos: list, ambient: true });
+    branchEl.classList.remove('land');
+    branchEl.style.transform = '';
+    branchEl.classList.add('open');
+    branchApi.start({ boost: 200 });
+  }
+
+  function branchLand() {
+    if (!branching) return;
+    var b = branching;
+    branching = null;
+    clearTimeout(landTimer);
+    var big = Math.max(window.innerWidth, window.innerHeight) * 1.7 / branchEl.offsetWidth;
+    branchEl.classList.add('land');
+    branchEl.style.transform = 'translate(-50%, -50%) scale(' + big.toFixed(2) + ')';
+    landTimer = setTimeout(function () {
+      stack.push({ label: b.v.title, list: b.list });
+      holeApi.setVideos(b.list);
+      holeApi.start({ boost: 900 });
+      holeApi.hold(false);
+      branchEl.classList.remove('open', 'land');
+      branchEl.style.transform = '';
+      if (branchApi) branchApi.stop();
+      paintTrail();
+    }, 700);
+  }
+
+  function paintTrail() {
+    backBtn.hidden = !stack.length;
+    trailEl.textContent = stack.length ? 'Down from: ' + stack[stack.length - 1].label : '';
+  }
+
+  backBtn.addEventListener('click', function () {
+    if (!stack.length) return;
+    stack.pop();
+    holeApi.setVideos(stack.length ? stack[stack.length - 1].list : SS.videos);
+    holeApi.start({ boost: 900 });
+    paintTrail();
+  });
+
+  function resetBranches() {
+    clearTimeout(landTimer);
+    stack = []; branching = null;
+    branchEl.classList.remove('open', 'land');
+    branchEl.style.transform = '';
+    if (branchApi) branchApi.stop();
+    if (holeApi) holeApi.setVideos(SS.videos);
+    paintTrail();
+  }
+
   /* ---------- the dive ---------- */
   function dive() {
     if (diving) return;
@@ -113,7 +185,7 @@
     isOpen = true;
     hole.hidden = false;
     if (!holeApi) {
-      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl });
+      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand });
     }
     holeApi.start({ boost: 1300 });
     pauseBtn.textContent = 'Pause';
@@ -130,6 +202,7 @@
   }
 
   function cleanup() {
+    resetBranches();
     html.classList.remove('is-diving');
     screenEl.classList.remove('zooming', 'glitch');
     tv.style.visibility = '';

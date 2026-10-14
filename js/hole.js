@@ -22,19 +22,22 @@
     var world = opts.world;
     var titleEl = opts.titleEl;
     var onPick = opts.onPick || function () {};
+    var onHold = opts.onHold || null, onRelease = opts.onRelease || null;   // long press: open a branch of connected videos
+    var HOLD_MS = 520, holdTimer = 0, holding = false, holdNode = null;
     var ambient = !!opts.ambient;   // background mode: slow, no hover, no clicks
     var root = scene.parentNode;
     var videos = (opts.videos && opts.videos.length) ? opts.videos : placeholders(12);
 
     var small = global.innerWidth < 700 || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-    var N = small ? 8 : 10;      // tiles around the wall
+    var N = small ? 6 : 8;      // tiles around the wall
     var K = small ? 6 : 7;       // rings of tiles along the hole
-    var CRUISE = reduce ? 0 : (ambient ? 50 : 85); // px per second. Slow enough to read what you pass.
+    var TILT = 52;   // 90 = flat on the wall, 0 = facing you. Upright and readable, still a tunnel.
+    var CRUISE = reduce ? 0 : (ambient ? 40 : 55); // px per second. Slow enough to read what you pass.
 
     var rings = [], W = 0, H = 0, R = 0, tw = 0, th = 0, spacing = 0, loop = 0, P = 0;
     var z0 = 0, roll = 0, speed = 0, manual = 0, boost = 0;
     var paused = false, held = false, hovering = false, running = false;
-    var raf = 0, last = 0, mx = 0, my = 0, ax = 0, ay = 0;
+    var raf = 0, last = 0, mx = 0, my = 0, ax = 0, ay = 0, lookX = 0, lookY = 0, lastLook = 0, startX = 0, lastX = 0;
     var dragMoved = false, startY = 0, lastY = 0;
 
     function showTitle(v, idx) {
@@ -103,9 +106,9 @@
       W = root.clientWidth || global.innerWidth;
       H = root.clientHeight || global.innerHeight;
       R = Math.min(W, H) * (W < 700 ? 0.5 : 0.43);
-      th = 2 * Math.PI * R / N / 1.1;
+      th = 2 * Math.PI * R / N / 1.75;
       tw = th * 16 / 9;
-      spacing = tw * 1.08;
+      spacing = tw * 1.25;
       loop = spacing * K;
       P = Math.max(W, H) * 0.95;
       scene.style.perspective = Math.round(P) + 'px';
@@ -136,7 +139,7 @@
         var vis = o > 0.02, live = o > 0.5;
         for (var i = 0; i < rg.items.length; i++) {
           var it = rg.items[i], s = it.node.style;
-          s.transform = 'translate3d(0,0,' + z.toFixed(1) + 'px) rotateZ(' + it.ang.toFixed(1) + 'deg) translateX(' + R.toFixed(1) + 'px) rotateY(-90deg)';
+          s.transform = 'translate3d(0,0,' + z.toFixed(1) + 'px) rotateZ(' + it.ang.toFixed(1) + 'deg) translateX(' + R.toFixed(1) + 'px) rotateY(-' + TILT + 'deg) rotateZ(-' + it.ang.toFixed(1) + 'deg)';
           s.opacity = o.toFixed(2);
           s.visibility = vis ? 'visible' : 'hidden';
           if (!ambient) s.pointerEvents = live ? 'auto' : 'none';
@@ -154,9 +157,10 @@
       var target = still ? 0 : CRUISE + manual + boost;
       speed += (target - speed) * Math.min(1, dt * (still ? 5 : 2.2));
       z0 = (z0 + speed * dt) % loop;
-      roll += speed * 0.022 * dt;
-      ax += (mx * 6 - ax) * Math.min(1, dt * 3);
-      ay += (-my * 4 - ay) * Math.min(1, dt * 3);
+      
+      if (!dragging && t - lastLook > 2500) { lookX *= Math.max(0, 1 - dt * 0.5); lookY *= Math.max(0, 1 - dt * 0.5); }
+      ax += (lookX + mx * 4 - ax) * Math.min(1, dt * 6);
+      ay += (lookY - my * 3 - ay) * Math.min(1, dt * 6);
       render();
     }
 
@@ -164,18 +168,45 @@
       e.preventDefault();
       manual = clamp(manual + e.deltaY * 0.5, -300, 900);
     }
-    function onDown(e) { dragMoved = false; startY = lastY = e.clientY; }
+    var dragging = false;
+    function endHold() { clearTimeout(holdTimer); if (holdNode) holdNode.classList.remove('holding'); holdNode = null; }
+    function onDown(e) {
+      dragMoved = false; dragging = true; startY = lastY = e.clientY; startX = lastX = e.clientX;
+      endHold();
+      var tileEl = e.target.closest ? e.target.closest('.hole-tile') : null;
+      if (onHold && tileEl && tileEl.__v) {
+        holdNode = tileEl;
+        holdTimer = setTimeout(function () {
+          if (dragMoved || !holdNode) return;
+          holding = true;
+          var r = holdNode.getBoundingClientRect();
+          holdNode.classList.add('holding');
+          onHold(holdNode.__v, { x: r.left + r.width / 2, y: r.top + r.height / 2 });
+        }, HOLD_MS);
+      }
+    }
+    function onUp() {
+      dragging = false;
+      var wasHolding = holding;
+      endHold();
+      if (wasHolding) { holding = false; setTimeout(function () { dragMoved = false; }, 0); dragMoved = true; if (onRelease) onRelease(); }
+    }
     function onMove(e) {
-      if (e.pointerType === 'mouse') {
+      if (e.pointerType === 'mouse' && !dragging) {
         var r = root.getBoundingClientRect();
         mx = clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1);
         my = clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1);
         return;
       }
-      if (e.buttons === 0 && e.pointerType !== 'touch') return;
-      if (Math.abs(e.clientY - startY) > 8) dragMoved = true;
-      manual = clamp(manual + (lastY - e.clientY) * 1.5, -300, 900);
-      lastY = e.clientY;
+      if (!dragging || holding) return;
+      var dx = e.clientX - lastX, dy = e.clientY - lastY;
+      if (Math.abs(e.clientX - startX) + Math.abs(e.clientY - startY) > 8) { dragMoved = true; endHold(); }
+      if (dragMoved) {
+        lookX = clamp(lookX + dx * 0.16, -42, 42);
+        lookY = clamp(lookY - dy * 0.12, -28, 28);
+        lastLook = performance.now();
+      }
+      lastX = e.clientX; lastY = e.clientY;
     }
     function onResize() { if (running) { layout(); render(); } }
     function onVisibility() {
@@ -187,6 +218,9 @@
       root.addEventListener('wheel', onWheel, { passive: false });
       root.addEventListener('pointerdown', onDown);
       root.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
+      root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     }
     global.addEventListener('resize', onResize);
     document.addEventListener('visibilitychange', onVisibility);
@@ -209,7 +243,12 @@
       setPaused: function (b) { paused = !!b; },
       isPaused: function () { return paused; },
       hold: function (b) { held = !!b; },
-      nudge: function (v) { manual = clamp(manual + v, -300, 900); }
+      nudge: function (v) { manual = clamp(manual + v, -300, 900); },
+      setVideos: function (list) {
+        videos = (list && list.length) ? list : placeholders(12);
+        rings.forEach(function (rg, j) { rg.seq = K - 1 - j; rg.d = null; assign(rg); });
+        z0 = 0; lookX = lookY = 0;
+      }
     };
   }
 

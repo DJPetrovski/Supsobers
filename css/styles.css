@@ -639,3 +639,25 @@ dialog#player { max-height: 94vh; overflow-y: auto; }
 .web-tip { position: absolute; z-index: 3; max-width: 260px; padding: 6px 10px; background: rgba(6, 1, 2, 0.92); border: 1px solid var(--ember); font-size: 0.82rem; pointer-events: none; }
 .web-ctrl { position: absolute; z-index: 3; right: 12px; bottom: 12px; display: flex; gap: 8px; }
 .web-panel { margin: 12px 2px 0; min-height: 3em; color: var(--bone); font-size: 0.95rem; line-height: 1.4; }
+
+
+/* =====================================================================
+   Rabbit hole: hold a video to branch
+   ===================================================================== */
+.hole-tile { -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
+.hole-tile.holding { border-color: #fff; box-shadow: 0 0 40px 8px rgba(255, 42, 53, 0.9); animation: holdpulse 0.5s ease-in-out infinite alternate; z-index: 5; }
+@keyframes holdpulse { to { box-shadow: 0 0 70px 18px rgba(255, 42, 53, 1); } }
+.hole-branch {
+  position: absolute; z-index: 4; width: min(78vmin, 640px); aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+  transform: translate(-50%, -50%) scale(0.12); opacity: 0; pointer-events: none;
+  transition: transform 0.45s cubic-bezier(.2, .8, .2, 1), opacity 0.3s;
+  background: radial-gradient(circle, #000 0, #12020a 100%);
+  box-shadow: 0 0 0 3px #ff2a35, 0 0 80px 14px rgba(255, 42, 53, 0.65), inset 0 0 70px #000;
+}
+.hole-branch.open { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.hole-branch.land { transition: transform 0.7s cubic-bezier(.55, .05, .9, .45), opacity 0.7s; opacity: 1; }
+.hole-branch .hole-scene { position: absolute; inset: 0; }
+.branch-label { position: absolute; left: 0; right: 0; bottom: 8%; padding: 0 12%; text-align: center; font-family: var(--display); font-size: clamp(1rem, 3vmin, 1.6rem);
+  text-transform: uppercase; -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; text-shadow: 0 0 14px rgba(255, 42, 53, 0.9); }
+.hole-trail { position: absolute; left: 16px; right: 16px; top: calc(62px + env(safe-area-inset-top, 0px)); margin: 0; text-align: left; font-size: 0.85rem; color: #ff9aa0; pointer-events: none; z-index: 3;
+  text-shadow: 0 0 8px #000, 0 0 8px #000; }

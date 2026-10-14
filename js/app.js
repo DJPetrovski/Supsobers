@@ -112,7 +112,7 @@
   });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) closePlayer(); });
 
-  window.SS = { videos: [], openPlayer: openPlayer };
+  window.SS = { videos: [], openPlayer: openPlayer, related: function (v, n) { return related(v, n || 14).map(function (r) { return r.v; }); } };
 
   /* ---------- tiles ---------- */
   function tile(v, index, hiddenCopy) {
@@ -159,7 +159,7 @@
     var chips = $('#thread-chips');
     if (chips && threads.length) {
       chips.textContent = '';
-      [{ name: '' }].concat(threads).forEach(function (t) {
+      [{ name: '' }].concat(threads.filter(function (t) { return !t.auto; })).forEach(function (t) {
         var c = el('button', { type: 'button', 'class': 'chip', text: t.name || 'All', 'aria-pressed': String(t.name === active) });
         c.addEventListener('click', function () {
           active = t.name;
@@ -186,7 +186,7 @@
     }
     if (tr) {
       tr.textContent = '';
-      threads.forEach(function (t) {
+      threads.filter(function (t) { return !t.auto; }).forEach(function (t) {
         var vs = videos.filter(function (v) { return t.videos.indexOf(v.id) >= 0; });
         if (!vs.length) return;
         var b = el('button', { type: 'button', 'class': 'thread-card' }, [
@@ -241,13 +241,26 @@
   $('#year').textContent = new Date().getFullYear();
   route();
 
-  var threadsReady = getJSON('data/threads.json').then(function (d) { threads = d.threads || []; }).catch(function () {});
+  var threadsReady = getJSON('data/threads.json').then(function (d) { threads = d.threads || []; }).catch(function () {})
+    .then(function () { return getJSON('data/web.json'); })
+    .then(function (d) {
+      // Web storylines also count as connections (a video joins a storyline when its title matches a keyword).
+      var all = (window.SS && window.SS.videos) || [];
+      window.SS.topicDefs = d.topics || [];
+    }).catch(function () {});
 
   getJSON('data/videos.json').then(function (d) {
     return threadsReady.then(function () { return d; });
   }).then(function (d) {
     var vids = (d.videos || []).slice();
     window.SS.videos = vids;
+    (window.SS.topicDefs || []).forEach(function (t) {
+      var ids = vids.filter(function (v) {
+        var low = (v.title || '').toLowerCase();
+        return (t.match || []).some(function (k) { return low.indexOf(k) >= 0; });
+      }).map(function (v) { return v.id; });
+      if (ids.length > 1) threads.push({ name: t.name, videos: ids, auto: true });
+    });
     window.SS.ready = true;
     document.dispatchEvent(new Event('ss:videos'));
     buildGrid(vids);
