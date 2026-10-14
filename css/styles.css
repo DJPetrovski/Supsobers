@@ -994,3 +994,40 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
   .hole-ui-right { gap: 3px; }
   .hole-phone.near .pp-cap { font-size: calc(0.7rem / var(--s, 1)); }
 }
+
+/* ---- v4 tweaks ---- */
+.tv-logo { display: flex; flex-direction: column; align-items: center; gap: 4%; width: 100%; aspect-ratio: auto; padding: 0; }
+.tv-logo img { width: 112%; max-width: none; height: auto; filter: drop-shadow(0 0 8px rgba(255, 42, 53, 0.55)) drop-shadow(0 3px 4px #000); }
+.tv-logo span { font-family: var(--display); font-size: clamp(0.62rem, 1.5vw, 1.05rem); letter-spacing: 0.06em; text-transform: uppercase; color: #e8dcd5; -webkit-text-stroke: 0.05em #000; paint-order: stroke fill; text-shadow: 0 0 10px rgba(255, 42, 53, 0.8); line-height: 1; }
+.tv-logo svg { display: none; }
+
+/* station ident on the glass, like a channel logo */
+.htv-bug { position: absolute; left: 6%; bottom: 7%; z-index: 3; pointer-events: none; font-family: var(--display); text-transform: uppercase; line-height: 0.86;
+  font-size: clamp(1rem, 3.4vw, 2.3rem); color: #f1e6df; -webkit-text-stroke: 0.06em #000; paint-order: stroke fill; opacity: 0.88;
+  text-shadow: 0 0 14px rgba(255, 42, 53, 0.85), 0 0 30px rgba(255, 42, 53, 0.4); transition: opacity 0.2s; }
+.htv-preview.on ~ .htv-bug { opacity: 0; }
+.home-copy { margin: 0; padding: 0; }
+.home-hero { padding-top: 6px; }
+.home-rig .tv { width: min(100%, 860px, max(280px, calc((100svh - 150px) * 1.5))); }
+@media (max-width: 760px) { .home-rig .tv { width: min(100%, 560px, max(260px, calc((100svh - 300px) * 1.5))); } }
+
+/* remote: everything scales with the remote, and it points at the TV */
+.remote { container-type: inline-size; transform: rotateY(13deg) rotateZ(-3deg); transform-origin: 50% 0; }
+.rm-colors, .rm-rest { gap: 5cqw; }
+.rm-key { font-size: clamp(0.5rem, 7.4cqw, 0.66rem); min-width: 0; letter-spacing: 0.04em; }
+.rm-color { min-height: 12cqw; }
+.rm-gray { min-height: 11cqw; }
+.rm-wide { min-height: 11cqw; }
+.rm-dpad { width: 84%; height: auto; aspect-ratio: 1; margin: 2cqw auto 6cqw; }
+.rm-d { width: 30%; height: 30%; font-size: clamp(0.5rem, 6.6cqw, 0.62rem); }
+.rm-up { left: 35%; top: 4%; } .rm-down { left: 35%; top: auto; bottom: 4%; } .rm-left { left: 4%; top: 35%; } .rm-right { right: 4%; left: auto; top: 35%; }
+.rm-ok { left: 33%; top: 33%; width: 34%; height: 34%; font-size: clamp(0.5rem, 7cqw, 0.7rem); }
+.rm-power { width: 17cqw; height: 17cqw; }
+@media (max-width: 760px) { .remote { transform: rotateX(8deg); } }
+.tv-logo img { width: 100%; }
+.tv-logo span { font-size: clamp(0.66rem, 1.7vw, 1.1rem); }
+.rm-color { min-height: 17cqw; }
+.rm-gray, .rm-wide { min-height: 14cqw; }
+.rm-dpad { margin: 4cqw auto 8cqw; }
+.remote { padding-top: 7cqw; padding-bottom: 9cqw; }
+.rm-logo { margin-top: 7cqw; }
