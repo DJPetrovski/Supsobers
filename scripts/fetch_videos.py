@@ -5,6 +5,7 @@ With a YOUTUBE_API_KEY environment variable it pulls the full upload history.
 Without one it reads the public RSS feed (the latest ~15 videos) and merges
 them into whatever is already in videos.json, so the catalog never shrinks.
 """
+import datetime
 import json
 import os
 import sys
@@ -35,6 +36,38 @@ def from_rss():
     return out
 
 
+def from_page():
+    """Fallback when the RSS feed is unavailable (YouTube sometimes returns 404 to it).
+    Reads the public channel Videos page, newest first. Dates are approximate (newest = today)."""
+    req = urllib.request.Request(
+        "https://www.youtube.com/channel/" + CHANNEL_ID + "/videos",
+        headers={"User-Agent": "Mozilla/5.0", "Accept-Language": "en-US,en;q=0.9"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read().decode("utf-8", "replace")
+    marker = "ytInitialData = "
+    data, _ = json.JSONDecoder().raw_decode(html[html.index(marker) + len(marker):])
+    found = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            lv = o.get("lockupViewModel")
+            if isinstance(lv, dict) and lv.get("contentType") == "LOCKUP_CONTENT_TYPE_VIDEO":
+                try:
+                    found.append((lv["contentId"], lv["metadata"]["lockupMetadataViewModel"]["title"]["content"]))
+                except KeyError:
+                    pass
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+
+    walk(data)
+    today = datetime.date.today()
+    return [{"id": i, "title": t, "published": (today - datetime.timedelta(days=n)).isoformat()}
+            for n, (i, t) in enumerate(found)]
+
+
 def from_api(key):
     uploads = "UU" + CHANNEL_ID[2:]
     out, token = [], ""
@@ -59,7 +92,14 @@ def from_api(key):
 
 def main():
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
-    fresh = from_api(key) if key else from_rss()
+    if key:
+        fresh = from_api(key)
+    else:
+        try:
+            fresh = from_rss()
+        except Exception as e:
+            print("RSS feed failed (%s); reading the channel page instead." % e)
+            fresh = from_page()
     if not fresh:
         print("No videos returned; leaving videos.json untouched.")
         return 0
