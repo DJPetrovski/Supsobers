@@ -131,10 +131,13 @@
   function setSound(on) { setVolIdx(on ? (lastIdx || 2) : 0, false); }
   soundBtn.addEventListener('click', function () { setSound(!soundOn); });
 
-  var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0;
+  var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0, powered = true, lateNight = false;
   var osd = document.getElementById('htv-osd');
   function showOsd(t) { osd.textContent = t; osd.classList.add('on'); clearTimeout(osdT); osdT = setTimeout(function () { osd.classList.remove('on'); }, 1800); }
   function pickRandom() {
+    if (lateNight && window.Pill) {
+      for (var i = 0; i < 10; i++) { var r = Pill.random('red'); if (r && /^[\w-]{11}$/.test(r.id || '') && (r.seconds || 0) >= 1800) return r; }
+    }
     var all = (window.SS && SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || '') && (v.seconds || 0) >= 1800; });
     if (!all.length) return null;
     var fresh = all.filter(function (v) { return seen.indexOf(v.id) < 0; });
@@ -144,6 +147,7 @@
     return v;
   }
   function channel(back) {
+    if (!powered) return;
     clearTimeout(chanT);
     var v;
     if (back === true && hist.length > 1) { hist.pop(); v = hist[hist.length - 1]; chNo = Math.max(1, chNo - 1); }
@@ -174,6 +178,7 @@
   Array.prototype.forEach.call(rig.querySelectorAll('[data-act]'), function (b) {
     b.addEventListener('click', function () {
       var a = b.getAttribute('data-act');
+      if (!powered) { powerOn(); return; }
       if (a === 'chup') { if (onTrailer) { clearTimeout(introT); started = true; screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0'; onTrailer = false; } channel(); }
       else if (a === 'chdown') { if (onTrailer) { onTrailer = false; clearTimeout(introT); started = true; video.pause(); video.style.opacity = '0'; channel(); } else channel(true); }
       else if (a === 'volup') { setVolIdx(vIdx + 1); }
@@ -226,7 +231,59 @@
     if (i !== vIdx) setVolIdx(i);
   }, function () { setVolIdx((vIdx + 1) % STEPS.length); });
 
+  // POWER: tap = sign off (CRT collapse, dark room, PLEASE STAND BY) / tap again = warm up to a random video.
+  // Hold for a second = secret LATE NIGHT mode: the whole page goes black and white and plays the red pill pool.
+  var root = document.documentElement, powerBtn = document.getElementById('rm-power'), offT = 0, onT = 0;
+  var dark = document.createElement('div'); dark.id = 'room-fx'; dark.setAttribute('aria-hidden', 'true');
+  var bw = document.createElement('div'); bw.id = 'room-bw'; bw.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(dark); document.body.appendChild(bw);
+  var standby = document.createElement('div'); standby.className = 'htv-standby';
+  standby.innerHTML = '<div class="sb-bars"></div><div class="sb-txt"><b>PLEASE STAND BY</b><small>Sobervision will return shortly</small></div>';
+  screen.appendChild(standby);
+  function powerOff() {
+    if (!powered) return;
+    powered = false; clearTimeout(introT); clearTimeout(chanT); clearTimeout(offT);
+    if (onTrailer) { onTrailer = false; started = true; }
+    video.pause(); ytCmd('pauseVideo');
+    screen.classList.remove('tuning', 'htv-search', 'crt-on');
+    root.classList.add('tv-off'); screen.classList.add('crt-off');
+    offT = setTimeout(function () {
+      yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; video.style.opacity = '0'; cur = null; nowBtn.hidden = nextBtn.hidden = true;
+      screen.classList.remove('crt-off'); screen.classList.add('standby');
+    }, reduce ? 0 : 650);
+  }
+  function powerOn() {
+    if (powered) return;
+    powered = true; clearTimeout(offT); clearTimeout(onT);
+    root.classList.remove('tv-off'); screen.classList.remove('standby', 'crt-off');
+    if (!reduce) { screen.classList.add('crt-on'); onT = setTimeout(function () { screen.classList.remove('crt-on'); }, 800); }
+    channel();
+  }
+  function setLate(on) {
+    lateNight = on; root.classList.toggle('late-night', on);
+    if (!powered) powerOn(); else channel();
+    showOsd(on ? 'LATE NIGHT' : 'SIGN ON');
+  }
+  function resetPower() {
+    clearTimeout(offT); clearTimeout(onT);
+    powered = true; lateNight = false;
+    root.classList.remove('tv-off', 'late-night'); screen.classList.remove('standby', 'crt-off', 'crt-on');
+  }
+  if (powerBtn) {
+    var holdT = 0, held = false;
+    powerBtn.setAttribute('aria-label', 'Power');
+    powerBtn.addEventListener('pointerdown', function () {
+      held = false; powerBtn.classList.add('holding');
+      holdT = setTimeout(function () { held = true; powerBtn.classList.remove('holding'); setLate(!lateNight); }, 900);
+    });
+    function cancelHold() { clearTimeout(holdT); powerBtn.classList.remove('holding'); }
+    powerBtn.addEventListener('pointerup', cancelHold); powerBtn.addEventListener('pointerleave', cancelHold); powerBtn.addEventListener('pointercancel', cancelHold);
+    powerBtn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    powerBtn.addEventListener('click', function () { if (held) { held = false; return; } if (powered) powerOff(); else powerOn(); });
+  }
+
   function searching() {
+    resetPower();
     clearTimeout(introT); stopChannels(); started = false; onTrailer = true;
     video.hidden = false;
     video.pause(); try { video.currentTime = 0; } catch (e) {}
@@ -253,7 +310,7 @@
   video.addEventListener('error', function () { if (started) toChannels(); });
   document.addEventListener('ss:route', function (e) {
     onHome = e.detail.name === 'home';
-    if (onHome) searching(); else { clearTimeout(introT); stopChannels(); video.pause(); setSound(false); }
+    if (onHome) searching(); else { resetPower(); clearTimeout(introT); stopChannels(); video.pause(); setSound(false); }
   });
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) { video.pause(); if (!yt.hidden) ytCmd('pauseVideo'); }

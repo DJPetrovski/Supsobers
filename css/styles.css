@@ -1090,3 +1090,36 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
 /* smaller logo so it does not steal the eye */
 .tv-logo img { width: 66%; }
 .tv-logo span { font-size: clamp(0.5rem, 1.25vw, 0.85rem); opacity: 0.9; }
+
+/* ---- power button: sign-off, stand by, and secret late-night mode ---- */
+.rm-power { touch-action: manipulation; user-select: none; -webkit-user-select: none; transition: transform .15s, box-shadow .3s; }
+.rm-power.holding { transform: scale(.9); box-shadow: 0 0 0 3px rgba(255,60,60,.7), 0 0 18px rgba(255,40,40,.8); }
+html.tv-off .rm-power { box-shadow: 0 0 10px 2px rgba(255,40,40,.75); animation: pw-pulse 2.4s ease-in-out infinite; }
+@keyframes pw-pulse { 50% { box-shadow: 0 0 3px 0 rgba(255,40,40,.4); } }
+#room-fx, #room-bw { position: fixed; inset: 0; pointer-events: none; opacity: 0; transition: opacity .8s ease; }
+#room-fx { z-index: 60; background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,.6), rgba(0,0,0,.95) 78%); }
+html.tv-off #room-fx { opacity: 1; }
+html.tv-off .home-rig, html.tv-off .home-copy { position: relative; z-index: 70; }
+#room-bw { z-index: 80; -webkit-backdrop-filter: grayscale(1) contrast(1.18) brightness(.88); backdrop-filter: grayscale(1) contrast(1.18) brightness(.88);
+  background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 40%, rgba(110,0,0,.5) 100%); }
+#room-bw::after { content: ""; position: absolute; inset: -20%; opacity: .16; mix-blend-mode: overlay; animation: grain .6s steps(4) infinite;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+html.late-night #room-bw { opacity: 1; }
+@keyframes grain { 0% { transform: translate(0,0); } 25% { transform: translate(-4%,3%); } 50% { transform: translate(3%,-5%); } 75% { transform: translate(-2%,-3%); } }
+.htv-standby { position: absolute; inset: 0; z-index: 6; display: none; background: #000; overflow: hidden; }
+.htv-screen.standby .htv-standby { display: block; animation: sb-on .5s ease-out; }
+.sb-bars { position: absolute; left: 0; right: 0; top: 0; height: 72%; opacity: .8;
+  background: linear-gradient(90deg, #c0c0c0 0 14.28%, #c0c000 0 28.56%, #00c0c0 0 42.84%, #00c000 0 57.12%, #c000c0 0 71.4%, #c00000 0 85.68%, #0000c0 0); }
+.sb-bars::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 2px, transparent 2px 4px); }
+.sb-txt { position: absolute; left: 0; right: 0; bottom: 0; height: 28%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3em; text-align: center; color: #e8e8e8; font-family: ui-monospace, Menlo, Consolas, monospace; }
+.sb-txt b { font-size: clamp(.8rem, 2.6vw, 1.7rem); letter-spacing: .18em; animation: sb-blink 1.6s steps(1) infinite; }
+.sb-txt small { font-size: clamp(.5rem, 1.2vw, .8rem); letter-spacing: .12em; opacity: .6; text-transform: uppercase; }
+@keyframes sb-blink { 50% { opacity: .35; } }
+@keyframes sb-on { 0% { opacity: 0; filter: brightness(3); } 100% { opacity: 1; filter: none; } }
+.htv-screen.crt-off .htv-yt, .htv-screen.crt-off .htv-video { animation: crt-collapse .62s cubic-bezier(.7,0,.8,.4) forwards; }
+.htv-screen.crt-on .htv-yt, .htv-screen.crt-on .htv-video { animation: crt-expand .6s ease-out; }
+@keyframes crt-collapse { 0% { transform: scale(1,1); filter: brightness(1); } 45% { transform: scale(1,.01); filter: brightness(4); } 80% { transform: scale(.02,.01); filter: brightness(8); opacity: 1; } 100% { transform: scale(0,0); opacity: 0; } }
+@keyframes crt-expand { 0% { transform: scale(.02,.01); filter: brightness(8); } 45% { transform: scale(1,.01); filter: brightness(4); } 100% { transform: scale(1,1); filter: brightness(1); } }
+@media (prefers-reduced-motion: reduce) { #room-bw::after { animation: none; } }
+html.tv-off .home-hero { position: relative; z-index: 70; isolation: isolate; }
+html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .12; transition: opacity .8s; }
