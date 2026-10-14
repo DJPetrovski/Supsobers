@@ -24,7 +24,7 @@
   var listBtn = $('#hole-list');
   var hint = $('#hole-hint');
 
-  var AUTO_DIVE_MS = 1500;   // how long the TV shows static before it drops you in
+  var AUTO_DIVE_MS = 4200;   // how long the TV shows static before it drops you in
   var holeApi = null, ambientApi = null, anim = null, spacer = null;
   var diving = false, isOpen = false, current = '', timers = [], autoTimer = 0;
 
@@ -221,7 +221,7 @@
   }
   function pullCloser() {
     if (near || !isOpen) return;
-    near = true; clearTimeout(idleT); tip.classList.remove('on');
+    near = true; clearTimeout(idleT); tip.classList.remove('on'); previewOff();
     if (holeApi) holeApi.hold(true);
     var w = phoneEl.getBoundingClientRect().width;
     var target = Math.min(window.innerWidth * 0.94, window.innerHeight * 0.74 * 1.024, 640);
@@ -230,6 +230,7 @@
     phoneEl.style.transform = 'translate(-50%, -50%) scale(' + (target / w).toFixed(2) + ')';
     backPhone.hidden = false;
     hole.classList.add('pill-near');
+    if (!hole.querySelector('.hole-haze')) { var hz = document.createElement('div'); hz.className = 'hole-haze'; hz.setAttribute('aria-hidden', 'true'); hole.appendChild(hz); }
     if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
   function putBack() {
@@ -285,10 +286,12 @@
   }
 
   /* ---------- hover a tile and its first seconds play, like YouTube ---------- */
-  var pvT = 0, pvEl = null;
+  var pvT = 0, pvEl = null, pvCap = null;
   function duck(key, level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: key, level: level } })); }
   function previewOff() {
     clearTimeout(pvT);
+    if (pvCap) { pvCap.remove(); pvCap = null; }
+    hole.classList.remove('pv-on');
     if (pvEl) { pvEl.remove(); pvEl = null; duck('preview', null); }
   }
   function previewOn(v, node) {
@@ -299,8 +302,14 @@
       pvEl = document.createElement('div');
       pvEl.className = 'hole-preview';
       pvEl.style.cssText = 'left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px';
-      pvEl.innerHTML = '<iframe title="Preview" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"></iframe>';
+      pvEl.innerHTML = '<iframe title="Preview" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=' + (soundOn ? 0 : 1) + '&controls=0&playsinline=1&rel=0&modestbranding=1&disablekb=1&iv_load_policy=3"></iframe>';
       hole.appendChild(pvEl);
+      // the title rides right under the playing preview (above it if there is no room), on a dark block so it is readable
+      pvCap = document.createElement('div'); pvCap.className = 'hole-preview-cap'; pvCap.textContent = v.title || '';
+      var cw = Math.min(Math.max(r.width, 220), window.innerWidth - 24);
+      pvCap.style.width = cw + 'px'; pvCap.style.left = Math.max(12, Math.min(window.innerWidth - cw - 12, r.left + r.width / 2 - cw / 2)) + 'px';
+      if (r.bottom + 70 < window.innerHeight) pvCap.style.top = (r.bottom + 6) + 'px'; else pvCap.style.bottom = (window.innerHeight - r.top + 6) + 'px';
+      hole.appendChild(pvCap); hole.classList.add('pv-on');
       duck('preview', 0);
     }, 700);
   }
@@ -468,6 +477,7 @@
 
   diveBtn.addEventListener('click', dive);
   screenEl.addEventListener('click', dive);
+  var rbRun = $('#rb-run'); if (rbRun) rbRun.addEventListener('click', function () { diveBtn.click(); });
   skipBtn.addEventListener('click', function () { clearTimeout(autoTimer); scrollToList(); });
   exitBtn.addEventListener('click', function () { climb(); });
   listBtn.addEventListener('click', function () { climb(scrollToList); });

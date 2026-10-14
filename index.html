@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791970544">
+  <link rel="stylesheet" href="css/styles.css?v=1791971209">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -24,7 +24,7 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="top">
-    <a class="brand" href="#home">Sup Sobers</a>
+    <a class="brand" href="#home">Sobering Stories</a>
     <nav id="nav" aria-label="Main">
       <a href="#home" data-route="home">Home</a>
       <a href="#videos" data-route="videos">Videos</a>
@@ -103,6 +103,8 @@
             <a class="rm-key rm-color rm-green" data-key="web" href="#web">Connected</a>
             <a class="rm-key rm-color rm-yellow" data-key="members" href="#members">Members</a>
             <a class="rm-key rm-color rm-blue" data-key="archives" href="#archives">Archives</a>
+            <a class="rm-key rm-color rm-rect rm-orange" data-key="merch" href="#merch">Merch</a>
+            <a class="rm-key rm-color rm-rect rm-purple" data-key="craving" href="#craving">Games</a>
           </nav>
           <div class="rm-dpad" role="group" aria-label="TV controls">
             <button type="button" class="rm-d rm-up" data-act="chup" aria-label="Channel up">CH<small>+</small></button>
@@ -123,9 +125,7 @@
             <a class="rm-key rm-soc-key rm-s-sp" data-key="spotify" href="https://open.spotify.com/show/7cuV8tDi2Gdw66upnljFIs" target="_blank" rel="noopener" aria-label="Spotify podcast" title="Spotify podcast"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-linecap="round"><circle cx="12" cy="12" r="9.5" fill="#fff" stroke="none"/><path d="M6.6 9.4c3.8-1.1 8-.7 11.3 1.2M7.2 12.5c3.2-.9 6.6-.5 9.5 1.1M7.9 15.3c2.6-.7 5.2-.4 7.5.9" stroke="#1db954" stroke-width="1.8"/></svg></a>
             <a class="rm-key rm-soc-key rm-s-dc" data-key="discord" href="https://discord.gg/ycsn67W5UB" target="_blank" rel="noopener" aria-label="Discord" title="Discord"><svg viewBox="0 0 24 24"><path d="M5.2 6.2c1.9-1 3.7-1.5 3.7-1.5l.5 1.1c1.5-.2 3.2-.2 4.7 0l.5-1.1s1.8.5 3.7 1.5c1.9 3.1 2.9 6.4 2.7 10.2-1.6 1.2-3.1 1.8-4.5 2.2l-1-1.7c.6-.2 1.1-.5 1.6-.8-.1-.1-.3-.2-.4-.3-2.800 1.200-5.800 1.200-8.600 0-.1.100-.3.200-.4.300.5.300 1 .6 1.600.8l-1 1.700c-1.400-.4-2.900-1-4.500-2.200-.2-3.800.8-7.100 2.700-10.200z" fill="#fff"/><ellipse cx="9" cy="12.400" rx="1.300" ry="1.500" fill="#5865F2"/><ellipse cx="15" cy="12.400" rx="1.300" ry="1.500" fill="#5865F2"/></svg></a>
           </div>
-            <a class="rm-key rm-gray rm-wide rm-craving" data-key="craving" href="#craving">Craving Corner</a>
             <a class="rm-key rm-gray rm-wide rm-half" data-key="half" href="#half">My Better Half</a>
-            <a class="rm-key rm-gray rm-wide rm-merch" data-key="merch" href="#merch">Merch</a>
           </div>
           <p class="rm-logo">Sup Sobers</p>
         </div>
@@ -151,6 +151,20 @@
               <div class="tv-screen tuning" id="tv-screen">
                 <div class="tv-static" aria-hidden="true"></div>
                 <div class="tv-roll" aria-hidden="true"></div>
+                <div class="tv-rabbit">
+                  <p class="rb-text" aria-hidden="true">Follow the white rabbit<i></i></p>
+                  <button type="button" class="rb-run" id="rb-run" aria-label="Follow the white rabbit down the hole" tabindex="-1">
+                    <span class="rb-hop"><svg viewBox="0 0 130 100" aria-hidden="true">
+                      <ellipse cx="62" cy="68" rx="32" ry="17" fill="#fff"/><circle cx="38" cy="64" r="17" fill="#fff"/><circle cx="21" cy="62" r="6.5" fill="#f4f4f4"/>
+                      <ellipse cx="42" cy="86" rx="15" ry="4.5" fill="#fff"/><ellipse cx="86" cy="84" rx="9" ry="3.6" fill="#fff"/>
+                      <ellipse cx="94" cy="53" rx="14" ry="11.5" fill="#fff"/><ellipse cx="106" cy="57" rx="6.5" ry="5" fill="#fff"/>
+                      <ellipse cx="88" cy="27" rx="4.8" ry="18" transform="rotate(-10 88 27)" fill="#fff"/><ellipse cx="99" cy="28" rx="4.8" ry="17" transform="rotate(12 99 28)" fill="#fff"/>
+                      <ellipse cx="88" cy="28" rx="2" ry="12" transform="rotate(-10 88 28)" fill="#ffb6c1"/><ellipse cx="99" cy="29" rx="2" ry="11" transform="rotate(12 99 29)" fill="#ffb6c1"/>
+                      <circle cx="99" cy="50" r="2.1" fill="#d3201a"/><circle cx="109" cy="55" r="1.6" fill="#ffb6c1"/>
+                    </svg></span>
+                    <i class="rb-shadow"></i>
+                  </button>
+                </div>
                 <div class="tv-glass" aria-hidden="true"></div>
               </div>
             </div>
@@ -279,13 +293,17 @@
       <div class="es" id="es">
         <div class="es-top"><b>Sober Etch A Sketch</b><span class="es-clock" id="es-clock" aria-live="off">0:00</span></div>
         <div class="es-screenwrap"><canvas id="es-canvas" width="480" height="340" aria-label="Etch A Sketch maze game"></canvas><i class="es-glare"></i></div>
+        <div class="es-tools">
+          <div class="es-modes" role="group" aria-label="Mode"><button type="button" id="es-mode-maze" class="on" aria-pressed="true">Maze</button><button type="button" id="es-mode-free" aria-pressed="false">Free draw</button></div>
+          <div class="es-sand" id="es-sand" role="group" aria-label="Sand color. Change it any time, even mid-line."></div>
+        </div>
         <p class="es-msg" id="es-msg" role="status" aria-live="polite">Watch the sketch...</p>
         <div class="es-knobs">
           <div class="es-knobcol"><div class="es-knob" id="es-kx" role="slider" aria-label="Left knob: move left and right" tabindex="0"><i></i></div><span>Left / Right</span></div>
           <div class="es-btns"><button type="button" class="btn" id="es-new">New maze</button><button type="button" class="btn" id="es-replay">Replay sketch</button></div>
           <div class="es-knobcol"><div class="es-knob" id="es-ky" role="slider" aria-label="Right knob: move up and down" tabindex="0"><i></i></div><span>Up / Down</span></div>
         </div>
-        <p class="es-help">Twist the knobs (drag them in a circle) or use the arrow keys. Touch a wall and it shakes and resets. Reach the red flag.</p>
+        <p class="es-help">Twist the knobs (drag them in a circle) or use the arrow keys. In Maze, touch a wall and it shakes and resets, so reach the red flag. In Free draw, make anything, switch the sand color whenever you like, and shake to erase.</p>
       </div>
       <p class="cv-note">More games coming. If you are struggling right now, the free 24/7 SAMHSA helpline is 1-800-662-4357.</p>
     </section>
@@ -405,18 +423,18 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791970544" defer></script>
-  <script src="js/app.js?v=1791970544" defer></script>
-  <script src="js/hole.js?v=1791970544" defer></script>
-  <script src="js/pill.js?v=1791970544" defer></script>
-  <script src="js/tv.js?v=1791970544" defer></script>
-  <script src="js/search.js?v=1791970544" defer></script>
-  <script src="js/merch.js?v=1791970544" defer></script>
-  <script src="js/web.js?v=1791970544" defer></script>
-  <script src="js/home.js?v=1791970544" defer></script>
-  <script src="js/remote.js?v=1791970544" defer></script>
-  <script src="js/craving.js?v=1791970544" defer></script>
-  <script src="js/assistant.js?v=1791970544" defer></script>
-  <script src="js/music.js?v=1791970544" defer></script>
+  <script src="js/rain.js?v=1791971209" defer></script>
+  <script src="js/app.js?v=1791971209" defer></script>
+  <script src="js/hole.js?v=1791971209" defer></script>
+  <script src="js/pill.js?v=1791971209" defer></script>
+  <script src="js/tv.js?v=1791971209" defer></script>
+  <script src="js/search.js?v=1791971209" defer></script>
+  <script src="js/merch.js?v=1791971209" defer></script>
+  <script src="js/web.js?v=1791971209" defer></script>
+  <script src="js/home.js?v=1791971209" defer></script>
+  <script src="js/remote.js?v=1791971209" defer></script>
+  <script src="js/craving.js?v=1791971209" defer></script>
+  <script src="js/assistant.js?v=1791971209" defer></script>
+  <script src="js/music.js?v=1791971209" defer></script>
 </body>
 </html>

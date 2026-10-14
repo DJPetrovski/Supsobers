@@ -11,7 +11,7 @@
   var frame = document.getElementById('es'), msg = document.getElementById('es-msg'), clockEl = document.getElementById('es-clock');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var BG = '#b7bbb2', WALL = '#6a6e66', INK = '#1d1d1d';
-  var phase = 'idle', raf = 0, run = 0, outline = null, level = 0, lvl = null;
+  var mode = 'maze', ink = INK, hue = 0, phase = 'idle', raf = 0, run = 0, outline = null, level = 0, lvl = null;
   var px = 0, py = 0, lastX = 0, lastY = 0, startedAt = 0, clockT = 0, tries = 0, keys = {};
   var CELLS = [52, 44, 36, 30];
 
@@ -104,15 +104,16 @@
   function dot() { ctx.fillStyle = '#2b2b2b'; ctx.beginPath(); ctx.arc(px, py, 3.2, 0, 7); ctx.fill(); }
   function hits(x, y) { var d = mctx.getImageData(Math.round(x) - 3, Math.round(y) - 3, 6, 6).data; for (var i = 3; i < d.length; i += 4) if (d[i] > 40) return true; return false; }
   function move(dx, dy) {
-    if (phase !== 'maze') return;
+    if (phase !== 'maze' && phase !== 'free') return;
     if (!startedAt) startClock();
     var n = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy)) / 1.5)), sx = dx / n, sy = dy / n;
     for (var i = 0; i < n; i++) {
       var nx = px + sx, ny = py + sy;
-      if (nx < 3 || ny < 3 || nx > W - 3 || ny > H - 3 || hits(nx, ny)) return crash();
-      ctx.strokeStyle = INK; ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(nx, ny); ctx.stroke();
+      if (nx < 3 || ny < 3 || nx > W - 3 || ny > H - 3 || (phase === 'maze' && hits(nx, ny))) { if (phase === 'free') return; return crash(); }
+      if (ink === 'rainbow') { hue = (hue + 2.2) % 360; ctx.strokeStyle = 'hsl(' + hue + ',85%,38%)'; } else ctx.strokeStyle = ink; ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(nx, ny); ctx.stroke();
       trail.push([nx, ny]); px = nx; py = ny;
     }
+    if (phase !== 'maze') return;
     var gx = lvl.ox + (lvl.cols - .5) * lvl.cell, gy = lvl.oy + (lvl.rows - .5) * lvl.cell;
     if (Math.hypot(px - gx, py - gy) < lvl.cell * .35) win();
   }
@@ -125,6 +126,41 @@
     say('Out! That one is beaten. Craving a little weaker? Next maze...');
     setTimeout(function () { if (phase === 'win') wipe(function () { maze(level + 1); }); }, reduce ? 600 : 1800);
   }
+
+  /* ---------- free draw ---------- */
+  function freeDraw(erase) {
+    cancelAnimationFrame(raf); var id = ++run; keys = {};
+    function go() { if (id !== run) return; clear(); phase = 'free'; px = lastX = W / 2; py = lastY = H / 2; dot(); say('Free draw. Twist the knobs or drag on the screen. Pick any sand color, even mid-line.'); loop(id); }
+    if (erase && phase === 'free') { phase = 'crash'; say('Shaking...'); shake(function () { wipe(go); }); } else { phase = 'crash'; go(); }
+  }
+  function setMode(m) {
+    mode = m; document.getElementById('es-mode-maze').classList.toggle('on', m === 'maze'); document.getElementById('es-mode-maze').setAttribute('aria-pressed', m === 'maze');
+    document.getElementById('es-mode-free').classList.toggle('on', m === 'free'); document.getElementById('es-mode-free').setAttribute('aria-pressed', m === 'free');
+    document.getElementById('es-new').textContent = m === 'free' ? 'Shake to erase' : 'New maze';
+    document.getElementById('es-replay').hidden = m === 'free';
+    if (m === 'free') freeDraw(false); else { startedAt = 0; maze(level); }
+  }
+  document.getElementById('es-mode-maze').addEventListener('click', function () { if (mode !== 'maze') setMode('maze'); });
+  document.getElementById('es-mode-free').addEventListener('click', function () { if (mode !== 'free') setMode('free'); });
+  // drag right on the screen in free draw
+  (function () {
+    var drag = null;
+    function pos(e) { var r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * W / r.width, (e.clientY - r.top) * H / r.height]; }
+    cv.addEventListener('pointerdown', function (e) { if (phase !== 'free') return; drag = e.pointerId; cv.setPointerCapture(drag); var p = pos(e); px = p[0]; py = p[1]; dot(); });
+    cv.addEventListener('pointermove', function (e) { if (e.pointerId !== drag || phase !== 'free') return; var p = pos(e); move(p[0] - px, p[1] - py); });
+    function up(e) { if (e.pointerId === drag) drag = null; }
+    cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+  })();
+
+  /* ---------- sand colors: change any time, even mid-line ---------- */
+  var SAND = [['#1d1d1d', 'Black'], ['#d3201a', 'Red'], ['#ee7a12', 'Orange'], ['#e6b800', 'Yellow'], ['#1f9d3a', 'Green'], ['#10a89c', 'Teal'], ['#2563eb', 'Blue'], ['#7c3aed', 'Purple'], ['#e0409a', 'Pink'], ['#f4f4f0', 'White'], ['rainbow', 'Rainbow']];
+  var sand = document.getElementById('es-sand');
+  SAND.forEach(function (c, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'es-sw' + (i === 0 ? ' on' : ''); b.title = c[1]; b.setAttribute('aria-label', c[1] + ' sand');
+    if (c[0] === 'rainbow') b.style.background = 'conic-gradient(red, yellow, lime, cyan, blue, magenta, red)'; else b.style.background = c[0];
+    b.addEventListener('click', function () { ink = c[0]; Array.prototype.forEach.call(sand.children, function (x) { x.classList.remove('on'); }); b.classList.add('on'); });
+    sand.appendChild(b);
+  });
 
   /* ---------- clock ---------- */
   function startClock() {
@@ -166,7 +202,7 @@
   function loop(id) {
     (function f() {
       if (id !== run) return;
-      if (active() && phase === 'maze') {
+      if (active() && (phase === 'maze' || phase === 'free')) {
         var dx = (keys.r ? 1 : 0) - (keys.l ? 1 : 0), dy = (keys.d ? 1 : 0) - (keys.u ? 1 : 0), s = 1.8;
         if (dx || dy) { move(dx * s, dy * s); if (dx) kx.spin(dx * s / KNOB_PX); if (dy) ky.spin(dy * s / KNOB_PX); }
       }
@@ -174,7 +210,7 @@
     })();
   }
 
-  document.getElementById('es-new').addEventListener('click', function () { if (phase === 'sketch') return; maze(level); });
+  document.getElementById('es-new').addEventListener('click', function () { if (phase === 'sketch') return; if (mode === 'free') freeDraw(true); else maze(level); });
   document.getElementById('es-replay').addEventListener('click', function () { stopClock(); startedAt = 0; clockEl.textContent = '0:00'; sketch(); });
 
   /* start the show when the page is opened; pause everything when it is left */

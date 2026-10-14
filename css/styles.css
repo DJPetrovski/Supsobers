@@ -298,9 +298,9 @@ dialog#player::backdrop { background: rgba(0, 0, 0, 0.82); }
   display: flex; flex-direction: column; align-items: center; gap: 18px;
   --ant: clamp(54px, 10vw, 100px); padding-top: calc(var(--ant) * 0.9); margin-bottom: 36px;
 }
-.tv { position: relative; z-index: 1; width: min(100%, 920px); transform-origin: 0 0; will-change: transform; }
+.tv { position: relative; z-index: 1; width: min(100%, 1120px); transform-origin: 0 0; will-change: transform; }
 @supports (width: 1svh) {
-  .tv { width: min(100%, 920px, max(300px, calc((100svh - 260px) * 1.42))); }
+  .tv { width: min(100%, 1120px, max(300px, calc((100svh - 200px) * 1.5))); }
 }
 /* contact shadow on the floor */
 .tv::after {
@@ -1485,3 +1485,51 @@ html.gs-open { overflow: hidden; }
 .cv-note { max-width: 560px; margin: 18px auto 0; text-align: center; font-size: .85rem; opacity: .7; }
 @media (max-width: 480px) { .es { padding: 12px 10px 16px; } .es-knob { width: 72px; height: 72px; } .es-btns .btn { padding: 7px 8px; font-size: .78rem; } }
 @media (min-width: 700px) and (max-width: 1500px) { #nav a { padding: 8px 8px; font-size: .94rem; } }
+
+/* ---------- readable titles in the tunnel ---------- */
+.hole-title { width: auto; max-width: min(92%, 760px); font-size: clamp(1rem, 2.6vw, 1.7rem); line-height: 1.15; padding: .45em .85em; border-radius: 10px;
+  background: rgba(0, 0, 0, .86); border: 1px solid rgba(255, 42, 53, .55); -webkit-text-stroke: 0; paint-order: normal; text-shadow: none; transition: opacity .15s; }
+.hole-title:empty { display: none; }
+.hole.pv-on .hole-title { opacity: 0; }
+.hole-preview-cap { position: fixed; z-index: 9; pointer-events: none; text-align: center; padding: .4em .7em; border-radius: 8px; background: rgba(0, 0, 0, .9); border: 1px solid rgba(255, 42, 53, .6);
+  color: var(--bone); font-family: var(--display); text-transform: uppercase; font-size: clamp(.8rem, 1.7vw, 1.05rem); line-height: 1.15; }
+/* pill choice: dark haze behind the figure so the words and pills pop */
+.hole-haze { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; transition: opacity .5s ease;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,.93) 0%, rgba(0,0,0,.88) 45%, rgba(0,0,0,.72) 100%); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+@keyframes hazein { from { opacity: 0; } to { opacity: 1; } }
+.hole.pill-near .hole-haze { opacity: 1; }
+.hole-phone.near .pp-cap { text-shadow: 0 0 6px #000, 0 0 12px #000, 0 0 22px #000; background: rgba(0,0,0,.55); padding: .25em .5em; border-radius: 6px; opacity: 1; }
+
+/* Merch + Games: rectangular keys sharing the colored-key block above the dial */
+.rm-colors .rm-rect { border-radius: 5px; min-height: 8.5cqw; }
+.rm-orange { background: linear-gradient(#ffa63d, #d9650a); color: #1d0c00; border-bottom-color: #6b3000; text-shadow: none; }
+.rm-purple { background: linear-gradient(#b57bff, #6a2bd1); color: #fff; border-bottom-color: #2c0f66; }
+
+/* Etch A Sketch: modes + sand colors */
+.es-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; }
+.es-modes { display: inline-flex; border: 2px solid #5c0b07; border-radius: 999px; overflow: hidden; }
+.es-modes button { padding: 6px 14px; font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer; border: 0; background: #fff3df; color: #5c0b07; }
+.es-modes button.on { background: #5c0b07; color: #fff3df; }
+.es-sand { display: flex; flex-wrap: wrap; gap: 6px; }
+.es-sw { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #fff3df; cursor: pointer; padding: 0; box-shadow: 0 2px 4px rgba(0,0,0,.5); }
+.es-sw.on { outline: 3px solid #fff; outline-offset: 2px; transform: scale(1.12); }
+.es-btns .btn[hidden] { display: none; }
+@media (max-width: 480px) { .es-sw { width: 28px; height: 28px; } }
+
+/* ---------- Videos page TV: the white rabbit ---------- */
+.tv-rabbit { position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; }
+.tv-rabbit::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,.84), rgba(0,0,0,.5) 80%); }
+.rb-text { position: absolute; left: 0; right: 0; top: 24%; margin: 0; text-align: center; font-family: var(--display); text-transform: uppercase; letter-spacing: .06em;
+  font-size: clamp(.9rem, 2.6vw, 1.7rem); color: #8dffa8; text-shadow: 0 0 10px rgba(80,255,130,.85), 0 0 2px #000, 0 0 22px #000; white-space: nowrap; }
+.rb-text i { display: inline-block; width: .5em; height: 1em; margin-left: .15em; vertical-align: -.12em; background: #8dffa8; animation: rbcaret .8s steps(1) infinite; }
+@keyframes rbcaret { 50% { opacity: 0; } }
+.rb-run { position: absolute; left: 0; bottom: 12%; width: 22%; min-width: 58px; padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto;
+  animation: rbrun 8.5s linear infinite; }
+.rb-hop { display: block; animation: rbhop .85s cubic-bezier(.3,.7,.4,1) infinite; transform-origin: 50% 90%; filter: drop-shadow(0 0 8px rgba(255,255,255,.7)); }
+.rb-hop svg { display: block; width: 100%; height: auto; }
+.rb-shadow { position: absolute; left: 12%; right: 12%; bottom: -3%; height: 8%; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(3px); animation: rbshadow .85s cubic-bezier(.3,.7,.4,1) infinite; }
+@keyframes rbrun { 0% { transform: translateX(-130%); } 100% { transform: translateX(480%); } }
+@keyframes rbhop { 0% { transform: translateY(0) scale(1.08, .9) rotate(0); } 18% { transform: translateY(-14%) scale(.95, 1.06) rotate(-9deg); } 50% { transform: translateY(-48%) scale(.96, 1.04) rotate(-2deg); } 82% { transform: translateY(-12%) rotate(8deg); } 100% { transform: translateY(0) scale(1.08, .9) rotate(0); } }
+@keyframes rbshadow { 0%, 100% { transform: scaleX(1); opacity: .6; } 50% { transform: scaleX(.6); opacity: .25; } }
+.tv-screen.zooming .tv-rabbit, .tv-screen.glitch .tv-rabbit { opacity: .0; transition: opacity .5s; }
+@media (prefers-reduced-motion: reduce) { .rb-run, .rb-hop, .rb-shadow { animation: none; } .rb-run { left: 38%; } }
