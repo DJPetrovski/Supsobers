@@ -1209,3 +1209,7 @@ html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .1
 .rw-real.posing .rw-person { transform-origin: 50% 32%; animation: rw-strike2 1.8s ease-in-out; }
 @keyframes rw-strike2 { 0% { transform: scale(1); } 25% { transform: scale(1.38) rotate(-1.5deg); } 75% { transform: scale(1.38) rotate(1.5deg); } 100% { transform: scale(1); } }
 @media (max-width: 600px) { .mc-runway { height: 310px; } .rw-real { width: 92px; height: 275px; } }
+.rw-scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; animation: rw-pop .5s ease-out both; }
+.rw-scene { overflow: hidden; border-radius: 12px; }
+.rw-scene img { height: 100%; width: auto; max-width: none; object-fit: cover; display: block; pointer-events: none; }
+@media (max-width: 700px) { .rw-scene img { height: 100%; } }

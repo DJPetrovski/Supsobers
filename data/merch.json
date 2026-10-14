@@ -9,7 +9,12 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-9-11-Decal-p825992482",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "scene": "img/scene/sobering-stories-9-11-decal.webp",
+   "focus": [
+    0.334,
+    0.797
+   ]
   },
   {
    "name": "Sobering Stories Might Mean Somethin' Stickers",
@@ -19,7 +24,12 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Might-Mean-Somethin-Stickers-p822846886",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "scene": "img/scene/sobering-stories-might-mean-somethin-stickers.webp",
+   "focus": [
+    0.705,
+    0.6
+   ]
   },
   {
    "name": "Sobering Stories Might Mean Somethin' Hoodie (Blk)",
@@ -83,7 +93,12 @@
    ],
    "url": "https://www.americanpatriot.ltd/Sobering-Stories-Sticker-p781605951",
    "store": "americanpatriot",
-   "soldOut": false
+   "soldOut": false,
+   "scene": "img/scene/sobering-stories-sticker.webp",
+   "focus": [
+    0.715,
+    0.7
+   ]
   },
   {
    "name": "Sobering Stories Specific Ocean Red S/S",
@@ -287,7 +302,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-sticket-sheet",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "scene": "img/scene/sober-sector-sticket-sheet.webp",
+   "focus": [
+    0.572,
+    0.54
+   ]
   },
   {
    "name": "Coffee Mug",
@@ -397,7 +417,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/sober-sector-decal",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "scene": "img/scene/sober-sector-decal.webp",
+   "focus": [
+    0.4275,
+    0.5
+   ]
   },
   {
    "name": "DJ Petrovski Holographic Sticker",
@@ -409,7 +434,12 @@
    ],
    "url": "https://the-sober-sector-shop.fourthwall.com/products/dj-petrovski-holographic-sticker",
    "store": "fourthwall",
-   "soldOut": false
+   "soldOut": false,
+   "scene": "img/scene/dj-petrovski-holographic-sticker.webp",
+   "focus": [
+    0.572,
+    0.4
+   ]
   },
   {
    "name": "Sober Sector Blanky",

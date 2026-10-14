@@ -83,6 +83,13 @@
       rwAnims.forEach(function (a) { try { a.cancel(); } catch (e) {} }); rwAnims = [];
       var k = kind(it), cast = stage.querySelector('.rw-cast'); cast.textContent = '';
       var w = stage.clientWidth, mid = w / 2;
+      if (it.scene) {
+        var sc = el('div', 'rw-scene'), si = el('img'); si.src = it.scene; si.alt = ''; si.draggable = false;
+        if (it.focus) si.style.transformOrigin = (it.focus[0] * 100) + '% ' + (it.focus[1] * 100) + '%';
+        sc.appendChild(si); cast.appendChild(sc);
+        if (!reduceM && si.animate) rwAnims.push(si.animate([{ transform: 'scale(1)' }, { transform: 'scale(1)', offset: .15 }, { transform: 'scale(1.9)', offset: .6 }, { transform: 'scale(1.9)', offset: .85 }, { transform: 'scale(1)' }], { duration: 6200, easing: 'ease-in-out', fill: 'forwards' }));
+        return;
+      }
       if (k === 'car') {
         var car = el('div', 'rw-car');
         car.innerHTML = '<svg viewBox="0 0 220 90" aria-hidden="true"><path d="M8 62 L8 46 Q10 40 24 38 L62 36 Q76 14 108 14 L146 14 Q170 16 184 36 L206 42 Q214 46 214 58 L214 64 Z" fill="#7d0f1a" stroke="#ff2a35"/><path d="M70 36 Q82 20 108 20 L120 20 L120 36Z M128 36 L128 20 L146 20 Q162 22 172 36Z" fill="#1a0507"/><rect x="92" y="38" width="46" height="22" rx="4" fill="#1a0507" stroke="#ff2a35" stroke-opacity=".6"/><circle cx="56" cy="66" r="15" fill="#050102" stroke="#999"/><circle cx="162" cy="66" r="15" fill="#050102" stroke="#999"/><circle cx="56" cy="66" r="6" fill="#444"/><circle cx="162" cy="66" r="6" fill="#444"/></svg><img src="' + it.images[0] + '" alt="" class="rw-decal">';
