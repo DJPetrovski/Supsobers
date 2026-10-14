@@ -35,6 +35,10 @@
     about: function () { return '<h3>About</h3><p>Trust those who seek the truth</p>'; },
     youtube: function () { return '<h3>YouTube</h3><p>@Sobersector</p><div class="pv-strip one">' + thumbs(1) + '</div>'; },
     patreon: function () { return '<h3>Patreon</h3><p>Join the club</p>'; },
+    instagram: function () { return '<h3>Instagram</h3><p>@djpetrovski</p>'; },
+    x: function () { return '<h3>X</h3><p>@djpetrovski12</p>'; },
+    rumble: function () { return '<h3>Rumble</h3><p>Videos without the algorithm</p>'; },
+    spotify: function () { return '<h3>Spotify</h3><p>The podcast</p>'; },
     search: function () { return '<h3>Search</h3><p>Find any video, product or page</p>'; }
   };
 
@@ -63,7 +67,7 @@
     k.addEventListener('focus', function () { show(key); });
     k.addEventListener('blur', later);
     k.addEventListener('click', function (e) {
-      var external = key === 'youtube' || key === 'patreon';
+      var external = k.target === '_blank';
       if (touch && armed !== key) { e.preventDefault(); armed = key; show(key); hint.textContent = external ? 'Tap again to open.' : 'Tap again to go in.'; later(); return; }
       if (key === 'search') { e.preventDefault(); if (window.SS && SS.openSearch) SS.openSearch(); return; }
       if (external) return;               // normal link in a new tab
