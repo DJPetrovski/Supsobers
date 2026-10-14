@@ -297,6 +297,30 @@
   .stage #timeline-root .day-heading { color: #f3e9d2; border-right-color: rgba(243,233,210,.4); }
   .stage #timeline-root .entry time { color: #f3e9d2; border-top-color: rgba(243,233,210,.45); }
   .stage #timeline-root .entry time::before { background: #f3e9d2; }
+
+  .stage.has-video .backdrop > rect:first-of-type { opacity: 1; }
+  .stage .backdrop { opacity: .62; }
+  .stage.has-video .backdrop { opacity: .5; }
+  .stage .freedom { margin: 26px -14px 0; padding: 6px 0 4px; text-align: center; font-family: "Source Serif 4", Georgia, serif; font-weight: 800; font-size: clamp(32px, min(12vw, 96px), 96px); letter-spacing: .14em; text-indent: .14em; line-height: 1; color: #f6f1e4; text-shadow: 0 3px 0 #b22234, 0 -3px 0 #2c3a86, 0 6px 26px rgba(0,0,0,.65); pointer-events: none; user-select: none; }
+  /* list + web views */
+  .listv { display: none; margin: 8px 0 0; } .listv.on { display: block; }
+  .listv .lrow { display: grid; grid-template-columns: 9px 128px 1fr; gap: 6px 12px; align-items: baseline; padding: 10px 12px; border-bottom: 1px solid rgba(243,233,210,.18); background: rgba(7,13,31,.5); color: #f3e9d2; backdrop-filter: blur(3px); }
+  .listv .lrow:first-child { border-radius: 10px 10px 0 0; } .listv .lrow:last-child { border-radius: 0 0 10px 10px; }
+  .listv .ldot { width: 9px; height: 9px; border-radius: 50%; align-self: center; }
+  .listv .lt { font: 11px "IBM Plex Mono", monospace; letter-spacing: .06em; opacity: .85; }
+  .listv .lh a { color: #f3e9d2; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(243,233,210,.4); }
+  .listv .lh small { display: block; opacity: .75; margin-top: 2px; font-size: 12px; }
+  @media (max-width: 560px) { .listv .lrow { grid-template-columns: 9px 1fr; } .listv .lt { grid-column: 2; } .listv .lh { grid-column: 2; } }
+  .webv { display: none; margin: 8px 0 0; } .webv.on { display: block; }
+  .webv .wbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; color: #e9e2d0; font-size: 13px; margin-bottom: 8px; }
+  .webv .wbar button, .webbox .wclose { font: inherit; font-size: 13px; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(243,233,210,.4); background: rgba(7,13,31,.6); color: #f3e9d2; cursor: pointer; }
+  .webbox { position: relative; height: min(70vh, 560px); border-radius: 12px; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, rgba(20,28,60,.72), rgba(3,5,12,.85)); border: 1px solid rgba(243,233,210,.25); touch-action: none; }
+  .webbox canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; }
+  .webbox .wclose { display: none; position: absolute; top: 12px; right: 12px; z-index: 3; }
+  .webbox.pop { position: fixed; inset: 0; height: auto; z-index: 99999; border-radius: 0; background: radial-gradient(ellipse at 50% 45%, #141c3c, #03050c); }
+  .webbox.pop .wclose { display: block; }
+  .webbox .winfo { position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 2; padding: 10px 14px; border-radius: 10px; background: rgba(7,13,31,.88); color: #f3e9d2; font-size: 13px; border: 1px solid rgba(243,233,210,.3); display: none; max-width: 560px; }
+  .webbox .winfo.on { display: block; } .webbox .winfo b { display: block; margin-bottom: 3px; } .webbox .winfo a { color: #f6c97e; }
   @media (max-width: 560px) { .stage { padding-top: 150px; } .stage-title small { font-size: 10px; letter-spacing: .16em; } }
   @media (prefers-reduced-motion: reduce) { #timeline-root .entry { transition: none; } }
 
@@ -405,6 +429,8 @@
   <nav class="controls">
     <div class="tabs" role="tablist" aria-label="Media type">
       <button class="tab" data-tab="all" aria-pressed="true">3D timeline</button>
+      <button class="tab" data-tab="web" aria-pressed="false">Web</button>
+      <button class="tab" data-tab="list" aria-pressed="false">List</button>
       <button class="tab" data-tab="map" aria-pressed="false">Compare angles</button>
       <button class="tab" data-tab="video" aria-pressed="false">Videos</button>
       <button class="tab" data-tab="photo" aria-pressed="false">Photos</button>
@@ -426,30 +452,15 @@
 <div class="bgbar" id="bgbar"><button type="button" id="bg-play">Pause background</button><button type="button" id="bg-sound">Sound on</button><button type="button" id="bg-hide">Hide video</button></div>
 <div class="bgnow" id="bgnow" aria-live="off"></div>
 <button type="button" class="fsbtn" id="fs-btn" aria-pressed="false">Full screen</button>
-<svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+<svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
 <defs>
-<linearGradient id="bk-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070d1f"/><stop offset=".45" stop-color="#1b2c58"/><stop offset=".72" stop-color="#8a4a49"/><stop offset=".88" stop-color="#e09a58"/><stop offset="1" stop-color="#f4c47c"/></linearGradient>
-<radialGradient id="bk-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".85"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>
-<linearGradient id="bk-fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".25" stop-color="#fff" stop-opacity="1"/><stop offset=".8" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity=".2"/></linearGradient>
-<mask id="bk-m"><rect width="1600" height="760" fill="url(#bk-fade)"/></mask>
+<filter id="fl-wave" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.0022 0.006" numOctaves="1" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/></filter>
+<linearGradient id="fl-fold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".12" stop-color="#fff" stop-opacity=".12"/><stop offset=".25" stop-color="#000" stop-opacity=".3"/><stop offset=".4" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#000" stop-opacity=".32"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset=".85" stop-color="#000" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
+<linearGradient id="fl-vig" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".15"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
 </defs>
-<rect width="1600" height="760" fill="url(#bk-sky)"/>
-<circle cx="673" cy="85" r="1.6" fill="#fff" opacity="0.7"/><circle cx="108" cy="45" r="0.8" fill="#fff" opacity="0.5"/><circle cx="1203" cy="37" r="1" fill="#fff" opacity="0.35"/><circle cx="186" cy="230" r="1.6" fill="#fff" opacity="0.35"/><circle cx="502" cy="54" r="1.6" fill="#fff" opacity="0.35"/><circle cx="1168" cy="71" r="1" fill="#fff" opacity="0.7"/><circle cx="1294" cy="306" r="0.8" fill="#fff" opacity="0.7"/><circle cx="1209" cy="211" r="0.8" fill="#fff" opacity="0.35"/><circle cx="105" cy="293" r="1" fill="#fff" opacity="0.5"/><circle cx="868" cy="81" r="0.8" fill="#fff" opacity="0.7"/><circle cx="641" cy="294" r="1" fill="#fff" opacity="0.35"/><circle cx="1201" cy="300" r="1" fill="#fff" opacity="0.5"/><circle cx="209" cy="288" r="0.8" fill="#fff" opacity="0.7"/><circle cx="132" cy="324" r="1" fill="#fff" opacity="0.5"/><circle cx="1403" cy="280" r="1.6" fill="#fff" opacity="0.5"/><circle cx="963" cy="307" r="1.6" fill="#fff" opacity="0.5"/><circle cx="623" cy="135" r="1" fill="#fff" opacity="0.7"/><circle cx="509" cy="49" r="1.2" fill="#fff" opacity="0.7"/><circle cx="1023" cy="183" r="1.6" fill="#fff" opacity="0.5"/><circle cx="1257" cy="45" r="0.8" fill="#fff" opacity="0.7"/><circle cx="866" cy="92" r="1.2" fill="#fff" opacity="0.35"/><circle cx="1011" cy="223" r="0.8" fill="#fff" opacity="0.7"/><circle cx="168" cy="293" r="1.2" fill="#fff" opacity="0.5"/><circle cx="1433" cy="187" r="1.6" fill="#fff" opacity="0.7"/><circle cx="944" cy="43" r="0.8" fill="#fff" opacity="0.5"/><circle cx="980" cy="41" r="0.8" fill="#fff" opacity="0.7"/><circle cx="1446" cy="166" r="1.6" fill="#fff" opacity="0.5"/><circle cx="1477" cy="205" r="1.2" fill="#fff" opacity="0.35"/><circle cx="955" cy="189" r="1" fill="#fff" opacity="0.7"/><circle cx="249" cy="260" r="0.8" fill="#fff" opacity="0.35"/><circle cx="1583" cy="155" r="1" fill="#fff" opacity="0.7"/><circle cx="517" cy="211" r="1.6" fill="#fff" opacity="0.5"/><circle cx="175" cy="93" r="1.6" fill="#fff" opacity="0.5"/><circle cx="1135" cy="150" r="1" fill="#fff" opacity="0.5"/><circle cx="1136" cy="150" r="1.6" fill="#fff" opacity="0.5"/><circle cx="1408" cy="202" r="1" fill="#fff" opacity="0.35"/><circle cx="179" cy="98" r="1" fill="#fff" opacity="0.35"/><circle cx="1358" cy="127" r="0.8" fill="#fff" opacity="0.5"/><circle cx="1216" cy="101" r="1.2" fill="#fff" opacity="0.5"/><circle cx="18" cy="82" r="1.6" fill="#fff" opacity="0.7"/><circle cx="766" cy="320" r="1.2" fill="#fff" opacity="0.35"/><circle cx="1424" cy="271" r="0.8" fill="#fff" opacity="0.5"/><circle cx="1403" cy="294" r="1.6" fill="#fff" opacity="0.5"/><circle cx="827" cy="209" r="0.8" fill="#fff" opacity="0.5"/><circle cx="1309" cy="213" r="0.8" fill="#fff" opacity="0.35"/><circle cx="147" cy="114" r="1.6" fill="#fff" opacity="0.35"/><circle cx="235" cy="182" r="0.8" fill="#fff" opacity="0.35"/><circle cx="10" cy="298" r="1" fill="#fff" opacity="0.7"/><circle cx="217" cy="194" r="0.8" fill="#fff" opacity="0.35"/><circle cx="435" cy="322" r="1.6" fill="#fff" opacity="0.35"/><circle cx="1309" cy="137" r="1.2" fill="#fff" opacity="0.7"/><circle cx="755" cy="250" r="0.8" fill="#fff" opacity="0.35"/><circle cx="1009" cy="246" r="1.6" fill="#fff" opacity="0.5"/><circle cx="648" cy="51" r="1" fill="#fff" opacity="0.35"/><circle cx="1545" cy="183" r="1.2" fill="#fff" opacity="0.5"/><circle cx="1427" cy="90" r="0.8" fill="#fff" opacity="0.35"/><circle cx="1091" cy="193" r="1" fill="#fff" opacity="0.7"/><circle cx="1122" cy="21" r="1.2" fill="#fff" opacity="0.7"/><circle cx="196" cy="141" r="1.2" fill="#fff" opacity="0.35"/><circle cx="738" cy="122" r="1.2" fill="#fff" opacity="0.7"/><circle cx="466" cy="321" r="1" fill="#fff" opacity="0.35"/><circle cx="830" cy="124" r="1" fill="#fff" opacity="0.7"/><circle cx="1019" cy="190" r="0.8" fill="#fff" opacity="0.35"/><circle cx="582" cy="249" r="1.2" fill="#fff" opacity="0.35"/><circle cx="1428" cy="317" r="1.2" fill="#fff" opacity="0.5"/><circle cx="1490" cy="186" r="1.2" fill="#fff" opacity="0.35"/><circle cx="461" cy="60" r="1" fill="#fff" opacity="0.5"/><circle cx="412" cy="180" r="1" fill="#fff" opacity="0.5"/><circle cx="1288" cy="320" r="0.8" fill="#fff" opacity="0.5"/><circle cx="1347" cy="184" r="0.8" fill="#fff" opacity="0.7"/><circle cx="255" cy="206" r="1" fill="#fff" opacity="0.5"/><circle cx="375" cy="230" r="1.2" fill="#fff" opacity="0.35"/><circle cx="1488" cy="210" r="1.6" fill="#fff" opacity="0.5"/><circle cx="1532" cy="51" r="1" fill="#fff" opacity="0.35"/><circle cx="270" cy="22" r="1" fill="#fff" opacity="0.7"/><circle cx="963" cy="82" r="1.6" fill="#fff" opacity="0.7"/><circle cx="727" cy="87" r="1" fill="#fff" opacity="0.35"/><circle cx="39" cy="60" r="1" fill="#fff" opacity="0.5"/><circle cx="408" cy="116" r="0.8" fill="#fff" opacity="0.5"/><circle cx="445" cy="157" r="1" fill="#fff" opacity="0.7"/><circle cx="677" cy="140" r="1.6" fill="#fff" opacity="0.35"/><circle cx="134" cy="189" r="1.6" fill="#fff" opacity="0.7"/><circle cx="1204" cy="272" r="1.6" fill="#fff" opacity="0.7"/><circle cx="277" cy="280" r="1" fill="#fff" opacity="0.7"/><circle cx="1055" cy="17" r="1.6" fill="#fff" opacity="0.35"/><circle cx="1256" cy="10" r="1" fill="#fff" opacity="0.35"/><circle cx="299" cy="250" r="0.8" fill="#fff" opacity="0.7"/><circle cx="136" cy="174" r="1.6" fill="#fff" opacity="0.35"/><circle cx="1157" cy="37" r="1" fill="#fff" opacity="0.35"/><circle cx="577" cy="29" r="0.8" fill="#fff" opacity="0.7"/><circle cx="936" cy="295" r="0.8" fill="#fff" opacity="0.35"/><circle cx="917" cy="174" r="1" fill="#fff" opacity="0.7"/><circle cx="577" cy="239" r="1.6" fill="#fff" opacity="0.7"/><circle cx="517" cy="275" r="1.2" fill="#fff" opacity="0.7"/><circle cx="424" cy="237" r="1" fill="#fff" opacity="0.5"/><circle cx="259" cy="208" r="1.6" fill="#fff" opacity="0.5"/><circle cx="158" cy="131" r="1.6" fill="#fff" opacity="0.35"/><circle cx="445" cy="163" r="0.8" fill="#fff" opacity="0.35"/><circle cx="1476" cy="195" r="1" fill="#fff" opacity="0.5"/><circle cx="291" cy="247" r="1" fill="#fff" opacity="0.7"/><circle cx="202" cy="211" r="1.6" fill="#fff" opacity="0.35"/><circle cx="1377" cy="122" r="1" fill="#fff" opacity="0.7"/><circle cx="893" cy="271" r="1.6" fill="#fff" opacity="0.5"/><circle cx="872" cy="108" r="1.2" fill="#fff" opacity="0.5"/><circle cx="198" cy="195" r="0.8" fill="#fff" opacity="0.5"/><circle cx="1144" cy="242" r="1.6" fill="#fff" opacity="0.7"/><circle cx="47" cy="204" r="1.2" fill="#fff" opacity="0.7"/><circle cx="1287" cy="159" r="0.8" fill="#fff" opacity="0.35"/><circle cx="478" cy="61" r="0.8" fill="#fff" opacity="0.5"/><circle cx="566" cy="28" r="1" fill="#fff" opacity="0.5"/>
-<ellipse cx="800" cy="640" rx="760" ry="230" fill="url(#bk-glow)"/>
-<g mask="url(#bk-m)">
-<path d="M0,330 C260,250 470,420 780,340 S1330,250 1600,330 L1600,410 C1330,330 1100,450 780,420 S260,330 0,420 Z" fill="#b22234" opacity=".55"/>
-<path d="M0,425 C260,335 470,505 780,425 S1330,335 1600,415 L1600,480 C1330,400 1100,520 780,490 S260,400 0,490 Z" fill="#f6f1e4" opacity=".28"/>
-<path d="M0,495 C260,410 470,580 780,500 S1330,410 1600,490 L1600,560 C1330,480 1100,600 780,570 S260,480 0,565 Z" fill="#2c3a86" opacity=".6"/>
-</g>
-<g fill="#f6f1e4" opacity=".55"><polygon points="90.0,369.0 92.7,376.3 100.5,376.6 94.4,381.4 96.5,388.9 90.0,384.6 83.5,388.9 85.6,381.4 79.5,376.6 87.3,376.3"/><polygon points="152.0,369.0 154.7,376.3 162.5,376.6 156.4,381.4 158.5,388.9 152.0,384.6 145.5,388.9 147.6,381.4 141.5,376.6 149.3,376.3"/><polygon points="214.0,369.0 216.7,376.3 224.5,376.6 218.4,381.4 220.5,388.9 214.0,384.6 207.5,388.9 209.6,381.4 203.5,376.6 211.3,376.3"/><polygon points="276.0,369.0 278.7,376.3 286.5,376.6 280.4,381.4 282.5,388.9 276.0,384.6 269.5,388.9 271.6,381.4 265.5,376.6 273.3,376.3"/><polygon points="121.0,415.0 123.7,422.3 131.5,422.6 125.4,427.4 127.5,434.9 121.0,430.6 114.5,434.9 116.6,427.4 110.5,422.6 118.3,422.3"/><polygon points="183.0,415.0 185.7,422.3 193.5,422.6 187.4,427.4 189.5,434.9 183.0,430.6 176.5,434.9 178.6,427.4 172.5,422.6 180.3,422.3"/><polygon points="245.0,415.0 247.7,422.3 255.5,422.6 249.4,427.4 251.5,434.9 245.0,430.6 238.5,434.9 240.6,427.4 234.5,422.6 242.3,422.3"/><polygon points="307.0,415.0 309.7,422.3 317.5,422.6 311.4,427.4 313.5,434.9 307.0,430.6 300.5,434.9 302.6,427.4 296.5,422.6 304.3,422.3"/><polygon points="90.0,461.0 92.7,468.3 100.5,468.6 94.4,473.4 96.5,480.9 90.0,476.6 83.5,480.9 85.6,473.4 79.5,468.6 87.3,468.3"/><polygon points="152.0,461.0 154.7,468.3 162.5,468.6 156.4,473.4 158.5,480.9 152.0,476.6 145.5,480.9 147.6,473.4 141.5,468.6 149.3,468.3"/><polygon points="214.0,461.0 216.7,468.3 224.5,468.6 218.4,473.4 220.5,480.9 214.0,476.6 207.5,480.9 209.6,473.4 203.5,468.6 211.3,468.3"/><polygon points="276.0,461.0 278.7,468.3 286.5,468.6 280.4,473.4 282.5,480.9 276.0,476.6 269.5,480.9 271.6,473.4 265.5,468.6 273.3,468.3"/></g>
-<g transform="translate(1290 250)">
-<rect x="-3.5" y="30" width="7" height="400" rx="3" fill="#04060c"/>
-<ellipse cx="0" cy="432" rx="52" ry="9" fill="#04060c"/>
-<rect x="-19" y="-30" width="38" height="66" rx="19" fill="#04060c"/>
-<g stroke="#2a3558" stroke-width="1.4" opacity=".9"><line x1="-19" y1="-12" x2="19" y2="-12"/><line x1="-19" y1="2" x2="19" y2="2"/><line x1="-19" y1="16" x2="19" y2="16"/></g>
-<rect x="-19" y="-30" width="38" height="66" rx="19" fill="none" stroke="#f0b472" stroke-opacity=".6" stroke-width="1.6"/>
-</g>
-<g fill="#050813" opacity=".97"><circle cx="-6" cy="712" r="5.7"/><path d="M-20,733 Q-6,719 8,733 Z"/><circle cx="9" cy="712" r="6.4"/><path d="M-7,735 Q9,720 24,735 Z"/><circle cx="24" cy="707" r="4.6"/><path d="M13,724 Q24,713 35,724 Z"/><circle cx="40" cy="714" r="5.8"/><path d="M26,735 Q40,722 54,735 Z"/><circle cx="51" cy="704" r="5.4"/><path d="M38,724 Q51,711 64,724 Z"/><circle cx="64" cy="700" r="5.6"/><path d="M50,721 Q64,708 77,721 Z"/><circle cx="75" cy="715" r="5.1"/><path d="M63,733 Q75,721 87,733 Z"/><circle cx="90" cy="713" r="4.8"/><path d="M78,730 Q90,719 101,730 Z"/><circle cx="101" cy="702" r="5.7"/><path d="M87,723 Q101,709 114,723 Z"/><circle cx="111" cy="703" r="6.2"/><path d="M96,726 Q111,711 126,726 Z"/><circle cx="122" cy="714" r="6.5"/><path d="M106,737 Q122,722 137,737 Z"/><circle cx="134" cy="709" r="6.4"/><path d="M118,732 Q134,717 149,732 Z"/><circle cx="148" cy="715" r="4.9"/><path d="M136,733 Q148,721 160,733 Z"/><circle cx="162" cy="714" r="6.4"/><path d="M146,737 Q162,723 177,737 Z"/><circle cx="174" cy="703" r="5.2"/><path d="M161,721 Q174,709 186,721 Z"/><circle cx="185" cy="705" r="4.6"/><path d="M173,721 Q185,711 196,721 Z"/><circle cx="198" cy="711" r="4.5"/><path d="M187,727 Q198,717 209,727 Z"/><circle cx="210" cy="713" r="5.1"/><path d="M198,732 Q210,720 222,732 Z"/><circle cx="223" cy="708" r="5.1"/><path d="M211,726 Q223,714 235,726 Z"/><circle cx="237" cy="716" r="4.6"/><path d="M226,732 Q237,722 248,732 Z"/><circle cx="247" cy="714" r="6.0"/><path d="M233,735 Q247,721 262,735 Z"/><circle cx="258" cy="706" r="6.1"/><path d="M243,728 Q258,714 272,728 Z"/><circle cx="271" cy="701" r="4.5"/><path d="M260,717 Q271,707 282,717 Z"/><circle cx="282" cy="703" r="6.4"/><path d="M267,726 Q282,711 297,726 Z"/><circle cx="297" cy="715" r="6.4"/><path d="M281,738 Q297,723 312,738 Z"/><circle cx="309" cy="708" r="5.2"/><path d="M296,727 Q309,715 321,727 Z"/><circle cx="323" cy="712" r="4.7"/><path d="M312,729 Q323,718 335,729 Z"/><circle cx="338" cy="701" r="6.2"/><path d="M323,723 Q338,709 353,723 Z"/><circle cx="354" cy="705" r="4.7"/><path d="M343,722 Q354,712 365,722 Z"/><circle cx="367" cy="705" r="6.3"/><path d="M352,728 Q367,714 383,728 Z"/><circle cx="383" cy="705" r="5.6"/><path d="M370,725 Q383,712 396,725 Z"/><circle cx="395" cy="701" r="4.9"/><path d="M383,719 Q395,708 407,719 Z"/><circle cx="406" cy="716" r="5.9"/><path d="M392,737 Q406,724 420,737 Z"/><circle cx="417" cy="716" r="4.6"/><path d="M406,732 Q417,722 428,732 Z"/><circle cx="430" cy="704" r="5.3"/><path d="M417,723 Q430,711 443,723 Z"/><circle cx="444" cy="707" r="6.2"/><path d="M429,729 Q444,715 458,729 Z"/><circle cx="456" cy="715" r="4.6"/><path d="M445,731 Q456,721 467,731 Z"/><circle cx="466" cy="713" r="5.5"/><path d="M453,733 Q466,721 479,733 Z"/><circle cx="477" cy="715" r="6.0"/><path d="M463,737 Q477,723 491,737 Z"/><circle cx="491" cy="702" r="6.1"/><path d="M476,724 Q491,710 505,724 Z"/><circle cx="503" cy="714" r="4.8"/><path d="M492,731 Q503,720 515,731 Z"/><circle cx="515" cy="716" r="5.4"/><path d="M502,735 Q515,723 528,735 Z"/><circle cx="530" cy="707" r="6.5"/><path d="M515,730 Q530,716 546,730 Z"/><circle cx="543" cy="708" r="6.0"/><path d="M529,729 Q543,715 558,729 Z"/><circle cx="555" cy="702" r="5.3"/><path d="M542,721 Q555,709 568,721 Z"/><circle cx="567" cy="715" r="6.5"/><path d="M552,739 Q567,724 583,739 Z"/><circle cx="581" cy="705" r="5.5"/><path d="M568,725 Q581,713 594,725 Z"/><circle cx="592" cy="713" r="5.0"/><path d="M579,731 Q592,719 604,731 Z"/><circle cx="607" cy="713" r="5.2"/><path d="M594,731 Q607,719 619,731 Z"/><circle cx="621" cy="711" r="5.9"/><path d="M607,732 Q621,718 636,732 Z"/><circle cx="636" cy="711" r="5.2"/><path d="M623,730 Q636,718 649,730 Z"/><circle cx="648" cy="712" r="5.5"/><path d="M635,732 Q648,719 661,732 Z"/><circle cx="662" cy="715" r="5.1"/><path d="M650,733 Q662,722 674,733 Z"/><circle cx="676" cy="700" r="5.7"/><path d="M662,721 Q676,708 689,721 Z"/><circle cx="689" cy="711" r="5.0"/><path d="M677,729 Q689,717 701,729 Z"/><circle cx="702" cy="710" r="6.1"/><path d="M687,732 Q702,718 716,732 Z"/><circle cx="717" cy="710" r="5.2"/><path d="M704,729 Q717,717 729,729 Z"/><circle cx="731" cy="706" r="6.2"/><path d="M716,728 Q731,714 746,728 Z"/><circle cx="746" cy="711" r="6.2"/><path d="M731,733 Q746,719 761,733 Z"/><circle cx="762" cy="708" r="6.4"/><path d="M747,731 Q762,717 777,731 Z"/><circle cx="775" cy="713" r="4.8"/><path d="M763,731 Q775,720 787,731 Z"/><circle cx="791" cy="711" r="5.5"/><path d="M778,731 Q791,718 804,731 Z"/><circle cx="805" cy="703" r="6.0"/><path d="M791,724 Q805,710 819,724 Z"/><circle cx="820" cy="711" r="5.7"/><path d="M806,731 Q820,718 833,731 Z"/><circle cx="832" cy="712" r="5.7"/><path d="M818,733 Q832,720 846,733 Z"/><circle cx="846" cy="700" r="5.9"/><path d="M832,722 Q846,708 860,722 Z"/><circle cx="857" cy="710" r="5.4"/><path d="M844,730 Q857,717 870,730 Z"/><circle cx="868" cy="710" r="5.9"/><path d="M854,731 Q868,718 882,731 Z"/><circle cx="879" cy="704" r="5.4"/><path d="M866,723 Q879,711 892,723 Z"/><circle cx="889" cy="705" r="4.8"/><path d="M877,722 Q889,711 900,722 Z"/><circle cx="900" cy="701" r="4.9"/><path d="M888,718 Q900,707 912,718 Z"/><circle cx="913" cy="710" r="5.3"/><path d="M900,729 Q913,717 925,729 Z"/><circle cx="926" cy="714" r="5.0"/><path d="M914,732 Q926,721 938,732 Z"/><circle cx="936" cy="704" r="5.3"/><path d="M924,724 Q936,711 949,724 Z"/><circle cx="949" cy="713" r="4.7"/><path d="M937,730 Q949,719 960,730 Z"/><circle cx="961" cy="710" r="4.6"/><path d="M950,726 Q961,716 972,726 Z"/><circle cx="972" cy="705" r="5.6"/><path d="M958,726 Q972,713 985,726 Z"/><circle cx="985" cy="713" r="6.4"/><path d="M970,736 Q985,721 1000,736 Z"/><circle cx="998" cy="710" r="6.1"/><path d="M983,732 Q998,718 1012,732 Z"/><circle cx="1010" cy="710" r="4.8"/><path d="M998,727 Q1010,716 1021,727 Z"/><circle cx="1023" cy="715" r="6.4"/><path d="M1008,739 Q1023,724 1039,739 Z"/><circle cx="1037" cy="714" r="5.2"/><path d="M1024,733 Q1037,721 1049,733 Z"/><circle cx="1047" cy="709" r="4.7"/><path d="M1036,726 Q1047,715 1058,726 Z"/><circle cx="1061" cy="710" r="4.8"/><path d="M1049,727 Q1061,716 1072,727 Z"/><circle cx="1076" cy="707" r="5.3"/><path d="M1063,726 Q1076,714 1089,726 Z"/><circle cx="1087" cy="716" r="5.1"/><path d="M1075,734 Q1087,722 1099,734 Z"/><circle cx="1100" cy="715" r="6.4"/><path d="M1084,738 Q1100,723 1115,738 Z"/><circle cx="1113" cy="716" r="5.0"/><path d="M1101,734 Q1113,722 1125,734 Z"/><circle cx="1126" cy="705" r="5.3"/><path d="M1113,724 Q1126,712 1139,724 Z"/><circle cx="1142" cy="705" r="5.5"/><path d="M1129,724 Q1142,712 1155,724 Z"/><circle cx="1155" cy="710" r="4.7"/><path d="M1143,727 Q1155,716 1166,727 Z"/><circle cx="1168" cy="713" r="5.1"/><path d="M1155,731 Q1168,719 1180,731 Z"/><circle cx="1182" cy="709" r="4.5"/><path d="M1172,725 Q1182,714 1193,725 Z"/><circle cx="1194" cy="713" r="6.4"/><path d="M1179,735 Q1194,721 1209,735 Z"/><circle cx="1206" cy="702" r="5.0"/><path d="M1194,721 Q1206,709 1218,721 Z"/><circle cx="1222" cy="710" r="5.1"/><path d="M1209,728 Q1222,716 1234,728 Z"/><circle cx="1234" cy="710" r="5.8"/><path d="M1220,731 Q1234,717 1248,731 Z"/><circle cx="1249" cy="712" r="4.7"/><path d="M1237,729 Q1249,718 1260,729 Z"/><circle cx="1261" cy="705" r="5.6"/><path d="M1247,725 Q1261,713 1274,725 Z"/><circle cx="1272" cy="707" r="5.6"/><path d="M1259,727 Q1272,715 1286,727 Z"/><circle cx="1285" cy="709" r="6.0"/><path d="M1270,731 Q1285,717 1299,731 Z"/><circle cx="1295" cy="707" r="5.0"/><path d="M1283,725 Q1295,714 1307,725 Z"/><circle cx="1310" cy="709" r="6.3"/><path d="M1295,731 Q1310,717 1325,731 Z"/><circle cx="1320" cy="707" r="6.1"/><path d="M1306,729 Q1320,715 1335,729 Z"/><circle cx="1334" cy="710" r="5.9"/><path d="M1320,731 Q1334,718 1348,731 Z"/><circle cx="1347" cy="706" r="6.3"/><path d="M1332,729 Q1347,714 1362,729 Z"/><circle cx="1359" cy="703" r="6.2"/><path d="M1344,725 Q1359,711 1374,725 Z"/><circle cx="1371" cy="701" r="6.2"/><path d="M1356,723 Q1371,709 1386,723 Z"/><circle cx="1386" cy="707" r="5.9"/><path d="M1372,728 Q1386,715 1400,728 Z"/><circle cx="1398" cy="715" r="6.1"/><path d="M1383,736 Q1398,722 1412,736 Z"/><circle cx="1408" cy="709" r="5.5"/><path d="M1395,728 Q1408,716 1422,728 Z"/><circle cx="1421" cy="702" r="5.2"/><path d="M1409,721 Q1421,709 1434,721 Z"/><circle cx="1435" cy="701" r="6.1"/><path d="M1420,723 Q1435,709 1450,723 Z"/><circle cx="1446" cy="713" r="6.1"/><path d="M1432,735 Q1446,721 1461,735 Z"/><circle cx="1460" cy="712" r="4.6"/><path d="M1449,728 Q1460,717 1471,728 Z"/><circle cx="1476" cy="711" r="6.5"/><path d="M1461,735 Q1476,720 1492,735 Z"/><circle cx="1486" cy="704" r="6.2"/><path d="M1472,726 Q1486,712 1501,726 Z"/><circle cx="1500" cy="711" r="6.4"/><path d="M1485,734 Q1500,720 1516,734 Z"/><circle cx="1511" cy="715" r="5.1"/><path d="M1499,733 Q1511,721 1523,733 Z"/><circle cx="1522" cy="707" r="5.7"/><path d="M1508,727 Q1522,714 1536,727 Z"/><circle cx="1533" cy="701" r="5.7"/><path d="M1519,721 Q1533,708 1547,721 Z"/><circle cx="1544" cy="701" r="5.3"/><path d="M1531,720 Q1544,708 1556,720 Z"/><circle cx="1554" cy="712" r="5.7"/><path d="M1540,732 Q1554,719 1568,732 Z"/><circle cx="1569" cy="707" r="4.8"/><path d="M1558,724 Q1569,713 1581,724 Z"/><circle cx="1581" cy="708" r="5.7"/><path d="M1568,728 Q1581,715 1595,728 Z"/><circle cx="1597" cy="701" r="5.2"/><path d="M1584,720 Q1597,708 1609,720 Z"/><circle cx="1611" cy="710" r="4.8"/><path d="M1599,727 Q1611,716 1623,727 Z"/><rect x="0" y="724" width="1600" height="60"/></g>
+<rect width="1600" height="760" fill="#0a1230"/>
+<g filter="url(#fl-wave)" opacity=".92"><g transform="translate(-40 -30) scale(1.05 1.08)"><rect x="0" y="0.00" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="58.46" width="1600" height="59.06" fill="#f6f1e4"/><rect x="0" y="116.92" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="175.38" width="1600" height="59.06" fill="#f6f1e4"/><rect x="0" y="233.85" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="292.31" width="1600" height="59.06" fill="#f6f1e4"/><rect x="0" y="350.77" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="409.23" width="1600" height="59.06" fill="#f6f1e4"/><rect x="0" y="467.69" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="526.15" width="1600" height="59.06" fill="#f6f1e4"/><rect x="0" y="584.62" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="643.08" width="1600" height="59.06" fill="#f6f1e4"/><rect x="0" y="701.54" width="1600" height="59.06" fill="#b22234"/><rect x="0" y="0" width="680" height="409.23" fill="#2c3a86"/><g fill="#f6f1e4"><polygon points="56.7,25.9 60.3,35.9 70.9,36.3 62.6,42.8 65.5,53.1 56.7,47.1 47.8,53.1 50.8,42.8 42.4,36.3 53.0,35.9"/><polygon points="170.0,25.9 173.6,35.9 184.3,36.3 175.9,42.8 178.8,53.1 170.0,47.1 161.2,53.1 164.1,42.8 155.7,36.3 166.4,35.9"/><polygon points="283.3,25.9 287.0,35.9 297.6,36.3 289.2,42.8 292.2,53.1 283.3,47.1 274.5,53.1 277.4,42.8 269.1,36.3 279.7,35.9"/><polygon points="396.7,25.9 400.3,35.9 410.9,36.3 402.6,42.8 405.5,53.1 396.7,47.1 387.8,53.1 390.8,42.8 382.4,36.3 393.0,35.9"/><polygon points="510.0,25.9 513.6,35.9 524.3,36.3 515.9,42.8 518.8,53.1 510.0,47.1 501.2,53.1 504.1,42.8 495.7,36.3 506.4,35.9"/><polygon points="623.3,25.9 627.0,35.9 637.6,36.3 629.2,42.8 632.2,53.1 623.3,47.1 614.5,53.1 617.4,42.8 609.1,36.3 619.7,35.9"/><polygon points="113.3,66.8 117.0,76.8 127.6,77.2 119.2,83.8 122.2,94.0 113.3,88.0 104.5,94.0 107.4,83.8 99.1,77.2 109.7,76.8"/><polygon points="226.7,66.8 230.3,76.8 240.9,77.2 232.6,83.8 235.5,94.0 226.7,88.0 217.8,94.0 220.8,83.8 212.4,77.2 223.0,76.8"/><polygon points="340.0,66.8 343.6,76.8 354.3,77.2 345.9,83.8 348.8,94.0 340.0,88.0 331.2,94.0 334.1,83.8 325.7,77.2 336.4,76.8"/><polygon points="453.3,66.8 457.0,76.8 467.6,77.2 459.2,83.8 462.2,94.0 453.3,88.0 444.5,94.0 447.4,83.8 439.1,77.2 449.7,76.8"/><polygon points="566.7,66.8 570.3,76.8 580.9,77.2 572.6,83.8 575.5,94.0 566.7,88.0 557.8,94.0 560.8,83.8 552.4,77.2 563.0,76.8"/><polygon points="56.7,107.8 60.3,117.8 70.9,118.1 62.6,124.7 65.5,134.9 56.7,129.0 47.8,134.9 50.8,124.7 42.4,118.1 53.0,117.8"/><polygon points="170.0,107.8 173.6,117.8 184.3,118.1 175.9,124.7 178.8,134.9 170.0,129.0 161.2,134.9 164.1,124.7 155.7,118.1 166.4,117.8"/><polygon points="283.3,107.8 287.0,117.8 297.6,118.1 289.2,124.7 292.2,134.9 283.3,129.0 274.5,134.9 277.4,124.7 269.1,118.1 279.7,117.8"/><polygon points="396.7,107.8 400.3,117.8 410.9,118.1 402.6,124.7 405.5,134.9 396.7,129.0 387.8,134.9 390.8,124.7 382.4,118.1 393.0,117.8"/><polygon points="510.0,107.8 513.6,117.8 524.3,118.1 515.9,124.7 518.8,134.9 510.0,129.0 501.2,134.9 504.1,124.7 495.7,118.1 506.4,117.8"/><polygon points="623.3,107.8 627.0,117.8 637.6,118.1 629.2,124.7 632.2,134.9 623.3,129.0 614.5,134.9 617.4,124.7 609.1,118.1 619.7,117.8"/><polygon points="113.3,148.7 117.0,158.7 127.6,159.1 119.2,165.6 122.2,175.8 113.3,169.9 104.5,175.8 107.4,165.6 99.1,159.1 109.7,158.7"/><polygon points="226.7,148.7 230.3,158.7 240.9,159.1 232.6,165.6 235.5,175.8 226.7,169.9 217.8,175.8 220.8,165.6 212.4,159.1 223.0,158.7"/><polygon points="340.0,148.7 343.6,158.7 354.3,159.1 345.9,165.6 348.8,175.8 340.0,169.9 331.2,175.8 334.1,165.6 325.7,159.1 336.4,158.7"/><polygon points="453.3,148.7 457.0,158.7 467.6,159.1 459.2,165.6 462.2,175.8 453.3,169.9 444.5,175.8 447.4,165.6 439.1,159.1 449.7,158.7"/><polygon points="566.7,148.7 570.3,158.7 580.9,159.1 572.6,165.6 575.5,175.8 566.7,169.9 557.8,175.8 560.8,165.6 552.4,159.1 563.0,158.7"/><polygon points="56.7,189.6 60.3,199.6 70.9,200.0 62.6,206.5 65.5,216.8 56.7,210.8 47.8,216.8 50.8,206.5 42.4,200.0 53.0,199.6"/><polygon points="170.0,189.6 173.6,199.6 184.3,200.0 175.9,206.5 178.8,216.8 170.0,210.8 161.2,216.8 164.1,206.5 155.7,200.0 166.4,199.6"/><polygon points="283.3,189.6 287.0,199.6 297.6,200.0 289.2,206.5 292.2,216.8 283.3,210.8 274.5,216.8 277.4,206.5 269.1,200.0 279.7,199.6"/><polygon points="396.7,189.6 400.3,199.6 410.9,200.0 402.6,206.5 405.5,216.8 396.7,210.8 387.8,216.8 390.8,206.5 382.4,200.0 393.0,199.6"/><polygon points="510.0,189.6 513.6,199.6 524.3,200.0 515.9,206.5 518.8,216.8 510.0,210.8 501.2,216.8 504.1,206.5 495.7,200.0 506.4,199.6"/><polygon points="623.3,189.6 627.0,199.6 637.6,200.0 629.2,206.5 632.2,216.8 623.3,210.8 614.5,216.8 617.4,206.5 609.1,200.0 619.7,199.6"/><polygon points="113.3,230.5 117.0,240.5 127.6,240.9 119.2,247.5 122.2,257.7 113.3,251.7 104.5,257.7 107.4,247.5 99.1,240.9 109.7,240.5"/><polygon points="226.7,230.5 230.3,240.5 240.9,240.9 232.6,247.5 235.5,257.7 226.7,251.7 217.8,257.7 220.8,247.5 212.4,240.9 223.0,240.5"/><polygon points="340.0,230.5 343.6,240.5 354.3,240.9 345.9,247.5 348.8,257.7 340.0,251.7 331.2,257.7 334.1,247.5 325.7,240.9 336.4,240.5"/><polygon points="453.3,230.5 457.0,240.5 467.6,240.9 459.2,247.5 462.2,257.7 453.3,251.7 444.5,257.7 447.4,247.5 439.1,240.9 449.7,240.5"/><polygon points="566.7,230.5 570.3,240.5 580.9,240.9 572.6,247.5 575.5,257.7 566.7,251.7 557.8,257.7 560.8,247.5 552.4,240.9 563.0,240.5"/><polygon points="56.7,271.5 60.3,281.4 70.9,281.8 62.6,288.4 65.5,298.6 56.7,292.7 47.8,298.6 50.8,288.4 42.4,281.8 53.0,281.4"/><polygon points="170.0,271.5 173.6,281.4 184.3,281.8 175.9,288.4 178.8,298.6 170.0,292.7 161.2,298.6 164.1,288.4 155.7,281.8 166.4,281.4"/><polygon points="283.3,271.5 287.0,281.4 297.6,281.8 289.2,288.4 292.2,298.6 283.3,292.7 274.5,298.6 277.4,288.4 269.1,281.8 279.7,281.4"/><polygon points="396.7,271.5 400.3,281.4 410.9,281.8 402.6,288.4 405.5,298.6 396.7,292.7 387.8,298.6 390.8,288.4 382.4,281.8 393.0,281.4"/><polygon points="510.0,271.5 513.6,281.4 524.3,281.8 515.9,288.4 518.8,298.6 510.0,292.7 501.2,298.6 504.1,288.4 495.7,281.8 506.4,281.4"/><polygon points="623.3,271.5 627.0,281.4 637.6,281.8 629.2,288.4 632.2,298.6 623.3,292.7 614.5,298.6 617.4,288.4 609.1,281.8 619.7,281.4"/><polygon points="113.3,312.4 117.0,322.4 127.6,322.7 119.2,329.3 122.2,339.5 113.3,333.6 104.5,339.5 107.4,329.3 99.1,322.7 109.7,322.4"/><polygon points="226.7,312.4 230.3,322.4 240.9,322.7 232.6,329.3 235.5,339.5 226.7,333.6 217.8,339.5 220.8,329.3 212.4,322.7 223.0,322.4"/><polygon points="340.0,312.4 343.6,322.4 354.3,322.7 345.9,329.3 348.8,339.5 340.0,333.6 331.2,339.5 334.1,329.3 325.7,322.7 336.4,322.4"/><polygon points="453.3,312.4 457.0,322.4 467.6,322.7 459.2,329.3 462.2,339.5 453.3,333.6 444.5,339.5 447.4,329.3 439.1,322.7 449.7,322.4"/><polygon points="566.7,312.4 570.3,322.4 580.9,322.7 572.6,329.3 575.5,339.5 566.7,333.6 557.8,339.5 560.8,329.3 552.4,322.7 563.0,322.4"/><polygon points="56.7,353.3 60.3,363.3 70.9,363.7 62.6,370.2 65.5,380.4 56.7,374.5 47.8,380.4 50.8,370.2 42.4,363.7 53.0,363.3"/><polygon points="170.0,353.3 173.6,363.3 184.3,363.7 175.9,370.2 178.8,380.4 170.0,374.5 161.2,380.4 164.1,370.2 155.7,363.7 166.4,363.3"/><polygon points="283.3,353.3 287.0,363.3 297.6,363.7 289.2,370.2 292.2,380.4 283.3,374.5 274.5,380.4 277.4,370.2 269.1,363.7 279.7,363.3"/><polygon points="396.7,353.3 400.3,363.3 410.9,363.7 402.6,370.2 405.5,380.4 396.7,374.5 387.8,380.4 390.8,370.2 382.4,363.7 393.0,363.3"/><polygon points="510.0,353.3 513.6,363.3 524.3,363.7 515.9,370.2 518.8,380.4 510.0,374.5 501.2,380.4 504.1,370.2 495.7,363.7 506.4,363.3"/><polygon points="623.3,353.3 627.0,363.3 637.6,363.7 629.2,370.2 632.2,380.4 623.3,374.5 614.5,380.4 617.4,370.2 609.1,363.7 619.7,363.3"/></g><rect width="1600" height="760" fill="url(#fl-fold)"/></g></g>
+<rect width="1600" height="760" fill="url(#fl-vig)"/>
 </svg>
     <div class="stage-title"><small>In memory of</small><b>Charlie Kirk</b><small>October 14, 1993 – September 10, 2025</small></div>
     <div class="ctx" id="ctx" aria-live="polite"></div>
@@ -461,10 +472,16 @@
       <div class="axis" id="axis"></div>
       <div class="compare" id="compare"></div>
     </section>
+    <section id="list-root" class="listv" aria-label="List of entries"></section>
+    <section id="web-root" class="webv" aria-label="Web of entries">
+      <div class="wbar"><span>Every entry hangs on the web by its category and by how close it is to the moment of the shot. Drag to turn it, scroll or pinch to zoom, tap a dewdrop to open it.</span><button type="button" id="web-pop">Pop out</button></div>
+      <div class="webbox" id="webbox"><canvas id="webcv"></canvas><button type="button" class="wclose" id="web-close">Close ×</button><div class="winfo" id="winfo"></div></div>
+    </section>
     <div id="tip" class="tip" hidden role="dialog" aria-label="Clip details"></div>
 
     <div id="timeline-root"></div>
     <div id="empty" class="empty-state" hidden>No entries match this filter.</div>
+    <div class="freedom" aria-hidden="true">FREEDOM</div>
     <p class="disc">All views expressed in these videos are those of their creators. Entries link to the original source and do not endorse the claims made in them.</p>
     </div>
 
@@ -567,7 +584,7 @@
 
   function filteredEntries() {
     return ENTRIES.filter(function (e) {
-      if (state.tab !== "all" && state.tab !== "map" && e.mediaType !== state.tab) return false;
+      if (state.tab !== "all" && state.tab !== "map" && state.tab !== "list" && state.tab !== "web" && e.mediaType !== state.tab) return false;
       if (!state.activeCats.has(e.category)) return false;
       if (state.query) {
         var hay = (e.title + " " + e.description + " " + e.sourceName).toLowerCase();
@@ -578,7 +595,7 @@
   }
 
   function renderTimeline() {
-    if (state.tab === "map") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; return; }
+    if (state.tab === "map" || state.tab === "list" || state.tab === "web") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
     var list = filteredEntries();
     var root = document.getElementById("timeline-root");
     var empty = document.getElementById("empty");
@@ -865,6 +882,120 @@
     var ox = 0, n = best; while (n && n !== tl) { ox += n.offsetLeft; n = n.offsetParent; }
     tl.scrollLeft = ox + best.offsetWidth / 2 - tl.clientWidth / 2;
   }
+
+  // ---------- list view ----------
+  function renderList() {
+    var root = document.getElementById("list-root"), list = filteredEntries().slice().sort(function (a, b) { return a.timestamp.localeCompare(b.timestamp); });
+    root.innerHTML = "";
+    if (!list.length) { document.getElementById("empty").hidden = false; return; }
+    list.forEach(function (e) {
+      var r = document.createElement("div"); r.className = "lrow";
+      var c = CATEGORIES[e.category] || CATEGORIES.milestone;
+      r.innerHTML = '<span class="ldot" style="background:var(' + c.varName + ',#f3e9d2)"></span><span class="lt">' + escapeHtml(e.date + (e.time ? " · " + e.time : "")) + '</span><span class="lh"><a href="' + escapeHtml(e.sourceUrl || e.archiveUrl || "#") + '" target="_blank" rel="noopener">' + escapeHtml(e.title) + '</a><small>' + escapeHtml(c.label + " · " + (e.sourceName || "")) + '</small></span>';
+      root.appendChild(r);
+    });
+  }
+
+  // ---------- spiderweb view (3D) ----------
+  var webSt = { raf: 0, yaw: 0.0, pitch: 0.95, zoom: 1, nodes: [], sel: null, drag: null, last: 0, auto: true, t: 0 };
+  function stopWeb() { if (webSt.raf) { cancelAnimationFrame(webSt.raf); webSt.raf = 0; } }
+  function webCol(e) { var c = CATEGORIES[e.category] || CATEGORIES.milestone, v = getComputedStyle(document.documentElement).getPropertyValue(c.varName).trim(); return v || "#f6c97e"; }
+  function renderWeb() {
+    var cats = Object.keys(CATEGORIES), list = filteredEntries(), shot = Date.parse("2025-09-10T18:23:30Z");
+    var spokes = 12, perCat = spokes / cats.length;
+    var cnt = {};
+    webSt.nodes = list.map(function (e, i) {
+      var ci = Math.max(0, cats.indexOf(e.category)), k = (cnt[ci] = (cnt[ci] || 0) + 1);
+      var dt = Math.abs(Date.parse(e.timestamp) - shot) / 3600000;   // hours from the shot
+      var rr = 70 + Math.min(1, Math.log(1 + dt) / Math.log(1 + 24 * 60)) * 330;
+      var ang = (ci * perCat + (k % perCat)) / spokes * Math.PI * 2 + ((k % 3) - 1) * 0.04;
+      return { e: e, x: Math.cos(ang) * rr, y: Math.sin(ang) * rr, z: 0, col: webCol(e), r: e.mediaType === "milestone" ? 7 : 5 };
+    });
+    webSt.spokes = spokes; webSt.sel = null; document.getElementById("winfo").classList.remove("on");
+    startWeb();
+  }
+  function startWeb() {
+    stopWeb();
+    var box = document.getElementById("webbox"), cv = document.getElementById("webcv"), ctx = cv.getContext("2d"), info = document.getElementById("winfo");
+    function size() { var r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1; cv.width = Math.max(10, r.width * d); cv.height = Math.max(10, r.height * d); return { w: r.width, h: r.height, d: d }; }
+    var S = size();
+    function sag(x, y, t) { return Math.sin(x * 0.012 + t * 0.9) * 7 + Math.cos(y * 0.011 + t * 0.7) * 7; }
+    function proj(x, y, z) {
+      var cy = Math.cos(webSt.yaw), sy = Math.sin(webSt.yaw), cp = Math.cos(webSt.pitch), sp = Math.sin(webSt.pitch);
+      var x1 = x * cy - y * sy, y1 = x * sy + y * cy, z1 = z;
+      var y2 = y1 * cp - z1 * sp, z2 = y1 * sp + z1 * cp;
+      var f = 900 / (900 + z2 + 0), sc = f * webSt.zoom * Math.min(S.w, S.h) / 900 * 1.0;
+      return { x: S.w / 2 + x1 * sc, y: S.h / 2 + y2 * sc, s: sc, z: z2 };
+    }
+    function P(x, y) { return proj(x, y, sag(x, y, webSt.t)); }
+    function frame(ts) {
+      webSt.raf = requestAnimationFrame(frame);
+      var dt = webSt.last ? Math.min(0.05, (ts - webSt.last) / 1000) : 0; webSt.last = ts; webSt.t += dt;
+      if (webSt.auto && !webSt.drag) webSt.yaw += dt * 0.07;
+      if (cv.clientWidth !== S.w || cv.clientHeight !== S.h) S = size();
+      ctx.setTransform(S.d, 0, 0, S.d, 0, 0); ctx.clearRect(0, 0, S.w, S.h);
+      var N = webSt.spokes, rings = [60, 110, 170, 240, 320, 410], i, j;
+      ctx.lineCap = "round";
+      // spokes
+      ctx.strokeStyle = "rgba(235,238,255,.55)"; ctx.lineWidth = 1.2;
+      for (i = 0; i < N; i++) { var a = i / N * Math.PI * 2; ctx.beginPath(); for (j = 0; j <= 16; j++) { var r = j / 16 * 430, q = P(Math.cos(a) * r, Math.sin(a) * r); if (j) ctx.lineTo(q.x, q.y); else ctx.moveTo(q.x, q.y); } ctx.stroke(); }
+      // capture-thread rings with sag between spokes
+      ctx.strokeStyle = "rgba(235,238,255,.34)"; ctx.lineWidth = 0.9;
+      rings.forEach(function (R) {
+        ctx.beginPath();
+        for (i = 0; i < N; i++) {
+          var a0 = i / N * Math.PI * 2, a1 = (i + 1) / N * Math.PI * 2;
+          for (j = 0; j <= 8; j++) {
+            var u = j / 8, aa = a0 + (a1 - a0) * u, rr = R * (1 - 0.07 * Math.sin(u * Math.PI)), q = P(Math.cos(aa) * rr, Math.sin(aa) * rr);
+            if (!i && !j) ctx.moveTo(q.x, q.y); else ctx.lineTo(q.x, q.y);
+          }
+        }
+        ctx.stroke();
+      });
+      // hub
+      var h = P(0, 0); ctx.fillStyle = "rgba(246,201,126,.95)"; ctx.beginPath(); ctx.arc(h.x, h.y, 6 * h.s + 2, 0, 7); ctx.fill();
+      ctx.fillStyle = "rgba(243,233,210,.8)"; ctx.font = "11px 'IBM Plex Mono', monospace"; ctx.textAlign = "center"; ctx.fillText("the shot", h.x, h.y - 12);
+      // dewdrop nodes (with threads to the hub)
+      var pts = webSt.nodes.map(function (n) { var q = P(n.x, n.y); n.px = q.x; n.py = q.y; n.ps = q.s; n.pz = q.z; return n; }).sort(function (a, b) { return b.pz - a.pz; });
+      pts.forEach(function (n) {
+        var sel = webSt.sel === n;
+        ctx.strokeStyle = sel ? "rgba(246,201,126,.9)" : "rgba(235,238,255,.16)"; ctx.lineWidth = sel ? 1.6 : 0.7; ctx.beginPath(); ctx.moveTo(h.x, h.y); ctx.lineTo(n.px, n.py); ctx.stroke();
+      });
+      pts.slice().reverse().forEach(function (n) {
+        var rad = (n.r + (webSt.sel === n ? 3 : 0)) * Math.max(0.7, n.ps * 1.1);
+        var g = ctx.createRadialGradient(n.px - rad * .3, n.py - rad * .35, rad * .1, n.px, n.py, rad);
+        g.addColorStop(0, "#fff"); g.addColorStop(.35, n.col); g.addColorStop(1, "rgba(0,0,0,.55)");
+        ctx.fillStyle = g; ctx.shadowColor = n.col; ctx.shadowBlur = webSt.sel === n ? 18 : 8; ctx.beginPath(); ctx.arc(n.px, n.py, rad, 0, 7); ctx.fill(); ctx.shadowBlur = 0; n.hr = rad + 8;
+      });
+    }
+    webSt.last = 0; webSt.raf = requestAnimationFrame(frame);
+    function pick(cx, cy) { var r = cv.getBoundingClientRect(), x = cx - r.left, y = cy - r.top, best = null, bd = 1e9; webSt.nodes.forEach(function (n) { var d = Math.hypot(n.px - x, n.py - y); if (d < (n.hr || 12) + 6 && d < bd) { bd = d; best = n; } }); return best; }
+    function select(n) {
+      webSt.sel = n;
+      if (!n) { info.classList.remove("on"); return; }
+      var e = n.e; info.innerHTML = "<b>" + escapeHtml(e.title) + "</b>" + escapeHtml(e.date + (e.time ? " · " + e.time : "") + " · " + (e.sourceName || "")) + "<br>" + (e.description ? escapeHtml(e.description.slice(0, 200)) + (e.description.length > 200 ? "…" : "") + "<br>" : "") + '<a href="' + escapeHtml(e.sourceUrl || e.archiveUrl || "#") + '" target="_blank" rel="noopener">Open the source</a>';
+      info.classList.add("on");
+    }
+    var pts = {}, pinch = 0;
+    cv.onpointerdown = function (ev) { cv.setPointerCapture(ev.pointerId); pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; webSt.drag = { x: ev.clientX, y: ev.clientY, moved: 0 }; cv.style.cursor = "grabbing"; };
+    cv.onpointermove = function (ev) {
+      if (!pts[ev.pointerId]) return; var ids = Object.keys(pts);
+      if (ids.length >= 2) { pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y); if (pinch) webSt.zoom = Math.max(0.4, Math.min(4, webSt.zoom * d / pinch)); pinch = d; if (webSt.drag) webSt.drag.moved = 99; return; }
+      var dx = ev.clientX - webSt.drag.x, dy = ev.clientY - webSt.drag.y; webSt.drag.x = ev.clientX; webSt.drag.y = ev.clientY; webSt.drag.moved += Math.abs(dx) + Math.abs(dy);
+      webSt.yaw += dx * 0.008; webSt.pitch = Math.max(0.15, Math.min(1.5, webSt.pitch - dy * 0.006)); pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
+    };
+    cv.onpointerup = cv.onpointercancel = function (ev) { var moved = webSt.drag ? webSt.drag.moved : 99; delete pts[ev.pointerId]; pinch = 0; cv.style.cursor = "grab"; if (moved < 6 && Object.keys(pts).length === 0) select(pick(ev.clientX, ev.clientY)); webSt.drag = null; };
+    cv.onwheel = function (ev) { ev.preventDefault(); webSt.zoom = Math.max(0.4, Math.min(4, webSt.zoom * (ev.deltaY < 0 ? 1.1 : 0.9))); };
+    function setPop(on) {
+      box.classList.toggle("pop", on); document.documentElement.style.overflow = on ? "hidden" : "";
+      try { if (on && box.requestFullscreen) box.requestFullscreen().catch(function () {}); else if (!on && document.fullscreenElement) document.exitFullscreen(); } catch (er) {}
+      if (on && window.matchMedia && matchMedia("(pointer: coarse)").matches && screen.orientation && screen.orientation.lock) { try { screen.orientation.lock("landscape").catch(function () {}); } catch (er) {} }
+    }
+    document.getElementById("web-pop").onclick = function () { setPop(!box.classList.contains("pop")); };
+    document.getElementById("web-close").onclick = function () { setPop(false); };
+    if (!box._esc) { box._esc = true; document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && box.classList.contains("pop")) { box.classList.remove("pop"); document.documentElement.style.overflow = ""; } }); document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && box.classList.contains("pop")) { box.classList.remove("pop"); document.documentElement.style.overflow = ""; } }); }
+  }
+
   function applyTab() {
     var isMap = state.tab === "map";
     document.getElementById("map-root").hidden = !isMap;
@@ -872,7 +1003,10 @@
     var sr = document.querySelector(".search"); if (sr) sr.parentNode.hidden = isMap;
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
-    if (isMap) renderMap(); else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
+    lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
+    if (state.tab !== "web") stopWeb();
+    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
@@ -939,7 +1073,7 @@
   var DEBATE = "aPOyk1i2LOc";
   var SEGS = [ [167, 347, "Andrew Wilson, opening statement"], [568, 748, "Candace Owens, opening statement"], [821, 970, "Opening questions: the shot and the trajectory"], [1222, 1402, "Cross-examination: debris, fingerprints and DNA"], [1708, 1888, "Preliminary hearing and the hearsay rule dispute"], [3346, 3526, "The text messages"], [3842, 4022, "Sources and the charging document"] ];
   var stage = document.querySelector(".stage"), bgBox = document.getElementById("bgv-box"), bgNow = document.getElementById("bgnow"), bgPlayBtn = document.getElementById("bg-play"), bgSoundBtn = document.getElementById("bg-sound"), bgHideBtn = document.getElementById("bg-hide");
-  var yt = null, ytReady = false, segI = 0, bgState = { stopped: false, hidden: false, muted: true, visible: true };
+  var yt = null, ytReady = false, segI = 4, bgState = { stopped: false, hidden: false, muted: true, visible: true };
   var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   function bgLabel() { if (bgNow) bgNow.innerHTML = bgState.stopped ? "" : "Background: Candace Owens vs. Andrew Wilson, highlights (" + (segI + 1) + " of " + SEGS.length + "): " + escapeHtml(SEGS[segI][2]) + ". <a href=\"https://www.youtube.com/watch?v=" + DEBATE + "&t=" + SEGS[segI][0] + "s\" target=\"_blank\" rel=\"noopener\" style=\"color:inherit\">Watch the full debate</a>"; }
   function playSeg() { if (!yt || !ytReady) return; yt.loadVideoById({ videoId: DEBATE, startSeconds: SEGS[segI][0], endSeconds: SEGS[segI][1] }); bgLabel(); }
