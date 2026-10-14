@@ -1,4 +1,4 @@
-/* Kraving Killer game 2: Wagon Run.
+/* Kraving Killer game 2: Don't Fall Off the Wagon.
    A little red wagon rolls over endless hills. Hold = dive into the slope, let go = launch off the next crest.
    Stay on the wagon. It starts calm (about 2.5 minutes of easy rolling, long enough to ride out a craving),
    then slowly gets steeper, shorter and rockier. Falling off just lets you climb back on. */

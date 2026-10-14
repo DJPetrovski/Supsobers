@@ -1605,7 +1605,7 @@ html.gs-open { overflow: hidden; }
 .hole-phone.near .pillfig-grain, .pill-pop-card .pillfig-grain { display: none; }
 .pillfig-img { image-rendering: auto; }
 
-/* ---------- Kraving Killer: game tabs + Wagon Run ---------- */
+/* ---------- Kraving Killer: game tabs + Don't Fall Off the Wagon ---------- */
 .cv-tabs { display: flex; gap: 8px; justify-content: center; margin: 4px auto 16px; flex-wrap: wrap; }
 .cv-tabs button { padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: #140609; color: var(--bone); font: inherit; font-weight: 700; letter-spacing: .06em; cursor: pointer; }
 .cv-tabs button.on { background: linear-gradient(#ff4a55, #a30010); border-color: #000; color: #fff; box-shadow: 0 0 16px rgba(255, 42, 53, .55); }
