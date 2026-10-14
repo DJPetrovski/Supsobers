@@ -445,9 +445,9 @@
     if (f._honey.value) return;
     if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !msg) { st.textContent = 'Fill in your name, a valid email and a message.'; st.className = 'lp-status bad'; return; }
     btn.disabled = true; st.className = 'lp-status'; st.textContent = 'Sending...';
-    fetch('https://formsubmit.co/ajax/' + to, {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, subject: subj, message: msg, _subject: 'supsobers.com: ' + subj, _replyto: email, _captcha: 'false', _template: 'table' })
+      body: JSON.stringify({ access_key: '6509a0cb-4051-4651-96eb-2f21a62cd916', subject: 'supsobers.com: ' + subj, from_name: name, name: name, email: email, replyto: email, message: msg })
     }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === 'false' || j.success === false) throw new Error('x'); }); })
       .then(function () { st.className = 'lp-status ok'; st.textContent = 'Sent. Thank you, I will get back to you.'; form.reset(); })
       .catch(function () {

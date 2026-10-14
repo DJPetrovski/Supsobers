@@ -962,8 +962,8 @@
       var link = f.link.value.trim(), about = f.about.value.trim(), when = f.when.value.trim(), who = f.who.value.trim(), email = f.email.value.trim();
       if (!/^https?:\/\/\S+\.\S+/.test(link) || !about) { st.textContent = "Add the video link and a line about what it shows."; st.className = "form-msg error"; return; }
       btn.disabled = true; st.className = "form-msg"; st.textContent = "Sending...";
-      fetch("https://formsubmit.co/ajax/" + TO, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ video_link: link, what_it_shows: about, when_filmed: when, name: who || "(not given)", email: email || "(not given)", _subject: "September 10 Archive submission", _captcha: "false", _template: "table", _replyto: email || undefined }) })
+      fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ access_key: "6509a0cb-4051-4651-96eb-2f21a62cd916", subject: "September 10 Archive submission", from_name: who || "(not given)", replyto: email || undefined, video_link: link, what_it_shows: about, when_filmed: when, name: who || "(not given)", email: email || "(not given)" }) })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === "false" || j.success === false) throw new Error("x"); }); })
         .then(function () { st.className = "form-msg"; st.textContent = "Sent. Thank you. Submissions are reviewed before anything is added."; form.reset(); })
         .catch(function () { st.className = "form-msg error"; st.innerHTML = "Could not send from here. Email the link to <b>" + TO + "</b> instead."; })
