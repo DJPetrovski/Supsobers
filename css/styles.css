@@ -877,3 +877,9 @@ html.is-sucking .top, html.is-sucking .foot, html.is-sucking .remote, html.is-su
 
 .pillbtn { outline: none; }
 .pillbtn:focus-visible .cap { box-shadow: 0 0 0 3px #fff, 0 0 30px currentColor; }
+
+/* TV channels */
+.htv-yt { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; border: 0; background: #000; pointer-events: none; }
+.htv-yt[hidden] { display: none; }
+.htv-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+#htv-now { max-width: 62vw; }

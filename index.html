@@ -55,6 +55,7 @@
               <div class="tv-frame">
                 <div class="tv-screen htv-screen" id="htv-screen">
                   <video class="htv-video" id="htv-video" src="media/trailer.mp4" muted playsinline preload="auto" aria-label="Sup Sobers trailer"></video>
+                  <iframe class="htv-yt" id="htv-yt" title="Sobering Stories playing on the TV" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" hidden></iframe>
                   <div class="htv-preview" id="htv-preview" aria-live="polite"></div>
                   <div class="tv-static" aria-hidden="true"></div>
                   <div class="tv-roll" aria-hidden="true"></div>
@@ -71,7 +72,11 @@
             </div>
             <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
           </div>
-          <button type="button" class="pill htv-sound" id="htv-sound" aria-pressed="false">Sound off</button>
+          <div class="htv-bar">
+            <button type="button" class="pill htv-sound" id="htv-sound" aria-pressed="false">Sound off</button>
+            <button type="button" class="pill htv-sound" id="htv-next" hidden>Change channel</button>
+            <button type="button" class="pill htv-sound" id="htv-now" hidden>Watch this one</button>
+          </div>
         </div>
         <div class="remote" id="remote">
           <div class="remote-top"><i class="remote-led" aria-hidden="true"></i><span>Sup Sobers</span></div>

@@ -92,20 +92,56 @@
     };
   }
 
-  // Trailer: a glitchy, searching screen for ~5.5 seconds, then the picture comes in (muted: browsers insist; Sound turns it up).
-  var introT = 0, SEARCH_MS = 5500, started = false;
+  // The TV: a glitchy, searching screen for ~5.5 seconds, then the trailer. When the trailer ends it
+  // drops into the middle of a random Sobering Stories video and changes channel every 3 minutes.
+  var introT = 0, SEARCH_MS = 5500, CHANNEL_MS = 180000, started = false, soundOn = false, chanT = 0, onTrailer = true, cur = null;
+  var yt = document.getElementById('htv-yt'), nowBtn = document.getElementById('htv-now'), nextBtn = document.getElementById('htv-next');
   function duck(level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'trailer', level: level } })); }
-  function setSound(on) {
-    video.muted = !on;
-    soundBtn.textContent = on ? 'Sound on' : 'Sound off';
-    soundBtn.setAttribute('aria-pressed', String(on));
-    duck(on && started ? 0 : null);
-    if (on && started && video.paused) video.play().catch(function () {});
+  function ytCmd(fn) { try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: [] }), '*'); } catch (e) {} }
+  function applySound() {
+    video.muted = !soundOn;
+    if (!yt.hidden) ytCmd(soundOn ? 'unMute' : 'mute');
+    soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
+    soundBtn.setAttribute('aria-pressed', String(soundOn));
+    duck(soundOn && started ? 0 : null);
   }
-  soundBtn.addEventListener('click', function () { setSound(video.muted); });
+  function setSound(on) { soundOn = !!on; applySound(); if (on && onTrailer && started && video.paused) video.play().catch(function () {}); }
+  soundBtn.addEventListener('click', function () { setSound(!soundOn); });
+
+  var seen = [];
+  function pickRandom() {
+    var all = (window.SS && SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || '') && (v.seconds || 0) >= 1800; });
+    if (!all.length) return null;
+    var fresh = all.filter(function (v) { return seen.indexOf(v.id) < 0; });
+    if (!fresh.length) { seen = seen.slice(-1); fresh = all.filter(function (v) { return seen.indexOf(v.id) < 0; }); }
+    var v = fresh[Math.floor(Math.random() * fresh.length)];
+    seen.push(v.id);
+    return v;
+  }
+  function channel() {
+    clearTimeout(chanT);
+    var v = pickRandom();
+    if (!v) { document.addEventListener('ss:videos', function once() { document.removeEventListener('ss:videos', once); if (onHome && !onTrailer) channel(); }); return; }
+    cur = v;
+    var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
+    screen.classList.add('tuning');
+    yt.hidden = false;
+    yt.onload = function () { setTimeout(function () { applySound(); screen.classList.remove('tuning'); }, 900); };
+    yt.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&start=' + start;
+    nowBtn.hidden = nextBtn.hidden = false;
+    nowBtn.title = v.title || '';
+    nowBtn.textContent = 'Watch this one';
+    chanT = setTimeout(channel, CHANNEL_MS);
+  }
+  function stopChannels() { clearTimeout(chanT); yt.onload = null; yt.src = 'about:blank'; yt.hidden = true; nowBtn.hidden = nextBtn.hidden = true; cur = null; }
+  nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
+  nextBtn.addEventListener('click', channel);
+  document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
+  document.addEventListener('ss:playerclosed', function () { if (onHome && !yt.hidden) ytCmd('playVideo'); });
 
   function searching() {
-    clearTimeout(introT); started = false;
+    clearTimeout(introT); stopChannels(); started = false; onTrailer = true;
+    video.hidden = false;
     video.pause(); try { video.currentTime = 0; } catch (e) {}
     video.style.opacity = '0';
     screen.classList.add('tuning', 'htv-search');
@@ -113,15 +149,25 @@
       started = true;
       screen.classList.remove('tuning', 'htv-search');
       video.style.opacity = '';
-      if (onHome) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
-      if (!video.muted) duck(0);
+      if (onHome) { var p = video.play(); if (p && p.catch) p.catch(function () { toChannels(); }); }
+      applySound();
     }, reduce ? 800 : SEARCH_MS);
   }
-  video.addEventListener('ended', function () { duck(null); document.dispatchEvent(new Event('ss:pill')); });
+  function toChannels() {
+    if (!onHome || !onTrailer) return;
+    onTrailer = false;
+    video.pause(); video.style.opacity = '0';
+    channel();
+  }
+  video.addEventListener('ended', toChannels);
+  video.addEventListener('error', function () { if (started) toChannels(); });
   document.addEventListener('ss:route', function (e) {
     onHome = e.detail.name === 'home';
-    if (onHome) searching(); else { clearTimeout(introT); video.pause(); setSound(false); }
+    if (onHome) searching(); else { clearTimeout(introT); stopChannels(); video.pause(); setSound(false); }
   });
-  document.addEventListener('visibilitychange', function () { if (document.hidden) video.pause(); else if (onHome && started) video.play().catch(function () {}); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { video.pause(); if (!yt.hidden) ytCmd('pauseVideo'); }
+    else if (onHome && started) { if (onTrailer) video.play().catch(function () {}); else ytCmd('playVideo'); }
+  });
   searching();
 })();
