@@ -37,6 +37,13 @@
     });
     log.appendChild(w); log.scrollTop = log.scrollHeight;
   }
+  // suggested searches: the site's own storylines (Diddy, Epstein...), a random handful each time
+  function topicChips(n) {
+    var defs = ((window.SS && SS.topicDefs) || []).filter(function (d) { return d.match && d.match.length; });
+    if (!defs.length) return;
+    defs = defs.slice().sort(function () { return Math.random() - .5; }).slice(0, n || 6);
+    chips(defs.map(function (d) { var k = d.match[0]; return { label: d.name, run: function () { voiceTurn = false; handle('search ' + k); } }; }));
+  }
   function vrows(list) {
     var w = el('div', 'as-rows');
     list.slice(0, 5).forEach(function (v) {
@@ -64,8 +71,14 @@
     var reply = function (txt) { history.push({ role: 'assistant', content: txt }); return say(txt, v); };
     var now = window.SS && SS.now;
 
+    if (/\b(stop|pause|turn off|shut off|kill|mute|end|quit)\b.*\b(music|tunes|songs?|soundcloud|mix(es)?|player)\b|\b(music|tunes|soundcloud)\b.*\b(off|stop)\b/.test(t)) {
+      if (SS.closeMusic) SS.closeMusic(); reply('Music stopped.'); return;
+    }
+    if (/\b(suggest|suggestions|ideas?|what should i (search|watch|look)|what can i search|search terms?|topics?|where (do|should) i start)\b/.test(t)) {
+      reply('Tap one to search the videos:'); topicChips(8); return;
+    }
     if (/^(help|what can you do|what can i say|commands)\b/.test(t)) {
-      reply('Try: "play something random", "show me the newest video", "go to merch", "search Diddy", "more like this", "open Instagram", "play some music", or "contact".');
+      reply('Try: "play something random", "show me the newest video", "go to merch", "search Diddy", "more like this", "open Instagram", "play some music", "stop the music", or "contact". Or tap a topic below.'); topicChips(6);
       return;
     }
     if (/\b(random|surprise me|something to watch|cant decide|can't decide|pick (one|something)|anything)\b/.test(t)) {
@@ -112,7 +125,7 @@
         .catch(function () { wait.remove(); reply('I could not reach the helper right now.'); chips(webLinks(q)); });
       return;
     }
-    reply('I did not find "' + q + '" on the site. I can look it up for you out on the web:'); chips(webLinks(q));
+    reply('I did not find "' + q + '" on the site. Try one of these topics, or I can look it up on the web:'); topicChips(5); chips(webLinks(q));
   }
 
   /* ---------- listening ---------- */
@@ -161,6 +174,7 @@
     if (!log.childNodes.length) {
       say(SR ? 'Tap the mic and tell me what you want, or type it. Say "help" for ideas.' : 'Type what you want. (Voice needs Chrome, Edge or Safari.) Say "help" for ideas.', false);
       chips([{ label: 'Surprise me', run: function () { voiceTurn = false; handle('surprise me'); } }, { label: 'Newest video', run: function () { voiceTurn = false; handle('newest video'); } }, { label: 'Merch', run: function () { voiceTurn = false; handle('go to merch'); } }]);
+      say('Not sure what to search? Try one of these:', false); topicChips(6);
     }
     if (autoListen && SR) listen(); else input.focus();
   }

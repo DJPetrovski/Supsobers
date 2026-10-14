@@ -76,7 +76,7 @@
       var external = k.target === '_blank';
       if (touch && armed !== key) { e.preventDefault(); armed = key; show(key); hint.textContent = external ? 'Tap again to open.' : 'Tap again to go in.'; later(); return; }
       if (key === 'voice') { e.preventDefault(); if (window.SS && SS.openAssistant) SS.openAssistant(true); return; }
-      if (key === 'music') { e.preventDefault(); if (window.SS && SS.openMusic) SS.openMusic(); return; }
+      if (key === 'music') { e.preventDefault(); if (window.SS && SS.openMusic) SS.openMusic(true); return; }
       if (key === 'search') { e.preventDefault(); if (window.SS && SS.openSearch) SS.openSearch(); return; }
       if (external) return;               // normal link in a new tab
       e.preventDefault();
@@ -127,9 +127,6 @@
   // The TV: a glitchy, searching screen for ~5.5 seconds, then the trailer. When the trailer ends it
   // drops into the middle of a random Sobering Stories video and changes channel every 3 minutes.
   var introT = 0, SEARCH_MS = 5500, CHANNEL_MS = 180000, started = false, soundOn = false, chanT = 0, onTrailer = true, cur = null;
-  var musicCh = false;
-  document.addEventListener('ss:musicopen', function () { musicCh = true; clearTimeout(chanT); });
-  document.addEventListener('ss:musicclosed', function () { musicCh = false; });
   var yt = document.getElementById('htv-yt'), nowBtn = document.getElementById('htv-now'), nextBtn = document.getElementById('htv-next');
   function duck(level) { document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'trailer', level: level } })); }
   function ytCmd(fn, args) { try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: args || [] }), '*'); } catch (e) {} }
@@ -160,7 +157,11 @@
     if (osdOn !== false) showOsd(soundOn ? 'VOL ' + volume : 'MUTE');
   }
   function setSound(on) { setVolIdx(on ? (lastIdx || 2) : 0, false); }
-  soundBtn.addEventListener('click', function () { setSound(!soundOn); });
+  soundBtn.addEventListener('click', function () {
+    // "Sound on" brings up the music pop-up and starts it; "Sound off" pauses the music (the pop-up stays so it can be restarted)
+    var on = !soundOn; setSound(on);
+    if (window.SS) { if (on && SS.openMusic) SS.openMusic(true); else if (!on && SS.pauseMusic) SS.pauseMusic(); }
+  });
 
   var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0, powered = true, lateNight = false;
   var osd = document.getElementById('htv-osd');
@@ -182,14 +183,8 @@
     clearTimeout(chanT);
     var v;
     if (back === true && hist.length > 1) { hist.pop(); v = hist[hist.length - 1]; chNo = Math.max(1, chNo - 1); }
-    else if (!lateNight && window.SS && SS.openMusic && (chNo + 1) % 4 === 0) { v = { music: true }; hist.push(v); chNo++; }   // every 4th channel is SoundCloud
     else { v = pickRandom(); if (v) { hist.push(v); chNo++; } }
-    if (v) showOsd('CH ' + (chNo < 10 ? '0' : '') + chNo + (v.music ? '  SOUNDCLOUD' : ''));
-    if (v && v.music) {
-      cur = null; nowBtn.hidden = true; nextBtn.hidden = false;
-      SS.openMusic(); return;
-    }
-    if (musicCh && window.SS && SS.closeMusic) SS.closeMusic();
+    if (v) showOsd('CH ' + (chNo < 10 ? '0' : '') + chNo + '');
     if (!v) { document.addEventListener('ss:videos', function once() { document.removeEventListener('ss:videos', once); if (onHome && !onTrailer) channel(); }); return; }
     cur = v;
     var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
@@ -210,7 +205,6 @@
   nowBtn.addEventListener('click', function () { if (cur && window.SS) { var v = cur; SS.openPlayer(v); } });
   nextBtn.addEventListener('click', function () { channel(); });
   document.addEventListener('ss:playeropen', function () { if (!yt.hidden) ytCmd('pauseVideo'); });
-  document.addEventListener('ss:musicopen', function () { if (!yt.hidden) ytCmd('pauseVideo'); try { video.pause(); } catch (e) {} });
   document.addEventListener('ss:playerclosed', function () { if (onHome && !yt.hidden) ytCmd('playVideo'); });
 
   Array.prototype.forEach.call(rig.querySelectorAll('[data-act]'), function (b) {
