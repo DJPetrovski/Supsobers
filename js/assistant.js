@@ -51,7 +51,7 @@
   var PAGES = [
     ['videos', /\b(videos?|episodes?|the tv|rabbit hole|tunnel)\b/], ['web', /\b(connected|web|map|connections?)\b/], ['merch', /\b(merch|merchandise|shirts?|hoodies?|hats?|stickers?|store|shop)\b/],
     ['members', /\b(members?|club|uncensored)\b/], ['archives', /\barchives?\b/], ['books', /\b(books?|audiobooks?)\b/], ['socials', /\b(socials?|social media|links)\b/],
-    ['contact', /\b(contact|email|message|reach)\b/], ['about', /\b(about|who is dj|who are you)\b/], ['home', /\b(home|start|main page)\b/], ['half', /\b(kim|better half|fiance|fiancée)\b/]
+    ['craving', /\b(cravings?|games?|etch|sketch|maze|play a game|bored)\b/], ['contact', /\b(contact|email|message|reach)\b/], ['about', /\b(about|who is dj|who are you)\b/], ['home', /\b(home|start|main page)\b/], ['half', /\b(kim|better half|fiance|fiancée)\b/]
   ];
   var LINKS = { youtube: 'https://www.youtube.com/@Sobersector', patreon: 'https://patreon.com/SoberingStories', instagram: 'https://instagram.com/djpetrovski', discord: 'https://discord.gg/ycsn67W5UB', rumble: 'https://rumble.com/user/djpetrovski', spotify: 'https://open.spotify.com/show/7cuV8tDi2Gdw66upnljFIs', twitter: 'https://x.com/djpetrovski12' };
   function clean(t) { return (t || '').toLowerCase().replace(/[^a-z0-9'&\s]/g, ' ').replace(/\s+/g, ' ').trim(); }
@@ -115,20 +115,43 @@
   }
 
   /* ---------- listening ---------- */
-  function stopListen() { if (rec) { try { rec.stop(); } catch (e) {} } listening = false; mic.classList.remove('on'); }
-  function listen() {
-    if (!SR) return;
+  var paused = [], retried = false;
+  function hush() { paused = []; Array.prototype.forEach.call(document.querySelectorAll('audio,video'), function (m) { if (!m.paused && !m.muted) { try { m.pause(); paused.push(m); } catch (e) {} } }); }
+  function unhush() { paused.forEach(function (m) { try { m.play(); } catch (e) {} }); paused = []; }
+  function idle() { listening = false; mic.classList.remove('on'); input.placeholder = 'Say or type what you want'; }
+  function stopListen() { if (rec) { try { rec.abort(); } catch (e) {} } idle(); unhush(); }
+  var ERR = {
+    'not-allowed': 'The microphone is blocked for this site. Click the lock icon next to the address, allow Microphone, then tap the mic again. Or just type.',
+    'service-not-allowed': 'Your browser blocked speech recognition here. You can type instead.',
+    'audio-capture': 'I could not find a working microphone. Check that one is plugged in and selected, or type instead.',
+    'network': 'The browser\'s speech service could not connect. Check your internet, tap the mic to retry, or type.',
+    'no-speech': 'I did not hear anything. Tap the mic and start talking right after it lights up.',
+    'language-not-supported': 'Speech recognition is not available for this language. You can type instead.'
+  };
+  function listen(fromRetry) {
+    if (!SR) { say('Voice is not supported in this browser. Type instead (Chrome, Edge or Safari can do voice).', false); return; }
     if (listening) { stopListen(); return; }
     try { if (synth) synth.cancel(); } catch (e) {}
-    rec = new SR(); rec.lang = 'en-US'; rec.interimResults = true; rec.maxAlternatives = 1; rec.continuous = false;
-    var finalText = '';
-    rec.onstart = function () { listening = true; mic.classList.add('on'); input.value = ''; input.placeholder = 'Listening...'; };
+    if (fromRetry !== true) retried = false;
+    var finalText = '', gotAudio = false, errored = false, t0 = Date.now();
+    rec = new SR(); rec.lang = (navigator.language || 'en-US'); rec.interimResults = true; rec.maxAlternatives = 1; rec.continuous = false;
+    rec.onstart = function () { listening = true; mic.classList.add('on'); input.value = ''; input.placeholder = 'Listening... speak now'; };
+    rec.onaudiostart = function () { gotAudio = true; };
     rec.onresult = function (e) { var s = ''; for (var i = e.resultIndex; i < e.results.length; i++) { s += e.results[i][0].transcript; if (e.results[i].isFinal) finalText = s; } input.value = s; };
-    rec.onerror = function (e) { listening = false; mic.classList.remove('on'); input.placeholder = 'Say or type what you want'; if (e.error === 'not-allowed' || e.error === 'service-not-allowed') say('The microphone is blocked. Allow it in your browser, or just type.', false); };
-    rec.onend = function () { listening = false; mic.classList.remove('on'); input.placeholder = 'Say or type what you want'; var t = (finalText || input.value).trim(); if (t) { input.value = ''; voiceTurn = true; handle(t); } };
-    try { rec.start(); } catch (e) {}
+    rec.onerror = function (e) { errored = true; idle(); unhush(); if (e.error === 'aborted') return; say(ERR[e.error] || ('Voice stopped (' + e.error + '). Tap the mic to try again, or type.'), false); };
+    rec.onend = function () {
+      var was = listening; idle(); unhush();
+      var t = (finalText || input.value).trim();
+      if (t) { input.value = ''; voiceTurn = true; handle(t); return; }
+      if (errored) return;
+      // closed with no words and no error: usually the mic was grabbed by something else a split second after starting. Try once more.
+      if (!retried && Date.now() - t0 < 2500) { retried = true; setTimeout(function () { listen(true); }, 300); return; }
+      say(gotAudio ? 'I did not catch any words. Tap the mic and try again.' : 'The mic would not open. Check the browser permission for this site and that no other app is using the microphone, then tap the mic again. You can also type.', false);
+    };
+    hush();
+    try { rec.start(); } catch (e) { idle(); unhush(); say('Could not start the microphone: ' + (e.message || e.name) + '. Tap the mic again or type.', false); }
   }
-  mic.addEventListener('click', listen);
+  mic.addEventListener('click', function () { listen(); });
   foot.addEventListener('submit', function (e) { e.preventDefault(); var t = input.value.trim(); if (!t) return; input.value = ''; voiceTurn = false; handle(t); });
 
   function openPanel(autoListen) {
@@ -138,7 +161,7 @@
       say(SR ? 'Tap the mic and tell me what you want, or type it. Say "help" for ideas.' : 'Type what you want. (Voice needs Chrome, Edge or Safari.) Say "help" for ideas.', false);
       chips([{ label: 'Surprise me', run: function () { voiceTurn = false; handle('surprise me'); } }, { label: 'Newest video', run: function () { voiceTurn = false; handle('newest video'); } }, { label: 'Merch', run: function () { voiceTurn = false; handle('go to merch'); } }]);
     }
-    if (autoListen && SR) setTimeout(listen, 250); else input.focus();
+    if (autoListen && SR) listen(); else input.focus();
   }
   function closePanel() { stopListen(); try { if (synth) synth.cancel(); } catch (e) {} panel.hidden = true; document.documentElement.classList.remove('as-open'); }
   close.addEventListener('click', closePanel);
