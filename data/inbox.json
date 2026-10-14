@@ -1,0 +1,30 @@
+[
+ {
+  "id": "in-after-the-shot",
+  "mediaType": "video",
+  "category": "eyewitness",
+  "date": "2025-09-10",
+  "time": "Not verified",
+  "timestamp": "2025-09-10T18:23:30Z",
+  "title": "After the shot (12-second clip)",
+  "sourceName": "Added by the archive curator",
+  "sourceUrl": "media/inbox/after-the-shot.webm",
+  "archiveUrl": null,
+  "description": "A 12-second clip added to the archive by DJ. Original uploader, filmer and exact start time are not verified.",
+  "thumb": null
+ },
+ {
+  "id": "in-mic-falling-off",
+  "mediaType": "video",
+  "category": "eyewitness",
+  "date": "2025-09-10",
+  "time": "Not verified",
+  "timestamp": "2025-09-10T18:23:30Z",
+  "title": "Mic falling off (1 min 14 sec clip)",
+  "sourceName": "Added by the archive curator",
+  "sourceUrl": "media/inbox/mic-falling-off.mp4",
+  "archiveUrl": null,
+  "description": "A 74-second clip added to the archive by DJ, titled for the microphone coming off. Original uploader, filmer and exact start time are not verified.",
+  "thumb": null
+ }
+]
