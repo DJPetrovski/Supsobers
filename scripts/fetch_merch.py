@@ -38,10 +38,38 @@ with sync_playwright() as p:
             print('fail', u, e)
     b.close()
 
+# ---- Fourthwall (plain HTML, no browser needed): every product in the shop is the channel's ----
+import gzip, zlib
+FW = 'https://the-sober-sector-shop.fourthwall.com'
+def fget(u):
+    r = urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0', 'Accept-Encoding': 'gzip'}), timeout=30)
+    b = r.read()
+    if r.headers.get('Content-Encoding') == 'gzip': b = gzip.decompress(b)
+    return b.decode('utf8', 'replace')
+fw = []
+try:
+    for u in re.findall(r'<loc>([^<]*/products/[^<]+)</loc>', fget(FW + '/sitemap.xml')):
+        try:
+            h = fget(u)
+            for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>', h, re.S):
+                d = json.loads(m)
+                if d.get('@type') != 'Product': continue
+                o = d.get('offers') or {}
+                if isinstance(o, list): o = o[0] if o else {}
+                price = o.get('price') or (o.get('lowPrice') if isinstance(o, dict) else '')
+                imgs = d.get('image') or []
+                if isinstance(imgs, str): imgs = [imgs]
+                fw.append({'name': d['name'], 'price': ('$%.2f' % float(price)) if price else '', 'images': imgs[:4], 'url': u, 'store': 'fourthwall',
+                           'soldOut': 'OutOfStock' in json.dumps(o)})
+                print('ok fw', d['name']); break
+        except Exception as e: print('fail fw', u, e)
+except Exception as e: print('fourthwall failed', e)
+
 try: old = json.load(open(OUT))
 except Exception: old = {}
 old['updated'] = __import__('datetime').date.today().isoformat()
 old['americanpatriot'] = items
-old.setdefault('fourthwallStore', '')
-old.setdefault('fourthwall', [])
+old['fourthwallStore'] = FW
+if fw: old['fourthwall'] = fw
+else: old.setdefault('fourthwall', [])
 json.dump(old, open(OUT, 'w'), indent=1)

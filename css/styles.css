@@ -1152,3 +1152,41 @@ html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .1
 .mc-track { padding: 18px calc(50% - clamp(95px, 15vw, 135px)); }
 .merch .mc-stage { margin-top: 8px; }
 .mc-name { font-size: clamp(1.15rem, 2.6vw, 1.6rem); line-height: 1.25; }
+
+/* ---- merch runway ---- */
+.mc-runway { position: relative; height: 150px; margin: 6px auto 0; max-width: 980px; overflow: hidden; border-radius: 12px; background: radial-gradient(ellipse at 50% 100%, rgba(125,15,26,.35), rgba(6,1,2,.2) 70%); }
+.rw-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: linear-gradient(#1a0508, #050102); border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(255,42,53,.18); }
+.rw-floor::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(255,42,53,.35) 0 2px, transparent 2px 38px); opacity: .35; }
+.rw-beam { position: absolute; top: -10px; width: 120px; height: 170px; background: linear-gradient(rgba(255,255,255,.22), rgba(255,255,255,0)); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); mix-blend-mode: screen; animation: rw-sweep 5s ease-in-out infinite alternate; transform-origin: 50% 0; }
+.rw-b1 { left: 22%; } .rw-b2 { right: 22%; animation-delay: -2.5s; }
+@keyframes rw-sweep { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
+.rw-cast { position: absolute; inset: 0; }
+.rw-model { position: absolute; bottom: 14px; width: 60px; height: 120px; will-change: transform; }
+.rw-fig { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 8px rgba(255,42,53,.5)); }
+.rw-fig g { transform-box: fill-box; transform-origin: 50% 0; }
+.rw-model.walking .rw-legL { animation: rw-swing .7s ease-in-out infinite alternate; }
+.rw-model.walking .rw-legR { animation: rw-swing .7s ease-in-out infinite alternate-reverse; }
+.rw-model.walking .rw-armL { animation: rw-swing .7s ease-in-out infinite alternate-reverse; }
+.rw-model.walking .rw-armR { animation: rw-swing .7s ease-in-out infinite alternate; }
+.rw-model.walking .rw-fig { animation: rw-bob .35s ease-in-out infinite alternate; }
+@keyframes rw-swing { from { transform: rotate(-18deg); } to { transform: rotate(18deg); } }
+@keyframes rw-bob { to { transform: translateY(-3px); } }
+.rw-model.posing .rw-fig { animation: rw-pose 1.5s ease-in-out; }
+.rw-model.posing .rw-armR { transform: rotate(-35deg); } .rw-model.posing .rw-armL { transform: rotate(10deg); }
+@keyframes rw-pose { 0% { transform: scaleX(1); } 35% { transform: scaleX(-1); } 70% { transform: scaleX(1); } 100% { transform: scaleX(1); } }
+.rw-hat { position: absolute; left: 50%; top: -22px; width: 38px; height: 38px; margin-left: -19px; object-fit: contain; border-radius: 50%; background: #0b0204; border: 1px solid var(--ember); }
+.rw-carry { position: absolute; right: -26px; top: 62px; width: 40px; height: 48px; border-radius: 6px; background: #0b0204; border: 1px solid var(--ember); overflow: hidden; box-shadow: 0 0 10px rgba(255,42,53,.5); }
+.rw-carry img { width: 100%; height: 100%; object-fit: cover; }
+.rw-car { position: absolute; bottom: 12px; width: 160px; will-change: transform; }
+.rw-car svg { width: 100%; display: block; filter: drop-shadow(0 0 8px rgba(255,42,53,.45)); }
+.rw-decal { position: absolute; left: 41%; top: 44%; width: 24%; height: 25%; object-fit: contain; }
+.mc-angles { display: flex; gap: 8px; justify-content: center; margin: 0 0 12px; }
+.mc-angle { width: 46px; height: 46px; padding: 0; border-radius: 8px; border: 1px solid var(--line); background: #0b0204; cursor: pointer; overflow: hidden; }
+.mc-angle img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mc-angle.on { border-color: var(--ember); box-shadow: 0 0 10px rgba(255,42,53,.5); }
+@media (max-width: 600px) { .mc-runway { height: 120px; } .rw-model { transform-origin: bottom; } }
+.mc-runway { height: 200px; }
+.rw-model { width: 76px; height: 152px; bottom: 16px; }
+.rw-car { width: 200px; }
+.rw-beam { height: 220px; width: 150px; }
+@media (max-width: 600px) { .mc-runway { height: 150px; } .rw-model { width: 58px; height: 116px; } .rw-car { width: 150px; } }
