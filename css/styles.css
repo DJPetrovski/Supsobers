@@ -1334,3 +1334,6 @@ html.gs-open { overflow: hidden; }
 .rm-s-sp { background: linear-gradient(#2fe073, #118a3c); border-bottom-color: #07401c; }
 .remote { padding-top: 5cqw; }
 .rm-top { margin: -4cqw -6cqw 2cqw; }
+.rm-socrow .rm-soc-key img { width: 62%; height: 62%; object-fit: contain; pointer-events: none; filter: drop-shadow(0 1px 1px rgba(0,0,0,.45)); }
+.rm-s-ru { background: linear-gradient(#ffffff, #d6dbd0); border-bottom-color: #7b8272; }
+.rm-s-pt { background: linear-gradient(#ff7a68, #e0402c); }
