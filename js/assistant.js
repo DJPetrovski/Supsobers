@@ -53,7 +53,7 @@
     ['members', /\b(members?|club|uncensored)\b/], ['archives', /\barchives?\b/], ['books', /\b(books?|audiobooks?)\b/], ['socials', /\b(socials?|social media|links)\b/],
     ['craving', /\b(cravings?|games?|etch|sketch|maze|play a game|bored)\b/], ['contact', /\b(contact|email|message|reach)\b/], ['about', /\b(about|who is dj|who are you)\b/], ['home', /\b(home|start|main page)\b/], ['half', /\b(kim|better half|fiance|fiancée)\b/]
   ];
-  var LINKS = { youtube: 'https://www.youtube.com/@Sobersector', patreon: 'https://patreon.com/SoberingStories', instagram: 'https://instagram.com/djpetrovski', discord: 'https://discord.gg/ycsn67W5UB', rumble: 'https://rumble.com/user/djpetrovski', spotify: 'https://open.spotify.com/show/7cuV8tDi2Gdw66upnljFIs', twitter: 'https://x.com/djpetrovski12' };
+  var LINKS = { youtube: 'https://www.youtube.com/@Sobersector', patreon: 'https://patreon.com/SoberingStories', instagram: 'https://instagram.com/djpetrovski', discord: 'https://discord.gg/ycsn67W5UB', rumble: 'https://rumble.com/user/djpetrovski', spotify: 'https://open.spotify.com/show/7cuV8tDi2Gdw66upnljFIs', twitter: 'https://x.com/djpetrovski12', soundcloud: 'https://soundcloud.com/djpetrovski' };
   function clean(t) { return (t || '').toLowerCase().replace(/[^a-z0-9'&\s]/g, ' ').replace(/\s+/g, ' ').trim(); }
   function pickRandom() { var a = vids().filter(function (v) { return /^[\w-]{11}$/.test(v.id || '') && (v.seconds || 0) >= 1800; }); return a[Math.floor(Math.random() * a.length)]; }
   function webLinks(q) { return [{ label: 'Search YouTube', href: 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q) }, { label: 'Search the web', href: 'https://duckduckgo.com/?q=' + encodeURIComponent(q) }]; }
@@ -65,7 +65,7 @@
     var now = window.SS && SS.now;
 
     if (/^(help|what can you do|what can i say|commands)\b/.test(t)) {
-      reply('Try: "play something random", "show me the newest video", "go to merch", "search Diddy", "more like this", "open Instagram", or "contact".');
+      reply('Try: "play something random", "show me the newest video", "go to merch", "search Diddy", "more like this", "open Instagram", "play some music", or "contact".');
       return;
     }
     if (/\b(random|surprise me|something to watch|cant decide|can't decide|pick (one|something)|anything)\b/.test(t)) {
@@ -80,6 +80,7 @@
     if (/\b(what is this|what's this|about this|summary|context|tell me about)\b/.test(t) && now && !/\b(site|website|channel)\b/.test(t)) {
       var rel2 = SS.related(now, 4); reply('This is "' + now.title + '". I cannot read the video itself, but here are the videos it connects to, and you can look up more:'); if (rel2.length) vrows(rel2); chips(webLinks(now.title)); return;
     }
+    if (/\b(music|mixes|mix|soundcloud|house music|play (some )?(music|house)|dj set|tunes|songs?)\b/.test(t) && !/\b(open|link)\b.*\bsoundcloud\b/.test(t)) { reply('Opening the music player. Use the buttons under it to skip around.'); closePanel(); if (SS.openMusic) SS.openMusic(); return; }
     var soc = Object.keys(LINKS).filter(function (k) { return new RegExp('\\b' + k + '\\b').test(t) || (k === 'twitter' && /\bx\b/.test(t)); })[0];
     if (soc && /\b(open|go|show|take|link|follow|join|where|find)\b/.test(t) && !/\bsearch\b/.test(t)) {
       reply('Here is my ' + soc[0].toUpperCase() + soc.slice(1) + ' link.'); chips([{ label: 'Open ' + soc[0].toUpperCase() + soc.slice(1), href: LINKS[soc] }]); return;

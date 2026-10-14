@@ -48,12 +48,19 @@
       "url": "https://open.spotify.com/show/7cuV8tDi2Gdw66upnljFIs",
       "blurb": "The podcast, in your ears.",
       "mark": "SP"
+    },
+    {
+      "name": "SoundCloud",
+      "handle": "@djpetrovski",
+      "url": "https://soundcloud.com/djpetrovski",
+      "blurb": "Mixes and house music.",
+      "mark": "SC"
     }
   ],
   "kim": {
     "name": "Kim",
     "title": "My Better Half",
-    "blurb": "My fianc\u00e9e Kim runs Reverie Revival Colorado. Follow her, share her, and help her grow.",
+    "blurb": "My fiancée Kim runs Reverie Revival Colorado. Follow her, share her, and help her grow.",
     "links": [
       {
         "name": "Instagram",

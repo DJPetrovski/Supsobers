@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791972290">
+  <link rel="stylesheet" href="css/styles.css?v=1791972569">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -105,6 +105,7 @@
             <a class="rm-key rm-color rm-blue" data-key="archives" href="#archives">Archives</a>
             <a class="rm-key rm-color rm-rect rm-orange" data-key="merch" href="#merch">Merch</a>
             <a class="rm-key rm-color rm-rect rm-purple" data-key="craving" href="#craving">Games</a>
+            <a class="rm-key rm-color rm-rect rm-music" data-key="music" href="#music" aria-label="Music player: DJ mixes on SoundCloud">&#9835; Music</a>
           </nav>
           <div class="rm-dpad" role="group" aria-label="TV controls">
             <button type="button" class="rm-d rm-up" data-act="chup" aria-label="Channel up">CH<small>+</small></button>
@@ -435,18 +436,33 @@
     </div>
   </div>
 
-  <script src="js/rain.js?v=1791972290" defer></script>
-  <script src="js/app.js?v=1791972290" defer></script>
-  <script src="js/hole.js?v=1791972290" defer></script>
-  <script src="js/pill.js?v=1791972290" defer></script>
-  <script src="js/tv.js?v=1791972290" defer></script>
-  <script src="js/search.js?v=1791972290" defer></script>
-  <script src="js/merch.js?v=1791972290" defer></script>
-  <script src="js/web.js?v=1791972290" defer></script>
-  <script src="js/home.js?v=1791972290" defer></script>
-  <script src="js/remote.js?v=1791972290" defer></script>
-  <script src="js/craving.js?v=1791972290" defer></script>
-  <script src="js/assistant.js?v=1791972290" defer></script>
-  <script src="js/music.js?v=1791972290" defer></script>
+  <aside class="scd" id="scd" hidden aria-label="Music player">
+    <div class="scd-top"><b>DJ mixes</b><a href="https://soundcloud.com/djpetrovski" target="_blank" rel="noopener">SoundCloud</a><button type="button" id="scd-min" aria-label="Minimize player">&ndash;</button><button type="button" id="scd-close" aria-label="Close player">&times;</button></div>
+    <div class="scd-body">
+      <iframe id="scd-frame" title="DJ Petrovski on SoundCloud" allow="autoplay" scrolling="no" frameborder="no" height="166"></iframe>
+      <div class="scd-ctl" role="group" aria-label="Player controls">
+        <button type="button" data-sc="prev" aria-label="Previous track">&#9198;</button>
+        <button type="button" data-sc="back" aria-label="Rewind 15 seconds">&#9194;</button>
+        <button type="button" data-sc="play" class="scd-play" aria-label="Play or pause">&#9654;</button>
+        <button type="button" data-sc="fwd" aria-label="Forward 15 seconds">&#9193;</button>
+        <button type="button" data-sc="next" aria-label="Next track">&#9197;</button>
+      </div>
+      <p class="scd-hint">Home remote: CH = tracks, VOL &#9664; &#9654; = rewind / forward, OK = play / pause</p>
+    </div>
+  </aside>
+  <script src="js/rain.js?v=1791972569" defer></script>
+  <script src="js/app.js?v=1791972569" defer></script>
+  <script src="js/hole.js?v=1791972569" defer></script>
+  <script src="js/pill.js?v=1791972569" defer></script>
+  <script src="js/tv.js?v=1791972569" defer></script>
+  <script src="js/search.js?v=1791972569" defer></script>
+  <script src="js/merch.js?v=1791972569" defer></script>
+  <script src="js/web.js?v=1791972569" defer></script>
+  <script src="js/home.js?v=1791972569" defer></script>
+  <script src="js/remote.js?v=1791972569" defer></script>
+  <script src="js/craving.js?v=1791972569" defer></script>
+  <script src="js/scplayer.js?v=1791972569" defer></script>
+  <script src="js/assistant.js?v=1791972569" defer></script>
+  <script src="js/music.js?v=1791972569" defer></script>
 </body>
 </html>

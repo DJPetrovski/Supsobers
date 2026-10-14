@@ -40,6 +40,7 @@
     rumble: function () { return '<h3>Rumble</h3><p>Videos without the algorithm</p>'; },
     spotify: function () { return '<h3>Spotify</h3><p>The podcast</p>'; },
     half: function () { return '<h3>My Better<br>Half</h3><p>Kim: Reverie Revival Colorado</p>'; },
+    music: function () { return '<h3>Music</h3><p>DJ\'s house mixes. Play them here.</p>'; },
     craving: function () { return '<h3>Kraving Killer</h3><p>Play something dumb until it passes</p>'; },
     contact: function () { return '<h3>Contact</h3><p>Open the laptop. Send a message.</p>'; },
     discord: function () { return '<h3>Discord</h3><p>Join the server</p>'; },
@@ -75,6 +76,7 @@
       var external = k.target === '_blank';
       if (touch && armed !== key) { e.preventDefault(); armed = key; show(key); hint.textContent = external ? 'Tap again to open.' : 'Tap again to go in.'; later(); return; }
       if (key === 'voice') { e.preventDefault(); if (window.SS && SS.openAssistant) SS.openAssistant(true); return; }
+      if (key === 'music') { e.preventDefault(); if (window.SS && SS.openMusic) SS.openMusic(); return; }
       if (key === 'search') { e.preventDefault(); if (window.SS && SS.openSearch) SS.openSearch(); return; }
       if (external) return;               // normal link in a new tab
       e.preventDefault();
