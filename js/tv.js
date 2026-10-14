@@ -223,7 +223,7 @@
     backPhone.hidden = false;
     offer.hidden = false;
     hole.classList.add('pill-near');
-    fine.textContent = 'Red drops you into a random video. Blue keeps you where you are.';
+    fine.textContent = 'Red: a random video, a different one every time. Blue: no choices, just keep falling.';
     redBtn.disabled = blueBtn.disabled = false;
     if (actx) { dry.gain.value = 1; wet.gain.value = 0.3; level(soundOn ? NEAR : 0, 0.8); }
   }
@@ -245,10 +245,15 @@
   });
   phoneEl.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && !near) { e.preventDefault(); pullCloser(); } });
   backPhone.addEventListener('click', putBack);
+  // Blue pill: Wonderland mode. The buttons melt away and the hole just drifts, tinted blue, until you touch it.
+  var dreamT = 0;
+  function dreamEnd() { clearTimeout(dreamT); hole.classList.remove('dream'); }
   blueBtn.addEventListener('click', function () {
-    fine.textContent = 'The story ends. You wake up in your bed and believe whatever you want to believe.';
-    redBtn.disabled = blueBtn.disabled = true;
-    setTimeout(putBack, 1800);
+    putBack();
+    hole.classList.add('dream');
+    clearTimeout(dreamT);
+    dreamT = setTimeout(dreamEnd, 45000);
+    setTimeout(function () { hole.addEventListener('pointerdown', dreamEnd, { once: true }); }, 600);
   });
   redBtn.addEventListener('click', function () {
     var v = window.Pill && Pill.random();
@@ -353,6 +358,7 @@
 
   function cleanup() {
     resetBranches();
+    dreamEnd();
     putBack();
     phoneStop();
     html.classList.remove('is-diving');
