@@ -1625,3 +1625,12 @@ html.gs-open { overflow: hidden; }
 .wg-over p { margin: 0 auto 14px; max-width: 34em; color: #ffd1d4; font-size: .95rem; }
 .wg-jump { position: absolute; right: 12px; bottom: 12px; z-index: 3; width: 74px; height: 74px; border-radius: 50%; border: 2px solid #fff; background: radial-gradient(circle at 35% 30%, #ff6b73, #b50d19); color: #fff; font: 700 .82rem/1 var(--display, inherit); letter-spacing: .08em; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.6), 0 0 18px rgba(255,42,53,.6); touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
 .wg-jump:active { transform: scale(.93); filter: brightness(1.2); }
+
+/* About: Kim */
+.about-kim { display: grid; grid-template-columns: minmax(200px, 340px) 1fr; gap: 44px; align-items: center; max-width: 980px; margin: 64px auto 0; padding-top: 48px; border-top: 1px solid var(--line); }
+.kim-photo { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 0 40px rgba(255, 42, 53, .22); }
+.kim-photo img { display: block; width: 100%; height: auto; }
+.kim-kicker { margin: 0 0 6px; font-size: .78rem; letter-spacing: .28em; text-transform: uppercase; color: #ff7a82; }
+.kim-copy h3 { margin: 0 0 14px; font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1; text-transform: uppercase; color: #fff; }
+.kim-copy p { max-width: 52ch; }
+@media (max-width: 760px) { .about-kim { grid-template-columns: 1fr; gap: 24px; margin-top: 44px; padding-top: 36px; } .kim-photo { max-width: 340px; margin: 0 auto; } }
