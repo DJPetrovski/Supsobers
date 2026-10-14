@@ -1706,3 +1706,84 @@ html.dd-lock, html.dd-lock body { overflow: hidden; }
   .dd-chips > b, .dd-chips > span, .dd-fs { padding: 3px 8px; }
   .dd-toast { top: 78px; font-size: .8rem; max-width: 88%; }
 }
+
+/* ---- pop-out player (Etch A Sketch, the wagon; tap-to-play cover on all three games) ---- */
+.po-btn { font: inherit; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 4px 11px; cursor: pointer; }
+.po-x { position: fixed; z-index: 10000; top: calc(6px + env(safe-area-inset-top, 0px)); right: calc(8px + env(safe-area-inset-right, 0px)); width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.6); background: rgba(8,2,6,.78); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.po-x[hidden] { display: none; }
+html.po-lock, html.po-lock body { overflow: hidden; }
+.po-rotate { position: fixed; z-index: 10001; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); max-width: 86vw; padding: 10px 16px; border-radius: 999px; background: rgba(0,0,0,.82); border: 1px solid rgba(255,255,255,.4); color: #fff; font-size: .9rem; text-align: center; pointer-events: none; }
+.po-start { display: none; position: absolute; inset: 0; z-index: 6; width: 100%; border: 0; padding: 12px; place-items: center; background: rgba(5,1,6,.62); color: #fff; font: inherit; cursor: pointer; line-height: 1.3; text-align: center; }
+.po-start span { display: grid; gap: 6px; padding: 12px 20px; border-radius: 14px; background: linear-gradient(#ff4650, #b50d19); border: 2px solid #fff; box-shadow: 0 6px 24px rgba(0,0,0,.6); }
+.po-start b { font: 800 1.15rem/1.1 var(--display, inherit); letter-spacing: .08em; text-transform: uppercase; }
+.po-start small { font-size: .72rem; opacity: .9; }
+@media (pointer: coarse) and (max-width: 1100px) {
+  .es:not(.po) .po-start, .wg:not(.po) .po-start, .dd-stage:not(.fs) .po-start { display: grid; }
+  .wg-jump { width: 58px; height: 58px; font-size: .7rem; right: 8px; bottom: 8px; }
+}
+.wg-dive { display: none; }
+.po { position: fixed !important; inset: 0; z-index: 9990; width: auto !important; max-width: none !important; margin: 0 !important; border-radius: 0 !important; border: 0 !important; box-shadow: none !important; display: flex; flex-direction: column; overflow: hidden;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px) !important; }
+.po .es-help, .po .po-start { display: none !important; }
+.po .po-btn { margin-right: 46px; }
+/* the wagon, popped out */
+.wg.po { background: #07010a; }
+.wg.po .wg-top { padding: 4px 56px 4px 10px; flex-wrap: nowrap; }
+.wg.po .wg-top b { font-size: .8rem; white-space: nowrap; }
+.wg.po .wg-hud { gap: 10px; font-size: .78rem; }
+.wg.po .wg-stage { flex: 1; min-height: 0; display: grid; place-items: center; border-radius: 0; }
+.wg.po #wg-canvas { width: min(100%, calc((100dvh - 48px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) * 720 / 420)); height: auto; }
+.wg.po .wg-jump { width: 86px; height: 86px; right: calc(18px + env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); }
+.wg.po .wg-dive { display: block; position: absolute; left: calc(18px + env(safe-area-inset-left, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 3; width: 86px; height: 86px; border-radius: 50%; border: 2px solid #fff; background: radial-gradient(circle at 35% 30%, #5aa8ff, #1546b5); color: #fff; font: 700 .82rem/1 var(--display, inherit); letter-spacing: .08em; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.6); touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.wg.po .wg-dive:active { transform: scale(.93); filter: brightness(1.2); }
+/* Etch A Sketch, popped out: portrait scrolls as before, landscape puts the knobs either side of the screen */
+.es.po { overflow: auto; }
+.es.po #es-canvas { width: min(100%, calc((100dvh - 190px) * 480 / 340)); height: auto; }
+.es.po .es-top { padding-right: 52px; }
+@media (orientation: landscape) and (max-height: 700px) {
+  .es.po { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: 4px 12px; padding: calc(4px + env(safe-area-inset-top, 0px)) calc(12px + env(safe-area-inset-right, 0px)) calc(4px + env(safe-area-inset-bottom, 0px)) calc(12px + env(safe-area-inset-left, 0px)) !important; overflow: hidden; }
+  .es.po .es-top { grid-column: 1 / 4; grid-row: 1; margin: 0; }
+  .es.po .es-screenwrap { grid-column: 2; grid-row: 2; display: grid; place-items: center; min-height: 0; padding: 8px; }
+  .es.po .es-dim, .es.po .es-glare { inset: 8px; }
+  .es.po #es-canvas { width: min(100%, calc((100dvh - 150px) * 480 / 340)); }
+  .es.po .es-tools { grid-column: 2; grid-row: 3; margin: 0; flex-wrap: nowrap; justify-content: center; }
+  .es.po .es-msg { grid-column: 2; grid-row: 4; margin: 0; font-size: .85rem; }
+  .es.po .es-knobs { display: contents; }
+  .es.po .es-knobcol { grid-row: 2 / 4; align-self: center; }
+  .es.po .es-knobcol:first-child { grid-column: 1; }
+  .es.po .es-knobcol:last-child { grid-column: 3; }
+  .es.po .es-knob { width: 104px; height: 104px; }
+  .es.po .es-btns { grid-column: 3; grid-row: 4; flex-direction: row; justify-content: flex-end; }
+  .es.po .es-btns .btn { padding: 5px 8px; font-size: .72rem; }
+}
+.po .po-btn { display: none; }
+.wg.po .wg-dive, .wg.po .wg-jump { font-size: 1rem; }
+@media (orientation: landscape) and (max-height: 700px) {
+  .es.po .es-sand { flex-wrap: nowrap; gap: 4px; }
+  .es.po .es-sw { width: 22px; height: 22px; }
+  .es.po .es-modes button { padding: 4px 10px; font-size: .74rem; white-space: nowrap; }
+  .es.po .es-top { font-size: .75rem; }
+}
+
+/* Disc-ipline: course picker and hole editor */
+.dd-pick > div { max-width: min(92%, 440px); }
+.dd-pick h3 { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+.dd-courses { display: grid; gap: 8px; margin: 6px 0 10px; }
+.dd-cbtn { display: grid; gap: 2px; text-align: left; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.4); background: rgba(255,255,255,.07); color: #fff; font: inherit; cursor: pointer; }
+.dd-cbtn.on { border-color: #ff4650; background: rgba(255,42,53,.2); }
+.dd-cbtn small { opacity: .8; font-size: .75rem; }
+.dd-cnote { font-size: .78rem !important; line-height: 1.4; margin: 0 0 12px !important; }
+.dd-editor { position: absolute; inset: 0; z-index: 8; display: flex; flex-direction: column; background: #27472b; touch-action: none; }
+#dd-edcv { flex: 1; min-height: 0; width: 100%; touch-action: none; cursor: grab; }
+.dd-edbar { display: flex; align-items: center; gap: 8px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); background: rgba(8,2,6,.9); color: #fff; font-size: .82rem; }
+.dd-edbar span { flex: 1; min-width: 0; }
+.dd-edbar .btn { padding: 7px 12px; font-size: .8rem; white-space: nowrap; }
+.dd-editor[hidden], .dd-pick[hidden] { display: none; }
+.dd-pick { z-index: 9; }
+.dd-pick > div { max-height: 100%; overflow: auto; }
+@media (orientation: landscape) and (max-height: 520px) {
+  .dd-courses { grid-template-columns: repeat(3, 1fr); }
+  .dd-cbtn { padding: 8px 10px; font-size: .8rem; }
+  .dd-pick h3 { margin-bottom: 4px; }
+  .dd-pick > div { max-width: min(94%, 720px); }
+}

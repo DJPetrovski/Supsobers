@@ -6,7 +6,7 @@
   var root = document.getElementById('dd'); if (!root || !window.DiscPhys) return;
   var P = DiscPhys, $ = function (id) { return document.getElementById(id); };
   var stage = $('dd-stage'), glc = $('dd-gl'), hud = $('dd-hud'), hctx = hud.getContext('2d');
-  var elHole = $('dd-hole'), elPar = $('dd-par'), elStr = $('dd-str'), toast = $('dd-toast'), msgEl = $('dd-msg'), over = $('dd-over'), overT = $('dd-over-t'), overS = $('dd-over-s'), nextBtn = $('dd-next');
+  var chipsEl = document.querySelector('#dd-stage .dd-chips'), elHole = $('dd-hole'), elPar = $('dd-par'), elStr = $('dd-str'), toast = $('dd-toast'), msgEl = $('dd-msg'), over = $('dd-over'), overT = $('dd-over-t'), overS = $('dd-over-s'), nextBtn = $('dd-next');
   var sBank = $('dd-bank'), sLa = $('dd-la'), sAim = $('dd-aim'), lblBank = $('dd-bank-l'), lblLa = $('dd-la-l'), lblAim = $('dd-aim-l'), throwBtn = $('dd-throw'), handBtn = $('dd-hand'), discsEl = $('dd-discs');
   var drawer = $('dd-drawer'), discBtn = $('dd-discbtn'), discDot = $('dd-discdot'), discName = $('dd-discname'), discNums = $('dd-discnums'), fsBtn = $('dd-fs');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,7 +24,46 @@
     { name: 'Dogleg Right', par: 4, path: [[0, 0], [0, 72], [36, 116], [42, 128]], width: 24, wind: [2, -1], trees: [[14, 78], [18, 90], [9, 88], [26, 99], [-8, 100]], water: [], tight: 0 },
     { name: 'Sober Finale', par: 4, path: [[0, 0], [0, 70], [8, 128], [0, 156]], width: 22, wind: [-3, -3], trees: [[-8, 90], [14, 110], [-6, 128]], water: [[-60, 82, -9, 124], [19, 82, 60, 124], [-60, 138, -14, 170], [14, 138, 60, 170]], tight: 0 }
   ];
-  var HOLE_N = HOLES.length, MAPX = 100;
+  var MAPX = 100;
+  var CLASSIC = HOLES;
+
+  /* ---------- real courses ----------
+     Lengths and pars below are made to add up to each course's published totals (the hole-by-hole numbers are not published in a form
+     I could read), so these are lookalikes: right size, right feel, not a hole-for-hole copy. Players can drag any tee or basket in the editor. */
+  function genCourse(seed, lengthsFt, o) {
+    var r = rng(seed), out = [];
+    lengthsFt.forEach(function (ft, i) {
+      var L = ft * 0.3048, bend = r() < o.bendP, side = r() < 0.5 ? -1 : 1, path, lat;
+      if (bend) { lat = side * L * (0.12 + r() * 0.16); path = [[0, 0], [0, L * 0.55], [lat, L * 0.55 + Math.sqrt(Math.max(1, L * L * 0.2025 - lat * lat))]]; }
+      else { lat = (r() - 0.5) * L * 0.08; path = [[0, 0], [lat, L]]; }
+      var tight = o.tight.indexOf(i + 1) >= 0, width = tight ? 11 : o.width + r() * o.wvar, trees = [], nt = 3 + Math.floor(r() * 4);
+      for (var k = 0; k < nt; k++) { var f = 0.15 + r() * 0.75, sd = r() < 0.5 ? -1 : 1, seg = f < 0.55 || path.length < 3 ? 0 : 1, a0 = path[seg], a1 = path[seg + 1], tt = path.length < 3 ? f : (seg ? (f - 0.55) / 0.45 : f / 0.55); trees.push([a0[0] + (a1[0] - a0[0]) * tt + sd * (width / 2 + 1.5 + r() * 5), a0[1] + (a1[1] - a0[1]) * tt]); }
+      var water = []; if (o.creek && o.creek[i + 1]) { var c = o.creek[i + 1]; water.push([-60, L * c[0], 60, L * c[1]]); }
+      out.push({ name: ft + ' ft', par: 3, path: path, width: width, wind: [(r() - 0.5) * 5, (r() - 0.5) * 4], trees: trees, water: water, tight: tight ? 1 : 0, density: o.density, ft: ft });
+    });
+    return out;
+  }
+  var COURSES = [
+    { id: 'classic', name: 'Kraving Killer (6 holes)', note: 'The original six holes: a warm-up, a dogleg, water, a tunnel and a finale.', holes: CLASSIC },
+    { id: 'aviary', name: 'The Aviary, Colorado Springs', note: '18 holes, 4,805 ft, concrete tees. Fountain Creek runs through it, with a short, tight, wooded middle. Built from the published totals, so holes are look-alikes: use Edit hole to move any tee or basket to match.',
+      holes: genCourse(7596, [196, 315, 210, 235, 360, 248, 215, 190, 335, 262, 228, 345, 205, 240, 255, 345, 415, 206], { bendP: 0.4, width: 16, wvar: 7, tight: [9, 10, 11], creek: { 1: [0.38, 0.52], 6: [0.4, 0.55], 14: [0.45, 0.6] }, density: 1 }) },
+    { id: 'rampart', name: 'Rampart, Colorado Springs', note: '18 holes, 3,638 ft, a mix of long shots and short technical ones in a lightly wooded park. The hills are not in the game yet, only the distances and layout. Look-alike holes: use Edit hole to match the real ones.',
+      holes: genCourse(8142, [150, 235, 180, 310, 165, 205, 250, 140, 190, 330, 175, 160, 220, 255, 185, 198, 135, 155], { bendP: 0.45, width: 20, wvar: 8, tight: [], creek: null, density: 0.55 }) }
+  ];
+  var COURSE = COURSES[0], HOLES = CLASSIC, HOLE_N = HOLES.length, EDITS = {};
+  try { EDITS = JSON.parse(localStorage.getItem('ss-disc-edits') || '{}') || {}; } catch (e) { EDITS = {}; }
+  function setCourse(id) {
+    COURSE = COURSES.filter(function (c) { return c.id === id; })[0] || COURSES[0]; HOLES = COURSE.holes; HOLE_N = HOLES.length;
+    HOLES.forEach(function (h) { h.built = false; });
+    try { localStorage.setItem('ss-disc-course', COURSE.id); } catch (e) {}
+  }
+  try { setCourse(localStorage.getItem('ss-disc-course') || 'classic'); } catch (e) {}
+  function saveEdit(i, tee, basket) {
+    var e = EDITS[COURSE.id] = EDITS[COURSE.id] || {}; e[i] = { tee: tee, basket: basket };
+    try { localStorage.setItem('ss-disc-edits', JSON.stringify(EDITS)); } catch (er) {}
+  }
+  function clearEdit(i) { if (EDITS[COURSE.id]) delete EDITS[COURSE.id][i]; try { localStorage.setItem('ss-disc-edits', JSON.stringify(EDITS)); } catch (er) {} }
+
 
   function segDist(px, py, ax, ay, bx, by) { var dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, t = l2 ? clamp(((px - ax) * dx + (py - ay) * dy) / l2, 0, 1) : 0; var cx = ax + dx * t, cy = ay + dy * t; return Math.sqrt((px - cx) * (px - cx) + (py - cy) * (py - cy)); }
   function pathDist(h, x, y) { var m = 1e9; for (var i = 0; i < h.path.length - 1; i++) m = Math.min(m, segDist(x, y, h.path[i][0], h.path[i][1], h.path[i + 1][0], h.path[i + 1][1])); return m; }
@@ -37,11 +76,16 @@
     return 'rough';
   }
   function buildHole(i) {
-    var h = HOLES[i]; h.tee = h.path[0]; h.basket = h.path[h.path.length - 1];
+    var h = HOLES[i];
+    if (!h.orig) h.orig = JSON.parse(JSON.stringify(h.path));
+    h.path = JSON.parse(JSON.stringify(h.orig));
+    var ed = EDITS[COURSE.id] && EDITS[COURSE.id][i];
+    if (ed) { h.path[0] = ed.tee.slice(); h.path[h.path.length - 1] = ed.basket.slice(); }
+    h.tee = h.path[0]; h.basket = h.path[h.path.length - 1];
     if (h.built) return h; h.built = true;
     var r = rng(1234 + i * 77), tr = [];
     h.trees.forEach(function (t) { tr.push({ x: t[0], y: t[1], h: rnd(8, 12), big: true }); });
-    var count = h.tight ? 150 : 95;
+    var count = Math.round((h.tight ? 150 : 95) * (h.density || 1));
     for (var n = 0; n < count; n++) {
       var yy = r() * (h.basket[1] + 40) - 10, xx = (r() - 0.5) * 170 + (h.path[Math.min(h.path.length - 1, 1)][0] * 0.5);
       var dd = pathDist(h, xx, yy), gap = h.width / 2 + (h.tight ? 0.8 : 3 + r() * 5);
@@ -102,6 +146,57 @@
   sAim.addEventListener('input', function () { if (G && G.phase === 'aim') { G.aimOff = (+sAim.value) / 57.3; syncUi(); } });
   handBtn.addEventListener('click', function () { spin = -spin; syncUi(); });
   nextBtn.addEventListener('click', function () { if (G.done) { newRound(); } else { G.hole++; startHole(); } });
+
+  // ---------- course picker and hole editor ----------
+  var pickEl = $('dd-pick'), coursesEl = $('dd-courses'), cnoteEl = $('dd-cnote'), edEl = $('dd-editor'), edCv = $('dd-edcv'), edInfo = $('dd-edinfo'), ed = null;
+  function fillCourses() {
+    coursesEl.innerHTML = '';
+    COURSES.forEach(function (c) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'dd-cbtn' + (c.id === COURSE.id ? ' on' : ''); b.innerHTML = '<b>' + c.name + '</b><small>' + c.holes.length + ' holes</small>';
+      b.addEventListener('click', function () { setCourse(c.id); curBuilt = -1; pickEl.hidden = true; newRound(); });
+      b.addEventListener('mouseenter', function () { cnoteEl.textContent = c.note; }); b.addEventListener('focus', function () { cnoteEl.textContent = c.note; });
+      coursesEl.appendChild(b);
+    });
+    cnoteEl.textContent = COURSE.note;
+  }
+  $('dd-course').addEventListener('click', function () { if (charging) return; fillCourses(); pickEl.hidden = false; });
+  $('dd-pick-x').addEventListener('click', function () { pickEl.hidden = true; });
+  function edBounds() {
+    var minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9; ed.pts.forEach(function (p) { minx = Math.min(minx, p[0]); maxx = Math.max(maxx, p[0]); miny = Math.min(miny, p[1]); maxy = Math.max(maxy, p[1]); });
+    var sx = Math.max(60, (maxx - minx) * 0.7), sy = Math.max(60, (maxy - miny) * 0.5); ed.b = [minx - sx, maxx + sx, miny - sy, maxy + sy];
+  }
+  function edMap() { var W = edCv.clientWidth, H = edCv.clientHeight, b = ed.b, k = Math.min(W / (b[1] - b[0]), H / (b[3] - b[2])); ed.k = k; ed.ox = (W - (b[1] - b[0]) * k) / 2 - b[0] * k; ed.oy = H - (H - (b[3] - b[2]) * k) / 2 + b[2] * k; ed.W = W; ed.H = H; }
+  function e2c(p) { return [ed.ox + p[0] * ed.k, ed.oy - p[1] * ed.k]; }
+  function c2e(x, y) { return [(x - ed.ox) / ed.k, (ed.oy - y) / ed.k]; }
+  function edDraw() {
+    var d = Math.min(window.devicePixelRatio || 1, 2), W = edCv.clientWidth, H = edCv.clientHeight; if (edCv.width !== Math.round(W * d)) { edCv.width = Math.round(W * d); edCv.height = Math.round(H * d); }
+    var c = edCv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0); edMap(); c.fillStyle = '#27472b'; c.fillRect(0, 0, W, H);
+    var h = ed.h, path = ed.pts.map(e2c);
+    c.fillStyle = '#2f6fe0'; h.water.forEach(function (w) { var a = e2c([w[0], w[3]]), b = e2c([w[2], w[1]]); c.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); });
+    c.strokeStyle = '#4f9a58'; c.lineCap = 'round'; c.lineJoin = 'round'; c.lineWidth = Math.max(8, h.width * ed.k); c.beginPath(); path.forEach(function (p, i) { if (i) c.lineTo(p[0], p[1]); else c.moveTo(p[0], p[1]); }); c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,.55)'; c.setLineDash([6, 6]); c.lineWidth = 1.5; c.beginPath(); path.forEach(function (p, i) { if (i) c.lineTo(p[0], p[1]); else c.moveTo(p[0], p[1]); }); c.stroke(); c.setLineDash([]);
+    c.fillStyle = '#12351c'; (h.treeList || []).forEach(function (t) { if (t.x > ed.b[0] && t.x < ed.b[1] && t.y > ed.b[2] && t.y < ed.b[3]) { var m = e2c([t.x, t.y]); c.beginPath(); c.arc(m[0], m[1], Math.max(2, 2.2 * ed.k), 0, 6.3); c.fill(); } });
+    var t = e2c(ed.tee), b2 = e2c(ed.basket);
+    c.fillStyle = '#fff'; c.strokeStyle = '#000'; c.lineWidth = 3; c.beginPath(); c.arc(t[0], t[1], 13, 0, 6.3); c.fill(); c.stroke(); c.fillStyle = '#000'; c.font = '700 11px system-ui,sans-serif'; c.textAlign = 'center'; c.fillText('TEE', t[0], t[1] + 4);
+    c.fillStyle = '#ff2a35'; c.beginPath(); c.arc(b2[0], b2[1], 13, 0, 6.3); c.fill(); c.stroke(); c.fillStyle = '#fff'; c.fillText('PIN', b2[0], b2[1] + 4);
+    var len = 0; for (var i = 0; i < ed.pts.length - 1; i++) len += Math.hypot(ed.pts[i + 1][0] - ed.pts[i][0], ed.pts[i + 1][1] - ed.pts[i][1]);
+    edInfo.textContent = 'Hole ' + (ed.i + 1) + ': ' + Math.round(len / 0.3048) + ' ft. Drag the white tee or the red pin.';
+  }
+  function edPts() { ed.pts = ed.h.path.map(function (p) { return p.slice(); }); ed.pts[0] = ed.tee; ed.pts[ed.pts.length - 1] = ed.basket; }
+  $('dd-edit').addEventListener('click', function () {
+    if (!G || charging || (G.phase !== 'aim')) return;
+    var h = G.h; ed = { i: G.hole, h: h, tee: h.path[0].slice(), basket: h.path[h.path.length - 1].slice(), drag: null }; edPts(); edBounds(); edEl.hidden = false; edDraw();
+  });
+  edCv.addEventListener('pointerdown', function (e) {
+    if (!ed) return; var r = edCv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, t = e2c(ed.tee), b = e2c(ed.basket), dt = Math.hypot(x - t[0], y - t[1]), db = Math.hypot(x - b[0], y - b[1]);
+    ed.drag = (dt <= db ? (dt < 40 ? 'tee' : null) : (db < 40 ? 'basket' : null)); if (ed.drag) { try { edCv.setPointerCapture(e.pointerId); } catch (x2) {} e.preventDefault(); }
+  });
+  edCv.addEventListener('pointermove', function (e) { if (!ed || !ed.drag) return; var r = edCv.getBoundingClientRect(), p = c2e(e.clientX - r.left, e.clientY - r.top); ed[ed.drag] = p; edPts(); edDraw(); });
+  function edEnd() { if (ed) ed.drag = null; } edCv.addEventListener('pointerup', edEnd); edCv.addEventListener('pointercancel', edEnd);
+  window.addEventListener('resize', function () { if (ed && !edEl.hidden) edDraw(); });
+  function edClose() { edEl.hidden = true; ed = null; }
+  $('dd-eddone').addEventListener('click', function () { if (!ed) return; var i = ed.i, tee = ed.tee, bk = ed.basket; edClose(); if (Math.hypot(bk[0] - tee[0], bk[1] - tee[1]) < 8) { say('Tee and pin were too close together. Nothing changed.'); return; } saveEdit(i, tee, bk); HOLES[i].built = false; curBuilt = -1; startHole(); say('Saved. Your version of hole ' + (i + 1) + ' stays on this device.'); });
+  $('dd-edreset').addEventListener('click', function () { if (!ed) return; var i = ed.i; edClose(); clearEdit(i); HOLES[i].built = false; curBuilt = -1; startHole(); say('Hole ' + (i + 1) + ' is back to the original.'); });
 
   // drag the view to aim
   var dragX = null;
@@ -517,7 +612,8 @@
     var lm = M(G.lie[0], G.lie[1]); hctx.fillStyle = '#fff'; hctx.beginPath(); hctx.arc(lm[0], lm[1], 2.8, 0, 6.3); hctx.fill();
     hctx.restore();
     // wind dial under the chips on the left, with the distance pill beside it
-    var wx = G.wind[0], wy = G.wind[1], ws = Math.hypot(wx, wy), ang = Math.atan2(wx, wy) - cam.yaw, cxw = 34, cyw = 74, rw = 24;
+    var wx = G.wind[0], wy = G.wind[1], ws = Math.hypot(wx, wy), ang = Math.atan2(wx, wy) - cam.yaw, cxw = 34, rw = 24, cb = chipsEl.getBoundingClientRect(), sb = stage.getBoundingClientRect(), cyw = Math.max(74, cb.bottom - sb.top + 10 + rw);
+    var tt = Math.round(cb.bottom - sb.top + 6 + (W < 600 ? 2 * rw + 8 : 0)); if (toast._top !== tt) { toast._top = tt; toast.style.top = tt + 'px'; }
     hctx.save(); hctx.translate(cxw, cyw); hctx.fillStyle = 'rgba(8,2,6,.72)'; hctx.strokeStyle = 'rgba(255,42,53,.5)'; hctx.beginPath(); hctx.arc(0, 0, rw, 0, 6.3); hctx.fill(); hctx.stroke();
     hctx.rotate(ang); hctx.fillStyle = '#ffd1d4'; hctx.globalAlpha = 0.4 + Math.min(0.6, ws / 5); hctx.beginPath(); hctx.moveTo(0, -16); hctx.lineTo(7, -3); hctx.lineTo(2.5, -3); hctx.lineTo(2.5, 14); hctx.lineTo(-2.5, 14); hctx.lineTo(-2.5, -3); hctx.lineTo(-7, -3); hctx.closePath(); hctx.fill(); hctx.restore();
     hctx.fillStyle = '#ffd1d4'; hctx.font = '700 11px system-ui, sans-serif'; hctx.textAlign = 'left'; hctx.fillText('WIND ' + ws.toFixed(0) + ' m/s', cxw + rw + 8, cyw - 4);

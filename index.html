@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1791990003">
+  <link rel="stylesheet" href="css/styles.css?v=1791990009">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -325,7 +325,7 @@
           <canvas id="wg-canvas" aria-label="Don't Fall Off the Wagon game: hold to dive down hills, let go to launch"></canvas>
           <p class="wg-toast" id="wg-toast" role="status" aria-live="polite"></p>
           <button type="button" class="wg-jump" id="wg-jump" aria-label="Jump">JUMP</button>
-          <div class="wg-over" id="wg-over"><div><h3 id="wg-over-t">Don't Fall Off the Wagon</h3><p id="wg-over-s">Ride a little red wagon from hill to hill. Hold B (or press and hold the screen) to dive and gain speed. Press Shift (or the JUMP button) to jump. Don\u2019t fall off the wagon.</p><button type="button" class="btn btn-primary" id="wg-go">Start rolling</button></div></div>
+          <div class="wg-over" id="wg-over"><div><h3 id="wg-over-t">Don't Fall Off the Wagon</h3><p id="wg-over-s">Ride a little red wagon from hill to hill. Hold B (or press and hold the screen) to dive and gain speed. Press Shift (or the JUMP button) to jump. Don&rsquo;t fall off the wagon.</p><button type="button" class="btn btn-primary" id="wg-go">Start rolling</button></div></div>
         </div>
         <p class="es-help">Hold <b>B</b> (or press and hold the screen) to dive and gain speed. Let go near the top of a hill to launch, and tap <b>Shift</b> (or the JUMP button) to jump. Grab the gold chips. It starts calm and slowly gets steeper, shorter and rockier. If you fall off the wagon, climb back on.</p>
       </div>
@@ -333,7 +333,7 @@
         <div class="dd-stage" id="dd-stage">
           <canvas id="dd-gl" aria-label="Disc golf game: drag to aim, pick a disc, hold the throw button"></canvas>
           <canvas id="dd-hud" aria-hidden="true"></canvas>
-          <div class="dd-chips"><b>Disc-ipline</b><span id="dd-hole">Hole 1/6</span><span id="dd-par">Par 3</span><span id="dd-str">Throws 0</span><button type="button" class="dd-fs" id="dd-fs" aria-pressed="false">Full screen</button></div>
+          <div class="dd-chips"><b>Disc-ipline</b><span id="dd-hole">Hole 1/6</span><span id="dd-par">Par 3</span><span id="dd-str">Throws 0</span><button type="button" class="dd-fs" id="dd-fs" aria-pressed="false">Full screen</button><button type="button" class="dd-fs" id="dd-course">Course</button><button type="button" class="dd-fs" id="dd-edit">Edit hole</button></div>
           <p class="wg-toast dd-toast" id="dd-toast" role="status" aria-live="polite"></p>
           <p class="dd-msg" id="dd-msg" hidden></p>
           <div class="dd-drawer" id="dd-drawer" hidden><div class="dd-discs" id="dd-discs" role="group" aria-label="Choose a disc (speed | glide | turn | fade)"></div></div>
@@ -347,6 +347,8 @@
             <button type="button" class="dd-hand" id="dd-hand" aria-pressed="false">Backhand</button>
             <button type="button" class="dd-throw" id="dd-throw" aria-label="Hold to charge the throw, let go to throw"><span>Hold to throw</span></button>
           </div>
+          <div class="wg-over dd-pick" id="dd-pick" hidden><div><h3>Pick a course</h3><div class="dd-courses" id="dd-courses"></div><p class="dd-cnote" id="dd-cnote"></p><button type="button" class="btn" id="dd-pick-x">Close</button></div></div>
+          <div class="dd-editor" id="dd-editor" hidden><canvas id="dd-edcv" aria-label="Hole editor: drag the white tee or the red basket"></canvas><div class="dd-edbar"><span id="dd-edinfo">Drag the white tee or the red basket</span><button type="button" class="btn" id="dd-edreset">Reset hole</button><button type="button" class="btn btn-primary" id="dd-eddone">Done</button></div></div>
           <div class="wg-over" id="dd-over" hidden><div><h3 id="dd-over-t">Hole done</h3><p id="dd-over-s"></p><button type="button" class="btn btn-primary" id="dd-next">Next hole</button></div></div>
         </div>
         <p class="es-help">Pick a real disc: the four numbers are its published <b>speed | glide | turn | fade</b>, so a Destroyer (12|5|-1|3) really does need a hard throw to fly right, and a Roc3 (5|4|0|3) fades left at the end. Drag the view or use the Aim slider to point it. <b>Hyzer</b> tilts the disc so it curves left (backhand) and <b>anhyzer</b> so it curves right. The dotted line shows how your setup flies at about 85% power. Hold the throw button (or the space bar) to charge power and let go. Wind, trees and water are real, and to score you have to hit the chains: a disc that is too fast bounces out, and one that skids in low under the chains does not count.</p>
@@ -497,22 +499,23 @@
       <p class="scd-hint">Hold the title bar to move me. Home remote: CH = change channel, VOL = rewind / forward, OK = play / pause</p>
     </div>
   </aside>
-  <script src="js/rain.js?v=1791990003" defer></script>
-  <script src="js/app.js?v=1791990003" defer></script>
-  <script src="js/hole.js?v=1791990003" defer></script>
-  <script src="js/pill.js?v=1791990003" defer></script>
-  <script src="js/tv.js?v=1791990003" defer></script>
-  <script src="js/search.js?v=1791990003" defer></script>
-  <script src="js/merch.js?v=1791990003" defer></script>
-  <script src="js/web.js?v=1791990003" defer></script>
-  <script src="js/home.js?v=1791990003" defer></script>
-  <script src="js/remote.js?v=1791990003" defer></script>
-  <script src="js/craving.js?v=1791990003" defer></script>
-  <script src="js/wagon.js?v=1791990003" defer></script>
-  <script src="js/discphys.js?v=1791990003" defer></script>
-  <script src="js/discgolf.js?v=1791990003" defer></script>
-  <script src="js/scplayer.js?v=1791990003" defer></script>
-  <script src="js/assistant.js?v=1791990003" defer></script>
-  <script src="js/music.js?v=1791990003" defer></script>
+  <script src="js/rain.js?v=1791990009" defer></script>
+  <script src="js/app.js?v=1791990009" defer></script>
+  <script src="js/hole.js?v=1791990009" defer></script>
+  <script src="js/pill.js?v=1791990009" defer></script>
+  <script src="js/tv.js?v=1791990009" defer></script>
+  <script src="js/search.js?v=1791990009" defer></script>
+  <script src="js/merch.js?v=1791990009" defer></script>
+  <script src="js/web.js?v=1791990009" defer></script>
+  <script src="js/home.js?v=1791990009" defer></script>
+  <script src="js/remote.js?v=1791990009" defer></script>
+  <script src="js/craving.js?v=1791990009" defer></script>
+  <script src="js/wagon.js?v=1791990009" defer></script>
+  <script src="js/discphys.js?v=1791990009" defer></script>
+  <script src="js/discgolf.js?v=1791990009" defer></script>
+  <script src="js/popout.js?v=1791990009" defer></script>
+  <script src="js/scplayer.js?v=1791990009" defer></script>
+  <script src="js/assistant.js?v=1791990009" defer></script>
+  <script src="js/music.js?v=1791990009" defer></script>
 </body>
 </html>
