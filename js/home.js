@@ -154,8 +154,12 @@
     var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
     screen.classList.add('tuning');
     yt.hidden = false;
-    yt.onload = function () { setTimeout(function () { applySound(); screen.classList.remove('tuning'); }, 900); };
-    yt.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&start=' + start;
+    yt.onload = function () {
+      // some browsers show a big play button instead of starting; nudge it a few times, muted-safe
+      [400, 1200, 2500, 4500].forEach(function (ms) { setTimeout(function () { if (yt.hidden || cur !== v) return; ytCmd('playVideo'); applySound(); }, ms); });
+      setTimeout(function () { screen.classList.remove('tuning'); }, 900);
+    };
+    yt.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '&start=' + start;
     nowBtn.hidden = nextBtn.hidden = false;
     nowBtn.title = v.title || '';
     nowBtn.textContent = 'Watch this one';

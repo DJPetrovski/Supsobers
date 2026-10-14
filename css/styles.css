@@ -1086,3 +1086,7 @@ html.is-scrolling .remote .rm-key, html.is-scrolling .tv-glass, html.is-scrollin
 @media (max-width: 760px) { .home-rig .tv { width: min(100%, 640px, max(280px, calc((100svh - 300px) * 1.75))); } }
 .home-rig .tv { width: min(100%, 920px, max(300px, calc((100svh - 150px) * 1.75))); }
 @media (max-width: 760px) { .home-rig .tv { width: min(100%, 640px, max(280px, calc((100svh - 300px) * 1.75))); } }
+
+/* smaller logo so it does not steal the eye */
+.tv-logo img { width: 66%; }
+.tv-logo span { font-size: clamp(0.5rem, 1.25vw, 0.85rem); opacity: 0.9; }
