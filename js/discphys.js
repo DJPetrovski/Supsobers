@@ -30,6 +30,7 @@
   var DISCS = {};
   LIST.forEach(function (d) { DISCS[d.id] = d; });
   // old keys still work (a few older bits of the game ask for a class by name)
+  ['aviar', 'judge', 'buzzz', 'mako3', 'roc3'].forEach(function (id) { DISCS[id].skip = true; });   // flat, blunt-edged discs that skip across water
   DISCS.putter = DISCS.aviar; DISCS.mid = DISCS.buzzz; DISCS.fairway = DISCS.teebird; DISCS.driver = DISCS.destroyer;
 
   function sstep(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
@@ -54,7 +55,7 @@
 
   // Advance the disc by dt seconds. wind = [wx, wy] in m/s. Returns the state (mutated).
   function step(s, dt, wind) {
-    var d = s.disc, w = wind || [0, 0];
+    var d = s.disc, w = wind || [0, 0]; if (s.pizza) w = [w[0] * 0.3, w[1] * 0.3];   // an upright, fast-spinning pizza putt cuts through wind
     var vr = [s.v[0] - w[0], s.v[1] - w[1], s.v[2]];
     var sp = len(vr); if (sp < 0.5) sp = 0.5;
     var f = [vr[0] / sp, vr[1] / sp, vr[2] / sp];
@@ -62,10 +63,10 @@
     var u = cross(r, f);
     var gamma = Math.asin(Math.max(-1, Math.min(1, f[2])));
     var alpha = s.theta - gamma;
-    var gk = 0.8 + 0.1 * d.glide;                              // glide rating scales the lift
+    var gk = (0.8 + 0.1 * d.glide) * (s.pizza ? 0.5 : 1);                              // glide rating scales the lift
     var cl = T.cl * gk * (CL0 + CLA * Math.min(alpha, 0.38)) - (alpha > 0.38 ? (alpha - 0.38) * 5 : 0);
     var cd = CD0 + CDA * (alpha - A0) * (alpha - A0);
-    var q = 0.5 * RHO * sp * sp * AREA, L = q * cl, D = q * cd * T.dragK * (0.92 - 0.012 * d.speed);
+    var q = 0.5 * RHO * sp * sp * AREA, L = q * cl, D = q * cd * T.dragK * (0.92 - 0.012 * d.speed) * (s.pizza ? 0.8 : 1);
     var cb = Math.cos(s.bank), sb = Math.sin(s.bank);
     // lift acts square to the disc: up when flat, tilted toward the low (inside) edge on hyzer, toward the high edge on anhyzer
     var ax = (L * (u[0] * cb - s.spin * r[0] * sb) - D * f[0]) / MASS;
@@ -81,8 +82,7 @@
     var fast = sstep(0.66, 1.0, sn), slow = sstep(0.8, 0.42, sn);
     var turnRate = T.turnK * (0.15 + 0.85 * Math.min(tn, 4) / 4 * 1.0) * fast * (tn > 0 || sn > 0.9 ? 1 : 0.35) * (s.bank > -T.turnMax ? 1 : 0);
     var cap = T.fadeCap + T.fadeCapK * d.fade;
-    s.bank += (-turnRate * (tn > 0 ? 1 : 0.4) * dt) + T.kRoll * slow * (cap - s.bank) * dt;
-    s.bank = Math.max(-T.turnMax - 0.05, Math.min(T.hyzerMax, s.bank));
+    if (!s.pizza) { s.bank += (-turnRate * (tn > 0 ? 1 : 0.4) * dt) + T.kRoll * slow * (cap - s.bank) * dt; s.bank = Math.max(-T.turnMax - 0.05, Math.min(T.hyzerMax, s.bank)); }
     s.theta += (gamma + T.trim - s.theta) * T.pitchK * dt;   // the nose follows the flight path
     s.rot += 120 * dt;                                       // visual spin (about 19 rev/s)
     s.t += dt;
