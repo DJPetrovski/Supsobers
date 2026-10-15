@@ -412,7 +412,7 @@
     var noise = gauss() * 0.045 * pw * pw * (0.45 + disc.speed / 14), hy = (+sBank.value) / 57.3, la = (+sLa.value) / 57.3;
     G.strokes++; G.prev = [G.lie[0], G.lie[1]];
     var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise); s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2;
-    G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
+    bark(1); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
   }
   function wind() { return [G.wind[0] * 0.55, G.wind[1] * 0.55]; }
 
@@ -588,14 +588,14 @@
 
   function makeDog() {
     var g = new T.Group(); g.rotation.order = 'YXZ'; var body = new T.Group(); body.position.set(0, 0.36, -0.25); g.add(body);
-    var fur = lm(0xcf9a52), fur2 = lm(0xa8702f), pale = lm(0xe8c996), blk = lm(0x16100c, 0.45), pink = lm(0xe4707f, 0.6);
-    blob(body, fur, 0.19, 0.17, 0.37, 0, 0.12, 0.26, true); blob(body, fur, 0.2, 0.2, 0.2, 0, 0.16, 0.5, true); blob(body, fur, 0.17, 0.16, 0.18, 0, 0.1, 0.02, true);
+    var fur = lm(0xf6f3ec), fur2 = lm(0xe4e0d6), pale = lm(0xfbf9f4), blk = lm(0x16100c, 0.45), pink = lm(0xe4707f, 0.6);
+    blob(body, fur, 0.19, 0.17, 0.37, 0, 0.12, 0.26, true); blob(body, fur, 0.21, 0.21, 0.2, 0, 0.16, 0.5, true); blob(body, fur, 0.17, 0.16, 0.18, 0, 0.1, 0.02, true);
     blob(body, pale, 0.12, 0.08, 0.2, 0, 0.02, 0.38);
     var neck = blob(body, fur, 0.11, 0.15, 0.12, 0, 0.27, 0.62, true); neck.rotation.x = 0.5;
     var head = new T.Group(); head.position.set(0, 0.4, 0.7); body.add(head);
-    blob(head, fur, 0.14, 0.13, 0.15, 0, 0, 0, true); blob(head, pale, 0.07, 0.065, 0.11, 0, -0.05, 0.13); blob(head, blk, 0.03, 0.025, 0.025, 0, -0.025, 0.235);
-    [-1, 1].forEach(function (sd) { blob(head, blk, 0.02, 0.022, 0.02, sd * 0.065, 0.05, 0.12); var ear = blob(head, fur2, 0.035, 0.11, 0.07, sd * 0.125, -0.02, -0.01); ear.rotation.z = sd * 0.35; });
-    var tongue = blob(head, pink, 0.028, 0.012, 0.06, 0, -0.1, 0.19); tongue.visible = false;
+    blob(head, fur, 0.13, 0.125, 0.2, 0, 0, 0.03, true); blob(head, pale, 0.075, 0.07, 0.13, 0, -0.045, 0.17); blob(head, blk, 0.033, 0.028, 0.028, 0, -0.01, 0.3);
+    [-1, 1].forEach(function (sd) { blob(head, blk, 0.02, 0.022, 0.02, sd * 0.06, 0.05, 0.16); var ear = blob(head, fur2, 0.04, 0.12, 0.05, sd * 0.07, 0.17, -0.02); ear.rotation.z = -sd * 0.18; });
+    var tongue = blob(head, pink, 0.028, 0.012, 0.06, 0, -0.1, 0.25); tongue.visible = false;
     var legs = [[-1, 0.5, 0.06], [1, 0.5, 0.06], [-1, 0.0, 0.06], [1, 0.0, 0.06]].map(function (q, i) { return limb(body, i < 2 ? fur : fur2, q[0] * 0.11, q[2], q[1], 0.05, 0.4); });
     var tail = new T.Group(); tail.position.set(0, 0.17, -0.12); body.add(tail); var tm = new T.Mesh(new T.CylinderGeometry(0.02, 0.045, 0.36, 7), fur); tm.position.set(0, 0.09, -0.12); tm.rotation.x = -1.0; tm.castShadow = true; tail.add(tm);
     var hit = hitSphere(g, 0.85, 0, 0.5, 0.2);
@@ -641,14 +641,14 @@
     u.body.rotation.x = -dog.sit * 0.55; u.body.position.y = 0.36 - dog.sit * 0.17 + Math.abs(Math.sin(dog.ph)) * 0.03 * Math.min(1, dog.v / 3);
     var happy = dog.pet > 0, wagS = happy ? 16 : (dog.v > 0.5 ? 9 : 5), wagA = happy ? 0.9 : 0.5; dog.wag += dt * wagS; u.tail.rotation.y = Math.sin(dog.wag) * wagA; u.tail.rotation.x = 0.3 + (dog.v > 3 ? 0.4 : 0);
     u.head.rotation.z = happy ? 0.32 * Math.sin(simTime * 3) + 0.15 : 0; u.head.rotation.x = happy ? -0.15 : Math.sin(dog.ph * 2) * 0.06 * Math.min(1, dog.v / 3) + 0.08; u.tongue.visible = happy || dog.v > 4 || dog.still > 3;
-    var gy = gh(dog.x, dog.y); dog.g.position.set(dog.x, gy, -dog.y); dog.g.rotation.y = Math.PI - dog.yaw; dog.g.visible = true;
+    if (dog.bounce > 0) dog.bounce -= dt; var gy = gh(dog.x, dog.y) + (dog.bounce > 0 ? Math.abs(Math.sin(dog.bounce * 12)) * 0.22 : 0); dog.g.position.set(dog.x, gy, -dog.y); dog.g.rotation.y = Math.PI - dog.yaw; dog.g.visible = true;
     hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
   }
   function spawnHeart() { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(dog.x + rnd(-0.25, 0.25), dog.g.position.y + 1.1 + rnd(0, 0.2), -dog.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
   }
-  function bark() {
+  function bark(n) {
     try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
-      [0, 0.2].forEach(function (off) { var t0 = actx.currentTime + off, o = actx.createOscillator(), gn = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(340, t0); o.frequency.exponentialRampToValueAtTime(150, t0 + 0.13); f.type = 'bandpass'; f.frequency.value = 720; f.Q.value = 1.1; gn.gain.setValueAtTime(0.0001, t0); gn.gain.exponentialRampToValueAtTime(0.2, t0 + 0.015); gn.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15); o.connect(f); f.connect(gn); gn.connect(actx.destination); o.start(t0); o.stop(t0 + 0.18); });
+      (n === 1 ? [0] : [0, 0.2]).forEach(function (off) { var t0 = actx.currentTime + off, o = actx.createOscillator(), gn = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(340, t0); o.frequency.exponentialRampToValueAtTime(150, t0 + 0.13); f.type = 'bandpass'; f.frequency.value = 720; f.Q.value = 1.1; gn.gain.setValueAtTime(0.0001, t0); gn.gain.exponentialRampToValueAtTime(0.2, t0 + 0.015); gn.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15); o.connect(f); f.connect(gn); gn.connect(actx.destination); o.start(t0); o.stop(t0 + 0.18); });
     } catch (e) {}
   }
   var PET_SAY = ['Good dog!', 'Who is a good dog? You are!', 'Best caddy on the course.', 'Tail wag level: maximum.', 'Belly scritches accepted.', 'Professional disc fetcher.', 'Zero bogeys in this dog’s heart.'];
