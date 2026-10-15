@@ -55,6 +55,7 @@
     H('The Narrows', 4, [[0, 0], [0, 142]], 30, [-3, 1], { ponds: [[0.38, -24, 15, 36], [0.38, 24, 15, 36], [0.78, -24, 15, 30], [0.78, 24, 15, 30]], gates: [[0.58, 9]], bushes: [[0.2, 8, 1.2]] }),
     H('Sober Finale', 4, [[0, 0], [0, 68], [8, 126], [0, 162]], 22, [-3, -3], { ponds: [[0.55, -20, 14, 22], [0.55, 22, 14, 22], [0.94, -12, 10, 12]], gates: [[0.3, 9], [0.8, 7]], clusters: [[0.45, 0, 2, 2]], bushes: [[0.62, 0, 1.2], [0.9, 7, 1.2]] })
   ];
+  [1.2, 0.4, 1.6, 1.0, 2.2, 1.3, 0.6, 0.9, 0.8, 2.4, 1.5, 2.4, 0.7, 2.0, 1.4, 1.8, 0.6, 2.0].forEach(function (a, i) { CHALLENGE[i].hill = a; CHALLENGE[i].rise = [0, 0, 1.2, 0, 2, -1.2, 0, 0.8, 0, -2.5, 0, 1.6, 0, 2.8, 0, -1.6, 0, 2.2][i]; });
 
   /* ---------- real courses ----------
      Lengths and pars below are made to add up to each course's published totals (the hole-by-hole numbers are not published in a form
@@ -107,6 +108,32 @@
     var d = clamp(f, 0, 1) * L; for (i = 0; i < segs.length; i++) { if (d <= segs[i] || i === segs.length - 1) { var a = h.path[i], b = h.path[i + 1], t = segs[i] ? Math.min(1, d / segs[i]) : 0, hx = (b[0] - a[0]) / (segs[i] || 1), hy = (b[1] - a[1]) / (segs[i] || 1); return { x: a[0] + (b[0] - a[0]) * t, y: a[1] + (b[1] - a[1]) * t, hx: hx, hy: hy }; } d -= segs[i]; }
     return { x: 0, y: 0, hx: 0, hy: 1 };
   }
+  /* ---------- gentle hills ---------- */
+  var EH = null;
+  function sm(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+  function wq(w, x, y) { if (w[4] === 'e') { var ex = (x - w[0]) / w[2], ey = (y - w[1]) / w[3]; return Math.sqrt(ex * ex + ey * ey); } var hx = (w[2] - w[0]) / 2, hy = (w[3] - w[1]) / 2; return Math.max(Math.abs(x - (w[0] + w[2]) / 2) / hx, Math.abs(y - (w[1] + w[3]) / 2) / hy); }
+  function ghBase(h, x, y) { var by = h.basket[1]; return (h.rise || 0) * sm(0, by, y) * (1 - sm(60, 100, Math.abs(x))) * (1 - sm(by + 30, by + 75, y)); }
+  function gh0(h, x, y) {
+    var b = ghBase(h, x, y), s = h.seed || 0, amp = h.hl; if (!amp) return b;
+    var n = 0.5 * Math.sin(x * 0.085 + s) * Math.cos(y * 0.062 + s * 1.3) + 0.32 * Math.sin(x * 0.047 + y * 0.081 + s * 2.1) + 0.2 * Math.cos(x * 0.12 - y * 0.05 + s * 0.7), by = h.basket[1];
+    var k = sm(4, 15, Math.hypot(x - h.tee[0], y - h.tee[1])) * sm(4, 15, Math.hypot(x - h.basket[0], y - by)) * (1 - sm(60, 100, Math.abs(x))) * (1 - sm(by + 30, by + 75, y)) * sm(-45, -20, y);
+    if (k > 0) for (var i = 0; i < h.water.length; i++) { k = Math.min(k, sm(1.0, 2.1, wq(h.water[i], x, y))); if (k <= 0) break; }
+    return b + amp * n * k;
+  }
+  function gh(x, y) {   // ground height at a point of the current hole; flat at the tee and basket, dished down to the water
+    var h = EH; if (!h) return 0; var v = gh0(h, x, y);
+    for (var i = 0; i < h.water.length; i++) {
+      var w = h.water[i], q = wq(w, x, y); if (q >= 1.6) continue; var lv = w.lvl || 0;
+      if (q < 1) { var k = 1, isl = 0; if (h.island) { k = sm(6.0, 9.5, Math.hypot(x - h.basket[0], y - h.basket[1])); isl = (1 - k) * 0.3; } v = lv - 0.6 * (1 - q * q) * k + isl; }
+      else v = lv + (v - lv) * sm(1, 1.6, q);
+    }
+    return v;
+  }
+  function slopeRoll(ro, p) {   // a landed disc slides a little downhill
+    var e = 0.8, gx = (gh(p[0] + e, p[1]) - gh(p[0] - e, p[1])) / (2 * e), gy = (gh(p[0], p[1] + e) - gh(p[0], p[1] - e)) / (2 * e), L = Math.hypot(ro[0], ro[1]) + 1.5, ex = -gx * L * 1.5, ey = -gy * L * 1.5, m = Math.hypot(ex, ey);
+    if (m > 7) { ex *= 7 / m; ey *= 7 / m; }
+    return [ro[0] + ex, ro[1] + ey];
+  }
   function terrain(h, x, y) {
     if (inWater(h, x, y)) return 'water';
     var d = pathDist(h, x, y), b = h.basket;
@@ -124,6 +151,9 @@
     if (!h.water0) h.water0 = h.water || [];
     function rel(f, lat) { var q = pathAt(h, f); return [q.x + q.hy * lat, q.y - q.hx * lat, q]; }
     h.water = h.water0.concat((h.ponds || []).map(function (q) { var c = rel(q[0], q[1]); return [c[0], c[1], q[2], q[3], 'e']; }));
+    h.hl = h.hill != null ? h.hill : 1.2; h.seed = i * 7.31 + COURSE.id.length * 1.9; EH = h;
+    h.water.forEach(function (w) { var cx = w[4] === 'e' ? w[0] : (w[0] + w[2]) / 2, cy = w[4] === 'e' ? w[1] : (w[1] + w[3]) / 2; w.lvl = ghBase(h, cx, cy); });
+    h.tz = gh(h.tee[0], h.tee[1]); h.bz = gh(h.basket[0], h.basket[1]);
     if (h.built) return h; h.built = true;
     var r = rng(1234 + i * 77), tr = [];
     h.trees.forEach(function (t) { tr.push({ x: t[0], y: t[1], h: rnd(8, 12), big: true }); });
@@ -132,9 +162,14 @@
     var ob = [];
     (h.bushes || []).forEach(function (b) { var c = rel(b[0], b[1]); ob.push({ x: c[0], y: c[1], r: b[2], kind: 'bush' }); });
     (h.rocks || []).forEach(function (b) { var c = rel(b[0], b[1]); ob.push({ x: c[0], y: c[1], r: b[2], kind: 'rock' }); });
-    for (var bi = 0; bi < 14; bi++) { var f0 = r() * 0.95 + 0.02, side = r() < 0.5 ? -1 : 1, c0 = rel(f0, side * (h.width / 2 + 1 + r() * 7)); if (!inWater(h, c0[0], c0[1])) ob.push({ x: c0[0], y: c0[1], r: 0.7 + r() * 0.9, kind: r() < 0.7 ? 'bush' : 'rock', filler: true }); }
+    for (var bi = 0; bi < 36; bi++) {
+      var f0 = r() * 0.95 + 0.02, side = r() < 0.5 ? -1 : 1, c0 = rel(f0, side * (h.width / 2 + 1 + r() * 9)), isRock = r() < 0.5;
+      if (inWater(h, c0[0], c0[1]) || Math.hypot(c0[0] - h.tee[0], c0[1] - h.tee[1]) < 4 || Math.hypot(c0[0] - h.basket[0], c0[1] - h.basket[1]) < 4) continue;
+      ob.push({ x: c0[0], y: c0[1], r: isRock ? 0.6 + r() * 1.3 : 0.7 + r() * 0.9, kind: isRock ? 'rock' : 'bush', filler: true });
+      if (isRock && r() < 0.6) for (var rk = 0; rk < 2; rk++) { var ra = r() * 6.28, rd = 1.1 + r() * 1.2, cx2 = c0[0] + Math.cos(ra) * rd, cy2 = c0[1] + Math.sin(ra) * rd; if (!inWater(h, cx2, cy2)) ob.push({ x: cx2, y: cy2, r: 0.35 + r() * 0.5, kind: 'rock', filler: true }); }
+    }
     h.obst = ob;
-    var count = Math.round((h.tight ? 150 : 95) * (h.density || 1));
+    var count = Math.round((h.tight ? 170 : 130) * (h.density || 1));
     for (var n = 0; n < count; n++) {
       var yy = r() * (h.basket[1] + 40) - 10, xx = (r() - 0.5) * 170 + (h.path[Math.min(h.path.length - 1, 1)][0] * 0.5);
       var dd = pathDist(h, xx, yy), gap = h.width / 2 + (h.tight ? 0.8 : 3 + r() * 5);
@@ -143,7 +178,7 @@
     }
     if (h.tight) for (var yy2 = 6; yy2 < h.basket[1]; yy2 += 4.5) { [-1, 1].forEach(function (sd) { var tx = h.path[0][0] + sd * (h.width / 2 + 0.9 + r() * 0.8); if (Math.abs(yy2 - 38) < 2 && sd < 0) return; tr.push({ x: tx, y: yy2 + r() * 1.5, h: 9 + r() * 4 }); }); }
     tr.forEach(function (t) { t.s = 0.85 + r() * 0.5; t.rot = r() * 6.28; t.tone = r(); t.kind = t.gate ? 'pine' : (r() < 0.38 ? 'oak' : 'pine'); });
-    h.treeList = tr;
+    h.treeList = tr; tr.forEach(function (t) { t.g = gh(t.x, t.y); }); ob.forEach(function (o) { o.g = gh(o.x, o.y); });
     return h;
   }
 
@@ -160,6 +195,9 @@
     { id: 'scramble', ic: '🧗', n: 'Scrambler', d: 'Make par or better after hitting an obstacle.' },
     { id: 'bomb', ic: '💣', n: 'Bomber', d: 'Throw a disc 120 m or more.' },
     { id: 'clean', ic: '💧', n: 'Dry round', d: 'Finish a round without a water or out-of-bounds penalty.' },
+    { id: 'pup', ic: '🐶', n: 'Good dog', d: 'Pet your dog caddy.' },
+    { id: 'pup25', ic: '🦴', n: 'Best friends', d: 'Pet your dog 25 times.' },
+    { id: 'wild', ic: '🐇', n: 'Wildlife spotter', d: 'Tap 5 critters on the course.' },
     { id: 'm_par', ic: '🥉', n: 'Bronze medal', d: 'Finish a round at even par or better.' },
     { id: 'm_3', ic: '🥈', n: 'Silver medal', d: 'Finish a round 3 under par or better.' },
     { id: 'm_6', ic: '🥇', n: 'Gold medal', d: 'Finish a round 6 under par or better.' },
@@ -225,9 +263,10 @@
   }
   function startHole() {
     var h = buildHole(G.hole); G.h = h; G.strokes = 0; G.lie = [h.tee[0], h.tee[1]]; G.prev = null; G.throws = [[h.tee[0], h.tee[1]]]; G.trail = []; G.flight = null; G.phase = 'aim'; G.aimOff = 0; G.wind = h.wind; G.wob = 0; G.drop = null; G.chainHit = false; G.holeHits = 0; G.pen = 0;
-    pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket()) + ' m to the basket.');
+    pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket()) + ' m to the basket.' + (PETS === 0 ? ' Your dog is here: tap it to pet it.' : ''));
     if (ready) buildCourse(h);
-    snapCam(); previewDirty = true;
+    if (skipBtn) skipBtn.hidden = true; G.tour = null;
+    snapCam(); previewDirty = true; if (ready) { placeDog(); beginTour(); }
   }
   function distToBasket() { return Math.hypot(G.h.basket[0] - G.lie[0], G.h.basket[1] - G.lie[1]); }
   function aimBase() { G.base = Math.atan2(G.h.basket[0] - G.lie[0], G.h.basket[1] - G.lie[1]); }
@@ -327,7 +366,7 @@
   // drag the view to aim
   var dragX = null;
   var dragY = null, noseF = 7;
-  glc.addEventListener('pointerdown', function (e) { setDrawer(false); setTune(false); setMenu(false); if (G && G.phase === 'aim') { dragX = e.clientX; dragY = e.clientY; noseF = +sLa.value; try { glc.setPointerCapture(e.pointerId); } catch (x) {} } });
+  glc.addEventListener('pointerdown', function (e) { setDrawer(false); setTune(false); setMenu(false); if (G && G.phase === 'tour') { endTour(); return; } if (G && (G.phase === 'aim' || G.phase === 'rest' || G.phase === 'holed') && pickLife(e)) return; if (G && G.phase === 'aim') { dragX = e.clientX; dragY = e.clientY; noseF = +sLa.value; try { glc.setPointerCapture(e.pointerId); } catch (x) {} } });
   glc.addEventListener('pointermove', function (e) {
     if (dragX === null || !G || G.phase !== 'aim') return; var dx = e.clientX - dragX, dy = e.clientY - dragY, k = 720 / glc.getBoundingClientRect().width; dragX = e.clientX; dragY = e.clientY;
     G.aimOff = clamp(G.aimOff + dx * 0.0035 * k, -0.8, 0.8);
@@ -372,7 +411,7 @@
   function doThrow(pw) {
     var noise = gauss() * 0.045 * pw * pw * (0.45 + disc.speed / 14), hy = (+sBank.value) / 57.3, la = (+sLa.value) / 57.3;
     G.strokes++; G.prev = [G.lie[0], G.lie[1]];
-    var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise);
+    var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise); s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2;
     G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
   }
   function wind() { return [G.wind[0] * 0.55, G.wind[1] * 0.55]; }
@@ -380,7 +419,7 @@
   // Does the disc get the chains? Soft, centred hits drop in. Fast hits and edge hits kick out. Low shots hit the tray and base.
   var BR = 0.105;
   function basketCheck(s) {
-    var b = G.h.basket, p = s.p, dx = p[0] - b[0], dy = p[1] - b[1], dxy = Math.hypot(dx, dy), z = p[2];
+    var b = G.h.basket, p = s.p, dx = p[0] - b[0], dy = p[1] - b[1], dxy = Math.hypot(dx, dy), z = p[2] - G.h.bz;
     if (dxy > 1.4 || z > 1.9) { G.chainHit = false; return null; }
     var spd = Math.hypot(s.v[0], s.v[1], s.v[2]), vh = Math.hypot(s.v[0], s.v[1]) || 1, ox = dx / (dxy || 1), oy = dy / (dxy || 1);
     var rch = z > 1.02 ? mix(0.205, 0.34, clamp((1.4 - z) / 0.38, 0, 1)) : mix(0.34, 0.2, clamp((1.02 - z) / 0.28, 0, 1));                       // the chain curtain is a funnel, narrower at the top
@@ -407,7 +446,7 @@
       var tl = h.treeList;
       for (var i = 0; i < tl.length; i++) {
         var t = tl[i]; if (Math.abs(t.x - p[0]) > 3 || Math.abs(t.y - p[1]) > 3) continue;
-        var dx = p[0] - t.x, dy = p[1] - t.y, d = Math.hypot(dx, dy), z = p[2], th = t.h * t.s, rr = z < 2 ? 0.45 : (z < th ? (t.kind === 'oak' ? 0.5 + 1.6 * t.s * Math.sin(clamp((z - 2) / (th - 2), 0, 1) * 3.0 + 0.2) * 0.9 : 0.45 + 1.15 * t.s * (1 - (z - 2) / (th - 2))) : 0); if (rr < 0.45) rr = 0.45;
+        var dx = p[0] - t.x, dy = p[1] - t.y, d = Math.hypot(dx, dy), z = p[2] - t.g, th = t.h * t.s, rr = z < 2 ? 0.45 : (z < th ? (t.kind === 'oak' ? 0.5 + 1.6 * t.s * Math.sin(clamp((z - 2) / (th - 2), 0, 1) * 3.0 + 0.2) * 0.9 : 0.45 + 1.15 * t.s * (1 - (z - 2) / (th - 2))) : 0); if (rr < 0.45) rr = 0.45;
         if (z > 0.1 && z < th && d < rr) {
           var nx = dx / (d || 1), ny = dy / (d || 1), dot = s.v[0] * nx + s.v[1] * ny;
           s.v[0] = (s.v[0] - 1.6 * dot * nx) * 0.18; s.v[1] = (s.v[1] - 1.6 * dot * ny) * 0.18; s.v[2] = Math.min(s.v[2], 0) * 0.3 - 1;
@@ -417,7 +456,7 @@
       for (var oi = 0; oi < h.obst.length; oi++) {
         var o = h.obst[oi]; if (Math.abs(o.x - p[0]) > 2.5 || Math.abs(o.y - p[1]) > 2.5) continue;
         var ox2 = p[0] - o.x, oy2 = p[1] - o.y, od = Math.hypot(ox2, oy2), top = o.kind === 'bush' ? 1.35 : o.r * 0.95;
-        if (p[2] < top && od < o.r + 0.12) {
+        if (p[2] - o.g < top && od < o.r + 0.12) {
           var onx = ox2 / (od || 1), ony = oy2 / (od || 1), odot = s.v[0] * onx + s.v[1] * ony, kk = o.kind === 'bush' ? 0.16 : 0.34;
           s.v[0] = (s.v[0] - 1.7 * odot * onx) * kk; s.v[1] = (s.v[1] - 1.7 * odot * ony) * kk; s.v[2] = Math.abs(s.v[2]) * 0.2 + (o.kind === 'rock' ? 1.2 : 0);
           p[0] = o.x + onx * (o.r + 0.14); p[1] = o.y + ony * (o.r + 0.14); if (G.hit !== o.kind) G.holeHits++; G.hit = o.kind; s.bank *= 0.3; G.shake = 0.2; if (G.flash !== o.kind) { G.flash = o.kind; }
@@ -429,16 +468,16 @@
         G.hit = bc.kind; G.shake = 0.18;
         flash(bc.kind === 'rattle' ? 'Rattled out!' : bc.kind === 'top' ? 'Off the top!' : 'Off the tray!');
       }
-      if (p[2] <= 0 && s.v[2] < 0) { p[2] = 0; land(); return; }
+      var gz = gh(p[0], p[1]); if (p[2] <= gz && (s.v[2] < 0 || p[2] < gz - 0.05)) { p[2] = gz; land(); return; }
       if (s.t > 14) { land(); return; }
     }
   }
 
   function land() {
     var s = G.flight, h = G.h, p = s.p, tType = terrain(h, p[0], p[1]);
-    G.trail.push([p[0], p[1], 0]);
+    G.trail.push([p[0], p[1], gh(p[0], p[1])]);
     if (tType === 'water') { G.splash = { x: p[0], y: p[1], t: 0 }; return rest([p[0], p[1]], 'water'); }
-    var ro = P.rollOut(s, tType === 'rough' ? 1.9 : 1), steps = Math.max(1, Math.ceil(Math.hypot(ro[0], ro[1]))), fx = p[0], fy = p[1], stopped = false;
+    var ro = slopeRoll(P.rollOut(s, tType === 'rough' ? 1.9 : 1), p), steps = Math.max(1, Math.ceil(Math.hypot(ro[0], ro[1]))), fx = p[0], fy = p[1], stopped = false;
     for (var i = 1; i <= steps && !stopped; i++) {
       var tx = p[0] + ro[0] * i / steps, ty = p[1] + ro[1] * i / steps;
       if (inWater(h, tx, ty)) { fx = tx; fy = ty; stopped = true; break; }
@@ -467,7 +506,7 @@
     aimBase(); G.aimOff = 0; pickDiscFor(); syncUi();
   }
   function holeOut(spd) {
-    var s = G.flight, b = G.h.basket; G.drop = { t: 0, x0: s.p[0], y0: s.p[1], z0: s.p[2], x1: b[0], y1: b[1], z1: 0.8, bank: s.bank }; G.wob = Math.max(G.wob, clamp(spd / 14, 0.4, 1.2)); G.shake = 0.2; G.flight.v = [0, 0, 0];
+    var s = G.flight, b = G.h.basket; G.drop = { t: 0, x0: s.p[0], y0: s.p[1], z0: s.p[2], x1: b[0], y1: b[1], z1: G.h.bz + 0.8, bank: s.bank }; G.wob = Math.max(G.wob, clamp(spd / 14, 0.4, 1.2)); G.shake = 0.2; G.flight.v = [0, 0, 0];
     chainSound(); flash('Chains!'); holeOutScore(false, true);
   }
   function holeOutScore(tapIn, chains) {
@@ -502,18 +541,203 @@
   /* ---------- camera ---------- */
   function angDiff(a, b) { var d = a - b; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; }
   function targetCam() {
+    if (G.phase === 'tour' && G.tour) return tourCam();
     if (G.phase === 'fly' && G.flight) {
-      var s = G.flight, hd = Math.atan2(s.v[0], s.v[1]), cz = Math.max(2.4, s.p[2] + 1.8), back = 9;
-      return { x: s.p[0] - Math.sin(hd) * back, y: s.p[1] - Math.cos(hd) * back, z: cz, yaw: hd, pitch: clamp(Math.atan((cz - s.p[2]) / back) + 0.02, 0.02, 0.5) };
+      var s = G.flight, hd = Math.atan2(s.v[0], s.v[1]), back = 9, fcx = s.p[0] - Math.sin(hd) * back, fcy = s.p[1] - Math.cos(hd) * back, cz = Math.max(gh(fcx, fcy) + 2.4, s.p[2] + 1.8);
+      return { x: fcx, y: fcy, z: cz, yaw: hd, pitch: clamp(Math.atan((cz - s.p[2]) / back) + 0.02, 0.02, 0.5) };
     }
-    if (G.phase === 'roll' && G.roll) { var r = G.roll, ha = Math.atan2(r.x1 - r.x0, r.y1 - r.y0); return { x: r.x0 - Math.sin(aim()) * 8, y: r.y0 - Math.cos(aim()) * 8, z: 3.2, yaw: cam.yaw, pitch: 0.16 }; }
-    if (G.phase === 'holed') { var b = G.h.basket, ya = G.base; return { x: b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2, y: b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2, z: 1.7, yaw: Math.atan2(b[0] - (b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2), b[1] - (b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2)), pitch: 0.17 }; }
-    var a = aim(); return { x: G.lie[0] - Math.sin(a) * 5.0, y: G.lie[1] - Math.cos(a) * 5.0, z: 1.9, yaw: a, pitch: clamp(0.12 - ((+sLa.value) - 7) * 0.014, -0.16, 0.2) };
+    if (G.phase === 'roll' && G.roll) { var r = G.roll, ha = Math.atan2(r.x1 - r.x0, r.y1 - r.y0); return { x: r.x0 - Math.sin(aim()) * 8, y: r.y0 - Math.cos(aim()) * 8, z: gh(r.x0, r.y0) + 3.2, yaw: cam.yaw, pitch: 0.16 }; }
+    if (G.phase === 'holed') { var b = G.h.basket, ya = G.base; return { x: b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2, y: b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2, z: G.h.bz + 1.7, yaw: Math.atan2(b[0] - (b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2), b[1] - (b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2)), pitch: 0.17 }; }
+    var a = aim(), acx = G.lie[0] - Math.sin(a) * 5.0, acy = G.lie[1] - Math.cos(a) * 5.0; return { x: acx, y: acy, z: Math.max(gh(G.lie[0], G.lie[1]), gh(acx, acy)) + 1.9, yaw: a, pitch: clamp(0.12 - ((+sLa.value) - 7) * 0.014, -0.16, 0.2) };
   }
   function snapCam() { var t = targetCam(); cam = { x: t.x, y: t.y, z: t.z, yaw: t.yaw, pitch: t.pitch }; }
   function moveCam(dt) {
-    var t = targetCam(), k = 1 - Math.exp(-dt * (G.phase === 'fly' ? 7 : 3.2));
+    var t = targetCam(), k = 1 - Math.exp(-dt * (G.phase === 'fly' ? 7 : G.phase === 'tour' ? 9 : G.glide > 0 ? 2.2 : 3.2)); if (G.glide > 0) G.glide -= dt;
     cam.x += (t.x - cam.x) * k; cam.y += (t.y - cam.y) * k; cam.z += (t.z - cam.z) * k; cam.yaw += angDiff(t.yaw, cam.yaw) * k; cam.pitch += (t.pitch - cam.pitch) * k;
+  }
+
+  /* ---------- flyover, dog and critters ---------- */
+  var TOUR = true; try { TOUR = localStorage.getItem('ss-disc-tour') !== '0'; } catch (e) {}
+  var skipBtn = $('dd-skip'), tourBtn = $('dd-tourbtn'), tourSub = $('dd-tour-s'), replayBtn = $('dd-replay');
+  function pathLen(h) { var L = 0; for (var i = 0; i < h.path.length - 1; i++) L += Math.hypot(h.path[i + 1][0] - h.path[i][0], h.path[i + 1][1] - h.path[i][1]); return L; }
+  function beginTour(force) {
+    if (!ready || !G || G.phase !== 'aim' || !(TOUR || force) || (reduce && !force)) return;
+    G.tour = { t: 0, dur: clamp(pathLen(G.h) / 32, 3.8, 8.5) + 1.4, hold: 1.4 }; G.phase = 'tour'; if (skipBtn) skipBtn.hidden = false; setDrawer(false); setTune(false); setMenu(false);
+  }
+  function endTour() { if (G && G.phase === 'tour') { G.phase = 'aim'; G.tour = null; G.glide = 1.8; if (skipBtn) skipBtn.hidden = true; previewDirty = true; syncUi(); } }
+  function tourCam() {
+    var tr = G.tour, h = G.h, f = clamp(tr.t / (tr.dur - tr.hold), 0, 1), e = f * f * (3 - 2 * f), q = pathAt(h, e), ahead = pathAt(h, Math.min(1, e + 0.1 + 0.04 * (1 - e)));
+    var hd = Math.atan2(ahead.x - q.x, ahead.y - q.y); if (Math.hypot(ahead.x - q.x, ahead.y - q.y) < 0.5) hd = Math.atan2(q.hx, q.hy);
+    var back = 13 - 6 * e, cx = q.x - Math.sin(hd) * back, cy = q.y - Math.cos(hd) * back, tx = ahead.x, ty = ahead.y, cz = Math.max(gh(cx, cy), gh(q.x, q.y)) + 12 - 8 * e, dd = Math.hypot(tx - cx, ty - cy) + 4;
+    if (f >= 1) { var b = h.basket; hd = Math.atan2(b[0] - cx, b[1] - cy); tx = b[0]; ty = b[1]; dd = Math.hypot(tx - cx, ty - cy); }
+    return { x: cx, y: cy, z: cz, yaw: hd, pitch: clamp(Math.atan((cz - gh(tx, ty) - 1.2) / dd), 0.06, 0.8) };
+  }
+  if (skipBtn) skipBtn.addEventListener('click', function (e) { e.stopPropagation(); endTour(); });
+  function syncTourUi() { if (tourSub) tourSub.textContent = TOUR ? 'Preview each hole: on' : 'Preview each hole: off'; }
+  if (tourBtn) tourBtn.addEventListener('click', function () { TOUR = !TOUR; try { localStorage.setItem('ss-disc-tour', TOUR ? '1' : '0'); } catch (e) {} syncTourUi(); say(TOUR ? 'Flyover on. You will see the line to the basket on each hole.' : 'Flyover off. Use Replay flyover in the menu any time.'); });
+  if (replayBtn) replayBtn.addEventListener('click', function () { if (G && G.phase === 'aim') beginTour(true); });
+  syncTourUi();
+
+  var tourObjs = [], dog = null, hearts = [], crits = [], birds = [], PETS = 0, SPOTS = 0, petAt = 0, _sph = null;
+  try { PETS = +localStorage.getItem('ss-disc-pets') || 0; SPOTS = +localStorage.getItem('ss-disc-spots') || 0; } catch (e) {}
+  function sph() { return _sph || (_sph = new T.SphereGeometry(1, 12, 9)); }
+  function lm(c, r) { return new T.MeshStandardMaterial({ color: c, roughness: r == null ? 0.95 : r }); }
+  function blob(par, m, sx, sy, sz, x, y, z, shadow) { var o = new T.Mesh(sph(), m); o.scale.set(sx, sy, sz); o.position.set(x, y, z); if (shadow) o.castShadow = true; par.add(o); return o; }
+  function hitSphere(par, r, x, y, z) { var o = new T.Mesh(sph(), new T.MeshBasicMaterial({ visible: false })); o.scale.setScalar(r); o.position.set(x, y, z); o.visible = false; par.add(o); return o; }
+  function limb(par, m, x, y, z, rad, len) { var pv = new T.Group(); pv.position.set(x, y, z); var c = new T.Mesh(new T.CylinderGeometry(rad, rad * 0.8, len, 7), m); c.position.y = -len / 2; c.castShadow = true; pv.add(c); par.add(pv); return pv; }
+
+  function makeDog() {
+    var g = new T.Group(); g.rotation.order = 'YXZ'; var body = new T.Group(); body.position.set(0, 0.36, -0.25); g.add(body);
+    var fur = lm(0xcf9a52), fur2 = lm(0xa8702f), pale = lm(0xe8c996), blk = lm(0x16100c, 0.45), pink = lm(0xe4707f, 0.6);
+    blob(body, fur, 0.19, 0.17, 0.37, 0, 0.12, 0.26, true); blob(body, fur, 0.2, 0.2, 0.2, 0, 0.16, 0.5, true); blob(body, fur, 0.17, 0.16, 0.18, 0, 0.1, 0.02, true);
+    blob(body, pale, 0.12, 0.08, 0.2, 0, 0.02, 0.38);
+    var neck = blob(body, fur, 0.11, 0.15, 0.12, 0, 0.27, 0.62, true); neck.rotation.x = 0.5;
+    var head = new T.Group(); head.position.set(0, 0.4, 0.7); body.add(head);
+    blob(head, fur, 0.14, 0.13, 0.15, 0, 0, 0, true); blob(head, pale, 0.07, 0.065, 0.11, 0, -0.05, 0.13); blob(head, blk, 0.03, 0.025, 0.025, 0, -0.025, 0.235);
+    [-1, 1].forEach(function (sd) { blob(head, blk, 0.02, 0.022, 0.02, sd * 0.065, 0.05, 0.12); var ear = blob(head, fur2, 0.035, 0.11, 0.07, sd * 0.125, -0.02, -0.01); ear.rotation.z = sd * 0.35; });
+    var tongue = blob(head, pink, 0.028, 0.012, 0.06, 0, -0.1, 0.19); tongue.visible = false;
+    var legs = [[-1, 0.5, 0.06], [1, 0.5, 0.06], [-1, 0.0, 0.06], [1, 0.0, 0.06]].map(function (q, i) { return limb(body, i < 2 ? fur : fur2, q[0] * 0.11, q[2], q[1], 0.05, 0.4); });
+    var tail = new T.Group(); tail.position.set(0, 0.17, -0.12); body.add(tail); var tm = new T.Mesh(new T.CylinderGeometry(0.02, 0.045, 0.36, 7), fur); tm.position.set(0, 0.09, -0.12); tm.rotation.x = -1.0; tm.castShadow = true; tail.add(tm);
+    var hit = hitSphere(g, 0.85, 0, 0.5, 0.2);
+    g.scale.setScalar(1.55); g.userData = { body: body, head: head, legs: legs, tail: tail, tongue: tongue, hit: hit };
+    return g;
+  }
+  var heartTex = null;
+  function heartTexture() { if (heartTex) return heartTex; var c = document.createElement('canvas'); c.width = c.height = 64; var g = c.getContext('2d'); g.fillStyle = '#ff3d5e'; g.beginPath(); g.moveTo(32, 56); g.bezierCurveTo(4, 36, 6, 10, 24, 10); g.bezierCurveTo(30, 10, 32, 15, 32, 18); g.bezierCurveTo(32, 15, 34, 10, 40, 10); g.bezierCurveTo(58, 10, 60, 36, 32, 56); g.fill(); g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; g.stroke(); heartTex = new T.CanvasTexture(c); heartTex.encoding = T.sRGBEncoding; return heartTex; }
+  function ensureDog() {
+    if (dog) return; var g = makeDog(); scene.add(g);
+    dog = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0 };
+    for (var i = 0; i < 10; i++) { var sp = new T.Sprite(new T.SpriteMaterial({ map: heartTexture(), transparent: true, depthWrite: false, fog: false })); sp.visible = false; sp.userData = { life: 0 }; scene.add(sp); hearts.push(sp); }
+  }
+  function dogSpot() {
+    var a = G.base, side = camera.aspect < 0.7 ? 1.0 : camera.aspect < 0.9 ? 1.25 : 1.9;
+    return { x: G.lie[0] + Math.cos(a) * side + Math.sin(a) * 0.3, y: G.lie[1] - Math.sin(a) * side + Math.cos(a) * 0.3 };
+  }
+  function placeDog() { ensureDog(); var s = dogSpot(); dog.x = s.x; dog.y = s.y; dog.v = 0; dog.yaw = G.base; dog.pet = 0; dog.sit = 0; dog.still = 0; }
+  function blocked(x, y) { if (inWater(G.h, x, y)) return true; var tl = G.h.treeList; for (var i = 0; i < tl.length; i++) { var t = tl[i]; if (Math.abs(t.x - x) < 0.8 && Math.abs(t.y - y) < 0.8) return true; } return false; }
+  function updateDog(dt) {
+    if (!dog || !G) return; var tg = null, run = false;
+    if (G.phase === 'fly' && G.flight) { tg = { x: G.flight.p[0], y: G.flight.p[1] }; run = true; }
+    else if (G.phase === 'roll' && G.roll) { tg = { x: G.roll.x1, y: G.roll.y1 }; run = true; }
+    else if (G.phase === 'holed') { var b = G.h.basket, a2 = G.base; tg = { x: b[0] + Math.cos(a2) * 2.2 - Math.sin(a2) * 1.5, y: b[1] - Math.sin(a2) * 2.2 - Math.cos(a2) * 1.5 }; }
+    else tg = dogSpot();
+    var dx = tg.x - dog.x, dy = tg.y - dog.y, dist = Math.hypot(dx, dy), want = 0;
+    if (dist > 70) { dog.x = tg.x; dog.y = tg.y; dist = 0; dx = dy = 0; }
+    if (dog.pet > 0) dog.pet -= dt; else if (dist > (run ? 2.5 : 0.7)) want = Math.min(run ? 10 : 6.5, 1.0 + dist * 1.2);
+    dog.v += (want - dog.v) * (1 - Math.exp(-dt * 6));
+    if (dog.v > 0.2) {
+      var th = Math.atan2(dx, dy); dog.yaw += angDiff(th, dog.yaw) * (1 - Math.exp(-dt * 9));
+      var nx = dog.x + Math.sin(dog.yaw) * dog.v * dt, ny = dog.y + Math.cos(dog.yaw) * dog.v * dt;
+      if (!blocked(nx, ny)) { dog.x = nx; dog.y = ny; } else { dog.v *= 0.3; dog.yaw += 0.08; }
+      dog.still = 0;
+    } else {
+      dog.still += dt; var ta = Math.atan2(cam.x - dog.x, cam.y - dog.y); dog.yaw += angDiff(ta, dog.yaw) * (1 - Math.exp(-dt * 2.2));
+    }
+    var u = dog.g.userData, sitT = (dog.pet > 0 || dog.still > 1.4) ? 1 : 0; dog.sit += (sitT - dog.sit) * (1 - Math.exp(-dt * 6));
+    dog.ph += dog.v * dt * 2.3; var sw = Math.sin(dog.ph) * Math.min(0.85, dog.v * 0.22) * (1 - dog.sit);
+    u.legs[0].rotation.x = sw; u.legs[3].rotation.x = sw; u.legs[1].rotation.x = -sw; u.legs[2].rotation.x = -sw;
+    u.legs[0].rotation.x += dog.sit * 0.5; u.legs[1].rotation.x += dog.sit * 0.5; u.legs[2].rotation.x = -sw - dog.sit * 1.4; u.legs[3].rotation.x = sw - dog.sit * 1.4;
+    u.legs[0].scale.y = u.legs[1].scale.y = 1 + dog.sit * 0.55;
+    u.body.rotation.x = -dog.sit * 0.55; u.body.position.y = 0.36 - dog.sit * 0.17 + Math.abs(Math.sin(dog.ph)) * 0.03 * Math.min(1, dog.v / 3);
+    var happy = dog.pet > 0, wagS = happy ? 16 : (dog.v > 0.5 ? 9 : 5), wagA = happy ? 0.9 : 0.5; dog.wag += dt * wagS; u.tail.rotation.y = Math.sin(dog.wag) * wagA; u.tail.rotation.x = 0.3 + (dog.v > 3 ? 0.4 : 0);
+    u.head.rotation.z = happy ? 0.32 * Math.sin(simTime * 3) + 0.15 : 0; u.head.rotation.x = happy ? -0.15 : Math.sin(dog.ph * 2) * 0.06 * Math.min(1, dog.v / 3) + 0.08; u.tongue.visible = happy || dog.v > 4 || dog.still > 3;
+    var gy = gh(dog.x, dog.y); dog.g.position.set(dog.x, gy, -dog.y); dog.g.rotation.y = Math.PI - dog.yaw; dog.g.visible = true;
+    hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
+  }
+  function spawnHeart() { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(dog.x + rnd(-0.25, 0.25), dog.g.position.y + 1.1 + rnd(0, 0.2), -dog.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
+  }
+  function bark() {
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
+      [0, 0.2].forEach(function (off) { var t0 = actx.currentTime + off, o = actx.createOscillator(), gn = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(340, t0); o.frequency.exponentialRampToValueAtTime(150, t0 + 0.13); f.type = 'bandpass'; f.frequency.value = 720; f.Q.value = 1.1; gn.gain.setValueAtTime(0.0001, t0); gn.gain.exponentialRampToValueAtTime(0.2, t0 + 0.015); gn.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15); o.connect(f); f.connect(gn); gn.connect(actx.destination); o.start(t0); o.stop(t0 + 0.18); });
+    } catch (e) {}
+  }
+  var PET_SAY = ['Good dog!', 'Who is a good dog? You are!', 'Best caddy on the course.', 'Tail wag level: maximum.', 'Belly scritches accepted.', 'Professional disc fetcher.', 'Zero bogeys in this dog’s heart.'];
+  function petDog() {
+    var now = performance.now(); dog.pet = 2.4; dog.still = 2; PETS++; try { localStorage.setItem('ss-disc-pets', String(PETS)); } catch (e) {}
+    for (var i = 0; i < 3; i++) spawnHeart(); if (now - petAt > 1400) { say(PET_SAY[PETS % PET_SAY.length] + ' ❤ ' + PETS + (PETS === 1 ? ' pet' : ' pets')); } petAt = now;
+    if (PETS % 4 === 1) bark(); award('pup'); if (PETS >= 25) award('pup25');
+  }
+
+  // critters: rabbits that bolt, squirrels that run up trees, birds circling overhead
+  function makeRabbit(gray) {
+    var g = new T.Group(); g.rotation.order = 'YXZ'; var c = lm(gray ? 0x8a8378 : 0xb69b76), w = lm(0xf1eee6), blk = lm(0x111, 0.4);
+    blob(g, c, 0.1, 0.095, 0.17, 0, 0.11, 0); blob(g, c, 0.065, 0.06, 0.08, 0, 0.18, 0.15); blob(g, w, 0.04, 0.04, 0.04, 0, 0.13, -0.18); blob(g, c, 0.07, 0.07, 0.1, 0, 0.07, -0.06);
+    [-1, 1].forEach(function (sd) { var e = blob(g, c, 0.018, 0.085, 0.02, sd * 0.03, 0.29, 0.13); e.rotation.z = sd * 0.18; blob(g, blk, 0.013, 0.013, 0.013, sd * 0.045, 0.2, 0.21); });
+    g.userData.hit = hitSphere(g, 0.55, 0, 0.15, 0); g.scale.setScalar(1.6); return g;
+  }
+  function makeSquirrel() {
+    var g = new T.Group(); g.rotation.order = 'YXZ'; var c = lm(0x8a5a35), l = lm(0xd9c9ab), blk = lm(0x111, 0.4);
+    blob(g, c, 0.07, 0.075, 0.14, 0, 0.09, 0); blob(g, c, 0.05, 0.05, 0.06, 0, 0.15, 0.13); blob(g, l, 0.045, 0.04, 0.07, 0, 0.07, 0.04);
+    var tail = blob(g, lm(0x9c6a3f), 0.045, 0.12, 0.05, 0, 0.2, -0.14); tail.rotation.x = -0.3; g.userData.tail = tail;
+    [-1, 1].forEach(function (sd) { blob(g, c, 0.014, 0.025, 0.014, sd * 0.03, 0.21, 0.13); blob(g, blk, 0.011, 0.011, 0.011, sd * 0.035, 0.16, 0.18); });
+    g.userData.hit = hitSphere(g, 0.5, 0, 0.14, 0); g.scale.setScalar(1.7); return g;
+  }
+  function makeBird(dark) {
+    var g = new T.Group(); g.rotation.order = 'YXZ'; var c = lm(dark ? 0x23262b : 0xe9e6dc); blob(g, c, 0.07, 0.06, 0.18, 0, 0, 0); blob(g, c, 0.045, 0.045, 0.055, 0, 0.02, 0.17);
+    var wings = [-1, 1].map(function (sd) { var pv = new T.Group(); pv.position.set(sd * 0.05, 0.02, 0); var w = new T.Mesh(new T.PlaneGeometry(0.4, 0.14), new T.MeshStandardMaterial({ color: dark ? 0x2b2f35 : 0xf4f2ea, side: T.DoubleSide, roughness: 1 })); w.rotation.x = -Math.PI / 2; w.position.x = sd * 0.2; pv.add(w); g.add(pv); return pv; });
+    g.userData.wings = wings; g.scale.setScalar(2.6); return g;
+  }
+  function spawnLife(h) {
+    crits = []; birds = []; var r = rng(7000 + G.hole * 31), nR = isLow ? 3 : 5, nS = isLow ? 2 : 3, tl = h.treeList;
+    function openSpot() { for (var k = 0; k < 50; k++) { var f = r() * 0.95 + 0.03, q = pathAt(h, f), lat = (r() < 0.5 ? -1 : 1) * (h.width / 2 + 1.5 + r() * 16), x = q.x + q.hy * lat, y = q.y - q.hx * lat; if (inWater(h, x, y) || Math.hypot(x - h.tee[0], y - h.tee[1]) < 9 || Math.hypot(x - h.basket[0], y - h.basket[1]) < 7 || blocked(x, y)) continue; return [x, y]; } return null; }
+    function add(kind, g, x, y) { courseGroup.add(g); crits.push({ kind: kind, g: g, x: x, y: y, hx: x, hy: y, yaw: r() * 6.28, mode: 'idle', t: r() * 10, wait: 1 + r() * 4, v: 0, cl: 0, hop: 0, tx: x, ty: y, mt: 0, tree: null }); }
+    for (var i = 0; i < nR; i++) { var s = openSpot(); if (s) add('rabbit', makeRabbit(r() < 0.4), s[0], s[1]); }
+    for (var j = 0; j < nS; j++) { var t = tl[Math.floor(r() * tl.length)]; if (!t) continue; var sx = t.x + 1.4, sy = t.y + 0.6; if (blocked(sx, sy)) { var s2 = openSpot(); if (!s2) continue; sx = s2[0]; sy = s2[1]; } add('squirrel', makeSquirrel(), sx, sy); }
+    var mid = pathAt(h, 0.5);
+    for (var b = 0; b < 3; b++) { var bg = makeBird(b < 2); courseGroup.add(bg); birds.push({ g: bg, cx: mid.x + rnd(-20, 20), cy: mid.y + rnd(-25, 25), rad: 22 + r() * 30, a: r() * 6.28, w: (0.18 + r() * 0.14) * (b % 2 ? -1 : 1), hgt: 13 + r() * 12, ph: r() * 6 }); }
+  }
+  function nearestTree(x, y, maxd) { var best = null, bd = maxd, tl = G.h.treeList; for (var i = 0; i < tl.length; i++) { var t = tl[i], d = Math.hypot(t.x - x, t.y - y); if (d < bd && d > 1) { bd = d; best = t; } } return best; }
+  function updateCrits(dt) {
+    var threats = [[G.lie[0], G.lie[1]]]; if (dog) threats.push([dog.x, dog.y]); if (G.flight) threats.push([G.flight.p[0], G.flight.p[1]]); if (G.roll) threats.push([G.roll.x1, G.roll.y1]);
+    crits.forEach(function (c) {
+      c.t += dt; var sq = c.kind === 'squirrel', near = null, nd = 1e9;
+      threats.forEach(function (q) { var d = Math.hypot(q[0] - c.x, q[1] - c.y); if (d < nd) { nd = d; near = q; } });
+      if ((c.mode === 'idle' || c.mode === 'hop') && nd < (sq ? 4.5 : 6)) {
+        var ax = c.x - near[0], ay = c.y - near[1], al = Math.hypot(ax, ay) || 1; ax /= al; ay /= al;
+        var tr = sq ? nearestTree(c.x, c.y, 16) : null;
+        if (tr) { c.tree = tr; c.tx = tr.x + 0.5; c.ty = tr.y; } else { var rr = rnd(9, 15); c.tx = c.x + ax * rr + rnd(-3, 3); c.ty = c.y + ay * rr + rnd(-3, 3); }
+        c.mode = 'flee'; c.mt = 4;
+      }
+      var mv = 0;
+      if (c.mode === 'flee' || c.mode === 'hop') {
+        var dx = c.tx - c.x, dy = c.ty - c.y, d = Math.hypot(dx, dy), sp = c.mode === 'flee' ? (sq ? 7.5 : 8) : (sq ? 2.6 : 2.2); c.mt -= dt;
+        if (d < 0.5 || c.mt <= 0) { if (c.mode === 'flee' && c.tree && d < 1.2) { c.mode = 'climb'; c.cl = 0; c.mt = 4.5; } else { c.mode = 'idle'; c.wait = 2 + Math.random() * 5; } }
+        else { c.yaw += angDiff(Math.atan2(dx, dy), c.yaw) * (1 - Math.exp(-dt * 12)); var nx = c.x + Math.sin(c.yaw) * sp * dt, ny = c.y + Math.cos(c.yaw) * sp * dt; if (inWater(G.h, nx, ny)) { c.mode = 'idle'; c.wait = 1; } else { c.x = nx; c.y = ny; mv = sp; } }
+      } else if (c.mode === 'climb') {
+        c.mt -= dt; c.cl = c.mt > 3.3 ? Math.min(3.4, c.cl + dt * 3.2) : c.mt > 0.9 ? 3.4 : Math.max(0, c.cl - dt * 3.2); if (c.mt <= 0) { c.mode = 'idle'; c.tree = null; c.wait = 3; c.cl = 0; }
+      } else if (c.mode === 'happy') {
+        c.mt -= dt; if (c.mt <= 0) { c.mode = 'idle'; c.wait = 2; }
+      } else {
+        c.wait -= dt; if (c.wait <= 0) { var ra = Math.random() * 6.28, rd = 1 + Math.random() * 3.5, tx = c.hx + Math.cos(ra) * rd, ty = c.hy + Math.sin(ra) * rd; if (!inWater(G.h, tx, ty)) { c.tx = tx; c.ty = ty; c.mode = 'hop'; c.mt = 3; } else c.wait = 1; }
+      }
+      var hop = mv > 0 ? Math.abs(Math.sin(c.t * (sq ? 16 : 11))) * (sq ? 0.09 : 0.26) : 0, nib = c.mode === 'idle' ? Math.sin(c.t * 5) * 0.012 : 0, jump = c.mode === 'happy' ? Math.abs(Math.sin(c.t * 9)) * 0.45 : 0;
+      c.g.position.set(c.x, gh(c.x, c.y) + hop + jump + nib + c.cl, -c.y); c.g.rotation.y = Math.PI - c.yaw; c.g.rotation.x = c.mode === 'climb' ? -1.3 : 0;
+      if (sq && c.g.userData.tail) c.g.userData.tail.rotation.x = -0.3 + Math.sin(c.t * (mv ? 14 : 3)) * 0.25;
+    });
+    birds.forEach(function (b) { b.a += b.w * dt; var px = b.cx + Math.cos(b.a) * b.rad, py = b.cy + Math.sin(b.a) * b.rad; b.g.position.set(px, gh(px, py) + b.hgt + Math.sin(simTime * 0.6 + b.ph) * 1.2, -py); b.g.rotation.y = Math.PI - (Math.atan2(-Math.sin(b.a) * b.w, Math.cos(b.a) * b.w) + (b.w < 0 ? 0 : 0)); b.g.rotation.z = -b.w * 0.8; var f = Math.sin(simTime * 11 + b.ph) * 0.7; b.g.userData.wings[0].rotation.z = f; b.g.userData.wings[1].rotation.z = -f; });
+  }
+  function updateLife(dt) { if (!G || !dog) return; updateDog(dt); updateCrits(dt); }
+  var ray = null, ndc = null;
+  function pickLife(e) {
+    if (!ready || !dog || !camera) return false; ray = ray || new T.Raycaster(); ndc = ndc || new T.Vector2();
+    var r = glc.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height * 2 - 1)); ray.setFromCamera(ndc, camera);
+    var best = null, bd = 1e9, hd = ray.intersectObject(dog.g.userData.hit, false);
+    if (hd.length) { best = { dog: true }; bd = hd[0].distance; }
+    crits.forEach(function (c) { var hh = ray.intersectObject(c.g.userData.hit, false); if (hh.length && hh[0].distance < bd) { bd = hh[0].distance; best = { c: c }; } });
+    if (!best) return false;
+    if (best.dog) petDog(); else spotCrit(best.c);
+    return true;
+  }
+  function spotCrit(c) {
+    if (c.mode === 'climb') { say('The squirrel is up the tree. Spotted!'); } else { c.mode = 'happy'; c.mt = 0.9; }
+    if (!c.seen) { c.seen = true; SPOTS++; try { localStorage.setItem('ss-disc-spots', String(SPOTS)); } catch (e) {} say((c.kind === 'rabbit' ? 'Rabbit' : 'Squirrel') + ' spotted! ' + SPOTS + ' critter' + (SPOTS === 1 ? '' : 's') + ' so far.'); if (SPOTS >= 5) award('wild'); }
+  }
+  function buildLifeProps(h) {   // line to the basket and a beacon, shown only during the flyover
+    tourObjs = []; var pts = [], L = pathLen(h), n = Math.max(8, Math.round(L / 2.2));
+    for (var i = 0; i <= n; i++) { var q = pathAt(h, i / n); pts.push(new T.Vector3(q.x, gh(q.x, q.y) + 0.4, -q.y)); }
+    var ln = new T.Line(new T.BufferGeometry().setFromPoints(pts), new T.LineDashedMaterial({ color: 0xfff3b0, dashSize: 1.4, gapSize: 0.9, transparent: true, opacity: 0.95, fog: false, depthTest: false })); ln.computeLineDistances(); ln.renderOrder = 5; ln.visible = false; ln.frustumCulled = false; courseGroup.add(ln); tourObjs.push(ln);
+    var bc = new T.Mesh(new T.CylinderGeometry(0.22, 0.22, 11, 12, 1, true), new T.MeshBasicMaterial({ color: 0xff3b4a, transparent: true, opacity: 0.4, depthWrite: false, fog: false, side: T.DoubleSide })); bc.position.set(h.basket[0], h.bz + 5.5, -h.basket[1]); bc.visible = false; courseGroup.add(bc); tourObjs.push(bc);
+    var rg = new T.Mesh(new T.RingGeometry(1.0, 1.35, 36), new T.MeshBasicMaterial({ color: 0xff3b4a, transparent: true, opacity: 0.8, side: T.DoubleSide, depthWrite: false, fog: false })); rg.rotation.x = -Math.PI / 2; rg.position.set(h.basket[0], h.bz + 0.12, -h.basket[1]); rg.visible = false; courseGroup.add(rg); tourObjs.push(rg);
   }
 
   /* ---------- Three.js scene ---------- */
@@ -724,14 +948,19 @@
   function tuftGeo() { var g1 = new T.PlaneGeometry(0.5, 0.5).translate(0, 0.25, 0), g2 = g1.clone().rotateY(Math.PI / 2), g3 = g1.clone().rotateY(Math.PI / 4); var m = new T.BufferGeometry(); var pos = [], uv = [], idx = [], off = 0; [g1, g2, g3].forEach(function (g) { var p = g.attributes.position, u = g.attributes.uv; for (var i = 0; i < p.count; i++) { pos.push(p.getX(i), p.getY(i), p.getZ(i)); uv.push(u.getX(i), u.getY(i)); } g.index.array.forEach(function (ix) { idx.push(ix + off); }); off += p.count; }); m.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); m.setAttribute('uv', new T.Float32BufferAttribute(uv, 2)); m.setIndex(idx); m.computeVertexNormals(); return m; }
   function smoothNormals(geo, bias) { var p = geo.attributes.position, n = new Float32Array(p.count * 3); for (var i = 0; i < p.count; i++) { var x = p.getX(i), y = p.getY(i) - (bias ? 0.5 : 0), z = p.getZ(i), l = Math.hypot(x, bias ? y * 0.0 + 0.45 : y, z) || 1; n[i * 3] = x / l; n[i * 3 + 1] = (bias ? 0.45 : y) / l; n[i * 3 + 2] = z / l; } geo.setAttribute('normal', new T.BufferAttribute(n, 3)); return geo; }
   function jitterGeo(geo, amt, seed) { var r = rng(seed), p = geo.attributes.position, map = {}; for (var i = 0; i < p.count; i++) { var k = p.getX(i).toFixed(3) + ',' + p.getY(i).toFixed(3) + ',' + p.getZ(i).toFixed(3); if (!map[k]) map[k] = [(r() - 0.5) * amt, (r() - 0.5) * amt, (r() - 0.5) * amt]; var d = map[k]; p.setXYZ(i, p.getX(i) + d[0], p.getY(i) + d[1], p.getZ(i) + d[2]); } geo.computeVertexNormals(); return geo; }
+  function groundGeo(gp) {   // the meadow as a gently rolling mesh
+    var geo = new T.PlaneGeometry(MAPX * 2, gp.span, MAPX, Math.max(2, Math.round(gp.span / 2.2))), p = geo.attributes.position, cy = (gp.ymin + gp.ymax) / 2;
+    for (var i = 0; i < p.count; i++) p.setZ(i, gh(p.getX(i), p.getY(i) + cy));
+    geo.computeVertexNormals(); return geo;
+  }
   function buildCourse(h) {
     if (curBuilt === G.hole && courseGroup.children.length) return; curBuilt = G.hole;
     disposeGroup(courseGroup); treeMeshes = []; waterMats = [];
     // ground
-    var gp = paintGround(h), gmat = new T.MeshStandardMaterial({ map: gp.tex, roughness: 0.96, metalness: 0 }), ground = new T.Mesh(new T.PlaneGeometry(MAPX * 2, gp.span), gmat);
+    var gp = paintGround(h), gmat = new T.MeshStandardMaterial({ map: gp.tex, roughness: 0.96, metalness: 0 }), ground = new T.Mesh(groundGeo(gp), gmat);
     if (!detailTex) { detailTex = new T.CanvasTexture(grassDetailCanvas()); detailTex.wrapS = detailTex.wrapT = T.RepeatWrapping; detailTex.anisotropy = 4; }
     gmat.onBeforeCompile = function (sh) { sh.uniforms.detailMap = { value: detailTex }; sh.uniforms.detailRep = { value: new T.Vector2(MAPX * 2 / 1.1, gp.span / 1.1) };
-      sh.fragmentShader = sh.fragmentShader.replace('void main() {', 'uniform sampler2D detailMap; uniform vec2 detailRep;\nvoid main() {').replace('#include <map_fragment>', '#include <map_fragment>\n float dd = clamp(1.0 - length(vViewPosition) / 38.0, 0.0, 1.0); vec3 dtl = texture2D(detailMap, vMapUv * detailRep).rgb; diffuseColor.rgb *= mix(vec3(1.0), dtl * 1.7, dd * 0.85);'); };
+      sh.fragmentShader = sh.fragmentShader.replace('void main() {', 'uniform sampler2D detailMap; uniform vec2 detailRep;\nvoid main() {').replace('#include <map_fragment>', '#include <map_fragment>\n float dd = clamp(1.0 - length(vViewPosition) / 38.0, 0.0, 1.0); vec3 dtl = texture2D(detailMap, vUv * detailRep).rgb; diffuseColor.rgb *= mix(vec3(1.0), dtl * 1.7, dd * 0.85);'); };
     ground.rotation.x = -Math.PI / 2; ground.position.set(0, 0, -(gp.ymin + gp.ymax) / 2); ground.receiveShadow = true; courseGroup.add(ground);
     var far = new T.Mesh(new T.PlaneGeometry(4000, 4000), new T.MeshBasicMaterial({ color: 0x4a6a35 })); far.rotation.x = -Math.PI / 2; far.position.y = -0.6; courseGroup.add(far);
     // water surfaces
@@ -739,8 +968,8 @@
       var ell = w[4] === 'e', wt = waterTex.clone(); wt.needsUpdate = true; wt.repeat.set((ell ? w[2] * 2 : w[2] - w[0]) / 6, (ell ? w[3] * 2 : w[3] - w[1]) / 6);
       var m = new T.MeshPhongMaterial({ color: 0x2f86b8, specular: 0xffffff, shininess: 140, transparent: true, opacity: 0.88, bumpMap: wt, bumpScale: 1.2 }); waterMats.push(m);
       var mesh;
-      if (ell) { mesh = new T.Mesh(new T.CircleGeometry(1, 64), m); mesh.scale.set(w[2], w[3], 1); mesh.rotation.x = -Math.PI / 2; mesh.position.set(w[0], 0.04, -w[1]); }
-      else { mesh = new T.Mesh(new T.PlaneGeometry(w[2] - w[0], w[3] - w[1]), m); mesh.rotation.x = -Math.PI / 2; mesh.position.set((w[0] + w[2]) / 2, 0.04, -(w[1] + w[3]) / 2); }
+      if (ell) { mesh = new T.Mesh(new T.CircleGeometry(1, 64), m); mesh.scale.set(w[2], w[3], 1); mesh.rotation.x = -Math.PI / 2; mesh.position.set(w[0], (w.lvl || 0) + 0.035, -w[1]); }
+      else { mesh = new T.Mesh(new T.PlaneGeometry(w[2] - w[0], w[3] - w[1]), m); mesh.rotation.x = -Math.PI / 2; mesh.position.set((w[0] + w[2]) / 2, (w.lvl || 0) + 0.035, -(w[1] + w[3]) / 2); }
       courseGroup.add(mesh);
     });
     // trees: conifers (jittered tiers) and broadleaf trees (clustered crowns), instanced
@@ -754,20 +983,20 @@
     var ctr = inst(new T.CylinderGeometry(0.14, 0.3, 1, 8).translate(0, 0.5, 0), barkMat, con.length), ctiers = []; for (var k = 0; k < 5; k++) ctiers.push(inst(coneG, foliageMat(), con.length));
     con.forEach(function (t, i) {
       var th = t.h * t.s, yq = new T.Quaternion().setFromAxisAngle(up, t.rot);
-      ps.set(t.x, 0, -t.y); sc.set(1, th * 0.5, 1); ctr.setMatrixAt(i, m4.compose(ps, yq, sc));
+      ps.set(t.x, t.g - 0.15, -t.y); sc.set(1, th * 0.5, 1); ctr.setMatrixAt(i, m4.compose(ps, yq, sc));
       for (var k2 = 0; k2 < 5; k2++) {
         var base = 1.5 + k2 * (th - 2) * 0.17, ht = (th - base) * (k2 === 4 ? 1.0 : 0.5) + 0.5, rad = (1.75 * t.s * (1 - k2 * 0.17) * (th / 10) + 0.25) * (0.92 + ((t.tone * 7 + k2 * 1.7) % 1) * 0.2);
-        ps.set(t.x, base, -t.y); sc.set(rad, ht, rad); ctiers[k2].setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, t.rot + k2 * 0.9), sc));
+        ps.set(t.x, base + t.g, -t.y); sc.set(rad, ht, rad); ctiers[k2].setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, t.rot + k2 * 0.9), sc));
         col.setRGB(0.09 + t.tone * 0.07 + k2 * 0.01, 0.23 + t.tone * 0.09 + k2 * 0.018, 0.1 + t.tone * 0.04); ctiers[k2].setColorAt(i, col);
       }
     });
     var blobG = smoothNormals(jitterGeo(new T.IcosahedronGeometry(1, 2), 0.16, 29)), otr = inst(new T.CylinderGeometry(0.2, 0.42, 1, 9).translate(0, 0.5, 0), barkMat, oak.length), blobs = []; for (var k3 = 0; k3 < 6; k3++) blobs.push(inst(blobG, foliageMat(), oak.length));
     oak.forEach(function (t, i) {
       var th = t.h * t.s, yq = new T.Quaternion().setFromAxisAngle(up, t.rot), trunkH = th * 0.42;
-      ps.set(t.x, 0, -t.y); sc.set(1, trunkH, 1); otr.setMatrixAt(i, m4.compose(ps, yq, sc));
+      ps.set(t.x, t.g - 0.15, -t.y); sc.set(1, trunkH, 1); otr.setMatrixAt(i, m4.compose(ps, yq, sc));
       for (var k4 = 0; k4 < 6; k4++) {
         var ang = t.rot + k4 * 1.047, ring = k4 < 5 ? 1 : 0, rr = th * 0.2 * ring, bx = t.x + Math.cos(ang) * rr, bz = t.y + Math.sin(ang) * rr, by = trunkH + th * (0.2 + (k4 % 3) * 0.08 + (k4 === 5 ? 0.18 : 0)), br = th * (k4 === 5 ? 0.24 : 0.2) * t.s;
-        ps.set(bx, by, -bz); sc.set(br * 1.1, br * 0.9, br * 1.1); blobs[k4].setMatrixAt(i, m4.compose(ps, yq, sc));
+        ps.set(bx, by + t.g, -bz); sc.set(br * 1.1, br * 0.9, br * 1.1); blobs[k4].setMatrixAt(i, m4.compose(ps, yq, sc));
         col.setRGB(0.16 + t.tone * 0.1 + (k4 % 2) * 0.03, 0.34 + t.tone * 0.1 + (k4 % 3) * 0.02, 0.1 + t.tone * 0.04); blobs[k4].setColorAt(i, col);
       }
     });
@@ -775,19 +1004,19 @@
     // bushes and boulders
     var ob = h.obst || [], bushes = ob.filter(function (o) { return o.kind === 'bush'; }), rocks = ob.filter(function (o) { return o.kind === 'rock'; });
     var bushG = smoothNormals(jitterGeo(new T.IcosahedronGeometry(1, 2), 0.22, 41)), bIm = inst(bushG, foliageMat(), bushes.length * 3);
-    bushes.forEach(function (o, i) { for (var q = 0; q < 3; q++) { var a3 = o.x * 7 + q * 2.1, rr = q ? o.r * 0.45 : 0, rad = o.r * (q ? 0.62 : 0.95); ps.set(o.x + Math.cos(a3) * rr, rad * 0.62, -(o.y + Math.sin(a3) * rr)); sc.set(rad, rad * 0.72, rad); bIm.setMatrixAt(i * 3 + q, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, a3), sc)); col.setRGB(0.12 + (i % 4) * 0.03, 0.3 + (q % 2) * 0.05, 0.09); bIm.setColorAt(i * 3 + q, col); } });
+    bushes.forEach(function (o, i) { for (var q = 0; q < 3; q++) { var a3 = o.x * 7 + q * 2.1, rr = q ? o.r * 0.45 : 0, rad = o.r * (q ? 0.62 : 0.95); ps.set(o.x + Math.cos(a3) * rr, rad * 0.62 + o.g, -(o.y + Math.sin(a3) * rr)); sc.set(rad, rad * 0.72, rad); bIm.setMatrixAt(i * 3 + q, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, a3), sc)); col.setRGB(0.12 + (i % 4) * 0.03, 0.3 + (q % 2) * 0.05, 0.09); bIm.setColorAt(i * 3 + q, col); } });
     var rockG = jitterGeo(new T.IcosahedronGeometry(1, 1), 0.38, 53), rIm = inst(rockG, new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.95, flatShading: true, map: noiseTex() }), rocks.length);
-    rocks.forEach(function (o, i) { ps.set(o.x, o.r * 0.42, -o.y); sc.set(o.r, o.r * 0.82, o.r * 0.92); rIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, o.x * 3.1), sc)); var gv = 0.46 + (i % 3) * 0.07; col.setRGB(gv, gv * 0.97, gv * 0.92); rIm.setColorAt(i, col); });
+    rocks.forEach(function (o, i) { ps.set(o.x, o.r * 0.42 + o.g - 0.05, -o.y); sc.set(o.r, o.r * 0.82, o.r * 0.92); rIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, o.x * 3.1), sc)); var gv = 0.46 + (i % 3) * 0.07; col.setRGB(gv, gv * 0.97, gv * 0.92); rIm.setColorAt(i, col); });
     [bIm, rIm].forEach(function (im) { im.instanceMatrix.needsUpdate = true; if (im.instanceColor) im.instanceColor.needsUpdate = true; });
     // grass tufts: crossed blades around the fairway edge and through the rough
     var tufts = [], rg = rng(555 + G.hole * 13), tn = isLow ? 2400 : 5200;
     for (var ti = 0; ti < tn; ti++) { var f0 = rg(), q0 = pathAt(h, f0), lat = (rg() - 0.5) * (h.width + 46), tx0 = q0.x + q0.hy * lat, ty0 = q0.y - q0.hx * lat; if (inWater(h, tx0, ty0) || Math.hypot(tx0 - h.tee[0], ty0 - h.tee[1]) < 1.6) continue; if (Math.abs(lat) < h.width / 2 - 1 && rg() < 0.78) continue; tufts.push([tx0, ty0, rg()]); }
     var tuftG = tuftGeo(), tIm = new T.InstancedMesh(tuftG, new T.MeshStandardMaterial({ color: 0xffffff, roughness: 1, side: T.DoubleSide, alphaTest: 0.4, map: tuftTex() }), tufts.length); tIm.receiveShadow = false;
-    tufts.forEach(function (q, i) { var sz = 0.5 + q[2] * 0.7; ps.set(q[0], 0, -q[1]); sc.set(sz, sz * (0.8 + q[2] * 0.5), sz); tIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, q[2] * 12), sc)); col.setRGB(0.26 + q[2] * 0.2, 0.4 + q[2] * 0.2, 0.15 + q[2] * 0.12); tIm.setColorAt(i, col); });
+    tufts.forEach(function (q, i) { var sz = 0.5 + q[2] * 0.7; ps.set(q[0], gh(q[0], q[1]) - 0.02, -q[1]); sc.set(sz, sz * (0.8 + q[2] * 0.5), sz); tIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, q[2] * 12), sc)); col.setRGB(0.26 + q[2] * 0.2, 0.4 + q[2] * 0.2, 0.15 + q[2] * 0.12); tIm.setColorAt(i, col); });
     tIm.instanceMatrix.needsUpdate = true; if (tIm.instanceColor) tIm.instanceColor.needsUpdate = true; courseGroup.add(tIm);
     // tee pad
     var th0 = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]), pad = new T.Mesh(new T.BoxGeometry(1.8, 0.05, 3.6), new T.MeshStandardMaterial({ color: 0x9a9690, roughness: 0.95 }));
-    pad.position.set(h.tee[0], 0.025, -h.tee[1]); pad.rotation.y = -th0; pad.receiveShadow = true; courseGroup.add(pad);
+    pad.position.set(h.tee[0], h.tz + 0.025, -h.tee[1]); pad.rotation.y = -th0; pad.receiveShadow = true; courseGroup.add(pad);
     // tee sign: hole number, par and distance
     (function () {
       var c = document.createElement('canvas'); c.width = 256; c.height = 160; var g = c.getContext('2d'); g.fillStyle = '#1d4a2a'; g.fillRect(0, 0, 256, 160); g.strokeStyle = '#f3efe2'; g.lineWidth = 6; g.strokeRect(6, 6, 244, 148);
@@ -795,10 +1024,11 @@
       var tx = new T.CanvasTexture(c); tx.encoding = T.sRGBEncoding; var hd = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]);
       var sg = new T.Group(), post = new T.Mesh(new T.CylinderGeometry(0.04, 0.04, 1.3, 8), new T.MeshStandardMaterial({ color: 0x4a3a2c, roughness: 1 })); post.position.y = 0.65; post.castShadow = true; sg.add(post);
       var bd = new T.Mesh(new T.BoxGeometry(0.9, 0.56, 0.05), new T.MeshStandardMaterial({ map: tx, roughness: 0.7 })); bd.position.y = 1.25; bd.castShadow = true; sg.add(bd);
-      sg.position.set(h.tee[0] - Math.cos(hd) * 2.1, 0, -(h.tee[1] + Math.sin(hd) * 2.1)); sg.rotation.y = -hd + 0.35; courseGroup.add(sg);
+      sg.position.set(h.tee[0] - Math.cos(hd) * 2.1, gh(h.tee[0] - Math.cos(hd) * 2.1, h.tee[1] + Math.sin(hd) * 2.1), -(h.tee[1] + Math.sin(hd) * 2.1)); sg.rotation.y = -hd + 0.35; courseGroup.add(sg);
     })();
     // basket
-    var bk = makeBasket(); bk.position.set(h.basket[0], 0, -h.basket[1]); courseGroup.add(bk); updateChains(0, 0);
+    var bk = makeBasket(); bk.position.set(h.basket[0], h.bz, -h.basket[1]); courseGroup.add(bk); updateChains(0, 0);
+    ensureDog(); spawnLife(h); buildLifeProps(h);
     previewDirty = true;
   }
 
@@ -822,10 +1052,10 @@
   function computePreview() {
     previewDirty = false; if (!G || G.phase !== 'aim') { prevLine.visible = false; prevEnd.visible = false; return; }
     var hy = (+sBank.value) / 57.3, la = (+sLa.value) / 57.3, s = P.launch(G.lie[0], G.lie[1], disc, CAP < 1 ? CAP : 0.85, aim(), hy, la, spin, 0), w = wind(), pos = prevGeo.attributes.position.array, n = 0, step = 0, dt = 1 / 120;
-    pos[0] = s.p[0]; pos[1] = s.p[2]; pos[2] = -s.p[1]; n = 1;
-    while (s.p[2] > 0 && s.t < 12 && n < PREVN) { P.step(s, dt, w); if (++step % 5 === 0) { pos[n * 3] = s.p[0]; pos[n * 3 + 1] = Math.max(0.02, s.p[2]); pos[n * 3 + 2] = -s.p[1]; n++; } }
+    s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; pos[0] = s.p[0]; pos[1] = s.p[2]; pos[2] = -s.p[1]; n = 1;
+    while (s.p[2] > gh(s.p[0], s.p[1]) && s.t < 12 && n < PREVN) { P.step(s, dt, w); if (++step % 5 === 0) { pos[n * 3] = s.p[0]; pos[n * 3 + 1] = Math.max(gh(s.p[0], s.p[1]) + 0.04, s.p[2]); pos[n * 3 + 2] = -s.p[1]; n++; } }
     prevGeo.setDrawRange(0, n); prevGeo.attributes.position.needsUpdate = true; prevLine.computeLineDistances(); prevLine.visible = true;
-    prevEnd.position.set(s.p[0], 0.05, -s.p[1]); prevEnd.visible = true;
+    prevEnd.position.set(s.p[0], gh(s.p[0], s.p[1]) + 0.06, -s.p[1]); prevEnd.visible = true;
   }
 
   function resize() {
@@ -866,7 +1096,7 @@
     simTime += dt;
     // camera and light
     var sh = (G.shake || 0); if (sh > 0) G.shake = Math.max(0, sh - dt);
-    camera.position.set(cam.x + (sh ? rnd(-sh, sh) * 0.15 : 0), cam.z + (sh ? rnd(-sh, sh) * 0.1 : 0), -cam.y);
+    camera.position.set(cam.x + (sh ? rnd(-sh, sh) * 0.15 : 0), Math.max(cam.z, gh(cam.x, cam.y) + 0.7) + (sh ? rnd(-sh, sh) * 0.1 : 0), -cam.y);
     var cp = Math.cos(cam.pitch); camera.lookAt(cam.x + Math.sin(cam.yaw) * cp, cam.z - Math.sin(cam.pitch), -(cam.y + Math.cos(cam.yaw) * cp));
     var fx = cam.x + Math.sin(cam.yaw) * 14, fz = -(cam.y + Math.cos(cam.yaw) * 14);
     sun.target.position.set(fx, 0, fz); sun.position.set(fx + 62, 70, fz - 82);   // sun ahead and to the right, low in the sky
@@ -875,31 +1105,33 @@
     discMesh.visible = false; markMeshes.forEach(function (m) { m.visible = false; });
     var d = G.flightDisc || disc;
     if (G.phase === 'fly' && G.flight) { var st = G.flight; paintDisc(discMesh, st.disc); discMesh.position.set(st.p[0], st.p[2], -st.p[1]); discPose(discMesh, st, 1.9); discMesh.visible = true; }
-    else if (G.phase === 'roll' && G.roll) { var rr = G.roll, kk = clamp(rr.t / rr.dur, 0, 1), e = 1 - (1 - kk) * (1 - kk); paintDisc(discMesh, G.restDisc || disc); flatPose(discMesh, mix(rr.x0, rr.x1, e), mix(rr.y0, rr.y1, e), 0.025, 1.6, 0, rr.rot + kk * 8); discMesh.visible = true; }
+    else if (G.phase === 'roll' && G.roll) { var rr = G.roll, kk = clamp(rr.t / rr.dur, 0, 1), e = 1 - (1 - kk) * (1 - kk); paintDisc(discMesh, G.restDisc || disc); flatPose(discMesh, mix(rr.x0, rr.x1, e), mix(rr.y0, rr.y1, e), gh(mix(rr.x0, rr.x1, e), mix(rr.y0, rr.y1, e)) + 0.025, 1.6, 0, rr.rot + kk * 8); discMesh.visible = true; }
     else if (G.phase === 'holed' && G.drop) { var dr = G.drop; dr.t += dt; var kd = clamp(dr.t / 0.45, 0, 1), ez = kd * kd; paintDisc(discMesh, G.flightDisc || disc); flatPose(discMesh, mix(dr.x0, dr.x1, kd), mix(dr.y0, dr.y1, kd), mix(dr.z0, dr.z1, ez), 1.6, 0, dr.t * 3); discMesh.rotation.x = 0; discMesh.visible = true; }
     else if (G.phase === 'aim' || G.phase === 'charge') {   // the disc is held ready, tilted the way the sliders are set
       var a0 = aim(), hv = { v: [Math.sin(a0), Math.cos(a0), 0], theta: ((+sLa.value) / 57.3) * 0.6, bank: (+sBank.value) / 57.3, spin: spin, rot: simTime * 2 };
-      paintDisc(discMesh, disc); discMesh.position.set(G.lie[0] + Math.cos(a0) * 0.5, 1.05, -(G.lie[1] - Math.sin(a0) * 0.5)); discPose(discMesh, hv, 1.9); discMesh.visible = true;
+      paintDisc(discMesh, disc); discMesh.position.set(G.lie[0] + Math.cos(a0) * 0.5, gh(G.lie[0], G.lie[1]) + 1.05, -(G.lie[1] - Math.sin(a0) * 0.5)); discPose(discMesh, hv, 1.9); discMesh.visible = true;
     }
-    else if (G.phase === 'rest') { paintDisc(discMesh, G.restDisc || disc); flatPose(discMesh, G.lie[0], G.lie[1], 0.03, 1.8, 0, 0); discMesh.visible = true; }
+    else if (G.phase === 'rest') { paintDisc(discMesh, G.restDisc || disc); flatPose(discMesh, G.lie[0], G.lie[1], gh(G.lie[0], G.lie[1]) + 0.03, 1.8, 0, 0); discMesh.visible = true; }
     // earlier lies
-    var mi = 0; G.throws.forEach(function (t, i) { if (i === 0 || i === G.throws.length - 1 && G.phase !== 'fly') return; if (mi < markMeshes.length) { var m = markMeshes[mi++]; paintDisc(m, P.DISCS.buzzz); flatPose(m, t[0], t[1], 0.03, 1.4, i, 0); m.visible = true; } });
-    teeRing.visible = G.phase === 'aim' || G.phase === 'charge'; teeRing.position.set(G.lie[0], 0.06, -G.lie[1]);
+    var mi = 0; G.throws.forEach(function (t, i) { if (i === 0 || i === G.throws.length - 1 && G.phase !== 'fly') return; if (mi < markMeshes.length) { var m = markMeshes[mi++]; paintDisc(m, P.DISCS.buzzz); flatPose(m, t[0], t[1], gh(t[0], t[1]) + 0.03, 1.4, i, 0); m.visible = true; } });
+    teeRing.visible = G.phase === 'aim' || G.phase === 'charge'; teeRing.position.set(G.lie[0], gh(G.lie[0], G.lie[1]) + 0.06, -G.lie[1]);
     // trail
     var tp = trailGeo.attributes.position.array, tn = Math.min(G.trail.length, TRAILN);
-    for (var i2 = 0; i2 < tn; i2++) { var q = G.trail[i2]; tp[i2 * 3] = q[0]; tp[i2 * 3 + 1] = Math.max(0.02, q[2]); tp[i2 * 3 + 2] = -q[1]; }
+    for (var i2 = 0; i2 < tn; i2++) { var q = G.trail[i2]; tp[i2 * 3] = q[0]; tp[i2 * 3 + 1] = Math.max(gh(q[0], q[1]) + 0.03, q[2]); tp[i2 * 3 + 2] = -q[1]; }
     trailGeo.setDrawRange(0, G.phase === 'aim' || G.phase === 'charge' ? 0 : tn); trailGeo.attributes.position.needsUpdate = true;
     if (previewDirty) computePreview(); prevLine.visible = prevLine.visible && (G.phase === 'aim' || G.phase === 'charge'); prevEnd.visible = prevLine.visible;
     // basket chains rattle, flag flutter, water ripple
     if (G.wob > 0.01) { updateChains(simTime, G.wob); G.wob *= Math.exp(-dt * 1.7); } else if (G.wob) { G.wob = 0; updateChains(0, 0); }
     if (basketObj && basketObj.flag) basketObj.flag.rotation.y = Math.sin(simTime * 3) * 0.25;
     waterMats.forEach(function (m, i) { if (m.bumpMap) { m.bumpMap.offset.x = (simTime * 0.02) % 1; m.bumpMap.offset.y = (simTime * 0.013 + i * 0.3) % 1; } });
+    updateLife(dt); tourObjs.forEach(function (o) { o.visible = G.phase === 'tour'; });
     R.render(scene, camera); drawHud();
     throwBtn.style.setProperty('--pw', (G.phase === 'charge' || charging) ? chargeLevel().toFixed(3) : 0);
   }
   function frame(now) {
     if (!running) return; var dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (G.phase === 'fly') flightStep(dt);
+    else if (G.phase === 'tour') { G.tour.t += dt; if (G.tour.t >= G.tour.dur) endTour(); }
     else if (G.phase === 'roll') { G.roll.t += dt; if (G.roll.t >= G.roll.dur) { var r = G.roll; G.roll = null; rest([r.x1, r.y1]); } }
     else if (G.phase === 'rest' && now - G.rest > 1100) { G.phase = 'aim'; previewDirty = true; }
     moveCam(dt); render(now, dt); raf = requestAnimationFrame(frame);
@@ -913,7 +1145,7 @@
         loading = false; msgEl.hidden = true;
         if (!ok) { failed = true; flash('The 3D view could not load. Check your connection and reload.'); return; }
         try { initThree(); } catch (e) { failed = true; flash('This browser cannot run the 3D view (WebGL is off).'); return; }
-        ready = true; if (!G) newRound(); else buildCourse(G.h); play();
+        ready = true; if (!G) newRound(); else { buildCourse(G.h); placeDog(); snapCam(); beginTour(); } play();
       });
       return;
     }
@@ -923,6 +1155,6 @@
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
-  window.__dd = function () { return { G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R }; };
+  window.__dd = function () { return { G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, dog: function () { return dog; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
   newRound();
 })();

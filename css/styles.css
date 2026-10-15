@@ -1927,3 +1927,9 @@ html.po-lock, html.po-lock body { overflow: hidden; }
   .dd-tune { bottom: 168px; max-height: calc(100% - 180px); overflow: auto; }
   .dd-drawer { bottom: 170px; }
 }
+
+/* Disc-ipline flyover button */
+.dd-skip { position: absolute; left: 50%; top: 62%; transform: translateX(-50%); z-index: 6; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: rgba(8,14,24,.72); color: #fff; font: 700 .85rem/1 system-ui, sans-serif; letter-spacing: .02em; cursor: pointer; backdrop-filter: blur(6px); animation: ddskip 1.8s ease-in-out infinite; }
+.dd-skip[hidden] { display: none; }
+@keyframes ddskip { 50% { background: rgba(8,14,24,.9); border-color: #fff; } }
+@media (prefers-reduced-motion: reduce) { .dd-skip { animation: none; } }
