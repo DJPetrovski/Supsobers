@@ -8,7 +8,7 @@
   var ctx = cv.getContext('2d');
   var tip = document.getElementById('web-tip');
   var panel = document.getElementById('web-panel');
-  var theoryBtn = document.getElementById('web-theory');
+  var modeBtn = document.getElementById('web-mode'), spinMode = false;
   var resetBtn = document.getElementById('web-reset');
   var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var ID_RE = /^[\w-]{11}$/;
@@ -220,7 +220,7 @@
       panel.appendChild(document.createTextNode(' · ' + (focus.topics.length ? 'connects ' + focus.topics.map(function (t) { return t.name; }).join(' + ') : 'not tied to a storyline yet')));
       return;
     }
-    panel.textContent = (cfg.theory && cfg.theory.blurb) || '';
+    panel.textContent = '';
   }
 
   function xy(e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
@@ -231,7 +231,13 @@
     if (dragging) {
       var dx = p.x - lx, dy = p.y - ly;
       if (Math.abs(dx) + Math.abs(dy) > 2) moved = true;
-      rot(dx * 0.006, dy * 0.006); lx = p.x; ly = p.y; return;
+      if (spinMode || e.shiftKey || (e.buttons & 2)) rot(dx * 0.006, dy * 0.006);
+      else {   // press and drag to carry the web wherever you like
+        trig(); var k = Math.max(0.35, Math.hypot(C[0], C[1], C[2]) / 950) * 1.0, f = fromView([-dx * k, -dy * k, 0]);
+        var nc = [C[0] + f[0], C[1] + f[1], C[2] + f[2]];
+        if (Math.hypot(nc[0], nc[1], nc[2]) < MAXD * 1.4) C = nc;
+      }
+      lx = p.x; ly = p.y; return;
     }
     hover = pick(p.x, p.y);
     cv.style.cursor = hover ? 'pointer' : 'grab';
@@ -261,11 +267,8 @@
     }
   }, { passive: false });
   cv.addEventListener('touchend', function () { pinch = 0; });
-  theoryBtn.addEventListener('click', function () {
-    theory = !theory; theoryBtn.setAttribute('aria-pressed', String(theory));
-    theoryBtn.textContent = theory ? 'Hide the theory' : 'Show the theory';
-    heat = 0.6; focus = theory ? hub : null; panelText();
-  });
+  modeBtn.addEventListener('click', function () { spinMode = !spinMode; modeBtn.setAttribute('aria-pressed', String(spinMode)); modeBtn.textContent = spinMode ? 'Drag: spin' : 'Drag: move'; });
+  cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
   resetBtn.addEventListener('click', function () { focus = null; yaw = 0.6; pitch = -0.25; homeCam(); if (hint) hint.hidden = true; panelText(); });
   if (turnBtn) turnBtn.addEventListener('click', function () { rot(Math.PI, 0); });
   // the pop-out window: the caption comes with it
