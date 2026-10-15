@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1792000100">
+  <link rel="stylesheet" href="css/styles.css?v=1792001500">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -337,25 +337,37 @@
         <div class="dd-stage" id="dd-stage">
           <canvas id="dd-gl" aria-label="Disc golf game: drag to aim, pick a disc, hold the throw button"></canvas>
           <canvas id="dd-hud" aria-hidden="true"></canvas>
-          <div class="dd-chips"><b>Disc-ipline</b><span id="dd-hole">Hole 1/6</span><span id="dd-par">Par 3</span><span id="dd-str">Throws 0</span><button type="button" class="dd-fs" id="dd-fs" aria-pressed="false">Full screen</button><button type="button" class="dd-fs" id="dd-course">Course</button><button type="button" class="dd-fs" id="dd-edit">Edit hole</button></div>
+          <div class="dd-chips"><b>Disc-ipline</b><span id="dd-hole">Hole 1/18</span><span id="dd-par">Par 3</span><span id="dd-str">Throws 0</span><span id="dd-vs" class="dd-vs">E</span><button type="button" class="dd-fs" id="dd-menu" aria-expanded="false" aria-controls="dd-menupanel">&#9776; Menu</button><button type="button" class="dd-fs" id="dd-fs" aria-pressed="false">Full screen</button></div>
+          <div class="dd-menu" id="dd-menupanel" hidden role="menu"><button type="button" id="dd-course" role="menuitem"><b>Course</b><small>Pick a different course</small></button><button type="button" id="dd-edit" role="menuitem"><b>Edit hole</b><small>Move the tee or the basket</small></button><button type="button" id="dd-card" role="menuitem"><b>Scorecard</b><small>Your round so far</small></button><button type="button" id="dd-trophy" role="menuitem"><b>Trophies</b><small id="dd-trophy-n">Badges and medals</small></button><button type="button" id="dd-howto" role="menuitem"><b>How to play</b><small>Quick tips</small></button></div>
           <p class="wg-toast dd-toast" id="dd-toast" role="status" aria-live="polite"></p>
           <p class="dd-msg" id="dd-msg" hidden></p>
           <div class="dd-drawer" id="dd-drawer" hidden><div class="dd-discs" id="dd-discs" role="group" aria-label="Choose a disc (speed | glide | turn | fade)"></div></div>
+          <div class="dd-tune" id="dd-tune" hidden>
+            <div class="dd-tune-h"><b>Throw settings</b><button type="button" id="dd-tune-x" aria-label="Close settings">&times;</button></div>
+            <div class="dd-sliders">
+              <label>Hyzer / anhyzer <b id="dd-bank-l">Flat</b><input type="range" id="dd-bank" min="-25" max="25" value="0" step="1"><small>Tilt the disc: hyzer curves it left, anhyzer curves it right (backhand).</small></label>
+              <label>Nose angle <b id="dd-la-l">7&deg;</b><input type="range" id="dd-la" min="0" max="25" value="7" step="0.5"><small>How high it launches. You can also drag the view up and down.</small></label>
+              <label>Aim <b id="dd-aim-l">Straight</b><input type="range" id="dd-aim" min="-45" max="45" value="0" step="1"><small>Point it left or right. You can also drag the view sideways.</small></label>
+              <label>Max power <b id="dd-cap-l">100%</b><input type="range" id="dd-cap" min="10" max="100" value="100" step="5"><small>Stops the charge at this level so you can't overthrow. It resets after every throw.</small></label>
+            </div>
+          </div>
           <div class="dd-bar" id="dd-bar">
             <button type="button" class="dd-discbtn" id="dd-discbtn" aria-expanded="false" aria-controls="dd-drawer"><i id="dd-discdot"></i><span><b id="dd-discname">Disc</b><small id="dd-discnums"></small></span></button>
-            <div class="dd-sliders">
-              <label>Hyzer / anhyzer <b id="dd-bank-l">Flat</b><input type="range" id="dd-bank" min="-25" max="25" value="0" step="1"></label>
-              <label>Nose angle <b id="dd-la-l">7&deg;</b><input type="range" id="dd-la" min="0" max="25" value="7" step="1"></label>
-              <label>Aim <b id="dd-aim-l">Straight</b><input type="range" id="dd-aim" min="-45" max="45" value="0" step="1"></label>
+            <div class="dd-mid">
+              <button type="button" class="dd-chip" id="dd-hand" aria-pressed="false"><span class="ic">&#8635;</span><b>Backhand</b></button>
+              <button type="button" class="dd-chip" id="dd-tunebtn" aria-expanded="false" aria-controls="dd-tune"><span class="ic">&#9881;</span><b>Tune</b></button>
+              <button type="button" class="dd-chip" id="dd-capbtn" aria-label="Maximum power: tap to change"><span class="ic">&#9889;</span><b id="dd-capbtn-l">Max 100%</b></button>
             </div>
-            <button type="button" class="dd-hand" id="dd-hand" aria-pressed="false">Backhand</button>
-            <button type="button" class="dd-throw" id="dd-throw" aria-label="Hold to charge the throw, let go to throw"><span>Hold to throw</span></button>
+            <button type="button" class="dd-throw" id="dd-throw" aria-label="Hold to charge the throw, let go to throw"><span class="dd-throw-in"><b>THROW</b><small>hold</small></span></button>
           </div>
           <div class="wg-over dd-pick" id="dd-pick" hidden><div><h3>Pick a course</h3><div class="dd-courses" id="dd-courses"></div><p class="dd-cnote" id="dd-cnote"></p><button type="button" class="btn" id="dd-pick-x">Close</button></div></div>
           <div class="dd-editor" id="dd-editor" hidden><canvas id="dd-edcv" aria-label="Hole editor: drag the white tee or the red basket"></canvas><div class="dd-edbar"><span id="dd-edinfo">Drag the white tee or the red basket</span><button type="button" class="btn" id="dd-edreset">Reset hole</button><button type="button" class="btn btn-primary" id="dd-eddone">Done</button></div></div>
+          <div class="wg-over dd-pick" id="dd-cardov" hidden><div><h3>Scorecard</h3><div class="dd-cardwrap" id="dd-cardwrap"></div><button type="button" class="btn" id="dd-card-x">Close</button></div></div>
+          <div class="wg-over dd-pick" id="dd-trov" hidden><div><h3>Trophies</h3><p id="dd-trsum"></p><div class="dd-trgrid" id="dd-trgrid"></div><button type="button" class="btn" id="dd-tr-x">Close</button></div></div>
+          <div class="wg-over dd-pick" id="dd-howov" hidden><div><h3>How to play</h3><ul class="dd-how"><li><b>Aim:</b> drag the view. Side to side points the throw, up and down changes how high it launches.</li><li><b>Disc:</b> tap the disc at the bottom left. Drivers go far, putters go short and straight.</li><li><b>Power:</b> hold THROW and let go. Set Max power so you can't overthrow, it resets after each throw.</li><li><b>Tune:</b> hyzer, anhyzer, nose angle and aim sliders live under the Tune button.</li><li><b>Score:</b> hit the chains. Beat par to earn badges and medals.</li></ul><button type="button" class="btn" id="dd-how-x">Got it</button></div></div>
           <div class="wg-over" id="dd-over" hidden><div><h3 id="dd-over-t">Hole done</h3><p id="dd-over-s"></p><button type="button" class="btn btn-primary" id="dd-next">Next hole</button></div></div>
         </div>
-        <p class="es-help">Pick a real disc: the four numbers are its published <b>speed | glide | turn | fade</b>, so a Destroyer (12|5|-1|3) really does need a hard throw to fly right, and a Roc3 (5|4|0|3) fades left at the end. Drag the view or use the Aim slider to point it. <b>Hyzer</b> tilts the disc so it curves left (backhand) and <b>anhyzer</b> so it curves right. The dotted line shows how your setup flies at about 85% power. Hold the throw button (or the space bar) to charge power and let go. Wind, trees and water are real, and to score you have to hit the chains: a disc that is too fast bounces out, and one that skids in low under the chains does not count.</p>
+        <p class="es-help"><b>Aim:</b> drag the view: side to side points the throw, up and down changes how high it launches. <b>Disc:</b> tap the disc at the bottom left (the four numbers are its real <b>speed | glide | turn | fade</b>). <b>Power:</b> hold THROW and let go. Use <b>Max</b> to cap your power so you can't overthrow, it resets after each throw. <b>Tune</b> holds the hyzer, anhyzer, nose angle and aim sliders. The dotted line shows where your setup lands. Wind, trees, bushes, boulders and water are real, and to score you have to hit the chains. Beat par to earn badges and medals.</p>
       </div>
       <p class="cv-note">More games coming. If you are struggling right now, the free 24/7 SAMHSA helpline is 1-800-662-4357.</p>
     </section>
@@ -504,24 +516,24 @@
     </div>
     <span class="scd-rs" role="separator" aria-label="Drag to resize the player" title="Drag to resize (double-tap to reset)"></span>
   </aside>
-  <script src="js/rain.js?v=1792000100" defer></script>
-  <script src="js/app.js?v=1792000100" defer></script>
-  <script src="js/hole.js?v=1792000100" defer></script>
-  <script src="js/pill.js?v=1792000100" defer></script>
-  <script src="js/tv.js?v=1792000100" defer></script>
-  <script src="js/search.js?v=1792000100" defer></script>
-  <script src="js/merch.js?v=1792000100" defer></script>
-  <script src="js/web.js?v=1792000100" defer></script>
-  <script src="js/home.js?v=1792000100" defer></script>
-  <script src="js/remote.js?v=1792000100" defer></script>
-  <script src="js/craving.js?v=1792000100" defer></script>
-  <script src="js/wagon.js?v=1792000100" defer></script>
-  <script src="js/discphys.js?v=1792000100" defer></script>
-  <script src="js/discgolf.js?v=1792000100" defer></script>
-  <script src="js/dismiss.js?v=1792000100" defer></script>
-  <script src="js/popout.js?v=1792000100" defer></script>
-  <script src="js/scplayer.js?v=1792000100" defer></script>
-  <script src="js/assistant.js?v=1792000100" defer></script>
-  <script src="js/music.js?v=1792000100" defer></script>
+  <script src="js/rain.js?v=1792001500" defer></script>
+  <script src="js/app.js?v=1792001500" defer></script>
+  <script src="js/hole.js?v=1792001500" defer></script>
+  <script src="js/pill.js?v=1792001500" defer></script>
+  <script src="js/tv.js?v=1792001500" defer></script>
+  <script src="js/search.js?v=1792001500" defer></script>
+  <script src="js/merch.js?v=1792001500" defer></script>
+  <script src="js/web.js?v=1792001500" defer></script>
+  <script src="js/home.js?v=1792001500" defer></script>
+  <script src="js/remote.js?v=1792001500" defer></script>
+  <script src="js/craving.js?v=1792001500" defer></script>
+  <script src="js/wagon.js?v=1792001500" defer></script>
+  <script src="js/discphys.js?v=1792001500" defer></script>
+  <script src="js/discgolf.js?v=1792001500" defer></script>
+  <script src="js/dismiss.js?v=1792001500" defer></script>
+  <script src="js/popout.js?v=1792001500" defer></script>
+  <script src="js/scplayer.js?v=1792001500" defer></script>
+  <script src="js/assistant.js?v=1792001500" defer></script>
+  <script src="js/music.js?v=1792001500" defer></script>
 </body>
 </html>
