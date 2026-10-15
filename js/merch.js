@@ -136,9 +136,7 @@
     rwT = setTimeout(function () {
       var cast = stage.querySelector('.rw-cast'); cast.textContent = '';
       var box = el('div', 'rw-spot'), im = el('img'); im.alt = ''; im.draggable = false;
-      if (it.model) { box.classList.add(/hat|cap/i.test(it.name) ? 'rw-head' : 'rw-body'); im.src = it.model; }
-      else if (it.scene) { box.classList.add('rw-scenic'); im.src = it.scene; }
-      else im.src = (it.cutouts && it.cutouts[0]) || it.images[0];
+      im.src = (it.cutouts && it.cutouts[0]) || it.images[0];
       box.appendChild(im); box.appendChild(el('div', 'rw-pedestal')); cast.appendChild(box);
     }, 120);
   }

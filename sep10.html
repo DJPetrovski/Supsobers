@@ -377,10 +377,14 @@
     .infopane { height: var(--info-h); overflow-y: auto; overscroll-behavior: contain; }
     .infopane.collapsed { display: none; }
     .infopane { display: flex; flex-direction: column; } .infopane .controls { order: -1; margin-bottom: 8px; }
-    .stage:not(.fs) { height: max(280px, calc(100dvh - var(--info-h) - 82px - env(safe-area-inset-bottom, 0px))); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; justify-content: flex-end; padding-top: clamp(70px, 14vh, 150px); }
+    .stage:not(.fs) { height: auto; min-height: 0; overflow: visible; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 74px; }
     .stage:not(.fs) .ctx { flex: none; margin-bottom: 8px; }
     .stage:not(.fs) .disc { position: static; flex: none; }
-    .stage:not(.fs) #timeline-root { flex: 1 1 auto; min-height: 0; align-content: center; }
+    .stage:not(.fs) #timeline-root { flex: none; min-height: 270px; align-content: center; padding: 8px calc(50% - 115px) 18px; }
+    .stage:not(.fs) #timeline-root .entry { width: 230px; gap: 8px; }
+    .stage:not(.fs) #timeline-root .card-media { max-height: 74px; overflow: hidden; }
+    .stage:not(.fs) #timeline-root .card-media img { width: 100%; height: 74px; object-fit: cover; }
+    .stage:not(.fs) #timeline-root .card h3, .stage:not(.fs) #timeline-root .card .title { font-size: 14px; }
     .stage:not(.fs) .stage-title b { font-size: 24px; margin: 0; }
     .stage:not(.fs) .stage-title { top: 12px; }
     .stage:not(.fs) .stage-title small { font-size: 9px; }
