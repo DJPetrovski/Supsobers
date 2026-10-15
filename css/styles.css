@@ -1847,3 +1847,14 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .web-panel.in-stage { position: absolute; z-index: 3; left: calc(10px + env(safe-area-inset-left, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 330px; margin: 0; min-height: 0; padding: 8px 12px; border-radius: 10px; background: rgba(0,0,0,.6); font-size: .82rem; max-height: 30%; overflow: auto; }
 @media (max-width: 760px) { .web-panel.in-stage { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(58px + env(safe-area-inset-bottom, 0px)); } .web-ctrl { flex-wrap: wrap; justify-content: flex-end; max-width: 72%; } }
 .web-stage.po #web-pop { display: none; }
+
+/* little close (x) on instruction notes */
+.dx-has { position: relative; }
+.dx-x { position: absolute; top: 4px; right: 4px; width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: rgba(0,0,0,.55); color: #fff; font: 16px/1 system-ui, sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5; pointer-events: auto; }
+.dx-x:hover, .dx-x:focus-visible { background: #c4262e; border-color: #fff; }
+.dx-closed { display: none !important; }
+.hole-hint ul.dx-has { padding-right: 38px; }
+.es-help.dx-has, .rel-hint.dx-has, .scd-hint.dx-has { padding-right: 34px; }
+.web-hint.dx-has { padding-right: 36px; }
+.web-hint .dx-x { top: 50%; right: 4px; transform: translateY(-50%); }
+.hole-hint { pointer-events: none; } .hole-hint .dx-x { pointer-events: auto; }
