@@ -35,7 +35,8 @@
   function search(q) {
     var t = toks(q), out = { videos: [], merch: [], story: [], pages: [], more: [], ab: [] };
     if (!t.length) return out;
-    ((window.SS && SS.videos) || []).forEach(function (v) { var s = score(v.title, t); if (s) out.videos.push({ s: s, v: v }); });
+    if (window.SS && SS.smart) out.videos = SS.smart(q, (SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })).map(function (r) { return { s: r.s, v: r.v, r: r }; });
+    else ((window.SS && SS.videos) || []).forEach(function (v) { var s = score(v.title, t); if (s) out.videos.push({ s: s, v: v }); });
     out.videos.sort(function (a, b) { return b.s - a.s; });
     ((window.SS && SS.audiobooks) || []).forEach(function (b) { (b.chapters || []).forEach(function (v) { var s = score(b.title + ' audiobook ' + v.title, t); if (s) out.ab.push({ s: s, b: b, v: v }); }); });
     out.ab.sort(function (a, b) { return b.s - a.s; });
@@ -84,7 +85,14 @@
       group('Jump to', PAGES.map(function (p) { return row('', p.title, '', 'Page', function () { go(p.route); }); }));
     } else {
       var r = search(q);
-      group('Videos' + (r.videos.length > 8 ? ' (' + r.videos.length + ')' : ''), r.videos.slice(0, 8).map(function (x) { return row(/^[\w-]{11}$/.test(x.v.id || '') ? 'https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg' : '', x.v.title, x.v.members ? 'Members only' : '', 'Video', function () { openVideo(x.v); }); }));
+      var vm = r.videos.filter(function (x) { return !x.r || x.r.kind === 'match'; }), vr = r.videos.filter(function (x) { return x.r && x.r.kind === 'related'; });
+      function vrow(x) {
+        var sub = x.v.members ? 'Members only' : '', rr = x.r;
+        if (rr) { if (rr.snip) sub = '“…' + rr.snip.slice(0, 90) + '…” ' + (rr.at ? '(' + Math.floor(rr.at / 60) + ':' + ('0' + Math.floor(rr.at % 60)).slice(-2) + ')' : ''); else if (rr.why.length) sub = (sub ? sub + ' · ' : '') + rr.why[0]; }
+        return row(/^[\w-]{11}$/.test(x.v.id || '') ? 'https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg' : '', x.v.title, sub, 'Video', function () { SS.openPlayer(x.v, rr && rr.at); });
+      }
+      group('Videos' + (vm.length > 8 ? ' (' + vm.length + ')' : ''), vm.slice(0, 8).map(vrow));
+      group('Related videos and the same storyline', vr.slice(0, 8).map(vrow));
       group('Audiobooks', r.ab.slice(0, 5).map(function (x) { return row('https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg', x.v.title, x.b.title, 'Audiobook', function () { openVideo(x.v); }); }));
       group('Merch', r.merch.slice(0, 5).map(function (x) { return row((x.m.cutouts && x.m.cutouts[0]) || x.m.images[0], x.m.name, x.m.price + (x.m.soldOut ? ' · sold out' : ''), 'Merch', function () { A.merch(x.i); }); }));
       group('Storylines', r.story.slice(0, 4).map(function (x) { return row('', x.d.name, 'See the videos', 'Story', function () { A.story(x.d); }); }));
@@ -109,6 +117,7 @@
   function closePanel() { panel.hidden = true; document.documentElement.classList.remove('gs-open'); try { if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); } catch (e) {} }
   window.SS = window.SS || {}; SS.openSearch = openPanel; SS.closeSearch = closePanel; SS.searchAll = search;
   document.addEventListener('ss:videos', function () { if (!panel.hidden) render(); });
+  document.addEventListener('ss:transcripts', function () { if (!panel.hidden) render(); });
   document.addEventListener('ss:merch', function () { if (!panel.hidden) render(); });
 
   var nb = $('#nav-search'), hb = $('#home-search');

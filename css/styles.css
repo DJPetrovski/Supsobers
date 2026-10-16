@@ -1940,3 +1940,5 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .dd-stage.dd-putting .dd-throw, .dd-stage.dd-putting #dd-capbtn { display: none !important; }
 .dd-stage.dd-putting .dd-bar { grid-template-columns: auto 1fr !important; }
 .dd-chip[hidden] { display: none !important; }
+.badge-new.badge-rel { left: auto; right: 8px; background: rgba(20,20,26,.82); color: #f3e9d2; letter-spacing: .06em; }
+.tile.is-related { opacity: .82; }

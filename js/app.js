@@ -100,13 +100,13 @@
     ptun.start({ boost: 400 });
   }
 
-  function openPlayer(v) {
+  function openPlayer(v, at) {
     if (!v || !ID_RE.test(v.id || '')) return;
     window.SS.now = v;
     paintRelated(v);
     document.dispatchEvent(new Event('ss:playeropen'));
     document.dispatchEvent(new CustomEvent('ss:duck', { detail: { key: 'player', level: 0 } }));
-    frame.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1' + (at > 0 ? '&start=' + Math.floor(at) : '') + '&origin=' + encodeURIComponent(location.origin);
     // phones sometimes show a play button instead of starting: nudge it a few times
     frame.onload = function () { [300, 1200, 2600].forEach(function (ms) { setTimeout(function () { if (!dlg.open || window.SS.now !== v) return; try { frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*'); } catch (e) {} }, ms); }); };
     frame.title = v.title || 'Video';
@@ -128,7 +128,7 @@
   });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) closePlayer(); });
 
-  window.SS = { videos: [], openPlayer: openPlayer, related: function (v, n) { return related(v, n || 14).map(function (r) { return r.v; }); } };
+  window.SS = { videos: [], openPlayer: openPlayer, threadList: function () { return threads; }, related: function (v, n) { return related(v, n || 14).map(function (r) { return r.v; }); } };
 
   /* ---------- tiles ---------- */
   function tile(v, index, hiddenCopy) {
@@ -155,11 +155,12 @@
     var input = $('#search');
 
     var active = '';
-    function paint(list) {
+    function paint(list, why) {
       grid.textContent = '';
       list.forEach(function (v, i) {
         var t = tile(v, i, false);
         if (videos.indexOf(v) < 3) t.appendChild(el('span', { 'class': 'badge-new', text: 'New' }));
+        if (why && why[v.id] && why[v.id].kind === 'related') { t.classList.add('is-related'); t.appendChild(el('span', { 'class': 'badge-new badge-rel', text: 'Related' })); t.title = (why[v.id].why || []).join(' · '); }
         grid.appendChild(t);
       });
       empty.hidden = list.length > 0;
@@ -168,9 +169,14 @@
       var q = input.value.trim().toLowerCase();
       var ids = null;
       threads.forEach(function (t) { if (t.name === active) ids = t.videos; });
-      paint(videos.filter(function (v) {
-        return (!ids || ids.indexOf(v.id) >= 0) && (!q || (v.title || '').toLowerCase().indexOf(q) !== -1);
-      }));
+      var pool = videos.filter(function (v) { return !ids || ids.indexOf(v.id) >= 0; });
+      if (q && window.SS && SS.smart) {
+        var rs = SS.smart(q, pool), why = {};
+        rs.forEach(function (r) { why[r.v.id] = r; });
+        paint(rs.map(function (r) { return r.v; }), why);
+        return;
+      }
+      paint(pool.filter(function (v) { return !q || (v.title || '').toLowerCase().indexOf(q) !== -1; }));
     }
     var chips = $('#thread-chips');
     if (chips && threads.length) {
@@ -187,6 +193,7 @@
     }
     apply();
     input.addEventListener('input', apply);
+    document.addEventListener('ss:transcripts', function () { if (input.value.trim()) apply(); });
   }
 
   /* ---------- home: newest + storylines ---------- */
