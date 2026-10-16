@@ -560,6 +560,10 @@
     return d.toLocaleDateString(undefined, { weekday: "long", year: "numeric", month: "long", day: "numeric" });
   }
 
+  function ytId(u) { var m = /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/.exec(u || ""); return m ? m[1] : null; }
+  function thumbOf(e) { if (e.thumb) return e.thumb; var id = (e.clip && e.clip.yt) || ytId(e.sourceUrl); return id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : null; }
+  function bad(img) { var p = img.parentNode; if (p) { p.classList.add("placeholder"); p.innerHTML = ""; } }
+
   function renderChips(activeCats) {
     var root = document.getElementById("category-chips");
     root.innerHTML = "";
@@ -661,8 +665,9 @@
       if (e.mediaType === "milestone") {
         card.innerHTML = contentHtml;
       } else {
-        var mediaHtml = e.thumb
-          ? '<div class="card-media"><img src="' + e.thumb + '" alt="" loading="lazy"></div>'
+        var th = thumbOf(e);
+        var mediaHtml = th
+          ? '<div class="card-media"><img src="' + th + '" alt="" loading="lazy" onerror="bad(this)"></div>'
           : '<div class="card-media placeholder">' + mediaIcon(e.mediaType) + '</div>';
         card.innerHTML = '<div class="card-body">' + mediaHtml + '<div class="card-content">' + contentHtml + '</div></div>';
       }
@@ -779,7 +784,7 @@
       if (base >= z.a - 1 && base <= z.b + 1 || inView && x0 >= z.a) {
         var m = document.createElement("button"); m.type = "button"; m.className = "mk thumb"; m.dataset.k = "c" + e.id; m.style.left = Math.min(98, Math.max(2, pct(x0, z))) + "%"; m.style.top = "9px";
         m.setAttribute("aria-label", e.title);
-        m.innerHTML = e.thumb ? "<img alt=\"\" src=\"" + e.thumb + "\">" : "";
+        m.innerHTML = thumbOf(e) ? "<img alt=\"\" src=\"" + thumbOf(e) + "\" onerror=\"this.remove()\">" : "";
         ln.appendChild(m);
       } else { var n = document.createElement("span"); n.className = "none"; n.textContent = "Outside this view"; ln.appendChild(n); }
       ax.appendChild(ln);
@@ -812,7 +817,7 @@
     }
     var id = k.slice(1), e = clipList().filter(function (x) { return x.id === id; })[0]; if (!e) return "";
     var off = OFFS[id], raw = e.clip.kind === "raw";
-    h += e.thumb ? "<img alt=\"\" src=\"" + e.thumb + "\">" : "";
+    h += thumbOf(e) ? "<img alt=\"\" src=\"" + thumbOf(e) + "\" onerror=\"this.remove()\">" : "";
     h += "<h4>" + escapeHtml(e.title) + "</h4><div class=\"meta\"><span class=\"badge\">" + (raw ? "Raw / witness clip" : "Official release") + "</span>" + escapeHtml(e.sourceName) + "</div>";
     h += "<dl><dt>When</dt><dd>" + escapeHtml(e.clip.atNote) + "</dd>" + (/^(Original filmer not|Source camera not)/.test(e.clip.filmer) ? "" : "<dt>Filmed by</dt><dd>" + escapeHtml(e.clip.filmer) + "</dd>") + (/^Not (verified|stated)/.test(e.clip.vantage) ? "" : "<dt>Vantage</dt><dd>" + escapeHtml(e.clip.vantage) + "</dd>") + "</dl>";
     if (raw) {
