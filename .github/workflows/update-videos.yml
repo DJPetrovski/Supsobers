@@ -2,7 +2,7 @@ name: Update videos
 
 on:
   schedule:
-    - cron: "17 1,13,19 * * *"   # three times a day: 7:17 AM, 1:17 PM and 7:17 PM Mountain (MDT)
+    - cron: "17 */2 * * *"   # every 2 hours, so a new upload shows up on the site within a couple of hours
   workflow_dispatch:         # lets you run it by hand from the Actions tab
 
 permissions:

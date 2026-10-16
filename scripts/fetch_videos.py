@@ -133,9 +133,18 @@ def main():
         old = []
 
     merged = {v["id"]: v for v in old if v.get("id") and not v.get("sample") and v.get("seconds", 0) >= MIN_SECONDS}
+    rank = {v["id"]: n for n, v in enumerate(fresh)}   # channel page order: newest first
+    today = datetime.date.today().isoformat()
     for v in fresh:
+        if v["id"] in merged:
+            # already known: keep its recorded date (the page only gives guessed dates), refresh title/length
+            v["published"] = min(merged[v["id"]]["published"], v["published"]) if key else merged[v["id"]]["published"]
+        elif not key:
+            v["published"] = today                      # first time seen = new today
         merged[v["id"]] = v
-    videos = sorted(merged.values(), key=lambda v: v["published"], reverse=True)
+    # newest date first; on the same day, the channel page order decides
+    videos = sorted(merged.values(), key=lambda v: (v["published"], -rank.get(v["id"], 10**6)), reverse=True)
+    videos.sort(key=lambda v: v["published"], reverse=True)
 
     new_doc = {"videos": videos}
     try:
