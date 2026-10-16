@@ -1942,3 +1942,13 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .dd-chip[hidden] { display: none !important; }
 .badge-new.badge-rel { left: auto; right: 8px; background: rgba(20,20,26,.82); color: #f3e9d2; letter-spacing: .06em; }
 .tile.is-related { opacity: .82; }
+.web-panel .wp { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.web-panel .wp-line { display: block; opacity: .95; }
+.web-panel .wp-line b { color: #ffd9a0; }
+.web-panel .wp-bridge { padding-left: 10px; border-left: 2px solid rgba(255,42,53,.7); }
+.web-panel .wp-sub { opacity: .7; font-size: .85em; }
+.web-panel .wp-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.web-panel .wp-lbl { font: 11px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.web-panel .wp-chip { cursor: pointer; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.07); color: inherit; border-radius: 99px; padding: 3px 10px; font: inherit; font-size: .85em; text-align: left; }
+.web-panel .wp-chip:hover { border-color: #ff2a35; }
+.web-panel .wp-watch { margin-top: 2px; }

@@ -14,7 +14,7 @@
   var ID_RE = /^[\w-]{11}$/;
 
   var nodes = [], edges = [], topics = [], hub = null, theory = false;
-  var built = false, running = false, raf = 0, cfg = null;
+  var built = false, running = false, raf = 0, cfg = null, why = { storylines: {}, bridges: {}, videos: {} }, selEdge = null;
   var yaw = 0.6, pitch = -0.25, D0 = 1020, W = 0, H = 0, dpr = 1;
   // A free camera: C is where you are, yaw and pitch are where you look. Far away it orbits the web; scroll or pinch to fly in, straight through the middle and out the far side.
   // Past the far side you come back in from the opposite side, so the zoom never ends. Inside the web, dragging turns you around where you stand.
@@ -148,6 +148,7 @@
       if (e.k === 3) { ctx.setLineDash([4, 6]); ctx.strokeStyle = 'rgba(255,200,120,' + (on ? 0.55 : 0.1) + ')'; }
       else { ctx.setLineDash([]); ctx.strokeStyle = e.k === 2 ? 'rgba(255,230,160,' + (on ? 0.7 : 0.1) + ')' : 'rgba(255,42,53,' + (on ? depth * (focus && focus.kind !== 'hub' ? 0.9 : 0.5) : 0.04) + ')'; }
       ctx.lineWidth = e.k === 2 ? 1.6 : 1;
+      if (e === selEdge) { ctx.strokeStyle = '#ffe9a8'; ctx.lineWidth = 3; ctx.setLineDash([]); }
       ctx.stroke();
     });
     ctx.setLineDash([]);
@@ -210,17 +211,79 @@
     return best;
   }
 
+  function hook(t) { return (why.storylines && why.storylines[t.name]) || ''; }
+  function bridge(a, b) { var k = [a.name, b.name].sort().join(' | '); return (why.bridges && why.bridges[k]) || (a.name + ' and ' + b.name + ' overlap here. Watch to see what ties them together.'); }
+  function kwOf(n, t) { var low = (n.v.title || '').toLowerCase(); return t.m.filter(function (k) { return low.indexOf(k) >= 0; }); }
+  function quote(list) { return list.slice(0, 2).map(function (k) { return '“' + k + '”'; }).join(' and '); }
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function chip(label, fn) { var b = el('button', 'wp-chip', label); b.type = 'button'; b.addEventListener('click', fn); return b; }
+  function pickNode(n) { focus = n; selEdge = null; panelText(); }
+  function watchBtn(v) { var b = el('button', 'pill wp-watch', 'Watch ▶'); b.type = 'button'; b.addEventListener('click', function () { window.SS.openPlayer(v); }); return b; }
+  // other videos that share a storyline with this one, best (most shared names) first
+  function neighbours(n) {
+    var out = [];
+    nodes.forEach(function (m) {
+      if (m.kind !== 'video' || m === n) return;
+      var shared = n.topics.filter(function (t) { return m.topics.indexOf(t) >= 0; });
+      if (!shared.length) return;
+      var kw = []; shared.forEach(function (t) { var a = kwOf(n, t), b = kwOf(m, t); a.forEach(function (k) { if (b.indexOf(k) >= 0 && kw.indexOf(k) < 0) kw.push(k); }); });
+      out.push({ n: m, t: shared[0], kw: kw, sc: kw.length * 3 + shared.length });
+    });
+    out.sort(function (a, b) { return b.sc - a.sc; });
+    return out;
+  }
+  function explainEdge(e) {
+    if (e.k === 2) return e.why || 'These two videos are linked directly.';
+    if (e.k === 3) return (cfg.theory && cfg.theory.blurb) || 'Every storyline, one question: is it all connected?';
+    var v = e.a.kind === 'video' ? e.a : e.b, t = e.a.kind === 'topic' ? e.a : e.b, kw = kwOf(v, t);
+    return (kw.length ? 'Linked by the ' + (kw.length > 1 ? 'names ' : 'name ') + quote(kw) + '. ' : '') + (hook(t) || 'Same storyline.');
+  }
   function panelText() {
     if (!panel) return;
-    if (!focus) { panel.innerHTML = '<strong>' + topics.length + ' storylines, ' + (nodes.length - topics.length) + ' videos.</strong> Tap a glowing storyline to light up everything inside it. Videos that sit between two storylines are the bridges.'; return; }
-    if (focus.kind === 'topic') { panel.innerHTML = '<strong>' + focus.name + '</strong> · ' + focus.kids.length + ' videos. Tap a video to watch, or tap empty space to reset.'; return; }
-    if (focus.kind === 'video') {
-      panel.textContent = '';
-      var s = document.createElement('strong'); s.textContent = focus.v.title; panel.appendChild(s);
-      panel.appendChild(document.createTextNode(' · ' + (focus.topics.length ? 'connects ' + focus.topics.map(function (t) { return t.name; }).join(' + ') : 'not tied to a storyline yet')));
-      return;
-    }
     panel.textContent = '';
+    var box = el('span', 'wp');
+    if (selEdge) {
+      var e = selEdge, a = e.a.kind === 'video' ? e.a.v.title : e.a.name, b = e.b.kind === 'video' ? e.b.v.title : e.b.name;
+      box.appendChild(el('strong', '', a + '  ↔  ' + b)); box.appendChild(el('span', 'wp-line', explainEdge(e)));
+      var vn = e.a.kind === 'video' ? e.a : (e.b.kind === 'video' ? e.b : null);
+      if (vn) box.appendChild(watchBtn(vn.v));
+      panel.appendChild(box); return;
+    }
+    if (!focus) { box.innerHTML = '<strong>' + topics.length + ' storylines, ' + (nodes.length - topics.length) + ' videos.</strong> Tap a glowing storyline, a video, or any line between them to see why they connect.'; panel.appendChild(box); return; }
+    if (focus.kind === 'topic') {
+      box.appendChild(el('strong', '', focus.name + ' · ' + focus.kids.length + ' videos'));
+      box.appendChild(el('span', 'wp-line', hook(focus) || 'Tap a video to watch.'));
+      var br = {}; focus.kids.forEach(function (k) { k.topics.forEach(function (t) { if (t !== focus) (br[t.name] = br[t.name] || []).push(k); }); });
+      var names = Object.keys(br).sort(function (x, y) { return br[y].length - br[x].length; }).slice(0, 4);
+      if (names.length) {
+        var row = el('span', 'wp-chips'); row.appendChild(el('span', 'wp-lbl', 'Bridges to'));
+        names.forEach(function (nm) { var tn = topics.filter(function (t) { return t.name === nm; })[0]; row.appendChild(chip(nm + ' (' + br[nm].length + ')', function () { selEdge = null; focus = br[nm][0]; panelText(); })); });
+        box.appendChild(row);
+      }
+      panel.appendChild(box); return;
+    }
+    if (focus.kind === 'video') {
+      var tt = focus.topics;
+      box.appendChild(el('strong', '', focus.v.title));
+      var v = (why.videos && why.videos[focus.v.id]);
+      if (v) box.appendChild(el('span', 'wp-line', v));
+      if (!tt.length && !v) box.appendChild(el('span', 'wp-line', 'Not tied to a storyline yet.'));
+      tt.slice(0, 2).forEach(function (t) {
+        var kw = kwOf(focus, t), line = el('span', 'wp-line');
+        line.appendChild(el('b', '', t.name)); line.appendChild(document.createTextNode(' — ' + (kw.length ? (kw.length > 1 ? 'the names ' : 'the name ') + quote(kw) + ' tie' + (kw.length > 1 ? '' : 's') + ' it in. ' : '') + hook(t)));
+        box.appendChild(line);
+      });
+      if (tt.length > 1) { var bl = el('span', 'wp-line wp-bridge'); bl.appendChild(el('b', '', 'Bridge: ')); bl.appendChild(document.createTextNode(bridge(tt[0], tt[1]))); box.appendChild(bl); }
+      var nb = neighbours(focus).slice(0, 3);
+      if (nb.length) {
+        var row2 = el('span', 'wp-chips'); row2.appendChild(el('span', 'wp-lbl', 'Also tied to'));
+        nb.forEach(function (o) { row2.appendChild(chip(o.n.v.title.length > 34 ? o.n.v.title.slice(0, 33) + '…' : o.n.v.title, function () { pickNode(o.n); })); });
+        box.appendChild(row2);
+        var o0 = nb[0]; box.appendChild(el('span', 'wp-line wp-sub', 'Closest: ' + (o0.kw.length ? 'both mention ' + quote(o0.kw) : 'both sit in ' + o0.t.name) + '.'));
+      }
+      box.appendChild(watchBtn(focus.v));
+      panel.appendChild(box); return;
+    }
   }
 
   function xy(e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
@@ -246,14 +309,32 @@
       tip.style.left = Math.min(W - 200, Math.max(8, p.x + 14)) + 'px'; tip.style.top = Math.max(8, p.y - 34) + 'px';
     } else tip.hidden = true;
   });
+  function pickEdge(mx, my) {
+    var best = null, bd = 9;
+    edges.forEach(function (e) {
+      if (e.k === 3 && !theory) return;
+      if (!e.a.vis || !e.b.vis || !lit(e.a) || !lit(e.b)) return;
+      if (focus && focus.kind !== 'hub' && e.a !== focus && e.b !== focus) return;
+      var dx = e.b.sx - e.a.sx, dy = e.b.sy - e.a.sy, L = dx * dx + dy * dy; if (L < 4) return;
+      var t = Math.max(0, Math.min(1, ((mx - e.a.sx) * dx + (my - e.a.sy) * dy) / L));
+      var d = Math.hypot(mx - (e.a.sx + t * dx), my - (e.a.sy + t * dy));
+      if (d < bd) { bd = d; best = e; }
+    });
+    return best;
+  }
   cv.addEventListener('pointerup', function (e) {
     dragging = false;
     if (moved) return;
     var p = xy(e), n = pick(p.x, p.y);
-    if (!n) { focus = null; panelText(); return; }
+    if (!n) {
+      var ed = pickEdge(p.x, p.y);
+      if (ed) { selEdge = ed; panelText(); return; }
+      focus = null; selEdge = null; panelText(); return;
+    }
+    selEdge = null;
     if (n.kind === 'video') {
-      if (focus === n) { window.SS.openPlayer(n.v); return; }
-      focus = n; panelText(); window.SS.openPlayer(n.v);
+      if (focus === n) { window.SS.openPlayer(n.v); return; }   // second tap plays it
+      focus = n; panelText();
     } else { focus = (focus === n) ? null : n; panelText(); }
   });
   cv.addEventListener('pointerleave', function () { hover = null; tip.hidden = true; });
@@ -269,12 +350,12 @@
   cv.addEventListener('touchend', function () { pinch = 0; });
   modeBtn.addEventListener('click', function () { spinMode = !spinMode; modeBtn.setAttribute('aria-pressed', String(spinMode)); modeBtn.textContent = spinMode ? 'Drag: spin' : 'Drag: move'; });
   cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-  resetBtn.addEventListener('click', function () { focus = null; yaw = 0.6; pitch = -0.25; homeCam(); if (hint) hint.hidden = true; panelText(); });
+  resetBtn.addEventListener('click', function () { focus = null; selEdge = null; yaw = 0.6; pitch = -0.25; homeCam(); if (hint) hint.hidden = true; panelText(); });
   if (turnBtn) turnBtn.addEventListener('click', function () { rot(Math.PI, 0); });
   // the pop-out window: the caption comes with it
   document.addEventListener('ss:popoutchange', function (e) { if (e.detail.el !== stage) return; if (e.detail.on) { stage.appendChild(panel); panel.classList.add('in-stage'); } else { stage.parentNode.insertBefore(panel, stage.nextSibling); panel.classList.remove('in-stage'); } setTimeout(function () { if (running) size(); }, 140); });
   window.addEventListener('resize', function () { if (running) size(); });
-  document.addEventListener('keydown', function (e) { if (running && e.key === 'Escape' && focus) { focus = null; panelText(); } });
+  document.addEventListener('keydown', function (e) { if (running && e.key === 'Escape' && (focus || selEdge)) { focus = null; selEdge = null; panelText(); } });
 
   function start() {
     if (running) return;
@@ -286,7 +367,10 @@
       if (reduce) { draw(); }
       else raf = requestAnimationFrame(loop);
     };
-    if (cfg) go(); else fetchJSON('data/web.json').then(function (d) { cfg = d; go(); }).catch(function () { running = false; panel.textContent = 'The web could not load. Refresh to try again.'; });
+    if (cfg) go(); else fetchJSON('data/web.json').then(function (d) {
+      cfg = d;
+      return fetchJSON('data/connections.json').then(function (c) { why = c || why; (c.links || []).forEach(function (l) { cfg.links = (cfg.links || []).concat([l]); }); }, function () {}).then(go);
+    }).catch(function () { running = false; panel.textContent = 'The web could not load. Refresh to try again.'; });
   }
   function stop() { running = false; cancelAnimationFrame(raf); }
 

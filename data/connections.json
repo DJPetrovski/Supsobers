@@ -1,0 +1,34 @@
+{
+  "note": "Why things connect in 'It's All Connected'. Keep each line short and curious: it should make people want to watch. 'storylines' = one hook per storyline (same names as data/web.json). 'bridges' = what two storylines have in common, key is the two names sorted A to Z joined by ' | '. 'videos' = optional line for one video id that overrides the automatic wording. 'links' = optional [videoIdA, videoIdB, 'why'] to draw a direct line between two videos.",
+  "storylines": {
+    "Epstein & 9/11": "DJ follows the paper trail from the Epstein files to 9/11. What did one shipment and one date have in common?",
+    "Diddy": "Diddy's world, Kim Porter and 'pink cocaine'. Who else was in the room?",
+    "Music Industry Deaths": "Rock stars, rappers and the 27 Club. Tragedy, or a pattern the industry would rather you skip?",
+    "Fame & the Industry": "Hollywood's biggest names and the strange details around their last days. What gets left out?",
+    "Assassins & Political Violence": "Crooks, Routh, Vem Miller, JFK. Same question each time: lone gunman, or was someone else in the story?",
+    "Charlie Kirk": "From the Utah Valley University campus to the courtroom. What still doesn't add up?",
+    "Mind Control & Black Ops": "MK-Ultra, the Gate Program, hypnosis. How far did they go to program the mind, and did it stop?",
+    "Illuminati & Elite Bloodlines": "Powerful families, secret clubs, money moving through the back door. How tied together are they?",
+    "Trials & True Crime": "Courtroom cases where the story and the evidence pull apart. Who profits from the verdict?",
+    "Space & Hidden Tech": "NASA, drones, hidden technology, and the people who asked too many questions about it.",
+    "Missing & Unexplained": "People who vanished and places that swallow them. Why don't the details line up?",
+    "Truth Tellers & the Silenced": "Voices who warned us, and what happened next. Why did so many go quiet?",
+    "Media & Propaganda": "TikTok, Netflix and the headlines you're fed. Who decides what you believe?",
+    "The Sober Sobers": "The recovery side of the channel. Real talk on addiction, cravings and staying sober."
+  },
+  "bridges": {
+    "Diddy | Trials & True Crime": "Diddy's case lands in a courtroom. What comes out under oath, and what doesn't?",
+    "Diddy | Music Industry Deaths": "Diddy's world overlaps with artists who died young. How close do the two stories sit?",
+    "Music Industry Deaths | Truth Tellers & the Silenced": "Artists who spoke out, then died. DJ lays the timelines side by side.",
+    "Charlie Kirk | Trials & True Crime": "The Kirk case moves from the scene to the courtroom. What does the evidence say under oath?",
+    "Epstein & 9/11 | Missing & Unexplained": "Epstein's world and people who vanished. Do the same names and places show up?",
+    "Space & Hidden Tech | Truth Tellers & the Silenced": "Scientists who spoke up about hidden tech, then went silent. What did they say?",
+    "Missing & Unexplained | Music Industry Deaths": "Gone without a trace, from the stage to the wilderness. What is missing from each story?",
+    "Fame & the Industry | Truth Tellers & the Silenced": "Famous voices who warned about the industry. Who listened?",
+    "Diddy | Fame & the Industry": "Diddy's parties and Hollywood's inner circle. Who is in both rooms?",
+    "Epstein & 9/11 | Illuminati & Elite Bloodlines": "The elite families and the Epstein files. How many names overlap?",
+    "Illuminati & Elite Bloodlines | Truth Tellers & the Silenced": "People who named the elite, and what it cost them."
+  },
+  "videos": {},
+  "links": []
+}
