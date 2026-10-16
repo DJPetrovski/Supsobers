@@ -306,6 +306,28 @@
   .stage .backdrop { opacity: .5; transform: translateZ(0); will-change: transform; contain: paint; backface-visibility: hidden; }
   .stage.has-video .backdrop { opacity: .4; }
   .stage .freedom { margin: 26px -14px 0; padding: 6px 0 4px; text-align: center; font-family: "Source Serif 4", Georgia, serif; font-weight: 800; font-size: clamp(32px, min(12vw, 96px), 96px); letter-spacing: .14em; text-indent: .14em; line-height: 1; color: #f6f1e4; text-shadow: 0 3px 0 #b22234, 0 -3px 0 #2c3a86, 0 6px 26px rgba(0,0,0,.65); pointer-events: none; user-select: none; }
+  /* grid view + hover / scroll-stop previews */
+  .gridv { display: none; margin: 8px 0 0; } .gridv.on { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .gtile { display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; background: rgba(7,13,31,.62); border: 1px solid rgba(243,233,210,.2); color: #f3e9d2; text-decoration: none; backdrop-filter: blur(3px); transition: transform .15s, border-color .15s; }
+  .gtile:hover, .gtile.pv-now { transform: translateY(-2px); border-color: var(--card-accent, #f3e9d2); }
+  .gtile .gm { aspect-ratio: 16 / 9; }
+  .gtile .gb { padding: 9px 11px 11px; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .gtile .gk { font: 10px "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--card-accent, #f3e9d2); }
+  .gtile .gt { font-weight: 700; font-size: 14px; line-height: 1.25; color: var(--card-accent, #f3e9d2); overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .gtile .gs { font-size: 12px; opacity: .75; }
+  .pvm { position: relative; overflow: hidden; background: rgba(7,13,31,.8); }
+  .pvm > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pvm .pvh { position: absolute; inset: 0; opacity: 0; transition: opacity .35s; pointer-events: none; }
+  .pvm .pvh iframe, .pvm .pvh video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; pointer-events: none; }
+  .pvm.pv-live .pvh { opacity: 1; }
+  .pvm .card-media { width: 100%; height: 100%; border: 0; border-radius: 0; aspect-ratio: auto; }
+  .pvm .pvb { position: absolute; left: 6px; bottom: 6px; font: 9px "IBM Plex Mono", monospace; letter-spacing: .1em; padding: 2px 6px; border-radius: 99px; background: rgba(7,13,31,.78); color: #f3e9d2; opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .pvm.pv-live .pvb { opacity: 1; }
+  .pvm.pvable::after { content: ""; position: absolute; right: 6px; bottom: 6px; width: 0; height: 0; border-left: 9px solid rgba(243,233,210,.9); border-top: 6px solid transparent; border-bottom: 6px solid transparent; filter: drop-shadow(0 0 3px rgba(0,0,0,.7)); transition: opacity .3s; }
+  .pvm.pv-live::after { opacity: 0; }
+  .listv .lrow { grid-template-columns: 9px 128px 1fr 120px; }
+  .listv .lth { width: 120px; aspect-ratio: 16 / 9; border-radius: 6px; align-self: center; }
+  @media (max-width: 560px) { .gridv.on { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .gtile .gt { font-size: 12.5px; } .listv .lrow { grid-template-columns: 9px 1fr; } .listv .lth { grid-column: 2; width: 100%; max-width: 220px; } }
   /* list + web views */
   .listv { display: none; margin: 8px 0 0; } .listv.on { display: block; }
   .listv .lrow { display: grid; grid-template-columns: 9px 128px 1fr; gap: 6px 12px; align-items: baseline; padding: 10px 12px; border-bottom: 1px solid rgba(243,233,210,.18); background: rgba(7,13,31,.5); color: #f3e9d2; backdrop-filter: blur(3px); }
@@ -438,6 +460,7 @@
     <div class="tabs" role="tablist" aria-label="Media type">
       <button class="tab" data-tab="all" aria-pressed="true">3D timeline</button>
       <button class="tab" data-tab="web" aria-pressed="false">Web</button>
+      <button class="tab" data-tab="grid" aria-pressed="false">Grid</button>
       <button class="tab" data-tab="list" aria-pressed="false">List</button>
       <button class="tab" data-tab="map" aria-pressed="false">Compare angles</button>
       <button class="tab" data-tab="video" aria-pressed="false">Videos</button>
@@ -478,6 +501,7 @@
       <div class="axis" id="axis"></div>
       <div class="compare" id="compare"></div>
     </section>
+    <section id="grid-root" class="gridv" aria-label="Grid of entries"></section>
     <section id="list-root" class="listv" aria-label="List of entries"></section>
     <section id="web-root" class="webv" aria-label="Web of entries">
       <div class="wbar"><span>Every entry hangs on the web by its category and by how close it is to the moment of the shot. Drag to turn it, scroll or pinch to zoom, tap a dewdrop to open it.</span><button type="button" id="web-pop">Pop out</button></div>
@@ -564,6 +588,96 @@
   function thumbOf(e) { if (e.thumb) return e.thumb; var id = (e.clip && e.clip.yt) || ytId(e.sourceUrl); return id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : null; }
   function bad(img) { var p = img.parentNode; if (p) { p.classList.add("placeholder"); p.innerHTML = ""; } }
 
+  // ---------- hover / scroll-stop previews ----------
+  var PV = { m: null, p: null, t: 0, kill: 0, api: 0 };
+  function localVid(u) { return /^media\/.+\.(mp4|webm|m4v)$/i.test(u || ""); }
+  function canPreview(e) { return !!((e.clip && e.clip.yt) || ytId(e.sourceUrl) || localVid(e.sourceUrl)); }
+  function mediaBox(e, extra) {
+    var th = thumbOf(e), d = document.createElement("div");
+    d.className = "pvm" + (canPreview(e) ? " pvable" : "") + (extra ? " " + extra : "");
+    if (th) { var im = document.createElement("img"); im.alt = ""; im.loading = "lazy"; im.src = th; im.onerror = function () { im.remove(); }; d.appendChild(im); }
+    else d.innerHTML = '<div class="card-media placeholder" style="width:100%;height:100%">' + mediaIcon(e.mediaType) + "</div>";
+    d._e = e; return d;
+  }
+  function stopPv() {
+    clearTimeout(PV.t); clearTimeout(PV.kill);
+    if (PV.p) { try { PV.p.destroy(); } catch (er) {} PV.p = null; }
+    if (PV.m) { var h = PV.m.querySelector(".pvh"); if (h) h.remove(); var b = PV.m.querySelector(".pvb"); if (b) b.remove(); PV.m.classList.remove("pv-live"); if (PV.m.parentNode) PV.m.parentNode.classList.remove("pv-now"); PV.m = null; }
+  }
+  function ytReadyNow(cb, tries) {
+    if (window.YT && YT.Player) return cb();
+    if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) { var sc = document.createElement("script"); sc.src = "https://www.youtube.com/iframe_api"; sc.async = true; document.head.appendChild(sc); }
+    if ((tries || 0) < 40) setTimeout(function () { ytReadyNow(cb, (tries || 0) + 1); }, 250);
+  }
+  function startPv(m) {
+    if (!m || !m._e || reduceMotion || document.hidden) return;
+    var e = m._e; if (!canPreview(e)) return;
+    if (PV.m === m) return;
+    stopPv(); PV.m = m; if (m.parentNode) m.parentNode.classList.add("pv-now");
+    var host = document.createElement("div"); host.className = "pvh"; m.appendChild(host);
+    var badge = document.createElement("span"); badge.className = "pvb"; badge.textContent = "PREVIEW · MUTED"; m.appendChild(badge);
+    var live = function () { if (PV.m === m) m.classList.add("pv-live"); };
+    if (localVid(e.sourceUrl)) {
+      var v = document.createElement("video"); v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true; v.src = e.sourceUrl; v.addEventListener("playing", live); v.addEventListener("error", stopPv); host.appendChild(v); v.play && v.play().catch(function () {});
+    } else {
+      var id = (e.clip && e.clip.yt) || ytId(e.sourceUrl), inner = document.createElement("div"); host.appendChild(inner);
+      ytReadyNow(function () {
+        if (PV.m !== m) return;
+        try {
+          PV.p = new YT.Player(inner, { width: "100%", height: "100%", videoId: id, playerVars: { autoplay: 1, mute: 1, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, disablekb: 1, fs: 0, iv_load_policy: 3, origin: location.origin },
+            events: { onReady: function (ev) { ev.target.mute(); ev.target.playVideo(); }, onStateChange: function (ev) { if (ev.data === 1) live(); }, onError: function () { stopPv(); } } });
+        } catch (er) { stopPv(); }
+      });
+    }
+    PV.kill = setTimeout(stopPv, 30000);
+  }
+  // hover (mouse): start after a short pause, stop on leave
+  document.addEventListener("pointerover", function (ev) {
+    if (ev.pointerType !== "mouse") return;
+    var t = ev.target.closest && ev.target.closest(".gtile, .lrow, #timeline-root .card");
+    if (!t) return;
+    var m = t.querySelector(".pvm"); if (!m || PV.m === m) return;
+    clearTimeout(PV.t); PV.t = setTimeout(function () { startPv(m); }, 450);
+  });
+  document.addEventListener("pointerout", function (ev) {
+    if (ev.pointerType !== "mouse") return;
+    var t = ev.target.closest && ev.target.closest(".gtile, .lrow, #timeline-root .card");
+    if (!t || (ev.relatedTarget && t.contains(ev.relatedTarget))) return;
+    clearTimeout(PV.t); if (PV.m && t.contains(PV.m)) stopPv();
+  });
+  // scroll stops (touch or wheel): preview the tile nearest the middle of the view
+  var idleT = 0;
+  function pickMiddle() {
+    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web") ? null : "#timeline-root .card";
+    if (!sel) return;
+    var tlr = document.getElementById("timeline-root"), best = null, bd = 1e9, vw = window.innerWidth, vh = window.innerHeight;
+    document.querySelectorAll(sel).forEach(function (c) {
+      var m = c.querySelector(".pvm.pvable"); if (!m) return;
+      var r = c.getBoundingClientRect(); if (r.width < 20 || r.bottom < 0 || r.top > vh || r.right < 0 || r.left > vw) return;
+      var d = Math.abs((r.left + r.width / 2) - vw / 2) + Math.abs((r.top + r.height / 2) - vh / 2) * 1.2;
+      if (d < bd) { bd = d; best = m; }
+    });
+    if (best) startPv(best);
+  }
+  function onScrolling() { clearTimeout(PV.t); stopPv(); clearTimeout(idleT); idleT = setTimeout(pickMiddle, 800); }
+  window.addEventListener("scroll", onScrolling, { passive: true });
+  document.getElementById("timeline-root").addEventListener("scroll", onScrolling, { passive: true });
+  document.addEventListener("visibilitychange", function () { if (document.hidden) stopPv(); });
+
+  function renderGrid() {
+    var root = document.getElementById("grid-root"), list = filteredEntries().filter(function (e) { return e.mediaType !== "milestone"; }).sort(function (a, b) { return a.timestamp.localeCompare(b.timestamp); });
+    stopPv(); root.innerHTML = "";
+    if (!list.length) { document.getElementById("empty").hidden = false; return; }
+    list.forEach(function (e) {
+      var c = CATEGORIES[e.category] || CATEGORIES.milestone;
+      var a = document.createElement("a"); a.className = "gtile"; a.href = e.sourceUrl || e.archiveUrl || "#"; a.target = "_blank"; a.rel = "noopener"; a.style.setProperty("--card-accent", "var(" + c.varName + ")");
+      a.appendChild(mediaBox(e, "gm"));
+      var b = document.createElement("div"); b.className = "gb";
+      b.innerHTML = '<span class="gk">' + escapeHtml(c.label) + '</span><span class="gt">' + escapeHtml(e.title) + '</span><span class="gs">' + escapeHtml((e.sourceName || "") + " · " + e.date) + "</span>";
+      a.appendChild(b); root.appendChild(a);
+    });
+  }
+
   function renderChips(activeCats) {
     var root = document.getElementById("category-chips");
     root.innerHTML = "";
@@ -594,7 +708,7 @@
 
   function filteredEntries() {
     return ENTRIES.filter(function (e) {
-      if (state.tab !== "all" && state.tab !== "map" && state.tab !== "list" && state.tab !== "web" && e.mediaType !== state.tab) return false;
+      if (state.tab !== "all" && state.tab !== "map" && state.tab !== "list" && state.tab !== "web" && state.tab !== "grid" && e.mediaType !== state.tab) return false;
       if (!state.activeCats.has(e.category)) return false;
       if (state.query) {
         var hay = (e.title + " " + e.description + " " + e.sourceName).toLowerCase();
@@ -605,7 +719,7 @@
   }
 
   function renderTimeline() {
-    if (state.tab === "map" || state.tab === "list" || state.tab === "web") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
+    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
     var list = filteredEntries();
     var root = document.getElementById("timeline-root");
     var empty = document.getElementById("empty");
@@ -665,11 +779,8 @@
       if (e.mediaType === "milestone") {
         card.innerHTML = contentHtml;
       } else {
-        var th = thumbOf(e);
-        var mediaHtml = th
-          ? '<div class="card-media"><img src="' + th + '" alt="" loading="lazy" onerror="bad(this)"></div>'
-          : '<div class="card-media placeholder">' + mediaIcon(e.mediaType) + '</div>';
-        card.innerHTML = '<div class="card-body">' + mediaHtml + '<div class="card-content">' + contentHtml + '</div></div>';
+        card.innerHTML = '<div class="card-body"><div class="card-media"></div><div class="card-content">' + contentHtml + '</div></div>';
+        var cm = card.querySelector(".card-media"), mb = mediaBox(e); cm.appendChild(mb); mb.style.width = "100%"; mb.style.height = "100%"; mb.style.minHeight = "60px";
       }
 
       entryEl.appendChild(card);
@@ -910,6 +1021,7 @@
       var r = document.createElement("div"); r.className = "lrow";
       var c = CATEGORIES[e.category] || CATEGORIES.milestone;
       r.innerHTML = '<span class="ldot" style="background:var(' + c.varName + ',#f3e9d2)"></span><span class="lt">' + escapeHtml(e.date + (e.time ? " · " + e.time : "")) + '</span><span class="lh"><a href="' + escapeHtml(e.sourceUrl || e.archiveUrl || "#") + '" target="_blank" rel="noopener">' + escapeHtml(e.title) + '</a><small>' + escapeHtml(c.label + " · " + (e.sourceName || "")) + '</small></span>';
+      if (e.mediaType !== "milestone") r.appendChild(mediaBox(e, "lth"));
       root.appendChild(r);
     });
   }
@@ -1022,9 +1134,9 @@
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
     var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
-    lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
+    document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
     if (state.tab !== "web") stopWeb();
-    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
