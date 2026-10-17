@@ -328,6 +328,44 @@
   .listv .lrow { grid-template-columns: 9px 128px 1fr 120px; }
   .listv .lth { width: 120px; aspect-ratio: 16 / 9; border-radius: 6px; align-self: center; }
   @media (max-width: 560px) { .gridv.on { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .gtile .gt { font-size: 12.5px; } .listv .lrow { grid-template-columns: 9px 1fr; } .listv .lth { grid-column: 2; width: 100%; max-width: 220px; } }
+  /* courtyard view */
+  .courtv { display: none; margin: 8px 0 0; color: #f3e9d2; } .courtv.on { display: block; }
+  .cv-bar { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: space-between; font-size: 12.5px; opacity: .88; margin: 0 2px 8px; }
+  .cv-bar .cv-leg { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .cv-bar .cv-leg i { display: inline-block; width: 22px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+  .cv-scroll { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(243,233,210,.22); background: #0a1226; -webkit-overflow-scrolling: touch; }
+  .cv-board { position: relative; min-width: 920px; aspect-ratio: 3 / 2; }
+  .cv-board > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .cv-board .cv-lines line { stroke: rgba(243,233,210,.22); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke .2s, opacity .2s; }
+  .cv-board .cv-lines line.shot { stroke: rgba(255,120,100,.28); stroke-dasharray: 3 4; }
+  .cv-board.has-hover .cv-lines line { opacity: .12; }
+  .cv-board.has-hover .cv-lines line.on { opacity: 1; stroke: #ffe9a8; stroke-width: 2; }
+  .ccard { position: absolute; width: 6.5%; aspect-ratio: 16 / 9; padding: 0; border: 2px solid var(--card-accent, #f3e9d2); border-radius: 4px; background: #000; overflow: hidden; cursor: pointer; transform: translate(-50%, -50%); transition: transform .18s, box-shadow .18s, opacity .25s; box-shadow: 0 2px 8px rgba(0,0,0,.55); }
+  .ccard:hover, .ccard:focus-visible, .ccard.hot { transform: translate(-50%, -50%) scale(1.9); z-index: 6; box-shadow: 0 8px 26px rgba(0,0,0,.7); outline: none; }
+  .ccard.gone { opacity: 0; pointer-events: none; }
+  .ccard.picked { opacity: .25; }
+  .ccard.seen::after { content: "\2713"; position: absolute; right: 2px; top: 0; font-size: 10px; color: #fff; text-shadow: 0 0 3px #000; }
+  .ccard .pvm { width: 100%; height: 100%; }
+  .ccard .pvb { display: none; }
+  .ccard .tt { position: absolute; left: 50%; bottom: calc(100% + 4px); transform: translateX(-50%); width: max-content; max-width: 220px; padding: 3px 7px; border-radius: 5px; background: rgba(5,9,22,.92); color: #f3e9d2; font: 600 11px/1.25 "Source Sans 3", system-ui, sans-serif; pointer-events: none; opacity: 0; transition: opacity .15s; }
+  .cz { position: fixed; inset: 0; z-index: 900; display: flex; align-items: center; justify-content: center; padding: 14px; background: rgba(2,5,15,0); transition: background .4s; overflow-y: auto; }
+  .cz.on { background: rgba(2,5,15,.86); }
+  .cz-card { width: min(980px, 100%); display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 18px; align-items: start; color: #f3e9d2; margin: auto; }
+  .cz-media { position: relative; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 18px 60px rgba(0,0,0,.7); border: 2px solid var(--card-accent, #f3e9d2); transform-origin: 0 0; }
+  .cz-media img, .cz-media iframe, .cz-media video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; display: block; }
+  .cz-info { opacity: 0; transition: opacity .35s .25s; min-width: 0; }
+  .cz.on .cz-info { opacity: 1; }
+  .cz-info .k { font: 11px "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--card-accent, #f3e9d2); }
+  .cz-info h3 { margin: 6px 0 4px; font: 700 22px/1.2 "Source Serif 4", Georgia, serif; overflow-wrap: anywhere; }
+  .cz-info .src { font-size: 13px; opacity: .8; }
+  .cz-info p { font-size: 14.5px; line-height: 1.45; margin: 10px 0; }
+  .cz-info .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .cz-info .lbl { font: 10.5px "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; opacity: .7; margin-top: 12px; }
+  .cz-info button, .cz-info a.btn { cursor: pointer; border: 1px solid rgba(243,233,210,.4); background: rgba(243,233,210,.08); color: #f3e9d2; border-radius: 99px; padding: 5px 12px; font: inherit; font-size: 13px; text-decoration: none; display: inline-block; text-align: left; }
+  .cz-info button:hover, .cz-info a.btn:hover { border-color: #ffe9a8; }
+  .cz-x { position: fixed; top: 12px; right: 14px; z-index: 2; }
+  .cz-note { position: absolute; inset: auto 0 0 0; padding: 8px 12px; font-size: 12.5px; background: rgba(0,0,0,.6); }
+  @media (max-width: 760px) { .cz-card { grid-template-columns: 1fr; } .cz-info h3 { font-size: 18px; } .cv-board { min-width: 860px; } }
   /* list + web views */
   .listv { display: none; margin: 8px 0 0; } .listv.on { display: block; }
   .listv .lrow { display: grid; grid-template-columns: 9px 128px 1fr; gap: 6px 12px; align-items: baseline; padding: 10px 12px; border-bottom: 1px solid rgba(243,233,210,.18); background: rgba(7,13,31,.5); color: #f3e9d2; backdrop-filter: blur(3px); }
@@ -459,6 +497,7 @@
   <nav class="controls">
     <div class="tabs" role="tablist" aria-label="Media type">
       <button class="tab" data-tab="all" aria-pressed="true">3D timeline</button>
+      <button class="tab" data-tab="court" aria-pressed="false">Courtyard</button>
       <button class="tab" data-tab="web" aria-pressed="false">Web</button>
       <button class="tab" data-tab="grid" aria-pressed="false">Grid</button>
       <button class="tab" data-tab="list" aria-pressed="false">List</button>
@@ -503,6 +542,7 @@
     </section>
     <section id="grid-root" class="gridv" aria-label="Grid of entries"></section>
     <section id="list-root" class="listv" aria-label="List of entries"></section>
+    <section id="court-root" class="courtv" aria-label="Courtyard view of every video"></section>
     <section id="web-root" class="webv" aria-label="Web of entries">
       <div class="wbar"><span>Every entry hangs on the web by its category and by how close it is to the moment of the shot. Drag to turn it, scroll or pinch to zoom, tap a dewdrop to open it.</span><button type="button" id="web-pop">Pop out</button></div>
       <div class="webbox" id="webbox"><canvas id="webcv"></canvas><button type="button" class="wclose" id="web-close">Close ×</button><div class="winfo" id="winfo"></div></div>
@@ -634,21 +674,21 @@
   // hover (mouse): start after a short pause, stop on leave
   document.addEventListener("pointerover", function (ev) {
     if (ev.pointerType !== "mouse") return;
-    var t = ev.target.closest && ev.target.closest(".gtile, .lrow, #timeline-root .card");
+    var t = ev.target.closest && ev.target.closest(".gtile, .lrow, .ccard, #timeline-root .card");
     if (!t) return;
     var m = t.querySelector(".pvm"); if (!m || PV.m === m) return;
     clearTimeout(PV.t); PV.t = setTimeout(function () { startPv(m); }, 450);
   });
   document.addEventListener("pointerout", function (ev) {
     if (ev.pointerType !== "mouse") return;
-    var t = ev.target.closest && ev.target.closest(".gtile, .lrow, #timeline-root .card");
+    var t = ev.target.closest && ev.target.closest(".gtile, .lrow, .ccard, #timeline-root .card");
     if (!t || (ev.relatedTarget && t.contains(ev.relatedTarget))) return;
     clearTimeout(PV.t); if (PV.m && t.contains(PV.m)) stopPv();
   });
   // scroll stops (touch or wheel): preview the tile nearest the middle of the view
   var idleT = 0;
   function pickMiddle() {
-    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web") ? null : "#timeline-root .card";
+    var tab = state.tab, sel = tab === "court" ? "#court-root .ccard:not(.gone)" : tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web") ? null : "#timeline-root .card";
     if (!sel) return;
     var tlr = document.getElementById("timeline-root"), best = null, bd = 1e9, vw = window.innerWidth, vh = window.innerHeight;
     document.querySelectorAll(sel).forEach(function (c) {
@@ -677,6 +717,168 @@
       a.appendChild(b); root.appendChild(a);
     });
   }
+
+  // ---------- courtyard view: every video on one board, tap one to bring it to the front ----------
+  var CV = { built: false, pos: {}, links: [], seen: {}, open: null };
+  var CW = 1200, CHH = 800, CARD_W = 78, CARD_H = 44;
+  var CZONES = {
+    breaking:      { x: 24,  y: 34,  w: 330, h: 190, name: "Breaking news" },
+    aftermath:     { x: 372, y: 34,  w: 330, h: 190, name: "Aftermath & tributes" },
+    eyewitness:    { x: 250, y: 262, w: 400, h: 370, name: "Bystander footage" },
+    official:      { x: 24,  y: 660, w: 640, h: 120, name: "Statements & press conferences" },
+    investigation: { x: 690, y: 262, w: 490, h: 520, name: "Investigation & analysis" }
+  };
+  var STAGE = { x: 440, y: 450 }, ROOF = { x: 1010, y: 112 };
+  function seedRand(str) { var h = 1779033703 ^ str.length; for (var i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); } return function () { h = Math.imul(h ^ (h >>> 16), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; }; }
+  function courtEntries() { return ENTRIES.filter(function (e) { return e.mediaType !== "milestone"; }).sort(function (a, b) { return a.timestamp.localeCompare(b.timestamp) || a.id.localeCompare(b.id); }); }
+  function layoutCourt() {
+    var placed = [{ x: STAGE.x, y: STAGE.y, w: 120, h: 80 }, { x: ROOF.x, y: ROOF.y, w: 400, h: 180 }];
+    function free(x, y) { for (var i = 0; i < placed.length; i++) { var p = placed[i]; if (Math.abs(x - p.x) < (CARD_W + p.w) / 2 + 8 && Math.abs(y - p.y) < (CARD_H + p.h) / 2 + 8) return false; } return true; }
+    courtEntries().forEach(function (e) {
+      var z = CZONES[e.category] || CZONES.investigation, rnd = seedRand(e.id), best = null, bd = -1;
+      for (var t = 0; t < 400; t++) {
+        var x = z.x + CARD_W / 2 + rnd() * (z.w - CARD_W), y = z.y + CARD_H / 2 + rnd() * (z.h - CARD_H);
+        if (free(x, y)) { best = { x: x, y: y }; break; }
+        var md = 1e9; placed.forEach(function (p) { md = Math.min(md, Math.hypot(x - p.x, y - p.y)); });
+        if (md > bd) { bd = md; best = { x: x, y: y }; }
+      }
+      CV.pos[e.id] = best; placed.push({ x: best.x, y: best.y, w: CARD_W, h: CARD_H });
+    });
+  }
+  function courtLinks() {
+    var list = courtEntries(), links = [], lastBySrc = {};
+    list.forEach(function (e) {
+      if (e.category === "eyewitness" || (e.clip && e.clip.kind === "raw")) links.push({ a: e.id, b: "stage", kind: "shot", why: "Footage from the moment of the shot" });
+      var src = (e.sourceName || "").trim();
+      if (src && !/curator|not verified|reported case/i.test(src)) { if (lastBySrc[src]) links.push({ a: lastBySrc[src], b: e.id, kind: "src", why: "Same source: " + src }); lastBySrc[src] = e.id; }
+    });
+    var timed = list.filter(function (e) { return e.time && !/not verified/i.test(e.time) && e.timestamp; });
+    for (var i = 1; i < timed.length; i++) {
+      var dt = Math.abs(Date.parse(timed[i].timestamp) - Date.parse(timed[i - 1].timestamp)) / 60000;
+      if (dt <= 90 && timed[i].id !== timed[i - 1].id) links.push({ a: timed[i - 1].id, b: timed[i].id, kind: "time", why: "Close in time (" + Math.round(dt) + " min apart)" });
+    }
+    return links;
+  }
+  function courtBackdrop() {
+    var z = "", k;
+    for (k in CZONES) { var q = CZONES[k]; z += '<rect x="' + q.x + '" y="' + q.y + '" width="' + q.w + '" height="' + q.h + '" rx="10" fill="rgba(255,255,255,.025)" stroke="rgba(243,233,210,.14)" stroke-dasharray="4 5"/><text x="' + (q.x + 10) + '" y="' + (q.y + 16) + '" font-size="12" fill="rgba(243,233,210,.5)" font-family="IBM Plex Mono, monospace" letter-spacing="1.5">' + q.name.toUpperCase() + '</text>'; }
+    var crowd = "", r = seedRand("crowd");
+    for (var i = 0; i < 90; i++) { var a = r() * 6.283, d = 40 + r() * 175; crowd += '<circle cx="' + (STAGE.x + Math.cos(a) * d * 1.5).toFixed(0) + '" cy="' + (STAGE.y + Math.sin(a) * d * 0.9 + 34).toFixed(0) + '" r="2.2" fill="rgba(243,233,210,.16)"/>'; }
+    return '<svg viewBox="0 0 ' + CW + ' ' + CHH + '" preserveAspectRatio="none" aria-hidden="true"><defs><radialGradient id="cvg" cx="36%" cy="55%" r="70%"><stop offset="0" stop-color="#16213f"/><stop offset="1" stop-color="#070b18"/></radialGradient></defs>' +
+      '<rect width="' + CW + '" height="' + CHH + '" fill="url(#cvg)"/>' + z + crowd +
+      '<g transform="translate(' + STAGE.x + ',' + STAGE.y + ')"><path d="M-48 14 L0 -34 L48 14 Z" fill="rgba(243,233,210,.14)" stroke="rgba(243,233,210,.6)" stroke-width="1.5"/><rect x="-48" y="14" width="96" height="10" fill="rgba(243,233,210,.25)"/><text y="42" text-anchor="middle" font-size="12" fill="rgba(243,233,210,.8)" font-family="IBM Plex Mono, monospace" letter-spacing="1.5">STAGE &amp; TENT</text></g>' +
+      '<g><rect x="812" y="44" width="396" height="136" rx="6" fill="rgba(243,233,210,.05)" stroke="rgba(243,233,210,.35)"/><text x="826" y="66" font-size="12" fill="rgba(243,233,210,.75)" font-family="IBM Plex Mono, monospace" letter-spacing="1.5">LOSEE CENTER (ROOF)</text><circle cx="' + ROOF.x + '" cy="' + ROOF.y + '" r="6" fill="#ff7a64"/><text x="' + (ROOF.x + 14) + '" y="' + (ROOF.y + 4) + '" font-size="11" fill="#ffb4a6" font-family="IBM Plex Mono, monospace">reported shot position</text></g>' +
+      '<line x1="' + ROOF.x + '" y1="' + ROOF.y + '" x2="' + STAGE.x + '" y2="' + STAGE.y + '" stroke="rgba(255,122,100,.5)" stroke-width="1.2" stroke-dasharray="2 6" vector-effect="non-scaling-stroke"/>' +
+      '<text x="720" y="268" font-size="11" fill="rgba(255,180,166,.8)" font-family="IBM Plex Mono, monospace" transform="rotate(-27 720 268)">about 430 ft, as reported</text></svg>';
+  }
+  function buildCourt() {
+    var root = document.getElementById("court-root");
+    layoutCourt(); CV.links = courtLinks();
+    root.innerHTML = '<div class="cv-bar"><span class="cv-leg"><span><i style="border-color:rgba(255,122,100,.8);border-top-style:dotted"></i>Footage of the shot</span><span><i style="border-color:rgba(243,233,210,.6)"></i>Same source or close in time</span></span><span>Tap a video to bring it front and center. Videos are grouped by type, not by where they were filmed. Hover to connect.</span></div><div class="cv-scroll"><div class="cv-board" id="cv-board"></div></div>';
+    var board = document.getElementById("cv-board");
+    board.innerHTML = courtBackdrop();
+    var ns = "http://www.w3.org/2000/svg", svg = document.createElementNS(ns, "svg"); svg.setAttribute("viewBox", "0 0 " + CW + " " + CHH); svg.setAttribute("preserveAspectRatio", "none"); svg.setAttribute("class", "cv-lines"); svg.setAttribute("aria-hidden", "true");
+    CV.links.forEach(function (l) {
+      var A = l.a === "stage" ? STAGE : CV.pos[l.a], B = l.b === "stage" ? STAGE : CV.pos[l.b]; if (!A || !B) return;
+      var ln = document.createElementNS(ns, "line"); ln.setAttribute("x1", A.x); ln.setAttribute("y1", A.y); ln.setAttribute("x2", B.x); ln.setAttribute("y2", B.y); ln.setAttribute("class", l.kind === "shot" ? "shot" : ""); ln._l = l; l.el = ln; svg.appendChild(ln);
+    });
+    board.appendChild(svg);
+    courtEntries().forEach(function (e) {
+      var c = CATEGORIES[e.category] || CATEGORIES.milestone, p = CV.pos[e.id];
+      var b = document.createElement("button"); b.type = "button"; b.className = "ccard"; b.dataset.id = e.id; b.style.left = (p.x / CW * 100) + "%"; b.style.top = (p.y / CHH * 100) + "%"; b.style.setProperty("--card-accent", "var(" + c.varName + ")"); b.setAttribute("aria-label", e.title);
+      b.appendChild(mediaBox(e)); var tt = document.createElement("span"); tt.className = "tt"; tt.textContent = e.title; b._tt = tt;
+      b.addEventListener("click", function () { openCourt(e.id, b); });
+      b.addEventListener("pointerenter", function () { hotCourt(e.id, true); });
+      b.addEventListener("pointerleave", function () { hotCourt(e.id, false); });
+      b.addEventListener("focus", function () { hotCourt(e.id, true); }); b.addEventListener("blur", function () { hotCourt(e.id, false); });
+      board.appendChild(b);
+    });
+    CV.built = true;
+  }
+  function hotCourt(id, on) {
+    var board = document.getElementById("cv-board"); if (!board) return;
+    board.classList.toggle("has-hover", on);
+    var ids = {}; ids[id] = 1;
+    CV.links.forEach(function (l) { var m = l.a === id || l.b === id; if (l.el) l.el.classList.toggle("on", on && m); if (m && on) { ids[l.a] = 1; ids[l.b] = 1; } });
+    board.querySelectorAll(".ccard").forEach(function (c) { c.classList.toggle("hot", on && ids[c.dataset.id] === 1 && c.dataset.id !== id ? true : false); });
+  }
+  function renderCourt() {
+    var root = document.getElementById("court-root");
+    if (!CV.built) buildCourt();
+    var vis = {}; filteredEntries().forEach(function (e) { vis[e.id] = 1; });
+    root.querySelectorAll(".ccard").forEach(function (c) { c.classList.toggle("gone", !vis[c.dataset.id]); c.classList.toggle("seen", !!CV.seen[c.dataset.id]); });
+    CV.links.forEach(function (l) { if (l.el) l.el.style.display = ((l.a === "stage" || vis[l.a]) && (l.b === "stage" || vis[l.b])) ? "" : "none"; });
+    document.getElementById("empty").hidden = Object.keys(vis).length > 0;
+  }
+  function connectedTo(id) {
+    var out = [];
+    CV.links.forEach(function (l) { if (l.b === "stage" || l.a === "stage") return; if (l.a === id) out.push({ id: l.b, why: l.why }); else if (l.b === id) out.push({ id: l.a, why: l.why }); });
+    return out;
+  }
+  function openCourt(id, from) {
+    if (CV.open) return;
+    var e = ENTRIES.filter(function (x) { return x.id === id; })[0]; if (!e) return;
+    stopPv();
+    var c = CATEGORIES[e.category] || CATEGORIES.milestone, th = thumbOf(e), yid = (e.clip && e.clip.yt) || ytId(e.sourceUrl), local = localVid(e.sourceUrl);
+    var ov = document.createElement("div"); ov.className = "cz"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-label", e.title); ov.style.setProperty("--card-accent", "var(" + c.varName + ")");
+    var info = '<div class="k">' + escapeHtml(c.label) + '</div><h3>' + escapeHtml(e.title) + '</h3><div class="src">' + escapeHtml((e.sourceName || "") + " · " + e.date + (e.time ? " · " + e.time : "")) + '</div><p>' + escapeHtml(e.description || "") + '</p>';
+    var cons = connectedTo(id);
+    ov.innerHTML = '<button type="button" class="cz-x" aria-label="Close">Close ✕</button><div class="cz-card"><div class="cz-media">' + (th ? '<img alt="" src="' + th + '">' : "") + '</div><div class="cz-info">' + info + '<div class="links"></div></div></div>';
+    document.body.appendChild(ov);
+    var media = ov.querySelector(".cz-media"), infoEl = ov.querySelector(".cz-info"), links = ov.querySelector(".links");
+    if (e.sourceUrl) { var a = document.createElement("a"); a.className = "btn"; a.href = e.sourceUrl; a.target = "_blank"; a.rel = "noopener"; a.textContent = (yid || local) ? "Open on the source site →" : "Open the source →"; links.appendChild(a); }
+    if (e.archiveUrl) { var a2 = document.createElement("a"); a2.className = "btn"; a2.href = e.archiveUrl; a2.target = "_blank"; a2.rel = "noopener"; a2.textContent = "Archived copy →"; links.appendChild(document.createTextNode(" ")); links.appendChild(a2); }
+    if (cons.length) {
+      var lb = document.createElement("div"); lb.className = "lbl"; lb.textContent = "Connected to"; infoEl.appendChild(lb);
+      var ch = document.createElement("div"); ch.className = "chips";
+      cons.slice(0, 5).forEach(function (cn) { var t = ENTRIES.filter(function (x) { return x.id === cn.id; })[0]; if (!t) return; var b = document.createElement("button"); b.type = "button"; b.title = cn.why; b.textContent = (t.title.length > 46 ? t.title.slice(0, 45) + "…" : t.title); b.addEventListener("click", function () { closeCourt(true, function () { var nb = document.querySelector('.ccard[data-id="' + cn.id + '"]'); if (nb) { nb.scrollIntoView({ block: "center", inline: "center" }); openCourt(cn.id, nb); } }); }); ch.appendChild(b); var w = document.createElement("div"); w.className = "src"; });
+      infoEl.appendChild(ch);
+      var why = document.createElement("div"); why.className = "src"; why.textContent = cons.slice(0, 1).map(function (x) { return x.why; })[0]; infoEl.appendChild(why);
+    }
+    CV.open = { ov: ov, from: from, id: id, media: media };
+    from.classList.add("picked");
+    // zoom: the picture flies from its spot on the board to the middle of the screen
+    var r0 = from.getBoundingClientRect(), r1 = media.getBoundingClientRect();
+    media.style.transition = "none"; media.style.transform = "translate(" + (r0.left - r1.left) + "px," + (r0.top - r1.top) + "px) scale(" + (r0.width / r1.width) + "," + (r0.height / r1.height) + ")";
+    void media.offsetWidth;
+    media.style.transition = "transform .5s cubic-bezier(.2,.8,.2,1)"; media.style.transform = "none"; ov.classList.add("on");
+    var play = function () {
+      if (!CV.open || CV.open.id !== id) return;
+      if (yid) {
+        var f = document.createElement("iframe"); f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture; fullscreen"); f.setAttribute("allowfullscreen", ""); f.title = e.title;
+        f.src = "https://www.youtube-nocookie.com/embed/" + yid + "?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin=" + encodeURIComponent(location.origin);
+        f.addEventListener("load", function () { try { f.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1, channel: "widget" }), "*"); } catch (er) {} });
+        media.appendChild(f); CV.open.frame = f;
+      } else if (local) {
+        var v = document.createElement("video"); v.src = e.sourceUrl; v.controls = true; v.autoplay = true; v.playsInline = true; v.addEventListener("ended", function () { closeCourt(); }); media.appendChild(v);
+      } else { var n = document.createElement("div"); n.className = "cz-note"; n.textContent = "This one plays on its source site. Use the button to open it."; media.appendChild(n); }
+    };
+    setTimeout(play, 520);
+    ov.addEventListener("click", function (ev) { if (ev.target === ov) closeCourt(); });
+    ov.querySelector(".cz-x").addEventListener("click", function () { closeCourt(); });
+    document.documentElement.style.overflow = "hidden";
+    ov.querySelector(".cz-x").focus();
+  }
+  function closeCourt(fast, then) {
+    var o = CV.open; if (!o) { if (then) then(); return; }
+    CV.open = null; CV.seen[o.id] = 1;
+    var fr = o.media.querySelector("iframe, video"); if (fr) { try { fr.src = "about:blank"; } catch (er) {} fr.remove(); }
+    document.documentElement.style.overflow = "";
+    var done = function () { o.ov.remove(); o.from.classList.remove("picked"); o.from.classList.add("seen"); if (then) then(); };
+    if (fast) { done(); return; }
+    // reset: the picture flies back into its place on the board
+    var r0 = o.from.getBoundingClientRect(), r1 = o.media.getBoundingClientRect();
+    o.ov.classList.remove("on");
+    o.media.style.transition = "transform .45s cubic-bezier(.4,0,.2,1)"; o.media.style.transform = "translate(" + (r0.left - r1.left) + "px," + (r0.top - r1.top) + "px) scale(" + (r0.width / r1.width) + "," + (r0.height / r1.height) + ")";
+    setTimeout(done, 470);
+  }
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && CV.open) { ev.preventDefault(); closeCourt(); } });
+  window.addEventListener("message", function (ev) {   // YouTube tells us when the video has ended: put it back on the board
+    if (!CV.open || !CV.open.frame || ev.source !== CV.open.frame.contentWindow) return;
+    var d = ev.data; try { if (typeof d === "string") d = JSON.parse(d); } catch (er) { return; }
+    if (d && d.event === "onStateChange" && d.info === 0) closeCourt();
+    else if (d && d.event === "infoDelivery" && d.info && d.info.playerState === 0) closeCourt();
+  });
 
   function renderChips(activeCats) {
     var root = document.getElementById("category-chips");
@@ -708,7 +910,7 @@
 
   function filteredEntries() {
     return ENTRIES.filter(function (e) {
-      if (state.tab !== "all" && state.tab !== "map" && state.tab !== "list" && state.tab !== "web" && state.tab !== "grid" && e.mediaType !== state.tab) return false;
+      if (state.tab !== "all" && state.tab !== "map" && state.tab !== "list" && state.tab !== "web" && state.tab !== "grid" && state.tab !== "court" && e.mediaType !== state.tab) return false;
       if (!state.activeCats.has(e.category)) return false;
       if (state.query) {
         var hay = (e.title + " " + e.description + " " + e.sourceName).toLowerCase();
@@ -719,7 +921,7 @@
   }
 
   function renderTimeline() {
-    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
+    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "court") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "court") renderCourt(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
     var list = filteredEntries();
     var root = document.getElementById("timeline-root");
     var empty = document.getElementById("empty");
@@ -1134,9 +1336,9 @@
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
     var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
-    document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
+    document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); document.getElementById("court-root").classList.toggle("on", state.tab === "court"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
     if (state.tab !== "web") stopWeb();
-    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "court") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
