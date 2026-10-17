@@ -173,7 +173,19 @@
   var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0, powered = true, lateNight = false;
   var osd = document.getElementById('htv-osd');
   function showOsd(t) { osd.textContent = t; osd.classList.add('on'); clearTimeout(osdT); osdT = setTimeout(function () { osd.classList.remove('on'); }, 1800); }
+  // First channel of every browsing session = the newest upload, from the start, as a promo. After that it is random.
+  var promoId = '', promoDone = false;
+  try { promoDone = sessionStorage.getItem('ss-promo') === '1'; } catch (e) {}
+  function pickNewest() {
+    if (promoDone) return null;
+    var n = (window.SS && SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })[0];
+    if (!n) return null;
+    promoDone = true; promoId = n.id; try { sessionStorage.setItem('ss-promo', '1'); } catch (e) {}
+    seen.push(n.id);
+    return n;
+  }
   function pickRandom() {
+    var newest = pickNewest(); if (newest) return newest;
     if (lateNight && window.Pill) {
       for (var i = 0; i < 10; i++) { var r = Pill.random('red'); if (r && /^[\w-]{11}$/.test(r.id || '') && (r.seconds || 0) >= 1800) return r; }
     }
@@ -190,7 +202,7 @@
   spare.setAttribute('allow', 'autoplay; encrypted-media'); spare.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
   yt.parentNode.insertBefore(spare, yt.nextSibling);
   function embed(v) {
-    var start = Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
+    var start = v.id === promoId ? 0 : Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
     return 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '&start=' + start;
   }
   // Load the next random channel invisibly so a channel change shows picture and sound with no wait.
