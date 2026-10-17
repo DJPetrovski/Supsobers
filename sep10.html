@@ -346,7 +346,7 @@
   .webbox.pop { position: fixed; inset: 0; height: auto; z-index: 99999; border-radius: 0; background: radial-gradient(ellipse at 50% 45%, #141c3c, #03050c); }
   .webbox.pop .wclose { display: block; }
   .webbox .winfo { position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 2; padding: 10px 14px; border-radius: 10px; background: rgba(7,13,31,.88); color: #f3e9d2; font-size: 13px; border: 1px solid rgba(243,233,210,.3); display: none; max-width: 560px; }
-  .webbox .winfo.on { display: block; } .webbox .winfo b { display: block; margin-bottom: 3px; } .webbox .winfo a { color: #f6c97e; }
+  .webbox .winfo.on { display: block; } .webbox .winfo b { display: block; margin-bottom: 3px; } .webbox .winfo .wl { font: 10.5px "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; opacity: .7; margin-top: 6px; } .webbox .winfo button { font: inherit; font-size: 12.5px; cursor: pointer; border: 1px solid rgba(243,233,210,.35); background: rgba(243,233,210,.08); color: #f3e9d2; border-radius: 99px; padding: 2px 10px; margin: 2px 4px 2px 0; } .webbox .winfo a { color: #f6c97e; }
   @media (max-width: 560px) { .stage { padding-top: 150px; } .stage-title small { font-size: 10px; letter-spacing: .16em; } }
   @media (prefers-reduced-motion: reduce) { #timeline-root .entry { transition: none; } }
 
@@ -504,7 +504,7 @@
     <section id="grid-root" class="gridv" aria-label="Grid of entries"></section>
     <section id="list-root" class="listv" aria-label="List of entries"></section>
     <section id="web-root" class="webv" aria-label="Web of entries">
-      <div class="wbar"><span>Every entry hangs on the web by its category and by how close it is to the moment of the shot. Drag to turn it, scroll or pinch to zoom, tap a dewdrop to open it.</span><button type="button" id="web-pop">Pop out</button></div>
+      <div class="wbar"><span>Every video is a node, tied to the ones it shares a source with, was filmed near in time, or captured the shot itself. Drag to turn it, scroll or pinch to zoom, tap a node to see what it connects to.</span><button type="button" id="web-pop">Pop out</button></div>
       <div class="webbox" id="webbox"><canvas id="webcv"></canvas><button type="button" class="wclose" id="web-close">Close ×</button><div class="winfo" id="winfo"></div></div>
     </section>
     <div id="tip" class="tip" hidden role="dialog" aria-label="Clip details"></div>
@@ -1026,96 +1026,135 @@
     });
   }
 
-  // ---------- spiderweb view (3D) ----------
-  var webSt = { raf: 0, yaw: 0.0, pitch: 0.95, zoom: 1, nodes: [], sel: null, drag: null, last: 0, auto: true, t: 0 };
+  function seedRand(str) { var h = 1779033703 ^ str.length; for (var i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); } return function () { h = Math.imul(h ^ (h >>> 16), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; }; }
+  // ---------- web view: every entry as a node in 3D space, tied together by what they share ----------
+  var webSt = { raf: 0, yaw: 0.5, pitch: -0.3, zoom: 0.62, nodes: [], hubs: [], edges: [], sel: null, hover: null, drag: null, last: 0, auto: true, t: 0, built: false, px: 0, py: 0, pz: 0, tx: 0, ty: 0, tz: 0, imgs: {} };
   function stopWeb() { if (webSt.raf) { cancelAnimationFrame(webSt.raf); webSt.raf = 0; } }
   function webCol(e) { var c = CATEGORIES[e.category] || CATEGORIES.milestone, v = getComputedStyle(document.documentElement).getPropertyValue(c.varName).trim(); return v || "#f6c97e"; }
-  function renderWeb() {
-    var cats = Object.keys(CATEGORIES), list = filteredEntries(), shot = Date.parse("2025-09-10T18:23:30Z");
-    var spokes = 12, perCat = spokes / cats.length;
-    var cnt = {};
-    webSt.nodes = list.map(function (e, i) {
-      var ci = Math.max(0, cats.indexOf(e.category)), k = (cnt[ci] = (cnt[ci] || 0) + 1);
-      var dt = Math.abs(Date.parse(e.timestamp) - shot) / 3600000;   // hours from the shot
-      var rr = 70 + Math.min(1, Math.log(1 + dt) / Math.log(1 + 24 * 60)) * 330;
-      var ang = (ci * perCat + (k % perCat)) / spokes * Math.PI * 2 + ((k % 3) - 1) * 0.04;
-      return { e: e, x: Math.cos(ang) * rr, y: Math.sin(ang) * rr, z: 0, col: webCol(e), r: e.mediaType === "milestone" ? 7 : 5 };
+  function buildWebGraph() {
+    var cats = Object.keys(CATEGORIES), rnd = seedRand("web"), by = {}, hubs = [], nodes = [], edges = [];
+    function mk(o) { o.x = (rnd() - .5) * 400; o.y = (rnd() - .5) * 400; o.z = (rnd() - .5) * 400; o.vx = o.vy = o.vz = 0; return o; }
+    var shot = mk({ kind: "hub", name: "THE SHOT", x: 0, y: 0, z: 0, col: "#ff7a64", r: 15, fixed: true }); hubs.push(shot);
+    var catHub = {};
+    cats.forEach(function (k) { if (k === "milestone") return; var h = mk({ kind: "hub", name: CATEGORIES[k].label.toUpperCase(), col: webCol({ category: k }), r: 11 }); catHub[k] = h; hubs.push(h); edges.push({ a: h, b: shot, kind: "cat", len: 150, why: "" }); });
+    var srcCount = {}; ENTRIES.forEach(function (e) { var s = (e.sourceName || "").trim(); if (s && !/curator|not verified|reported case/i.test(s)) srcCount[s] = (srcCount[s] || 0) + 1; });
+    var srcHub = {}; Object.keys(srcCount).forEach(function (s) { if (srcCount[s] >= 3) { var h = mk({ kind: "hub", name: s, col: "#f3e9d2", r: 8, src: true }); srcHub[s] = h; hubs.push(h); } });
+    var sorted = ENTRIES.filter(function (e) { return e.mediaType !== "milestone"; }).slice().sort(function (a, b) { return a.timestamp.localeCompare(b.timestamp); });
+    sorted.forEach(function (e) { var n = mk({ kind: "v", e: e, col: webCol(e), r: 7 }); by[e.id] = n; nodes.push(n); });
+    sorted.forEach(function (e) {
+      var n = by[e.id], s = (e.sourceName || "").trim(), ch = catHub[e.category];
+      if (ch) edges.push({ a: n, b: ch, kind: "cat", len: 85, why: "" });
+      if (srcHub[s]) edges.push({ a: n, b: srcHub[s], kind: "src", len: 70, why: "Same source: " + s });
+      if (e.category === "eyewitness" || (e.clip && e.clip.kind === "raw")) edges.push({ a: n, b: shot, kind: "shot", len: 120, why: "Footage from the moment of the shot" });
     });
-    webSt.spokes = spokes; webSt.sel = null; document.getElementById("winfo").classList.remove("on");
+    var timed = sorted.filter(function (e) { return e.time && !/not verified/i.test(e.time); });
+    for (var i = 1; i < timed.length; i++) { var dt = Math.abs(Date.parse(timed[i].timestamp) - Date.parse(timed[i - 1].timestamp)) / 60000; if (dt <= 90) edges.push({ a: by[timed[i - 1].id], b: by[timed[i].id], kind: "time", len: 55, why: "Filmed or aired " + Math.max(1, Math.round(dt)) + " min apart" }); }
+    var all = hubs.concat(nodes), it, i2, j;
+    for (it = 0; it < 420; it++) {
+      var cool = 1 - it / 420;
+      for (i2 = 0; i2 < all.length; i2++) for (j = i2 + 1; j < all.length; j++) {
+        var A = all[i2], B = all[j], dx = A.x - B.x, dy = A.y - B.y, dz = A.z - B.z, d2 = dx * dx + dy * dy + dz * dz + 0.5, f = 2600 / d2, d = Math.sqrt(d2);
+        dx = dx / d * f; dy = dy / d * f; dz = dz / d * f; A.vx += dx; A.vy += dy; A.vz += dz; B.vx -= dx; B.vy -= dy; B.vz -= dz;
+      }
+      edges.forEach(function (ed) {
+        var A = ed.a, B = ed.b, dx = B.x - A.x, dy = B.y - A.y, dz = B.z - A.z, d = Math.sqrt(dx * dx + dy * dy + dz * dz) + 0.01, k = (d - ed.len) * 0.03 / d;
+        A.vx += dx * k; A.vy += dy * k; A.vz += dz * k; B.vx -= dx * k; B.vy -= dy * k; B.vz -= dz * k;
+      });
+      all.forEach(function (n) { if (n.fixed) return; n.vx -= n.x * 0.002; n.vy -= n.y * 0.002; n.vz -= n.z * 0.002; var m = 0.82 * cool + 0.1; n.x += n.vx * m; n.y += n.vy * m; n.z += n.vz * m; n.vx *= 0.6; n.vy *= 0.6; n.vz *= 0.6; });
+    }
+    nodes.forEach(function (n) { n.nb = []; }); hubs.forEach(function (n) { n.nb = []; });
+    edges.forEach(function (ed) { ed.a.nb.push({ n: ed.b, ed: ed }); ed.b.nb.push({ n: ed.a, ed: ed }); });
+    webSt.hubs = hubs; webSt.all = nodes; webSt.edges = edges; webSt.by = by; webSt.built = true;
+  }
+  function renderWeb() {
+    if (!webSt.built) buildWebGraph();
+    var vis = {}; filteredEntries().forEach(function (e) { vis[e.id] = 1; });
+    webSt.nodes = webSt.all.filter(function (n) { return vis[n.e.id]; });
+    webSt.sel = null; webSt.tx = webSt.ty = webSt.tz = 0; document.getElementById("winfo").classList.remove("on");
     startWeb();
   }
   function startWeb() {
     stopWeb();
     var box = document.getElementById("webbox"), cv = document.getElementById("webcv"), ctx = cv.getContext("2d"), info = document.getElementById("winfo");
     function size() { var r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1; cv.width = Math.max(10, r.width * d); cv.height = Math.max(10, r.height * d); return { w: r.width, h: r.height, d: d }; }
-    var S = size();
-    function sag(x, y, t) { return Math.sin(x * 0.012 + t * 0.9) * 7 + Math.cos(y * 0.011 + t * 0.7) * 7; }
+    var S = size(), KC = { shot: "255,122,100", src: "246,201,126", time: "120,210,255", cat: "235,238,255" };
     function proj(x, y, z) {
+      x -= webSt.px; y -= webSt.py; z -= webSt.pz;
       var cy = Math.cos(webSt.yaw), sy = Math.sin(webSt.yaw), cp = Math.cos(webSt.pitch), sp = Math.sin(webSt.pitch);
-      var x1 = x * cy - y * sy, y1 = x * sy + y * cy, z1 = z;
-      var y2 = y1 * cp - z1 * sp, z2 = y1 * sp + z1 * cp;
-      var f = 900 / (900 + z2 + 0), sc = f * webSt.zoom * Math.min(S.w, S.h) / 900 * 1.0;
-      return { x: S.w / 2 + x1 * sc, y: S.h / 2 + y2 * sc, s: sc, z: z2 };
+      var x1 = x * cy - z * sy, z1 = x * sy + z * cy, y2 = y * cp - z1 * sp, z2 = y * sp + z1 * cp, D = 620 / webSt.zoom, f = D / Math.max(40, D + z2), sc = f * Math.min(S.w, S.h) / 520;
+      return { x: S.w / 2 + x1 * sc, y: S.h / 2 + y2 * sc, s: sc, z: z2, ok: D + z2 > 40 };
     }
-    function P(x, y) { return proj(x, y, sag(x, y, webSt.t)); }
+    function img(e) { var u = thumbOf(e); if (!u) return null; var m = webSt.imgs[u]; if (!m) { m = webSt.imgs[u] = new Image(); m.src = u; } return m.complete && m.naturalWidth ? m : null; }
+    function active(n) { return !webSt.sel || n === webSt.sel || n.nb && n.nb.some(function (x) { return x.n === webSt.sel; }); }
     function frame(ts) {
       webSt.raf = requestAnimationFrame(frame);
       var dt = webSt.last ? Math.min(0.05, (ts - webSt.last) / 1000) : 0; webSt.last = ts; webSt.t += dt;
-      if (webSt.auto && !webSt.drag) webSt.yaw += dt * 0.07;
+      if (webSt.auto && !webSt.drag && !webSt.sel) webSt.yaw += dt * 0.06;
+      webSt.px += (webSt.tx - webSt.px) * Math.min(1, dt * 5); webSt.py += (webSt.ty - webSt.py) * Math.min(1, dt * 5); webSt.pz += (webSt.tz - webSt.pz) * Math.min(1, dt * 5);
       if (cv.clientWidth !== S.w || cv.clientHeight !== S.h) S = size();
       ctx.setTransform(S.d, 0, 0, S.d, 0, 0); ctx.clearRect(0, 0, S.w, S.h);
-      var N = webSt.spokes, rings = [60, 110, 170, 240, 320, 410], i, j;
+      var vis = {}; webSt.nodes.forEach(function (n) { vis[n.e.id] = 1; });
+      webSt.all.concat(webSt.hubs).forEach(function (n) { var q = proj(n.x, n.y, n.z); n.px = q.x; n.py = q.y; n.ps = q.s; n.pz2 = q.z; n.ok = q.ok; });
+      var sel = webSt.sel, hov = webSt.hover;
       ctx.lineCap = "round";
-      // spokes
-      ctx.strokeStyle = "rgba(235,238,255,.55)"; ctx.lineWidth = 1.2;
-      for (i = 0; i < N; i++) { var a = i / N * Math.PI * 2; ctx.beginPath(); for (j = 0; j <= 16; j++) { var r = j / 16 * 430, q = P(Math.cos(a) * r, Math.sin(a) * r); if (j) ctx.lineTo(q.x, q.y); else ctx.moveTo(q.x, q.y); } ctx.stroke(); }
-      // capture-thread rings with sag between spokes
-      ctx.strokeStyle = "rgba(235,238,255,.34)"; ctx.lineWidth = 0.9;
-      rings.forEach(function (R) {
-        ctx.beginPath();
-        for (i = 0; i < N; i++) {
-          var a0 = i / N * Math.PI * 2, a1 = (i + 1) / N * Math.PI * 2;
-          for (j = 0; j <= 8; j++) {
-            var u = j / 8, aa = a0 + (a1 - a0) * u, rr = R * (1 - 0.07 * Math.sin(u * Math.PI)), q = P(Math.cos(aa) * rr, Math.sin(aa) * rr);
-            if (!i && !j) ctx.moveTo(q.x, q.y); else ctx.lineTo(q.x, q.y);
-          }
+      webSt.edges.forEach(function (ed) {
+        if ((ed.a.kind === "v" && !vis[ed.a.e.id]) || (ed.b.kind === "v" && !vis[ed.b.e.id]) || !ed.a.ok || !ed.b.ok) return;
+        var hot = sel && (ed.a === sel || ed.b === sel), hv = hov && (ed.a === hov || ed.b === hov), c = KC[ed.kind], a = ed.kind === "cat" ? 0.07 : 0.22;
+        if (sel && !hot) a *= 0.2; if (hot) a = 0.95; else if (hv) a = 0.7;
+        ctx.strokeStyle = "rgba(" + c + "," + a + ")"; ctx.lineWidth = hot ? 2 : hv ? 1.5 : 0.8; ctx.beginPath(); ctx.moveTo(ed.a.px, ed.a.py); ctx.lineTo(ed.b.px, ed.b.py); ctx.stroke();
+      });
+      var draw = webSt.hubs.concat(webSt.nodes).filter(function (n) { return n.ok; }).sort(function (a, b) { return b.pz2 - a.pz2; });
+      draw.forEach(function (n) {
+        var isSel = n === sel, dim = sel && !active(n), rad = Math.max(3, n.r * n.ps * (n.kind === "hub" ? 1 : 1.35)) + (isSel ? 3 : 0);
+        ctx.globalAlpha = dim ? 0.22 : 1; n.hr = rad + 6;
+        if (n.kind === "hub") {
+          var g = ctx.createRadialGradient(n.px, n.py, 0, n.px, n.py, rad * 2.6); g.addColorStop(0, n.col); g.addColorStop(1, "rgba(0,0,0,0)"); ctx.globalAlpha = (dim ? 0.1 : 0.55); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.px, n.py, rad * 2.6, 0, 7); ctx.fill();
+          ctx.globalAlpha = dim ? 0.3 : 1; ctx.fillStyle = n.col; ctx.beginPath(); ctx.arc(n.px, n.py, rad, 0, 7); ctx.fill();
+          ctx.fillStyle = "rgba(243,233,210," + (dim ? 0.3 : 0.9) + ")"; ctx.font = (n.src ? "10px" : "11px") + " 'IBM Plex Mono', monospace"; ctx.textAlign = "center"; ctx.fillText(n.name.length > 26 ? n.name.slice(0, 25) + "…" : n.name, n.px, n.py - rad - 7);
+        } else {
+          ctx.shadowColor = n.col; ctx.shadowBlur = isSel || n === hov ? 22 : 8; ctx.fillStyle = n.col; ctx.beginPath(); ctx.arc(n.px, n.py, rad + 1.5, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+          var m = rad > 7 ? img(n.e) : null;
+          if (m) { ctx.save(); ctx.beginPath(); ctx.arc(n.px, n.py, rad, 0, 7); ctx.clip(); var s = Math.max(rad * 2 / m.naturalWidth, rad * 2 / m.naturalHeight); ctx.drawImage(m, n.px - m.naturalWidth * s / 2, n.py - m.naturalHeight * s / 2, m.naturalWidth * s, m.naturalHeight * s); ctx.restore(); }
+          else { ctx.fillStyle = "rgba(10,16,34,.9)"; ctx.beginPath(); ctx.arc(n.px, n.py, rad - 1.5, 0, 7); ctx.fill(); }
         }
-        ctx.stroke();
+        ctx.globalAlpha = 1;
       });
-      // hub
-      var h = P(0, 0); ctx.fillStyle = "rgba(246,201,126,.95)"; ctx.beginPath(); ctx.arc(h.x, h.y, 6 * h.s + 2, 0, 7); ctx.fill();
-      ctx.fillStyle = "rgba(243,233,210,.8)"; ctx.font = "11px 'IBM Plex Mono', monospace"; ctx.textAlign = "center"; ctx.fillText("the shot", h.x, h.y - 12);
-      // dewdrop nodes (with threads to the hub)
-      var pts = webSt.nodes.map(function (n) { var q = P(n.x, n.y); n.px = q.x; n.py = q.y; n.ps = q.s; n.pz = q.z; return n; }).sort(function (a, b) { return b.pz - a.pz; });
-      pts.forEach(function (n) {
-        var sel = webSt.sel === n;
-        ctx.strokeStyle = sel ? "rgba(246,201,126,.9)" : "rgba(235,238,255,.16)"; ctx.lineWidth = sel ? 1.6 : 0.7; ctx.beginPath(); ctx.moveTo(h.x, h.y); ctx.lineTo(n.px, n.py); ctx.stroke();
-      });
-      pts.slice().reverse().forEach(function (n) {
-        var rad = (n.r + (webSt.sel === n ? 3 : 0)) * Math.max(0.7, n.ps * 1.1);
-        var g = ctx.createRadialGradient(n.px - rad * .3, n.py - rad * .35, rad * .1, n.px, n.py, rad);
-        g.addColorStop(0, "#fff"); g.addColorStop(.35, n.col); g.addColorStop(1, "rgba(0,0,0,.55)");
-        ctx.fillStyle = g; ctx.shadowColor = n.col; ctx.shadowBlur = webSt.sel === n ? 18 : 8; ctx.beginPath(); ctx.arc(n.px, n.py, rad, 0, 7); ctx.fill(); ctx.shadowBlur = 0; n.hr = rad + 8;
-      });
+      var lab = sel || hov;
+      if (lab && lab.kind === "v") {
+        var t = lab.e.title; if (t.length > 60) t = t.slice(0, 59) + "…"; ctx.font = "600 12px 'Source Sans 3', system-ui, sans-serif"; var w = ctx.measureText(t).width + 14, lx = Math.max(4, Math.min(S.w - w - 4, lab.px - w / 2)), ly = lab.py - lab.hr - 26;
+        ctx.fillStyle = "rgba(5,9,22,.92)"; ctx.fillRect(lx, ly, w, 22); ctx.fillStyle = "#f3e9d2"; ctx.textAlign = "left"; ctx.fillText(t, lx + 7, ly + 15);
+      }
     }
     webSt.last = 0; webSt.raf = requestAnimationFrame(frame);
-    function pick(cx, cy) { var r = cv.getBoundingClientRect(), x = cx - r.left, y = cy - r.top, best = null, bd = 1e9; webSt.nodes.forEach(function (n) { var d = Math.hypot(n.px - x, n.py - y); if (d < (n.hr || 12) + 6 && d < bd) { bd = d; best = n; } }); return best; }
+    function pick(cx, cy) { var r = cv.getBoundingClientRect(), x = cx - r.left, y = cy - r.top, best = null, bd = 1e9; webSt.nodes.concat(webSt.hubs).forEach(function (n) { if (!n.ok) return; var d = Math.hypot(n.px - x, n.py - y); if (d < (n.hr || 12) + 4 && d < bd) { bd = d; best = n; } }); return best; }
+    function focusOn(n) { webSt.sel = n; if (n) { webSt.tx = n.x; webSt.ty = n.y; webSt.tz = n.z; } else { webSt.tx = webSt.ty = webSt.tz = 0; } }
     function select(n) {
-      webSt.sel = n;
+      focusOn(n);
       if (!n) { info.classList.remove("on"); return; }
-      var e = n.e; info.innerHTML = "<b>" + escapeHtml(e.title) + "</b>" + escapeHtml(e.date + (e.time ? " · " + e.time : "") + " · " + (e.sourceName || "")) + "<br>" + (e.description ? escapeHtml(e.description.slice(0, 200)) + (e.description.length > 200 ? "…" : "") + "<br>" : "") + '<a href="' + escapeHtml(e.sourceUrl || e.archiveUrl || "#") + '" target="_blank" rel="noopener">Open the source</a>';
+      if (n.kind === "hub") {
+        var items = n.nb.filter(function (x) { return x.n.kind === "v" && webSt.nodes.indexOf(x.n) >= 0; });
+        info.innerHTML = "<b>" + escapeHtml(n.name) + "</b>" + items.length + " connected videos" + (n.name === "THE SHOT" ? " (footage from the moment of the shot)" : "") + "<br>";
+        items.slice(0, 8).forEach(function (x) { var b = document.createElement("button"); b.type = "button"; b.textContent = x.n.e.title.length > 48 ? x.n.e.title.slice(0, 47) + "…" : x.n.e.title; b.onclick = function () { select(x.n); }; info.appendChild(b); });
+        info.classList.add("on"); return;
+      }
+      var e = n.e; info.innerHTML = "<b>" + escapeHtml(e.title) + "</b>" + escapeHtml(e.date + (e.time ? " · " + e.time : "") + " · " + (e.sourceName || "")) + "<br>" + (e.description ? escapeHtml(e.description.slice(0, 160)) + (e.description.length > 160 ? "…" : "") + "<br>" : "") + (e.sourceUrl ? '<a href="' + escapeHtml(e.sourceUrl) + '" target="_blank" rel="noopener">Watch it →</a>' : "");
+      var cons = n.nb.filter(function (x) { return x.n.kind === "v" && x.ed.why && webSt.nodes.indexOf(x.n) >= 0; }), seen = {};
+      if (cons.length) { var l = document.createElement("div"); l.className = "wl"; l.textContent = "Connected to"; info.appendChild(l); }
+      cons.slice(0, 6).forEach(function (x) { if (seen[x.n.e.id]) return; seen[x.n.e.id] = 1; var b = document.createElement("button"); b.type = "button"; b.title = x.ed.why; b.textContent = x.n.e.title.length > 40 ? x.n.e.title.slice(0, 39) + "…" : x.n.e.title; var w = document.createElement("span"); w.textContent = " — " + x.ed.why; b.onclick = function () { select(x.n); }; info.appendChild(b); info.appendChild(w); info.appendChild(document.createElement("br")); });
       info.classList.add("on");
     }
     var pts = {}, pinch = 0;
     cv.onpointerdown = function (ev) { cv.setPointerCapture(ev.pointerId); pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; webSt.drag = { x: ev.clientX, y: ev.clientY, moved: 0 }; cv.style.cursor = "grabbing"; };
     cv.onpointermove = function (ev) {
-      if (!pts[ev.pointerId]) return; var ids = Object.keys(pts);
-      if (ids.length >= 2) { pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y); if (pinch) webSt.zoom = Math.max(0.4, Math.min(4, webSt.zoom * d / pinch)); pinch = d; if (webSt.drag) webSt.drag.moved = 99; return; }
+      if (!pts[ev.pointerId]) { var h = pick(ev.clientX, ev.clientY); webSt.hover = h; cv.style.cursor = h ? "pointer" : "grab"; return; }
+      var ids = Object.keys(pts);
+      if (ids.length >= 2) { pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y); if (pinch) webSt.zoom = Math.max(0.35, Math.min(5, webSt.zoom * d / pinch)); pinch = d; if (webSt.drag) webSt.drag.moved += 10; return; }
       var dx = ev.clientX - webSt.drag.x, dy = ev.clientY - webSt.drag.y; webSt.drag.x = ev.clientX; webSt.drag.y = ev.clientY; webSt.drag.moved += Math.abs(dx) + Math.abs(dy);
-      webSt.yaw += dx * 0.008; webSt.pitch = Math.max(0.15, Math.min(1.5, webSt.pitch - dy * 0.006)); pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
+      webSt.yaw += dx * 0.008; webSt.pitch = Math.max(-1.45, Math.min(1.45, webSt.pitch + dy * 0.006)); pts[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
     };
     cv.onpointerup = cv.onpointercancel = function (ev) { var moved = webSt.drag ? webSt.drag.moved : 99; delete pts[ev.pointerId]; pinch = 0; cv.style.cursor = "grab"; if (moved < 6 && Object.keys(pts).length === 0) select(pick(ev.clientX, ev.clientY)); webSt.drag = null; };
-    cv.onwheel = function (ev) { ev.preventDefault(); webSt.zoom = Math.max(0.4, Math.min(4, webSt.zoom * (ev.deltaY < 0 ? 1.1 : 0.9))); };
+    cv.onpointerleave = function () { webSt.hover = null; };
+    cv.onwheel = function (ev) { ev.preventDefault(); webSt.zoom = Math.max(0.35, Math.min(5, webSt.zoom * (ev.deltaY < 0 ? 1.1 : 0.9))); };
     function setPop(on) {
       box.classList.toggle("pop", on); document.documentElement.style.overflow = on ? "hidden" : "";
       try { if (on && box.requestFullscreen) box.requestFullscreen().catch(function () {}); else if (!on && document.fullscreenElement) document.exitFullscreen(); } catch (er) {}
