@@ -1,9 +1,9 @@
-/* Cold Turkey: the site's sober sleuth. Not a hosted AI model: a small, free brain that runs in the visitor's browser.
+/* Chip: the site's sober sidekick. Not a hosted AI model: a small, free brain that runs in the visitor's browser.
    It reads a plain-English description ("a celebrity who died and the industry covered it up"),
    works out what is being asked (topic, short or long, new, surprise me), and answers in character with a few picks.
    To rename the character, change NAME below. */
 (function () {
-  var NAME = 'Cold Turkey', TAG = 'your sober sleuth';
+  var NAME = 'Chip', TAG = 'your sober sidekick';
   window.SS = window.SS || {};
   var conn = { storylines: {} }, lastShown = [];
   fetch('data/connections.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) { if (d && d.storylines) conn = d; }).catch(function () {});
@@ -69,23 +69,23 @@
   }
 
   var HELLO = [
-    'Hey, I’m ' + NAME + ', ' + TAG + '. I’ve been off bad takes for 0 days. Tell me what kind of story you’re in the mood for.',
-    NAME + ' here. Describe the story, I’ll find the rabbit hole. One episode at a time.',
-    'Pull up a chair. I’m ' + NAME + ', and I’ve read every title on this channel (I skip the long ones, sorry). What are you after?'
+    'Hey, I\u2019m ' + NAME + ', ' + TAG + '. One day clean of bad takes, and I\u2019m not counting past that. Tell me what story you\u2019re in the mood for.',
+    NAME + ' here, like the little coin, but with opinions. Describe the story and I\u2019ll find the rabbit hole.',
+    'Pull up a chair. I\u2019m ' + NAME + ' and I\u2019ve read every title on this channel twice. What are you after?'
   ];
   var FOUND = [
     'Okay, I dug through the rabbit hole. These fit:',
-    'One day at a time, and today’s picks look like this:',
-    'Sponsor-approved. Rabbit hole not included:',
-    'Cold. Hard. Search results:',
-    'Found a few. No relapses, just rabbit holes:'
+    'One day at a time, and today\u2019s picks look like this:',
+    'Handing you these like a 24-hour chip:',
+    'Fresh out of the rabbit hole:',
+    'Found a few. Recovery not guaranteed, curiosity is:'
   ];
   var NONE = [
-    'I came up empty, which is rarer than a sober Tuesday on TV. Try different words, or say “surprise me”.',
-    'Nothing for that one. Describe it another way, like who it’s about or what happened, and I’ll try again.'
+    'I came up empty, which is rarer than a sober Tuesday on TV. Try different words, or say \u201csurprise me\u201d.',
+    'Nothing for that one. Describe it another way, like who it\u2019s about or what happened, and I\u2019ll try again.'
   ];
-  var SURPRISE = ['Closing my eyes and pointing at the wall of videos…', 'Dealer’s choice. Here’s what I’m grabbing:', 'Roll the dice. No refunds:'];
-  var BROWSE = ['Fresh off the press:', 'Here’s what fits:'];
+  var SURPRISE = ['Closing my eyes and pointing at the wall of videos\u2026', 'Dealer\u2019s choice. Here\u2019s what I\u2019m grabbing:', 'Rolling the dice. No refunds:'];
+  var BROWSE = ['Fresh off the press:', 'Here\u2019s what fits:'];
 
   /* ask(text, mods) -> { kind, text, picks:[{v, why, hook, at}], chips:[{label, mod}] } */
   function ask(q, mods) {

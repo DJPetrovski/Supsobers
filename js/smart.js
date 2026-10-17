@@ -25,6 +25,7 @@
     if (w.length > 3 && /s$/.test(w) && !/ss$/.test(w)) return w.slice(0, -1);
     return w;
   }
+  function hash32(w) { var h = 2166136261; var b = unescape(encodeURIComponent(w)); for (var i = 0; i < b.length; i++) { h ^= b.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h.toString(36); }
   function lev(a, b, max) {
     if (Math.abs(a.length - b.length) > max) return max + 1;
     var p = [], i, j; for (j = 0; j <= b.length; j++) p[j] = j;
@@ -113,8 +114,8 @@
       if (transcripts && transcripts[v.id]) {
         var bestC = 0;
         transcripts[v.id].forEach(function (c) {
-          var tx = norm(c[1]), n = 0;
-          toks.forEach(function (t) { if (tx.indexOf(stem(t)) >= 0) n++; });
+          var tx = norm(c[1]), n = 0, bg = c[2] ? ' ' + c[2] + ' ' : '';
+          toks.forEach(function (t) { var st = stem(t); if (tx.indexOf(st) >= 0 || (bg && bg.indexOf(' ' + hash32(st) + ' ') >= 0)) n++; });
           ex.direct.forEach(function (t) { if (t.length > 3 && tx.indexOf(t) >= 0) n += 0.5; });
           if (n > bestC) { bestC = n; at = c[0]; snip = c[1]; }
         });

@@ -53,7 +53,7 @@
   var panel = el('div', 'gs'); panel.id = 'gsearch'; panel.hidden = true; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true'); panel.setAttribute('aria-label', 'Search the site');
   var box = el('div', 'gs-box'), form = el('label', 'gs-field');
   form.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-  var input = el('input'); input.type = 'search'; input.placeholder = 'Search, or tell Cold Turkey what story you want'; input.autocomplete = 'off'; input.setAttribute('aria-label', 'Search the site'); input.enterKeyHint = 'go';
+  var input = el('input'); input.type = 'search'; input.placeholder = 'Search, or tell Chip what story you want'; input.autocomplete = 'off'; input.setAttribute('aria-label', 'Search the site'); input.enterKeyHint = 'go';
   var close = el('button', 'gs-x', 'Esc'); close.type = 'button'; close.setAttribute('aria-label', 'Close search');
   form.appendChild(input); form.appendChild(close);
   var list = el('div', 'gs-list'); list.setAttribute('role', 'listbox');
@@ -83,7 +83,7 @@
     var show = !q || T.kind === 'greet' || T.kind === 'who' || T.kind === 'help' || T.kind === 'thanks' || T.kind === 'surprise' || T.kind === 'browse' || T.link || (T.kind === 'search' && T.picks.length && (words >= 3 || /\?/.test(q))) || (T.kind === 'none' && words >= 3);
     if (!show) return;
     if (!q) T = SS.turkey.ask('hello', mods);
-    var card = el('div', 'ct'), av = el('div', 'ct-av', '\uD83E\uDD83'), body = el('div', 'ct-body');
+    var card = el('div', 'ct'), av = el('div', 'ct-av'); av.innerHTML = '<svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#b9462f" stroke="#ffd9a0" stroke-width="2"/><circle cx="24" cy="24" r="17" fill="none" stroke="#ffd9a0" stroke-width="1.5"/><path d="M24 12 36 33H12Z" fill="none" stroke="#ffd9a0" stroke-width="2" stroke-linejoin="round"/><text x="24" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#ffd9a0" font-family="Archivo,sans-serif">24</text></svg>', body = el('div', 'ct-body');
     var nm = el('b', 'ct-name', T.name); nm.appendChild(el('small', '', ' ' + SS.turkey.tag)); body.appendChild(nm);
     body.appendChild(el('p', 'ct-say', T.text));
     if (T.link) { var lb = el('button', 'ct-chip', T.link.label); lb.type = 'button'; lb.addEventListener('click', function () { closePanel(); go(T.link.route); }); body.appendChild(lb); }

@@ -24,5 +24,5 @@ stays current by itself. You do it once, about 10 minutes.
 
 Notes
 - Google's free quota allows about 35-40 videos a day, so the first backfill of the whole channel takes about a week; new uploads are picked up within a day (YouTube needs a few hours to make automatic captions).
-- Members / (PARENTAL ADVISORY) videos are skipped on purpose.
+- Members / (PARENTAL ADVISORY) videos are downloaded too, to fill the words missing from their censored public twins. Their script is stored only as scrambled word codes (searchable, not readable), so the uncensored text itself is never published.
 - Never paste these three values into a chat; only into GitHub Secrets.
