@@ -1,27 +1,466 @@
 {
   "note": "Teaches the search what words mean. 'terms' are different ways of saying the same thing (a search for one finds the others). 'related' are names and ideas that belong with them. Edit freely; add a group any time.",
   "groups": [
-    { "terms": ["assassin", "assassination", "assassinate", "gunman", "gunmen", "shooter", "sniper", "hitman", "lone gunman", "lone wolf", "patsy", "assassination attempt", "shot", "shooting"],
-      "related": ["crooks", "thomas crooks", "routh", "ryan routh", "vem miller", "oswald", "jfk", "kirk", "tyler robinson", "butler", "trump", "3rd assassin", "1st assassin"] },
-    { "terms": ["trump", "donald trump", "president"], "related": ["crooks", "routh", "vem miller", "butler", "assassin", "oval office", "biden"] },
-    { "terms": ["kirk", "charlie kirk", "tpusa", "turning point"], "related": ["tyler robinson", "erika", "utah valley", "twiggs", "assassin", "candace"] },
-    { "terms": ["epstein", "jeffrey epstein", "maxwell", "ghislaine", "island", "lolita express", "pedophile", "trafficking"], "related": ["9/11", "fedex", "correctional", "diddy", "elite", "clients", "black book"] },
-    { "terms": ["9/11", "911", "september 11", "twin towers", "world trade center", "wtc"], "related": ["epstein", "fedex", "bill cooper", "alex jones", "mossad"] },
-    { "terms": ["mind control", "brainwashing", "mkultra", "mk-ultra", "mk ultra", "hypnosis", "hypnotized", "programming", "manchurian", "sleeper"], "related": ["cia", "gate program", "manchurian candidate", "black ops", "hypnotized to kill", "monarch"] },
-    { "terms": ["cia", "fbi", "intelligence", "spy", "spies", "deep state", "government", "feds", "agency"], "related": ["mind control", "manchurian", "mk ultra", "gate program", "black ops", "epstein", "cover up"] },
-    { "terms": ["illuminati", "elite", "elites", "bloodline", "bloodlines", "rothschild", "rockefeller", "secret society", "secret club", "powerful", "billionaire", "billionaires", "cabal"], "related": ["collins", "bundy", "du pont", "podesta", "laundering", "trafficking", "crimes against humanity"] },
-    { "terms": ["celebrity", "celebrities", "hollywood", "famous", "star", "stars", "actor", "actress"], "related": ["reiner", "hanks", "heath ledger", "robin williams", "bieber", "paul walker", "bourdain", "tmz", "industry"] },
-    { "terms": ["death", "deaths", "died", "suicide", "overdose", "mysterious death", "suspicious death"], "related": ["27 club", "cobain", "chester", "bennington", "hedberg", "ledger", "williams", "epstein", "kappy", "final message"] },
-    { "terms": ["music", "musician", "musicians", "rapper", "rappers", "singer", "band", "rock star", "rockstar"], "related": ["kurt cobain", "chester bennington", "mac miller", "juice wrld", "avicii", "dmx", "27 club", "diddy", "michael jackson"] },
-    { "terms": ["diddy", "puff daddy", "sean combs", "freak off", "pink cocaine"], "related": ["kim porter", "epstein", "industry", "trafficking"] },
-    { "terms": ["missing", "disappearance", "disappeared", "vanished", "vanish", "abducted", "kidnapped", "unsolved", "cold case"], "related": ["madeleine", "guthrie", "kristal", "titan", "crestone", "gone"] },
-    { "terms": ["space", "nasa", "moon", "alien", "aliens", "ufo", "uap", "extraterrestrial"], "related": ["apollo", "artemis", "wilcock", "eskridge", "hidden tech", "drones"] },
-    { "terms": ["media", "news", "propaganda", "narrative", "mainstream", "censorship", "censored", "fake news", "social media"], "related": ["tiktok", "netflix", "pizzagate", "tylenol", "matrix", "youtube"] },
-    { "terms": ["trial", "court", "lawsuit", "judge", "verdict", "prosecutor", "testimony", "hearing", "case"], "related": ["pretrial", "clancy", "boone", "hernandez", "reasonable doubt", "true crime"] },
-    { "terms": ["true crime", "crime", "criminal", "serial killer", "killer", "detective", "investigation", "evidence"], "related": ["trial", "murder", "cold case", "clancy", "boone"] },
-    { "terms": ["whistleblower", "truth teller", "silenced", "warned", "warning", "predicted", "prediction", "prophecy"], "related": ["bill cooper", "wild bill", "wilcock", "kappy", "hunter s", "last warning", "final message"] },
-    { "terms": ["addiction", "addict", "drugs", "drug", "alcohol", "alcoholic", "sober", "sobriety", "recovery", "rehab", "relapse", "craving", "cravings", "opioid", "opioids", "fentanyl"], "related": ["sober sobers", "recovery group", "sober talk", "kraving killer", "overdose"] },
-    { "terms": ["biden", "joe biden", "oval office", "white house"], "related": ["reiner", "fake oval office", "trump", "president"] },
-    { "terms": ["conspiracy", "conspiracies", "theory", "theories", "cover up", "coverup", "cover-up"], "related": ["epstein", "assassin", "cia", "illuminati", "mind control", "pizzagate"] }
+    {
+      "terms": [
+        "assassin",
+        "assassination",
+        "assassinate",
+        "gunman",
+        "gunmen",
+        "shooter",
+        "sniper",
+        "hitman",
+        "lone gunman",
+        "lone wolf",
+        "patsy",
+        "assassination attempt",
+        "shot",
+        "shooting",
+        "shoot",
+        "tried to kill",
+        "attempt on"
+      ],
+      "related": [
+        "crooks",
+        "thomas crooks",
+        "routh",
+        "ryan routh",
+        "vem miller",
+        "oswald",
+        "jfk",
+        "kirk",
+        "tyler robinson",
+        "butler",
+        "trump",
+        "3rd assassin",
+        "1st assassin"
+      ]
+    },
+    {
+      "terms": [
+        "trump",
+        "donald trump",
+        "president"
+      ],
+      "related": [
+        "crooks",
+        "routh",
+        "vem miller",
+        "butler",
+        "assassin",
+        "oval office",
+        "biden"
+      ]
+    },
+    {
+      "terms": [
+        "kirk",
+        "charlie kirk",
+        "tpusa",
+        "turning point"
+      ],
+      "related": [
+        "tyler robinson",
+        "erika",
+        "utah valley",
+        "twiggs",
+        "assassin",
+        "candace"
+      ]
+    },
+    {
+      "terms": [
+        "epstein",
+        "jeffrey epstein",
+        "maxwell",
+        "ghislaine",
+        "island",
+        "lolita express",
+        "pedophile",
+        "trafficking"
+      ],
+      "related": [
+        "9/11",
+        "fedex",
+        "correctional",
+        "diddy",
+        "elite",
+        "clients",
+        "black book"
+      ]
+    },
+    {
+      "terms": [
+        "9/11",
+        "911",
+        "september 11",
+        "twin towers",
+        "world trade center",
+        "wtc"
+      ],
+      "related": [
+        "epstein",
+        "fedex",
+        "bill cooper",
+        "alex jones",
+        "mossad"
+      ]
+    },
+    {
+      "terms": [
+        "mind control",
+        "brainwashing",
+        "mkultra",
+        "mk-ultra",
+        "mk ultra",
+        "hypnosis",
+        "hypnotized",
+        "programming",
+        "manchurian",
+        "sleeper"
+      ],
+      "related": [
+        "cia",
+        "gate program",
+        "manchurian candidate",
+        "black ops",
+        "hypnotized to kill",
+        "monarch"
+      ]
+    },
+    {
+      "terms": [
+        "cia",
+        "central intelligence",
+        "spy",
+        "spies",
+        "intelligence agency",
+        "black ops",
+        "black op"
+      ],
+      "related": [
+        "mind control",
+        "manchurian",
+        "mk ultra",
+        "gate program",
+        "hypnotized",
+        "epstein",
+        "cover up"
+      ]
+    },
+    {
+      "terms": [
+        "illuminati",
+        "elite",
+        "elites",
+        "bloodline",
+        "bloodlines",
+        "rothschild",
+        "rockefeller",
+        "secret society",
+        "secret club",
+        "powerful",
+        "billionaire",
+        "billionaires",
+        "cabal"
+      ],
+      "related": [
+        "collins",
+        "bundy",
+        "du pont",
+        "podesta",
+        "laundering",
+        "trafficking",
+        "crimes against humanity"
+      ]
+    },
+    {
+      "terms": [
+        "celebrity",
+        "celebrities",
+        "hollywood",
+        "famous",
+        "star",
+        "stars",
+        "actor",
+        "actress"
+      ],
+      "related": [
+        "reiner",
+        "hanks",
+        "heath ledger",
+        "robin williams",
+        "bieber",
+        "paul walker",
+        "bourdain",
+        "tmz",
+        "industry"
+      ]
+    },
+    {
+      "terms": [
+        "death",
+        "deaths",
+        "died",
+        "suicide",
+        "overdose",
+        "mysterious death",
+        "suspicious death"
+      ],
+      "related": [
+        "27 club",
+        "cobain",
+        "chester",
+        "bennington",
+        "hedberg",
+        "ledger",
+        "williams",
+        "epstein",
+        "kappy",
+        "final message"
+      ]
+    },
+    {
+      "terms": [
+        "music",
+        "musician",
+        "musicians",
+        "rapper",
+        "rappers",
+        "singer",
+        "band",
+        "rock star",
+        "rockstar"
+      ],
+      "related": [
+        "kurt cobain",
+        "chester bennington",
+        "mac miller",
+        "juice wrld",
+        "avicii",
+        "dmx",
+        "27 club",
+        "diddy",
+        "michael jackson"
+      ]
+    },
+    {
+      "terms": [
+        "diddy",
+        "puff daddy",
+        "sean combs",
+        "freak off",
+        "pink cocaine"
+      ],
+      "related": [
+        "kim porter",
+        "epstein",
+        "industry",
+        "trafficking"
+      ]
+    },
+    {
+      "terms": [
+        "missing",
+        "disappearance",
+        "disappeared",
+        "vanished",
+        "vanish",
+        "abducted",
+        "kidnapped",
+        "unsolved",
+        "cold case"
+      ],
+      "related": [
+        "madeleine",
+        "guthrie",
+        "kristal",
+        "titan",
+        "crestone",
+        "gone"
+      ]
+    },
+    {
+      "terms": [
+        "space",
+        "nasa",
+        "moon",
+        "alien",
+        "aliens",
+        "ufo",
+        "uap",
+        "extraterrestrial"
+      ],
+      "related": [
+        "apollo",
+        "artemis",
+        "wilcock",
+        "eskridge",
+        "hidden tech",
+        "drones"
+      ]
+    },
+    {
+      "terms": [
+        "media",
+        "news",
+        "propaganda",
+        "narrative",
+        "mainstream",
+        "censorship",
+        "censored",
+        "fake news",
+        "social media"
+      ],
+      "related": [
+        "tiktok",
+        "netflix",
+        "pizzagate",
+        "tylenol",
+        "matrix",
+        "youtube"
+      ]
+    },
+    {
+      "terms": [
+        "trial",
+        "court",
+        "lawsuit",
+        "judge",
+        "verdict",
+        "prosecutor",
+        "testimony",
+        "hearing",
+        "case"
+      ],
+      "related": [
+        "pretrial",
+        "clancy",
+        "boone",
+        "hernandez",
+        "reasonable doubt",
+        "true crime"
+      ]
+    },
+    {
+      "terms": [
+        "true crime",
+        "crime",
+        "criminal",
+        "serial killer",
+        "killer",
+        "detective",
+        "investigation",
+        "evidence"
+      ],
+      "related": [
+        "trial",
+        "murder",
+        "cold case",
+        "clancy",
+        "boone"
+      ]
+    },
+    {
+      "terms": [
+        "whistleblower",
+        "truth teller",
+        "silenced",
+        "warned",
+        "warning",
+        "predicted",
+        "prediction",
+        "prophecy"
+      ],
+      "related": [
+        "bill cooper",
+        "wild bill",
+        "wilcock",
+        "kappy",
+        "hunter s",
+        "last warning",
+        "final message"
+      ]
+    },
+    {
+      "terms": [
+        "addiction",
+        "addict",
+        "drugs",
+        "drug",
+        "alcohol",
+        "alcoholic",
+        "sober",
+        "sobriety",
+        "recovery",
+        "rehab",
+        "relapse",
+        "craving",
+        "cravings",
+        "opioid",
+        "opioids",
+        "fentanyl"
+      ],
+      "related": [
+        "sober sobers",
+        "recovery group",
+        "sober talk",
+        "kraving killer",
+        "overdose"
+      ]
+    },
+    {
+      "terms": [
+        "biden",
+        "joe biden",
+        "oval office",
+        "white house"
+      ],
+      "related": [
+        "reiner",
+        "fake oval office",
+        "trump",
+        "president"
+      ]
+    },
+    {
+      "terms": [
+        "conspiracy",
+        "conspiracies",
+        "theory",
+        "theories",
+        "cover up",
+        "coverup",
+        "cover-up"
+      ],
+      "related": [
+        "epstein",
+        "assassin",
+        "cia",
+        "illuminati",
+        "mind control",
+        "pizzagate"
+      ]
+    },
+    {
+      "terms": [
+        "fbi",
+        "feds",
+        "deep state",
+        "government",
+        "cover up",
+        "coverup",
+        "cover-up"
+      ],
+      "related": [
+        "cia",
+        "epstein",
+        "assassin",
+        "kirk",
+        "tyler robinson",
+        "crooks"
+      ]
+    }
   ]
 }

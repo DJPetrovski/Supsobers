@@ -53,7 +53,7 @@
   var panel = el('div', 'gs'); panel.id = 'gsearch'; panel.hidden = true; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true'); panel.setAttribute('aria-label', 'Search the site');
   var box = el('div', 'gs-box'), form = el('label', 'gs-field');
   form.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-  var input = el('input'); input.type = 'search'; input.placeholder = 'Search videos, merch, storylines, pages'; input.autocomplete = 'off'; input.setAttribute('aria-label', 'Search the site'); input.enterKeyHint = 'go';
+  var input = el('input'); input.type = 'search'; input.placeholder = 'Search, or tell Cold Turkey what story you want'; input.autocomplete = 'off'; input.setAttribute('aria-label', 'Search the site'); input.enterKeyHint = 'go';
   var close = el('button', 'gs-x', 'Esc'); close.type = 'button'; close.setAttribute('aria-label', 'Close search');
   form.appendChild(input); form.appendChild(close);
   var list = el('div', 'gs-list'); list.setAttribute('role', 'listbox');
@@ -76,9 +76,42 @@
       merch: function (i) { go('merch'); setTimeout(function () { if (window.SS && SS.merchGo) SS.merchGo(i); }, 120); }
     };
   }
+  var mods = {};
+  function turkeyCard(q) {
+    if (!(window.SS && SS.turkey)) return;
+    var words = q.split(/\s+/).filter(Boolean).length, T = SS.turkey.ask(q, mods);
+    var show = !q || T.kind === 'greet' || T.kind === 'who' || T.kind === 'help' || T.kind === 'thanks' || T.kind === 'surprise' || T.kind === 'browse' || T.link || (T.kind === 'search' && T.picks.length && (words >= 3 || /\?/.test(q))) || (T.kind === 'none' && words >= 3);
+    if (!show) return;
+    if (!q) T = SS.turkey.ask('hello', mods);
+    var card = el('div', 'ct'), av = el('div', 'ct-av', '\uD83E\uDD83'), body = el('div', 'ct-body');
+    var nm = el('b', 'ct-name', T.name); nm.appendChild(el('small', '', ' ' + SS.turkey.tag)); body.appendChild(nm);
+    body.appendChild(el('p', 'ct-say', T.text));
+    if (T.link) { var lb = el('button', 'ct-chip', T.link.label); lb.type = 'button'; lb.addEventListener('click', function () { closePanel(); go(T.link.route); }); body.appendChild(lb); }
+    T.picks.forEach(function (p) {
+      var b = el('button', 'gs-row ct-pick'); b.type = 'button'; b.setAttribute('role', 'option');
+      var im = el('img'); im.src = 'https://i.ytimg.com/vi/' + p.v.id + '/mqdefault.jpg'; im.alt = ''; im.loading = 'lazy'; b.appendChild(im);
+      var tx = el('span', 'gs-tx'); tx.appendChild(el('b', '', p.v.title));
+      if (p.why) tx.appendChild(el('small', '', p.why));
+      if (p.hook) { var hk = el('small', 'ct-hook', p.hook); tx.appendChild(hk); }
+      b.appendChild(tx); b.appendChild(el('span', 'gs-tag', p.mins ? p.mins + ' min' : 'Video'));
+      b.addEventListener('click', function () { closePanel(); SS.openPlayer(p.v, p.at); });
+      rows.push(b); body.appendChild(b);
+    });
+    if (T.chips && T.chips.length) {
+      var cr = el('div', 'ct-chips');
+      T.chips.forEach(function (c) {
+        var cb = el('button', 'ct-chip', c.label); cb.type = 'button';
+        cb.addEventListener('click', function () { if (c.q) { input.value = c.q; mods = {}; } else { mods = Object.assign({}, mods, c.mod); } render(); input.focus(); });
+        cr.appendChild(cb);
+      });
+      body.appendChild(cr);
+    }
+    card.appendChild(av); card.appendChild(body); list.appendChild(card);
+  }
   function render() {
     list.textContent = ''; rows = []; sel = -1;
     var q = input.value.trim(), A = actions();
+    turkeyCard(q);
     if (!q) {
       var v = ((window.SS && SS.videos) || []).filter(function (x) { return /^[\w-]{11}$/.test(x.id || ''); }).slice(0, 4);
       group('Newest videos', v.map(function (x) { return row('https://i.ytimg.com/vi/' + x.id + '/mqdefault.jpg', x.title, '', 'Video', function () { openVideo(x); }); }));
@@ -103,7 +136,7 @@
     if (rows.length) hilite(0);
   }
   function hilite(i) { if (!rows.length) return; sel = (i + rows.length) % rows.length; rows.forEach(function (r, k) { r.classList.toggle('on', k === sel); r.setAttribute('aria-selected', k === sel ? 'true' : 'false'); }); rows[sel].scrollIntoView({ block: 'nearest' }); }
-  var rT = 0; input.addEventListener('input', function () { clearTimeout(rT); rT = setTimeout(render, 90); });
+  var rT = 0; input.addEventListener('input', function () { mods = {}; clearTimeout(rT); rT = setTimeout(render, 90); });
   input.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowDown') { e.preventDefault(); hilite(sel + 1); } else if (e.key === 'ArrowUp') { e.preventDefault(); hilite(sel - 1); }
     else if (e.key === 'Enter') { e.preventDefault(); if (rows[sel]) rows[sel].click(); } else if (e.key === 'Escape') { e.preventDefault(); closePanel(); }

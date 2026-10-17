@@ -15,7 +15,7 @@
   }
 
   var STOP = /^(the|a|an|of|about|on|in|and|or|to|with|for|from|by|at|is|was|were|are|did|does|do|how|why|what|who|whom|when|where|which|me|my|show|find|any|anything|all|some|video|videos|episode|episodes|watch|that|this|these|those|it|its|you|your|i|we|they|there|tell|please|related|stuff|things)$/;
-  function norm(s) { return (s || '').toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9'\/\- ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function norm(s) { return (s || '').toLowerCase().replace(/[’']/g, "'").replace(/-/g, ' ').replace(/[^a-z0-9'\/ ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
   function words(s) { return norm(s).split(' ').filter(Boolean); }
   function stem(w) {
     w = w.replace(/'s$/, '');
@@ -39,7 +39,7 @@
   // loose = allow word beginnings and small typos
   function hasTerm(text, tw, term, loose) {
     term = norm(term); if (!term) return false;
-    if (term.indexOf(' ') >= 0 || /[\/\-]/.test(term)) return text.indexOf(term) >= 0;
+    if (term.indexOf(' ') >= 0 || /[\/]/.test(term)) return text.indexOf(term) >= 0;
     var st = stem(term);
     for (var i = 0; i < tw.length; i++) {
       var w = tw[i];
@@ -56,15 +56,16 @@
       var hit = (g.terms || []).some(function (t) { t = norm(t); return t.indexOf(' ') >= 0 ? phrase.indexOf(' ' + t + ' ') >= 0 : stoks.indexOf(stem(t)) >= 0; });
       if (!hit) return;
       (g.terms || []).forEach(function (t) { direct[norm(t)] = 1; });
-      (g.related || []).forEach(function (t) { related[norm(t)] = 1; });
+      (g.related || []).forEach(function (t, i) { var k = norm(t); if (!(k in related) || related[k] < 1.5 - i * 0.2) related[k] = Math.max(0, 1.5 - i * 0.2); });
     });
     // Web storylines: a word in a storyline's name or keywords pulls in the rest of that storyline
     ((window.SS && SS.topicDefs) || []).forEach(function (d) {
       var kws = (d.match || []).map(norm), nm = words(d.name).map(stem);
       var hit = stoks.some(function (t) { return t.length >= 4 && (nm.indexOf(t) >= 0 || kws.some(function (k) { return k === t || stem(k) === t; })); });
-      if (hit) kws.forEach(function (k) { if (!direct[k]) related[k] = 1; });
+      if (hit) kws.forEach(function (k) { if (!direct[k] && !(k in related)) related[k] = 0; });
     });
-    return { direct: Object.keys(direct), related: Object.keys(related).filter(function (k) { return !direct[k]; }) };
+    var rk = Object.keys(related).filter(function (k) { return !direct[k]; }), relW = {}; rk.forEach(function (k) { relW[k] = related[k]; });
+    return { direct: Object.keys(direct), related: rk, relW: relW };
   }
   var threadsRef = function () { return (window.SS && SS.threadList && SS.threadList()) || []; };
 
@@ -103,7 +104,7 @@
       if (hits === 0) {
         var best = 0, bw = '';
         ex.direct.forEach(function (t) { if (best < 6.5 && hasTerm(text, tw, t, false)) { best = 6.5; bw = t; } });
-        ex.related.forEach(function (t) { if (best < 3.5 && hasTerm(text, tw, t, false)) { best = 3.5; bw = t; } });
+        Object.keys(ex.relW).forEach(function (t) { var wv = 3.5 + ex.relW[t]; if (best < wv && best < 6.5 && hasTerm(text, tw, t, false)) { best = wv; bw = t; } });
         if (best) { s += best; why.push((best >= 6.5 ? 'means the same as "' : 'related: "') + bw + '"'); }
       } else {
         var bonus = 0; ex.direct.concat(ex.related).forEach(function (t) { if (bonus < 2 && hasTerm(text, tw, t, false)) bonus += 1; }); s += bonus;
