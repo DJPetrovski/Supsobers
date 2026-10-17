@@ -211,13 +211,13 @@ def pick_featured(videos):
     else:
         chosen, why = None, "newest Friday deep dive"
         for v in videos:
-            if not MEMBERS.search(v.get("title", "")) and v.get("seconds", 0) >= 45 * 60 and denver_day(v) == 4:
+            if not MEMBERS.search(v.get("title", "")) and v.get("seconds", 0) >= 30 * 60 and denver_day(v) == 4:
                 chosen = v; break
         if not chosen and cur.get("id") in byid:
             chosen = byid[cur["id"]]
     if not chosen:
         return
-    doc = {"note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 45+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude); clear 'pin' to go back to automatic.",
+    doc = {"note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 30+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude); clear 'pin' to go back to automatic.",
            "pin": pin, "id": chosen["id"], "title": chosen["title"], "why": why}
     if doc != {k: cur.get(k) for k in doc}:
         json.dump(doc, open(FEATURED, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
