@@ -54,6 +54,54 @@ def iso_seconds(iso):
     return h * 3600 + mi * 60 + se
 
 
+def from_playlist():
+    """The channel's whole uploads playlist, newest first (the channel page only shows the latest ~30).
+    Reads the public playlist page, then follows its 'continuation' pages the way the website does."""
+    pl = "UU" + CHANNEL_ID[2:]
+    req = urllib.request.Request("https://www.youtube.com/playlist?list=" + pl,
+                                 headers={"User-Agent": "Mozilla/5.0", "Accept-Language": "en-US,en;q=0.9"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read().decode("utf-8", "replace")
+    marker = "ytInitialData = "
+    data, _ = json.JSONDecoder().raw_decode(html[html.index(marker) + len(marker):])
+    key = re.search(r'"INNERTUBE_API_KEY":"([^"]+)"', html).group(1)
+    ver = re.search(r'"clientVersion":"([^"]+)"', html).group(1)
+    found, seen, tokens = [], set(), []
+
+    def walk(o):
+        if isinstance(o, dict):
+            lv = o.get("lockupViewModel")
+            if isinstance(lv, dict) and lv.get("contentType") == "LOCKUP_CONTENT_TYPE_VIDEO" and lv.get("contentId") not in seen:
+                try:
+                    texts = re.findall(r'"(\d{1,2}:\d{2}(?::\d{2})?)"', json.dumps(lv))
+                    seen.add(lv["contentId"])
+                    found.append((lv["contentId"], lv["metadata"]["lockupMetadataViewModel"]["title"]["content"],
+                                  seconds(texts[0]) if texts else 0))
+                except KeyError:
+                    pass
+            cc = o.get("continuationCommand")
+            if isinstance(cc, dict) and cc.get("token"):
+                tokens.append(cc["token"])
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+
+    walk(data)
+    for _ in range(25):                      # 100 videos per page; stop when there are no more pages
+        if not tokens:
+            break
+        body = json.dumps({"context": {"client": {"clientName": "WEB", "clientVersion": ver, "hl": "en"}},
+                           "continuation": tokens.pop()}).encode()
+        rq = urllib.request.Request("https://www.youtube.com/youtubei/v1/browse?key=" + key, data=body,
+                                    headers={"User-Agent": "Mozilla/5.0", "Content-Type": "application/json"})
+        tokens = []
+        with urllib.request.urlopen(rq, timeout=30) as r:
+            walk(json.loads(r.read().decode("utf-8", "replace")))
+    return found
+
+
 def from_page():
     """Fallback when the RSS feed is unavailable (YouTube sometimes returns 404 to it).
     Reads the public channel Videos page, newest first. Dates are approximate (newest = today)."""
@@ -139,7 +187,18 @@ def current_titles(videos):
 def main():
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
     # The channel page and the API both report lengths; the RSS feed does not, so it is not used.
-    fresh = from_api(key) if key else from_page()
+    if key:
+        fresh = from_api(key)
+    else:
+        try:
+            found = from_playlist()
+            if len(found) < 20:
+                raise ValueError("playlist came back short")
+            today = datetime.date.today()
+            fresh = [{"id": i, "title": t, "published": today.isoformat(), "seconds": d} for i, t, d in found]
+        except Exception as ex:
+            print("playlist read failed (%s); using the channel page" % ex)
+            fresh = from_page()
     fresh = [v for v in fresh if v.get("seconds", 0) >= MIN_SECONDS or MEMBERS.search(v.get("title", ""))]
     if not fresh:
         print("No videos returned; leaving videos.json untouched.")
@@ -154,12 +213,15 @@ def main():
     merged = {v["id"]: v for v in old if v.get("id") and not v.get("sample") and (v.get("seconds", 0) >= MIN_SECONDS or MEMBERS.search(v.get("title", "")))}
     rank = {v["id"]: n for n, v in enumerate(fresh)}   # channel page order: newest first
     today = datetime.date.today().isoformat()
+    last_known = None
     for v in fresh:
         if v["id"] in merged:
             # already known: keep its recorded date (the page only gives guessed dates), refresh title/length
             v["published"] = min(merged[v["id"]]["published"], v["published"]) if key else merged[v["id"]]["published"]
         elif not key:
-            v["published"] = today                      # first time seen = new today
+            v["published"] = last_known or today        # first time seen: the date of the next newer video we know
+        if v["id"] in merged and not key:
+            last_known = v["published"]
         merged[v["id"]] = v
     # newest date first; on the same day, the channel page order decides
     videos = sorted(merged.values(), key=lambda v: (v["published"], -rank.get(v["id"], 10**6)), reverse=True)
