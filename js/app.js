@@ -254,12 +254,12 @@
     });
   }
 
-  // A video with "Members Only" in its title goes to the Members Club, paired with its public twin.
-  var MEMBER_RE = /[\[(|\-:\s]*\bmembers?[\s-]*only\b[\])|\-:\s]*/ig;
+  // A video with "Members Only" or "(PARENTAL ADVISORY)" in its title goes to the Members Club, paired with its public twin.
+  var MEMBER_RE = /[\[(|\-:\s]*\b(?:members?[\s-]*only|parental[\s-]*advisory)\b[\])|\-:\s]*/ig;
   function norm(t) { return (t || '').replace(MEMBER_RE, ' ').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
   function splitMembers(vids) {
     var pub = [], mem = [];
-    vids.forEach(function (v) { (/\bmembers?[\s-]*only\b/i.test(v.title || '') ? mem : pub).push(v); });
+    vids.forEach(function (v) { (/\b(?:members?[\s-]*only|parental[\s-]*advisory)\b/i.test(v.title || '') ? mem : pub).push(v); });
     autoMembers = mem.map(function (m) {
       var key = norm(m.title), twin = null, best = 0, kw = key.split(' ');
       pub.forEach(function (p) {

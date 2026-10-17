@@ -15,6 +15,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 CHANNEL_ID = "UCSJ4pxGHNTVl5J1I22s7agA"
+MEMBERS = re.compile(r"parental[\s-]*advisory|members?[\s-]*only", re.I)   # members versions are kept whatever their length
 MIN_SECONDS = 30 * 60   # only full episodes: anything shorter is a clip and stays off the site
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "videos.json")
 
@@ -117,11 +118,29 @@ def from_api(key):
     return out
 
 
+def current_titles(videos):
+    """Titles change after upload (renames, labels like PARENTAL ADVISORY). The channel page only lists the newest
+    videos, so ask YouTube's public oEmbed endpoint for each video's present title. Failures keep the old title."""
+    import concurrent.futures as cf
+
+    def one(v):
+        try:
+            u = "https://www.youtube.com/oembed?format=json&url=" + urllib.parse.quote("https://www.youtube.com/watch?v=" + v["id"])
+            return v, json.loads(get(u)).get("title")
+        except Exception:
+            return v, None
+    with cf.ThreadPoolExecutor(6) as ex:
+        for v, t in ex.map(one, videos):
+            if t and t.strip() and t.strip() != v["title"]:
+                print("renamed:", v["id"], "->", t.strip())
+                v["title"] = t.strip()
+
+
 def main():
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
     # The channel page and the API both report lengths; the RSS feed does not, so it is not used.
     fresh = from_api(key) if key else from_page()
-    fresh = [v for v in fresh if v.get("seconds", 0) >= MIN_SECONDS]
+    fresh = [v for v in fresh if v.get("seconds", 0) >= MIN_SECONDS or MEMBERS.search(v.get("title", ""))]
     if not fresh:
         print("No videos returned; leaving videos.json untouched.")
         return 0
@@ -132,7 +151,7 @@ def main():
     except (OSError, ValueError):
         old = []
 
-    merged = {v["id"]: v for v in old if v.get("id") and not v.get("sample") and v.get("seconds", 0) >= MIN_SECONDS}
+    merged = {v["id"]: v for v in old if v.get("id") and not v.get("sample") and (v.get("seconds", 0) >= MIN_SECONDS or MEMBERS.search(v.get("title", "")))}
     rank = {v["id"]: n for n, v in enumerate(fresh)}   # channel page order: newest first
     today = datetime.date.today().isoformat()
     for v in fresh:
@@ -145,6 +164,7 @@ def main():
     # newest date first; on the same day, the channel page order decides
     videos = sorted(merged.values(), key=lambda v: (v["published"], -rank.get(v["id"], 10**6)), reverse=True)
     videos.sort(key=lambda v: v["published"], reverse=True)
+    current_titles(videos)
 
     new_doc = {"videos": videos}
     try:
