@@ -201,9 +201,12 @@
     var row = $('#latest-row'), tr = $('#thread-row');
     if (row) {
       row.textContent = '';
-      videos.filter(function (v) { return ID_RE.test(v.id || ''); }).slice(0, 4).forEach(function (v, i) {
+      var feat = window.SS.featured, list = videos.filter(function (v) { return ID_RE.test(v.id || ''); });
+      if (feat) list = [feat].concat(list.filter(function (v) { return v.id !== feat.id; }));   // the featured deep dive leads
+      list.slice(0, 4).forEach(function (v, i) {
         var t = tile(v, i, false);
-        t.appendChild(el('span', { 'class': 'badge-new', text: i === 0 ? 'Newest' : 'New' }));
+        t.appendChild(el('span', { 'class': 'badge-new', text: i === 0 && feat ? 'Featured deep dive' : (i === 0 ? 'Newest' : 'New') }));
+        if (i === 0 && feat) t.classList.add('is-featured');
         row.appendChild(t);
       });
     }
@@ -346,6 +349,7 @@
   $('#year').textContent = new Date().getFullYear();
   route();
 
+  var featuredId = '';
   var threadsReady = getJSON('data/threads.json').then(function (d) { threads = d.threads || []; }).catch(function () {})
     .then(function () { return getJSON('data/web.json'); })
     .then(function (d) {
@@ -354,15 +358,17 @@
       window.SS.topicDefs = d.topics || [];
     }).catch(function () {});
 
+  var featReady = getJSON('data/featured.json').then(function (d) { featuredId = (d && d.id) || ''; }).catch(function () {});
   var abReady = getJSON('data/audiobooks.json').then(function (d) { abConfig = d.audiobooks || []; }).catch(function () {});
   getJSON('data/videos.json').then(function (d) {
-    return abReady.then(function () { return threadsReady; }).then(function () { return d; });
+    return abReady.then(function () { return threadsReady; }).then(function () { return featReady; }).then(function () { return d; });
   }).then(function (d) {
     return d;
   }).then(function (d) {
     var vids = splitMembers((d.videos || []).slice());
     vids = splitAudiobooks(vids);
     window.SS.videos = vids;
+    window.SS.featured = vids.filter(function (v) { return v.id === featuredId; })[0] || vids.filter(function (v) { return ID_RE.test(v.id || ''); })[0] || null;
     buildClub();
     (window.SS.topicDefs || []).forEach(function (t) {
       var ids = vids.filter(function (v) {

@@ -173,12 +173,12 @@
   var seen = [], hist = [], chNo = 0, trailerDone = false, osdT = 0, powered = true, lateNight = false;
   var osd = document.getElementById('htv-osd');
   function showOsd(t) { osd.textContent = t; osd.classList.add('on'); clearTimeout(osdT); osdT = setTimeout(function () { osd.classList.remove('on'); }, 1800); }
-  // First channel of every browsing session = the newest upload, from the start, as a promo. After that it is random.
+  // First channel of every browsing session = the featured deep dive (data/featured.json; normally the latest Friday upload), from the start, as a promo. After that it is random.
   var promoId = '', promoDone = false;
   try { promoDone = sessionStorage.getItem('ss-promo') === '1'; } catch (e) {}
   function pickNewest() {
     if (promoDone) return null;
-    var n = (window.SS && SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })[0];
+    var n = (window.SS && SS.featured) || (window.SS && SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })[0];
     if (!n) return null;
     promoDone = true; promoId = n.id; try { sessionStorage.setItem('ss-promo', '1'); } catch (e) {}
     seen.push(n.id);

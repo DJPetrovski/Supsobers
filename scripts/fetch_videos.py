@@ -184,6 +184,46 @@ def current_titles(videos):
                 v["title"] = t.strip()
 
 
+FEATURED = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "featured.json")
+
+
+def denver_day(v):
+    """The weekday (0=Mon) the video went up, Mountain time. Friday runs from Friday 00:00 to Saturday 06:00,
+    so a late-night Friday upload that the sync sees after midnight still counts as Friday."""
+    from zoneinfo import ZoneInfo
+    if v.get("seen"):
+        t = datetime.datetime.strptime(v["seen"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=datetime.timezone.utc)
+        t = t.astimezone(ZoneInfo("America/Denver")) - datetime.timedelta(hours=6)
+        return t.weekday()
+    return datetime.date.fromisoformat(v["published"]).weekday()
+
+
+def pick_featured(videos):
+    """The featured deep dive: the newest full-length video that went up on a Friday, unless DJ pinned one."""
+    try:
+        cur = json.load(open(FEATURED, encoding="utf-8"))
+    except (OSError, ValueError):
+        cur = {}
+    pin = (cur.get("pin") or "").strip()
+    byid = {v["id"]: v for v in videos}
+    if pin and pin in byid:
+        chosen, why = byid[pin], "pinned by DJ"
+    else:
+        chosen, why = None, "newest Friday deep dive"
+        for v in videos:
+            if not MEMBERS.search(v.get("title", "")) and v.get("seconds", 0) >= 45 * 60 and denver_day(v) == 4:
+                chosen = v; break
+        if not chosen and cur.get("id") in byid:
+            chosen = byid[cur["id"]]
+    if not chosen:
+        return
+    doc = {"note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 45+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude); clear 'pin' to go back to automatic.",
+           "pin": pin, "id": chosen["id"], "title": chosen["title"], "why": why}
+    if doc != {k: cur.get(k) for k in doc}:
+        json.dump(doc, open(FEATURED, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+        print("featured:", chosen["title"], "-", why)
+
+
 def main():
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
     # The channel page and the API both report lengths; the RSS feed does not, so it is not used.
@@ -220,6 +260,7 @@ def main():
             v["published"] = min(merged[v["id"]]["published"], v["published"]) if key else merged[v["id"]]["published"]
         elif not key:
             v["published"] = last_known or today        # first time seen: the date of the next newer video we know
+            v["seen"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
         if v["id"] in merged and not key:
             last_known = v["published"]
         merged[v["id"]] = v
@@ -227,6 +268,7 @@ def main():
     videos = sorted(merged.values(), key=lambda v: (v["published"], -rank.get(v["id"], 10**6)), reverse=True)
     videos.sort(key=lambda v: v["published"], reverse=True)
     current_titles(videos)
+    pick_featured(videos)
 
     new_doc = {"videos": videos}
     try:
