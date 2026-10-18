@@ -33,7 +33,7 @@
   ];
   function cleaned(q) { var s = low(q).replace(/[?!.,]+/g, ' ').replace(/\s+/g, ' ').trim(); FILLER.forEach(function (re) { s = s.replace(re, ' '); }); return s.replace(/\s+/g, ' ').trim(); }
 
-  function cleanTopic(q) { return cleaned(q).replace(/\b(most popular|most viewed|most watched|top|best|biggest|favou?rites?|videos?|episodes?|ones?|popular|views?|watch(ed)?|start|new here|where|should|i|performing|people|fans|do|what)\b/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function cleanTopic(q) { return cleaned(q).replace(/\b(most popular|most viewed|most watched|least popular|least viewed|least watched|least|lowest|fewest|hidden gems?|underrated|slept on|overlooked|forgotten|deep cuts?|worst|top|best|biggest|favou?rites?|videos?|episodes?|ones?|popular|views?|watch(ed)?|start|new here|where|should|i|performing|people|fans|do|what)\b/g, ' ').replace(/\s+/g, ' ').trim(); }
   // read the request: intent, filters, and the topic words left over
   function parse(q, mods) {
     var s = low(q).trim(), r = { intent: 'search', short: false, long: false, newest: false, topic: '' };
@@ -45,6 +45,7 @@
     if (/^(thanks|thank you|thx|ty|cool|nice|awesome|great)\b[ !.]*$/.test(s)) { r.intent = 'thanks'; return r; }
     var Q = s.replace(/[?!.]+$/, '');
     if (/\b(most popular|most viewed|most watched|top (\d+ )?(videos?|episodes?|ones?)|best (performing|videos?|episodes?)|biggest videos?|fan favou?rites?|highest (views|viewed)|most views|what do (people|fans|most people) watch|where should i start|best place to start|start here|new here)\b/.test(s)) { r.intent = 'popular'; r.starter = /\b(start|new here)\b/.test(s); r.topic = cleanTopic(Q); return r; }
+    if (/\b(least (popular|viewed|watched|views)|lowest (views|viewed)|fewest views|hidden gems?|underrated|slept on|overlooked|forgotten videos?|deep cuts?|worst (videos?|episodes?)|least favou?rite)\b/.test(s)) { r.intent = 'hidden'; r.topic = cleanTopic(Q); return r; }
     if (/\b(longest|longer than any|biggest deep dive)\b/.test(s) && /\b(video|episode|one|deep dive)\b/.test(s)) { r.intent = 'longest'; return r; }
     if (/\b(shortest|quickest video)\b/.test(s)) { r.intent = 'shortest'; return r; }
     if (/\b(first|oldest|earliest)\b.*\b(video|episode|upload)\b/.test(s)) { r.intent = 'oldest'; return r; }
@@ -119,6 +120,17 @@
       var n = Math.min(5, list.length);
       out.kind = 'answer'; out.text = (out.pre || '') + (r.starter ? 'Starting here? These are the ones the most people have watched:' : (r.topic && !out.pre ? 'The most-watched on that:' : 'The most-watched videos on the channel:'));
       out.picks = mk(list.slice(0, n), function (v) { return fmtViews(v.views) + ' views'; }); out.chips = [{ label: 'Newest', q: 'newest' }, { label: 'Surprise me', q: 'surprise me' }]; return out;
+    }
+    if (r.intent === 'hidden') {
+      var cutoff = new Date(Date.now() - 21 * 864e5).toISOString().slice(0, 10);
+      var low2 = chan.filter(function (v) { return v.views > 0 && v.seconds >= 1800 && !/\b(trial|day \d+|live|recap|update|monetize|sober talk|recovery group|q&a)\b/i.test(v.title || '') && (v.published || '') <= cutoff; });
+      if (!low2.length) { out.kind = 'answer'; out.text = 'I can\u2019t see view counts right now, so I can\u2019t tell which ones are under the radar.'; return out; }
+      var lst = low2;
+      if (r.topic) { var mm2 = dedupe(SS.smart(r.topic, low2)).filter(function (x) { return x.s >= 6.5; }).map(function (x) { return x.v; }); if (mm2.length) lst = mm2; else out.pre = 'Nothing under the radar matched \u201c' + r.topic + '\u201d, so here are the least-watched overall. '; }
+      lst = lst.slice().sort(function (a, b) { return a.views - b.views; });
+      var seen2 = {}; lst = lst.filter(function (v) { var k = titleKey(v.title); if (seen2[k]) return false; seen2[k] = 1; return true; });
+      out.kind = 'answer'; out.text = (out.pre || '') + 'I can\u2019t tell which are DJ\u2019s favorites, but these are the least-watched, which usually means the most underrated:';
+      out.picks = mk(lst.slice(0, 5), function (v) { return fmtViews(v.views) + ' views'; }); out.chips = [{ label: 'Most popular', q: 'most popular videos' }, { label: 'Surprise me', q: 'surprise me' }]; return out;
     }
     if (r.intent === 'longest' || r.intent === 'shortest' || r.intent === 'oldest') {
       var pool2 = chan.filter(function (v) { return v.seconds > 0; });
