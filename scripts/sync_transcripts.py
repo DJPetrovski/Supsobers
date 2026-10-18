@@ -50,7 +50,7 @@ def access_token():
         print("Google refused the login (HTTP %d): %s" % (e.code, msg))
         print("Lengths seen: id=%d secret=%d token=%d (no values shown)" % tuple(len(os.environ.get(k, "")) for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")))
         print("Hints: invalid_client = Client ID/secret wrong or has a stray space; invalid_grant = refresh token expired or made with a different client.")
-        sys.exit(0)
+        sys.exit(1)
 
 
 def api(path, token, **q):
