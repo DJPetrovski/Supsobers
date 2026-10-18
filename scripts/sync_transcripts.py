@@ -43,7 +43,14 @@ def access_token():
     body = urllib.parse.urlencode({
         "client_id": os.environ["YT_CLIENT_ID"], "client_secret": os.environ["YT_CLIENT_SECRET"],
         "refresh_token": os.environ["YT_REFRESH_TOKEN"], "grant_type": "refresh_token"}).encode()
-    return json.loads(call("https://oauth2.googleapis.com/token", body))["access_token"]
+    try:
+        return json.loads(call("https://oauth2.googleapis.com/token", body))["access_token"]
+    except urllib.error.HTTPError as e:
+        msg = e.read().decode("utf-8", "replace")[:300]
+        print("Google refused the login (HTTP %d): %s" % (e.code, msg))
+        print("Lengths seen: id=%d secret=%d token=%d (no values shown)" % tuple(len(os.environ.get(k, "")) for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")))
+        print("Hints: invalid_client = Client ID/secret wrong or has a stray space; invalid_grant = refresh token expired or made with a different client.")
+        sys.exit(0)
 
 
 def api(path, token, **q):
