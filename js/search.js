@@ -17,6 +17,7 @@
     { title: 'Members Club', route: 'members', kw: 'members only patreon join uncensored off the record' },
     { title: 'Archives', route: 'archives', kw: 'timeline records sources september 10 charlie kirk' },
     { title: 'Books', route: 'books', kw: 'reading library' },
+    { title: 'Topic Requests', route: 'topics', kw: 'suggest request vote cover next idea recommend topic submit' },
     { title: 'About', route: 'about', kw: 'dj petrovski sober sector contact' }
   ];
   function get(path) { return fetch(path, { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; }); }

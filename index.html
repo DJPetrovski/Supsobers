@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1792210600">
+  <link rel="stylesheet" href="css/styles.css?v=1792210700">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -33,6 +33,7 @@
       <a href="#members" data-route="members" class="nav-club">Members Club</a>
       <a href="#archives" data-route="archives">Archives</a>
       <a href="#books" data-route="books">Books</a>
+      <a href="#topics" data-route="topics">Topics</a>
       <a href="#socials" data-route="socials">Socials</a>
       <a href="#craving" data-route="craving">Kraving Killer</a>
       <a href="#contact" data-route="contact">Contact</a>
@@ -279,6 +280,32 @@
     </section>
 
     <!-- BOOKS -->
+    <section class="view page topics" data-view="topics" aria-labelledby="topics-title" hidden>
+      <h2 id="topics-title">What should I cover next?</h2>
+      <p class="page-lede">Suggest a person, case or story, and vote for the ones you want most. When I cover one, it moves to Covered with a link to the video. Public figures and public cases only.</p>
+      <div class="tp" id="tp">
+        <p class="tp-soon">The topic board is opening soon.</p>
+        <div class="tp-main">
+          <div class="tp-bar">
+            <div class="tp-tabs" role="tablist"><button type="button" role="tab" id="tp-tab-open" class="on" aria-selected="true">Vote</button><button type="button" role="tab" id="tp-tab-done" aria-selected="false">Covered</button></div>
+            <label class="tp-sort">Sort <select id="tp-sort"><option value="az">A to Z</option><option value="votes">Most votes</option></select></label>
+          </div>
+          <label class="search page-search"><span class="sr">Search the list</span><input type="search" id="tp-q" placeholder="Search ideas" autocomplete="off"></label>
+          <p class="tp-status" id="tp-status" role="status" hidden></p>
+          <div class="tp-list" id="tp-list"></div>
+          <form class="tp-form" id="tp-form" novalidate>
+            <h3>Suggest a topic</h3>
+            <label>Who or what?<input name="title" type="text" maxlength="80" autocomplete="off" required placeholder="Name or case"></label>
+            <div class="tp-hint" id="tp-hint" aria-live="polite"></div>
+            <label>Anything I should know? (optional)<textarea name="note" rows="2" maxlength="280" placeholder="Why this one, or what angle"></textarea></label>
+            <input class="tp-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn-primary" id="tp-submit">Suggest it</button>
+            <small>I read every suggestion before it appears. Please no private individuals.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="view page" data-view="books" aria-labelledby="books-title" hidden>
       <h2 id="books-title">Books</h2>
       <p class="page-lede">Reading from the Sobering Stories library.</p>
@@ -524,28 +551,29 @@
     </div>
     <span class="scd-rs" role="separator" aria-label="Drag to resize the player" title="Drag to resize (double-tap to reset)"></span>
   </aside>
-  <script src="js/rain.js?v=1792210600" defer></script>
-  <script src="js/app.js?v=1792210600" defer></script>
-  <script src="js/smart.js?v=1792210600" defer></script>
-  <script src="js/turkey.js?v=1792210600" defer></script>
-  <script src="js/hole.js?v=1792210600" defer></script>
-  <script src="js/pill.js?v=1792210600" defer></script>
-  <script src="js/tv.js?v=1792210600" defer></script>
-  <script src="js/join.js?v=1792210600" defer></script>
-  <script src="js/semantic.js?v=1792210600" defer></script>
-  <script src="js/search.js?v=1792210600" defer></script>
-  <script src="js/merch.js?v=1792210600" defer></script>
-  <script src="js/web.js?v=1792210600" defer></script>
-  <script src="js/home.js?v=1792210600" defer></script>
-  <script src="js/remote.js?v=1792210600" defer></script>
-  <script src="js/craving.js?v=1792210600" defer></script>
-  <script src="js/wagon.js?v=1792210600" defer></script>
-  <script src="js/discphys.js?v=1792210600" defer></script>
-  <script src="js/discgolf.js?v=1792210600" defer></script>
-  <script src="js/dismiss.js?v=1792210600" defer></script>
-  <script src="js/popout.js?v=1792210600" defer></script>
-  <script src="js/scplayer.js?v=1792210600" defer></script>
-  <script src="js/assistant.js?v=1792210600" defer></script>
-  <script src="js/music.js?v=1792210600" defer></script>
+  <script src="js/rain.js?v=1792210700" defer></script>
+  <script src="js/app.js?v=1792210700" defer></script>
+  <script src="js/smart.js?v=1792210700" defer></script>
+  <script src="js/turkey.js?v=1792210700" defer></script>
+  <script src="js/hole.js?v=1792210700" defer></script>
+  <script src="js/pill.js?v=1792210700" defer></script>
+  <script src="js/tv.js?v=1792210700" defer></script>
+  <script src="js/topics.js?v=1792210700" defer></script>
+  <script src="js/join.js?v=1792210700" defer></script>
+  <script src="js/semantic.js?v=1792210700" defer></script>
+  <script src="js/search.js?v=1792210700" defer></script>
+  <script src="js/merch.js?v=1792210700" defer></script>
+  <script src="js/web.js?v=1792210700" defer></script>
+  <script src="js/home.js?v=1792210700" defer></script>
+  <script src="js/remote.js?v=1792210700" defer></script>
+  <script src="js/craving.js?v=1792210700" defer></script>
+  <script src="js/wagon.js?v=1792210700" defer></script>
+  <script src="js/discphys.js?v=1792210700" defer></script>
+  <script src="js/discgolf.js?v=1792210700" defer></script>
+  <script src="js/dismiss.js?v=1792210700" defer></script>
+  <script src="js/popout.js?v=1792210700" defer></script>
+  <script src="js/scplayer.js?v=1792210700" defer></script>
+  <script src="js/assistant.js?v=1792210700" defer></script>
+  <script src="js/music.js?v=1792210700" defer></script>
 </body>
 </html>
