@@ -1973,3 +1973,24 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .tile.is-featured .badge-new { background: #fff; color: #b3000f; }
 
 .gs-sem-wait{opacity:.6;font-style:italic}
+
+/* weekly email: the TV asks, like "Are you still watching?" */
+.htv-join { position: absolute; inset: 0; z-index: 7; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.84); opacity: 0; transition: opacity .35s; container-type: size; font-family: ui-monospace, Menlo, Consolas, monospace; color: #e8e8e8; }
+.htv-join.on { opacity: 1; }
+.hj-in { width: 86%; max-width: 30em; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2.2cqh; }
+.hj-k { font-size: clamp(.5rem, 3cqw, .75rem); letter-spacing: .3em; color: #7dff9a; text-shadow: 0 0 6px rgba(80,255,120,.8); }
+.hj-h { font-size: clamp(.95rem, 7cqw, 1.8rem); letter-spacing: .06em; }
+.hj-p { margin: 0; font-size: clamp(.58rem, 3.4cqw, .95rem); line-height: 1.45; opacity: .85; }
+.hj-row, .hj-form { display: flex; gap: 2cqw; flex-wrap: wrap; justify-content: center; width: 100%; }
+.hj-btn { font: inherit; font-size: clamp(.6rem, 3.4cqw, .95rem); padding: .55em 1.1em; border: 1px solid #e8e8e8; background: transparent; color: #e8e8e8; cursor: pointer; letter-spacing: .06em; }
+.hj-btn:hover, .hj-btn:focus-visible { background: #e8e8e8; color: #000; outline: none; }
+.hj-yes { border-color: #7dff9a; color: #7dff9a; }
+.hj-yes:hover, .hj-yes:focus-visible { background: #7dff9a; color: #000; }
+.hj-in-email { flex: 1 1 100%; font: inherit; font-size: 16px; padding: .5em .7em; background: #000; color: #fff; border: 1px solid #7dff9a; border-radius: 0; }
+.hj-st { margin: 0; min-height: 1.2em; font-size: clamp(.55rem, 3cqw, .8rem); color: #ffb6a0; }
+.join { display: flex; flex-direction: column; gap: .5rem; align-items: center; margin: 0 auto 1.2rem; max-width: 30rem; text-align: center; }
+.join label { font-size: .95rem; }
+.join-row { display: flex; gap: .5rem; width: 100%; }
+.join-row input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: .5rem .7rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 6px; }
+.join small { min-height: 1.1em; opacity: .8; }
+@media (prefers-reduced-motion: reduce) { .htv-join { transition: none; } }

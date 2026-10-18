@@ -1,0 +1,6 @@
+{
+  "_note": "Weekly email list. While 'endpoint' is empty, each signup is emailed to DJ through Web3Forms so nobody is lost. Paste the email service's signup-form URL into 'endpoint' once the list exists, then set 'notify' to false.",
+  "endpoint": "",
+  "emailField": "email",
+  "notify": true
+}
