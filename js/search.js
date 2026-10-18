@@ -119,13 +119,28 @@
     } else {
       var r = search(q);
       var vm = r.videos.filter(function (x) { return !x.r || x.r.kind === 'match'; }), vr = r.videos.filter(function (x) { return x.r && x.r.kind === 'related'; });
-      function vrow(x) {
-        var sub = x.v.members ? 'Members only' : '', rr = x.r;
-        if (rr) { if (rr.snip) sub = '“…' + rr.snip.slice(0, 90) + '…” ' + (rr.at ? '(' + Math.floor(rr.at / 60) + ':' + ('0' + Math.floor(rr.at % 60)).slice(-2) + ')' : ''); else if (rr.why.length) sub = (sub ? sub + ' · ' : '') + rr.why[0]; }
-        return row(/^[\w-]{11}$/.test(x.v.id || '') ? 'https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg' : '', x.v.title, sub, 'Video', function () { SS.openPlayer(x.v, rr && rr.at); });
+      function stamp(t) { var h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), sec = ('0' + Math.floor(t % 60)).slice(-2); return (h ? h + ':' + ('0' + m).slice(-2) : m) + ':' + sec; }
+      function mrow(x, m) {
+        var b = el('button', 'gs-row gs-moment'); b.type = 'button'; b.setAttribute('role', 'option'); b.title = 'Play from ' + stamp(m.at);
+        b.appendChild(el('span', 'gs-at', '\u25B6 ' + stamp(m.at)));
+        var tx = el('span', 'gs-q'), pos = 0;
+        if (m.pre) tx.appendChild(document.createTextNode('\u2026'));
+        m.hits.forEach(function (h) { if (h[0] > pos) tx.appendChild(document.createTextNode(m.text.slice(pos, h[0]))); tx.appendChild(el('mark', '', m.text.slice(h[0], h[1]))); pos = h[1]; });
+        tx.appendChild(document.createTextNode(m.text.slice(pos) + (m.post ? '\u2026' : '')));
+        b.appendChild(tx);
+        b.addEventListener('click', function () { closePanel(); SS.openPlayer(x.v, m.at); });
+        rows.push(b); return b;
       }
-      group('Videos' + (vm.length > 8 ? ' (' + vm.length + ')' : ''), vm.slice(0, 8).map(vrow));
-      group('Related videos and the same storyline', vr.slice(0, 8).map(vrow));
+      function vrow(x) {
+        var sub = x.v.members ? 'Members only' : '', rr = x.r, mm = rr && rr.moments && rr.moments.length;
+        if (rr) { if (mm) sub = mm + (mm === 1 ? ' place' : ' places') + ' where it is said'; else if (rr.snip) sub = '\u201C\u2026' + rr.snip.slice(0, 90) + '\u2026\u201D ' + (rr.at ? '(' + stamp(rr.at) + ')' : ''); else if (rr.why.length) sub = (sub ? sub + ' \u00B7 ' : '') + rr.why[0]; }
+        var out = [row(/^[\w-]{11}$/.test(x.v.id || '') ? 'https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg' : '', x.v.title, sub, 'Video', function () { SS.openPlayer(x.v, mm ? 0 : rr && rr.at); })];
+        if (mm) rr.moments.forEach(function (m) { out.push(mrow(x, m)); });
+        return out;
+      }
+      function flat(a) { return a.reduce(function (acc, r) { return acc.concat(r); }, []); }
+      group('Videos' + (vm.length > 8 ? ' (' + vm.length + ')' : ''), flat(vm.slice(0, 8).map(vrow)));
+      group('Related videos and the same storyline', flat(vr.slice(0, 8).map(vrow)));
       group('Audiobooks', r.ab.slice(0, 5).map(function (x) { return row('https://i.ytimg.com/vi/' + x.v.id + '/mqdefault.jpg', x.v.title, x.b.title, 'Audiobook', function () { openVideo(x.v); }); }));
       group('Merch', r.merch.slice(0, 5).map(function (x) { return row((x.m.cutouts && x.m.cutouts[0]) || x.m.images[0], x.m.name, x.m.price + (x.m.soldOut ? ' · sold out' : ''), 'Merch', function () { A.merch(x.i); }); }));
       group('Storylines', r.story.slice(0, 4).map(function (x) { return row('', x.d.name, 'See the videos', 'Story', function () { A.story(x.d); }); }));

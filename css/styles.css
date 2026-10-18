@@ -1259,6 +1259,11 @@ html.tv-off .home-hero .ambient, html.tv-off .home-hero .home-copy { opacity: .1
 .gs-row img { width: 72px; height: 42px; object-fit: cover; border-radius: 6px; flex: none; background: #000; }
 .gs-row img[src*="cloudfront"], .gs-row img[src*="fourthwall"] { object-fit: contain; }
 .gs-ico { width: 72px; height: 42px; border-radius: 6px; flex: none; display: grid; place-items: center; background: rgba(255,42,53,.14); color: var(--ember); font-family: var(--display); font-size: 1.3rem; }
+.gs-moment { margin: -2px 0 2px 28px; width: calc(100% - 28px); padding: 6px 10px; gap: 10px; align-items: baseline; border-left: 2px solid var(--line); border-radius: 4px 10px 10px 4px; }
+.gs-moment .gs-at { flex: none; font: .72rem/1 "IBM Plex Mono", ui-monospace, monospace; color: var(--ash); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; white-space: nowrap; }
+.gs-moment:hover .gs-at, .gs-moment.on .gs-at { color: var(--bone); border-color: #ff2a35; }
+.gs-moment .gs-q { flex: 1; min-width: 0; font-size: .86rem; line-height: 1.4; color: var(--bone); opacity: .9; }
+.gs-moment mark { background: rgba(255,200,64,.28); color: inherit; border-radius: 3px; padding: 0 2px; font-weight: 600; }
 .gs-tx { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .gs-tx b { font-weight: 500; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .gs-tx small { color: var(--ash); }

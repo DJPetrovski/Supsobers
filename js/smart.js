@@ -83,6 +83,31 @@
     for (i = 0; i < vocab.length; i++) { var d = lev(vocab[i], t, max); if (d < bd) { bd = d; best = vocab[i]; } }
     return bd <= max ? best : t;
   }
+  // every place a search word is actually said: a short phrase around it, the words to highlight, and the second it is said (estimated inside the chunk)
+  function wst(x) { return stem(String(x).toLowerCase().replace(/[\u2019']/g, "'").replace(/[^a-z0-9']/g, '')); }
+  function momentsFor(chunks, toks, ex) {
+    var qs = toks.map(wst).filter(Boolean), xs = ex.direct.filter(function (t) { return t.length > 3 && t.indexOf(' ') < 0; }).map(wst), found = [];
+    if (!qs.length) return [];
+    function is(w, list) { for (var k = 0; k < list.length; k++) if (w === list[k] || (list[k].length >= 5 && w.indexOf(list[k]) === 0)) return k; return -1; }
+    chunks.forEach(function (c, ci) {
+      var re = /[A-Za-z0-9][A-Za-z0-9'\u2019-]*/g, m, ws = [], hit = {}, n = 0, first = -1;
+      while ((m = re.exec(c[1] || ''))) {
+        var st = wst(m[0]), q = st ? is(st, qs) : -1, hl = q >= 0 || (st && is(st, xs) >= 0);
+        ws.push({ s: m.index, e: m.index + m[0].length, hl: hl });
+        if (q >= 0 && !hit[q]) { hit[q] = 1; n++; }
+        if (hl && first < 0) first = ws.length - 1;
+      }
+      if (first < 0 || n < Math.max(1, qs.length * 0.6)) return;
+      var lo = Math.max(0, first - 8), hi = Math.min(ws.length - 1, first + 11), a = ws[lo].s, b = ws[hi].e, hits = [];
+      for (var i = lo; i <= hi; i++) if (ws[i].hl) hits.push([ws[i].s - a, ws[i].e - a]);
+      var next = chunks[ci + 1] ? chunks[ci + 1][0] : c[0] + 45, dur = Math.max(10, Math.min(90, next - c[0]));
+      found.push({ n: n, ci: ci, at: Math.max(0, Math.floor(c[0] + (first / ws.length) * dur - 2)), text: c[1].slice(a, b), pre: lo > 0, post: hi < ws.length - 1, hits: hits });
+    });
+    found.sort(function (x, y) { return y.n - x.n || x.ci - y.ci; });
+    var out = [];
+    found.forEach(function (f) { if (out.length < 3 && out.every(function (o) { return Math.abs(o.at - f.at) > 20; })) out.push(f); });
+    return out.sort(function (x, y) { return x.at - y.at; });
+  }
   /* smart(q, videos) -> [{ v, s, why, at, snip, kind }] best first. kind: 'match' | 'related' */
   function smart(q, videos) {
     var toks = words(q).filter(function (w) { return !STOP.test(w); });
@@ -110,7 +135,7 @@
       } else {
         var bonus = 0; ex.direct.concat(ex.related).forEach(function (t) { if (bonus < 2 && hasTerm(text, tw, t, false)) bonus += 1; }); s += bonus;
       }
-      var at = 0, snip = '';
+      var at = 0, snip = '', moments = [];
       if (transcripts && transcripts[v.id]) {
         var bestC = 0;
         transcripts[v.id].forEach(function (c) {
@@ -119,9 +144,9 @@
           ex.direct.forEach(function (t) { if (t.length > 3 && tx.indexOf(t) >= 0) n += 0.5; });
           if (n > bestC) { bestC = n; at = c[0]; snip = c[1]; }
         });
-        if (bestC >= Math.max(1, toks.length * 0.6)) { s += Math.min(14, 4 + bestC * 3); why.push('said in the video'); } else { at = 0; snip = ''; }
+        if (bestC >= Math.max(1, toks.length * 0.6)) { s += Math.min(14, 4 + bestC * 3); why.push('said in the video'); moments = momentsFor(transcripts[v.id], toks, ex); if (moments.length) { var m0 = moments.slice().sort(function (x, y) { return y.n - x.n; })[0]; at = m0.at; snip = m0.text; } } else { at = 0; snip = ''; }
       }
-      if (s > 0) { var r = { v: v, s: s, why: why, at: at, snip: snip, kind: s >= 6 ? 'match' : 'related' }; res.push(r); byId[v.id] = r; }
+      if (s > 0) { var r = { v: v, s: s, why: why, at: at, snip: snip, moments: moments, kind: s >= 6 ? 'match' : 'related' }; res.push(r); byId[v.id] = r; }
     });
     // storylines: every video in a storyline that already has a strong match comes along
     var strong = res.filter(function (r) { return r.s >= 10; });
