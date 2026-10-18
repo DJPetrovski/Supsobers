@@ -40,6 +40,7 @@ setup('img/model/model.png')
 CFG = {
  'Might-Mean-Somethin-S-S-White': dict(box=(.40,.37,.94,.77), patch=(.55,.88), w=.62, cy=.30),
  'Might-Mean-Somethin-S-S-Black': dict(box=(.40,.37,.94,.77), patch=(.55,.88), w=.62, cy=.30),
+ 'Never-Forget-9-11-S-S':        dict(box=(.25,.31,.75,.46), patch=(.50,.75), w=.50, cy=.27),
  'Just-a-Coincidence':           dict(box=(.24,.24,.76,.46), patch=(.50,.75), w=.50, cy=.27),
  'Specific-Ocean-S-S-White':     dict(box=(.26,.24,.75,.62), patch=(.45,.78), w=.50, cy=.33),
  'Specific-Ocean-Red-S-S':       dict(box=(.25,.26,.77,.61), patch=(.50,.68), w=.50, cy=.33),

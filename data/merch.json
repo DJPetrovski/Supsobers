@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14",
+ "updated": "2026-10-18",
  "americanpatriot": [
   {
    "name": "Sup Sobers Sticker Large (SUP Board)",
@@ -168,6 +168,17 @@
    "cutouts": [
     null
    ]
+  },
+  {
+   "name": "Sobering Stories Never Forget 9/11 S/S",
+   "price": "$29.99",
+   "images": [
+    "https://d2j6dbq0eux0bg.cloudfront.net/images/40118369/products/872012803/6331214010.jpg"
+   ],
+   "url": "https://www.americanpatriot.ltd/Sobering-Stories-Never-Forget-9-11-S-S-p872012803",
+   "store": "americanpatriot",
+   "soldOut": false,
+   "model": "img/model/sobering-stories-never-forget-9-11-s-s.webp"
   }
  ],
  "fourthwallStore": "https://the-sober-sector-shop.fourthwall.com",
