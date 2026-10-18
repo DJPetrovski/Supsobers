@@ -22,6 +22,7 @@
   }
 
   var FILLER = [
+    /\b(dj('?s)?|petrovski|your|yours|sobering stories|sober sector|sobersector|the channel|this channel|the site|this site|the website|this website)\b/g,
     /^(hey|hi|hello|yo|sup|ok|okay|so|um|uh)[ ,!.]+/, /\b(can|could|would|will) you\b/g, /\b(please|pls)\b/g,
     /\b(i('| a)?m|i am) (looking for|in the mood for|trying to find|interested in|curious about|thinking about)\b/g,
     /\b(i want|i wanna|i('| woul)d like|i need|show|tell|give|find|get|play|recommend|suggest)( me| us)?( a| an| the| some| any)?\b/g,
@@ -32,6 +33,7 @@
   ];
   function cleaned(q) { var s = low(q).replace(/[?!.,]+/g, ' ').replace(/\s+/g, ' ').trim(); FILLER.forEach(function (re) { s = s.replace(re, ' '); }); return s.replace(/\s+/g, ' ').trim(); }
 
+  function cleanTopic(q) { return cleaned(q).replace(/\b(most popular|most viewed|most watched|top|best|biggest|favou?rites?|videos?|episodes?|ones?|popular|views?|watch(ed)?|start|new here|where|should|i|performing|people|fans|do|what)\b/g, ' ').replace(/\s+/g, ' ').trim(); }
   // read the request: intent, filters, and the topic words left over
   function parse(q, mods) {
     var s = low(q).trim(), r = { intent: 'search', short: false, long: false, newest: false, topic: '' };
@@ -41,6 +43,15 @@
     if (/\b(who|what) (are|r) (you|u)\b|\byour name\b|\bwho is this\b/.test(s)) { r.intent = 'who'; return r; }
     if (/\b(what can you do|how do(es)? (this|you) work|help me|how to use)\b/.test(s)) { r.intent = 'help'; return r; }
     if (/^(thanks|thank you|thx|ty|cool|nice|awesome|great)\b[ !.]*$/.test(s)) { r.intent = 'thanks'; return r; }
+    var Q = s.replace(/[?!.]+$/, '');
+    if (/\b(most popular|most viewed|most watched|top (\d+ )?(videos?|episodes?|ones?)|best (performing|videos?|episodes?)|biggest videos?|fan favou?rites?|highest (views|viewed)|most views|what do (people|fans|most people) watch|where should i start|best place to start|start here|new here)\b/.test(s)) { r.intent = 'popular'; r.starter = /\b(start|new here)\b/.test(s); r.topic = cleanTopic(Q); return r; }
+    if (/\b(longest|longer than any|biggest deep dive)\b/.test(s) && /\b(video|episode|one|deep dive)\b/.test(s)) { r.intent = 'longest'; return r; }
+    if (/\b(shortest|quickest video)\b/.test(s)) { r.intent = 'shortest'; return r; }
+    if (/\b(first|oldest|earliest)\b.*\b(video|episode|upload)\b/.test(s)) { r.intent = 'oldest'; return r; }
+    if (/\bhow many\b.*\b(videos?|episodes?|deep dives?|uploads?|hours?)\b/.test(s) || /\b(how big|how much (content|stuff)) is (the|this) (site|channel|library)\b/.test(s)) { r.intent = 'count'; return r; }
+    if (/\b(who|what)\b.*\b(is|are)\b.*\b(dj|petrovski|sobering stories|sober ?sector|this channel|this site)\b|\babout (dj|the channel|this (site|channel))\b|\bwho (makes|runs|made|created) (this|the)\b/.test(s)) { r.intent = 'about'; return r; }
+    var PG = [[/\b(merch|shirts?|hoodies?|hats?|stickers?|store|shop|buy|clothing)\b/, 'merch', 'Merch', 'Shirts, hoodies and more live in the Merch shop.'], [/\b(members?|patreon|join|uncensored)\b/, 'members', 'Members Club', 'The uncensored cuts live in the Members Club.'], [/\b(archive|charlie kirk|september 10|sept 10|sep 10)\b/, 'archives', 'Archives', 'The Charlie Kirk September 10 archive lives in Archives, with timeline, grid, list and web views.'], [/\b(contact|email|reach|message|business inquir)/, 'contact', 'Contact', 'You can reach DJ from the Contact page.'], [/\b(game|games|craving|kraving|play)\b/, 'craving', 'Kraving Killer', 'The games are in Kraving Killer, built for when a craving hits.'], [/\b(social|instagram|tiktok|twitter|rumble|spotify|podcast|follow)\b/, 'socials', 'Socials', 'All the socials and the podcast are on the Socials page.']];
+    for (var pi = 0; pi < PG.length; pi++) if (PG[pi][0].test(s) && /\b(where|how do i|how can i|can i|link|find|get|where's|wheres|is there|do you have|buy|join|follow|contact|reach)\b/.test(s)) { r.intent = 'page'; r.page = PG[pi]; return r; }
     if (/\b(surprise me|random|roll the dice|pick (one|for me)|you choose|anything good|dealer'?s choice)\b/.test(s)) r.intent = 'surprise';
     if (/\b(newest|latest|most recent|just (came out|dropped|uploaded|posted)|brand new|new(er)? (video|upload|episode)s?|what'?s new)\b/.test(s) || mods.newest) r.newest = true;
     if (/\b(short|quick|brief|fast|bite[- ]?sized|under (an|1|one) hour|not (too )?long|on my (lunch|break)|few minutes)\b/.test(s) || mods.short) r.short = true;
@@ -95,12 +106,41 @@
     if (r.intent === 'who') { out.text = 'I’m ' + NAME + ', ' + TAG + '. I’m not a hosted AI model. I’m a small free brain that lives in your browser and reads this whole site: every video title, the storylines, and the transcripts as they come in. Describe a story and I’ll find the ones that fit.'; out.chips = examples(); return out; }
     if (r.intent === 'help') { out.text = 'Describe the story you want in your own words: “a celebrity who died and people say it was covered up”, “something short about the CIA”, “newest”, or “surprise me”. I’ll pull a few and tell you why they fit.'; out.chips = examples(); return out; }
     if (r.intent === 'thanks') { out.text = 'Anytime. I’ll be here, one day at a time.'; out.chips = examples(); return out; }
+    function fmtViews(n) { return n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n); }
+    function mk(list, why) { return list.map(function (v) { return { v: v, why: typeof why === 'function' ? why(v) : why || '', hook: '', at: 0, mins: v.seconds ? Math.round(v.seconds / 60) : 0 }; }); }
+    var chan = all.filter(function (v) { return !v.audiobook; });
+    if (r.intent === 'popular') {
+      var withV = chan.filter(function (v) { return v.views > 0; });
+      if (!withV.length) { out.kind = 'answer'; out.text = 'I can\u2019t see view counts right now, so I can\u2019t rank by popularity. Here are the newest instead:'; out.picks = mk(chan.slice(0, 3), ''); return out; }
+      var list = withV;
+      if (r.topic) { var m = dedupe(SS.smart(r.topic, withV)).filter(function (x) { return x.s >= 6.5; }).map(function (x) { return x.v; }); if (m.length) list = m; else out.pre = 'Nothing popular matched \u201c' + r.topic + '\u201d, so here are the overall favorites. '; }
+      list = list.slice().sort(function (a, b) { return b.views - a.views; });
+      var seenT = {}; list = list.filter(function (v) { var k = titleKey(v.title); if (seenT[k]) return false; seenT[k] = 1; return true; });
+      var n = Math.min(5, list.length);
+      out.kind = 'answer'; out.text = (out.pre || '') + (r.starter ? 'Starting here? These are the ones the most people have watched:' : (r.topic && !out.pre ? 'The most-watched on that:' : 'The most-watched videos on the channel:'));
+      out.picks = mk(list.slice(0, n), function (v) { return fmtViews(v.views) + ' views'; }); out.chips = [{ label: 'Newest', q: 'newest' }, { label: 'Surprise me', q: 'surprise me' }]; return out;
+    }
+    if (r.intent === 'longest' || r.intent === 'shortest' || r.intent === 'oldest') {
+      var pool2 = chan.filter(function (v) { return v.seconds > 0; });
+      var sorted = r.intent === 'oldest' ? chan.slice().sort(function (a, b) { return (a.published || '').localeCompare(b.published || ''); }) : pool2.slice().sort(function (a, b) { return r.intent === 'longest' ? b.seconds - a.seconds : a.seconds - b.seconds; });
+      var one = sorted[0]; if (one) { out.kind = 'answer'; out.text = r.intent === 'longest' ? 'The longest one on the channel (' + Math.round(one.seconds / 60) + ' minutes). Bring snacks:' : r.intent === 'shortest' ? 'The shortest on the channel:' : 'The oldest one I can see on the channel:'; out.picks = mk([one], ''); return out; }
+    }
+    if (r.intent === 'count') {
+      var hrs = Math.round(chan.reduce(function (n, v) { return n + (v.seconds || 0); }, 0) / 3600);
+      out.kind = 'answer'; out.text = 'There are ' + chan.length + ' videos in the public library, about ' + hrs + ' hours of deep dives' + (SS.hasTranscripts && SS.hasTranscripts() ? ', and I can search what\u2019s said inside the ones with transcripts so far' : '') + '.'; out.chips = [{ label: 'Most popular', q: 'most popular videos' }, { label: 'Newest', q: 'newest' }]; return out;
+    }
+    if (r.intent === 'about') {
+      out.kind = 'answer'; out.text = 'DJ Petrovski makes Sobering Stories (@Sobersector on YouTube): long-form deep dives into the stories behind the headlines. This site is the home for all of it, plus the archives, games, merch and the Members Club.'; out.link = { label: 'Open the About page', route: 'about' }; out.chips = [{ label: 'Most popular', q: 'most popular videos' }, { label: 'Where should I start', q: 'where should I start' }]; return out;
+    }
+    if (r.intent === 'page') {
+      out.kind = 'answer'; out.text = r.page[3]; out.link = { label: 'Open ' + r.page[2], route: r.page[1] }; return out;
+    }
     if (r.members) { out.text = 'The uncensored cuts live in the Members Club. They’re labeled (PARENTAL ADVISORY) and sit behind the join button there.'; out.link = { label: 'Open the Members Club', route: 'members' }; return out; }
 
     var pool = all.slice(), res = [];
     if (r.intent === 'search') {
       var topicQ = r.topic || q;
-      res = dedupe(SS.smart(topicQ, pool)).filter(function (x) { return x.s >= 3.5; });
+      res = dedupe(SS.smart(topicQ, pool)).filter(function (x) { return x.s >= 6.5 || (x.s >= 3.5 && x.why.length); });
     } else if (r.intent === 'browse' || r.intent === 'surprise') {
       var base = pool.slice();
       if (r.intent === 'surprise') { base.sort(function () { return Math.random() - 0.5; }); }
@@ -118,6 +158,12 @@
     var fresh = res.filter(function (x) { return lastShown.indexOf(x.v.id) < 0; });
     if (mods && mods.another && fresh.length >= 1) res = fresh;
     res = res.slice(0, 3);
+    if (!res.length && r.intent === 'search') {            // try each important word on its own before giving up
+      var ws = (r.topic || q).split(/\s+/).filter(function (w) { return w.length > 3 && !STOPW.test(w); }), seenW = {};
+      ws.forEach(function (w) { dedupe(SS.smart(w, pool)).filter(function (x) { return x.s >= 10; }).slice(0, 3).forEach(function (x) { if (!seenW[x.v.id]) { seenW[x.v.id] = 1; res.push(x); } }); });
+      res.sort(function (a, b) { return b.s - a.s; });
+      if (res.length) note = 'I couldn\u2019t find that exact thing, but these touch parts of it:';
+    }
     if (!res.length) { out.kind = 'none'; out.text = pick(NONE, seed); out.chips = examples(); return out; }
 
     var usedHooks = {};

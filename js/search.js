@@ -78,10 +78,10 @@
   }
   var mods = {};
   function turkeyCard(q) {
-    if (!(window.SS && SS.turkey)) return;
+    if (!(window.SS && SS.turkey)) return '';
     var words = q.split(/\s+/).filter(Boolean).length, T = SS.turkey.ask(q, mods);
-    var show = !q || T.kind === 'greet' || T.kind === 'who' || T.kind === 'help' || T.kind === 'thanks' || T.kind === 'surprise' || T.kind === 'browse' || T.link || (T.kind === 'search' && T.picks.length && (words >= 3 || /\?/.test(q))) || (T.kind === 'none' && words >= 3);
-    if (!show) return;
+    var show = !q || T.kind === 'greet' || T.kind === 'who' || T.kind === 'help' || T.kind === 'thanks' || T.kind === 'surprise' || T.kind === 'browse' || T.kind === 'answer' || T.link || (T.kind === 'search' && T.picks.length && (words >= 3 || /\?/.test(q))) || (T.kind === 'none' && words >= 3);
+    if (!show) return '';
     if (!q) T = SS.turkey.ask('hello', mods);
     var card = el('div', 'ct'), av = el('div', 'ct-av'); av.innerHTML = '<svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#b9462f" stroke="#ffd9a0" stroke-width="2"/><circle cx="24" cy="24" r="17" fill="none" stroke="#ffd9a0" stroke-width="1.5"/><path d="M24 12 36 33H12Z" fill="none" stroke="#ffd9a0" stroke-width="2" stroke-linejoin="round"/><text x="24" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#ffd9a0" font-family="Archivo,sans-serif">24</text></svg>', body = el('div', 'ct-body');
     var nm = el('b', 'ct-name', T.name); nm.appendChild(el('small', '', ' ' + SS.turkey.tag)); body.appendChild(nm);
@@ -107,11 +107,13 @@
       body.appendChild(cr);
     }
     card.appendChild(av); card.appendChild(body); list.appendChild(card);
+    return T.kind;
   }
   function render() {
     list.textContent = ''; rows = []; sel = -1;
     var q = input.value.trim(), A = actions();
-    turkeyCard(q);
+    var tk = turkeyCard(q);
+    if (tk === 'answer') { if (rows.length) hilite(0); return; }   // a direct answer: no need to bury it under a list
     if (!q) {
       var v = ((window.SS && SS.videos) || []).filter(function (x) { return /^[\w-]{11}$/.test(x.id || ''); }).slice(0, 4);
       group('Newest videos', v.map(function (x) { return row('https://i.ytimg.com/vi/' + x.id + '/mqdefault.jpg', x.title, '', 'Video', function () { openVideo(x); }); }));

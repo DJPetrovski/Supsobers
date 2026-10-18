@@ -54,6 +54,15 @@ def iso_seconds(iso):
     return h * 3600 + mi * 60 + se
 
 
+def view_count(text):
+    """'1.2K views' / '742 views' / '1,234 views' / '3.4M views' -> int (0 when the page does not say)"""
+    m = re.search(r'([\d][\d.,]*)\s*([KMB]?)\s*views?', text or "", re.I)
+    if not m:
+        return 0
+    n = float(m.group(1).replace(",", ""))
+    return int(n * {"": 1, "K": 1e3, "M": 1e6, "B": 1e9}[m.group(2).upper()])
+
+
 def from_playlist():
     """The channel's whole uploads playlist, newest first (the channel page only shows the latest ~30).
     Reads the public playlist page, then follows its 'continuation' pages the way the website does."""
@@ -76,7 +85,7 @@ def from_playlist():
                     texts = re.findall(r'"(\d{1,2}:\d{2}(?::\d{2})?)"', json.dumps(lv))
                     seen.add(lv["contentId"])
                     found.append((lv["contentId"], lv["metadata"]["lockupMetadataViewModel"]["title"]["content"],
-                                  seconds(texts[0]) if texts else 0))
+                                  seconds(texts[0]) if texts else 0, view_count(json.dumps(lv))))
                 except KeyError:
                     pass
             cc = o.get("continuationCommand")
@@ -235,7 +244,7 @@ def main():
             if len(found) < 20:
                 raise ValueError("playlist came back short")
             today = datetime.date.today()
-            fresh = [{"id": i, "title": t, "published": today.isoformat(), "seconds": d} for i, t, d in found]
+            fresh = [{"id": i, "title": t, "published": today.isoformat(), "seconds": d, "views": w} for i, t, d, w in found]
         except Exception as ex:
             print("playlist read failed (%s); using the channel page" % ex)
             fresh = from_page()
@@ -263,6 +272,8 @@ def main():
             v["seen"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
         if v["id"] in merged and not key:
             last_known = v["published"]
+        if not v.get("views") and merged.get(v["id"], {}).get("views"):
+            v["views"] = merged[v["id"]]["views"]          # the page did not say this time: keep the last known count
         merged[v["id"]] = v
     # newest date first; on the same day, the channel page order decides
     videos = sorted(merged.values(), key=lambda v: (v["published"], -rank.get(v["id"], 10**6)), reverse=True)
@@ -274,7 +285,15 @@ def main():
     try:
         with open(OUT, encoding="utf-8") as f:
             cur = json.load(f)
-        if {"videos": cur.get("videos", [])} == new_doc:
+        old_views = {v["id"]: v.get("views", 0) for v in cur.get("videos", [])}
+        if cur.get("viewsAt") == today:                        # counts were already refreshed today: keep them
+            for v in videos:
+                if v["id"] in old_views:
+                    v["views"] = old_views[v["id"]]
+        new_doc["viewsAt"] = today if any(v.get("views") for v in videos) else cur.get("viewsAt", "")
+        if cur.get("viewsAt") == today:
+            new_doc["viewsAt"] = today
+        if cur == new_doc:
             print("Already up to date (%d videos)." % len(videos))
             return 0
     except (OSError, ValueError):
