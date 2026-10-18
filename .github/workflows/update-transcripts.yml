@@ -21,6 +21,16 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Refresh the search-by-meaning index (only new text is processed)
+        run: |
+          npm ci --no-audit --no-fund
+          node scripts/build_embeddings.mjs
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"

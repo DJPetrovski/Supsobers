@@ -169,5 +169,6 @@
     return res;
   }
   SS.smart = smart; SS.smartFixed = function (q) { var t = words(q).filter(function (w) { return !STOP.test(w); }); return t.map(fixTypo).join(' '); }; SS.smartExpand = function (q) { var t = words(q).filter(function (w) { return !STOP.test(w); }); return expand(q, t); };
+  SS.transcript = function (id) { return transcripts && transcripts[id]; };
   SS.hasTranscripts = function () { return !!transcripts; };
 })();

@@ -1971,3 +1971,5 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 @media (max-width: 520px) { .ct { flex-direction: column; gap: 8px; padding: 10px; } .ct-av { width: 34px; height: 34px; font-size: 19px; } .ct-pick img { width: 64px; height: 38px; } }
 .tile.is-featured { outline: 2px solid var(--ember); outline-offset: 2px; box-shadow: 0 0 22px rgba(255,42,53,.35); }
 .tile.is-featured .badge-new { background: #fff; color: #b3000f; }
+
+.gs-sem-wait{opacity:.6;font-style:italic}
