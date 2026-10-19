@@ -27,6 +27,7 @@
       var img = el('img'); img.src = (it.cutouts && it.cutouts[0]) || it.images[0]; img.alt = it.name; img.loading = i < 5 ? 'eager' : 'lazy'; img.decoding = 'async'; img.draggable = false;
       a.appendChild(img);
       if (it.soldOut) a.appendChild(el('span', 'mc-badge', 'Sold out'));
+      if (it.store === 'americanpatriot') a.appendChild(el('span', 'mc-ship', '\u2726 Free shipping'));
       a.addEventListener('click', function (e) { if (i !== cur) { e.preventDefault(); go(i); } });
       track.appendChild(a); cards.push(a);
     });
@@ -35,7 +36,7 @@
   var filt = document.getElementById('mc-filter');
   if (filt) filt.addEventListener('input', function () {
     var t = filt.value.toLowerCase().split(/\s+/).filter(Boolean);
-    render(ALL.filter(function (m) { var x = (m.name + ' ' + (m.store === 'fourthwall' ? 'fourthwall' : 'american patriot')).toLowerCase(); return t.every(function (w) { return x.indexOf(w) >= 0; }); }), 0);
+    render(ALL.filter(function (m) { var x = (m.name + ' ' + (m.store === 'fourthwall' ? 'fourthwall' : 'american patriot free shipping')).toLowerCase(); return t.every(function (w) { return x.indexOf(w) >= 0; }); }), 0);
   });
   window.SS = window.SS || {};
   window.SS.merchGo = function (idx) {
@@ -64,6 +65,7 @@
     info.appendChild(el('p', 'mc-store', 'Check out at ' + (STORE[it.store] || 'the shop')));
     info.appendChild(el('h3', 'mc-name', it.name));
     if (it.price) info.appendChild(el('p', 'mc-price', it.price));
+    if (it.store === 'americanpatriot') info.appendChild(el('p', 'mc-shipnote', '\u2726 Free shipping'));
     var b = el('a', 'btn btn-primary', it.soldOut ? 'View it anyway' : 'Buy now'); b.href = it.url; b.target = '_blank'; b.rel = 'noopener';
     info.appendChild(b);
     if (it.images.length > 1) {
