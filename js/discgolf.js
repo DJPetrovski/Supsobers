@@ -78,6 +78,8 @@
     { id: 'classic', name: 'Kraving Killer (6 holes)', note: 'The original six holes: a warm-up, a dogleg, water, a tunnel and a finale.', holes: CLASSIC },
     { id: 'aviary', name: 'The Aviary, Colorado Springs', note: '18 holes, 4,805 ft, concrete tees. Fountain Creek runs through it, with a short, tight, wooded middle. Built from the published totals, so holes are look-alikes: use Edit hole to move any tee or basket to match.',
       holes: genCourse(7596, [196, 315, 210, 235, 360, 248, 215, 190, 335, 262, 228, 345, 205, 240, 255, 345, 415, 206], { bendP: 0.4, width: 16, wvar: 7, tight: [9, 10, 11], creek: { 1: [0.38, 0.52], 6: [0.4, 0.55], 14: [0.45, 0.6] }, density: 1 }) },
+    { id: 'widefield', theme: 'winter', name: 'Widefield Park, Colorado Springs (winter)', note: 'A snowy day at Widefield Park: 18 holes, about 6,000 ft, flat and full of big old trees, with a brook across several fairways. Snow is falling and the grass is buried. Built from the published totals, so holes are look-alikes: use Edit hole to move any tee or basket to match.',
+      holes: (function () { var hs = genCourse(4421, [285, 342, 468, 310, 262, 330, 295, 425, 318, 276, 350, 455, 300, 265, 372, 288, 354, 330], { bendP: 0.3, width: 17, wvar: 6, tight: [], creek: { 2: [0.42, 0.52], 7: [0.5, 0.6], 13: [0.35, 0.45], 16: [0.55, 0.65] }, density: 1.25 }); [3, 8, 12, 17].forEach(function (n) { hs[n - 1].par = 4; }); return hs; })() },
     { id: 'rampart', name: 'Rampart, Colorado Springs', note: '18 holes, 3,638 ft, a mix of long shots and short technical ones in a lightly wooded park. The hills are not in the game yet, only the distances and layout. Look-alike holes: use Edit hole to match the real ones.',
       holes: genCourse(8142, [150, 235, 180, 310, 165, 205, 250, 140, 190, 330, 175, 160, 220, 255, 185, 198, 135, 155], { bendP: 0.45, width: 20, wvar: 8, tight: [], creek: null, density: 0.55 }) }
   ];
@@ -85,7 +87,7 @@
   try { EDITS = JSON.parse(localStorage.getItem('ss-disc-edits') || '{}') || {}; } catch (e) { EDITS = {}; }
   function setCourse(id) {
     COURSE = COURSES.filter(function (c) { return c.id === id; })[0] || COURSES[0]; HOLES = COURSE.holes; HOLE_N = HOLES.length;
-    HOLES.forEach(function (h) { h.built = false; });
+    HOLES.forEach(function (h) { h.built = false; }); curBuilt = -1;
     try { localStorage.setItem('ss-disc-course', COURSE.id); } catch (e) {}
   }
   try { setCourse(localStorage.getItem('ss-disc-course') || 'challenge'); } catch (e) {}
@@ -990,6 +992,7 @@
   }
 
   /* ---------- Three.js scene ---------- */
+  var skyMesh, glowSprite, ridgeMeshes = [], peaksMesh, snowPts, snowPos, snowVel, themeNow = null, envRT = null, skyTexs = {}, WINTER = false, winDetail = null;
   var T, R, scene, camera, sun, hemi, courseGroup, discMesh, markMeshes = [], trailLine, trailGeo, prevLine, prevGeo, prevEnd, teeRing, basketObj, waterMats = [], waterTex, waterNormal, groundTex, curBuilt = -1, noiseTile;
   var TRAILN = 600, PREVN = 220, isLow = (navigator.hardwareConcurrency || 4) < 4 || /Android|iPhone|iPad/i.test(navigator.userAgent);
   function loadThree(cb) {
@@ -999,9 +1002,21 @@
   function V(x, y, z) { return new T.Vector3(x, z, -y); }
   function mapV(a) { return [a[0], a[2], -a[1]]; }
 
-  function skyTexture() {
+  function applyTheme(win) {
+    if (themeNow === win || !scene) return; themeNow = win;
+    var tex = skyTexs[win ? 1 : 0] || (skyTexs[win ? 1 : 0] = skyTexture(win));
+    skyMesh.material.map = tex; skyMesh.material.needsUpdate = true;
+    try { var pm = new T.PMREMGenerator(R), rt = pm.fromEquirectangular(tex); if (envRT) envRT.dispose(); envRT = rt; scene.environment = rt.texture; pm.dispose(); } catch (er) {}
+    scene.fog.color.set(win ? 0xdbe2e8 : 0xb9cbd9); scene.fog.near = win ? 26 : 55; scene.fog.far = win ? 340 : 640;
+    hemi.color.set(win ? 0xe2eaf4 : 0xcadcf2); hemi.groundColor.set(win ? 0xa9b6c6 : 0x4b5634); hemi.intensity = win ? 1.0 : 0.62;
+    sun.color.set(win ? 0xeaf1ff : 0xffeed6); sun.intensity = win ? 1.35 : 2.5; R.toneMappingExposure = win ? 0.95 : 0.86;
+    glowSprite.visible = !win; peaksMesh.visible = win; snowPts.visible = win;
+    ridgeMeshes.forEach(function (m) { m.material.color.set(win ? m.userData.w : m.userData.s); });
+  }
+  function skyTexture(win) {
     var W = 2048, Hh = 1024, c = document.createElement('canvas'); c.width = W; c.height = Hh; var g = c.getContext('2d'), r = rng(31), gr = g.createLinearGradient(0, 0, 0, Hh);
-    gr.addColorStop(0, '#2d62ad'); gr.addColorStop(0.18, '#4a82c6'); gr.addColorStop(0.34, '#7fb0dc'); gr.addColorStop(0.43, '#b8d5ea'); gr.addColorStop(0.48, '#dbe8ef'); gr.addColorStop(0.5, '#e6ecee'); gr.addColorStop(0.505, '#9fae95'); gr.addColorStop(1, '#4f6238');
+    if (win) { gr.addColorStop(0, '#7b8794'); gr.addColorStop(0.18, '#98a4b0'); gr.addColorStop(0.34, '#b3bdc7'); gr.addColorStop(0.43, '#ccd3d9'); gr.addColorStop(0.48, '#dae0e5'); gr.addColorStop(0.5, '#e3e8ec'); gr.addColorStop(0.505, '#e8ecef'); gr.addColorStop(1, '#eef1f4'); }
+    else { gr.addColorStop(0, '#2d62ad'); gr.addColorStop(0.18, '#4a82c6'); gr.addColorStop(0.34, '#7fb0dc'); gr.addColorStop(0.43, '#b8d5ea'); gr.addColorStop(0.48, '#dbe8ef'); gr.addColorStop(0.5, '#e6ecee'); gr.addColorStop(0.505, '#9fae95'); gr.addColorStop(1, '#4f6238'); }
     g.fillStyle = gr; g.fillRect(0, 0, W, Hh);
     // fractal cloud layer: value noise, thresholded into soft cumulus with shaded bellies
     var NW = 256, NH = 96, base = [], i, j; for (i = 0; i < 40 * 40; i++) base.push(r());
@@ -1009,13 +1024,13 @@
     var cl = document.createElement('canvas'); cl.width = NW; cl.height = NH; var cg = cl.getContext('2d'), im = cg.createImageData(NW, NH);
     for (j = 0; j < NH; j++) for (i = 0; i < NW; i++) {
       var u = i / NW, v = j / NH, d = vn(u * 6, v * 9, 1) * 0.5 + vn(u * 12, v * 18, 1) * 0.28 + vn(u * 24, v * 36, 1) * 0.15 + vn(u * 48, v * 72, 1) * 0.07;
-      var cover = 0.52 + 0.1 * Math.sin(u * 12.5), a = Math.max(0, Math.min(1, (d - cover) * 4.2)), fade = Math.min(1, v * 6) * Math.min(1, (1 - v) * 2.4);
+      var cover = (win ? 0.3 : 0.52) + 0.1 * Math.sin(u * 12.5), a = Math.max(0, Math.min(1, (d - cover) * 4.2)), fade = Math.min(1, v * 6) * Math.min(1, (1 - v) * 2.4);
       var up2 = vn(u * 6, (v - 0.04) * 9, 1) * 0.5 + vn(u * 12, (v - 0.04) * 18, 1) * 0.28 + vn(u * 24, (v - 0.04) * 36, 1) * 0.15 + vn(u * 48, (v - 0.04) * 72, 1) * 0.07, lit = Math.max(0, Math.min(1, 0.55 + (d - up2) * 14));
-      var o = (j * NW + i) * 4; im.data[o] = 150 + lit * 105; im.data[o + 1] = 160 + lit * 95; im.data[o + 2] = 178 + lit * 77; im.data[o + 3] = a * fade * 235;
+      var o = (j * NW + i) * 4; if (win) { im.data[o] = 118 + lit * 72; im.data[o + 1] = 127 + lit * 68; im.data[o + 2] = 140 + lit * 62; } else { im.data[o] = 150 + lit * 105; im.data[o + 1] = 160 + lit * 95; im.data[o + 2] = 178 + lit * 77; } im.data[o + 3] = a * fade * 235;
     }
     cg.putImageData(im, 0, 0); g.save(); g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high'; g.globalAlpha = 0.95; g.drawImage(cl, 0, Hh * 0.04, W, Hh * 0.43); g.restore();
     // warm haze along the horizon
-    var hz = g.createLinearGradient(0, Hh * 0.38, 0, Hh * 0.505); hz.addColorStop(0, 'rgba(255,238,205,0)'); hz.addColorStop(1, 'rgba(255,236,205,.5)'); g.fillStyle = hz; g.fillRect(0, Hh * 0.38, W, Hh * 0.13);
+    var hz = g.createLinearGradient(0, Hh * 0.38, 0, Hh * 0.505); hz.addColorStop(0, win ? 'rgba(228,234,240,0)' : 'rgba(255,238,205,0)'); hz.addColorStop(1, win ? 'rgba(228,234,240,.6)' : 'rgba(255,236,205,.5)'); g.fillStyle = hz; g.fillRect(0, Hh * 0.38, W, Hh * 0.13);
     var t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; t.mapping = T.EquirectangularReflectionMapping; t.anisotropy = 4; return t;
   }
   function normalFromHeight(img) {   // turn the wave drawing into a normal map so the water catches the sky
@@ -1050,19 +1065,34 @@
     scene = new T.Scene(); scene.fog = new T.Fog(0xb9cbd9, 55, 640);
     camera = new T.PerspectiveCamera(55, 16 / 10, 0.15, 2500);
     var skyTex = skyTexture();
-    var sky = new T.Mesh(new T.SphereGeometry(1800, 32, 20), new T.MeshBasicMaterial({ map: skyTex, side: T.BackSide, fog: false, depthWrite: false, toneMapped: false })); sky.renderOrder = -2; sky.name = 'sky'; sky.rotation.y = 2.2; scene.add(sky);
-    try { var pm = new T.PMREMGenerator(R); scene.environment = pm.fromEquirectangular(skyTex).texture; pm.dispose(); } catch (er) {}
-    var glow = new T.Sprite(new T.SpriteMaterial({ map: glowTexture(), fog: false, depthWrite: false, blending: T.AdditiveBlending, transparent: true, toneMapped: false })); glow.scale.set(430, 430, 1); glow.position.set(917, 768, -1212); glow.name = 'glow'; scene.add(glow);
+    var sky = new T.Mesh(new T.SphereGeometry(1800, 32, 20), new T.MeshBasicMaterial({ map: skyTex, side: T.BackSide, fog: false, depthWrite: false, toneMapped: false })); sky.renderOrder = -2; sky.name = 'sky'; sky.rotation.y = 2.2; scene.add(sky); skyMesh = sky; skyTexs[0] = skyTex;
+    try { var pm = new T.PMREMGenerator(R); envRT = pm.fromEquirectangular(skyTex); scene.environment = envRT.texture; pm.dispose(); } catch (er) {}
+    var glow = new T.Sprite(new T.SpriteMaterial({ map: glowTexture(), fog: false, depthWrite: false, blending: T.AdditiveBlending, transparent: true, toneMapped: false })); glow.scale.set(430, 430, 1); glow.position.set(917, 768, -1212); glow.name = 'glow'; scene.add(glow); glowSprite = glow;
     [[620, 0x5f7f8c, 36, 5], [900, 0x86a2b4, 60, 2], [1250, 0xa6bccc, 90, 9]].forEach(function (rg, ri) {   // far hills, hazier the further they are
       var N = 120, pos = [], idx = [], rad = rg[0];
       for (var i = 0; i <= N; i++) { var a2 = i / N * Math.PI * 2, hh = rg[2] * (0.5 + 0.28 * Math.sin(a2 * 3 + ri * 1.7 + rg[3]) + 0.2 * Math.sin(a2 * 7.3 + 1 + ri) + 0.1 * Math.sin(a2 * 13 + rg[3]) + 0.06 * Math.sin(a2 * 31)); pos.push(Math.sin(a2) * rad, -8, -Math.cos(a2) * rad, Math.sin(a2) * rad, hh, -Math.cos(a2) * rad); if (i < N) { var k = i * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); } }
       var g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.setIndex(idx);
-      var m = new T.Mesh(g, new T.MeshBasicMaterial({ color: rg[1], side: T.DoubleSide, fog: false, toneMapped: false })); m.name = 'ridge'; scene.add(m);
+      var m = new T.Mesh(g, new T.MeshBasicMaterial({ color: rg[1], side: T.DoubleSide, fog: false, toneMapped: false })); m.name = 'ridge'; m.userData.s = rg[1]; m.userData.w = [0xb4c1ce, 0xc6d1db, 0xd7dfe7][ri]; ridgeMeshes.push(m); scene.add(m);
     });
     hemi = new T.HemisphereLight(0xcadcf2, 0x4b5634, 0.62); scene.add(hemi);
     sun = new T.DirectionalLight(0xffeed6, 2.5); sun.castShadow = true; var sz = isLow ? 1024 : 2048; sun.shadow.mapSize.set(sz, sz);
     var sc = sun.shadow.camera; sc.left = -34; sc.right = 34; sc.top = 34; sc.bottom = -34; sc.near = 1; sc.far = 260; sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.04;
     scene.add(sun); scene.add(sun.target);
+    (function () {   // winter only: the Front Range, snow-capped, off to the west
+      var N = 160, pos = [], col = [], idx = [], rad = 1050, rr2 = rng(17);
+      for (var i = 0; i <= N; i++) {
+        var a2 = i / N * Math.PI * 2, d = Math.atan2(Math.sin(a2 - 4.2), Math.cos(a2 - 4.2)), hump = Math.exp(-d * d / 0.55), hh = 40 + 230 * hump * (0.7 + 0.3 * Math.sin(a2 * 23 + 1) + 0.15 * Math.sin(a2 * 61)) + 26 * Math.sin(a2 * 9 + 2) + 10 * Math.sin(a2 * 41);
+        hh = Math.max(24, hh); var cx = Math.sin(a2) * rad, cz = -Math.cos(a2) * rad, sn = clamp((hh - 70) / 140, 0, 1);
+        pos.push(cx, -8, cz, cx, hh, cz); col.push(0.45, 0.52, 0.58, 0.9 - 0.3 * (1 - sn), 0.94 - 0.32 * (1 - sn), 0.98 - 0.3 * (1 - sn));
+        if (i < N) { var k = i * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); }
+      }
+      var g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.setAttribute('color', new T.Float32BufferAttribute(col, 3)); g.setIndex(idx);
+      peaksMesh = new T.Mesh(g, new T.MeshBasicMaterial({ vertexColors: true, side: T.DoubleSide, fog: false, toneMapped: false })); peaksMesh.visible = false; peaksMesh.renderOrder = -1; scene.add(peaksMesh);
+      var N2 = isLow ? 900 : 2200; snowPos = new Float32Array(N2 * 3); snowVel = new Float32Array(N2 * 2); for (var q = 0; q < N2; q++) { snowPos[q * 3] = (Math.random() - 0.5) * 70; snowPos[q * 3 + 1] = Math.random() * 26; snowPos[q * 3 + 2] = (Math.random() - 0.5) * 70; snowVel[q * 2] = 0.9 + Math.random() * 1.1; snowVel[q * 2 + 1] = Math.random() * 6.28; }
+      var sg = new T.BufferGeometry(); sg.setAttribute('position', new T.BufferAttribute(snowPos, 3));
+      var dc = document.createElement('canvas'); dc.width = dc.height = 32; var dg = dc.getContext('2d'), rg3 = dg.createRadialGradient(16, 16, 0, 16, 16, 16); rg3.addColorStop(0, 'rgba(255,255,255,1)'); rg3.addColorStop(0.5, 'rgba(255,255,255,.7)'); rg3.addColorStop(1, 'rgba(255,255,255,0)'); dg.fillStyle = rg3; dg.fillRect(0, 0, 32, 32);
+      snowPts = new T.Points(sg, new T.PointsMaterial({ map: new T.CanvasTexture(dc), size: 0.24, sizeAttenuation: true, transparent: true, opacity: 0.92, depthWrite: false, fog: false, color: 0xffffff })); snowPts.frustumCulled = false; snowPts.visible = false; scene.add(snowPts);
+    })();
     noiseTile = makeNoise(); waterTex = waveTexture(); waterNormal = normalFromHeight(waterTex.image);
     discMesh = makeDisc(); scene.add(discMesh);
     for (var i = 0; i < 8; i++) { var m2 = makeDisc(true); m2.visible = false; markMeshes.push(m2); scene.add(m2); }
@@ -1173,38 +1203,38 @@
     var ymin = -45, ymax = h.basket[1] + 70, span = ymax - ymin, S = 2048, c = document.createElement('canvas'); c.width = c.height = S; var g = c.getContext('2d');
     var sx = S / (MAPX * 2), sy = S / span;
     function X(x) { return (x + MAPX) * sx; } function Y(y) { return (ymax - y) * sy; }
-    g.fillStyle = '#2f4a25'; g.fillRect(0, 0, S, S);
+    var Wn = WINTER; g.fillStyle = Wn ? '#dde5ee' : '#2f4a25'; g.fillRect(0, 0, S, S);
     // patchy meadow: big soft blotches of lighter and darker grass
-    (function () { var rr = rng(5); for (var q = 0; q < 220; q++) { var qx = rr() * S, qy = rr() * S, qr = (30 + rr() * 110) * (S / 2048); var lg = g.createRadialGradient(qx, qy, 0, qx, qy, qr); var lite = rr() < 0.5; lg.addColorStop(0, lite ? 'rgba(130,160,70,.22)' : 'rgba(20,44,18,.22)'); lg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = lg; g.beginPath(); g.arc(qx, qy, qr, 0, 6.3); g.fill(); } })();
-    (function () { var rr = rng(77); for (var q = 0; q < 160; q++) { var qx = rr() * S, qy = rr() * S, qr = (6 + rr() * 26) * (S / 2048), lg = g.createRadialGradient(qx, qy, 0, qx, qy, qr); lg.addColorStop(0, rr() < 0.55 ? 'rgba(128,116,60,.2)' : 'rgba(70,92,38,.22)'); lg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = lg; g.beginPath(); g.arc(qx, qy, qr, 0, 6.3); g.fill(); } })();
+    (function () { var rr = rng(5); for (var q = 0; q < 220; q++) { var qx = rr() * S, qy = rr() * S, qr = (30 + rr() * 110) * (S / 2048); var lg = g.createRadialGradient(qx, qy, 0, qx, qy, qr); var lite = rr() < 0.5; lg.addColorStop(0, Wn ? (lite ? 'rgba(255,255,255,.4)' : 'rgba(150,172,200,.3)') : (lite ? 'rgba(130,160,70,.22)' : 'rgba(20,44,18,.22)')); lg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = lg; g.beginPath(); g.arc(qx, qy, qr, 0, 6.3); g.fill(); } })();
+    (function () { var rr = rng(77); for (var q = 0; q < 160; q++) { var qx = rr() * S, qy = rr() * S, qr = (6 + rr() * 26) * (S / 2048), lg = g.createRadialGradient(qx, qy, 0, qx, qy, qr); lg.addColorStop(0, Wn ? (rr() < 0.5 ? 'rgba(120,128,104,.2)' : 'rgba(255,255,255,.3)') : (rr() < 0.55 ? 'rgba(128,116,60,.2)' : 'rgba(70,92,38,.22)')); lg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = lg; g.beginPath(); g.arc(qx, qy, qr, 0, 6.3); g.fill(); } })();
     function pathStroke(wid, color) { g.strokeStyle = color; g.lineWidth = wid * sx; g.lineCap = 'round'; g.lineJoin = 'round'; g.beginPath(); h.path.forEach(function (p, i) { if (i) g.lineTo(X(p[0]), Y(p[1])); else g.moveTo(X(p[0]), Y(p[1])); }); g.stroke(); }
     // rough, with a soft edge into the out-of-bounds woods
-    g.save(); g.filter = 'blur(' + Math.round(sx * 2.2) + 'px)'; pathStroke(124, '#37532a'); g.restore();
-    g.save(); g.filter = 'blur(' + Math.round(sx * 1.2) + 'px)'; pathStroke(h.width + 14, '#46672f'); g.restore();
+    g.save(); g.filter = 'blur(' + Math.round(sx * 2.2) + 'px)'; pathStroke(124, Wn ? '#c8d3e0' : '#37532a'); g.restore();
+    g.save(); g.filter = 'blur(' + Math.round(sx * 1.2) + 'px)'; pathStroke(h.width + 14, Wn ? '#d6dfe9' : '#46672f'); g.restore();
     // mown fairway with stripes
     var fc = document.createElement('canvas'); fc.width = fc.height = S; var f = fc.getContext('2d');
-    f.strokeStyle = '#5a8236'; f.lineWidth = h.width * sx; f.lineCap = 'round'; f.lineJoin = 'round'; f.beginPath(); h.path.forEach(function (p, i) { if (i) f.lineTo(X(p[0]), Y(p[1])); else f.moveTo(X(p[0]), Y(p[1])); }); f.stroke();
-    f.globalCompositeOperation = 'source-atop'; for (var yy = ymin; yy < ymax; yy += 8) { f.fillStyle = ((yy - ymin) / 8 & 1) ? 'rgba(220,255,150,.14)' : 'rgba(0,25,0,.16)'; f.fillRect(0, Y(yy + 8), S, 8 * sy + 1); }
+    f.strokeStyle = Wn ? '#eef3f9' : '#5a8236'; f.lineWidth = h.width * sx; f.lineCap = 'round'; f.lineJoin = 'round'; f.beginPath(); h.path.forEach(function (p, i) { if (i) f.lineTo(X(p[0]), Y(p[1])); else f.moveTo(X(p[0]), Y(p[1])); }); f.stroke();
+    f.globalCompositeOperation = 'source-atop'; for (var yy = ymin; yy < ymax; yy += 8) { f.fillStyle = Wn ? ((yy - ymin) / 8 & 1 ? 'rgba(255,255,255,.2)' : 'rgba(140,160,190,.12)') : (((yy - ymin) / 8 & 1) ? 'rgba(220,255,150,.14)' : 'rgba(0,25,0,.16)'); f.fillRect(0, Y(yy + 8), S, 8 * sy + 1); }
     g.save(); g.filter = 'blur(' + Math.round(sx * 0.5) + 'px)'; g.drawImage(fc, 0, 0); g.restore();
     // basket green, tee pad
-    var b = h.basket, rg = g.createRadialGradient(X(b[0]), Y(b[1]), 0, X(b[0]), Y(b[1]), 9 * sx); rg.addColorStop(0, '#6f9b47'); rg.addColorStop(0.7, '#648e40'); rg.addColorStop(1, 'rgba(110,160,80,0)'); g.fillStyle = rg; g.beginPath(); g.arc(X(b[0]), Y(b[1]), 9 * sx, 0, 6.3); g.fill();
+    var b = h.basket, rg = g.createRadialGradient(X(b[0]), Y(b[1]), 0, X(b[0]), Y(b[1]), 9 * sx); rg.addColorStop(0, Wn ? '#f4f8fc' : '#6f9b47'); rg.addColorStop(0.7, Wn ? '#edf2f8' : '#648e40'); rg.addColorStop(1, 'rgba(110,160,80,0)'); g.fillStyle = rg; g.beginPath(); g.arc(X(b[0]), Y(b[1]), 9 * sx, 0, 6.3); g.fill();
     // water with a muddy bank
     h.water.forEach(function (w) {
       if (w[4] === 'e') {
-        g.save(); g.filter = 'blur(' + Math.round(sx * 0.9) + 'px)'; g.fillStyle = '#6e5e3e'; g.beginPath(); g.ellipse(X(w[0]), Y(w[1]), (w[2] + 1.8) * sx, (w[3] + 1.8) * sy, 0, 0, 6.3); g.fill(); g.restore();
-        g.fillStyle = '#1f5a86'; g.beginPath(); g.ellipse(X(w[0]), Y(w[1]), w[2] * sx, w[3] * sy, 0, 0, 6.3); g.fill(); return;
+        g.save(); g.filter = 'blur(' + Math.round(sx * 0.9) + 'px)'; g.fillStyle = Wn ? '#e8eef5' : '#6e5e3e'; g.beginPath(); g.ellipse(X(w[0]), Y(w[1]), (w[2] + 1.8) * sx, (w[3] + 1.8) * sy, 0, 0, 6.3); g.fill(); g.restore();
+        g.fillStyle = Wn ? '#a8c7d8' : '#1f5a86'; g.beginPath(); g.ellipse(X(w[0]), Y(w[1]), w[2] * sx, w[3] * sy, 0, 0, 6.3); g.fill(); return;
       }
-      g.save(); g.filter = 'blur(' + Math.round(sx * 0.8) + 'px)'; g.fillStyle = '#6b5a3c'; g.fillRect(X(w[0]) - 1.6 * sx, Y(w[3]) - 1.6 * sy, (w[2] - w[0]) * sx + 3.2 * sx, (w[3] - w[1]) * sy + 3.2 * sy); g.restore();
-      g.fillStyle = '#1f5a86'; g.fillRect(X(w[0]), Y(w[3]), (w[2] - w[0]) * sx, (w[3] - w[1]) * sy);
+      g.save(); g.filter = 'blur(' + Math.round(sx * 0.8) + 'px)'; g.fillStyle = Wn ? '#e8eef5' : '#6b5a3c'; g.fillRect(X(w[0]) - 1.6 * sx, Y(w[3]) - 1.6 * sy, (w[2] - w[0]) * sx + 3.2 * sx, (w[3] - w[1]) * sy + 3.2 * sy); g.restore();
+      g.fillStyle = Wn ? '#a8c7d8' : '#1f5a86'; g.fillRect(X(w[0]), Y(w[3]), (w[2] - w[0]) * sx, (w[3] - w[1]) * sy);
     });
     // island: a bit of rough around the basket
     if (h.island) { var ig = g.createRadialGradient(X(b[0]), Y(b[1]), 0, X(b[0]), Y(b[1]), 7 * sx); ig.addColorStop(0, '#86b95a'); ig.addColorStop(0.8, '#78ab52'); ig.addColorStop(1, 'rgba(110,100,70,.9)'); g.fillStyle = ig; g.beginPath(); g.arc(X(b[0]), Y(b[1]), 7 * sx, 0, 6.3); g.fill(); }
     // worn dirt at the tee and under the basket
-    [[h.tee[0], h.tee[1], 2.6], [b[0], b[1], 1.1]].forEach(function (q) { var dg = g.createRadialGradient(X(q[0]), Y(q[1]), 0, X(q[0]), Y(q[1]), q[2] * sx); dg.addColorStop(0, 'rgba(120,98,62,.7)'); dg.addColorStop(1, 'rgba(120,98,62,0)'); g.fillStyle = dg; g.beginPath(); g.arc(X(q[0]), Y(q[1]), q[2] * sx, 0, 6.3); g.fill(); });
+    [[h.tee[0], h.tee[1], 2.6], [b[0], b[1], 1.1]].forEach(function (q) { var dg = g.createRadialGradient(X(q[0]), Y(q[1]), 0, X(q[0]), Y(q[1]), q[2] * sx); dg.addColorStop(0, Wn ? 'rgba(96,100,106,.55)' : 'rgba(120,98,62,.7)'); dg.addColorStop(1, Wn ? 'rgba(96,100,106,0)' : 'rgba(120,98,62,0)'); g.fillStyle = dg; g.beginPath(); g.arc(X(q[0]), Y(q[1]), q[2] * sx, 0, 6.3); g.fill(); });
     // soft blob shadows under the trees
-    (h.treeList || []).forEach(function (t) { var rr = 2.8 * t.s * sx, rg2 = g.createRadialGradient(X(t.x), Y(t.y), 0, X(t.x), Y(t.y), rr); rg2.addColorStop(0, 'rgba(8,22,8,.62)'); rg2.addColorStop(1, 'rgba(8,22,8,0)'); g.fillStyle = rg2; g.beginPath(); g.arc(X(t.x), Y(t.y), rr, 0, 6.3); g.fill(); });
-    (h.obst || []).forEach(function (o) { var rr3 = (o.r * 1.9) * sx, rg3 = g.createRadialGradient(X(o.x), Y(o.y), 0, X(o.x), Y(o.y), rr3); rg3.addColorStop(0, 'rgba(8,22,8,.6)'); rg3.addColorStop(1, 'rgba(8,22,8,0)'); g.fillStyle = rg3; g.beginPath(); g.arc(X(o.x), Y(o.y), rr3, 0, 6.3); g.fill(); });
-    (function () { var rr = rng(91 + h.name.length); for (var q = 0; q < 420; q++) { var qx = rr() * S, qy = rr() * S; g.fillStyle = rr() < 0.6 ? 'rgba(250,250,240,.75)' : 'rgba(240,210,70,.7)'; g.beginPath(); g.arc(qx, qy, 0.9 + rr() * 1.3, 0, 6.3); g.fill(); } })();
+    (h.treeList || []).forEach(function (t) { var rr = 2.8 * t.s * sx, rg2 = g.createRadialGradient(X(t.x), Y(t.y), 0, X(t.x), Y(t.y), rr); rg2.addColorStop(0, Wn ? 'rgba(40,58,92,.42)' : 'rgba(8,22,8,.62)'); rg2.addColorStop(1, Wn ? 'rgba(40,58,92,0)' : 'rgba(8,22,8,0)'); g.fillStyle = rg2; g.beginPath(); g.arc(X(t.x), Y(t.y), rr, 0, 6.3); g.fill(); });
+    (h.obst || []).forEach(function (o) { var rr3 = (o.r * 1.9) * sx, rg3 = g.createRadialGradient(X(o.x), Y(o.y), 0, X(o.x), Y(o.y), rr3); rg3.addColorStop(0, Wn ? 'rgba(40,58,92,.4)' : 'rgba(8,22,8,.6)'); rg3.addColorStop(1, Wn ? 'rgba(40,58,92,0)' : 'rgba(8,22,8,0)'); g.fillStyle = rg3; g.beginPath(); g.arc(X(o.x), Y(o.y), rr3, 0, 6.3); g.fill(); });
+    (function () { var rr = rng(91 + h.name.length); for (var q = 0; q < 420; q++) { var qx = rr() * S, qy = rr() * S; if (Wn) { g.fillStyle = rr() < 0.5 ? 'rgba(150,128,86,.5)' : 'rgba(120,142,176,.28)'; g.beginPath(); g.ellipse(qx, qy, 0.6 + rr() * 1.4, 0.4 + rr() * 0.8, rr() * 3, 0, 6.3); g.fill(); } else { g.fillStyle = rr() < 0.6 ? 'rgba(250,250,240,.75)' : 'rgba(240,210,70,.7)'; g.beginPath(); g.arc(qx, qy, 0.9 + rr() * 1.3, 0, 6.3); g.fill(); } } })();
     // grain
     g.globalCompositeOperation = 'overlay'; g.globalAlpha = 0.55; g.fillStyle = g.createPattern(noiseTile, 'repeat'); g.save(); g.scale(1.6, 1.6); g.fillRect(0, 0, S / 1.6, S / 1.6); g.restore(); g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
     var tex = new T.CanvasTexture(c); tex.encoding = T.sRGBEncoding; tex.anisotropy = R.capabilities.getMaxAnisotropy(); tex.generateMipmaps = true; tex.minFilter = T.LinearMipmapLinearFilter;
@@ -1362,20 +1392,59 @@
     }
     g.computeVertexNormals(); return g;
   }
+  function snowify(m, amt, lo, hi) {   // snow settles on whatever faces up
+    var prev = m.onBeforeCompile;
+    m.onBeforeCompile = function (sh) {
+      if (prev) prev(sh);
+      sh.vertexShader = sh.vertexShader.replace('void main() {', 'varying float vSn;\nvoid main() {').replace('#include <begin_vertex>', '#include <begin_vertex>\n vSn = objectNormal.y;');
+      sh.fragmentShader = sh.fragmentShader.replace('void main() {', 'varying float vSn;\nvoid main() {').replace('#include <map_fragment>', '#include <map_fragment>\n { float sn = smoothstep(' + lo.toFixed(2) + ', ' + hi.toFixed(2) + ', vSn) * ' + amt.toFixed(2) + '; diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.9, 0.94, 1.0), sn); }');
+    };
+    m.customProgramCacheKey = function () { return 'snow' + amt + lo + hi + (m.userData.sway ? 's' : '') + (m.userData.grass ? 'g' : ''); };
+    return m;
+  }
+  function bareGeo(seed, low) {   // a leafless winter tree: forked branches getting thinner, height 1
+    var r = rng(seed), pos = [], nor = [], uv = [], col = [], idx = [], vi = 0, S = 5;
+    function tube(ax, ay, az, bx, by, bz, r0, r1, tone, vl) {
+      var dx = bx - ax, dy = by - ay, dz = bz - az, l = Math.hypot(dx, dy, dz) || 1; dx /= l; dy /= l; dz /= l;
+      var ux, uy, uz; if (Math.abs(dy) < 0.9) { ux = -dz; uy = 0; uz = dx; } else { ux = 1; uy = 0; uz = 0; } var un = Math.hypot(ux, uy, uz); ux /= un; uy /= un; uz /= un;
+      var vx = dy * uz - dz * uy, vy = dz * ux - dx * uz, vz = dx * uy - dy * ux;
+      for (var i = 0; i <= S; i++) {
+        var a = i / S * 6.2832, c = Math.cos(a), s2 = Math.sin(a), nx = ux * c + vx * s2, ny = uy * c + vy * s2, nz = uz * c + vz * s2, tn = Math.hypot(nx, ny + 0.6, nz);
+        pos.push(ax + nx * r0, ay + ny * r0, az + nz * r0, bx + nx * r1, by + ny * r1, bz + nz * r1);
+        for (var e = 0; e < 2; e++) { nor.push(nx / tn, (ny + 0.6) / tn, nz / tn); uv.push(i / S * 2, e * vl); col.push(tone, tone, tone); }
+      }
+      for (var k = 0; k < S; k++) { var b = vi + k * 2; idx.push(b, b + 1, b + 2, b + 1, b + 3, b + 2); } vi += (S + 1) * 2;
+    }
+    function grow(x, y, z, dx, dy, dz, len, rad, depth, tone) {
+      var ex = x + dx * len, ey = y + dy * len, ez = z + dz * len, r1 = rad * 0.68; tube(x, y, z, ex, ey, ez, rad, r1, tone, len * 8);
+      if (depth <= 0) return; var n = depth >= 3 ? 3 : (r() < 0.5 ? 3 : 2);
+      for (var k = 0; k < n; k++) { var a = r() * 6.28, sp = 0.5 + r() * 0.55, ndx = dx + Math.cos(a) * sp, ndz = dz + Math.sin(a) * sp, ndy = dy * 0.8 + 0.28, nl = Math.hypot(ndx, ndy, ndz); grow(ex, ey, ez, ndx / nl, ndy / nl, ndz / nl, len * (0.7 + r() * 0.14), r1 * 0.92, depth - 1, tone * 0.97); }
+    }
+    grow(0, 0, 0, 0, 1, 0, 0.32, 0.034, low ? 4 : 5, 1);
+    var g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.setAttribute('normal', new T.Float32BufferAttribute(nor, 3)); g.setAttribute('uv', new T.Float32BufferAttribute(uv, 2)); g.setAttribute('color', new T.Float32BufferAttribute(col, 3)); g.setIndex(idx); return g;
+  }
+  function snowDetailCanvas() {
+    var c = document.createElement('canvas'); c.width = c.height = 256; var g = c.getContext('2d'), r = rng(515); g.fillStyle = '#b0b0b0'; g.fillRect(0, 0, 256, 256);
+    for (var i = 0; i < 700; i++) { var v = r() < 0.5 ? 150 : 205, rd = 4 + r() * 16, x = r() * 256, y = r() * 256, lg = g.createRadialGradient(x, y, 0, x, y, rd); lg.addColorStop(0, 'rgba(' + v + ',' + v + ',' + (v + 8) + ',.35)'); lg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = lg; g.fillRect(x - rd, y - rd, rd * 2, rd * 2); }
+    for (var j = 0; j < 2600; j++) { var w = r() < 0.7 ? 255 : 110; g.fillStyle = 'rgba(' + w + ',' + w + ',' + w + ',' + (0.35 + r() * 0.5) + ')'; g.fillRect(r() * 256, r() * 256, 1 + r() * 1.2, 1 + r() * 1.2); }
+    return c;
+  }
   function buildCourse(h) {
+    WINTER = !!(COURSE && COURSE.theme === 'winter'); applyTheme(WINTER);
     if (curBuilt === G.hole && courseGroup.children.length) return; curBuilt = G.hole;
     disposeGroup(courseGroup); treeMeshes = []; waterMats = [];
     // ground
     var gp = paintGround(h), gmat = new T.MeshStandardMaterial({ map: gp.tex, roughness: 0.96, metalness: 0 }), ground = new T.Mesh(groundGeo(gp), gmat);
     if (!detailTex) { detailTex = new T.CanvasTexture(grassDetailCanvas()); detailTex.wrapS = detailTex.wrapT = T.RepeatWrapping; detailTex.anisotropy = 4; }
-    gmat.onBeforeCompile = function (sh) { sh.uniforms.detailMap = { value: detailTex }; sh.uniforms.detailRep = { value: new T.Vector2(MAPX * 2 / 1.1, gp.span / 1.1) };
+    if (!winDetail) { winDetail = new T.CanvasTexture(snowDetailCanvas()); winDetail.wrapS = winDetail.wrapT = T.RepeatWrapping; winDetail.anisotropy = 4; }
+    gmat.onBeforeCompile = function (sh) { sh.uniforms.detailMap = { value: WINTER ? winDetail : detailTex }; sh.uniforms.detailRep = { value: new T.Vector2(MAPX * 2 / 1.1, gp.span / 1.1) };
       sh.fragmentShader = sh.fragmentShader.replace('void main() {', 'uniform sampler2D detailMap; uniform vec2 detailRep;\nvoid main() {').replace('#include <map_fragment>', '#include <map_fragment>\n float dd = clamp(1.0 - length(vViewPosition) / 60.0, 0.0, 1.0); vec3 dtl = mix(texture2D(detailMap, vUv * detailRep).rgb, texture2D(detailMap, vUv * detailRep * 0.21 + vec2(0.37)).rgb, 0.45); diffuseColor.rgb *= mix(vec3(1.0), dtl * 1.45, dd * 0.95);'); };
     ground.rotation.x = -Math.PI / 2; ground.position.set(0, 0, -(gp.ymin + gp.ymax) / 2); ground.receiveShadow = true; courseGroup.add(ground);
-    var far = new T.Mesh(new T.PlaneGeometry(4000, 4000), new T.MeshBasicMaterial({ color: 0x4a6a35 })); far.rotation.x = -Math.PI / 2; far.position.y = -0.6; courseGroup.add(far);
+    var far = new T.Mesh(new T.PlaneGeometry(4000, 4000), new T.MeshBasicMaterial({ color: WINTER ? 0xdde4eb : 0x4a6a35 })); far.rotation.x = -Math.PI / 2; far.position.y = -0.6; courseGroup.add(far);
     // water surfaces
     h.water.forEach(function (w) {
       var ell = w[4] === 'e', wt = waterNormal.clone(); wt.needsUpdate = true; wt.repeat.set((ell ? w[2] * 2 : w[2] - w[0]) / 5, (ell ? w[3] * 2 : w[3] - w[1]) / 5);
-      var m = new T.MeshStandardMaterial({ color: 0x174f63, roughness: 0.05, metalness: 0.08, transparent: true, opacity: 0.92, normalMap: wt, normalScale: new T.Vector2(0.6, 0.6), envMapIntensity: 0.95 }); waterMats.push(m);
+      var m = WINTER ? new T.MeshStandardMaterial({ color: 0xb7d4e4, roughness: 0.22, metalness: 0.02, transparent: true, opacity: 0.97, normalMap: wt, normalScale: new T.Vector2(0.1, 0.1), envMapIntensity: 0.7 }) : new T.MeshStandardMaterial({ color: 0x174f63, roughness: 0.05, metalness: 0.08, transparent: true, opacity: 0.92, normalMap: wt, normalScale: new T.Vector2(0.6, 0.6), envMapIntensity: 0.95 }); waterMats.push(m);
       var mesh;
       if (ell) { mesh = new T.Mesh(new T.CircleGeometry(1, 64), m); mesh.scale.set(w[2], w[3], 1); mesh.rotation.x = -Math.PI / 2; mesh.position.set(w[0], (w.lvl || 0) + 0.035, -w[1]); }
       else { mesh = new T.Mesh(new T.PlaneGeometry(w[2] - w[0], w[3] - w[1]), m); mesh.rotation.x = -Math.PI / 2; mesh.position.set((w[0] + w[2]) / 2, (w.lvl || 0) + 0.035, -(w[1] + w[3]) / 2); }
@@ -1387,12 +1456,13 @@
     function inst(geo, mat, n, depthMap) { var im = new T.InstancedMesh(geo, mat, Math.max(1, n)); im.count = n; im.castShadow = true; im.receiveShadow = true; if (depthMap) im.customDepthMaterial = depthFor(depthMap); courseGroup.add(im); return im; }
     if (!LOOK.trunk) { LOOK.trunk = trunkGeo(0.55); LOOK.pineG = pineGeo(7, isLow); LOOK.oakG = (function () { var gs = [], r2 = rng(61); [[0, 0, 0.74, 0.22, 1], [0.2, 0, 0.66, 0.2, 2], [-0.1, 0.17, 0.7, 0.2, 3], [-0.12, -0.18, 0.64, 0.19, 4], [0.05, 0.05, 0.9, 0.2, 5], [0.17, -0.2, 0.76, 0.17, 6]].forEach(function (L) { var g = crownGeo(100 + L[4], isLow ? 26 : 40, 0.95, 0.82); g.scale(L[3], L[3], L[3]); g.translate(L[0], L[2], L[1]); gs.push(g); }); return mergeGeos(gs); })(); LOOK.bushG = crownGeo(77, isLow ? 18 : 30, 0.75, 0.7); [LOOK.trunk, LOOK.pineG, LOOK.oakG, LOOK.bushG].forEach(function (g) { g.userData.keep = true; }); }
     var trunkMat = new T.MeshStandardMaterial({ color: 0xffffff, map: LK.bark, bumpMap: LK.bark, bumpScale: 1.6, roughness: 1 }); trunkMat.userData.keep = true; LK.bark.userData.keep = true; LK.rock.userData.keep = true;
-    var ctr = inst(LOOK.trunk, trunkMat, con.length), pIm = inst(LOOK.pineG, LK.pineMat, con.length, LK.pine);
+    var bare = []; if (WINTER) { bare = oak; oak = []; if (!LOOK.wPine) { LOOK.wPine = snowify(foliageMaterial(LK.pine), 0.88, 0.1, 0.7); LOOK.wPine.userData.keep = true; } }
+    var ctr = inst(LOOK.trunk, trunkMat, con.length), pIm = inst(LOOK.pineG, WINTER ? LOOK.wPine : LK.pineMat, con.length, LK.pine);
     con.forEach(function (t, i) {
       var th = t.h * t.s, yq = new T.Quaternion().setFromAxisAngle(up, t.rot);
       ps.set(t.x, t.g - 0.15, -t.y); sc.set(0.3 * (0.8 + 0.4 * t.s), th * 0.55, 0.3 * (0.8 + 0.4 * t.s)); ctr.setMatrixAt(i, m4.compose(ps, yq, sc));
       var wx = 3.0 * (th / 10) * (0.9 + t.tone * 0.2) + 0.25; ps.set(t.x, t.g + 0.2, -t.y); sc.set(wx, th * 0.96, wx); pIm.setMatrixAt(i, m4.compose(ps, yq, sc));
-      col.setRGB(0.78 + t.tone * 0.3, 0.86 + t.tone * 0.22, 0.74 + t.tone * 0.18); pIm.setColorAt(i, col);
+      if (WINTER) col.setRGB(0.5 + t.tone * 0.22, 0.66 + t.tone * 0.2, 0.68 + t.tone * 0.18); else col.setRGB(0.78 + t.tone * 0.3, 0.86 + t.tone * 0.22, 0.74 + t.tone * 0.18); pIm.setColorAt(i, col);
     });
     var og = [[], [], []]; oak.forEach(function (t, i) { og[i % 3].push(t); });
     var oTr = inst(LOOK.trunk, trunkMat, oak.length), oIms = og.map(function (list, v) { return inst(LOOK.oakG, LK.leafMats[v], list.length, LK.leaf[v]); }), oi = 0;
@@ -1405,23 +1475,32 @@
       });
     });
     [ctr, pIm, oTr].concat(oIms).forEach(function (im) { im.instanceMatrix.needsUpdate = true; if (im.instanceColor) im.instanceColor.needsUpdate = true; });
+    if (WINTER && bare.length) {
+      if (!LOOK.bareG) { LOOK.bareG = bareGeo(91, isLow); LOOK.bareG.userData.keep = true; }
+      if (!LOOK.bareMat) { LOOK.bareMat = snowify(new T.MeshStandardMaterial({ color: 0xffffff, map: LK.barkLight, vertexColors: true, roughness: 1 }), 0.8, 0.05, 0.55); LOOK.bareMat.userData.keep = true; }
+      var bIm2 = inst(LOOK.bareG, LOOK.bareMat, bare.length);
+      bare.forEach(function (t, i) { var th = t.h * t.s * 1.35, yq = new T.Quaternion().setFromAxisAngle(up, t.rot); ps.set(t.x, t.g - 0.1, -t.y); sc.set(th * 0.95, th, th * 0.95); bIm2.setMatrixAt(i, m4.compose(ps, yq, sc)); });
+      bIm2.instanceMatrix.needsUpdate = true;
+    }
     // bushes and boulders
     var ob = h.obst || [], bushes = ob.filter(function (o) { return o.kind === 'bush'; }), rocks = ob.filter(function (o) { return o.kind === 'rock'; });
-    var bIm = inst(LOOK.bushG, LK.leafMats[2], bushes.length);
+    if (WINTER && !LOOK.wBush) { LOOK.wBush = snowify(foliageMaterial(LK.leaf[2]), 0.9, 0.05, 0.5); LOOK.wBush.color.set(0xb89c80); LOOK.wBush.userData.keep = true; }
+    var bIm = inst(LOOK.bushG, WINTER ? LOOK.wBush : LK.leafMats[2], bushes.length);
     bushes.forEach(function (o, i) { var rad = o.r * 1.15; ps.set(o.x, rad * 0.5 + o.g, -o.y); sc.set(rad, rad * 0.9, rad); bIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, o.x * 7.1), sc)); col.setRGB(0.7 + (i % 4) * 0.08, 0.82 + (i % 3) * 0.06, 0.62); bIm.setColorAt(i, col); });
     if (!LOOK.rockG) { LOOK.rockG = rockGeo(); LOOK.rockG.userData.keep = true; }
-    var rockMat = new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.96, map: LK.rock, bumpMap: LK.rock, bumpScale: 2.2, envMapIntensity: 0.6 }), rIm = inst(LOOK.rockG, rockMat, rocks.length);
+    var rockMat = new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.96, map: LK.rock, bumpMap: LK.rock, bumpScale: 2.2, envMapIntensity: 0.6 }); if (WINTER) snowify(rockMat, 0.95, 0.3, 0.75); var
+      rIm0 = 0,  rIm = inst(LOOK.rockG, rockMat, rocks.length);
     rocks.forEach(function (o, i) { ps.set(o.x, o.r * 0.38 + o.g - 0.05, -o.y); sc.set(o.r, o.r * 0.78, o.r * 0.9); rIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, o.x * 3.1), sc)); var gv = 0.82 + (i % 3) * 0.1; col.setRGB(gv, gv * 0.98, gv * 0.94); rIm.setColorAt(i, col); });
     [bIm, rIm].forEach(function (im) { im.instanceMatrix.needsUpdate = true; if (im.instanceColor) im.instanceColor.needsUpdate = true; });
     // grass: tufts of blades through the rough and along the fairway edge, swaying a little
-    var tufts = [], rg = rng(555 + G.hole * 13), tn = isLow ? 4200 : 12000;
+    var tufts = [], rg = rng(555 + G.hole * 13), tn = (isLow ? 4200 : 12000) * (WINTER ? 0.4 : 1);
     for (var ti = 0; ti < tn; ti++) { var f0 = rg(), q0 = pathAt(h, f0), lat = (rg() - 0.5) * (h.width + 46), tx0 = q0.x + q0.hy * lat, ty0 = q0.y - q0.hx * lat; if (inWater(h, tx0, ty0) || Math.hypot(tx0 - h.tee[0], ty0 - h.tee[1]) < 1.6) continue; if (Math.abs(lat) < h.width / 2 - 1 && rg() < 0.86) continue; tufts.push([tx0, ty0, rg()]); }
     if (!LOOK.tuftMat) { LOOK.tuftMat = new T.MeshStandardMaterial({ color: 0xffffff, roughness: 1, side: T.DoubleSide, alphaTest: 0.45, alphaToCoverage: true, map: tuftTex() }); LOOK.tuftMat.userData.grass = true; LOOK.tuftMat.userData.keep = true; _tuftT.userData.keep = true; swayify(LOOK.tuftMat, 0.12); }
     var tIm = new T.InstancedMesh(tuftGeo(), LOOK.tuftMat, tufts.length); tIm.receiveShadow = true;
-    tufts.forEach(function (q, i) { var sz = 0.4 + q[2] * 0.6; ps.set(q[0], gh(q[0], q[1]) - 0.02, -q[1]); sc.set(sz, sz * (0.75 + q[2] * 0.6), sz); tIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, q[2] * 12), sc)); col.setRGB(0.8 + q[2] * 0.35, 0.85 + q[2] * 0.3, 0.6 + q[2] * 0.3); tIm.setColorAt(i, col); });
+    tufts.forEach(function (q, i) { var sz = 0.4 + q[2] * 0.6; ps.set(q[0], gh(q[0], q[1]) - 0.02, -q[1]); sc.set(sz, sz * (0.75 + q[2] * 0.6) * (WINTER ? 0.7 : 1), sz); tIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, q[2] * 12), sc)); if (WINTER) col.setRGB(1.0 + q[2] * 0.25, 0.82 + q[2] * 0.18, 0.5 + q[2] * 0.1); else col.setRGB(0.8 + q[2] * 0.35, 0.85 + q[2] * 0.3, 0.6 + q[2] * 0.3); tIm.setColorAt(i, col); });
     tIm.instanceMatrix.needsUpdate = true; if (tIm.instanceColor) tIm.instanceColor.needsUpdate = true; courseGroup.add(tIm);
     // tee pad
-    var th0 = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]), pad = new T.Mesh(new T.BoxGeometry(1.8, 0.05, 3.6), new T.MeshStandardMaterial({ color: 0x77756f, roughness: 0.97 }));
+    var th0 = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]), pad = new T.Mesh(new T.BoxGeometry(1.8, 0.05, 3.6), new T.MeshStandardMaterial({ color: WINTER ? 0xb4b7bd : 0x77756f, roughness: 0.97 }));
     pad.position.set(h.tee[0], h.tz + 0.025, -h.tee[1]); pad.rotation.y = -th0; pad.receiveShadow = true; courseGroup.add(pad);
     // tee sign: hole number, par and distance
     (function () {
@@ -1488,7 +1567,7 @@
     var minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9; h.path.forEach(function (p) { minx = Math.min(minx, p[0]); maxx = Math.max(maxx, p[0]); miny = Math.min(miny, p[1]); maxy = Math.max(maxy, p[1]); });
     var pad = 22, kx = (mw - 10) / (maxx - minx + 2 * pad), ky = (mh - 10) / (maxy - miny + 14), k = Math.min(kx, ky);
     function M(x, y) { return [ox + mw / 2 + (x - (minx + maxx) / 2) * k, oy + mh - 8 - (y - miny + 4) * k]; }
-    hctx.strokeStyle = '#3f7a47'; hctx.lineCap = 'round'; hctx.lineJoin = 'round'; hctx.lineWidth = Math.max(3, h.width * k); hctx.beginPath(); h.path.forEach(function (p, i) { var m = M(p[0], p[1]); if (i) hctx.lineTo(m[0], m[1]); else hctx.moveTo(m[0], m[1]); }); hctx.stroke();
+    hctx.strokeStyle = WINTER ? '#a9bccd' : '#3f7a47'; hctx.lineCap = 'round'; hctx.lineJoin = 'round'; hctx.lineWidth = Math.max(3, h.width * k); hctx.beginPath(); h.path.forEach(function (p, i) { var m = M(p[0], p[1]); if (i) hctx.lineTo(m[0], m[1]); else hctx.moveTo(m[0], m[1]); }); hctx.stroke();
     hctx.fillStyle = '#2f6fe0'; h.water.forEach(function (w) { if (w[4] === 'e') { var c = M(w[0], w[1]); hctx.beginPath(); hctx.ellipse(c[0], c[1], w[2] * k, w[3] * k, 0, 0, 6.3); hctx.fill(); return; } var a = M(w[0], w[3]), b = M(w[2], w[1]); hctx.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); });
     (h.obst || []).forEach(function (o) { if (o.filler) return; var m = M(o.x, o.y); hctx.fillStyle = o.kind === 'rock' ? '#b9b4ab' : '#4d8a3a'; hctx.beginPath(); hctx.arc(m[0], m[1], 1.5, 0, 6.3); hctx.fill(); });
     hctx.fillStyle = '#143d22'; h.treeList.forEach(function (t) { if (t.big || pathDist(h, t.x, t.y) < h.width / 2 + 8) { var m = M(t.x, t.y); hctx.beginPath(); hctx.arc(m[0], m[1], 1.4, 0, 6.3); hctx.fill(); } });
@@ -1541,6 +1620,17 @@
     if (basketObj && basketObj.flag) basketObj.flag.rotation.y = Math.sin(simTime * 3) * 0.25;
     waterMats.forEach(function (m, i) { if (m.normalMap) { m.normalMap.offset.x = (simTime * 0.02) % 1; m.normalMap.offset.y = (simTime * 0.013 + i * 0.3) % 1; } });
     swayMats.forEach(function (m) { if (m.userData.sh) m.userData.sh.uniforms.uTime.value = simTime; });
+    if (WINTER && snowPts) {
+      var wx2 = G.wind[0] * 0.5, wz2 = -G.wind[1] * 0.5, cxs = camera.position.x, czs = camera.position.z, cys = camera.position.y, N3 = snowVel.length / 2;
+      for (var si = 0; si < N3; si++) {
+        var k3 = si * 3, vv = snowVel[si * 2], ph2 = snowVel[si * 2 + 1];
+        snowPos[k3] += (wx2 + Math.sin(simTime * 0.9 + ph2) * 0.35) * dt; snowPos[k3 + 1] -= vv * dt; snowPos[k3 + 2] += (wz2 + Math.cos(simTime * 0.7 + ph2) * 0.35) * dt;
+        var ddx = snowPos[k3] - cxs, ddz = snowPos[k3 + 2] - czs, ddy = snowPos[k3 + 1] - cys;
+        if (ddx < -35) snowPos[k3] += 70; else if (ddx > 35) snowPos[k3] -= 70; if (ddz < -35) snowPos[k3 + 2] += 70; else if (ddz > 35) snowPos[k3 + 2] -= 70;
+        if (ddy < -3) snowPos[k3 + 1] += 26; else if (ddy > 23) snowPos[k3 + 1] -= 26;
+      }
+      snowPts.geometry.attributes.position.needsUpdate = true;
+    }
     updateLife(dt); tourObjs.forEach(function (o) { o.visible = G.phase === 'tour'; });
     R.render(scene, camera); drawHud();
     if (pull && pull.raw > 0.85) shakePull();
