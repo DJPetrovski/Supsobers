@@ -2026,3 +2026,19 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .mc-shipnote { display: inline-block; margin: 0 0 .6rem; color: var(--ember); border: 1px solid var(--ember); border-radius: 999px; padding: 2px 12px; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 @keyframes mcShip { 50% { box-shadow: 0 0 20px rgba(255,160,60,.9); } }
 @media (prefers-reduced-motion: reduce) { .mc-ship { animation: none; } }
+
+/* disc golf: slingshot throw, tune bars live on the main screen */
+.dd-stage .dd-bar { grid-template-columns: auto 1fr !important; gap: 8px 10px !important; }
+.dd-stage .dd-dock { grid-column: 1 / -1; grid-row: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 14px; padding: 5px 12px 6px; border-radius: 14px; background: rgba(8,14,24,.58); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(6px); }
+.dd-stage .dd-dock label { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0 6px; font: 700 .66rem/1.2 system-ui, sans-serif; color: #d6e3f5; letter-spacing: .03em; text-transform: uppercase; min-width: 0; }
+.dd-stage .dd-dock label b { color: #fff; font-weight: 700; text-transform: none; letter-spacing: 0; text-align: right; white-space: nowrap; }
+.dd-stage .dd-dock input[type=range] { grid-column: 1 / -1; width: 100%; margin: 0; min-height: 24px; accent-color: #3be072; }
+.dd-stage .dd-bar .dd-discbtn { grid-row: 2; grid-column: 1; }
+.dd-stage .dd-bar .dd-mid { grid-row: 2; grid-column: 2; justify-content: flex-end; }
+.dd-stage.dd-putting .dd-dock { display: none; }
+.dd-stage .dd-bar { transition: opacity .15s; }
+.dd-stage.dd-pulling .dd-bar { opacity: .12; pointer-events: none; }
+.dd-stage.dd-pulling .dd-chips, .dd-stage.dd-pulling .dd-toast { opacity: .35; }
+@media (max-width: 520px) { .dd-stage .dd-dock { gap: 2px 8px; padding: 4px 8px 5px; } .dd-stage .dd-dock label { font-size: .6rem; } }
+@media (max-height: 520px) { .dd-stage .dd-dock { padding: 2px 10px 3px; } .dd-stage .dd-dock input[type=range] { min-height: 18px; } }
+.dd-stage .dd-dock label { white-space: nowrap; }
