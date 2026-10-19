@@ -992,7 +992,7 @@
   }
 
   /* ---------- Three.js scene ---------- */
-  var skyMesh, glowSprite, ridgeMeshes = [], peaksMesh, snowPts, snowPos, snowVel, themeNow = null, envRT = null, skyTexs = {}, WINTER = false, winDetail = null;
+  var skyMesh, glowSprite, ridgeMeshes = [], peaksMesh, snowPts, snowPos, snowVel, themeNow = null, envRT = null, skyTexs = {}, WINTER = false, winDetail = null, grassPhoto = null, groundU = null, groundRepU = null, groundSpan = 100;
   var T, R, scene, camera, sun, hemi, courseGroup, discMesh, markMeshes = [], trailLine, trailGeo, prevLine, prevGeo, prevEnd, teeRing, basketObj, waterMats = [], waterTex, waterNormal, groundTex, curBuilt = -1, noiseTile;
   var TRAILN = 600, PREVN = 220, isLow = (navigator.hardwareConcurrency || 4) < 4 || /Android|iPhone|iPad/i.test(navigator.userAgent);
   function loadThree(cb) {
@@ -1093,6 +1093,7 @@
       var dc = document.createElement('canvas'); dc.width = dc.height = 32; var dg = dc.getContext('2d'), rg3 = dg.createRadialGradient(16, 16, 0, 16, 16, 16); rg3.addColorStop(0, 'rgba(255,255,255,1)'); rg3.addColorStop(0.5, 'rgba(255,255,255,.7)'); rg3.addColorStop(1, 'rgba(255,255,255,0)'); dg.fillStyle = rg3; dg.fillRect(0, 0, 32, 32);
       snowPts = new T.Points(sg, new T.PointsMaterial({ map: new T.CanvasTexture(dc), size: 0.24, sizeAttenuation: true, transparent: true, opacity: 0.92, depthWrite: false, fog: false, color: 0xffffff })); snowPts.frustumCulled = false; snowPts.visible = false; scene.add(snowPts);
     })();
+    try { new T.TextureLoader().load('img/grass-detail.jpg?v=3', function (t) { t.wrapS = t.wrapT = T.RepeatWrapping; t.anisotropy = isLow ? 4 : 8; grassPhoto = t; if (!WINTER && groundU && groundRepU) { groundU.value = t; groundRepU.value.set(MAPX * 2 / 2.6, groundSpan / 2.6); } }); } catch (er) {}
     noiseTile = makeNoise(); waterTex = waveTexture(); waterNormal = normalFromHeight(waterTex.image);
     discMesh = makeDisc(); scene.add(discMesh);
     for (var i = 0; i < 8; i++) { var m2 = makeDisc(true); m2.visible = false; markMeshes.push(m2); scene.add(m2); }
@@ -1277,7 +1278,7 @@
       for (var i = 0; i < n; i++) {
         var x = 30 + r() * (S - 60), y = 30 + r() * (S - 60), dx = (x - S / 2) / (S / 2), dy = (y - S / 2) / (S / 2), d = Math.hypot(dx, dy); if (d > 0.98) continue;
         var lit = 0.35 + pass * 0.3 + (-dx * 0.18 - dy * 0.3) + (r() - 0.5) * 0.25;
-        var hh = hue + (r() - 0.5) * 14, ss = 38 + r() * 20, ll = 14 + lit * 30;
+        var hh = hue + (r() - 0.5) * 14, ss = 26 + r() * 16, ll = 13 + lit * 31;
         leaf(x, y, 28 + r() * 26, 10 + r() * 9, r() * 6.28, 'hsl(' + hh + ',' + ss + '%,' + ll + '%)', 'hsla(' + hh + ',40%,' + (ll * 0.55) + '%,.7)');
       }
     }
@@ -1289,7 +1290,7 @@
     for (var s = 0; s < 3; s++) for (var i = 0; i < 1100; i++) {
       var t = r(), y = H - 16 - t * (H - 40), env = 0.26 + 0.74 * Math.sin((1 - t * 0.85) * 1.5), side = r() < 0.5 ? -1 : 1, len = (30 + r() * 56) * (0.6 + env * 0.6), sweep = 0.55 + r() * 0.5;
       var x0 = W / 2 + (r() - 0.5) * 6, x1 = x0 + side * Math.sin(sweep) * len * env * 1.7, y1 = y - Math.cos(sweep) * len * 0.8;
-      var lit = 0.3 + s * 0.28 + r() * 0.3; g.strokeStyle = 'hsl(' + (112 + r() * 22) + ',' + (30 + r() * 18) + '%,' + (11 + lit * 22) + '%)'; g.lineWidth = 1.8 + r() * 1.8;
+      var lit = 0.3 + s * 0.28 + r() * 0.3; g.strokeStyle = 'hsl(' + (108 + r() * 22) + ',' + (22 + r() * 14) + '%,' + (10 + lit * 22) + '%)'; g.lineWidth = 1.8 + r() * 1.8;
       g.beginPath(); g.moveTo(x0, y); g.quadraticCurveTo((x0 + x1) / 2, y - 6, x1, y1); g.stroke();
     }
     g.strokeStyle = '#4a3624'; g.lineWidth = 3; g.beginPath(); g.moveTo(W / 2, H); g.lineTo(W / 2, 30); g.stroke();
@@ -1392,6 +1393,15 @@
     }
     g.computeVertexNormals(); return g;
   }
+  var _concT = null;
+  function concreteTex() {
+    if (_concT) return _concT; var c = cv(256, 512), g = c.getContext('2d'), r = rng(303); g.fillStyle = '#a7a7a1'; g.fillRect(0, 0, 256, 512);
+    for (var i = 0; i < 90; i++) { var x = r() * 256, y = r() * 512, rd = 10 + r() * 50, lg = g.createRadialGradient(x, y, 0, x, y, rd), d = r() < 0.5; lg.addColorStop(0, d ? 'rgba(70,70,64,.14)' : 'rgba(225,225,218,.16)'); lg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = lg; g.fillRect(x - rd, y - rd, rd * 2, rd * 2); }
+    for (var j = 0; j < 5200; j++) { var v = r() < 0.5 ? 60 : 235; g.fillStyle = 'rgba(' + v + ',' + v + ',' + (v - 6) + ',' + (0.05 + r() * 0.16) + ')'; g.fillRect(r() * 256, r() * 512, 1 + r() * 1.6, 1 + r() * 1.6); }
+    g.strokeStyle = 'rgba(40,40,36,.55)'; g.lineWidth = 2; g.beginPath(); g.moveTo(0, 256); g.lineTo(256, 256); g.stroke(); g.strokeStyle = 'rgba(255,255,250,.18)'; g.lineWidth = 1; g.beginPath(); g.moveTo(0, 258); g.lineTo(256, 258); g.stroke();
+    g.strokeStyle = 'rgba(60,60,54,.5)'; g.lineWidth = 3; g.strokeRect(1, 1, 254, 510);
+    _concT = new T.CanvasTexture(c); _concT.encoding = T.sRGBEncoding; _concT.anisotropy = 8; return _concT;
+  }
   function snowify(m, amt, lo, hi) {   // snow settles on whatever faces up
     var prev = m.onBeforeCompile;
     m.onBeforeCompile = function (sh) {
@@ -1437,7 +1447,8 @@
     var gp = paintGround(h), gmat = new T.MeshStandardMaterial({ map: gp.tex, roughness: 0.96, metalness: 0 }), ground = new T.Mesh(groundGeo(gp), gmat);
     if (!detailTex) { detailTex = new T.CanvasTexture(grassDetailCanvas()); detailTex.wrapS = detailTex.wrapT = T.RepeatWrapping; detailTex.anisotropy = 4; }
     if (!winDetail) { winDetail = new T.CanvasTexture(snowDetailCanvas()); winDetail.wrapS = winDetail.wrapT = T.RepeatWrapping; winDetail.anisotropy = 4; }
-    gmat.onBeforeCompile = function (sh) { sh.uniforms.detailMap = { value: WINTER ? winDetail : detailTex }; sh.uniforms.detailRep = { value: new T.Vector2(MAPX * 2 / 1.1, gp.span / 1.1) };
+    var dsc = !WINTER && grassPhoto ? 2.6 : 1.1; groundSpan = gp.span;
+    gmat.onBeforeCompile = function (sh) { sh.uniforms.detailMap = groundU = { value: WINTER ? winDetail : (grassPhoto || detailTex) }; sh.uniforms.detailRep = groundRepU = { value: new T.Vector2(MAPX * 2 / dsc, gp.span / dsc) };
       sh.fragmentShader = sh.fragmentShader.replace('void main() {', 'uniform sampler2D detailMap; uniform vec2 detailRep;\nvoid main() {').replace('#include <map_fragment>', '#include <map_fragment>\n float dd = clamp(1.0 - length(vViewPosition) / 60.0, 0.0, 1.0); vec3 dtl = mix(texture2D(detailMap, vUv * detailRep).rgb, texture2D(detailMap, vUv * detailRep * 0.21 + vec2(0.37)).rgb, 0.45); diffuseColor.rgb *= mix(vec3(1.0), dtl * 1.45, dd * 0.95);'); };
     ground.rotation.x = -Math.PI / 2; ground.position.set(0, 0, -(gp.ymin + gp.ymax) / 2); ground.receiveShadow = true; courseGroup.add(ground);
     var far = new T.Mesh(new T.PlaneGeometry(4000, 4000), new T.MeshBasicMaterial({ color: WINTER ? 0xdde4eb : 0x4a6a35 })); far.rotation.x = -Math.PI / 2; far.position.y = -0.6; courseGroup.add(far);
@@ -1493,14 +1504,14 @@
     rocks.forEach(function (o, i) { ps.set(o.x, o.r * 0.38 + o.g - 0.05, -o.y); sc.set(o.r, o.r * 0.78, o.r * 0.9); rIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, o.x * 3.1), sc)); var gv = 0.82 + (i % 3) * 0.1; col.setRGB(gv, gv * 0.98, gv * 0.94); rIm.setColorAt(i, col); });
     [bIm, rIm].forEach(function (im) { im.instanceMatrix.needsUpdate = true; if (im.instanceColor) im.instanceColor.needsUpdate = true; });
     // grass: tufts of blades through the rough and along the fairway edge, swaying a little
-    var tufts = [], rg = rng(555 + G.hole * 13), tn = (isLow ? 4200 : 12000) * (WINTER ? 0.4 : 1);
+    var tufts = [], rg = rng(555 + G.hole * 13), tn = (isLow ? 5200 : 17000) * (WINTER ? 0.4 : 1);
     for (var ti = 0; ti < tn; ti++) { var f0 = rg(), q0 = pathAt(h, f0), lat = (rg() - 0.5) * (h.width + 46), tx0 = q0.x + q0.hy * lat, ty0 = q0.y - q0.hx * lat; if (inWater(h, tx0, ty0) || Math.hypot(tx0 - h.tee[0], ty0 - h.tee[1]) < 1.6) continue; if (Math.abs(lat) < h.width / 2 - 1 && rg() < 0.86) continue; tufts.push([tx0, ty0, rg()]); }
     if (!LOOK.tuftMat) { LOOK.tuftMat = new T.MeshStandardMaterial({ color: 0xffffff, roughness: 1, side: T.DoubleSide, alphaTest: 0.45, alphaToCoverage: true, map: tuftTex() }); LOOK.tuftMat.userData.grass = true; LOOK.tuftMat.userData.keep = true; _tuftT.userData.keep = true; swayify(LOOK.tuftMat, 0.12); }
     var tIm = new T.InstancedMesh(tuftGeo(), LOOK.tuftMat, tufts.length); tIm.receiveShadow = true;
-    tufts.forEach(function (q, i) { var sz = 0.4 + q[2] * 0.6; ps.set(q[0], gh(q[0], q[1]) - 0.02, -q[1]); sc.set(sz, sz * (0.75 + q[2] * 0.6) * (WINTER ? 0.7 : 1), sz); tIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, q[2] * 12), sc)); if (WINTER) col.setRGB(1.0 + q[2] * 0.25, 0.82 + q[2] * 0.18, 0.5 + q[2] * 0.1); else col.setRGB(0.8 + q[2] * 0.35, 0.85 + q[2] * 0.3, 0.6 + q[2] * 0.3); tIm.setColorAt(i, col); });
+    tufts.forEach(function (q, i) { var sz = 0.26 + q[2] * 0.46; ps.set(q[0], gh(q[0], q[1]) - 0.02, -q[1]); sc.set(sz, sz * (0.75 + q[2] * 0.6) * (WINTER ? 0.7 : 1), sz); tIm.setMatrixAt(i, m4.compose(ps, new T.Quaternion().setFromAxisAngle(up, q[2] * 12), sc)); if (WINTER) col.setRGB(1.0 + q[2] * 0.25, 0.82 + q[2] * 0.18, 0.5 + q[2] * 0.1); else if (q[2] > 0.82) col.setRGB(1.25, 1.05, 0.55); else col.setRGB(0.72 + q[2] * 0.3, 0.8 + q[2] * 0.26, 0.55 + q[2] * 0.25); tIm.setColorAt(i, col); });
     tIm.instanceMatrix.needsUpdate = true; if (tIm.instanceColor) tIm.instanceColor.needsUpdate = true; courseGroup.add(tIm);
     // tee pad
-    var th0 = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]), pad = new T.Mesh(new T.BoxGeometry(1.8, 0.05, 3.6), new T.MeshStandardMaterial({ color: WINTER ? 0xb4b7bd : 0x77756f, roughness: 0.97 }));
+    var th0 = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]), pad = new T.Mesh(new T.BoxGeometry(1.8, 0.05, 3.6), new T.MeshStandardMaterial({ color: WINTER ? 0xdfe3ea : 0xd0d0cc, map: concreteTex(), bumpMap: concreteTex(), bumpScale: 0.25, roughness: 0.95 }));
     pad.position.set(h.tee[0], h.tz + 0.025, -h.tee[1]); pad.rotation.y = -th0; pad.receiveShadow = true; courseGroup.add(pad);
     // tee sign: hole number, par and distance
     (function () {
