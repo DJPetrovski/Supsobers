@@ -1,0 +1,11 @@
+Model Information:
+* title:	bull terrier
+* source:	https://sketchfab.com/3d-models/bull-terrier-7982ea44c07a4408b40ff6e7e3397121
+* author:	marcelo_ramos_lopez (https://sketchfab.com/marcelo_ramos)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "bull terrier" (https://sketchfab.com/3d-models/bull-terrier-7982ea44c07a4408b40ff6e7e3397121) by marcelo_ramos_lopez (https://sketchfab.com/marcelo_ramos) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

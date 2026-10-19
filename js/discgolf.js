@@ -849,10 +849,58 @@
     g.scale.setScalar(1.75); g.userData = { body: body, head: head, legs: legs, tail: tail, tongue: tongue, hit: hit };
     return g;
   }
+  /* the real dog: a scanned-quality bull terrier mesh (CC BY 4.0, marcelo_ramos_lopez). It has no skeleton, so the legs, head and tail are bent in code. */
+  var BULL = { ready: false, loading: false };
+  var BN = 8908, BM = 50094;
+  function loadBull() {
+    if (BULL.ready || BULL.loading || !T) return; BULL.loading = true;
+    fetch('models/dog/bull.bin?v=1').then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); }).then(function (buf) {
+      var pos = new Float32Array(buf.slice(0, BN * 12)), nor = new Float32Array(buf.slice(BN * 12, BN * 24)), uv = new Float32Array(buf.slice(BN * 24, BN * 32)), idx = new Uint16Array(buf.slice(BN * 32, BN * 32 + BM * 2));
+      var geo = new T.BufferGeometry(); geo.setAttribute('position', new T.BufferAttribute(pos, 3).setUsage(T.DynamicDrawUsage)); geo.setAttribute('normal', new T.BufferAttribute(nor, 3)); geo.setAttribute('uv', new T.BufferAttribute(uv, 2)); geo.setIndex(new T.BufferAttribute(idx, 1));
+      var base = new Float32Array(pos), lists = [[], [], [], [], [], []], w = new Float32Array(BN), pz = [0, 0, 0, 0], pc = [0, 0, 0, 0];
+      for (var i = 0; i < BN; i++) {
+        var x = base[i * 3], y = base[i * 3 + 1], z = base[i * 3 + 2];
+        if (y < 0.46 && Math.abs(z) > 0.12) { var k = (z > 0 ? 0 : 2) + (x < 0 ? 0 : 1); lists[k].push(i); w[i] = sm(0.46, 0.2, y); pz[k] += z * (1 - w[i] * 0.5); pc[k] += 1 - w[i] * 0.5; }
+        else if (z > 0.1 && y > 0.6) { lists[4].push(i); w[i] = sm(0.6, 0.8, y) * sm(0.1, 0.3, z); }
+        else if (z < -0.4 && y > 0.58) { lists[5].push(i); w[i] = sm(-0.4, -0.52, z); }
+      }
+      for (var q = 0; q < 4; q++) pz[q] = pz[q] / Math.max(1, pc[q]);
+      function tex2(u, srgb) { var t = new T.TextureLoader().load(u); t.flipY = false; if (srgb) t.encoding = T.sRGBEncoding; t.anisotropy = isLow ? 4 : 8; t.userData = { keep: true }; return t; }
+      var mat = new T.MeshStandardMaterial({ map: tex2('models/dog/color.jpg?v=1', true), normalMap: tex2('models/dog/normal.jpg?v=1', false), normalScale: new T.Vector2(0.8, 0.8), roughness: 0.82, metalness: 0, envMapIntensity: 0.6 });
+      mat.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.1 * vec3(1.0, 0.97, 0.92);\n#include <dithering_fragment>'); };
+      mat.userData.keep = true; geo.userData.keep = true;
+      BULL.geo = geo; BULL.pos = pos; BULL.base = base; BULL.lists = lists; BULL.w = w; BULL.pz = pz; BULL.mat = mat; BULL.last = ''; BULL.ready = true;
+      if (dog && scene) { var old = dog.g, ng = makeBullDog(); ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng; }
+    }).catch(function () { BULL.loading = false; });
+  }
+  function makeBullDog() {
+    var g = new T.Group(); g.rotation.order = 'YXZ'; var body = new T.Group(); body.position.set(0, 0.36, 0); g.add(body);
+    var mesh = new T.Mesh(BULL.geo, BULL.mat); mesh.scale.setScalar(0.7); mesh.position.set(0, -0.36, 0); mesh.castShadow = true; mesh.receiveShadow = true; mesh.frustumCulled = false; body.add(mesh);
+    var head = new T.Group(), tail = new T.Group(), tongue = new T.Group(), legs = [new T.Group(), new T.Group(), new T.Group(), new T.Group()]; body.add(head); body.add(tail);
+    var hit = hitSphere(g, 1.3, 0, 0.5, 0.2); g.scale.setScalar(1.75); g.userData = { body: body, head: head, legs: legs, tail: tail, tongue: tongue, hit: hit, bull: true };
+    return g;
+  }
+  function deformBull(u) {   // bend the legs, head and tail of the mesh from the same numbers the walking code sets on the old dog
+    var B = BULL, a0 = u.legs[0].rotation.x, a1 = u.legs[1].rotation.x, a2 = u.legs[2].rotation.x, a3 = u.legs[3].rotation.x, hx = u.head.rotation.x - 0.08, hz = u.head.rotation.z, ty = u.tail.rotation.y;
+    var key = [a0, a1, a2, a3, hx, hz, ty].map(function (v) { return v.toFixed(3); }).join(','); if (key === B.last) return; B.last = key;
+    var P = B.pos, S = B.base, ang = [a0, a1, a2, a3], k, j, L, i, w, a, c, s2, dy, dz, yy, zz;
+    for (k = 0; k < 4; k++) {
+      L = B.lists[k]; var pz = B.pz[k];
+      for (j = 0; j < L.length; j++) { i = L[j] * 3; w = B.w[L[j]]; a = ang[k] * w; c = Math.cos(a); s2 = Math.sin(a); dy = S[i + 1] - 0.47; dz = S[i + 2] - pz; P[i] = S[i]; P[i + 1] = 0.47 + dy * c - dz * s2; P[i + 2] = pz + dy * s2 + dz * c; }
+    }
+    L = B.lists[4];
+    for (j = 0; j < L.length; j++) {
+      i = L[j] * 3; w = B.w[L[j]]; a = hx * w; c = Math.cos(a); s2 = Math.sin(a); dy = S[i + 1] - 0.65; dz = S[i + 2] - 0.15; yy = 0.65 + dy * c - dz * s2; zz = 0.15 + dy * s2 + dz * c;
+      var b = hz * w, cb = Math.cos(b), sb = Math.sin(b), dx = S[i], dy2 = yy - 0.65; P[i] = dx * cb - dy2 * sb; P[i + 1] = 0.65 + dx * sb + dy2 * cb; P[i + 2] = zz;
+    }
+    L = B.lists[5];
+    for (j = 0; j < L.length; j++) { i = L[j] * 3; w = B.w[L[j]]; a = ty * w; c = Math.cos(a); s2 = Math.sin(a); var tx = S[i], tz = S[i + 2] + 0.45; P[i] = tx * c + tz * s2; P[i + 1] = S[i + 1]; P[i + 2] = -tx * s2 + tz * c - 0.45; }
+    B.geo.attributes.position.needsUpdate = true;
+  }
   var heartTex = null;
   function heartTexture() { if (heartTex) return heartTex; var c = document.createElement('canvas'); c.width = c.height = 64; var g = c.getContext('2d'); g.fillStyle = '#ff3d5e'; g.beginPath(); g.moveTo(32, 56); g.bezierCurveTo(4, 36, 6, 10, 24, 10); g.bezierCurveTo(30, 10, 32, 15, 32, 18); g.bezierCurveTo(32, 15, 34, 10, 40, 10); g.bezierCurveTo(58, 10, 60, 36, 32, 56); g.fill(); g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; g.stroke(); heartTex = new T.CanvasTexture(c); heartTex.encoding = T.sRGBEncoding; return heartTex; }
   function ensureDog() {
-    if (dog) return; var g = makeDog(); scene.add(g);
+    if (dog) return; var g = BULL.ready ? makeBullDog() : makeDog(); scene.add(g);
     dog = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0 };
     for (var i = 0; i < 10; i++) { var sp = new T.Sprite(new T.SpriteMaterial({ map: heartTexture(), transparent: true, depthWrite: false, fog: false })); sp.visible = false; sp.userData = { life: 0 }; scene.add(sp); hearts.push(sp); }
   }
@@ -892,6 +940,7 @@
     u.body.rotation.x = -dog.sit * 0.55; u.body.position.y = 0.36 - dog.sit * 0.17 + Math.abs(Math.sin(dog.ph)) * 0.03 * Math.min(1, dog.v / 3);
     var happy = dog.pet > 0, wagS = happy ? 16 : (dog.v > 0.5 ? 9 : 5), wagA = happy ? 0.9 : 0.5; dog.wag += dt * wagS; u.tail.rotation.y = Math.sin(dog.wag) * wagA; u.tail.rotation.x = 0.3 + (dog.v > 3 ? 0.4 : 0);
     u.head.rotation.z = happy ? 0.32 * Math.sin(simTime * 3) + 0.15 : 0; u.head.rotation.x = happy ? -0.15 : Math.sin(dog.ph * 2) * 0.06 * Math.min(1, dog.v / 3) + 0.08; u.tongue.visible = happy || dog.v > 4 || dog.still > 3;
+    if (u.bull) deformBull(u);
     if (dog.bounce > 0) dog.bounce -= dt; var gy = gh(dog.x, dog.y) + (dog.bounce > 0 ? Math.abs(Math.sin(dog.bounce * 12)) * 0.22 : 0); dog.g.position.set(dog.x, gy, -dog.y); dog.g.rotation.y = Math.PI - dog.yaw; dog.g.visible = true;
     hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
   }
@@ -1104,6 +1153,7 @@
     prevEnd = new T.Mesh(new T.RingGeometry(0.3, 0.38, 28), new T.MeshBasicMaterial({ toneMapped: false, color: 0xb7bfc8, transparent: true, opacity: 0.45, side: T.DoubleSide, depthWrite: false })); prevEnd.rotation.x = -Math.PI / 2; scene.add(prevEnd);
     teeRing = new T.Mesh(new T.RingGeometry(0.28, 0.4, 28), new T.MeshBasicMaterial({ toneMapped: false, color: 0xff2a35, side: T.DoubleSide })); teeRing.rotation.x = -Math.PI / 2; scene.add(teeRing);
     courseGroup = new T.Group(); scene.add(courseGroup);
+    loadBull();
     resize();
   }
 
