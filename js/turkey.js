@@ -11,7 +11,7 @@
   function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
   function pick(arr, seed) { return arr[seed % arr.length]; }
   function low(s) { return (s || '').toLowerCase(); }
-  function vids() { return ((window.SS && SS.videos) || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); }); }
+  function vids() { return ((window.SS && (SS.allVideos || SS.videos)) || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); }); }
   function titleKey(t) { return low(t).replace(/[^a-z0-9]+/g, ' ').trim(); }
 
   // what storyline does this video belong to, and what is its hook?
@@ -123,7 +123,7 @@
     }
     if (r.intent === 'hidden') {
       var cutoff = new Date(Date.now() - 21 * 864e5).toISOString().slice(0, 10);
-      var low2 = chan.filter(function (v) { return v.views > 0 && v.seconds >= 1800 && !/\b(trial|day \d+|live|recap|update|monetize|sober talk|recovery group|q&a)\b/i.test(v.title || '') && (v.published || '') <= cutoff; });
+      var low2 = chan.filter(function (v) { return v.views > 0 && !v.live && v.seconds >= 1800 && !/\b(trial|day \d+|live|recap|update|monetize|sober talk|recovery group|q&a)\b/i.test(v.title || '') && (v.published || '') <= cutoff; });
       if (!low2.length) { out.kind = 'answer'; out.text = 'I can\u2019t see view counts right now, so I can\u2019t tell which ones are under the radar.'; return out; }
       var lst = low2;
       if (r.topic) { var mm2 = dedupe(SS.smart(r.topic, low2)).filter(function (x) { return x.s >= 6.5; }).map(function (x) { return x.v; }); if (mm2.length) lst = mm2; else out.pre = 'Nothing under the radar matched \u201c' + r.topic + '\u201d, so here are the least-watched overall. '; }

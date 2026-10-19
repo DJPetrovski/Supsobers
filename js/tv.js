@@ -60,8 +60,11 @@
   document.addEventListener('ss:homevis', function (e) { if (current !== 'home') return; if (e.detail.on) startAmbient(); else stopAmbient(); });
 
   /* ---------- picking a video inside the hole ---------- */
+  function lib() { return (SS.library ? SS.library() : SS.videos) || []; }
+  document.addEventListener('ss:vmode', function () { if (holeApi) resetBranches(); });
   function pick(v) {
     armTip();
+    if (v && v.members) { window.open(v.url || ('https://www.youtube.com/watch?v=' + v.id), '_blank', 'noopener'); return; }
     if (v && ID_RE.test(v.id || '')) {
       if (holeApi) holeApi.hold(true);
       if (phoneLive) level(0, 0.3);
@@ -132,7 +135,7 @@
   backBtn.addEventListener('click', function () {
     if (!stack.length) return;
     stack.pop();
-    holeApi.setVideos(stack.length ? stack[stack.length - 1].list : SS.videos);
+    holeApi.setVideos(stack.length ? stack[stack.length - 1].list : lib());
     holeApi.start({ boost: 900 });
     paintTrail();
   });
@@ -143,7 +146,7 @@
     branchEl.classList.remove('open', 'land');
     branchEl.style.transform = '';
     if (branchApi) branchApi.stop();
-    if (holeApi) holeApi.setVideos(SS.videos);
+    if (holeApi) holeApi.setVideos(lib());
     paintTrail();
   }
 
@@ -427,7 +430,7 @@
     isOpen = true;
     hole.hidden = false;
     if (!holeApi) {
-      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: SS.videos, onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand, onHover: previewOn, onHoverEnd: previewOff, onTouchHold: onTouchHold });
+      holeApi = HoleTunnel.create({ scene: scene, world: world, videos: lib(), onPick: pick, titleEl: titleEl, onHold: branchOpen, onRelease: branchLand, onHover: previewOn, onHoverEnd: previewOff, onTouchHold: onTouchHold });
     }
     holeApi.start({ boost: 1300 });
     phoneStart(); armTip();

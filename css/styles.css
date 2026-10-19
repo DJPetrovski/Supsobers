@@ -2042,3 +2042,10 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 @media (max-width: 520px) { .dd-stage .dd-dock { gap: 2px 8px; padding: 4px 8px 5px; } .dd-stage .dd-dock label { font-size: .6rem; } }
 @media (max-height: 520px) { .dd-stage .dd-dock { padding: 2px 10px 3px; } .dd-stage .dd-dock input[type=range] { min-height: 18px; } }
 .dd-stage .dd-dock label { white-space: nowrap; }
+
+/* videos page: Deep Dives | Live Streams | Members Only */
+.vmode { display: flex; gap: 4px; justify-content: center; width: fit-content; max-width: calc(100% - 24px); margin: 8px auto 6px; padding: 4px; border-radius: 999px; background: rgba(8,2,6,.7); border: 1px solid rgba(255,42,53,.45); position: relative; z-index: 4; }
+.vmode button { min-height: 40px; padding: 0 clamp(10px, 3vw, 20px); border-radius: 999px; border: 0; background: transparent; color: #f2d4d6; font: 700 clamp(.74rem, 2.6vw, .9rem)/1 var(--display, system-ui), system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.vmode button.on { background: linear-gradient(#ff4a55, #b0111c); color: #fff; box-shadow: 0 0 14px rgba(255,42,53,.5); }
+.vmode button:not(.on):hover { background: rgba(255,255,255,.08); }
+.badge-live { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 2px 9px; border-radius: 999px; background: #d3131c; color: #fff; font: 800 .68rem/1.4 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; box-shadow: 0 0 10px rgba(255,42,53,.6); }

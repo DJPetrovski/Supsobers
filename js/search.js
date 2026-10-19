@@ -36,8 +36,8 @@
   function search(q) {
     var t = toks(q), out = { videos: [], merch: [], story: [], pages: [], more: [], ab: [] };
     if (!t.length) return out;
-    if (window.SS && SS.smart) out.videos = SS.smart(q, (SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })).map(function (r) { return { s: r.s, v: r.v, r: r }; });
-    else ((window.SS && SS.videos) || []).forEach(function (v) { var s = score(v.title, t); if (s) out.videos.push({ s: s, v: v }); });
+    if (window.SS && SS.smart) out.videos = SS.smart(q, (SS.allVideos || SS.videos || []).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })).map(function (r) { return { s: r.s, v: r.v, r: r }; });
+    else ((window.SS && (SS.allVideos || SS.videos)) || []).forEach(function (v) { var s = score(v.title, t); if (s) out.videos.push({ s: s, v: v }); });
     out.videos.sort(function (a, b) { return b.s - a.s; });
     ((window.SS && SS.audiobooks) || []).forEach(function (b) { (b.chapters || []).forEach(function (v) { var s = score(b.title + ' audiobook ' + v.title, t); if (s) out.ab.push({ s: s, b: b, v: v }); }); });
     out.ab.sort(function (a, b) { return b.s - a.s; });
@@ -173,7 +173,7 @@
         if (h.at >= 0 && g.m.length < 3 && g.m.every(function (m) { return Math.abs(m.at - h.at) >= 60; })) g.m.push(h);
         if (h.s > g.s) g.s = h.s;
       });
-      var vids = (SS.videos || []), pick = order.filter(function (g) { return vids.some(function (v) { return v.id === g.id; }); }).slice(0, 6);
+      var vids = (SS.allVideos || SS.videos || []), pick = order.filter(function (g) { return vids.some(function (v) { return v.id === g.id; }); }).slice(0, 6);
       if (!pick.length) return;
       var kids = [];
       pick.forEach(function (g) {

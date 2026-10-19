@@ -68,7 +68,7 @@
     return out.slice(0, max || 8);
   }
 
-  var members = [], manualMembers = [], autoMembers = [], clubCfg = {};
+  var members = [], manualMembers = [], autoMembers = [], clubCfg = {}, memRaw = [], liveCfg = {};
   function memberFor(v) {
     for (var i = 0; i < members.length; i++) if (members[i].publicId === v.id) return members[i];
     return null;
@@ -136,41 +136,65 @@
     var face = real
       ? el('img', { src: 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg', alt: '', loading: 'lazy' })
       : el('div', { 'class': 'ph', text: 'Video ' + (index + 1 < 10 ? '0' : '') + (index + 1) });
-    var btn = el('button', { type: 'button', 'class': 'tile', 'aria-label': v.title || 'Video' }, [
+    var btn = el('button', { type: 'button', 'class': 'tile', 'aria-label': (v.title || 'Video') + (v.members ? ' (members only)' : v.live ? ' (live stream)' : '') }, [
       face,
       el('span', { 'class': 'cap', text: v.title || '' })
     ]);
+    if (v.members) btn.appendChild(el('span', { 'class': 'lock', text: v.patreon ? 'On Patreon' : 'Members only' }));
+    else if (v.live) btn.appendChild(el('span', { 'class': 'badge-live', text: 'Live' }));
     if (hiddenCopy) { btn.setAttribute('tabindex', '-1'); btn.setAttribute('aria-hidden', 'true'); }
     btn.addEventListener('click', function () {
-      if (real) openPlayer(v);
+      if (v.members) window.open(v.url || ('https://www.youtube.com/watch?v=' + v.id), '_blank', 'noopener');
+      else if (real) openPlayer(v);
       else window.open('https://www.youtube.com/@Sobersector', '_blank', 'noopener');
     });
     return btn;
   }
 
   /* ---------- video grid + search ---------- */
-  function buildGrid(videos) {
-    var grid = $('#video-grid');
-    var empty = $('#video-empty');
-    var input = $('#search');
+  var MODES = {
+    deep: { h: 'All deep dives', p: 'Every Sobering Stories deep dive. Tap one to watch it here.' },
+    live: { h: 'Live streams', p: 'Trial updates, open discussions and the Recovery Group, saved from the live shows. Pick a series to narrow it down.' },
+    members: { h: 'Members-only deep dives', p: 'The uncensored cuts, labeled (PARENTAL ADVISORY). They open on YouTube or Patreon for members.' }
+  };
+  var vmode = 'deep';
+  try { var sm = localStorage.getItem('ss-vmode'); if (sm && MODES[sm]) vmode = sm; } catch (e) {}
+  function memberList() {
+    var pubBy = {}; ((window.SS.allVideos) || []).forEach(function (p) { pubBy[p.id] = p; });
+    var raw = {}; memRaw.forEach(function (m) { raw[m.id] = m; });
+    return members.map(function (m) {
+      var r = raw[m.id] || {}, pub = pubBy[m.publicId] || {};
+      return { id: m.id || m.publicId || '', title: m.title || r.title || '', members: true, patreon: m.patreon, url: memberUrl(m), seconds: r.seconds || pub.seconds || 0, published: r.published || pub.published || '', publicId: m.publicId };
+    }).sort(function (a, b) { return (b.published || '').localeCompare(a.published || ''); });
+  }
+  function seriesOf(v) {
+    var low = (v.title || '').toLowerCase(), list = liveCfg.series || [];
+    for (var i = 0; i < list.length; i++) if ((list[i].match || []).some(function (k) { return low.indexOf(k) >= 0; })) return list[i].name;
+    return 'Other streams';
+  }
+  function library() { return vmode === 'live' ? (window.SS.liveVideos || []) : vmode === 'members' ? memberList() : (window.SS.videos || []); }
+  window.SS.library = library; window.SS.mode = function () { return vmode; };
 
-    var active = '';
+  function buildGrid() {
+    var grid = $('#video-grid'), empty = $('#video-empty'), input = $('#search'), chips = $('#thread-chips');
+    var active = '', videos = [];
     function paint(list, why) {
       grid.textContent = '';
       list.forEach(function (v, i) {
         var t = tile(v, i, false);
-        if (videos.indexOf(v) < 3) t.appendChild(el('span', { 'class': 'badge-new', text: 'New' }));
+        if (vmode === 'deep' && videos.indexOf(v) < 3) t.appendChild(el('span', { 'class': 'badge-new', text: 'New' }));
         if (why && why[v.id] && why[v.id].kind === 'related') { t.classList.add('is-related'); t.appendChild(el('span', { 'class': 'badge-new badge-rel', text: 'Related' })); t.title = (why[v.id].why || []).join(' · '); }
         grid.appendChild(t);
       });
+      empty.textContent = vmode === 'live' && !videos.length ? 'No live streams are marked yet. They show up here after the next update.' : vmode === 'members' && !videos.length ? 'No members-only videos yet.' : 'No videos match that search.';
       empty.hidden = list.length > 0;
     }
     function apply() {
-      var q = input.value.trim().toLowerCase();
-      var ids = null;
-      threads.forEach(function (t) { if (t.name === active) ids = t.videos; });
-      var pool = videos.filter(function (v) { return !ids || ids.indexOf(v.id) >= 0; });
-      if (q && window.SS && SS.smart) {
+      videos = library();
+      var q = input.value.trim().toLowerCase(), ids = null;
+      if (vmode === 'deep') threads.forEach(function (t) { if (t.name === active) ids = t.videos; });
+      var pool = videos.filter(function (v) { return vmode === 'live' ? (!active || seriesOf(v) === active) : (!ids || ids.indexOf(v.id) >= 0); });
+      if (q && vmode !== 'members' && window.SS && SS.smart) {
         var rs = SS.smart(q, pool), why = {};
         rs.forEach(function (r) { why[r.v.id] = r; });
         paint(rs.map(function (r) { return r.v; }), why);
@@ -178,23 +202,47 @@
       }
       paint(pool.filter(function (v) { return !q || (v.title || '').toLowerCase().indexOf(q) !== -1; }));
     }
-    var chips = $('#thread-chips');
-    if (chips && threads.length) {
-      chips.textContent = '';
-      [{ name: '' }].concat(threads.filter(function (t) { return !t.auto; })).forEach(function (t) {
-        var c = el('button', { type: 'button', 'class': 'chip', text: t.name || 'All', 'aria-pressed': String(t.name === active) });
+    function paintChips() {
+      if (!chips) return;
+      chips.textContent = ''; active = '';
+      var names = null;
+      if (vmode === 'deep') names = threads.filter(function (t) { return !t.auto; }).map(function (t) { return t.name; });
+      else if (vmode === 'live') { var seen = {}; (window.SS.liveVideos || []).forEach(function (v) { seen[seriesOf(v)] = (seen[seriesOf(v)] || 0) + 1; }); names = Object.keys(seen).sort(function (a, b) { return seen[b] - seen[a]; }); if (names.length < 2) names = []; }
+      chips.hidden = !names || !names.length;
+      if (!names || !names.length) return;
+      [''].concat(names).forEach(function (n) {
+        var c = el('button', { type: 'button', 'class': 'chip', text: n || 'All', 'aria-pressed': String(n === active) });
         c.addEventListener('click', function () {
-          active = t.name;
+          active = n;
           Array.prototype.forEach.call(chips.children, function (x) { x.setAttribute('aria-pressed', String(x === c)); });
           apply();
         });
         chips.appendChild(c);
       });
     }
-    apply();
-    input.addEventListener('input', apply);
-    document.addEventListener('ss:transcripts', function () { if (input.value.trim()) apply(); });
+    paintChips(); apply();
+    if (!buildGrid.bound) {
+      buildGrid.bound = true;
+      input.addEventListener('input', function () { buildGrid.apply(); });
+      document.addEventListener('ss:transcripts', function () { if (input.value.trim()) buildGrid.apply(); });
+    }
+    buildGrid.apply = apply; buildGrid.chips = paintChips;
   }
+
+  /* the toggle on the Videos page: Deep Dives | Live Streams | Members Only */
+  function setMode(m, quiet) {
+    if (!MODES[m]) return; vmode = m;
+    try { localStorage.setItem('ss-vmode', m); } catch (e) {}
+    var bar = $('#vmode');
+    if (bar) Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) { var on = b.getAttribute('data-mode') === m; b.classList.toggle('on', on); b.setAttribute('aria-selected', String(on)); });
+    var h = $('#videos-title'), p = document.querySelector('#video-list .page-lede'); if (h) h.textContent = MODES[m].h; if (p) p.textContent = MODES[m].p;
+    if (buildGrid.chips) { buildGrid.chips(); buildGrid.apply(); }
+    if (!quiet) document.dispatchEvent(new Event('ss:vmode'));
+  }
+  (function () {
+    var bar = $('#vmode'); if (!bar) return;
+    Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); }); });
+  })();
 
   /* ---------- home: newest + storylines ---------- */
   function buildHome(videos) {
@@ -263,6 +311,7 @@
   function splitMembers(vids) {
     var pub = [], mem = [];
     vids.forEach(function (v) { (/\b(?:members?[\s-]*only|parental[\s-]*advisory)\b/i.test(v.title || '') ? mem : pub).push(v); });
+    memRaw = mem;
     autoMembers = mem.map(function (m) {
       var key = norm(m.title), twin = null, best = 0, kw = key.split(' ');
       pub.forEach(function (p) {
@@ -359,14 +408,20 @@
     }).catch(function () {});
 
   var featReady = getJSON('data/featured.json').then(function (d) { featuredId = (d && d.id) || ''; }).catch(function () {});
+  var liveReady = getJSON('data/live.json').then(function (d) { liveCfg = d || {}; }).catch(function () {});
   var abReady = getJSON('data/audiobooks.json').then(function (d) { abConfig = d.audiobooks || []; }).catch(function () {});
   getJSON('data/videos.json').then(function (d) {
-    return abReady.then(function () { return threadsReady; }).then(function () { return featReady; }).then(function () { return d; });
+    return abReady.then(function () { return liveReady; }).then(function () { return threadsReady; }).then(function () { return featReady; }).then(function () { return d; });
   }).then(function (d) {
     return d;
   }).then(function (d) {
     var vids = splitMembers((d.videos || []).slice());
     vids = splitAudiobooks(vids);
+    var liveIds = {}; (liveCfg.ids || []).concat(liveCfg.force || []).forEach(function (i) { liveIds[i] = 1; }); (liveCfg.never || []).forEach(function (i) { delete liveIds[i]; });
+    vids.forEach(function (v) { if (liveIds[v.id]) v.live = true; });
+    window.SS.allVideos = vids;
+    window.SS.liveVideos = vids.filter(function (v) { return v.live; });
+    vids = vids.filter(function (v) { return !v.live; });   // the rabbit hole, the TV and the home page are the deep dives
     window.SS.videos = vids;
     window.SS.featured = vids.filter(function (v) { return v.id === featuredId; })[0] || vids.filter(function (v) { return ID_RE.test(v.id || ''); })[0] || null;
     buildClub();
@@ -379,7 +434,8 @@
     });
     window.SS.ready = true;
     document.dispatchEvent(new Event('ss:videos'));
-    buildGrid(vids);
+    buildGrid();
+    setMode(vmode, true);
     buildHome(vids);
   }).catch(function () {
     window.SS.ready = true;
@@ -388,7 +444,7 @@
     $('#video-empty').hidden = false;
   });
 
-  getJSON('data/members.json').then(buildClub).catch(function () { buildClub({}); });
+  getJSON('data/members.json').then(function (d) { buildClub(d); if (vmode === 'members' && buildGrid.apply) buildGrid.apply(); }).catch(function () { buildClub({}); });
 
   getJSON('data/archives.json').then(function (d) { buildCards('#archive-list', d.archives || []); })
     .catch(function () { buildCards('#archive-list', []); });

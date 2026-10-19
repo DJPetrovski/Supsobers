@@ -7,7 +7,7 @@
   fetch('data/assistant.json').then(function (r) { return r.json(); }).then(function (d) { cfg = d || cfg; }).catch(function () {});
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function go(r) { if (location.hash === '#' + r) window.scrollTo(0, 0); else location.hash = r; }
-  function vids() { return (window.SS && SS.videos) || []; }
+  function vids() { return (window.SS && (SS.allVideos || SS.videos)) || []; }
 
   /* ---------- the panel ---------- */
   var panel = el('div', 'as'); panel.hidden = true; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Voice assistant');

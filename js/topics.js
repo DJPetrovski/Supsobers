@@ -45,7 +45,7 @@
   function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
   function words(s) { return norm(s).split(' ').filter(function (w) { return w.length > 1 && !/^(the|of|and|a|an|to|in|on|for|about|death|story|case|what|really|happened|who|is|was)$/.test(w); }); }
   function total(t) { return (t.votes || 0) + (t.boost || 0); }
-  function videoById(id) { var v = (window.SS && SS.videos) || []; for (var i = 0; i < v.length; i++) if (v[i].id === id) return v[i]; return null; }
+  function videoById(id) { var v = (window.SS && (SS.allVideos || SS.videos)) || []; for (var i = 0; i < v.length; i++) if (v[i].id === id) return v[i]; return null; }
   function watch(t) { var v = videoById(t.video_id); if (window.SS && SS.openPlayer && v) SS.openPlayer(v); else if (t.video_id) window.open('https://www.youtube.com/watch?v=' + encodeURIComponent(t.video_id), '_blank', 'noopener'); }
   function similarTopics(q) {
     var qw = words(q); if (!qw.length) return [];
@@ -53,7 +53,7 @@
   }
   function similarVideos(q) {
     if (!(window.SS && SS.smart && SS.videos) || words(q).length === 0) return [];
-    try { return SS.smart(q, SS.videos.filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })).filter(function (r) { return r.kind === 'match' && r.s >= 10; }).slice(0, 3).map(function (r) { return r.v; }); } catch (e) { return []; }
+    try { return SS.smart(q, (SS.allVideos || SS.videos).filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); })).filter(function (r) { return r.kind === 'match' && r.s >= 10; }).slice(0, 3).map(function (r) { return r.v; }); } catch (e) { return []; }
   }
 
   /* ---------- drawing ---------- */
