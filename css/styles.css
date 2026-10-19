@@ -1942,6 +1942,9 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 /* Disc-ipline putting */
 .dd-putmsg { position: absolute; left: 50%; bottom: 84px; transform: translateX(-50%); z-index: 4; max-width: min(92%, 440px); margin: 0; padding: 9px 16px; border-radius: 14px; background: rgba(8,14,24,.78); border: 1px solid rgba(255,255,255,.3); color: #fff; font: 600 .8rem/1.3 system-ui, sans-serif; text-align: center; pointer-events: none; backdrop-filter: blur(6px); }
 .dd-putmsg[hidden] { display: none; }
+.dd-putmsg { padding-right: 40px; transition: opacity .3s; }
+.dd-putmsg-x { position: absolute; top: 50%; right: 6px; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; border: 0; background: rgba(255,255,255,.16); color: #fff; font: 700 1.1rem/1 system-ui, sans-serif; cursor: pointer; pointer-events: auto; padding: 0; display: grid; place-items: center; }
+.dd-putmsg-x:hover, .dd-putmsg-x:focus-visible { background: rgba(255,255,255,.32); outline: none; }
 .dd-stage.dd-putting .dd-throw, .dd-stage.dd-putting #dd-capbtn { display: none !important; }
 .dd-stage.dd-putting .dd-bar { grid-template-columns: auto 1fr !important; }
 .dd-chip[hidden] { display: none !important; }

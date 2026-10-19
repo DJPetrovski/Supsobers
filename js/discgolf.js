@@ -279,7 +279,7 @@
   function aimBase() { G.base = Math.atan2(G.h.basket[0] - G.lie[0], G.h.basket[1] - G.lie[1]); }
   function aim() { return G.base + G.aimOff; }
   function pickDiscFor() { var d = distToBasket(); chooseDisc(d < 30 ? 'aviar' : d < 65 ? 'buzzz' : d < 100 ? 'teebird' : 'destroyer'); }
-  function say(t) { toast.textContent = t; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(function () { toast.classList.remove('on'); }, 4200); }
+  function say(t) { toast.textContent = t; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(function () { toast.classList.remove('on'); }, 3200); }
   function flash(t) { msgEl.textContent = t; msgEl.hidden = false; clearTimeout(flash.t); flash.t = setTimeout(function () { msgEl.hidden = true; }, 1700); }
 
   /* ---------- UI wiring ---------- */
@@ -379,7 +379,7 @@
     if (G && (G.phase === 'aim' || G.phase === 'rest' || G.phase === 'holed') && pickLife(e)) return;
     if (G && G.phase === 'aim' && puttMode()) {
       var rr = glc.getBoundingClientRect(), pt = puttGeo();
-      if (Math.hypot(e.clientX - rr.left - pt.x, e.clientY - rr.top - pt.y) <= pt.hit) { G.plan = null; G.trail = []; previewDirty = true; sw = { pts: [{ x: e.clientX, y: e.clientY, t: performance.now() }] }; try { glc.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); return; }
+      if (Math.hypot(e.clientX - rr.left - pt.x, e.clientY - rr.top - pt.y) <= pt.hit) { hidePutMsg(); G.plan = null; G.trail = []; previewDirty = true; sw = { pts: [{ x: e.clientX, y: e.clientY, t: performance.now() }] }; try { glc.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); return; }
       G.plan = null; G.trail = []; previewDirty = true; dragX = e.clientX; dragY = e.clientY; noseF = +sLa.value; try { glc.setPointerCapture(e.pointerId); } catch (x) {} return;
     }
     if (G && G.phase === 'aim') {
@@ -456,7 +456,7 @@
     var ps = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, 0); if (o.pizza) { ps.pizza = true; ps.bank = 0; ps.bank0 = 0; } G.plan = pathFrom(ps, !!o.putt); G.prevPts = null;
     G.strokes++; G.prev = [G.lie[0], G.lie[1]];
     var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise); s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; if (o.pizza) { s.pizza = true; s.bank = 0; s.bank0 = 0; } s.putt = !!o.putt;
-    bark(1); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
+    bark(1); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.pcHd = undefined; G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
   }
   function wind() { return [G.wind[0] * 0.55, G.wind[1] * 0.55]; }
 
@@ -540,7 +540,7 @@
       for (var j = 0; j < h.treeList.length; j++) { var t = h.treeList[j]; if (Math.hypot(tx - t.x, ty - t.y) < 0.6) { stopped = true; break; } }
       if (!stopped) { fx = tx; fy = ty; }
     }
-    G.roll = { x0: p[0], y0: p[1], x1: fx, y1: fy, t: 0, dur: clamp(Math.hypot(fx - p[0], fy - p[1]) / 6, 0.25, 1.3), bank: s.bank, rot: s.rot }; G.phase = 'roll';
+    G.roll = { putt: !!s.putt, x0: p[0], y0: p[1], x1: fx, y1: fy, t: 0, dur: clamp(Math.hypot(fx - p[0], fy - p[1]) / 6, 0.25, 1.3), bank: s.bank, rot: s.rot }; G.phase = 'roll';
   }
   function rest(pos, why) {
     var h = G.h; G.phase = 'rest'; G.rest = performance.now(); G.restDisc = G.flight ? G.flight.disc : disc; G.flight = null;
@@ -597,17 +597,35 @@
   function angDiff(a, b) { var d = a - b; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return d; }
   function targetCam() {
     if (G.phase === 'tour' && G.tour) return tourCam();
+    if (G.phase === 'fly' && G.flight && G.flight.putt) return puttCam(G.flight);
     if (G.phase === 'fly' && G.flight) {
       var s = G.flight, hd = Math.atan2(s.v[0], s.v[1]), back = 9, fcx = s.p[0] - Math.sin(hd) * back, fcy = s.p[1] - Math.cos(hd) * back, cz = Math.max(gh(fcx, fcy) + 2.4, s.p[2] + 1.8);
       return { x: fcx, y: fcy, z: cz, yaw: hd, pitch: clamp(Math.atan((cz - s.p[2]) / back) + 0.02, 0.02, 0.5) };
     }
+    if (G.phase === 'roll' && G.roll && G.roll.putt) { var rr0 = G.roll, kr = clamp(rr0.t / rr0.dur, 0, 1); return puttCam({ p: [mix(rr0.x0, rr0.x1, kr), mix(rr0.y0, rr0.y1, kr), gh(mix(rr0.x0, rr0.x1, kr), mix(rr0.y0, rr0.y1, kr)) + 0.1], putt: true }); }
     if (G.phase === 'roll' && G.roll) { var r = G.roll, ha = Math.atan2(r.x1 - r.x0, r.y1 - r.y0); return { x: r.x0 - Math.sin(aim()) * 8, y: r.y0 - Math.cos(aim()) * 8, z: gh(r.x0, r.y0) + 3.2, yaw: cam.yaw, pitch: 0.16 }; }
-    if (G.phase === 'holed') { var b = G.h.basket, ya = G.base; return { x: b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2, y: b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2, z: G.h.bz + 1.7, yaw: Math.atan2(b[0] - (b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2), b[1] - (b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2)), pitch: 0.17 }; }
+    if (G.phase === 'holed') return holedCamPose();
     var a = aim(), acx = G.lie[0] - Math.sin(a) * 5.0, acy = G.lie[1] - Math.cos(a) * 5.0; return { x: acx, y: acy, z: Math.max(gh(G.lie[0], G.lie[1]), gh(acx, acy)) + 1.9, yaw: a, pitch: clamp(0.12 - ((+sLa.value) - 7) * 0.014, -0.16, 0.2) };
+  }
+  // Putt camera: a steady chase cam that always looks toward the basket (never along the disc's own, jittery heading),
+  // sits low and close behind the disc, and eases into the basket close-up as the disc arrives.
+  function holedCamPose() {
+    var b = G.h.basket, ya = G.base, cx = b[0] - Math.sin(ya) * 3.4 + Math.cos(ya) * 1.2, cy = b[1] - Math.cos(ya) * 3.4 - Math.sin(ya) * 1.2;
+    return { x: cx, y: cy, z: G.h.bz + 1.7, yaw: Math.atan2(b[0] - cx, b[1] - cy), pitch: 0.17 };
+  }
+  function puttCam(s) {
+    var b = G.h.basket, p = s.p, dx = b[0] - p[0], dy = b[1] - p[1], dist = Math.hypot(dx, dy);
+    if (dist > 1.2) G.pcHd = Math.atan2(dx, dy); else if (G.pcHd === undefined) G.pcHd = aim();
+    var hd = G.pcHd, back = clamp(2.2 + dist * 0.35, 2.6, 4.6), cx = p[0] - Math.sin(hd) * back, cy = p[1] - Math.cos(hd) * back, cz = Math.max(gh(cx, cy) + 1.0, p[2] + 0.95);
+    var f = clamp(0.45 + 0.1 * Math.min(dist, 6) / 6, 0.4, 0.6), lx = p[0] + dx * f, ly = p[1] + dy * f, lz = mix(p[2], G.h.bz + 0.9, f), hz = Math.hypot(lx - cx, ly - cy) || 1;
+    var t = { x: cx, y: cy, z: cz, yaw: Math.atan2(lx - cx, ly - cy), pitch: clamp(Math.atan((cz - lz) / hz), -0.1, 0.45) };
+    var w = clamp((4.2 - dist) / 3.2, 0, 1); w = w * w * (3 - 2 * w);   // blend into the basket close-up
+    if (w > 0) { var h2 = holedCamPose(); t.x = mix(t.x, h2.x, w); t.y = mix(t.y, h2.y, w); t.z = mix(t.z, h2.z, w); t.yaw = t.yaw + angDiff(h2.yaw, t.yaw) * w; t.pitch = mix(t.pitch, h2.pitch, w); }
+    return t;
   }
   function snapCam() { var t = targetCam(); cam = { x: t.x, y: t.y, z: t.z, yaw: t.yaw, pitch: t.pitch }; }
   function moveCam(dt) {
-    var t = targetCam(), k = 1 - Math.exp(-dt * (G.phase === 'fly' ? 7 : G.phase === 'tour' ? 9 : G.glide > 0 ? 2.2 : 3.2)); if (G.glide > 0) G.glide -= dt;
+    var pt = (G.phase === 'fly' && G.flight && G.flight.putt) || (G.phase === 'roll' && G.roll && G.roll.putt), t = targetCam(), k = 1 - Math.exp(-dt * (pt ? 11 : G.phase === 'fly' ? 7 : G.phase === 'tour' ? 9 : G.phase === 'holed' && G.drop ? 5 : G.glide > 0 ? 2.2 : 3.2)); if (G.glide > 0) G.glide -= dt;
     cam.x += (t.x - cam.x) * k; cam.y += (t.y - cam.y) * k; cam.z += (t.z - cam.z) * k; cam.yaw += angDiff(t.yaw, cam.yaw) * k; cam.pitch += (t.pitch - cam.pitch) * k;
   }
 
@@ -615,6 +633,9 @@
   var PUTT_R = 22, PSTYLE = 'putt', GUIDE = true, sw = null, ripples = [], _ideal = {};
   try { GUIDE = localStorage.getItem('ss-disc-pguide') !== '0'; } catch (e) {}
   var pstyleBtn = $('dd-pstyle'), puttMsg = $('dd-putmsg'), pguideBtn = $('dd-pguide'), pguideSub = $('dd-pguide-s');
+  var puttMsgT = $('dd-putmsg-t') || puttMsg, puttMsgX = $('dd-putmsg-x'), PM_SEEN = {}, pmTimer = 0;
+  function hidePutMsg() { clearTimeout(pmTimer); if (puttMsg) puttMsg.hidden = true; }
+  if (puttMsgX) puttMsgX.addEventListener('click', function (e) { e.stopPropagation(); hidePutMsg(); });
   function inPuttRange() { return !!G && G.phase !== 'tour' && distToBasket() <= PUTT_R; }
   function puttMode() { return !!G && G.phase === 'aim' && PSTYLE !== 'off' && distToBasket() <= PUTT_R; }
   function idealPw(d, pizza) {   // the power that arrives at basket height at this distance, so the guide can mark it
@@ -646,7 +667,13 @@
     var r = !!G && distToBasket() <= PUTT_R, on = r && PSTYLE !== 'off' && G.phase !== 'tour';
     stage.classList.toggle('dd-putting', on); stage.classList.toggle('dd-pizza', on && PSTYLE === 'pizza');
     if (pstyleBtn) { pstyleBtn.hidden = !r; pstyleBtn.querySelector('b').textContent = PSTYLE === 'putt' ? 'Putt: Straddle' : PSTYLE === 'pizza' ? 'Putt: Pizza' : 'Regular throw'; }
-    if (puttMsg) { puttMsg.hidden = !on; puttMsg.textContent = PSTYLE === 'pizza' ? 'Pizza putt: put your finger on the disc, pull back, then push forward to fling it overhead. It spins on its edge and cuts through wind.' : 'Putt: put your finger on the disc in the middle, pull back, then push forward toward the basket. A longer, quicker push putts harder.'; }
+    if (puttMsg) {   // the tip shows once per putt style, for 3 seconds, and has an X; it never comes back to get in the way
+      if (!on) hidePutMsg();
+      else if (!PM_SEEN[PSTYLE]) {
+        PM_SEEN[PSTYLE] = 1; clearTimeout(pmTimer); puttMsgT.textContent = PSTYLE === 'pizza' ? 'Pizza putt: put your finger on the disc, pull back, then push forward to fling it overhead. It spins on its edge and cuts through wind.' : 'Putt: put your finger on the disc in the middle, pull back, then push forward toward the basket. A longer, quicker push putts harder.';
+        puttMsg.hidden = false; pmTimer = setTimeout(hidePutMsg, 3000);
+      }
+    }
   }
   if (pstyleBtn) pstyleBtn.addEventListener('click', function () { PSTYLE = PSTYLE === 'putt' ? 'pizza' : PSTYLE === 'pizza' ? 'off' : 'putt'; syncUi(); say(PSTYLE === 'pizza' ? 'Pizza putt: thrown overhead, spinning on its edge. Cuts the wind.' : PSTYLE === 'putt' ? 'Straddle putt: a flat, smooth putt.' : 'Regular throw from here.'); });
   function syncGuide() { if (pguideSub) pguideSub.textContent = GUIDE ? 'Shows the ideal putt line: on' : 'Shows the ideal putt line: off'; }

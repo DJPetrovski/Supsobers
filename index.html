@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1792440382">
+  <link rel="stylesheet" href="css/styles.css?v=1792446036">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -372,7 +372,7 @@
           <div class="dd-chips"><b>Disc-ipline</b><span id="dd-hole">Hole 1/18</span><span id="dd-par">Par 3</span><span id="dd-str">Throws 0</span><span id="dd-vs" class="dd-vs">E</span><button type="button" class="dd-fs" id="dd-menu" aria-expanded="false" aria-controls="dd-menupanel">&#9776; Menu</button><button type="button" class="dd-fs" id="dd-fs" aria-pressed="false">Full screen</button></div>
           <div class="dd-menu" id="dd-menupanel" hidden role="menu"><button type="button" id="dd-course" role="menuitem"><b>Course</b><small>Pick a different course</small></button><button type="button" id="dd-edit" role="menuitem"><b>Edit hole</b><small>Move the tee or the basket</small></button><button type="button" id="dd-card" role="menuitem"><b>Scorecard</b><small>Your round so far</small></button><button type="button" id="dd-trophy" role="menuitem"><b>Trophies</b><small id="dd-trophy-n">Badges and medals</small></button><button type="button" id="dd-replay" role="menuitem"><b>Replay flyover</b><small>Fly the line to the basket</small></button><button type="button" id="dd-tourbtn" role="menuitem"><b>Flyover</b><small id="dd-tour-s">Preview each hole: on</small></button><button type="button" id="dd-pguide" role="menuitem"><b>Putt guide</b><small id="dd-pguide-s">Shows the ideal putt line: on</small></button><button type="button" id="dd-howto" role="menuitem"><b>How to play</b><small>Quick tips</small></button></div>
           <button type="button" class="dd-skip" id="dd-skip" hidden>Skip flyover &#9656;</button>
-          <p class="dd-putmsg" id="dd-putmsg" hidden></p>
+          <div class="dd-putmsg" id="dd-putmsg" hidden><span id="dd-putmsg-t"></span><button type="button" class="dd-putmsg-x" id="dd-putmsg-x" aria-label="Close tip">&times;</button></div>
           <p class="wg-toast dd-toast" id="dd-toast" role="status" aria-live="polite"></p>
           <p class="dd-msg" id="dd-msg" hidden></p>
           <div class="dd-drawer" id="dd-drawer" hidden><div class="dd-discs" id="dd-discs" role="group" aria-label="Choose a disc (speed | glide | turn | fade)"></div></div>
@@ -550,29 +550,29 @@
     </div>
     <span class="scd-rs" role="separator" aria-label="Drag to resize the player" title="Drag to resize (double-tap to reset)"></span>
   </aside>
-  <script src="js/rain.js?v=1792440382" defer></script>
-  <script src="js/app.js?v=1792440382" defer></script>
-  <script src="js/smart.js?v=1792440382" defer></script>
-  <script src="js/turkey.js?v=1792440382" defer></script>
-  <script src="js/hole.js?v=1792440382" defer></script>
-  <script src="js/pill.js?v=1792440382" defer></script>
-  <script src="js/tv.js?v=1792440382" defer></script>
-  <script src="js/topics.js?v=1792440382" defer></script>
-  <script src="js/join.js?v=1792440382" defer></script>
-  <script src="js/semantic.js?v=1792440382" defer></script>
-  <script src="js/search.js?v=1792440382" defer></script>
-  <script src="js/merch.js?v=1792440382" defer></script>
-  <script src="js/web.js?v=1792440382" defer></script>
-  <script src="js/home.js?v=1792440382" defer></script>
-  <script src="js/remote.js?v=1792440382" defer></script>
-  <script src="js/craving.js?v=1792440382" defer></script>
-  <script src="js/wagon.js?v=1792440382" defer></script>
-  <script src="js/discphys.js?v=1792440382" defer></script>
-  <script src="js/discgolf.js?v=1792440382" defer></script>
-  <script src="js/dismiss.js?v=1792440382" defer></script>
-  <script src="js/popout.js?v=1792440382" defer></script>
-  <script src="js/scplayer.js?v=1792440382" defer></script>
-  <script src="js/assistant.js?v=1792440382" defer></script>
-  <script src="js/music.js?v=1792440382" defer></script>
+  <script src="js/rain.js?v=1792446036" defer></script>
+  <script src="js/app.js?v=1792446036" defer></script>
+  <script src="js/smart.js?v=1792446036" defer></script>
+  <script src="js/turkey.js?v=1792446036" defer></script>
+  <script src="js/hole.js?v=1792446036" defer></script>
+  <script src="js/pill.js?v=1792446036" defer></script>
+  <script src="js/tv.js?v=1792446036" defer></script>
+  <script src="js/topics.js?v=1792446036" defer></script>
+  <script src="js/join.js?v=1792446036" defer></script>
+  <script src="js/semantic.js?v=1792446036" defer></script>
+  <script src="js/search.js?v=1792446036" defer></script>
+  <script src="js/merch.js?v=1792446036" defer></script>
+  <script src="js/web.js?v=1792446036" defer></script>
+  <script src="js/home.js?v=1792446036" defer></script>
+  <script src="js/remote.js?v=1792446036" defer></script>
+  <script src="js/craving.js?v=1792446036" defer></script>
+  <script src="js/wagon.js?v=1792446036" defer></script>
+  <script src="js/discphys.js?v=1792446036" defer></script>
+  <script src="js/discgolf.js?v=1792446036" defer></script>
+  <script src="js/dismiss.js?v=1792446036" defer></script>
+  <script src="js/popout.js?v=1792446036" defer></script>
+  <script src="js/scplayer.js?v=1792446036" defer></script>
+  <script src="js/assistant.js?v=1792446036" defer></script>
+  <script src="js/music.js?v=1792446036" defer></script>
 </body>
 </html>
