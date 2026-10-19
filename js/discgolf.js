@@ -257,6 +257,7 @@
   trophyCount();
 
   /* ---------- game state ---------- */
+  var showPrevUntil = 0;
   var G = null, running = false, raf = 0, last = 0, chargeT = 0, charging = false, cam = { x: 0, y: -3, z: 3, yaw: 0, pitch: 0.1 };
   var disc = P.DISCS.destroyer, spin = 1, best = 0, previewDirty = true, ready = false, loading = false, failed = false, simTime = 0;
   try { best = +localStorage.getItem('ss-disc-best') || 0; } catch (e) {}
@@ -266,7 +267,7 @@
     startHole();
   }
   function startHole() {
-    var h = buildHole(G.hole); G.h = h; G.strokes = 0; G.lie = [h.tee[0], h.tee[1]]; G.prev = null; G.throws = [[h.tee[0], h.tee[1]]]; G.trail = []; G.flight = null; G.phase = 'aim'; G.aimOff = 0; G.wind = h.wind; G.wob = 0; G.drop = null; G.chainHit = false; G.holeHits = 0; G.pen = 0;
+    var h = buildHole(G.hole); G.h = h; G.strokes = 0; G.lie = [h.tee[0], h.tee[1]]; G.prev = null; G.throws = [[h.tee[0], h.tee[1]]]; G.trail = []; G.flight = null; G.phase = 'aim'; G.aimOff = 0; G.wind = h.wind; G.plan = null; G.prevPts = null; showPrevUntil = performance.now() + 3500; G.wob = 0; G.drop = null; G.chainHit = false; G.holeHits = 0; G.pen = 0;
     pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket()) + ' m to the basket.' + (PETS === 0 ? ' Your dog is here: tap it to pet it.' : ''));
     if (ready) buildCourse(h);
     if (skipBtn) skipBtn.hidden = true; G.tour = null;
@@ -303,6 +304,7 @@
     previewDirty = true; syncPutt();
   }
   [sBank, sLa].forEach(function (s) { s.addEventListener('input', syncUi); });
+  [sLa, sAim, capEl].forEach(function (s) { s.addEventListener('input', function () { showPrevUntil = performance.now() + 2800; if (G) { G.plan = null; G.trail = []; } previewDirty = true; }); });
   capEl.addEventListener('input', function () { CAP = clamp((+capEl.value) / 100, 0.1, 1); syncUi(); });
   function setMenu(on) { menuPanel.hidden = !on; menuBtn.setAttribute('aria-expanded', String(on)); }
   menuBtn.addEventListener('click', function () { setMenu(menuPanel.hidden); setDrawer(false); });
@@ -365,6 +367,7 @@
   $('dd-howto').addEventListener('click', function () { $('dd-howov').hidden = false; }); $('dd-how-x').addEventListener('click', function () { $('dd-howov').hidden = true; try { localStorage.setItem('ss-disc-how', '1'); } catch (e) {} });
   // drag the view to aim; pull the disc back and let go to throw
   var dragX = null, dragY = null, noseF = 7, pull = null;
+  function puttGeo() { var W = hud._w || 600, H = hud._h || 400; return { x: W / 2, y: H * 0.6, hit: Math.max(64, H * 0.13) }; }
   function pullGeo() {   // where the disc handle rests, how far it can be pulled, and how close a touch has to be to grab it
     var W = hud._w || 600, H = hud._h || 400, R = clamp(H * 0.27, 84, 190);
     return { hx: W / 2, hy: clamp(H * 0.5, 110, Math.max(110, H - R - 74)), R: R, hit: Math.max(56, R * 0.5) };
@@ -372,14 +375,18 @@
   glc.addEventListener('pointerdown', function (e) {
     setDrawer(false); setMenu(false); if (G && G.phase === 'tour') { endTour(); return; }
     if (G && (G.phase === 'aim' || G.phase === 'rest' || G.phase === 'holed') && pickLife(e)) return;
-    if (G && G.phase === 'aim' && puttMode()) { sw = { pts: [{ x: e.clientX, y: e.clientY, t: performance.now() }] }; try { glc.setPointerCapture(e.pointerId); } catch (x) {} return; }
+    if (G && G.phase === 'aim' && puttMode()) {
+      var rr = glc.getBoundingClientRect(), pt = puttGeo();
+      if (Math.hypot(e.clientX - rr.left - pt.x, e.clientY - rr.top - pt.y) <= pt.hit) { G.plan = null; G.trail = []; previewDirty = true; sw = { pts: [{ x: e.clientX, y: e.clientY, t: performance.now() }] }; try { glc.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); return; }
+      G.plan = null; G.trail = []; previewDirty = true; dragX = e.clientX; dragY = e.clientY; noseF = +sLa.value; try { glc.setPointerCapture(e.pointerId); } catch (x) {} return;
+    }
     if (G && G.phase === 'aim') {
       var r = glc.getBoundingClientRect(), pg = pullGeo();
       if (Math.hypot(e.clientX - r.left - pg.hx, e.clientY - r.top - pg.hy) <= pg.hit) {
-        pull = { id: e.pointerId, rx: 0, ry: 0, p: 0, raw: 0, bank: 0, bank0: 0, R: pg.R }; G.phase = 'charge'; stage.classList.add('dd-pulling'); previewDirty = true;
+        pull = { id: e.pointerId, rx: 0, ry: 0, p: 0, raw: 0, bank: 0, bank0: 0, R: pg.R }; G.plan = null; G.trail = []; G.phase = 'charge'; stage.classList.add('dd-pulling'); previewDirty = true;
         try { glc.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); return;
       }
-      dragX = e.clientX; dragY = e.clientY; noseF = +sLa.value; try { glc.setPointerCapture(e.pointerId); } catch (x) {}
+      G.plan = null; G.trail = []; previewDirty = true; dragX = e.clientX; dragY = e.clientY; noseF = +sLa.value; try { glc.setPointerCapture(e.pointerId); } catch (x) {}
     }
   });
   function updatePull(cx, cy) {
@@ -444,6 +451,7 @@
   function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) / 0.75; }
   function doThrow(pw, o) {
     o = o || {}; var noise = gauss() * 0.045 * pw * pw * (0.45 + disc.speed / 14) * (o.pizza ? 1.25 : 1), hy = o.hy !== undefined ? o.hy : (+sBank.value) / 57.3, la = o.la !== undefined ? o.la : (+sLa.value) / 57.3;
+    var ps = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, 0); if (o.pizza) { ps.pizza = true; ps.bank = 0; ps.bank0 = 0; } G.plan = pathFrom(ps, !!o.putt); G.prevPts = null;
     G.strokes++; G.prev = [G.lie[0], G.lie[1]];
     var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise); s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; if (o.pizza) { s.pizza = true; s.bank = 0; s.bank0 = 0; } s.putt = !!o.putt;
     bark(1); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
@@ -636,7 +644,7 @@
     var r = !!G && distToBasket() <= PUTT_R, on = r && PSTYLE !== 'off' && G.phase !== 'tour';
     stage.classList.toggle('dd-putting', on); stage.classList.toggle('dd-pizza', on && PSTYLE === 'pizza');
     if (pstyleBtn) { pstyleBtn.hidden = !r; pstyleBtn.querySelector('b').textContent = PSTYLE === 'putt' ? 'Putt: Straddle' : PSTYLE === 'pizza' ? 'Putt: Pizza' : 'Regular throw'; }
-    if (puttMsg) { puttMsg.hidden = !on; puttMsg.textContent = PSTYLE === 'pizza' ? 'Pizza putt: pull back, then push forward to fling it overhead. It spins on its edge and cuts through wind.' : 'Putt: pull back, then push forward toward the basket. A longer, quicker push putts harder.'; }
+    if (puttMsg) { puttMsg.hidden = !on; puttMsg.textContent = PSTYLE === 'pizza' ? 'Pizza putt: put your finger on the disc, pull back, then push forward to fling it overhead. It spins on its edge and cuts through wind.' : 'Putt: put your finger on the disc in the middle, pull back, then push forward toward the basket. A longer, quicker push putts harder.'; }
   }
   if (pstyleBtn) pstyleBtn.addEventListener('click', function () { PSTYLE = PSTYLE === 'putt' ? 'pizza' : PSTYLE === 'pizza' ? 'off' : 'putt'; syncUi(); say(PSTYLE === 'pizza' ? 'Pizza putt: thrown overhead, spinning on its edge. Cuts the wind.' : PSTYLE === 'putt' ? 'Straddle putt: a flat, smooth putt.' : 'Regular throw from here.'); });
   function syncGuide() { if (pguideSub) pguideSub.textContent = GUIDE ? 'Shows the ideal putt line: on' : 'Shows the ideal putt line: off'; }
@@ -654,7 +662,37 @@
     if (GUIDE && G) { var ip = idealPw(distToBasket(), PSTYLE === 'pizza'), ty = gy1 - gh2 * ip; hctx.fillStyle = '#fff'; hctx.fillRect(gx - 14, ty - 1.5, 28, 3); hctx.font = '700 10px system-ui, sans-serif'; hctx.textAlign = 'left'; hctx.fillText('ideal', gx + 16, ty + 3); }
     hctx.fillStyle = '#fff'; hctx.font = '800 13px system-ui, sans-serif'; hctx.textAlign = 'center'; hctx.fillText(Math.round(si.p * 100) + '%', gx, gy0 - 12); hctx.restore();
   }
+  var _pv = null;
+  function drawPath() {   // the planned line (red) stays up through the flight; the flight itself is drawn over it in white
+    if (!G || !T || G.phase === 'tour') return;
+    var aiming = G.phase === 'aim' || G.phase === 'charge', plan = (aiming && (pull || charging || !G.plan)) ? G.prevPts : G.plan; if (!plan && !(G.trail && G.trail.length > 1)) return;
+    var W = hud._w, H = hud._h, c = hctx; _pv = _pv || new T.Vector3(); camera.updateMatrixWorld();
+    function stroke(pts, col, lw, alpha, dash) {
+      var open = false; c.beginPath();
+      for (var i = 0; i < pts.length; i++) { _pv.set(pts[i][0], pts[i][2], -pts[i][1]).project(camera); if (_pv.z > 1 || _pv.z < -1) { open = false; continue; } var x = (_pv.x + 1) / 2 * W, y = (1 - _pv.y) / 2 * H; if (open) c.lineTo(x, y); else { c.moveTo(x, y); open = true; } }
+      c.globalAlpha = alpha; c.strokeStyle = col; c.lineWidth = lw; c.setLineDash(dash || []); c.stroke();
+    }
+    function dot(pt, col, r) { _pv.set(pt[0], pt[2], -pt[1]).project(camera); if (_pv.z > 1) return; var x = (_pv.x + 1) / 2 * W, y = (1 - _pv.y) / 2 * H; c.globalAlpha = 1; c.fillStyle = col; c.strokeStyle = 'rgba(0,0,0,.7)'; c.lineWidth = 1.5; c.beginPath(); c.arc(x, y, r, 0, 6.3); c.fill(); c.stroke(); }
+    c.save(); c.lineCap = 'round'; c.lineJoin = 'round';
+    if (plan && plan.length > 1) { stroke(plan, 'rgba(0,0,0,.55)', 3.4, 1); stroke(plan, '#ff3b30', 1.7, 1); dot(plan[plan.length - 1], '#ff3b30', 3.6); }
+    var tr = G.trail;
+    if (tr && tr.length > 1 && G.phase !== 'charge') { var tp = tr.map(function (q) { return [q[0], q[1], q[2]]; }); stroke(tp, 'rgba(0,0,0,.5)', 3.4, 1); stroke(tp, '#ffffff', 1.7, 1); if (G.phase === 'rest' || G.phase === 'holed') dot(tp[tp.length - 1], '#ffffff', 3.4); }
+    c.restore();
+  }
+  function drawPuttDisc() {   // the putter waits in the middle of the screen: touch it, pull it back, push it forward
+    var pt = puttGeo(), c = hctx, now = performance.now(), x = pt.x, y = pt.y, hold = false, pizza = PSTYLE === 'pizza';
+    if (sw && sw.pts.length) { var r = glc.getBoundingClientRect(), q = sw.pts[sw.pts.length - 1]; x = clamp(q.x - r.left, 30, hud._w - 30); y = clamp(q.y - r.top, 30, hud._h - 20); hold = true; }
+    var dw = clamp(hud._h * 0.085, 26, 44), bob = hold ? 0 : Math.sin(now / 520) * 3; y += bob;
+    c.save(); c.lineCap = 'round';
+    if (!hold) { c.strokeStyle = 'rgba(255,255,255,.4)'; c.lineWidth = 2; c.setLineDash([3, 6]); c.beginPath(); c.ellipse(pt.x, pt.y, pt.hit, pt.hit * 0.55, 0, 0, 6.3); c.stroke(); c.setLineDash([]); }
+    c.translate(x, y); c.globalAlpha = hold ? 0.97 : 0.88; c.shadowColor = hold ? 'rgba(0,0,0,.5)' : 'rgba(255,255,255,.75)'; c.shadowBlur = hold ? 8 : 14 + Math.sin(now / 380) * 6;
+    c.fillStyle = disc.col; c.strokeStyle = '#05080c'; c.lineWidth = 2; c.beginPath(); if (pizza) c.ellipse(0, 0, dw * 0.5, dw * 0.9, 0, 0, 6.3); else c.ellipse(0, 0, dw, dw * 0.42, 0, 0, 6.3); c.fill(); c.stroke(); c.shadowBlur = 0;
+    c.fillStyle = 'rgba(255,255,255,.28)'; c.beginPath(); c.ellipse(0, -dw * 0.06, dw * 0.66, dw * 0.24, 0, 0, 6.3); c.fill();
+    c.restore();
+    if (!hold) { c.save(); c.font = '800 13px system-ui, sans-serif'; c.textAlign = 'center'; c.shadowColor = 'rgba(0,0,0,.9)'; c.shadowBlur = 5; c.fillStyle = '#fff'; c.fillText('Touch the disc · pull back · push forward', pt.x, pt.y + dw * 0.42 + 30 + bob); c.restore(); }
+  }
   function drawPull() {   // the slingshot: a disc you pull back, a power line, and the tilt it will fly with
+    if (G && G.phase === 'aim' && puttMode()) { drawPuttDisc(); return; }
     if (!G || (G.phase !== 'aim' && G.phase !== 'charge') || puttMode()) return;
     var pg = pullGeo(), c = hctx, now = performance.now(), rx = 0, ry = 0, p = 0, bank = 0, act = false;
     if (pull) { act = true; rx = pull.rx; ry = pull.ry; p = pull.p; bank = pull.bank; }
@@ -736,25 +774,75 @@
   function hitSphere(par, r, x, y, z) { var o = new T.Mesh(sph(), new T.MeshBasicMaterial({ visible: false })); o.scale.setScalar(r); o.position.set(x, y, z); o.visible = false; par.add(o); return o; }
   function limb(par, m, x, y, z, rad, len) { var pv = new T.Group(); pv.position.set(x, y, z); var c = new T.Mesh(new T.CylinderGeometry(rad, rad * 0.8, len, 7), m); c.position.y = -len / 2; c.castShadow = true; pv.add(c); par.add(pv); return pv; }
 
+  /* ---------- the dog: lofted body, real fur texture, proper anatomy ---------- */
+  var _fur = null;
+  function furMaps() {   // fine hair strokes: one picture for colour, one for the bump that catches the light
+    if (_fur) return _fur; var W = 256, H = 256, c = document.createElement('canvas'), b = document.createElement('canvas'); c.width = b.width = W; c.height = b.height = H;
+    var x = c.getContext('2d'), y = b.getContext('2d'), r = rng(31); x.fillStyle = '#ece5d6'; x.fillRect(0, 0, W, H); y.fillStyle = '#808080'; y.fillRect(0, 0, W, H);
+    for (var i = 0; i < 5200; i++) {
+      var px = r() * W, py = r() * H, len = 6 + r() * 15, dx = (r() - 0.5) * 2.2, light = r() < 0.55, al = 0.06 + r() * 0.16, lw = 0.9 + r() * 1.1;
+      for (var wy = -1; wy <= 1; wy++) {
+        if (wy && py + len < H && py > 0) continue;
+        x.strokeStyle = light ? 'rgba(255,253,247,' + al + ')' : 'rgba(128,106,76,' + al * 0.75 + ')'; x.lineWidth = lw; x.beginPath(); x.moveTo(px, py + wy * H); x.lineTo(px + dx, py + len + wy * H); x.stroke();
+        y.strokeStyle = light ? 'rgba(255,255,255,' + al + ')' : 'rgba(0,0,0,' + al + ')'; y.lineWidth = lw; y.beginPath(); y.moveTo(px, py + wy * H); y.lineTo(px + dx, py + len + wy * H); y.stroke();
+      }
+    }
+    var m = new T.CanvasTexture(c), bm = new T.CanvasTexture(b); [m, bm].forEach(function (t) { t.wrapS = t.wrapT = T.RepeatWrapping; t.anisotropy = 4; t.userData.keep = true; }); m.encoding = T.sRGBEncoding;
+    return (_fur = { map: m, bump: bm });
+  }
+  // a smooth skin over rings: pts are [x, y, z, halfWidth, halfHeight]; the rings are spread along a curve through them
+  function loft(pts, seg, mat, colorFn, shadow, rings) {
+    var cp = new T.CatmullRomCurve3(pts.map(function (q) { return new T.Vector3(q[0], q[1], q[2]); })), rc = new T.CatmullRomCurve3(pts.map(function (q) { return new T.Vector3(q[3], q[4], 0); })), n = rings || pts.length * 3;
+    var pos = [], uv = [], col = [], idx = [], up = new T.Vector3(0, 1, 0), alt = new T.Vector3(0, 0, 1), prev = null, dist = 0, i, k, P = [], R = [];
+    for (i = 0; i < n; i++) { P.push(cp.getPoint(i / (n - 1))); R.push(rc.getPoint(i / (n - 1))); }
+    for (i = 0; i < n; i++) {
+      var t = P[Math.min(n - 1, i + 1)].clone().sub(P[Math.max(0, i - 1)]).normalize(), ref = Math.abs(t.dot(up)) > 0.9 ? alt : up, sv = new T.Vector3().crossVectors(ref, t).normalize(), uvv = new T.Vector3().crossVectors(t, sv).normalize();
+      if (prev) dist += P[i].distanceTo(prev); prev = P[i];
+      var rx = Math.max(0.003, R[i].x), ry = Math.max(0.003, R[i].y), per = Math.max(1, Math.round(6.28 * (rx + ry) * 0.5 * 4.2));
+      for (k = 0; k <= seg; k++) {
+        var an = k / seg * 6.2832, ca = Math.cos(an), sa = Math.sin(an);
+        pos.push(P[i].x + sv.x * rx * ca + uvv.x * ry * sa, P[i].y + sv.y * rx * ca + uvv.y * ry * sa, P[i].z + sv.z * rx * ca + uvv.z * ry * sa);
+        uv.push(k / seg * per, dist * 4.2); var c = colorFn ? colorFn(i / (n - 1), sa) : [1, 1, 1]; col.push(c[0], c[1], c[2]);
+      }
+    }
+    for (i = 0; i < n - 1; i++) for (k = 0; k < seg; k++) { var a0 = i * (seg + 1) + k, b0 = a0 + seg + 1; idx.push(a0, a0 + 1, b0, a0 + 1, b0 + 1, b0); }
+    var geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); geo.setAttribute('uv', new T.Float32BufferAttribute(uv, 2)); geo.setAttribute('color', new T.Float32BufferAttribute(col, 3)); geo.setIndex(idx); geo.computeVertexNormals();
+    var nr = geo.attributes.normal; for (i = 0; i < n; i++) { var f = i * (seg + 1), l = f + seg, nx = nr.getX(f) + nr.getX(l), ny = nr.getY(f) + nr.getY(l), nz = nr.getZ(f) + nr.getZ(l), ln = Math.hypot(nx, ny, nz) || 1; nr.setXYZ(f, nx / ln, ny / ln, nz / ln); nr.setXYZ(l, nx / ln, ny / ln, nz / ln); }
+    var m = new T.Mesh(geo, mat); m.castShadow = shadow !== false; return m;
+  }
   function makeDog() {
     var g = new T.Group(); g.rotation.order = 'YXZ'; var body = new T.Group(); body.position.set(0, 0.4, -0.28); g.add(body);
-    var fur = lm(0xf4f1ea, 1), under = lm(0xe6e2d9, 1), blk = lm(0x14100d, 0.4), skin = lm(0xe9a9a4, 0.8), eyeM = lm(0x1b120c, 0.3);
-    function ear(sd) { var e = new T.Mesh(new T.ConeGeometry(0.05, 0.14, 4), fur); e.scale.z = 0.4; e.position.set(sd * 0.065, 0.14, -0.02); e.rotation.z = -sd * 0.1; e.rotation.x = 0.12; e.castShadow = true; return e; }
-    // trunk: deep chest, tucked waist, muscular hips
-    blob(body, fur, 0.17, 0.2, 0.22, 0, 0.1, 0.46, true); blob(body, fur, 0.15, 0.15, 0.24, 0, 0.12, 0.22, true); blob(body, fur, 0.165, 0.17, 0.17, 0, 0.12, -0.02, true); blob(body, under, 0.1, 0.07, 0.3, 0, -0.02, 0.28);
-    var neck = blob(body, fur, 0.1, 0.1, 0.2, 0, 0.26, 0.64, true); neck.rotation.x = -0.75;
-    // head: egg-shaped skull with a long sloping muzzle (bull terrier), small erect triangle ears
+    var fm = furMaps();
+    function furMat(col) { var m = new T.MeshStandardMaterial({ map: fm.map, bumpMap: fm.bump, bumpScale: 0.3, vertexColors: !col, color: col || 0xffffff, roughness: 1, metalness: 0, envMapIntensity: 0.55 });
+      m.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.13 * vec3(1.0, 0.97, 0.9);\n#include <dithering_fragment>'); }; m.userData.keep = true; return m; }
+    var coat = furMat(), earM = furMat(0xe2cfae), blk = new T.MeshStandardMaterial({ color: 0x0c0a09, roughness: 0.22, metalness: 0.1 }), skin = lm(0xe38f93, 0.55), eyeM = new T.MeshStandardMaterial({ color: 0x2a160a, roughness: 0.12, metalness: 0.1 }), collar = lm(0xb3121c, 0.5);
+    var back = [0.9, 0.84, 0.73], belly = [1, 0.99, 0.96];
+    function coatC(f, sa) { var t = sm(-0.2, 0.85, sa); return [mix(belly[0], back[0], t), mix(belly[1], back[1], t), mix(belly[2], back[2], t)]; }
+    function pale() { return [1, 0.985, 0.95]; }
+    // trunk: deep chest, tucked waist, strong hips
+    body.add(loft([[0, 0.04, 0.64, 0.02, 0.03], [0, 0.06, 0.6, 0.085, 0.12], [0, 0.07, 0.5, 0.125, 0.19], [0, 0.08, 0.34, 0.14, 0.215], [0, 0.1, 0.14, 0.125, 0.19], [0, 0.13, -0.04, 0.105, 0.155], [0, 0.13, -0.18, 0.125, 0.18], [0, 0.12, -0.3, 0.095, 0.125], [0, 0.11, -0.36, 0.03, 0.05]], 20, coat, coatC, true, 30));
+    body.add(loft([[0, 0.14, 0.5, 0.1, 0.13], [0, 0.26, 0.62, 0.085, 0.105], [0, 0.38, 0.74, 0.07, 0.08], [0, 0.42, 0.8, 0.065, 0.07]], 16, coat, coatC, true, 12));
+    var cl = new T.Mesh(new T.TorusGeometry(0.087, 0.011, 8, 28), collar); cl.position.set(0, 0.29, 0.66); cl.rotation.x = Math.PI / 2 - 0.9; cl.scale.set(1, 1.1, 1); body.add(cl);
+    var tag = new T.Mesh(new T.CylinderGeometry(0.018, 0.018, 0.005, 14), new T.MeshStandardMaterial({ color: 0xd9b84a, metalness: 0.9, roughness: 0.3 })); tag.position.set(0, 0.2, 0.72); tag.rotation.x = Math.PI / 2 - 0.5; body.add(tag);
+    // head: skull, long muzzle, lower jaw, nose, eyes, erect ears
     var head = new T.Group(); head.position.set(0, 0.4, 0.78); body.add(head);
-    blob(head, fur, 0.105, 0.105, 0.15, 0, 0, 0, true); var mz = blob(head, fur, 0.065, 0.06, 0.15, 0, -0.045, 0.13, true); mz.rotation.x = 0.3; blob(head, under, 0.05, 0.03, 0.12, 0, -0.085, 0.13);
-    blob(head, blk, 0.04, 0.032, 0.036, 0, -0.018, 0.275); head.add(ear(-1)); head.add(ear(1));
-    [-1, 1].forEach(function (sd) { var ey = blob(head, eyeM, 0.016, 0.011, 0.022, sd * 0.07, 0.025, 0.095); ey.rotation.z = -sd * 0.5; });
-    var tongue = blob(head, skin, 0.025, 0.01, 0.06, 0, -0.098, 0.2); tongue.visible = false;
-    // legs: thigh, shin and paw
-    var legs = [[-1, 0.52, 0.0], [1, 0.52, 0.0], [-1, -0.02, 0.02], [1, -0.02, 0.02]].map(function (q, i) {
-      var pv = new T.Group(); pv.position.set(q[0] * 0.095, q[2], q[1]); var up = new T.Mesh(new T.CylinderGeometry(0.055, 0.04, 0.24, 8), fur); up.position.y = -0.1; up.castShadow = true; pv.add(up);
-      var lo = new T.Mesh(new T.CylinderGeometry(0.035, 0.028, 0.22, 8), fur); lo.position.y = -0.3; lo.castShadow = true; pv.add(lo); blob(pv, fur, 0.04, 0.03, 0.06, 0, -0.41, 0.025); body.add(pv); return pv;
+    head.add(loft([[0, 0, -0.1, 0.04, 0.045], [0, 0.005, -0.05, 0.08, 0.085], [0, 0.005, 0.02, 0.095, 0.095], [0, -0.005, 0.08, 0.075, 0.078], [0, -0.03, 0.15, 0.052, 0.056], [0, -0.042, 0.22, 0.044, 0.048], [0, -0.046, 0.275, 0.036, 0.036], [0, -0.046, 0.292, 0.012, 0.012]], 16, coat, pale, true, 26));
+    head.add(loft([[0, -0.062, 0.02, 0.04, 0.026], [0, -0.07, 0.12, 0.037, 0.022], [0, -0.072, 0.22, 0.03, 0.018], [0, -0.07, 0.262, 0.012, 0.01]], 10, coat, pale, false, 10));
+    var nose = blob(head, blk, 0.031, 0.023, 0.022, 0, -0.036, 0.287, true); nose.geometry = sph();
+    [-1, 1].forEach(function (sd) {
+      var ey = blob(head, eyeM, 0.0155, 0.0155, 0.0155, sd * 0.05, 0.027, 0.085, false); var gl = blob(head, lm(0xffffff, 0.2), 0.004, 0.004, 0.004, sd * 0.05 + sd * -0.003, 0.033, 0.098, false); gl.material.emissive = new T.Color(0xffffff); gl.material.emissiveIntensity = 0.8;
+      var sh = new T.Shape(); sh.moveTo(-0.046, 0); sh.bezierCurveTo(-0.046, 0.05, -0.022, 0.1, 0.0, 0.125); sh.bezierCurveTo(0.024, 0.1, 0.046, 0.05, 0.046, 0); sh.lineTo(-0.046, 0);
+      var eg = new T.ExtrudeGeometry(sh, { depth: 0.012, bevelEnabled: true, bevelSize: 0.006, bevelThickness: 0.005, bevelSegments: 2, curveSegments: 10 }), e = new T.Mesh(eg, earM); e.position.set(sd * 0.05, 0.07, -0.04); e.rotation.set(-0.18, sd * 0.1, -sd * 0.2); e.castShadow = true; head.add(e);
     });
-    var tail = new T.Group(); tail.position.set(0, 0.2, -0.16); body.add(tail); var tm = new T.Mesh(new T.ConeGeometry(0.04, 0.34, 8), fur); tm.position.set(0, -0.06, -0.12); tm.rotation.x = -1.9; tm.castShadow = true; tail.add(tm);
+    var tongue = blob(head, skin, 0.022, 0.008, 0.06, 0, -0.1, 0.19, false); tongue.rotation.x = 0.35; tongue.visible = false;
+    // legs: front legs straight, hind legs with the hock angle; each hangs from its hip
+    var fr = [[0, 0, 0, 0.062, 0.08], [0, -0.1, 0.01, 0.052, 0.066], [0, -0.21, 0, 0.034, 0.044], [0, -0.32, 0.005, 0.026, 0.03], [0, -0.375, 0.01, 0.027, 0.032]];
+    var hd = [[0, 0.02, 0, 0.075, 0.115], [0, -0.1, 0.04, 0.06, 0.1], [0, -0.22, 0, 0.04, 0.06], [0, -0.27, -0.045, 0.03, 0.04], [0, -0.34, -0.04, 0.024, 0.03], [0, -0.38, -0.035, 0.026, 0.03]];
+    var legs = [[-1, 0.48, fr, 0.085, 0.03], [1, 0.48, fr, 0.085, 0.03], [-1, -0.14, hd, 0.09, -0.01], [1, -0.14, hd, 0.09, -0.01]].map(function (q) {
+      var pv = new T.Group(); pv.position.set(q[0] * q[3], 0.02, q[1]); pv.add(loft(q[2], 12, coat, pale, true, 16)); blob(pv, coat, 0.034, 0.022, 0.053, 0, -0.392, q[4], true).material = coat; blob(pv, blk, 0.012, 0.007, 0.008, 0, -0.395, q[4] + 0.05, false); body.add(pv); return pv;
+    });
+    // the tail: a plume that curves up over the back
+    var tail = new T.Group(); tail.position.set(0, 0.18, -0.32); body.add(tail); tail.add(loft([[0, 0, 0, 0.028, 0.028], [0, 0.03, -0.1, 0.045, 0.05], [0, 0.1, -0.2, 0.05, 0.055], [0, 0.2, -0.26, 0.04, 0.045], [0, 0.3, -0.27, 0.012, 0.014]], 12, coat, pale, true, 18));
     var hit = hitSphere(g, 1.3, 0, 0.5, 0.2);
     g.scale.setScalar(1.75); g.userData = { body: body, head: head, legs: legs, tail: tail, tongue: tongue, hit: hit };
     return g;
@@ -1371,13 +1459,15 @@
     if (puttMode()) { var pz = PSTYLE === 'pizza', sp = P.launch(G.lie[0], G.lie[1], disc, idealPw(distToBasket(), pz), aim(), 0, pz ? 0.2 : 0.07, spin, 0); if (pz) { sp.pizza = true; sp.bank = 0; } return sp; }
     return P.launch(G.lie[0], G.lie[1], disc, pull ? Math.max(0.06, pull.p) : charging ? chargeLevel() : CAP < 1 ? CAP : 0.85, aim(), hy, la, spin, 0);
   }
+  function pathFrom(s, pm) {   // the flight a launched disc would take (wind included, no throwing error), as [x, y, height] points
+    var w = wind(), bx = G.h.basket[0], by = G.h.basket[1], step = 0, out;
+    s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; out = [[s.p[0], s.p[1], s.p[2]]];
+    while (s.p[2] > gh(s.p[0], s.p[1]) && s.t < 12 && out.length < PREVN && !(pm && Math.hypot(s.p[0] - bx, s.p[1] - by) < 0.35)) { P.step(s, 1 / 120, w); if (++step % (pm ? 8 : 5) === 0) out.push([s.p[0], s.p[1], Math.max(gh(s.p[0], s.p[1]) + 0.04, s.p[2])]); }
+    out.push([s.p[0], s.p[1], gh(s.p[0], s.p[1]) + 0.04]); return out;
+  }
   function computePreview() {
-    previewDirty = false; if (!G || G.phase !== 'aim' || (puttMode() && !GUIDE)) { prevLine.visible = false; prevEnd.visible = false; return; }
-    var hy = (+sBank.value) / 57.3, la = (+sLa.value) / 57.3, s = launchPreview(hy, la), w = wind(), pos = prevGeo.attributes.position.array, n = 0, step = 0, dt = 1 / 120;
-    var pm0 = puttMode(), bx0 = G.h.basket[0], by0 = G.h.basket[1]; s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; pos[0] = s.p[0]; pos[1] = s.p[2]; pos[2] = -s.p[1]; n = 1;
-    while (s.p[2] > gh(s.p[0], s.p[1]) && s.t < 12 && n < PREVN && !(pm0 && Math.hypot(s.p[0] - bx0, s.p[1] - by0) < 0.35)) { P.step(s, dt, w); if (++step % (pm0 ? 8 : 5) === 0) { pos[n * 3] = s.p[0]; pos[n * 3 + 1] = Math.max(gh(s.p[0], s.p[1]) + 0.04, s.p[2]); pos[n * 3 + 2] = -s.p[1]; n++; } }
-    prevGeo.setDrawRange(0, n); prevGeo.attributes.position.needsUpdate = true; prevLine.visible = true;
-    prevEnd.position.set(s.p[0], gh(s.p[0], s.p[1]) + 0.06, -s.p[1]); prevEnd.visible = true;
+    previewDirty = false; if (!G || (G.phase !== 'aim' && G.phase !== 'charge') || (puttMode() && !GUIDE)) { G.prevPts = null; return; }
+    G.prevPts = pathFrom(launchPreview((+sBank.value) / 57.3, (+sLa.value) / 57.3), puttMode());
   }
 
   function resize() {
@@ -1407,7 +1497,7 @@
     var lm = M(G.lie[0], G.lie[1]); hctx.fillStyle = '#fff'; hctx.beginPath(); hctx.arc(lm[0], lm[1], 2.8, 0, 6.3); hctx.fill();
     hctx.restore();
     // wind dial under the chips on the left, with the distance pill beside it
-    drawSwipe(); drawPull();
+    drawPath(); drawSwipe(); drawPull();
     var wx = G.wind[0], wy = G.wind[1], ws = Math.hypot(wx, wy), ang = Math.atan2(wx, wy) - cam.yaw, cxw = 34, rw = 24, cb = chipsEl.getBoundingClientRect(), sb = stage.getBoundingClientRect(), cyw = Math.max(74, cb.bottom - sb.top + 10 + rw);
     var tt = Math.round(cb.bottom - sb.top + 6 + (W < 600 ? 2 * rw + 8 : 0)); if (toast._top !== tt) { toast._top = tt; toast.style.top = tt + 'px'; }
     hctx.save(); hctx.translate(cxw, cyw); hctx.fillStyle = 'rgba(8,2,6,.72)'; hctx.strokeStyle = 'rgba(255,42,53,.5)'; hctx.beginPath(); hctx.arc(0, 0, rw, 0, 6.3); hctx.fill(); hctx.stroke();
@@ -1444,9 +1534,8 @@
     // trail
     var tp = trailGeo.attributes.position.array, tn = Math.min(G.trail.length, TRAILN);
     for (var i2 = 0; i2 < tn; i2++) { var q = G.trail[i2]; tp[i2 * 3] = q[0]; tp[i2 * 3 + 1] = Math.max(gh(q[0], q[1]) + 0.03, q[2]); tp[i2 * 3 + 2] = -q[1]; }
-    trailGeo.setDrawRange(0, G.phase === 'aim' || G.phase === 'charge' ? 0 : tn); trailGeo.attributes.position.needsUpdate = true;
-    prevLine.material.opacity = pull || charging ? 0.9 : 0.62;
-    if (previewDirty) computePreview(); prevLine.visible = prevLine.visible && (G.phase === 'aim' || G.phase === 'charge'); prevEnd.visible = prevLine.visible;
+    trailGeo.setDrawRange(0, 0); prevLine.visible = false; prevEnd.visible = false;
+    if (previewDirty) computePreview();
     // basket chains rattle, flag flutter, water ripple
     if (G.wob > 0.01) { updateChains(simTime, G.wob); G.wob *= Math.exp(-dt * 1.7); } else if (G.wob) { G.wob = 0; updateChains(0, 0); }
     if (basketObj && basketObj.flag) basketObj.flag.rotation.y = Math.sin(simTime * 3) * 0.25;
