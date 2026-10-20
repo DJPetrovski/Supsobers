@@ -1,6 +1,7 @@
--- Topic requests for supsobers.com. Paste this whole file into Supabase > SQL Editor > New query > Run. Safe to run once.
+-- Topic requests for supsobers.com. Paste this whole file into Supabase > SQL Editor > New query > Run. Safe to run again if you update it.
 
 create extension if not exists pgcrypto;
+create extension if not exists pg_trgm;
 
 create table if not exists topics (
   id          uuid primary key default gen_random_uuid(),
@@ -14,7 +15,10 @@ create table if not exists topics (
   created_at  timestamptz not null default now(),
   covered_at  timestamptz
 );
-create unique index if not exists topics_title_unique on topics (lower(title));
+-- the same topic spelled differently (case, punctuation, a leading "The") counts as the same topic
+alter table topics add column if not exists title_key text generated always as (regexp_replace(regexp_replace(lower(title), '^the\s+', ''), '[^a-z0-9]+', '', 'g')) stored;
+drop index if exists topics_title_unique;
+create unique index if not exists topics_title_key_unique on topics (title_key);
 
 create table if not exists topic_votes (
   topic_id   uuid not null references topics (id) on delete cascade,
@@ -29,7 +33,7 @@ alter table topic_votes enable row level security;
 
 -- Visitors can read approved and covered topics (never the private columns), and suggest new ones as "pending".
 revoke all on topics from anon, authenticated;
-grant select (id, title, note, status, votes, boost, video_id, created_at, covered_at) on topics to anon;
+grant select (id, title, note, status, votes, boost, video_id, created_at, covered_at) on topics to anon;   -- title_key and ip stay private
 grant insert (title, note) on topics to anon;
 drop policy if exists "read listed topics" on topics;
 create policy "read listed topics" on topics for select to anon using (status in ('approved', 'covered'));
@@ -49,6 +53,10 @@ begin
   if new.ip <> '' then
     select count(*) into c from topics where ip = new.ip and created_at > now() - interval '1 hour';
     if c >= 6 then raise exception 'Too many suggestions. Try again later.'; end if;
+  end if;
+  -- a visitor suggestion that is nearly the same as one already there (listed, covered or waiting for you) is refused
+  if new.status = 'pending' and exists (select 1 from topics t where t.status <> 'rejected' and similarity(t.title_key, regexp_replace(regexp_replace(lower(new.title), '^the\s+', ''), '[^a-z0-9]+', '', 'g')) >= 0.75) then
+    raise exception 'That topic is already on the list. Find it and vote for it.';
   end if;
   return new;
 end $$;

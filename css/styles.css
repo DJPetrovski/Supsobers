@@ -2052,3 +2052,6 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .vmode button.on { background: linear-gradient(#ff4a55, #b0111c); color: #fff; box-shadow: 0 0 14px rgba(255,42,53,.5); }
 .vmode button:not(.on):hover { background: rgba(255,255,255,.08); }
 .badge-live { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 2px 9px; border-radius: 999px; background: #d3131c; color: #fff; font: 800 .68rem/1.4 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; box-shadow: 0 0 10px rgba(255,42,53,.6); }
+.tp-hit { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .15rem 0; }
+.tp-quick { padding: .2rem .7rem; font-size: .8rem; }
+.tp-voted { color: #9fe7a8; }
