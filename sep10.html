@@ -749,7 +749,7 @@
 
       var cat = CATEGORIES[e.category] || CATEGORIES.milestone;
       var entryEl = document.createElement("div");
-      entryEl.className = "entry"; entryEl.dataset.ts = e.timestamp;
+      entryEl.className = "entry"; entryEl.dataset.ts = e.timestamp; if (e.addedAt) entryEl.dataset.added = e.addedAt;
 
       var timeEl = document.createElement("time");
       timeEl.className = "mono";
@@ -999,6 +999,8 @@
   window.addEventListener("resize", update3d);
   function centerShot() {
     var es = tl.querySelectorAll(".entry"), best = null, bd = 1e18, shot = Date.parse("2025-09-10T18:23:30Z");
+    var newest = null; es.forEach(function (e) { if (e.dataset.added && (!newest || e.dataset.added > newest.dataset.added)) newest = e; });
+    if (newest) best = newest; else
     es.forEach(function (e) { var d = Math.abs(Date.parse(e.dataset.ts) - shot); if (d < bd) { bd = d; best = e; } });
     if (!best) { tl.scrollLeft = 0; return; }
     var ox = 0, n = best; while (n && n !== tl) { ox += n.offsetLeft; n = n.offsetParent; }
