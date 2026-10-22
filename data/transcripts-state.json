@@ -565,8 +565,9 @@
   "kind": "asr"
  },
  "QCnPXCikHMg": {
-  "tried": "2026-10-20",
-  "status": "none"
+  "tried": "2026-10-22",
+  "status": "ok",
+  "kind": "asr"
  },
  "xaLuASQRqw0": {
   "tried": "2026-10-20",
@@ -924,7 +925,7 @@
   "kind": "asr"
  },
  "gkCUWG7Eqy8": {
-  "tried": "2026-10-21",
+  "tried": "2026-10-22",
   "status": "ok",
   "kind": "standard"
  },
@@ -935,6 +936,11 @@
  },
  "7EBKXgpo3QU": {
   "tried": "2026-10-21",
+  "status": "ok",
+  "kind": "asr"
+ },
+ "yDFbI-JZdrg": {
+  "tried": "2026-10-22",
   "status": "ok",
   "kind": "asr"
  }
