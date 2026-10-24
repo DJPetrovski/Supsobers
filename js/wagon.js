@@ -322,13 +322,13 @@
   /* tabs: pick a game */
   var es = document.getElementById('es'), tabEs = document.getElementById('cvt-es'), tabWg = document.getElementById('cvt-wg'), tabDd = document.getElementById('cvt-dd'), ddEl = document.getElementById('dd');
   function pick(which) {
-    var wg = which === 'wg', dd = which === 'dd';
-    es.hidden = which !== 'es'; root.hidden = !wg; if (ddEl) ddEl.hidden = !dd;
-    [[tabEs, which === 'es'], [tabWg, wg], [tabDd, dd]].forEach(function (t) { if (t[0]) { t[0].classList.toggle('on', t[1]); t[0].setAttribute('aria-selected', String(t[1])); } });
+    var wg = which === 'wg', dd = which === 'dd', bk = which === 'bk', bkEl = document.getElementById('bk'), tabBk = document.getElementById('cvt-bk');
+    es.hidden = which !== 'es'; root.hidden = !wg; if (ddEl) ddEl.hidden = !dd; if (bkEl) bkEl.hidden = !bk;
+    [[tabEs, which === 'es'], [tabBk, bk], [tabWg, wg], [tabDd, dd]].forEach(function (t) { if (t[0]) { t[0].classList.toggle('on', t[1]); t[0].setAttribute('aria-selected', String(t[1])); } });
     document.dispatchEvent(new CustomEvent('ss:cvgame', { detail: which }));
     if (wg) { if (!st) reset(); play(); } else pause();
   }
-  tabEs.addEventListener('click', function () { pick('es'); }); tabWg.addEventListener('click', function () { pick('wg'); }); if (tabDd) tabDd.addEventListener('click', function () { pick('dd'); });
+  tabEs.addEventListener('click', function () { pick('es'); }); tabWg.addEventListener('click', function () { pick('wg'); }); if (tabDd) tabDd.addEventListener('click', function () { pick('dd'); }); var tabBk0 = document.getElementById('cvt-bk'); if (tabBk0) tabBk0.addEventListener('click', function () { pick('bk'); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
   window.__wg = function () { return { pools: pools, cps: cps, st: st, pressed: pressed, started: started, diff: diff() }; };

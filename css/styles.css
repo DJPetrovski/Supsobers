@@ -2063,3 +2063,52 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .gs-row img.fit { object-fit: contain; background: #0b0204; padding: 2px; }
 .rw-spot { inset: 18px 0 26px; }
 .rw-spot img { max-height: 100%; }
+
+/* ---------- Kraving Killer: Blok Bottom ---------- */
+.bk { width: min(720px, 100%); margin: 0 auto; padding: 14px; border-radius: 18px; background: linear-gradient(#1a0508, #0a0204); border: 1px solid var(--line); box-shadow: 0 0 40px rgba(255, 42, 53, .18); }
+.bk[hidden], .bk [hidden] { display: none !important; }
+.bk-title { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: clamp(1.5rem, 5vw, 2.1rem); letter-spacing: .06em; text-transform: uppercase; color: #fff; text-shadow: 0 0 16px #ff2a35; }
+.bk-lede { margin: 0 0 14px; color: #ffd1d4; font-size: .95rem; max-width: 60ch; }
+.bk-boards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: 14px; }
+.bk-board { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #140609; color: var(--bone); font: inherit; text-align: left; cursor: pointer; }
+.bk-board small { color: var(--ash); font-size: .74rem; line-height: 1.3; }
+.bk-board.on { border-color: #ff4a55; box-shadow: 0 0 14px rgba(255, 42, 53, .5); background: #2a0a10; }
+.bk-dots { display: flex; gap: 3px; } .bk-dots i { width: 11px; height: 11px; border-radius: 3px; display: block; }
+.bk-opts { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.bk-opts label, .bk-code label { display: flex; flex-direction: column; gap: 4px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ash); }
+.bk input[type=text], .bk select { padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: #0c0305; color: var(--bone); font: inherit; font-size: 1rem; min-width: 0; }
+.bk-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+.bk-code { display: flex; gap: 8px; align-items: flex-end; margin-bottom: 8px; }
+.bk-code input { width: 7em; text-transform: uppercase; letter-spacing: .2em; }
+.bk-note { min-height: 1.3em; margin: 4px 0 8px; color: #ffb3b8; font-size: .88rem; }
+.bk-how { font-size: .88rem; color: #ffd1d4; } .bk-how summary { cursor: pointer; font-weight: 700; } .bk-how li { margin: 4px 0; }
+.bk-seats { display: grid; gap: 6px; margin-bottom: 14px; }
+.bk-seat { display: grid; grid-template-columns: 14px 70px 1fr auto; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 10px; background: #140609; border: 1px solid var(--line); }
+.bk-seat.you { border-color: #ff4a55; } .bk-seat i { width: 14px; height: 14px; border-radius: 4px; } .bk-seat em { color: var(--ash); } .bk-seat small { color: var(--ash); }
+.bk-codebig { font-family: var(--display); font-size: 1.5rem; letter-spacing: .25em; color: #fff; }
+.bk-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.bk-top .bk-title { margin: 0; font-size: 1.4rem; } .bk-mode { flex: 1; color: var(--ash); font-size: .82rem; }
+.bk-small { padding: 6px 12px !important; font-size: .8rem !important; }
+.bk-players { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; margin-bottom: 8px; }
+.bk-chip { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 9px; background: #140609; border: 2px solid transparent; font-size: .8rem; min-width: 0; }
+.bk-chip i { width: 12px; height: 12px; border-radius: 3px; background: var(--c); flex: none; } .bk-chip span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .bk-chip b { color: #fff; } .bk-chip small { color: var(--ash); }
+.bk-chip.turn { border-color: var(--c); box-shadow: 0 0 12px var(--c); } .bk-chip.out { opacity: .5; } .bk-chip.mine span { font-weight: 700; }
+.bk-msg { min-height: 1.4em; margin: 0 0 8px; color: #ffd1d4; font-size: .92rem; }
+.bk-boardwrap { position: relative; display: flex; justify-content: center; line-height: 0; }
+#bk-canvas { display: block; touch-action: none; user-select: none; -webkit-user-select: none; border-radius: 6px; max-width: 100%; cursor: crosshair; box-shadow: 0 0 0 3px #3a1118; }
+.bk-over { position: absolute; inset: 0; display: grid; place-items: center; padding: 12px; background: rgba(5, 1, 6, .82); line-height: 1.4; text-align: center; border-radius: 6px; }
+.bk-over h3 { margin: 0 0 10px; font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 6vw, 2.4rem); text-transform: uppercase; color: #fff; text-shadow: 0 0 18px #ff2a35; }
+.bk-over ol { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 4px; text-align: left; font-size: .9rem; }
+.bk-over li { display: grid; grid-template-columns: 14px 1fr auto; gap: 8px; align-items: center; } .bk-over li i { width: 12px; height: 12px; border-radius: 3px; } .bk-over li small { grid-column: 2 / 4; color: var(--ash); margin-top: -3px; }
+.bk-over .bk-actions { justify-content: center; margin: 0; }
+.bk-ctl { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; margin: 10px 0 8px; }
+.bk-ctl.idle { opacity: .55; }
+.bk-pad { display: inline-grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+.bk-pad button, .bk-ctl .btn { min-height: 40px; }
+.bk-pad button { width: 40px; border-radius: 8px; border: 1px solid var(--line); background: #140609; color: var(--bone); font-size: .9rem; cursor: pointer; }
+.bk-ctl .btn { padding: 8px 14px; } .bk-ctl .btn:disabled { opacity: .4; cursor: not-allowed; }
+.bk-tray { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 5px; padding: 8px; border-radius: 12px; background: #0e0306; border: 1px solid var(--line); }
+.bk-tray button { padding: 3px; border-radius: 8px; border: 2px solid transparent; background: #1b080c; cursor: pointer; line-height: 0; }
+.bk-tray button canvas { width: 100%; height: auto; display: block; }
+.bk-tray button.sel { border-color: #fff; background: #3a1118; } .bk-tray button.used { opacity: .18; cursor: default; }
+@media (max-width: 520px) { .bk { padding: 10px; border-radius: 14px; } .bk-seat { grid-template-columns: 14px 56px 1fr auto; } }

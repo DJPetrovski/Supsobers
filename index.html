@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1792807603">
+  <link rel="stylesheet" href="css/styles.css?v=1792810581">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -338,7 +338,7 @@
     <section class="view page craving" data-view="craving" aria-labelledby="craving-title" hidden>
       <h2 id="craving-title">Kraving Killer</h2>
       <p class="lede">Having a craving? Most last two to five minutes. Play something dumb until it passes.</p>
-      <div class="cv-tabs" role="tablist" aria-label="Pick a game"><button type="button" role="tab" id="cvt-es" class="on" aria-selected="true">Etch A Sketch</button><button type="button" role="tab" id="cvt-wg" aria-selected="false">Don't Fall Off the Wagon</button><button type="button" role="tab" id="cvt-dd" aria-selected="false">Disc-ipline</button></div>
+      <div class="cv-tabs" role="tablist" aria-label="Pick a game"><button type="button" role="tab" id="cvt-es" class="on" aria-selected="true">Etch A Sketch</button><button type="button" role="tab" id="cvt-bk" aria-selected="false">Blok Bottom</button><button type="button" role="tab" id="cvt-wg" aria-selected="false">Don't Fall Off the Wagon</button><button type="button" role="tab" id="cvt-dd" aria-selected="false">Disc-ipline</button></div>
       <div class="es" id="es">
         <div class="es-top"><b>Sober Etch A Sketch</b><span class="es-lvl"><b id="es-lv">Level 1</b> <span class="es-clock" id="es-clock" aria-live="off">0:00</span></span></div>
         <div class="es-screenwrap"><i class="es-dim"></i><canvas id="es-canvas" width="480" height="340" aria-label="Etch A Sketch maze game"></canvas><i class="es-glare"></i></div>
@@ -364,6 +364,55 @@
           <div class="wg-over" id="wg-over"><div><h3 id="wg-over-t">Don't Fall Off the Wagon</h3><p id="wg-over-s">Ride a little red wagon from hill to hill. Hold B (or press and hold the screen) to dive and gain speed. Press Shift (or the JUMP button) to jump. Don&rsquo;t fall off the wagon.</p><button type="button" class="btn btn-primary" id="wg-go">Start rolling</button></div></div>
         </div>
         <p class="es-help">Hold <b>B</b> (or press and hold the screen) to dive and gain speed. Let go near the top of a hill to launch, and tap <b>Shift</b> (or the JUMP button) to jump. Grab the gold chips. It starts calm and slowly gets steeper, shorter and rockier. If you fall off the wagon, climb back on.</p>
+      </div>
+      <div class="bk" id="bk" hidden>
+        <div class="bk-menu" id="bk-menu">
+          <h3 class="bk-title">Blok Bottom</h3>
+          <p class="bk-lede">Fit your colored pieces onto the board. Every new piece must touch one of your own at a corner, never along a side. Block everyone else in and use up as many squares as you can.</p>
+          <div class="bk-boards" id="bk-boards" role="group" aria-label="Pick a board"></div>
+          <div class="bk-opts">
+            <label>Your name<input type="text" id="bk-name" maxlength="18" placeholder="Guest" autocomplete="off"></label>
+            <label>Computer players<select id="bk-level"><option value="easy">Easy</option><option value="normal" selected>Medium</option><option value="hard">Hard</option></select></label>
+          </div>
+          <div class="bk-actions">
+            <button type="button" class="btn btn-primary" id="bk-vs">Play the computers</button>
+            <button type="button" class="btn" id="bk-online">Play online</button>
+            <button type="button" class="btn" id="bk-private">Private table</button>
+          </div>
+          <div class="bk-code"><label>Have a code?<input type="text" id="bk-code" maxlength="5" placeholder="ABCDE" autocomplete="off" autocapitalize="characters"></label><button type="button" class="btn" id="bk-join">Join</button></div>
+          <p class="bk-note" id="bk-menu-note" role="status" aria-live="polite"></p>
+          <details class="bk-how"><summary>How to play</summary>
+            <ul>
+              <li>Your first piece must cover your starting square (marked on the board).</li>
+              <li>After that, each piece must touch one of your own pieces at a corner. Never share a side with your own color. Other colors can touch you anywhere.</li>
+              <li>You can&rsquo;t move a piece after you place it, so plan your corners. When nothing of yours fits, you&rsquo;re out.</li>
+              <li>Score: minus one for every square still in your hand. Place all 21 pieces for +15, and +5 more if the single square goes last.</li>
+              <li>Online: tables fill up with other visitors. If you don&rsquo;t want to wait, the host can start early and the computer plays the empty seats.</li>
+            </ul>
+          </details>
+        </div>
+        <div class="bk-table" id="bk-table" hidden>
+          <h3 class="bk-title" id="bk-table-t">Finding a table&hellip;</h3>
+          <p class="bk-lede" id="bk-table-s"></p>
+          <div class="bk-seats" id="bk-seats"></div>
+          <div class="bk-actions"><button type="button" class="btn btn-primary" id="bk-start">Start now</button><button type="button" class="btn" id="bk-leave">Leave table</button></div>
+          <p class="bk-note" id="bk-table-note" role="status" aria-live="polite"></p>
+        </div>
+        <div class="bk-game" id="bk-game" hidden>
+          <div class="bk-top"><b class="bk-title">Blok Bottom</b><span class="bk-mode" id="bk-mode"></span><button type="button" class="btn bk-small" id="bk-hints" aria-pressed="true">Hints: on</button><button type="button" class="btn bk-small" id="bk-quit">Menu</button></div>
+          <div class="bk-players" id="bk-players"></div>
+          <p class="bk-msg" id="bk-msg" role="status" aria-live="polite"></p>
+          <div class="bk-boardwrap"><canvas id="bk-canvas" aria-label="Game board"></canvas>
+            <div class="bk-over" id="bk-over" hidden><div><h3 id="bk-over-t">Game over</h3><ol id="bk-over-l"></ol><div class="bk-actions"><button type="button" class="btn btn-primary" id="bk-again">Play again</button><button type="button" class="btn" id="bk-over-menu">Menu</button></div></div></div>
+          </div>
+          <div class="bk-ctl" id="bk-ctl">
+            <button type="button" class="btn" id="bk-rot" aria-label="Rotate the piece">&#10227; Rotate</button><button type="button" class="btn" id="bk-flip" aria-label="Flip the piece">&#8644; Flip</button>
+            <span class="bk-pad" aria-label="Nudge the piece"><button type="button" data-d="-1,0" aria-label="Left">&#9664;</button><button type="button" data-d="0,-1" aria-label="Up">&#9650;</button><button type="button" data-d="0,1" aria-label="Down">&#9660;</button><button type="button" data-d="1,0" aria-label="Right">&#9654;</button></span>
+            <button type="button" class="btn btn-primary" id="bk-place">Place it</button>
+          </div>
+          <div class="bk-tray" id="bk-tray" role="listbox" aria-label="Your pieces"></div>
+          <p class="es-help" id="bk-credit">Tap a piece, move it over the board (drag on a phone), rotate or flip it, then place it. On a computer: click to place, R to rotate, F to flip.</p>
+        </div>
       </div>
       <div class="dd" id="dd" hidden>
         <div class="dd-stage" id="dd-stage">
@@ -550,29 +599,31 @@
     </div>
     <span class="scd-rs" role="separator" aria-label="Drag to resize the player" title="Drag to resize (double-tap to reset)"></span>
   </aside>
-  <script src="js/rain.js?v=1792807603" defer></script>
-  <script src="js/app.js?v=1792807603" defer></script>
-  <script src="js/smart.js?v=1792807603" defer></script>
-  <script src="js/turkey.js?v=1792807603" defer></script>
-  <script src="js/hole.js?v=1792807603" defer></script>
-  <script src="js/pill.js?v=1792807603" defer></script>
-  <script src="js/tv.js?v=1792807603" defer></script>
-  <script src="js/topics.js?v=1792807603" defer></script>
-  <script src="js/join.js?v=1792807603" defer></script>
-  <script src="js/semantic.js?v=1792807603" defer></script>
-  <script src="js/search.js?v=1792807603" defer></script>
-  <script src="js/merch.js?v=1792807603" defer></script>
-  <script src="js/web.js?v=1792807603" defer></script>
-  <script src="js/home.js?v=1792807603" defer></script>
-  <script src="js/remote.js?v=1792807603" defer></script>
-  <script src="js/craving.js?v=1792807603" defer></script>
-  <script src="js/wagon.js?v=1792807603" defer></script>
-  <script src="js/discphys.js?v=1792807603" defer></script>
-  <script src="js/discgolf.js?v=1792807603" defer></script>
-  <script src="js/dismiss.js?v=1792807603" defer></script>
-  <script src="js/popout.js?v=1792807603" defer></script>
-  <script src="js/scplayer.js?v=1792807603" defer></script>
-  <script src="js/assistant.js?v=1792807603" defer></script>
-  <script src="js/music.js?v=1792807603" defer></script>
+  <script src="js/rain.js?v=1792810581" defer></script>
+  <script src="js/app.js?v=1792810581" defer></script>
+  <script src="js/smart.js?v=1792810581" defer></script>
+  <script src="js/turkey.js?v=1792810581" defer></script>
+  <script src="js/hole.js?v=1792810581" defer></script>
+  <script src="js/pill.js?v=1792810581" defer></script>
+  <script src="js/tv.js?v=1792810581" defer></script>
+  <script src="js/topics.js?v=1792810581" defer></script>
+  <script src="js/join.js?v=1792810581" defer></script>
+  <script src="js/semantic.js?v=1792810581" defer></script>
+  <script src="js/search.js?v=1792810581" defer></script>
+  <script src="js/merch.js?v=1792810581" defer></script>
+  <script src="js/web.js?v=1792810581" defer></script>
+  <script src="js/home.js?v=1792810581" defer></script>
+  <script src="js/remote.js?v=1792810581" defer></script>
+  <script src="js/blocks-core.js?v=1792810581" defer></script>
+  <script src="js/blocks.js?v=1792810581" defer></script>
+  <script src="js/craving.js?v=1792810581" defer></script>
+  <script src="js/wagon.js?v=1792810581" defer></script>
+  <script src="js/discphys.js?v=1792810581" defer></script>
+  <script src="js/discgolf.js?v=1792810581" defer></script>
+  <script src="js/dismiss.js?v=1792810581" defer></script>
+  <script src="js/popout.js?v=1792810581" defer></script>
+  <script src="js/scplayer.js?v=1792810581" defer></script>
+  <script src="js/assistant.js?v=1792810581" defer></script>
+  <script src="js/music.js?v=1792810581" defer></script>
 </body>
 </html>
