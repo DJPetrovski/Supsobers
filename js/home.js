@@ -29,7 +29,7 @@
     web: function () { return '<h3>It\'s All<br>Connected</h3>' + WEB + '<p>See how it all links up</p>'; },
     members: function () { return '<h3 class="pv-neon">Members<br>Only</h3><p>Off the record</p>'; },
     archives: function () { return '<h3>Archives</h3><p>Timelines and source records</p>'; },
-    merch: function () { var m = (window.SS && SS.merch || []).slice(0, 3); return '<h3>Merch</h3><p>Shirts, hoodies, stickers</p><div class="pv-strip">' + m.map(function (x) { return '<img src="' + x.images[0] + '" alt="">'; }).join('') + '</div>'; },
+    merch: function () { var m = (window.SS && SS.merch || []).slice(0, 3); return '<h3>Merch</h3><p>Shirts, hoodies, stickers</p><div class="pv-strip pv-merch">' + m.map(function (x) { return '<img src="' + ((x.cutouts && x.cutouts[0]) || x.images[0]) + '" alt="">'; }).join('') + '</div>'; },
     socials: function () { var n = (window.SS && SS.socials || []).length; return '<h3>Socials</h3><p>' + (n ? n + ' channels to tune in' : 'Find me everywhere') + '</p><div class="pv-chans"><i></i><i></i><i></i><i></i></div>'; },
     books: function () { return '<h3>Books</h3><p>Reading from the library</p>'; },
     about: function () { return '<h3>About</h3><p>Trust those who seek the truth</p>'; },

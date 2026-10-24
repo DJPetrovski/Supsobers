@@ -142,7 +142,15 @@
       box.appendChild(im); box.appendChild(el('div', 'rw-pedestal')); cast.appendChild(box);
     }, 120);
   }
-  track.addEventListener('scroll', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }, { passive: true });
+  // Snapping is done here, not by CSS scroll-snap: the browser's snap points use the tilted (transformed) cards, which pulled the rack
+  // back a few items whenever you reached the end. This settles on the nearest card once the scrolling (and any finger) has stopped.
+  var settleT = 0, touching = false;
+  function nearest() { var m = track.scrollLeft + track.clientWidth / 2, b = 0, bd = 1e9; cards.forEach(function (c, i) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - m); if (d < bd) { bd = d; b = i; } }); return { i: b, d: bd }; }
+  function settle() { if (touching || down || !cards.length) return; var n = nearest(); if (n.d > 3) go(n.i); }
+  track.addEventListener('touchstart', function () { touching = true; clearTimeout(settleT); }, { passive: true });
+  track.addEventListener('touchend', function () { touching = false; clearTimeout(settleT); settleT = setTimeout(settle, 160); }, { passive: true });
+  track.addEventListener('touchcancel', function () { touching = false; clearTimeout(settleT); settleT = setTimeout(settle, 160); }, { passive: true });
+  track.addEventListener('scroll', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); clearTimeout(settleT); settleT = setTimeout(settle, 160); }, { passive: true });
   window.addEventListener('resize', function () { go(cur, true); frame(); });
   document.getElementById('mc-prev').addEventListener('click', function () { go(cur - 1); });
   document.getElementById('mc-next').addEventListener('click', function () { go(cur + 1); });

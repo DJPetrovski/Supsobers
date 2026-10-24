@@ -2055,3 +2055,11 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .tp-hit { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .15rem 0; }
 .tp-quick { padding: .2rem .7rem; font-size: .8rem; }
 .tp-voted { color: #9fe7a8; }
+
+/* merch pictures are shown whole, never cropped or zoomed */
+.mc-track { scroll-snap-type: none; }
+.mc-angle img { object-fit: contain; padding: 3px; background: radial-gradient(ellipse at 50% 35%, #2a0a0e, #0b0204 80%); }
+.pv-strip.pv-merch img { aspect-ratio: 1 / 1; object-fit: contain; background: radial-gradient(ellipse at 50% 35%, #2a0a0e, #0b0204 80%); padding: 4px; box-sizing: border-box; }
+.gs-row img.fit { object-fit: contain; background: #0b0204; padding: 2px; }
+.rw-spot { inset: 18px 0 26px; }
+.rw-spot img { max-height: 100%; }

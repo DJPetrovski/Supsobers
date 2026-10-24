@@ -63,7 +63,7 @@
 
   function row(thumb, title, sub, tag, act) {
     var b = el('button', 'gs-row'); b.type = 'button'; b.setAttribute('role', 'option');
-    if (thumb) { var im = el('img'); im.src = thumb; im.alt = ''; im.loading = 'lazy'; b.appendChild(im); } else b.appendChild(el('span', 'gs-ico', tag.charAt(0)));
+    if (thumb) { var im = el('img', tag === 'Merch' ? 'fit' : ''); im.src = thumb; im.alt = ''; im.loading = 'lazy'; b.appendChild(im); } else b.appendChild(el('span', 'gs-ico', tag.charAt(0)));
     var tx = el('span', 'gs-tx'); tx.appendChild(el('b', '', title)); if (sub) tx.appendChild(el('small', '', sub)); b.appendChild(tx);
     b.appendChild(el('span', 'gs-tag', tag)); b.addEventListener('click', function () { closePanel(); act(); });
     rows.push(b); return b;
