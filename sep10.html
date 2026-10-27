@@ -386,6 +386,35 @@
 
   /* ---------- full screen / landscape / tablet ---------- */
   .fsbtn { position: absolute; right: 14px; bottom: 46px; z-index: 6; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; color: #f3e9d2; background: rgba(7,13,31,.7); border: 1px solid rgba(243,233,210,.4); border-radius: 999px; padding: 6px 13px; backdrop-filter: blur(4px); }
+  .crsbtn { right: 138px; }
+  .crs { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; background: rgba(4,7,18,.94); color: #f3e9d2; backdrop-filter: blur(6px); animation: crsin .22s ease-out; }
+  .stage.fs .crs { position: fixed; }
+  @keyframes crsin { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+  .crs-top { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+  .crs-top b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500; font-size: 13px; }
+  .crs-hint { flex: 1; font-size: 12px; opacity: .6; }
+  .crs-x { font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: #f3e9d2; background: rgba(243,233,210,.14); border: 1px solid rgba(243,233,210,.4); border-radius: 999px; padding: 7px 16px; }
+  .crs-wrap { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; }
+  .crs-track { flex: 1; height: 100%; display: flex; gap: 18px; align-items: center; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 8px calc(50% - min(40vw, 230px)); scrollbar-width: none; outline: none; -webkit-overflow-scrolling: touch; }
+  .crs-track::-webkit-scrollbar { display: none; }
+  .crs-card { flex: none; width: min(80vw, 460px); max-height: 100%; overflow-y: auto; scroll-snap-align: center; border-radius: 14px; background: #1b1812; border: 1px solid rgba(243,233,210,.25); border-top: 4px solid var(--card-accent, #83786a); transform: scale(.9); opacity: .55; transition: transform .2s, opacity .2s; display: flex; flex-direction: column; }
+  .crs-card.on { transform: none; opacity: 1; box-shadow: 0 10px 40px rgba(0,0,0,.6); }
+  .crs-thumb { position: relative; aspect-ratio: 16 / 9; background: #0b0a07; flex: none; display: grid; place-items: center; color: rgba(243,233,210,.4); font-size: 13px; }
+  .crs-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .crs-play { position: absolute; z-index: 1; width: 54px; height: 54px; border-radius: 50%; background: rgba(0,0,0,.6); border: 2px solid #fff; display: grid; place-items: center; }
+  .crs-play::after { content: ""; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
+  .crs-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .crs-body time { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; opacity: .75; }
+  .crs-body h3 { margin: 0; font-size: 18px; line-height: 1.25; }
+  .crs-src { font-size: 12px; opacity: .65; }
+  .crs-desc { margin: 0; font-size: 13.5px; line-height: 1.45; opacity: .9; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .crs-act { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .crs-act a, .crs-act button { font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; color: #f3e9d2; background: rgba(243,233,210,.12); border: 1px solid rgba(243,233,210,.4); border-radius: 999px; padding: 8px 14px; }
+  .crs-act a.go { background: #f3e9d2; color: #17140f; }
+  .crs-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(243,233,210,.5); background: rgba(7,13,31,.8); color: #f3e9d2; cursor: pointer; font-size: 15px; }
+  .crs-prev { left: 10px; } .crs-next { right: 10px; }
+  @media (max-width: 600px) { .crs-nav { width: 38px; height: 38px; } .crs-hint { display: none; } .crs-top { justify-content: space-between; } .crsbtn { right: 120px; } }
+  @media (prefers-reduced-motion: reduce) { .crs { animation: none; } .crs-track { scroll-behavior: auto; } }
   .fsbtn:hover { background: rgba(243,233,210,.22); }
   html.fs-lock, html.fs-lock body { overflow: hidden; }
 
@@ -429,8 +458,8 @@
     .stage.fs #timeline-root { padding: 4px calc(50% - 105px) 8px; }
     .stage.fs #timeline-root .entry { width: 210px; gap: 6px; }
     .stage.fs #timeline-root .entry time { font-size: 11px; padding-top: 8px; }
-    .stage.fs #timeline-root .card-media { max-height: 64px; overflow: hidden; }
-    .stage.fs #timeline-root .card-media img { width: 100%; height: 64px; object-fit: cover; }
+    .stage.fs #timeline-root .card-media { max-height: 96px; overflow: hidden; }
+    .stage.fs #timeline-root .card-media img { width: 100%; height: 96px; object-fit: cover; }
     .stage.fs #timeline-root .card .source-line, .stage.fs #timeline-root .card p.desc { display: none; }
     .stage.fs #timeline-root .card h3, .stage.fs #timeline-root .card .title { font-size: 13px; }
     .fsbtn { bottom: 40px; }
@@ -482,6 +511,7 @@
 <div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
 <div class="bgbar" id="bgbar"><button type="button" id="bg-play">Pause background</button><button type="button" id="bg-sound">Sound on</button><button type="button" id="bg-hide">Hide video</button></div>
 <div class="bgnow" id="bgnow" aria-live="off"></div>
+<button type="button" class="fsbtn crsbtn" id="crs-btn">Browse videos</button>
 <button type="button" class="fsbtn" id="fs-btn" aria-pressed="false">Full screen</button>
 <svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
 <defs><linearGradient id="fl-fold" x1="0" y1="0" x2="1" y2="0"><stop offset="0.000" stop-color="#000" stop-opacity="0.37"/><stop offset="0.025" stop-color="#000" stop-opacity="0.30"/><stop offset="0.050" stop-color="#000" stop-opacity="0.20"/><stop offset="0.075" stop-color="#000" stop-opacity="0.10"/><stop offset="0.100" stop-color="#fff" stop-opacity="0.01"/><stop offset="0.125" stop-color="#fff" stop-opacity="0.06"/><stop offset="0.150" stop-color="#fff" stop-opacity="0.11"/><stop offset="0.175" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.200" stop-color="#fff" stop-opacity="0.19"/><stop offset="0.225" stop-color="#fff" stop-opacity="0.21"/><stop offset="0.250" stop-color="#fff" stop-opacity="0.22"/><stop offset="0.275" stop-color="#fff" stop-opacity="0.21"/><stop offset="0.300" stop-color="#fff" stop-opacity="0.20"/><stop offset="0.325" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.350" stop-color="#fff" stop-opacity="0.12"/><stop offset="0.375" stop-color="#fff" stop-opacity="0.07"/><stop offset="0.400" stop-color="#fff" stop-opacity="0.02"/><stop offset="0.425" stop-color="#000" stop-opacity="0.07"/><stop offset="0.450" stop-color="#000" stop-opacity="0.18"/><stop offset="0.475" stop-color="#000" stop-opacity="0.28"/><stop offset="0.500" stop-color="#000" stop-opacity="0.36"/><stop offset="0.525" stop-color="#000" stop-opacity="0.41"/><stop offset="0.550" stop-color="#000" stop-opacity="0.44"/><stop offset="0.575" stop-color="#000" stop-opacity="0.45"/><stop offset="0.600" stop-color="#000" stop-opacity="0.42"/><stop offset="0.625" stop-color="#000" stop-opacity="0.37"/><stop offset="0.650" stop-color="#000" stop-opacity="0.30"/><stop offset="0.675" stop-color="#000" stop-opacity="0.20"/><stop offset="0.700" stop-color="#000" stop-opacity="0.10"/><stop offset="0.725" stop-color="#fff" stop-opacity="0.01"/><stop offset="0.750" stop-color="#fff" stop-opacity="0.06"/><stop offset="0.775" stop-color="#fff" stop-opacity="0.11"/><stop offset="0.800" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.825" stop-color="#fff" stop-opacity="0.19"/><stop offset="0.850" stop-color="#fff" stop-opacity="0.21"/><stop offset="0.875" stop-color="#fff" stop-opacity="0.22"/><stop offset="0.900" stop-color="#fff" stop-opacity="0.21"/><stop offset="0.925" stop-color="#fff" stop-opacity="0.20"/><stop offset="0.950" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.975" stop-color="#fff" stop-opacity="0.12"/><stop offset="1.000" stop-color="#fff" stop-opacity="0.07"/></linearGradient>
@@ -507,6 +537,10 @@
       <div class="wbar"><span>Every video is a node, tied to the ones it shares a source with, was filmed near in time, or captured the shot itself. Drag to turn it, scroll or pinch to zoom, tap a node to see what it connects to.</span><button type="button" id="web-pop">Pop out</button></div>
       <div class="webbox" id="webbox"><canvas id="webcv"></canvas><button type="button" class="wclose" id="web-close">Close ×</button><div class="winfo" id="winfo"></div></div>
     </section>
+    <div class="crs" id="crs" hidden role="dialog" aria-modal="true" aria-label="Browse the archive">
+      <div class="crs-top"><b id="crs-count">&nbsp;</b><span class="crs-hint">Swipe or use the arrows</span><button type="button" class="crs-x" id="crs-x" aria-label="Close">Close &times;</button></div>
+      <div class="crs-wrap"><button type="button" class="crs-nav crs-prev" id="crs-prev" aria-label="Previous">&#9664;</button><div class="crs-track" id="crs-track" tabindex="0"></div><button type="button" class="crs-nav crs-next" id="crs-next" aria-label="Next">&#9654;</button></div>
+    </div>
     <div id="tip" class="tip" hidden role="dialog" aria-label="Clip details"></div>
 
     <div id="timeline-root"></div>
@@ -1296,6 +1330,45 @@
         .catch(function () { st.className = "form-msg error"; st.innerHTML = "Could not send from here. Email the link to <b>" + TO + "</b> instead."; })
         .then(function () { btn.disabled = false; });
     });
+  })();
+
+    // ---------- carousel: a pop-out strip of big video cards ----------
+  (function () {
+    var box = document.getElementById("crs"), track = document.getElementById("crs-track"), cnt = document.getElementById("crs-count"), openBtn = document.getElementById("crs-btn"), cur = 0, list = [], raf = 0, lock = 0;
+    function cards() { return track.children; }
+    function setOn(i) { cur = Math.max(0, Math.min(list.length - 1, i)); Array.prototype.forEach.call(cards(), function (c, k) { c.classList.toggle("on", k === cur); }); cnt.textContent = list.length ? (cur + 1) + " / " + list.length : "No entries"; }
+    function goTo(i, smooth) { var c = cards()[Math.max(0, Math.min(list.length - 1, i))]; if (!c) return; lock = Date.now() + (smooth ? 650 : 100); track.style.scrollBehavior = smooth ? "smooth" : "auto"; track.scrollTo({ left: c.offsetLeft - (track.clientWidth - c.offsetWidth) / 2, behavior: smooth ? "smooth" : "auto" }); setOn(i); }
+    function nearest() { var mid = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9; Array.prototype.forEach.call(cards(), function (c, k) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } }); return best; }
+    function build() {
+      list = filteredEntries(); track.innerHTML = "";
+      list.forEach(function (e, k) {
+        var cat = CATEGORIES[e.category] || CATEGORIES.milestone, c = document.createElement("article"), th = e.mediaType === "milestone" ? null : thumbOf(e);
+        c.className = "crs-card"; c.style.setProperty("--card-accent", "var(" + cat.varName + ")");
+        c.innerHTML = '<div class="crs-thumb">' + (th ? '' : escapeHtml(cat.label)) + (e.mediaType === "video" ? '<span class="crs-play"></span>' : '') + '</div>' +
+          '<div class="crs-body"><time>' + escapeHtml((dayLabel(e.date) || "") + (e.time ? " · " + e.time : "")) + '</time><h3 class="headline">' + escapeHtml(e.title) + '</h3><div class="crs-src">' + escapeHtml(e.sourceName || "") + ' · ' + escapeHtml(cat.label) + '</div><p class="crs-desc">' + escapeHtml(e.description || "") + '</p>' +
+          '<div class="crs-act">' + (e.sourceUrl ? '<a class="go" href="' + escapeHtml(e.sourceUrl) + '" target="_blank" rel="noopener">' + (e.mediaType === "video" ? "Watch" : e.mediaType === "photo" ? "View source" : "Read more") + ' →</a>' : '') + '<button type="button" data-k="' + k + '">Show on timeline</button></div></div>';
+        if (th) { var im = document.createElement("img"); im.alt = ""; im.loading = "lazy"; im.src = th; im.onerror = function () { im.remove(); }; c.firstChild.insertBefore(im, c.firstChild.firstChild); }
+        c.addEventListener("click", function (ev) { if (ev.target.closest("a,button")) return; if (k !== cur) goTo(k, true); });
+        track.appendChild(c);
+      });
+    }
+    function open() {
+      build(); box.hidden = false; var f = document.querySelector("#timeline-root .entry.focus"), start = 0;
+      if (f) for (var i = 0; i < list.length; i++) if (list[i].timestamp === f.dataset.ts) { start = i; break; }
+      requestAnimationFrame(function () { goTo(start, false); track.focus({ preventScroll: true }); });
+    }
+    function close() { box.hidden = true; track.innerHTML = ""; }
+    openBtn.addEventListener("click", open);
+    document.getElementById("crs-x").addEventListener("click", close);
+    document.getElementById("crs-prev").addEventListener("click", function () { goTo(cur - 1, true); });
+    document.getElementById("crs-next").addEventListener("click", function () { goTo(cur + 1, true); });
+    track.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; if (Date.now() < lock) return; var n = nearest(); if (n !== cur) setOn(n); }); }, { passive: true });
+    track.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button[data-k]"); if (!b) return; var e = list[+b.dataset.k]; close();
+      var ents = document.querySelectorAll("#timeline-root .entry"), hit = null; Array.prototype.forEach.call(ents, function (n) { if (n.dataset.ts === e.timestamp) hit = n; });
+      if (hit) { var tl = document.getElementById("timeline-root"); if (tl.scrollWidth > tl.clientWidth + 4) tl.scrollTo({ left: hit.offsetLeft - (tl.clientWidth - hit.offsetWidth) / 2, behavior: "smooth" }); else hit.scrollIntoView({ block: "center", behavior: "smooth" }); }
+    });
+    document.addEventListener("keydown", function (ev) { if (box.hidden) return; if (ev.key === "Escape") { ev.stopPropagation(); close(); } else if (ev.key === "ArrowRight") { ev.preventDefault(); goTo(cur + 1, true); } else if (ev.key === "ArrowLeft") { ev.preventDefault(); goTo(cur - 1, true); } }, true);
   })();
 
     // ---------- full screen, and landscape on a phone ----------

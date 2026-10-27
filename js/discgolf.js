@@ -1737,7 +1737,7 @@
     if (G.phase === 'fly') flightStep(dt);
     else if (G.phase === 'tour') { G.tour.t += dt; if (G.tour.t >= G.tour.dur) endTour(); }
     else if (G.phase === 'roll') { G.roll.t += dt; if (G.roll.t >= G.roll.dur) { var r = G.roll; G.roll = null; rest([r.x1, r.y1]); } }
-    else if (G.phase === 'rest' && now - G.rest > 1100) { G.phase = 'aim'; previewDirty = true; }
+    else if (G.phase === 'rest' && now - G.rest > 1100) { G.phase = 'aim'; previewDirty = true; syncPutt(); }
     moveCam(dt); render(now, dt); raf = requestAnimationFrame(frame);
   }
   function play() {
