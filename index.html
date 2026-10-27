@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1792810581">
+  <link rel="stylesheet" href="css/styles.css?v=1793076046">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -421,6 +421,7 @@
           <div class="dd-chips"><b>Disc-ipline</b><span id="dd-hole">Hole 1/18</span><span id="dd-par">Par 3</span><span id="dd-str">Throws 0</span><span id="dd-vs" class="dd-vs">E</span><button type="button" class="dd-fs" id="dd-menu" aria-expanded="false" aria-controls="dd-menupanel">&#9776; Menu</button><button type="button" class="dd-fs" id="dd-fs" aria-pressed="false">Full screen</button></div>
           <div class="dd-menu" id="dd-menupanel" hidden role="menu"><button type="button" id="dd-course" role="menuitem"><b>Course</b><small>Pick a different course</small></button><button type="button" id="dd-edit" role="menuitem"><b>Edit hole</b><small>Move the tee or the basket</small></button><button type="button" id="dd-card" role="menuitem"><b>Scorecard</b><small>Your round so far</small></button><button type="button" id="dd-trophy" role="menuitem"><b>Trophies</b><small id="dd-trophy-n">Badges and medals</small></button><button type="button" id="dd-replay" role="menuitem"><b>Replay flyover</b><small>Fly the line to the basket</small></button><button type="button" id="dd-tourbtn" role="menuitem"><b>Flyover</b><small id="dd-tour-s">Preview each hole: on</small></button><button type="button" id="dd-pguide" role="menuitem"><b>Putt guide</b><small id="dd-pguide-s">Shows the ideal putt line: on</small></button><button type="button" id="dd-howto" role="menuitem"><b>How to play</b><small>Quick tips</small></button></div>
           <button type="button" class="dd-skip" id="dd-skip" hidden>Skip flyover &#9656;</button>
+          <button type="button" class="dd-tapin" id="dd-tapin" hidden>Tap it in</button>
           <div class="dd-putmsg" id="dd-putmsg" hidden><span id="dd-putmsg-t"></span><button type="button" class="dd-putmsg-x" id="dd-putmsg-x" aria-label="Close tip">&times;</button></div>
           <p class="wg-toast dd-toast" id="dd-toast" role="status" aria-live="polite"></p>
           <p class="dd-msg" id="dd-msg" hidden></p>
@@ -442,7 +443,7 @@
           <div class="dd-editor" id="dd-editor" hidden><canvas id="dd-edcv" aria-label="Hole editor: drag the white tee or the red basket"></canvas><div class="dd-edbar"><span id="dd-edinfo">Drag the white tee or the red basket</span><button type="button" class="btn" id="dd-edreset">Reset hole</button><button type="button" class="btn btn-primary" id="dd-eddone">Done</button></div></div>
           <div class="wg-over dd-pick" id="dd-cardov" hidden><div><h3>Scorecard</h3><div class="dd-cardwrap" id="dd-cardwrap"></div><button type="button" class="btn" id="dd-card-x">Close</button></div></div>
           <div class="wg-over dd-pick" id="dd-trov" hidden><div><h3>Trophies</h3><p id="dd-trsum"></p><div class="dd-trgrid" id="dd-trgrid"></div><button type="button" class="btn" id="dd-tr-x">Close</button></div></div>
-          <div class="wg-over dd-pick" id="dd-howov" hidden><div><h3>How to play</h3><ul class="dd-how"><li><b>Throw:</b> pull the glowing disc back and let go, like a slingshot. The further you pull, the harder and further it goes.</li><li><b>Hyzer and anhyzer:</b> pull it back straight down for a flat throw. Pull back to the right and it flies out on a hyzer (fades left). Pull back to the left and it flies on an anhyzer (curves right). The tilt shows as you pull. A full-power pull shakes a little, just like a real arm.</li><li><b>Aim and nose:</b> the three bars above the buttons set aim, nose angle (how high it launches) and a power limit so you cannot overthrow. You can also drag anywhere that is not the disc to turn the view.</li><li><b>Disc:</b> tap the disc at the bottom left. Drivers go far, putters go short and straight. The Backhand button flips to a forehand throw.</li><li><b>Flyover:</b> each hole starts with a quick fly along the line to the basket, then drops you back at the tee. Tap to skip, or switch it off in the Menu.</li><li><b>Your dog:</b> tap it to give it a pet. Tap rabbits and squirrels too.</li><li><b>Putting:</b> inside about 22 m you putt instead. Put your finger down, pull back toward you, then push forward toward the basket. A longer, quicker push putts harder, and the direction of your push is your aim. Pick Straddle or the overhead Pizza putt (cuts through wind) with the pizza button.</li><li><b>Water:</b> putters and midranges skip across the water if you throw them flat and fast.</li><li><b>Score:</b> hit the chains. Beat par to earn badges and medals.</li></ul><p class="dd-credit" style="font-size:.72rem;opacity:.65;margin:.6rem 0 0">Dog model: &ldquo;bull terrier&rdquo; by <a href="https://sketchfab.com/3d-models/bull-terrier-7982ea44c07a4408b40ff6e7e3397121" target="_blank" rel="noopener">marcelo_ramos_lopez</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p><button type="button" class="btn" id="dd-how-x">Got it</button></div></div>
+          <div class="wg-over dd-pick" id="dd-howov" hidden><div><h3>How to play</h3><ul class="dd-how"><li><b>Throw:</b> pull the glowing disc back and let go, like a slingshot. The further you pull, the harder and further it goes.</li><li><b>Hyzer and anhyzer:</b> pull it back straight down for a flat throw. Pull back to the right and it flies out on a hyzer (fades left). Pull back to the left and it flies on an anhyzer (curves right). The tilt shows as you pull. A full-power pull shakes a little, just like a real arm.</li><li><b>Aim and nose:</b> the three bars above the buttons set aim, nose angle (how high it launches) and a power limit so you cannot overthrow. You can also drag anywhere that is not the disc to turn the view.</li><li><b>Disc:</b> tap the disc at the bottom left. Drivers go far, putters go short and straight. The Backhand button flips to a forehand throw.</li><li><b>Flyover:</b> each hole starts with a quick fly along the line to the basket, then drops you back at the tee. Tap to skip, or switch it off in the Menu.</li><li><b>Your dog:</b> tap it to give it a pet. Tap rabbits and squirrels too.</li><li><b>Putting:</b> inside about 22 m you putt instead. Inside about 3 m (roughly 10 feet) a Tap it in button appears, and the disc goes straight into the basket for one throw. Put your finger down, pull back toward you, then push forward toward the basket. A longer, quicker push putts harder, and the direction of your push is your aim. Pick Straddle or the overhead Pizza putt (cuts through wind) with the pizza button.</li><li><b>Water:</b> putters and midranges skip across the water if you throw them flat and fast.</li><li><b>Score:</b> hit the chains. Beat par to earn badges and medals.</li></ul><p class="dd-credit" style="font-size:.72rem;opacity:.65;margin:.6rem 0 0">Dog model: &ldquo;bull terrier&rdquo; by <a href="https://sketchfab.com/3d-models/bull-terrier-7982ea44c07a4408b40ff6e7e3397121" target="_blank" rel="noopener">marcelo_ramos_lopez</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p><button type="button" class="btn" id="dd-how-x">Got it</button></div></div>
           <div class="wg-over" id="dd-over" hidden><div><h3 id="dd-over-t">Hole done</h3><p id="dd-over-s"></p><button type="button" class="btn btn-primary" id="dd-next">Next hole</button></div></div>
         </div>
         <p class="es-help"><b>Aim:</b> drag the view: side to side points the throw, up and down changes how high it launches. <b>Disc:</b> tap the disc at the bottom left (the four numbers are its real <b>speed | glide | turn | fade</b>). <b>Power:</b> hold THROW and let go. Use <b>Max</b> to cap your power so you can't overthrow, it resets after each throw. <b>Tune</b> holds the hyzer, anhyzer, nose angle and aim sliders. The dotted line shows where your setup lands. Wind, trees, bushes, boulders and water are real, and to score you have to hit the chains. Beat par to earn badges and medals.</p>
@@ -599,31 +600,31 @@
     </div>
     <span class="scd-rs" role="separator" aria-label="Drag to resize the player" title="Drag to resize (double-tap to reset)"></span>
   </aside>
-  <script src="js/rain.js?v=1792810581" defer></script>
-  <script src="js/app.js?v=1792810581" defer></script>
-  <script src="js/smart.js?v=1792810581" defer></script>
-  <script src="js/turkey.js?v=1792810581" defer></script>
-  <script src="js/hole.js?v=1792810581" defer></script>
-  <script src="js/pill.js?v=1792810581" defer></script>
-  <script src="js/tv.js?v=1792810581" defer></script>
-  <script src="js/topics.js?v=1792810581" defer></script>
-  <script src="js/join.js?v=1792810581" defer></script>
-  <script src="js/semantic.js?v=1792810581" defer></script>
-  <script src="js/search.js?v=1792810581" defer></script>
-  <script src="js/merch.js?v=1792810581" defer></script>
-  <script src="js/web.js?v=1792810581" defer></script>
-  <script src="js/home.js?v=1792810581" defer></script>
-  <script src="js/remote.js?v=1792810581" defer></script>
-  <script src="js/blocks-core.js?v=1792810581" defer></script>
-  <script src="js/blocks.js?v=1792810581" defer></script>
-  <script src="js/craving.js?v=1792810581" defer></script>
-  <script src="js/wagon.js?v=1792810581" defer></script>
-  <script src="js/discphys.js?v=1792810581" defer></script>
-  <script src="js/discgolf.js?v=1792810581" defer></script>
-  <script src="js/dismiss.js?v=1792810581" defer></script>
-  <script src="js/popout.js?v=1792810581" defer></script>
-  <script src="js/scplayer.js?v=1792810581" defer></script>
-  <script src="js/assistant.js?v=1792810581" defer></script>
-  <script src="js/music.js?v=1792810581" defer></script>
+  <script src="js/rain.js?v=1793076046" defer></script>
+  <script src="js/app.js?v=1793076046" defer></script>
+  <script src="js/smart.js?v=1793076046" defer></script>
+  <script src="js/turkey.js?v=1793076046" defer></script>
+  <script src="js/hole.js?v=1793076046" defer></script>
+  <script src="js/pill.js?v=1793076046" defer></script>
+  <script src="js/tv.js?v=1793076046" defer></script>
+  <script src="js/topics.js?v=1793076046" defer></script>
+  <script src="js/join.js?v=1793076046" defer></script>
+  <script src="js/semantic.js?v=1793076046" defer></script>
+  <script src="js/search.js?v=1793076046" defer></script>
+  <script src="js/merch.js?v=1793076046" defer></script>
+  <script src="js/web.js?v=1793076046" defer></script>
+  <script src="js/home.js?v=1793076046" defer></script>
+  <script src="js/remote.js?v=1793076046" defer></script>
+  <script src="js/blocks-core.js?v=1793076046" defer></script>
+  <script src="js/blocks.js?v=1793076046" defer></script>
+  <script src="js/craving.js?v=1793076046" defer></script>
+  <script src="js/wagon.js?v=1793076046" defer></script>
+  <script src="js/discphys.js?v=1793076046" defer></script>
+  <script src="js/discgolf.js?v=1793076046" defer></script>
+  <script src="js/dismiss.js?v=1793076046" defer></script>
+  <script src="js/popout.js?v=1793076046" defer></script>
+  <script src="js/scplayer.js?v=1793076046" defer></script>
+  <script src="js/assistant.js?v=1793076046" defer></script>
+  <script src="js/music.js?v=1793076046" defer></script>
 </body>
 </html>

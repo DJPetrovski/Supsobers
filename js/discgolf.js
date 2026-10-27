@@ -663,7 +663,16 @@
     var pz = PSTYLE === 'pizza'; G.aimOff = clamp(si.ang * 0.6, -0.35, 0.35); doThrow(clamp(si.p, 0.05, 1), { la: pz ? 0.2 : 0.07, hy: 0, pizza: pz, putt: true }); CAP = 1; syncUi();
   }
   glc.addEventListener('pointerup', function () { endSwipe(false); }); glc.addEventListener('pointercancel', function () { endSwipe(true); });
+  var TAP_R = 3, tapBtn = $('dd-tapin');
+  function tapInOk() { return !!G && G.phase === 'aim' && !G.done && distToBasket() <= TAP_R; }
+  if (tapBtn) tapBtn.addEventListener('click', function (e) {
+    e.stopPropagation(); if (!tapInOk()) return;
+    var b = G.h.basket, lx = G.lie[0], ly = G.lie[1]; G.strokes++;
+    G.drop = { t: 0, x0: lx, y0: ly, z0: gh(lx, ly) + 0.15, x1: b[0], y1: b[1], z1: G.h.bz + 0.8, bank: 0 }; G.flightDisc = disc;
+    say('Tap-in. Good and sober.'); holeOutScore(true);
+  });
   function syncPutt() {
+    if (tapBtn) tapBtn.hidden = !tapInOk();
     var r = !!G && distToBasket() <= PUTT_R, on = r && PSTYLE !== 'off' && G.phase !== 'tour';
     stage.classList.toggle('dd-putting', on); stage.classList.toggle('dd-pizza', on && PSTYLE === 'pizza');
     if (pstyleBtn) { pstyleBtn.hidden = !r; pstyleBtn.querySelector('b').textContent = PSTYLE === 'putt' ? 'Putt: Straddle' : PSTYLE === 'pizza' ? 'Putt: Pizza' : 'Regular throw'; }
