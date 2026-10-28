@@ -213,9 +213,11 @@
   function updateChips() {
     var g = G, st = g.st, html = '';
     for (var c = 0; c < st.S; c++) {
-      html += '<div class="bk-chip' + (st.turn === c && !st.over ? ' turn' : '') + (st.out[c] ? ' out' : '') + (iPlay(c) ? ' mine' : '') + '" style="--c:' + PAL[c] + '"><i></i><span>' + esc(g.names[c] || NAMES[c]) + '</span><b>' + st.remaining[c] + '</b>' + (st.out[c] ? '<small>out</small>' : '') + '</div>';
+      var isT = st.turn === c && !st.over;
+      html += '<div class="bk-chip' + (isT ? ' turn' : '') + (st.out[c] ? ' out' : '') + (iPlay(c) ? ' mine' : '') + '" style="--c:' + PAL[c] + '"><i></i><span>' + esc(g.names[c] || NAMES[c]) + '</span><b>' + st.remaining[c] + '</b>' + (st.out[c] ? '<small>out</small>' : isT ? '<small class="bk-now">' + (iPlay(c) ? 'YOUR TURN' : 'playing\u2026') + '</small>' : '') + '</div>';
     }
     el.players.innerHTML = html;
+    el.canvas.style.setProperty('--turn', PAL[st.turn]); el.canvas.classList.toggle('turn', !st.over); el.canvas.classList.toggle('yours', !st.over && iPlay(st.turn));
   }
 
   /* ---------- piece selection / orientation ---------- */
@@ -230,27 +232,40 @@
   function keepOnBoard() { var g = G, s = g.sel; if (!s) return; var o = B.PIECES[s.p].orients[s.o], n = g.st.n; g.gx = Math.max(0, Math.min(n - o.w, g.gx)); g.gy = Math.max(0, Math.min(n - o.h, g.gy)); }
   function select(p) {
     var g = G; if (!g) return;
-    g.sel = { p: p, o: 0 }; if (!g.ghostOn) { var n = g.st.n; g.gx = Math.floor(n / 2) - 1; g.gy = Math.floor(n / 2) - 1; var s = g.st.v.starts[mySeat()]; if (g.st.first[mySeat()]) { g.gx = s[0]; g.gy = s[1]; } }
+    g.sel = { p: p, o: 0 }; if (!g.ghostOn) { var n = g.st.n; g.gx = Math.floor(n / 2) - 1; g.gy = Math.floor(n / 2) - 1; var s = g.st.v.starts[mySeat()]; if (g.st.first[mySeat()]) { var vs = vp(s[0], s[1]); g.gx = vs[0]; g.gy = vs[1]; } }
     keepOnBoard(); updateMsg(); drawTray(); draw();
   }
   function mySeat() { return G.mode === 'solo' ? 0 : G.me; }
+  /* the board is turned on screen so that your own start corner sits at the lower right; the game itself never changes */
+  function vp(x, y) { var n = G.st.n, r = G.rot | 0, t; for (var i = 0; i < r; i++) { t = x; x = n - 1 - y; y = t; } return [x, y]; }
+  function bp(x, y) { var n = G.st.n, r = (4 - (G.rot | 0)) % 4, t; for (var i = 0; i < r; i++) { t = x; x = n - 1 - y; y = t; } return [x, y]; }
+  function rotFor() {
+    var g = G, s = g.st.v.starts[mySeat()], n = g.st.n, best = 0, bd = 1e9;
+    for (var r = 0; r < 4; r++) { g.rot = r; var q = vp(s[0], s[1]), d = Math.abs(n - 1 - q[0]) + Math.abs(n - 1 - q[1]); if (d < bd) { bd = d; best = r; } }
+    return best;
+  }
+  function toBoard(sel, gx, gy) {   // the piece as you see it on screen -> where it really sits on the board
+    var cells = B.PIECES[sel.p].orients[sel.o].cells.map(function (c) { return bp(gx + c[0], gy + c[1]); }), mx = 1e9, my = 1e9;
+    cells.forEach(function (c) { if (c[0] < mx) mx = c[0]; if (c[1] < my) my = c[1]; });
+    return { o: orientIndex(sel.p, normCells(cells)), x: mx, y: my };
+  }
   function fixSelection() {
-    var g = G; if (!g || g.dead) return;
+    var g = G; if (!g || g.dead) return; g.rot = rotFor();
     var c = mySeat(), used = g.st.used[c];
     if (g.sel && used[g.sel.p]) g.sel = null;
     if (!g.sel && !g.st.over && !g.st.out[c]) {
       var best = -1; for (var p = B.PIECES.length - 1; p >= 0; p--) if (!used[p]) { best = p; break; }
-      if (best >= 0) { g.sel = { p: best, o: 0 }; if (g.st.first[c]) { var s = g.st.v.starts[c]; g.gx = s[0]; g.gy = s[1]; } keepOnBoard(); }
+      if (best >= 0) { g.sel = { p: best, o: 0 }; if (g.st.first[c]) { var s = g.st.v.starts[c], vs = vp(s[0], s[1]); g.gx = vs[0]; g.gy = vs[1]; } keepOnBoard(); }
     }
     if (g.st.out[c]) g.sel = null;
   }
   function canPlace() {
     var g = G; if (!g || !g.sel || g.st.over || g.st.turn !== mySeat() || g.busy) return false;
-    return B.legalAt(g.st, mySeat(), B.PIECES[g.sel.p].orients[g.sel.o], g.gx, g.gy);
+    var tb = toBoard(g.sel, g.gx, g.gy); return B.legalAt(g.st, mySeat(), B.PIECES[g.sel.p].orients[tb.o], tb.x, tb.y);
   }
   function place() {
     var g = G; if (!canPlace()) { if (g && g.sel && g.st.turn === mySeat()) { setMsg('That spot does not work: touch your own piece at a corner only (or cover your start square), stay on the board, and do not overlap.'); } return; }
-    var m = { c: mySeat(), p: g.sel.p, o: g.sel.o, x: g.gx, y: g.gy };
+    var tb = toBoard(g.sel, g.gx, g.gy), m = { c: mySeat(), p: g.sel.p, o: tb.o, x: tb.x, y: tb.y };
     if (g.mode === 'solo') { B.play(g.st, m); g.lastMove = m; g.sel = null; g.ghostOn = true; afterChange(true); }
     else { g.sel = null; submit(m); drawTray(); draw(); }
   }
@@ -284,24 +299,25 @@
     ctx.stroke();
     // start squares
     for (var c = 0; c < st.S; c++) {
-      var s = st.v.starts[c]; if (st.board[s[1] * n + s[0]] !== -1) continue;
+      var s0 = st.v.starts[c]; if (st.board[s0[1] * n + s0[0]] !== -1) continue; var s = vp(s0[0], s0[1]);
       ctx.fillStyle = PAL[c]; ctx.globalAlpha = .28; ctx.fillRect(s[0] * cell, s[1] * cell, cell, cell); ctx.globalAlpha = 1;
       ctx.strokeStyle = PAL[c]; ctx.lineWidth = 2; ctx.strokeRect(s[0] * cell + 2, s[1] * cell + 2, cell - 4, cell - 4);
+      if (iPlay(c)) { ctx.fillStyle = '#111'; ctx.font = '700 ' + Math.max(8, Math.floor(cell * .42)) + 'px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('YOU', s[0] * cell + cell / 2, s[1] * cell + cell / 2); }
     }
-    for (var y = 0; y < n; y++) for (var x = 0; x < n; x++) { var v = st.board[y * n + x]; if (v !== -1) block(x, y, v); }
+    for (var y = 0; y < n; y++) for (var x = 0; x < n; x++) { var v = st.board[y * n + x]; if (v !== -1) { var q0 = vp(x, y); block(q0[0], q0[1], v); } }
     // last move outline
     if (g.lastMove) {
       var lm = g.lastMove, o = B.PIECES[lm.p].orients[lm.o]; ctx.strokeStyle = 'rgba(0,0,0,.65)'; ctx.lineWidth = 2;
-      o.cells.forEach(function (q) { ctx.strokeRect((lm.x + q[0]) * cell + 3, (lm.y + q[1]) * cell + 3, cell - 6, cell - 6); });
+      o.cells.forEach(function (q) { var w0 = vp(lm.x + q[0], lm.y + q[1]); ctx.strokeRect(w0[0] * cell + 3, w0[1] * cell + 3, cell - 6, cell - 6); });
     }
     var my = mySeat(), myTurn = st.turn === my && !st.over;
     if (g.hints && myTurn && !g.busy) {
       ctx.fillStyle = PAL[my]; ctx.globalAlpha = .75;
-      B.frontier(st, my).forEach(function (i2) { var hx = i2 % n, hy = (i2 - hx) / n; ctx.beginPath(); ctx.arc(hx * cell + cell / 2, hy * cell + cell / 2, Math.max(2, cell * .16), 0, 6.3); ctx.fill(); });
+      B.frontier(st, my).forEach(function (i2) { var hx0 = i2 % n, hy0 = (i2 - hx0) / n, hv = vp(hx0, hy0), hx = hv[0], hy = hv[1]; ctx.beginPath(); ctx.arc(hx * cell + cell / 2, hy * cell + cell / 2, Math.max(2, cell * .16), 0, 6.3); ctx.fill(); });
       ctx.globalAlpha = 1;
     }
     if (g.sel && myTurn) {
-      var po = B.PIECES[g.sel.p].orients[g.sel.o], ok = B.legalAt(st, my, po, g.gx, g.gy);
+      var po = B.PIECES[g.sel.p].orients[g.sel.o], tb = toBoard(g.sel, g.gx, g.gy), ok = B.legalAt(st, my, B.PIECES[g.sel.p].orients[tb.o], tb.x, tb.y);
       po.cells.forEach(function (q) { var gx = g.gx + q[0], gy = g.gy + q[1]; if (gx < 0 || gy < 0 || gx >= n || gy >= n) return; block(gx, gy, my, ok ? .9 : .45); });
       ctx.strokeStyle = ok ? '#0a7a2c' : '#c4121c'; ctx.lineWidth = 2;
       po.cells.forEach(function (q) { var gx = g.gx + q[0], gy = g.gy + q[1]; if (gx < 0 || gy < 0 || gx >= n || gy >= n) return; ctx.strokeRect(gx * cell + 1.5, gy * cell + 1.5, cell - 3, cell - 3); });
@@ -364,5 +380,10 @@
   document.addEventListener('visibilitychange', function () { if (!document.hidden && G && G.mode === 'online') schedulePoll(0); });
 
   // tests and tinkering
-  window.BlokBottom = { get game() { return G; }, place: place, select: select, rotate: rotate, flip: flip };
+  function toView(m) {   // a board move -> the same move as seen on screen (for tests)
+    var cells = B.PIECES[m.p].orients[m.o].cells.map(function (c) { return vp(m.x + c[0], m.y + c[1]); }), mx = 1e9, my = 1e9;
+    cells.forEach(function (c) { if (c[0] < mx) mx = c[0]; if (c[1] < my) my = c[1]; });
+    return { o: orientIndex(m.p, normCells(cells)), x: mx, y: my };
+  }
+  window.BlokBottom = { toView: toView, get game() { return G; }, place: place, select: select, rotate: rotate, flip: flip };
 })();

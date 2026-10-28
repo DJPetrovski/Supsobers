@@ -2116,3 +2116,11 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .dd-tapin { position: absolute; right: 14px; top: 46%; z-index: 6; padding: 12px 22px; border-radius: 999px; border: 2px solid #fff; background: linear-gradient(#34d56a, #138a3a); color: #fff; font: 800 1rem/1 system-ui, sans-serif; letter-spacing: .02em; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.5); }
 .dd-tapin[hidden] { display: none; }
 .dd-tapin:active { transform: scale(.95); }
+
+#bk-canvas.turn { box-shadow: 0 0 0 4px var(--turn, #fff), 0 0 18px var(--turn, #fff); animation: bkpulse 1.3s ease-in-out infinite; }
+#bk-canvas.turn.yours { box-shadow: 0 0 0 5px var(--turn, #fff), 0 0 30px var(--turn, #fff); animation-duration: .8s; }
+@keyframes bkpulse { 50% { filter: brightness(1.08); box-shadow: 0 0 0 4px var(--turn, #fff), 0 0 34px var(--turn, #fff); } }
+.bk-chip .bk-now { grid-column: auto; color: #fff; font-weight: 700; letter-spacing: .05em; animation: bkblink 1.1s ease-in-out infinite; }
+.bk-chip.turn.mine { background: #2a0a10; }
+@keyframes bkblink { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { #bk-canvas.turn, .bk-chip .bk-now { animation: none; } }
