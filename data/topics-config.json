@@ -1,7 +1,7 @@
 {
   "_note": "Fill in after creating the free Supabase project (see supabase/topics.sql). Leave supabaseUrl empty and the Topics page shows 'opening soon'. boostUrl is an optional payment link (Ko-fi, Stripe, Patreon) for paid boosts.",
-  "supabaseUrl": "",
-  "anonKey": "",
+  "supabaseUrl": "https://cjjbktneobjyxhckzkhs.supabase.co",
+  "anonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqamJrdG5lb2JqeXhoY2t6a2hzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzODI0ODksImV4cCI6MjEwODk1ODQ4OX0.I3566xQgNwolUpKkacRAhO-tHDtN-doGx7oZsWqnCag",
   "boostUrl": "",
   "boostVotes": 10,
   "boostPrice": "$3"
