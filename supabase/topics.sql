@@ -11,6 +11,7 @@ create table if not exists topics (
   votes       int  not null default 0,          -- real votes from visitors
   boost       int  not null default 0,          -- votes YOU add by hand (for example after a paid boost)
   video_id    text,                              -- the YouTube video id once you have covered it
+  image_url   text,                              -- optional photo for the topic tile (paste any image link; if empty the site looks one up on Wikipedia)
   ip          text,                              -- kept private, used only to slow down spam
   created_at  timestamptz not null default now(),
   covered_at  timestamptz
@@ -19,6 +20,8 @@ create table if not exists topics (
 alter table topics add column if not exists title_key text generated always as (regexp_replace(regexp_replace(lower(title), '^the\s+', ''), '[^a-z0-9]+', '', 'g')) stored;
 drop index if exists topics_title_unique;
 create unique index if not exists topics_title_key_unique on topics (title_key);
+
+alter table topics add column if not exists image_url text;   -- (for databases created before photos existed)
 
 create table if not exists topic_votes (
   topic_id   uuid not null references topics (id) on delete cascade,
@@ -33,7 +36,7 @@ alter table topic_votes enable row level security;
 
 -- Visitors can read approved and covered topics (never the private columns), and suggest new ones as "pending".
 revoke all on topics from anon, authenticated;
-grant select (id, title, note, status, votes, boost, video_id, created_at, covered_at) on topics to anon;   -- title_key and ip stay private
+grant select (id, title, note, status, votes, boost, video_id, image_url, created_at, covered_at) on topics to anon;   -- title_key and ip stay private
 grant insert (title, note) on topics to anon;
 drop policy if exists "read listed topics" on topics;
 create policy "read listed topics" on topics for select to anon using (status in ('approved', 'covered'));
