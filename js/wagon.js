@@ -88,8 +88,13 @@
   }
   function say(t) { toast.textContent = t; toast.classList.add('on'); clearTimeout(st.toastT); st.toastT = setTimeout(function () { toast.classList.remove('on'); }, 3800); }
 
+  // "Ahhh f***": the same reaction voices as the disc game, and the same sound settings (Menu > Sound in Disc-ipline)
+  function fallVoice() {
+    try { var sv = JSON.parse(localStorage.getItem('ss-disc-snd') || '{}'); if (sv.on === false || sv.voice === false) return;
+      var a = new Audio('media/disc/say' + (1 + Math.floor(Math.random() * 5)) + '.mp3'); a.volume = 0.9; setTimeout(function () { a.play().catch(function () {}); }, 250); } catch (e) {}
+  }
   function crash(why) {
-    if (st.dead) return; st.dead = true; st.deadT = 0; st.why = why;
+    if (st.dead) return; st.dead = true; st.deadT = 0; st.why = why; fallVoice();
     var vx = st.air ? st.vx : st.v / Math.sqrt(1 + slope(st.x) * slope(st.x));
     st.rider = { x: st.x, y: st.y - 20, vx: vx * 0.7 + 40, vy: -200, rot: 0, vr: rnd(-7, 7) };
     st.flash = 1;

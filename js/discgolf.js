@@ -456,7 +456,7 @@
     var ps = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, 0); if (o.pizza) { ps.pizza = true; ps.bank = 0; ps.bank0 = 0; } G.plan = pathFrom(ps, !!o.putt); G.prevPts = null;
     G.strokes++; G.prev = [G.lie[0], G.lie[1]];
     var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise); s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; if (o.pizza) { s.pizza = true; s.bank = 0; s.bank0 = 0; } s.putt = !!o.putt;
-    bark(1); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.pcHd = undefined; G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
+    bark(1); sfx(Math.random() < 0.5 ? 'throw1' : 'throw2', 0.7); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.pcHd = undefined; G.flight = s; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
   }
   function wind() { return [G.wind[0] * 0.55, G.wind[1] * 0.55]; }
 
@@ -494,7 +494,7 @@
         if (z > 0.1 && z < th && d < rr) {
           var nx = dx / (d || 1), ny = dy / (d || 1), dot = s.v[0] * nx + s.v[1] * ny;
           s.v[0] = (s.v[0] - 1.6 * dot * nx) * 0.18; s.v[1] = (s.v[1] - 1.6 * dot * ny) * 0.18; s.v[2] = Math.min(s.v[2], 0) * 0.3 - 1;
-          p[0] = t.x + nx * (rr + 0.05); p[1] = t.y + ny * (rr + 0.05); if (G.hit !== 'tree') G.holeHits++; G.hit = 'tree'; s.bank *= 0.2; G.shake = 0.25;
+          p[0] = t.x + nx * (rr + 0.05); p[1] = t.y + ny * (rr + 0.05); if (G.hit !== 'tree') G.holeHits++; G.hit = 'tree'; hitSfx(); s.bank *= 0.2; G.shake = 0.25;
         }
       }
       for (var oi = 0; oi < h.obst.length; oi++) {
@@ -503,13 +503,13 @@
         if (p[2] - o.g < top && od < o.r + 0.12) {
           var onx = ox2 / (od || 1), ony = oy2 / (od || 1), odot = s.v[0] * onx + s.v[1] * ony, kk = o.kind === 'bush' ? 0.16 : 0.34;
           s.v[0] = (s.v[0] - 1.7 * odot * onx) * kk; s.v[1] = (s.v[1] - 1.7 * odot * ony) * kk; s.v[2] = Math.abs(s.v[2]) * 0.2 + (o.kind === 'rock' ? 1.2 : 0);
-          p[0] = o.x + onx * (o.r + 0.14); p[1] = o.y + ony * (o.r + 0.14); if (G.hit !== o.kind) G.holeHits++; G.hit = o.kind; s.bank *= 0.3; G.shake = 0.2; if (G.flash !== o.kind) { G.flash = o.kind; }
+          p[0] = o.x + onx * (o.r + 0.14); p[1] = o.y + ony * (o.r + 0.14); if (G.hit !== o.kind) G.holeHits++; G.hit = o.kind; hitSfx(); s.bank *= 0.3; G.shake = 0.2; if (G.flash !== o.kind) { G.flash = o.kind; }
         }
       }
       var bc = basketCheck(s);
       if (bc) {
         if (bc.kind === 'in') { holeOut(bc.spd); return; }
-        G.hit = bc.kind; G.shake = 0.18;
+        G.hit = bc.kind; hitSfx(); G.shake = 0.18;
         flash(bc.kind === 'rattle' ? 'Rattled out!' : bc.kind === 'top' ? 'Off the top!' : 'Off the tray!');
       }
       var gz = gh(p[0], p[1]), wl = waterLevelAt(h, p[0], p[1]); if (wl !== null && wl > gz) gz = wl;
@@ -543,15 +543,18 @@
     G.roll = { putt: !!s.putt, x0: p[0], y0: p[1], x1: fx, y1: fy, t: 0, dur: clamp(Math.hypot(fx - p[0], fy - p[1]) / 6, 0.25, 1.3), bank: s.bank, rot: s.rot }; G.phase = 'roll';
   }
   function rest(pos, why) {
-    var h = G.h; G.phase = 'rest'; G.rest = performance.now(); G.restDisc = G.flight ? G.flight.disc : disc; G.flight = null;
+    var h = G.h, wasPutt = !!(G.flight && G.flight.putt); G.phase = 'rest'; G.rest = performance.now(); G.restDisc = G.flight ? G.flight.disc : disc; G.flight = null;
     var t = why || terrain(h, pos[0], pos[1]);
     if (t === 'water' || t === 'ob') {
+      if (t === 'water') sfx('splash', 0.8); curse(1);
       G.strokes++; G.roundPen++; G.lie = [G.prev[0], G.prev[1]];
       say(t === 'water' ? 'Splash! Don’t fall in the drink. +1 stroke, throw again from the same spot.' : 'Out of bounds. +1 stroke, throw again from the same spot.');
       G.throws.push([G.lie[0], G.lie[1]]);
     } else {
       var dthrow = Math.hypot(pos[0] - G.prev[0], pos[1] - G.prev[1]); if (dthrow >= 120) award('bomb'); G.lie = [pos[0], pos[1]]; G.throws.push([pos[0], pos[1]]);
       var db = distToBasket();
+      if (wasPutt && db > 0.35) curse(0.6);
+      if (db > 0.35) setTimeout(function () { sfx('steps', 0.2); }, 700);
       if (G.hit === 'tree') say('Tree! ' + Math.round(dthrow) + ' m. ' + Math.round(db) + ' m to the basket.');
       else say(Math.round(dthrow) + ' m. ' + (db < 1.2 ? 'Right at the basket.' : Math.round(db) + ' m to the basket.') + (t === 'rough' ? ' In the rough.' : ''));
       if (db < 0.35) { G.strokes++; say('Kicked to the base: tap-in.'); holeOutScore(true); return; }
@@ -568,6 +571,7 @@
     G.phase = 'holed'; var st = G.strokes, par = G.h.par, diff = st - par; G.scores.push(st);
     var name = st === 1 ? 'ACE!' : diff <= -2 ? 'Eagle!' : diff === -1 ? 'Birdie!' : diff === 0 ? 'Par. Straight and sober.' : diff === 1 ? 'Bogey. A small stumble.' : 'Rough one. Keep your head up.';
     awardHole(st, par, chains);
+    if (st === 1 || diff <= -2) { sfx('yay1', 0.9); setTimeout(function () { sfx('clap', 0.7); }, 600); } else if (diff === -1) setTimeout(function () { sfx('clap2', 0.7); }, 500); else if (diff >= 2) curse(0.8);
     var last = G.hole === HOLE_N - 1; G.done = last;
     overT.textContent = (chains ? 'CHAINS! ' : '') + name;
     overS.textContent = 'Hole ' + (G.hole + 1) + ' in ' + st + ' (par ' + par + ').';
@@ -584,7 +588,49 @@
 
   // a soft chain rattle made from filtered noise (only after the player has pressed something)
   var actx = null;
+  /* ---------- recorded sounds (media/disc/*.mp3) ----------
+     Everything is optional: if a file has not loaded yet, or sound is muted, the game stays quiet or falls back to the synthesized sound. */
+  var SND = { on: true, voice: true, music: false };
+  try { var _sv = JSON.parse(localStorage.getItem('ss-disc-snd') || '{}'); if (_sv.on === false) SND.on = false; if (_sv.voice === false) SND.voice = false; if (_sv.music === true) SND.music = true; } catch (e) {}
+  function saveSnd() { try { localStorage.setItem('ss-disc-snd', JSON.stringify(SND)); } catch (e) {} }
+  var SFX_LIST = ['chain', 'chain2', 'rattle', 'hit1', 'hit2', 'throw1', 'throw2', 'splash', 'steps', 'bark1', 'bark2', 'bark3', 'bark4', 'say1', 'say2', 'say3', 'say4', 'say5', 'yay1', 'clap', 'clap2'], sfxBuf = {}, sfxStarted = false;
+  function audioCtx() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); return actx; } catch (e) { return null; } }
+  function sfxPreload() {
+    if (sfxStarted) return; sfxStarted = true; var c = audioCtx(); if (!c) return;
+    SFX_LIST.forEach(function (n) {
+      fetch('media/disc/' + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (ab) {
+        if (ab) c.decodeAudioData(ab, function (b) { sfxBuf[n] = b; }, function () {});
+      }).catch(function () {});
+    });
+  }
+  function sfx(name, vol, rate) {
+    if (!SND.on) return false; var b = sfxBuf[name], c = actx; if (!b || !c) return false;
+    try { if (c.state === 'suspended') c.resume(); var src = c.createBufferSource(), g = c.createGain(); src.buffer = b; src.playbackRate.value = rate || 1; g.gain.value = vol == null ? 0.8 : vol; src.connect(g); g.connect(c.destination); src.start(); return true; } catch (e) { return false; }
+  }
+  function pickN(prefix, n) { return prefix + (1 + Math.floor(Math.random() * n)); }
+  var lastCurse = 0;
+  function curse(chance) {   // the "oh f***" reactions: only when voices are on, and never twice in a row
+    if (!SND.on || !SND.voice || Math.random() > chance) return;
+    var t = performance.now(); if (t - lastCurse < 2500) return; lastCurse = t;
+    setTimeout(function () { sfx(pickN('say', 5), 0.9); }, 350);
+  }
+  var lastHit = 0; function hitSfx() { var t = performance.now(); if (t - lastHit < 260) return; lastHit = t; sfx(pickN('hit', 2), 0.5); }
+  // music (looping tracks) and the winter wind, as plain audio elements
+  var musicEl = null, windEl = null, MUSIC_N = 3;
+  function syncAmbience() {
+    var playing = running && SND.on;
+    if (playing && SND.music) {
+      if (!musicEl) { musicEl = new Audio('media/disc/music' + (1 + Math.floor(Math.random() * MUSIC_N)) + '.mp3'); musicEl.loop = true; musicEl.volume = 0.2; }
+      musicEl.play().catch(function () {});
+    } else if (musicEl) musicEl.pause();
+    if (playing && WINTER) {
+      if (!windEl) { windEl = new Audio('media/disc/wind.mp3'); windEl.loop = true; windEl.volume = 0.22; }
+      windEl.play().catch(function () {});
+    } else if (windEl) windEl.pause();
+  }
   function chainSound() {
+    if (!SND.on) return;
+    if (sfx(Math.random() < 0.6 ? 'chain' : 'chain2', 0.9)) return;
     try {
       actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
       var len = Math.floor(actx.sampleRate * 0.7), buf = actx.createBuffer(1, len, actx.sampleRate), d = buf.getChannelData(0);
@@ -665,7 +711,7 @@
   glc.addEventListener('pointerup', function () { endSwipe(false); }); glc.addEventListener('pointercancel', function () { endSwipe(true); });
   var TAP_R = 3, tapBtn = $('dd-tapin');
   function tapInOk() { return !!G && G.phase === 'aim' && !G.done && distToBasket() <= TAP_R; }
-  if (tapBtn) tapBtn.addEventListener('click', function (e) {
+  if (tapBtn) tapBtn.addEventListener('click', function (e) { sfx('rattle', 0.7);
     e.stopPropagation(); if (!tapInOk()) return;
     var b = G.h.basket, lx = G.lie[0], ly = G.lie[1]; G.strokes++;
     G.drop = { t: 0, x0: lx, y0: ly, z0: gh(lx, ly) + 0.15, x1: b[0], y1: b[1], z1: G.h.bz + 0.8, bank: 0 }; G.flightDisc = disc;
@@ -685,6 +731,11 @@
     }
   }
   if (pstyleBtn) pstyleBtn.addEventListener('click', function () { PSTYLE = PSTYLE === 'putt' ? 'pizza' : PSTYLE === 'pizza' ? 'off' : 'putt'; syncUi(); say(PSTYLE === 'pizza' ? 'Pizza putt: thrown overhead, spinning on its edge. Cuts the wind.' : PSTYLE === 'putt' ? 'Straddle putt: a flat, smooth putt.' : 'Regular throw from here.'); });
+  var sndBtn = $('dd-snd'), sndSub = $('dd-snd-s'), musBtn = $('dd-mus'), musSub = $('dd-mus-s');
+  function syncSnd() { if (sndSub) sndSub.textContent = !SND.on ? 'Muted' : SND.voice ? 'All on (with reaction voices)' : 'On, no reaction voices'; if (musSub) musSub.textContent = SND.music ? 'On' : 'Off'; }
+  if (sndBtn) sndBtn.addEventListener('click', function () { if (SND.on && SND.voice) SND.voice = false; else if (SND.on) SND.on = false; else { SND.on = true; SND.voice = true; } saveSnd(); syncSnd(); syncAmbience(); });
+  if (musBtn) musBtn.addEventListener('click', function () { SND.music = !SND.music; saveSnd(); syncSnd(); syncAmbience(); });
+  syncSnd();
   var todBtn = $('dd-tod'), todSub = $('dd-tod-s');
   function syncTod() { if (todSub) todSub.textContent = WINTER ? 'Winter course: snowy daylight' : LOOKS[TOD].name; }
   if (todBtn) todBtn.addEventListener('click', function () {
@@ -784,6 +835,7 @@
   function addRipple(x, y, lvl) { ensureRipples(); for (var i = 0; i < ripples.length; i++) { var m = ripples[i]; if (m.userData.life <= 0) { m.userData.life = 1.1; m.position.set(x, lvl + 0.06, -y); m.scale.setScalar(1); m.visible = true; return; } } }
   function updateRipples(dt) { ripples.forEach(function (m) { var d = m.userData; if (d.life <= 0) { m.visible = false; return; } d.life -= dt; var k = clamp(d.life / 1.1, 0, 1); m.scale.setScalar(1 + (1 - k) * 5); m.material.opacity = k * 0.75; if (d.life <= 0) m.visible = false; }); }
   function plip() {
+    if (!SND.on) return; if (sfx('splash', 0.3, 1.25)) return;
     try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
       var len = Math.floor(actx.sampleRate * 0.14), buf = actx.createBuffer(1, len, actx.sampleRate), d = buf.getChannelData(0); for (var i = 0; i < len; i++) { var t = i / actx.sampleRate; d[i] = (Math.random() * 2 - 1) * Math.exp(-t * 38) * Math.sin(t * 900 * (1 + t * 7)); }
       var src = actx.createBufferSource(), g = actx.createGain(); g.gain.value = 0.35; src.buffer = buf; src.connect(g); g.connect(actx.destination); src.start();
@@ -991,6 +1043,7 @@
   function spawnHeart() { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(dog.x + rnd(-0.25, 0.25), dog.g.position.y + 1.1 + rnd(0, 0.2), -dog.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
   }
   function bark(n) {
+    if (!SND.on) return; if (sfx(pickN('bark', 4), 0.5)) return;
     try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
       (n === 1 ? [0] : [0, 0.2]).forEach(function (off) { var t0 = actx.currentTime + off, o = actx.createOscillator(), gn = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(340, t0); o.frequency.exponentialRampToValueAtTime(150, t0 + 0.13); f.type = 'bandpass'; f.frequency.value = 720; f.Q.value = 1.1; gn.gain.setValueAtTime(0.0001, t0); gn.gain.exponentialRampToValueAtTime(0.2, t0 + 0.015); gn.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15); o.connect(f); f.connect(gn); gn.connect(actx.destination); o.start(t0); o.stop(t0 + 0.18); });
     } catch (e) {}
@@ -1545,7 +1598,7 @@
     return c;
   }
   function buildCourse(h) {
-    WINTER = !!(COURSE && COURSE.theme === 'winter'); applyTheme(WINTER); syncTod();
+    WINTER = !!(COURSE && COURSE.theme === 'winter'); applyTheme(WINTER); syncTod(); try { syncAmbience(); } catch (e) {}
     if (curBuilt === G.hole && courseGroup.children.length) return; curBuilt = G.hole;
     disposeGroup(courseGroup); treeMeshes = []; waterMats = [];
     // ground
@@ -1760,6 +1813,7 @@
     moveCam(dt); render(now, dt); raf = requestAnimationFrame(frame);
   }
   function play() {
+    sfxPreload();
     if (running) return;
     if (failed) { return; }
     if (!ready) {
@@ -1772,9 +1826,9 @@
       });
       return;
     }
-    if (!G) newRound(); running = true; last = performance.now(); raf = requestAnimationFrame(frame); if (autoFs && autoFs.matches) setFs(true, false);
+    if (!G) newRound(); running = true; try { syncAmbience(); } catch (e) {} last = performance.now(); raf = requestAnimationFrame(frame); if (autoFs && autoFs.matches) setFs(true, false);
   }
-  function pause() { running = false; cancelAnimationFrame(raf); charging = false; pull = null; stage.classList.remove('dd-pulling'); if (G && G.phase === 'charge') G.phase = 'aim'; if (stage.classList.contains('fs')) setFs(false, false); }
+  function pause() { running = false; try { syncAmbience(); } catch (e) {} cancelAnimationFrame(raf); charging = false; pull = null; stage.classList.remove('dd-pulling'); if (G && G.phase === 'charge') G.phase = 'aim'; if (stage.classList.contains('fs')) setFs(false, false); }
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });

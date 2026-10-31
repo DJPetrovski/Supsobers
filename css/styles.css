@@ -2113,9 +2113,9 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .bk-tray button.sel { border-color: #fff; background: #3a1118; } .bk-tray button.used { opacity: .18; cursor: default; }
 @media (max-width: 520px) { .bk { padding: 10px; border-radius: 14px; } .bk-seat { grid-template-columns: 14px 56px 1fr auto; } }
 
-.dd-tapin { position: absolute; right: 14px; top: 46%; z-index: 6; padding: 12px 22px; border-radius: 999px; border: 2px solid #fff; background: linear-gradient(#34d56a, #138a3a); color: #fff; font: 800 1rem/1 system-ui, sans-serif; letter-spacing: .02em; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.5); }
+.dd-tapin { position: absolute; left: 50%; top: 58%; transform: translateX(-50%); font-size: 1.05rem; z-index: 6; padding: 12px 22px; border-radius: 999px; border: 2px solid #fff; background: linear-gradient(#34d56a, #138a3a); color: #fff; font: 800 1rem/1 system-ui, sans-serif; letter-spacing: .02em; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.5); }
 .dd-tapin[hidden] { display: none; }
-.dd-tapin:active { transform: scale(.95); }
+.dd-tapin:active { transform: translateX(-50%) scale(.95); }
 
 #bk-canvas.turn { box-shadow: 0 0 0 4px var(--turn, #fff), 0 0 18px var(--turn, #fff); animation: bkpulse 1.3s ease-in-out infinite; }
 #bk-canvas.turn.yours { box-shadow: 0 0 0 5px var(--turn, #fff), 0 0 30px var(--turn, #fff); animation-duration: .8s; }
