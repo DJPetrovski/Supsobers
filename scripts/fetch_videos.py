@@ -215,18 +215,24 @@ def pick_featured(videos):
         cur = {}
     pin = (cur.get("pin") or "").strip()
     byid = {v["id"]: v for v in videos}
-    if pin and pin in byid:
+    auto = None
+    for v in videos:
+        if not MEMBERS.search(v.get("title", "")) and v.get("seconds", 0) >= 30 * 60 and denver_day(v) == 4:
+            auto = v; break
+    ids = [v["id"] for v in videos]
+    # A pin holds only until a NEWER Friday deep dive is uploaded; then the new one takes over by itself.
+    pin_stale = bool(pin and pin in byid and auto and ids.index(auto["id"]) < ids.index(pin))
+    if pin and pin in byid and not pin_stale:
         chosen, why = byid[pin], "pinned by DJ"
     else:
-        chosen, why = None, "newest Friday deep dive"
-        for v in videos:
-            if not MEMBERS.search(v.get("title", "")) and v.get("seconds", 0) >= 30 * 60 and denver_day(v) == 4:
-                chosen = v; break
+        if pin_stale:
+            pin = ""
+        chosen, why = auto, "newest Friday deep dive"
         if not chosen and cur.get("id") in byid:
             chosen = byid[cur["id"]]
     if not chosen:
         return
-    doc = {"note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 30+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude); clear 'pin' to go back to automatic.",
+    doc = {"note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 30+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude). A pin lasts only until your next Friday deep dive goes up, then it clears itself.",
            "pin": pin, "id": chosen["id"], "title": chosen["title"], "why": why}
     if doc != {k: cur.get(k) for k in doc}:
         json.dump(doc, open(FEATURED, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
