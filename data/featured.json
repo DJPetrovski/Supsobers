@@ -1,5 +1,5 @@
 {
-  "note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 30+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude); clear 'pin' to go back to automatic.",
+  "note": "The video featured first on the home page and on the TV's first channel. Normally it is picked by itself: the newest video of 30+ minutes that went up on a Friday. To feature a different one, put its YouTube id in 'pin' (or ask Claude). A pin lasts only until your next Friday deep dive goes up, then it clears itself.",
   "pin": "BvpLrZp6ZmU",
   "id": "BvpLrZp6ZmU",
   "title": "I Thought They Said it Was an Insider...",
