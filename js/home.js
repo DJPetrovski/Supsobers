@@ -184,7 +184,9 @@
     seen.push(n.id);
     return n;
   }
+  var forced = null;
   function pickRandom() {
+    if (forced) { var f = forced; forced = null; seen.push(f.id); return f; }
     var newest = pickNewest(); if (newest) return newest;
     if (lateNight && window.Pill) {
       for (var i = 0; i < 10; i++) { var r = Pill.random('red'); if (r && /^[\w-]{11}$/.test(r.id || '') && (r.seconds || 0) >= 1800) return r; }
@@ -202,7 +204,7 @@
   spare.setAttribute('allow', 'autoplay; encrypted-media'); spare.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
   yt.parentNode.insertBefore(spare, yt.nextSibling);
   function embed(v) {
-    var start = v.id === promoId ? 0 : Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
+    var start = (v.id === promoId || v === tuned) ? 0 : Math.floor(Math.random() * Math.max(60, (v.seconds || 1800) * 0.8));
     return 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) + '&start=' + start;
   }
   // Load the next random channel invisibly so a channel change shows picture and sound with no wait.
@@ -214,6 +216,16 @@
     f.onload = function () { setTimeout(function () { if (queued === q) ytCmd('mute', [], f); }, 300); setTimeout(function () { if (queued === q) ytCmd('pauseVideo', [], f); }, 3500); };
     f.src = embed(v);
   }
+  // A background thumbnail was clicked: put that video on the TV as the next channel, from the start.
+  var tuned = null;
+  document.addEventListener('ss:tune', function (e) {
+    var v = e.detail; if (!v || !onHome) return;
+    if (!powered) powerOn();
+    tuned = v; forced = v; killPre(); started = true; onTrailer = false; clearTimeout(introT);
+    screen.classList.remove('htv-search'); video.pause(); video.style.opacity = '0';
+    takeover(); channel();
+    try { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); } catch (x) {}
+  });
   function killPre() { queued = null; spare.onload = null; spare.src = 'about:blank'; spare.hidden = true; }
   function channel(back) {
     if (!powered) return;

@@ -73,7 +73,7 @@
     wall.addEventListener('click', function (e) {   // a tile in the background opens that video
       var t = e.target.closest && e.target.closest('.vw-t'); if (!t) return;
       var v = (window.SS.videos || []).filter(function (x) { return x.id === t.dataset.id; })[0];
-      if (v) window.SS.openPlayer(v);
+      if (v) document.dispatchEvent(new CustomEvent('ss:tune', { detail: v }));   // plays on the TV like a channel
     });
     host.appendChild(wall); wallBuilt = true;
   }
