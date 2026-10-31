@@ -590,8 +590,8 @@
   var actx = null;
   /* ---------- recorded sounds (media/disc/*.mp3) ----------
      Everything is optional: if a file has not loaded yet, or sound is muted, the game stays quiet or falls back to the synthesized sound. */
-  var SND = { on: true, voice: true, music: false };
-  try { var _sv = JSON.parse(localStorage.getItem('ss-disc-snd') || '{}'); if (_sv.on === false) SND.on = false; if (_sv.voice === false) SND.voice = false; if (_sv.music === true) SND.music = true; } catch (e) {}
+  var SND = { on: true, voice: true, music: false, sc: false };
+  try { var _sv = JSON.parse(localStorage.getItem('ss-disc-snd') || '{}'); if (_sv.on === false) SND.on = false; if (_sv.voice === false) SND.voice = false; if (_sv.music === true) SND.music = true; if (_sv.sc === true && !SND.music) SND.sc = true; } catch (e) {}
   function saveSnd() { try { localStorage.setItem('ss-disc-snd', JSON.stringify(SND)); } catch (e) {} }
   var SFX_LIST = ['chain', 'chain2', 'rattle', 'hit1', 'hit2', 'throw1', 'throw2', 'splash', 'steps', 'bark1', 'bark2', 'bark3', 'bark4', 'say1', 'say2', 'say3', 'say4', 'say5', 'yay1', 'clap', 'clap2'], sfxBuf = {}, sfxStarted = false;
   function audioCtx() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); return actx; } catch (e) { return null; } }
@@ -732,9 +732,16 @@
   }
   if (pstyleBtn) pstyleBtn.addEventListener('click', function () { PSTYLE = PSTYLE === 'putt' ? 'pizza' : PSTYLE === 'pizza' ? 'off' : 'putt'; syncUi(); say(PSTYLE === 'pizza' ? 'Pizza putt: thrown overhead, spinning on its edge. Cuts the wind.' : PSTYLE === 'putt' ? 'Straddle putt: a flat, smooth putt.' : 'Regular throw from here.'); });
   var sndBtn = $('dd-snd'), sndSub = $('dd-snd-s'), musBtn = $('dd-mus'), musSub = $('dd-mus-s');
-  function syncSnd() { if (sndSub) sndSub.textContent = !SND.on ? 'Muted' : SND.voice ? 'All on (with reaction voices)' : 'On, no reaction voices'; if (musSub) musSub.textContent = SND.music ? 'On' : 'Off'; }
+  function syncSnd() { if (sndSub) sndSub.textContent = !SND.on ? 'Muted' : SND.voice ? 'All on (with reaction voices)' : 'On, no reaction voices'; if (musSub) musSub.textContent = SND.music ? 'Game loops' : SND.sc ? 'My SoundCloud' : 'Off'; }
   if (sndBtn) sndBtn.addEventListener('click', function () { if (SND.on && SND.voice) SND.voice = false; else if (SND.on) SND.on = false; else { SND.on = true; SND.voice = true; } saveSnd(); syncSnd(); syncAmbience(); });
-  if (musBtn) musBtn.addEventListener('click', function () { SND.music = !SND.music; saveSnd(); syncSnd(); syncAmbience(); });
+  if (musBtn) musBtn.addEventListener('click', function () {
+    // Off -> your SoundCloud (the site's music pop-up) -> the game's own loops -> Off
+    var S = window.SS || {};
+    if (!SND.music && !SND.sc) { SND.sc = true; if (S.openMusic) S.openMusic(true); }
+    else if (SND.sc) { SND.sc = false; SND.music = true; if (S.pauseMusic) S.pauseMusic(); }
+    else SND.music = false;
+    saveSnd(); syncSnd(); syncAmbience();
+  });
   syncSnd();
   var todBtn = $('dd-tod'), todSub = $('dd-tod-s');
   function syncTod() { if (todSub) todSub.textContent = WINTER ? 'Winter course: snowy daylight' : LOOKS[TOD].name; }
