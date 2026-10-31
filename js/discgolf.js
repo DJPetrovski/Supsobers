@@ -685,6 +685,14 @@
     }
   }
   if (pstyleBtn) pstyleBtn.addEventListener('click', function () { PSTYLE = PSTYLE === 'putt' ? 'pizza' : PSTYLE === 'pizza' ? 'off' : 'putt'; syncUi(); say(PSTYLE === 'pizza' ? 'Pizza putt: thrown overhead, spinning on its edge. Cuts the wind.' : PSTYLE === 'putt' ? 'Straddle putt: a flat, smooth putt.' : 'Regular throw from here.'); });
+  var todBtn = $('dd-tod'), todSub = $('dd-tod-s');
+  function syncTod() { if (todSub) todSub.textContent = WINTER ? 'Winter course: snowy daylight' : LOOKS[TOD].name; }
+  if (todBtn) todBtn.addEventListener('click', function () {
+    if (WINTER) { syncTod(); return; }
+    TOD = ORDER[(ORDER.indexOf(TOD) + 1) % ORDER.length];
+    try { localStorage.setItem('ss-disc-tod', TOD); } catch (e) {}
+    themeNow = null; applyTheme(WINTER); syncTod();
+  });
   function syncGuide() { if (pguideSub) pguideSub.textContent = GUIDE ? 'Shows the ideal putt line: on' : 'Shows the ideal putt line: off'; }
   if (pguideBtn) pguideBtn.addEventListener('click', function () { GUIDE = !GUIDE; try { localStorage.setItem('ss-disc-pguide', GUIDE ? '1' : '0'); } catch (e) {} syncGuide(); previewDirty = true; });
   syncGuide();
@@ -1087,21 +1095,32 @@
   function V(x, y, z) { return new T.Vector3(x, z, -y); }
   function mapV(a) { return [a[0], a[2], -a[1]]; }
 
+  // Time of day: each look sets the sky colors, the cloud tint, the sun (color, strength, height), the haze and the exposure together.
+  var LOOKS = {
+    day:     { name: 'Midday',      stops: [[0, '#2d62ad'], [.18, '#4a82c6'], [.34, '#7fb0dc'], [.43, '#b8d5ea'], [.48, '#dbe8ef'], [.5, '#e6ecee'], [.505, '#9fae95'], [1, '#4f6238']], cloud: [1, 1, 1], haze: 'rgba(255,236,205,.5)', fog: 0xb9cbd9, near: 55, far: 640, hemi: [0xcadcf2, 0x4b5634, .62], sun: [0xffeed6, 2.5], off: [62, 70, -82], exp: .86, glow: [917, 768, -1212, 0xffffff] },
+    golden:  { name: 'Golden hour', stops: [[0, '#304f86'], [.18, '#5a73a8'], [.34, '#a58aa4'], [.43, '#e2a26e'], [.48, '#f4be84'], [.5, '#f8cf9a'], [.505, '#8f8a58'], [1, '#4a4a2c']], cloud: [1, .78, .58], haze: 'rgba(255,196,128,.62)', fog: 0xe3b98e, near: 40, far: 560, hemi: [0xf1c8a0, 0x4a4630, .55], sun: [0xffb066, 2.6], off: [88, 30, -70], exp: .92, glow: [1180, 330, -1000, 0xffc080] },
+    overcast:{ name: 'Overcast',    stops: [[0, '#6b7683'], [.18, '#848f9b'], [.34, '#9ca7b1'], [.43, '#b6bfc7'], [.48, '#c6ced5'], [.5, '#d0d6db'], [.505, '#8a9783'], [1, '#4b5a3a']], cloud: [.74, .78, .84], haze: 'rgba(205,212,219,.6)', fog: 0xc3cbd2, near: 32, far: 430, hemi: [0xd5dde6, 0x58633f, 1.05], sun: [0xe9edf2, .75], off: [40, 90, -50], exp: .98, glow: [917, 768, -1212, 0x000000] },
+    dusk:    { name: 'Dusk',        stops: [[0, '#1d2b55'], [.18, '#34437a'], [.34, '#6b5a8f'], [.43, '#c0708f'], [.48, '#ee9a86'], [.5, '#f6b690'], [.505, '#59563f'], [1, '#2c3020']], cloud: [.95, .6, .66], haze: 'rgba(240,150,140,.5)', fog: 0x9a7f9a, near: 36, far: 520, hemi: [0xa3a0d0, 0x34382a, .5], sun: [0xff8a70, 1.5], off: [92, 20, -66], exp: 1.02, glow: [1260, 215, -950, 0xff7a6a] }
+  }, ORDER = ['day', 'golden', 'overcast', 'dusk'], TOD = 'day', sunOff = [62, 70, -82];
+  try { var _t = localStorage.getItem('ss-disc-tod'); if (_t && LOOKS[_t]) TOD = _t; } catch (e) {}
   function applyTheme(win) {
-    if (themeNow === win || !scene) return; themeNow = win;
-    var tex = skyTexs[win ? 1 : 0] || (skyTexs[win ? 1 : 0] = skyTexture(win));
+    var key = win ? 'w' : TOD;
+    if (themeNow === key || !scene) return; themeNow = key;
+    var L = LOOKS[TOD];
+    var tex = skyTexs[key] || (skyTexs[key] = skyTexture(win));
     skyMesh.material.map = tex; skyMesh.material.needsUpdate = true;
     try { var pm = new T.PMREMGenerator(R), rt = pm.fromEquirectangular(tex); if (envRT) envRT.dispose(); envRT = rt; scene.environment = rt.texture; pm.dispose(); } catch (er) {}
-    scene.fog.color.set(win ? 0xdbe2e8 : 0xb9cbd9); scene.fog.near = win ? 26 : 55; scene.fog.far = win ? 340 : 640;
-    hemi.color.set(win ? 0xe2eaf4 : 0xcadcf2); hemi.groundColor.set(win ? 0xa9b6c6 : 0x4b5634); hemi.intensity = win ? 1.0 : 0.62;
-    sun.color.set(win ? 0xeaf1ff : 0xffeed6); sun.intensity = win ? 1.35 : 2.5; R.toneMappingExposure = win ? 0.95 : 0.86;
-    glowSprite.visible = !win; peaksMesh.visible = win; snowPts.visible = win;
+    scene.fog.color.set(win ? 0xdbe2e8 : L.fog); scene.fog.near = win ? 26 : L.near; scene.fog.far = win ? 340 : L.far;
+    hemi.color.set(win ? 0xe2eaf4 : L.hemi[0]); hemi.groundColor.set(win ? 0xa9b6c6 : L.hemi[1]); hemi.intensity = win ? 1.0 : L.hemi[2];
+    sun.color.set(win ? 0xeaf1ff : L.sun[0]); sun.intensity = win ? 1.35 : L.sun[1]; R.toneMappingExposure = win ? 0.95 : L.exp;
+    sunOff = win ? [62, 70, -82] : L.off;
+    glowSprite.position.set(L.glow[0], L.glow[1], L.glow[2]); glowSprite.material.color.set(L.glow[3]); glowSprite.visible = !win && TOD !== 'overcast'; peaksMesh.visible = win; snowPts.visible = win;
     ridgeMeshes.forEach(function (m) { m.material.color.set(win ? m.userData.w : m.userData.s); });
   }
   function skyTexture(win) {
     var W = 2048, Hh = 1024, c = document.createElement('canvas'); c.width = W; c.height = Hh; var g = c.getContext('2d'), r = rng(31), gr = g.createLinearGradient(0, 0, 0, Hh);
     if (win) { gr.addColorStop(0, '#7b8794'); gr.addColorStop(0.18, '#98a4b0'); gr.addColorStop(0.34, '#b3bdc7'); gr.addColorStop(0.43, '#ccd3d9'); gr.addColorStop(0.48, '#dae0e5'); gr.addColorStop(0.5, '#e3e8ec'); gr.addColorStop(0.505, '#e8ecef'); gr.addColorStop(1, '#eef1f4'); }
-    else { gr.addColorStop(0, '#2d62ad'); gr.addColorStop(0.18, '#4a82c6'); gr.addColorStop(0.34, '#7fb0dc'); gr.addColorStop(0.43, '#b8d5ea'); gr.addColorStop(0.48, '#dbe8ef'); gr.addColorStop(0.5, '#e6ecee'); gr.addColorStop(0.505, '#9fae95'); gr.addColorStop(1, '#4f6238'); }
+    else { LOOKS[TOD].stops.forEach(function (st) { gr.addColorStop(st[0], st[1]); }); }
     g.fillStyle = gr; g.fillRect(0, 0, W, Hh);
     // fractal cloud layer: value noise, thresholded into soft cumulus with shaded bellies
     var NW = 256, NH = 96, base = [], i, j; for (i = 0; i < 40 * 40; i++) base.push(r());
@@ -1111,11 +1130,11 @@
       var u = i / NW, v = j / NH, d = vn(u * 6, v * 9, 1) * 0.5 + vn(u * 12, v * 18, 1) * 0.28 + vn(u * 24, v * 36, 1) * 0.15 + vn(u * 48, v * 72, 1) * 0.07;
       var cover = (win ? 0.3 : 0.52) + 0.1 * Math.sin(u * 12.5), a = Math.max(0, Math.min(1, (d - cover) * 4.2)), fade = Math.min(1, v * 6) * Math.min(1, (1 - v) * 2.4);
       var up2 = vn(u * 6, (v - 0.04) * 9, 1) * 0.5 + vn(u * 12, (v - 0.04) * 18, 1) * 0.28 + vn(u * 24, (v - 0.04) * 36, 1) * 0.15 + vn(u * 48, (v - 0.04) * 72, 1) * 0.07, lit = Math.max(0, Math.min(1, 0.55 + (d - up2) * 14));
-      var o = (j * NW + i) * 4; if (win) { im.data[o] = 118 + lit * 72; im.data[o + 1] = 127 + lit * 68; im.data[o + 2] = 140 + lit * 62; } else { im.data[o] = 150 + lit * 105; im.data[o + 1] = 160 + lit * 95; im.data[o + 2] = 178 + lit * 77; } im.data[o + 3] = a * fade * 235;
+      var o = (j * NW + i) * 4; if (win) { im.data[o] = 118 + lit * 72; im.data[o + 1] = 127 + lit * 68; im.data[o + 2] = 140 + lit * 62; } else { var ct = LOOKS[TOD].cloud; im.data[o] = (150 + lit * 105) * ct[0]; im.data[o + 1] = (160 + lit * 95) * ct[1]; im.data[o + 2] = (178 + lit * 77) * ct[2]; } im.data[o + 3] = a * fade * 235;
     }
     cg.putImageData(im, 0, 0); g.save(); g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high'; g.globalAlpha = 0.95; g.drawImage(cl, 0, Hh * 0.04, W, Hh * 0.43); g.restore();
     // warm haze along the horizon
-    var hz = g.createLinearGradient(0, Hh * 0.38, 0, Hh * 0.505); hz.addColorStop(0, win ? 'rgba(228,234,240,0)' : 'rgba(255,238,205,0)'); hz.addColorStop(1, win ? 'rgba(228,234,240,.6)' : 'rgba(255,236,205,.5)'); g.fillStyle = hz; g.fillRect(0, Hh * 0.38, W, Hh * 0.13);
+    var hz = g.createLinearGradient(0, Hh * 0.38, 0, Hh * 0.505); hz.addColorStop(0, win ? 'rgba(228,234,240,0)' : 'rgba(255,238,205,0)'); hz.addColorStop(1, win ? 'rgba(228,234,240,.6)' : LOOKS[TOD].haze); g.fillStyle = hz; g.fillRect(0, Hh * 0.38, W, Hh * 0.13);
     var t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; t.mapping = T.EquirectangularReflectionMapping; t.anisotropy = 4; return t;
   }
   function normalFromHeight(img) {   // turn the wave drawing into a normal map so the water catches the sky
@@ -1149,7 +1168,7 @@
     R.shadowMap.enabled = true; R.shadowMap.type = isLow ? T.PCFShadowMap : T.PCFSoftShadowMap;
     scene = new T.Scene(); scene.fog = new T.Fog(0xb9cbd9, 55, 640);
     camera = new T.PerspectiveCamera(55, 16 / 10, 0.15, 2500);
-    var skyTex = skyTexture();
+    var skyTex = skyTexture(); skyTexs[TOD] = skyTex;
     var sky = new T.Mesh(new T.SphereGeometry(1800, 32, 20), new T.MeshBasicMaterial({ map: skyTex, side: T.BackSide, fog: false, depthWrite: false, toneMapped: false })); sky.renderOrder = -2; sky.name = 'sky'; sky.rotation.y = 2.2; scene.add(sky); skyMesh = sky; skyTexs[0] = skyTex;
     try { var pm = new T.PMREMGenerator(R); envRT = pm.fromEquirectangular(skyTex); scene.environment = envRT.texture; pm.dispose(); } catch (er) {}
     var glow = new T.Sprite(new T.SpriteMaterial({ map: glowTexture(), fog: false, depthWrite: false, blending: T.AdditiveBlending, transparent: true, toneMapped: false })); glow.scale.set(430, 430, 1); glow.position.set(917, 768, -1212); glow.name = 'glow'; scene.add(glow); glowSprite = glow;
@@ -1526,7 +1545,7 @@
     return c;
   }
   function buildCourse(h) {
-    WINTER = !!(COURSE && COURSE.theme === 'winter'); applyTheme(WINTER);
+    WINTER = !!(COURSE && COURSE.theme === 'winter'); applyTheme(WINTER); syncTod();
     if (curBuilt === G.hole && courseGroup.children.length) return; curBuilt = G.hole;
     disposeGroup(courseGroup); treeMeshes = []; waterMats = [];
     // ground
@@ -1691,7 +1710,7 @@
     camera.position.set(cam.x + (sh ? rnd(-sh, sh) * 0.15 : 0), Math.max(cam.z, gh(cam.x, cam.y) + 0.7) + (sh ? rnd(-sh, sh) * 0.1 : 0), -cam.y);
     var cp = Math.cos(cam.pitch); camera.lookAt(cam.x + Math.sin(cam.yaw) * cp, cam.z - Math.sin(cam.pitch), -(cam.y + Math.cos(cam.yaw) * cp));
     var fx = cam.x + Math.sin(cam.yaw) * 14, fz = -(cam.y + Math.cos(cam.yaw) * 14);
-    sun.target.position.set(fx, 0, fz); sun.position.set(fx + 62, 70, fz - 82);   // sun ahead and to the right, low in the sky
+    sun.target.position.set(fx, 0, fz); sun.position.set(fx + sunOff[0], sunOff[1], fz + sunOff[2]);   // sun ahead and to the right, low in the sky
     var sky = scene.getObjectByName('sky'); if (sky) sky.position.copy(camera.position);
     // the disc
     discMesh.visible = false; markMeshes.forEach(function (m) { m.visible = false; });
