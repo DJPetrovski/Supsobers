@@ -371,11 +371,10 @@
     var first = !trailerDone;
     introT = setTimeout(function () {
       started = true;
-      if (!first) { screen.classList.remove('htv-search'); toChannels(); return; }
+      // No trailer any more: after the static, the TV goes straight to the featured (newest Friday) deep dive.
       trailerDone = true;
-      screen.classList.remove('tuning', 'htv-search');
-      video.style.opacity = '';
-      if (onHome) { var p = video.play(); if (p && p.catch) p.catch(function () { toChannels(); }); }
+      screen.classList.remove('htv-search');
+      toChannels();
       applySound();
     }, reduce ? 800 : (first ? SEARCH_MS : 1600));
   }
