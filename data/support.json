@@ -1,9 +1,11 @@
 {
-  "_note": "Fill in the links you want shown in the footer Support buttons. Leave a url empty and that button stays hidden.",
-  "message": "Want to send a tip or a gift? Thank you.",
+  "_note": "Footer support buttons. fund is the name shown to people; a button with no url stays hidden.",
+  "fund": "Stay on the Wagon Fund",
+  "pitch": "Every tip keeps the videos, the games and the wagon rolling. Thank you.",
+  "thanks": "Thank you for adding to the Stay on the Wagon Fund. It means the world.",
   "options": [
-    { "name": "Venmo", "url": "" },
-    { "name": "PayPal", "url": "" },
-    { "name": "Cash App", "url": "" }
+    { "name": "Venmo", "url": "https://venmo.com/u/Nicholas-Kenyon-3" },
+    { "name": "PayPal", "url": "https://www.paypal.com/qrcodes/p2pqrc/SGCAUZJED2YS4" },
+    { "name": "Cash App", "url": "https://cash.app/$NickKenyon12" }
   ]
 }

@@ -2146,3 +2146,4 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .support-msg { margin: 0; opacity: .85; } .support-row { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
 .support-btn { text-decoration: none; padding: .6rem 1.2rem; font-weight: 800; min-height: 44px; display: inline-flex; align-items: center; }
 .support-venmo { background: #3d95ce; color: #fff; } .support-paypal { background: #ffc439; color: #111; } .support-cashapp { background: #00d632; color: #04210c; }
+.support-open { cursor: pointer; font: inherit; font-weight: 800; padding: .6rem 1.3rem; } .support-panel { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem; border: 1px solid var(--line, #5a2128); border-radius: 14px; max-width: 28rem; } .support-panel[hidden] { display: none; } .support-thanks { margin: 0; color: #9fe7a8; font-weight: 700; }
