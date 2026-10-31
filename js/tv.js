@@ -47,16 +47,35 @@
   } catch (e) { /* no grain, everything else still works */ }
 
   /* ---------- home: ambient hole ---------- */
+  // Home background: diagonal rows of video thumbnails, each row drifting the opposite way (and at its own speed).
+  var wallBuilt = false;
+  function buildWall() {
+    var ok = SS.videos.filter(function (v) { return /^[\w-]{11}$/.test(v.id || ''); });
+    if (!ok.length) return;
+    var host = $('#ambient-scene'); host.innerHTML = '';
+    var small = window.innerWidth < 700, ROWS = small ? 7 : 9, PER = small ? 9 : 12;
+    var wall = document.createElement('div'); wall.className = 'vw';
+    var order = ok.slice().sort(function () { return Math.random() - 0.5; }), k = 0;
+    for (var r = 0; r < ROWS; r++) {
+      var row = document.createElement('div'); row.className = 'vw-row ' + (r % 2 ? 'rev' : 'fwd');
+      row.style.setProperty('--dur', (150 + ((r * 37) % 70)) + 's');
+      row.style.setProperty('--off', (-((r * 53) % 100)) + 's');
+      var track = document.createElement('div'); track.className = 'vw-track';
+      var ids = [];
+      for (var i = 0; i < PER; i++) ids.push(order[k++ % order.length].id);
+      ids.concat(ids).forEach(function (id) {   // twice, so the loop is seamless
+        var im = document.createElement('img'); im.alt = ''; im.decoding = 'async'; im.src = 'https://i.ytimg.com/vi/' + id + '/mqdefault.jpg'; track.appendChild(im);
+      });
+      row.appendChild(track); wall.appendChild(row);
+    }
+    host.appendChild(wall); wallBuilt = true;
+  }
   function startAmbient() {
     if (!SS.ready) return;   // wait for the video list; 'ss:videos' calls this again
-    if (!ambientApi) {
-      ambientApi = HoleTunnel.create({
-        scene: $('#ambient-scene'), world: $('#ambient-world'), videos: SS.videos, ambient: true
-      });
-    }
-    ambientApi.start({ boost: 0 });
+    if (!wallBuilt) buildWall();
+    var w = $('#ambient-scene .vw'); if (w) w.classList.remove('paused');
   }
-  function stopAmbient() { if (ambientApi) ambientApi.stop(); }
+  function stopAmbient() { var w = $('#ambient-scene .vw'); if (w) w.classList.add('paused'); }
   document.addEventListener('ss:homevis', function (e) { if (current !== 'home') return; if (e.detail.on) startAmbient(); else stopAmbient(); });
 
   /* ---------- picking a video inside the hole ---------- */

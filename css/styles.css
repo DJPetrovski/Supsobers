@@ -2156,3 +2156,14 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .rm-pay[hidden] { display: none; } .rm-pay svg { width: 64%; height: 64%; filter: drop-shadow(0 1px 1px rgba(0,0,0,.5)); }
 .rm-pay:hover, .rm-pay:focus-visible { filter: brightness(1.25); box-shadow: 0 0 14px rgba(232,200,114,.55); } .rm-pay:active { transform: translateY(3px); border-bottom-width: 1px; }
 .rm-pay-venmo { background: linear-gradient(#4aa8e8, #2a78b8); border-bottom-color: #123e61; } .rm-pay-paypal { background: linear-gradient(#2d6fd6, #0a2f7a); border-bottom-color: #041640; } .rm-pay-cashapp { background: linear-gradient(#27e05a, #00a826); border-bottom-color: #045a16; }
+
+/* home background: diagonal rows of thumbnails drifting in alternating directions */
+.vw { position: absolute; left: -30%; top: -30%; width: 160%; height: 160%; display: flex; flex-direction: column; justify-content: center; gap: clamp(8px, 1.6vw, 18px); transform: rotate(-16deg); }
+.vw.paused .vw-track { animation-play-state: paused; }
+.vw-row { overflow: hidden; flex: none; }
+.vw-track { display: flex; gap: clamp(8px, 1.6vw, 18px); width: max-content; animation: vwL var(--dur, 180s) linear var(--off, 0s) infinite; will-change: transform; }
+.vw-row.rev .vw-track { animation-name: vwR; }
+.vw-track img { height: clamp(70px, 11vw, 140px); aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid rgba(255, 42, 53, .55); box-shadow: 0 0 18px rgba(255, 42, 53, .28); background: #120305; opacity: .8; }
+@keyframes vwL { to { transform: translateX(-50%); } }
+@keyframes vwR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .vw-track { animation: none; } }
