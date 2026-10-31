@@ -2171,3 +2171,7 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 @keyframes vwL { to { transform: translateX(-50%); } }
 @keyframes vwR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 @media (prefers-reduced-motion: reduce) { .vw-track { animation: none; } }
+
+.stat-people { margin: 0 0 14px; text-align: center; color: var(--ash, #a99); font-size: .85rem; letter-spacing: .02em; }
+.stat-people[hidden] { display: none; }
+.stat-people b { color: var(--bone, #fff); font-size: 1rem; }
