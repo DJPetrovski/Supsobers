@@ -64,10 +64,17 @@
       var ids = [];
       for (var i = 0; i < PER; i++) ids.push(order[k++ % order.length].id);
       ids.concat(ids).forEach(function (id) {   // twice, so the loop is seamless
-        var im = document.createElement('img'); im.alt = ''; im.decoding = 'async'; im.src = 'https://i.ytimg.com/vi/' + id + '/mqdefault.jpg'; track.appendChild(im);
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'vw-t'; b.tabIndex = -1; b.dataset.id = id;
+        var im = document.createElement('img'); im.alt = ''; im.decoding = 'async'; im.src = 'https://i.ytimg.com/vi/' + id + '/mqdefault.jpg';
+        b.appendChild(im); track.appendChild(b);
       });
       row.appendChild(track); wall.appendChild(row);
     }
+    wall.addEventListener('click', function (e) {   // a tile in the background opens that video
+      var t = e.target.closest && e.target.closest('.vw-t'); if (!t) return;
+      var v = (window.SS.videos || []).filter(function (x) { return x.id === t.dataset.id; })[0];
+      if (v) window.SS.openPlayer(v);
+    });
     host.appendChild(wall); wallBuilt = true;
   }
   function startAmbient() {

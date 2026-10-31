@@ -2163,6 +2163,10 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .vw-row { overflow: hidden; flex: none; }
 .vw-track { display: flex; gap: clamp(8px, 1.6vw, 18px); width: max-content; animation: vwL var(--dur, 180s) linear var(--off, 0s) infinite; will-change: transform; }
 .vw-row.rev .vw-track { animation-name: vwR; }
+.vw-t { position: relative; flex: none; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; display: block; transition: transform .25s; }
+.vw-t:hover { transform: scale(1.08); z-index: 2; }
+.vw-t:hover img { border-color: #fff; box-shadow: 0 0 30px rgba(255, 42, 53, .9); }
+.vw-row:hover .vw-track { animation-play-state: paused; }
 .vw-track img { height: clamp(70px, 11vw, 140px); aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid rgba(255, 42, 53, .55); box-shadow: 0 0 18px rgba(255, 42, 53, .28); background: #120305; opacity: .8; }
 @keyframes vwL { to { transform: translateX(-50%); } }
 @keyframes vwR { from { transform: translateX(-50%); } to { transform: translateX(0); } }

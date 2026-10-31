@@ -35,6 +35,7 @@ def from_rss():
             "id": e.find("yt:videoId", ns).text,
             "title": e.find("a:title", ns).text,
             "published": e.find("a:published", ns).text[:10],
+            "at": e.find("a:published", ns).text,
         })
     return out
 
@@ -161,6 +162,7 @@ def from_api(key):
                 "id": it["contentDetails"]["videoId"],
                 "title": title,
                 "published": (it["contentDetails"].get("videoPublishedAt") or it["snippet"]["publishedAt"])[:10],
+                "at": it["contentDetails"].get("videoPublishedAt") or it["snippet"]["publishedAt"],   # exact UTC time: a 7pm Friday upload is already Saturday in UTC
             })
         token = data.get("nextPageToken", "")
         if not token:
@@ -200,6 +202,9 @@ def denver_day(v):
     """The weekday (0=Mon) the video went up, Mountain time. Friday runs from Friday 00:00 to Saturday 06:00,
     so a late-night Friday upload that the sync sees after midnight still counts as Friday."""
     from zoneinfo import ZoneInfo
+    if v.get("at"):
+        t = datetime.datetime.fromisoformat(v["at"].replace("Z", "+00:00")).astimezone(ZoneInfo("America/Denver")) - datetime.timedelta(hours=6)
+        return t.weekday()
     if v.get("seen"):
         t = datetime.datetime.strptime(v["seen"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=datetime.timezone.utc)
         t = t.astimezone(ZoneInfo("America/Denver")) - datetime.timedelta(hours=6)
