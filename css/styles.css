@@ -2147,3 +2147,12 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .support-btn { text-decoration: none; padding: .6rem 1.2rem; font-weight: 800; min-height: 44px; display: inline-flex; align-items: center; }
 .support-venmo { background: #3d95ce; color: #fff; } .support-paypal { background: #ffc439; color: #111; } .support-cashapp { background: #00d632; color: #04210c; }
 .support-open { cursor: pointer; font: inherit; font-weight: 800; padding: .6rem 1.3rem; } .support-panel { display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem; border: 1px solid var(--line, #5a2128); border-radius: 14px; max-width: 28rem; } .support-panel[hidden] { display: none; } .support-thanks { margin: 0; color: #9fe7a8; font-weight: 700; }
+
+/* remote: tip jar */
+.rm-tip { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; gap: 2.5cqw; padding: 3cqw 3cqw 4cqw; border: 1px dashed #c9a24a; border-radius: 12px; background: linear-gradient(#1c1608, #0d0a03); }
+.rm-tip[hidden] { display: none; } .rm-tip-t { font-size: clamp(.45rem, 6cqw, .58rem); letter-spacing: .3em; text-transform: uppercase; color: #e8c872; }
+.rm-tip-row { display: flex; gap: 3cqw; justify-content: center; }
+.rm-pay { display: grid; place-items: center; width: 22cqw; height: 22cqw; border-radius: 28%; border: 1px solid #000; border-bottom-width: 4px; text-decoration: none; cursor: pointer; outline: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.4); }
+.rm-pay[hidden] { display: none; } .rm-pay svg { width: 64%; height: 64%; filter: drop-shadow(0 1px 1px rgba(0,0,0,.5)); }
+.rm-pay:hover, .rm-pay:focus-visible { filter: brightness(1.25); box-shadow: 0 0 14px rgba(232,200,114,.55); } .rm-pay:active { transform: translateY(3px); border-bottom-width: 1px; }
+.rm-pay-venmo { background: linear-gradient(#4aa8e8, #2a78b8); border-bottom-color: #123e61; } .rm-pay-paypal { background: linear-gradient(#2d6fd6, #0a2f7a); border-bottom-color: #041640; } .rm-pay-cashapp { background: linear-gradient(#27e05a, #00a826); border-bottom-color: #045a16; }

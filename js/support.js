@@ -5,6 +5,8 @@
   fetch('data/support.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }).then(function (d) {
     if (!d || !d.options) return;
     var opts = d.options.filter(function (o) { return o && /^https:\/\//i.test(o.url || ''); }); if (!opts.length) return;
+    var jar = document.getElementById('rm-tip');   // the same links as little keys on the remote
+    if (jar) { opts.forEach(function (o) { var k = jar.querySelector('[data-pay="' + o.name + '"]'); if (k) { k.href = o.url; k.hidden = false; } }); jar.hidden = !jar.querySelector('.rm-pay:not([hidden])'); }
     var open = box.querySelector('.support-open'), panel = box.querySelector('.support-panel'), row = box.querySelector('.support-row');
     box.querySelector('.support-fund').textContent = d.fund || 'Support the channel'; box.querySelector('.support-msg').textContent = d.pitch || '';
     opts.forEach(function (o) {
