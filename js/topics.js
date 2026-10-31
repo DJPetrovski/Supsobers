@@ -7,7 +7,7 @@
   function $(s, r) { return (r || root).querySelector(s); }
   function el(t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
   function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
-  var cfg = {}, api = null, topics = [], voted = store('ss-voted') || {}, tab = 'open', sort = 'az', view = store('ss-tp-view') || 'grid', query = '', demo = /[?&]topics=demo/.test(location.search + location.hash);
+  var cfg = {}, api = null, topics = [], voted = store('ss-voted') || {}, tab = 'open', sort = 'votes', view = store('ss-tp-view') || 'grid', query = '', demo = /[?&]topics=demo/.test(location.search + location.hash);
   var voter = store('ss-voter'); if (!voter) { voter = (window.crypto && crypto.randomUUID ? crypto.randomUUID() : 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2) + 'xxxxxxxx'); store('ss-voter', voter); }
 
   /* ---------- the two backends: Supabase, and a local demo so the page can be previewed ---------- */
@@ -111,6 +111,18 @@
     return cell;
   }
 
+
+  /* a listed topic that I have since made a video about moves to Covered by itself (matched on the names in the video title) */
+  function autoCovered() {
+    var vids = (window.SS && (SS.allVideos || SS.videos)) || []; if (!vids.length) return;
+    var vw = vids.map(function (v) { return { v: v, w: ' ' + norm(v.title) + ' ' }; });
+    topics.forEach(function (t) {
+      if (t.status !== 'approved') return; var ws = words(t.title); if (!ws.length || (ws.length === 1 && ws[0].length < 5)) return;
+      for (var i = 0; i < vw.length; i++) { if (ws.every(function (w) { return vw[i].w.indexOf(' ' + w + ' ') >= 0 || vw[i].w.indexOf(' ' + w + 's ') >= 0; })) { t.status = 'covered'; t.video_id = vw[i].v.id; t._auto = true; return; } }
+    });
+  }
+  document.addEventListener('ss:videos', function () { if (topics.length) { topics.forEach(function (t) { if (t._auto) { t.status = 'approved'; t._auto = false; } }); draw(); } });
+
   /* ---------- drawing ---------- */
   var listEl = $('#tp-list'), statusEl = $('#tp-status'), countEl = $('#tp-count');
   function sorted(arr) {
@@ -118,6 +130,7 @@
     return a;
   }
   function draw() {
+    autoCovered();
     listEl.textContent = '';
     var open = topics.filter(function (t) { return t.status === 'approved'; }), done = topics.filter(function (t) { return t.status === 'covered'; });
     $('#tp-tab-open').textContent = 'Vote (' + open.length + ')'; $('#tp-tab-done').textContent = 'Covered (' + done.length + ')';
@@ -176,6 +189,13 @@
     var t = ti.value.replace(/\s+/g, ' ').trim(), n = ni.value.trim();
     if (t.length < 3 || t.length > 80) { say('Give it a name between 3 and 80 characters.'); return; }
     var dup = dupOf(t);
+    if (dup && dup.status === 'approved') {   // already listed: the suggestion simply counts as a vote for it
+      hint.textContent = ''; setTab('open'); query = ''; $('#tp-q').value = '';
+      if (voted[dup.id]) { say('\u201c' + dup.title + '\u201d is already on the list and you already voted for it.'); draw(); return; }
+      api.vote(dup.id).then(function (n) { voted[dup.id] = 1; store('ss-voted', voted); if (typeof n === 'number') dup.votes = n - (dup.boost || 0); form.reset(); say('\u201c' + dup.title + '\u201d is already on the list, so I added your vote to it.'); draw(); })
+        .catch(function () { say('Already on the list. Tap its vote button to add your vote.'); });
+      return;
+    }
     if (dup) { hint.textContent = ''; hint.appendChild(el('p', 'tp-h1', dup.status === 'covered' ? 'I already covered that one:' : 'That one is already on the list, so just vote for it:')); hint.appendChild(topicHit(dup)); say(dup.status === 'covered' ? 'Already covered. Tap Watch in the Covered tab.' : 'Already on the list. Vote for it instead of adding it again.'); return; }
     if (store('ss-topic-sent') && Date.now() - store('ss-topic-sent') < 20000) { say('One at a time, please.'); return; }
     sub.disabled = true; sub.textContent = 'Sending…';

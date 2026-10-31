@@ -2140,3 +2140,9 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .tp-tile.done { opacity: .9; }
 @media (max-width: 420px) { .tp-list.tp-gallery { grid-template-columns: repeat(2, 1fr); gap: .6rem; } }
 @media (prefers-reduced-motion: reduce) { .tp-tile { transition: none; } .tp-tile:hover { transform: none; } }
+.view.contact { overflow-x: clip; }
+
+.support { display: flex; flex-direction: column; align-items: center; gap: .6rem; margin: 0 0 1.2rem; text-align: center; } .support[hidden] { display: none; }
+.support-msg { margin: 0; opacity: .85; } .support-row { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+.support-btn { text-decoration: none; padding: .6rem 1.2rem; font-weight: 800; min-height: 44px; display: inline-flex; align-items: center; }
+.support-venmo { background: #3d95ce; color: #fff; } .support-paypal { background: #ffc439; color: #111; } .support-cashapp { background: #00d632; color: #04210c; }

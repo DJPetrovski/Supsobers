@@ -487,9 +487,9 @@
 
   <nav class="controls">
     <div class="tabs" role="tablist" aria-label="Media type">
-      <button class="tab" data-tab="all" aria-pressed="true">3D timeline</button>
+      <button class="tab" data-tab="grid" aria-pressed="true">Thumbnails</button>
+      <button class="tab" data-tab="all" aria-pressed="false">3D timeline</button>
       <button class="tab" data-tab="web" aria-pressed="false">Web</button>
-      <button class="tab" data-tab="grid" aria-pressed="false">Grid</button>
       <button class="tab" data-tab="list" aria-pressed="false">List</button>
       <button class="tab" data-tab="map" aria-pressed="false">Compare angles</button>
       <button class="tab" data-tab="video" aria-pressed="false">Videos</button>
@@ -735,7 +735,7 @@
   }
 
   var state = {
-    tab: "all",
+    tab: "grid",
     activeCats: new Set(Object.keys(CATEGORIES)),
     query: ""
   };
@@ -1276,12 +1276,12 @@
 
   // ---------- background video: highlights from the Owens / Wilson debate ----------
   var DEBATE = "aPOyk1i2LOc";
-  var SEGS = [ [167, 347, "Andrew Wilson, opening statement"], [568, 748, "Candace Owens, opening statement"], [821, 970, "Opening questions: the shot and the trajectory"], [1222, 1402, "Cross-examination: debris, fingerprints and DNA"], [1708, 1888, "Preliminary hearing and the hearsay rule dispute"], [3346, 3526, "The text messages"], [3842, 4022, "Sources and the charging document"] ];
+  var SEGS = [ /* add more clips as [start, end, "label", "youtubeId"] (the id is optional; the debate is the default) */ [167, 347, "Andrew Wilson, opening statement"], [568, 748, "Candace Owens, opening statement"], [821, 970, "Opening questions: the shot and the trajectory"], [1222, 1402, "Cross-examination: debris, fingerprints and DNA"], [1708, 1888, "Preliminary hearing and the hearsay rule dispute"], [3346, 3526, "The text messages"], [3842, 4022, "Sources and the charging document"] ];
   var stage = document.querySelector(".stage"), bgBox = document.getElementById("bgv-box"), bgNow = document.getElementById("bgnow"), bgPlayBtn = document.getElementById("bg-play"), bgSoundBtn = document.getElementById("bg-sound"), bgHideBtn = document.getElementById("bg-hide");
   var yt = null, ytReady = false, segI = 4, bgState = { stopped: false, hidden: false, muted: true, visible: true };
   var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   function bgLabel() { if (bgNow) bgNow.innerHTML = bgState.stopped ? "" : "Background: Candace Owens vs. Andrew Wilson, highlights (" + (segI + 1) + " of " + SEGS.length + "): " + escapeHtml(SEGS[segI][2]) + ". <a href=\"https://www.youtube.com/watch?v=" + DEBATE + "&t=" + SEGS[segI][0] + "s\" target=\"_blank\" rel=\"noopener\" style=\"color:inherit\">Watch the full debate</a>"; }
-  function playSeg() { if (!yt || !ytReady) return; yt.loadVideoById({ videoId: DEBATE, startSeconds: SEGS[segI][0], endSeconds: SEGS[segI][1] }); bgLabel(); }
+  function playSeg() { if (!yt || !ytReady) return; yt.loadVideoById({ videoId: SEGS[segI][3] || DEBATE, startSeconds: SEGS[segI][0], endSeconds: SEGS[segI][1] }); bgLabel(); }
   function bgPaint() {
     if (!bgPlayBtn) return;
     bgPlayBtn.textContent = bgState.stopped ? "Resume background" : "Pause background";
@@ -1298,7 +1298,7 @@
       events: {
         onReady: function () { ytReady = true; yt.mute(); stage.classList.add("has-video"); bgPaint(); if (reduceMotion) { bgState.stopped = true; bgPaint(); } else { playSeg(); } },
         onStateChange: function (e) { if (e.data === 0 && !bgState.stopped) { segI = (segI + 1) % SEGS.length; playSeg(); } },
-        onError: function () { stage.classList.remove("has-video"); bgBox.hidden = true; document.getElementById("bgbar").hidden = true; if (bgNow) bgNow.hidden = true; }
+        onError: function () { if (SEGS.some(function (q) { return q[3]; })) { SEGS.splice(segI, 1); if (SEGS.length) { segI = segI % SEGS.length; playSeg(); return; } } stage.classList.remove("has-video"); bgBox.hidden = true; document.getElementById("bgbar").hidden = true; if (bgNow) bgNow.hidden = true; }
       } });
   }
   if (bgBox) {

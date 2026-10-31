@@ -1,0 +1,9 @@
+{
+  "_note": "Fill in the links you want shown in the footer Support buttons. Leave a url empty and that button stays hidden.",
+  "message": "Want to send a tip or a gift? Thank you.",
+  "options": [
+    { "name": "Venmo", "url": "" },
+    { "name": "PayPal", "url": "" },
+    { "name": "Cash App", "url": "" }
+  ]
+}
