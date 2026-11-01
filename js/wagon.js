@@ -199,6 +199,14 @@
   }
   function drawWagon(x, y, a, withRider, lean) {
     lean = lean || 0;
+    var sp = window.SSWagon && window.SSWagon.cur();   // a wagon picked in the garage is drawn from its picture
+    if (sp) {
+      ctx.save(); ctx.translate(x, y); ctx.rotate(a);
+      var sw = sp.w.scale || 62, sh = sw * sp.img.naturalHeight / sp.img.naturalWidth;
+      if (withRider) drawRider(2 * lean, -9 - sh * 0.18, lean * 0.55);
+      ctx.drawImage(sp.img, -sw * 0.52, 5.4 - sh, sw, sh);
+      ctx.restore(); return;
+    }
     ctx.save(); ctx.translate(x, y); ctx.rotate(a);
     // handle
     ctx.strokeStyle = '#d9d9d9'; ctx.lineWidth = 2.2; ctx.lineCap = 'round'; var hx = lerp(34, 29, lean), hy = lerp(-16, 2, lean);   // pulling: the handle drops down toward the ground

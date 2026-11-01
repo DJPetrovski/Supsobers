@@ -2175,3 +2175,37 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .stat-people { margin: 0 0 14px; text-align: center; color: var(--ash, #a99); font-size: .85rem; letter-spacing: .02em; }
 .stat-people[hidden] { display: none; }
 .stat-people b { color: var(--bone, #fff); font-size: 1rem; }
+
+/* wagon garage */
+.wg-garage { margin-left: 4px; padding: 3px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.08); color: #fff; font: inherit; font-size: .8rem; cursor: pointer; }
+.wg-garage:hover { background: rgba(255,255,255,.2); }
+.wg { position: relative; }
+.wgg-ov { position: absolute; inset: 0; z-index: 40; overflow-y: auto; background: rgba(0,0,0,.94); display: flex; align-items: flex-start; }
+.wgg-ov[hidden] { display: none; }
+.wgg { width: min(640px, 94%); margin: 10px auto; background: rgba(10,14,22,.96); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 14px 16px 16px; color: #fff; text-align: left; }
+.wgg-head { display: flex; justify-content: space-between; align-items: center; }
+.wgg-head h3 { margin: 0; font-size: 1.15rem; }
+.wgg-x { background: none; border: 0; color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.wgg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 10px 0; }
+.wgg-card { display: flex; flex-direction: column; gap: 3px; padding: 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); color: #fff; text-align: left; font: inherit; cursor: pointer; }
+.wgg-card.on { border-color: #3be072; box-shadow: 0 0 0 1px #3be072 inset; }
+.wgg-card.wlocked { opacity: .72; }
+.wgg-card.wlocked .wgg-pic img { filter: grayscale(.7) brightness(.7); }
+.wgg-pic { display: flex; align-items: flex-end; justify-content: center; height: 64px; }
+.wgg-pic img { max-width: 100%; max-height: 64px; }
+.wgg-red { width: 54px; height: 30px; background: #d3131c; border: 2px solid #6e060c; border-radius: 3px 3px 9px 9px; position: relative; }
+.wgg-card b { font-size: .88rem; }
+.wgg-card small { font-size: .72rem; opacity: .75; }
+.wgg-card em { font-style: normal; font-size: .72rem; color: #9fe9b4; }
+.wgg-card.wlocked em { color: #ffd23a; }
+.wgg-unlock { margin-top: 6px; padding: 10px 12px; border-radius: 10px; background: rgba(255,210,58,.08); border: 1px solid rgba(255,210,58,.3); }
+.wgg-unlock.ok { background: rgba(59,224,114,.08); border-color: rgba(59,224,114,.3); }
+.wgg-unlock p { margin: 4px 0 8px; font-size: .84rem; }
+.wgg-unlock code { background: rgba(255,255,255,.12); padding: 2px 6px; border-radius: 5px; user-select: all; }
+.wgg-restore { margin-top: 10px; font-size: .8rem; }
+.wgg-restore span { display: flex; gap: 6px; margin-top: 4px; }
+.wgg-restore input { flex: 1; min-width: 0; padding: 7px 9px; border-radius: 8px; border: 1px solid rgba(255,255,255,.3); background: rgba(0,0,0,.4); color: #fff; font: inherit; letter-spacing: .06em; }
+.wgg-soon { font-size: .85rem; color: #ffd23a; }
+.wgg-msg { min-height: 1.2em; margin: 8px 0 0; font-size: .82rem; color: #9fe9b4; }
+.wgg-msg.bad { color: #ff9a8a; }
+.wgg-cred { margin: 6px 0 0; font-size: .68rem; opacity: .55; }
