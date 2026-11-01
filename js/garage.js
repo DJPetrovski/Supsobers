@@ -53,7 +53,7 @@
     if (t.closest('#wgg-copy')) { var c = document.getElementById('wgg-mycode'); try { navigator.clipboard.writeText(c.textContent).then(function () { msg('Copied. Keep it somewhere safe.'); }, function () { msg('Select the code and copy it.'); }); } catch (e3) { msg('Select the code and copy it.'); } }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !ov.hidden) close(); });
-  Promise.all([fetch('data/wagons.json?v=4').then(function (r) { return r.json(); }), fetch('data/topics-config.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
+  Promise.all([fetch('data/wagons.json?v=5').then(function (r) { return r.json(); }), fetch('data/topics-config.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
     CFG = a[0]; SB = a[1]; CFG.wagons.forEach(function (w) { if (w.sprite) { var im = new Image(); im.src = w.sprite; imgs[w.id] = im; } });
     // back from Stripe: ?wagon_session=cs_... means a payment just finished
     var m = /[?&]wagon_session=([A-Za-z0-9_]+)/.exec(location.search);

@@ -46,8 +46,8 @@
   ],
   "unlock": {
     "link": "https://buy.stripe.com/aFa7sM5Vab6g46X4sS7ok00",
-    "minDollars": 2,
+    "minDollars": 3,
     "title": "Unlock every wagon",
-    "pitch": "Tip any amount ($2 or more) to unlock all the supporter wagons. It unlocks the moment you pay, and you get a restore code for your other devices."
+    "pitch": "Tip any amount ($3 or more) to unlock all the supporter wagons. It unlocks the moment you pay, and you get a restore code for your other devices."
   }
 }

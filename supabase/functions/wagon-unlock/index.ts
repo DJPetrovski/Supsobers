@@ -11,7 +11,7 @@ const CORS = {
 };
 const json = (b: unknown, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { ...CORS, "Content-Type": "application/json" } });
 const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
-const MIN = Number(Deno.env.get("MIN_CENTS") || 200), MAXD = Number(Deno.env.get("MAX_DEVICES") || 5);
+const MIN = Number(Deno.env.get("MIN_CENTS") || 300), MAXD = Number(Deno.env.get("MAX_DEVICES") || 5);
 
 function makeCode() {
   const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", r = crypto.getRandomValues(new Uint8Array(8));
@@ -34,7 +34,10 @@ Deno.serve(async (req) => {
       return json({ ok: true, code: prev.data.code });
     }
     const r = await fetch("https://api.stripe.com/v1/checkout/sessions/" + sid, { headers: { Authorization: "Bearer " + Deno.env.get("STRIPE_SECRET_KEY") } });
-    if (!r.ok) return json({ ok: false, error: "Payment not found." }, 404);
+    if (!r.ok) {
+      let why = ""; try { const e = await r.json(); why = (e.error && (e.error.message || e.error.code)) || ""; } catch (_) {}
+      return json({ ok: false, error: "Payment not found." + (why ? " (Stripe says: " + why.slice(0, 160) + ")" : "") }, 404);
+    }
     const s = await r.json();
     if (s.payment_status !== "paid") return json({ ok: false, error: "Payment is not complete yet." }, 402);
     if ((s.amount_total || 0) < MIN) return json({ ok: false, error: "Tip was under the minimum." }, 402);
