@@ -167,6 +167,9 @@
         if (!r.warned && r.x - s.x < 650 && r.x > s.x && !s.warnedKinds[r.kind]) { r.warned = true; s.warnedKinds[r.kind] = 1; if (s.t < 200) say('Watch out. Jump it with Shift.'); }
         if (r.hit || Math.abs(r.x - s.x) > r.w / 2 + 16) continue;
         if (s.y > ground(r.x) - r.h) {
+          if (window.SSWagon && r.h <= window.SSWagon.clear()) {   // a bigger wagon's wheels just roll over the small stuff
+            r.hit = true; s.v *= 0.97; for (var q4 = 0; q4 < 5; q4++) parts.push({ x: r.x, y: ground(r.x) - 3, vx: rnd(-60, 90), vy: rnd(-90, -20), l: 0.4, c: '#c98a3a' }); continue;
+          }
           r.hit = true; s.flash = 1;
           for (var q2 = 0; q2 < 8; q2++) parts.push({ x: r.x, y: ground(r.x) - r.h / 2, vx: rnd(-120, 120), vy: rnd(-180, -20), l: 0.6, c: r.kind === 'pills' ? '#ff6b73' : '#c98a3a' });
           if (d > 0.3) crash('Hit the stuff.');

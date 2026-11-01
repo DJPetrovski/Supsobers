@@ -10,7 +10,8 @@
   function usable(w) { return w.free || unlocked(); }
   window.SSWagon = {
     cur: function () { if (!CFG) return null; var w = def(SEL); if (!usable(w)) w = CFG.wagons[0]; return w.sprite && imgs[w.id] && imgs[w.id].complete && imgs[w.id].naturalWidth ? { w: w, img: imgs[w.id] } : null; },
-    unlocked: unlocked
+    unlocked: unlocked,
+    clear: function () { if (!CFG) return 0; var w = def(SEL); if (!usable(w)) w = CFG.wagons[0]; return w.clear || 0; }
   };
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function fn(body) {
@@ -25,7 +26,7 @@
     var U = CFG.unlock || {}, h = '<div class="wgg"><div class="wgg-head"><h3>Garage</h3><button type="button" class="wgg-x" aria-label="Close garage">&times;</button></div><div class="wgg-grid">';
     CFG.wagons.forEach(function (w) {
       var ok = usable(w), on = SEL === w.id && ok;
-      h += '<button type="button" class="wgg-card' + (on ? ' on' : '') + (ok ? '' : ' wlocked') + '" data-id="' + w.id + '"><span class="wgg-pic">' + thumb(w) + '</span><b>' + esc(w.name) + '</b><small>' + esc(w.blurb || '') + '</small><em>' + (on ? 'Riding this one' : ok ? 'Pick it' : 'Supporter wagon') + '</em></button>';
+      h += '<button type="button" class="wgg-card' + (on ? ' on' : '') + (ok ? '' : ' wlocked') + '" data-id="' + w.id + '"><span class="wgg-pic">' + thumb(w) + '</span><b>' + esc(w.name) + '</b><small>' + esc(w.blurb || '') + '</small>' + (w.perk ? '<small class="wgg-perk">&#9733; ' + esc(w.perk) + '</small>' : '') + '<em>' + (on ? 'Riding this one' : ok ? 'Pick it' : 'Supporter wagon') + '</em></button>';
     });
     h += '</div>';
     if (!unlocked()) {
@@ -53,7 +54,7 @@
     if (t.closest('#wgg-copy')) { var c = document.getElementById('wgg-mycode'); try { navigator.clipboard.writeText(c.textContent).then(function () { msg('Copied. Keep it somewhere safe.'); }, function () { msg('Select the code and copy it.'); }); } catch (e3) { msg('Select the code and copy it.'); } }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !ov.hidden) close(); });
-  Promise.all([fetch('data/wagons.json?v=5').then(function (r) { return r.json(); }), fetch('data/topics-config.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
+  Promise.all([fetch('data/wagons.json?v=6').then(function (r) { return r.json(); }), fetch('data/topics-config.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
     CFG = a[0]; SB = a[1]; CFG.wagons.forEach(function (w) { if (w.sprite) { var im = new Image(); im.src = w.sprite; imgs[w.id] = im; } });
     // back from Stripe: ?wagon_session=cs_... means a payment just finished
     var m = /[?&]wagon_session=([A-Za-z0-9_]+)/.exec(location.search);

@@ -2209,3 +2209,4 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .wgg-msg { min-height: 1.2em; margin: 8px 0 0; font-size: .82rem; color: #9fe9b4; }
 .wgg-msg.bad { color: #ff9a8a; }
 .wgg-cred { margin: 6px 0 0; font-size: .68rem; opacity: .55; }
+.wgg-card .wgg-perk { color: #ffd23a; opacity: 1; font-weight: 700; }

@@ -5,7 +5,9 @@
       "id": "red",
       "name": "Little Red Wagon",
       "free": true,
-      "blurb": "The one you started with."
+      "blurb": "The one you started with.",
+      "clear": 0,
+      "perk": ""
     },
     {
       "id": "classic",
@@ -14,7 +16,9 @@
       "sprite": "media/wagons/classic.png",
       "scale": 72,
       "credit": "Final Wagon by ishwolfy",
-      "blurb": "Hauled hay, now hauls you."
+      "blurb": "Hauled hay, now hauls you.",
+      "clear": 10,
+      "perk": "Big wheels roll over pills"
     },
     {
       "id": "covered",
@@ -23,7 +27,9 @@
       "sprite": "media/wagons/covered.png",
       "scale": 76,
       "credit": "Wooden Covered Wagon by BytesCrafter",
-      "blurb": "Westward, one sober day at a time."
+      "blurb": "Westward, one sober day at a time.",
+      "clear": 22,
+      "perk": "Rolls over pills and cans"
     },
     {
       "id": "carriage",
@@ -32,7 +38,9 @@
       "sprite": "media/wagons/carriage.png",
       "scale": 74,
       "credit": "Victorian Wagon by Mr A McBride",
-      "blurb": "Ride in style. Do not fall off."
+      "blurb": "Ride in style. Do not fall off.",
+      "clear": 22,
+      "perk": "Rolls over pills and cans"
     },
     {
       "id": "ranch",
@@ -41,7 +49,9 @@
       "sprite": "media/wagons/ranch.png",
       "scale": 78,
       "credit": "Medieval Wagon (Sketchfab, CC BY 4.0)",
-      "blurb": "Built for a long haul."
+      "blurb": "Built for a long haul.",
+      "clear": 26,
+      "perk": "Rolls over pills, cans and pill bottles"
     }
   ],
   "unlock": {
