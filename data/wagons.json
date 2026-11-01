@@ -54,6 +54,17 @@
       "clear": 26,
       "perk": "Rolls over pills, cans and pill bottles. Floats across water",
       "float": true
+    },
+    {
+      "id": "tub",
+      "name": "Bathtub Wagon",
+      "free": false,
+      "sprite": "media/wagons/tub.png",
+      "scale": 72,
+      "blurb": "Why walk when you can soak?",
+      "clear": 16,
+      "float": true,
+      "perk": "Rolls over pills and cans. Floats across water (it is a tub)"
     }
   ],
   "unlock": {
