@@ -155,7 +155,7 @@
     }
     s.dist = Math.max(s.dist, s.x);
     // angle: follow the ground when rolling, the flight path in the air
-    var tgt = s.air ? Math.atan2(s.vy, Math.max(80, s.vx)) * 0.55 : Math.atan(slope(s.x));
+    var tgt = s.floating ? Math.sin(s.t * 3) * 0.05 : s.air ? Math.atan2(s.vy, Math.max(80, s.vx)) * 0.55 : Math.atan(slope(s.x));
     if (!s.dead) s.ang += (tgt - s.ang) * Math.min(1, dt * (s.air ? 5 : 14)); else s.ang += dt * (s.air ? 5 : 1.4);
     for (var pi = 0; pi < pools.length; pi++) {   // work out how wide each pool is once the hills around it exist
       var pl = pools[pi]; if (!pl.ready && cps[cps.length - 1].x > pl.vx + 900) { var a0 = pl.vx, b0 = pl.vx; while (ground(a0) > pl.surf && pl.vx - a0 < 700) a0 -= 4; while (ground(b0) > pl.surf && b0 - pl.vx < 700) b0 += 4; pl.x0 = a0; pl.x1 = b0; pl.ready = true; }
@@ -176,9 +176,14 @@
           else { s.v *= 0.45; s.air = true; s.vx = Math.max(100, s.v * 0.8); s.vy = -170; say('Ouch. Stay away from that stuff.'); }
         }
       }
+      s.floating = false;
       for (var pj = 0; pj < pools.length; pj++) {
         var pl2 = pools[pj]; if (!pl2.ready) continue;
         if (!pl2.warned && pl2.x0 - s.x < 700 && pl2.x0 > s.x) { pl2.warned = true; if (!s.warnedPool) { s.warnedPool = 1; say('Liquid ahead. Jump it, or you will not climb out.'); } }
+        if (s.x > pl2.x0 + 6 && s.x < pl2.x1 - 6 && s.y > pl2.surf + 2 && window.SSWagon && window.SSWagon.floats()) {   // a floating wagon rides the surface straight across
+          if (!s.floating) { for (var q5 = 0; q5 < 10; q5++) parts.push({ x: s.x, y: pl2.surf, vx: rnd(-80, 80), vy: rnd(-160, -40), l: 0.6, c: POOL[pl2.kind][0] }); if (!s.floatSaid) { s.floatSaid = 1; say('Floating! Your wagon rides the water.'); } }
+          var fv = s.air ? s.vx : s.v; s.floating = true; s.y = pl2.surf; s.air = false; s.vy = 0; s.v = Math.max(110, fv) * (1 - 0.2 * dt); s.still = 0; continue;
+        }
         if (s.x > pl2.x0 + 6 && s.x < pl2.x1 - 6 && s.y > pl2.surf + 2) {
           for (var q3 = 0; q3 < 16; q3++) parts.push({ x: s.x, y: pl2.surf, vx: rnd(-110, 110), vy: rnd(-260, -60), l: 0.8, c: POOL[pl2.kind][0] });
           crash('Fell into the drink.'); s.vx = Math.max(0, s.vx * 0.3); s.v *= 0.2;

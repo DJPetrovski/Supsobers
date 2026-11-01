@@ -11,6 +11,7 @@
   window.SSWagon = {
     cur: function () { if (!CFG) return null; var w = def(SEL); if (!usable(w)) w = CFG.wagons[0]; return w.sprite && imgs[w.id] && imgs[w.id].complete && imgs[w.id].naturalWidth ? { w: w, img: imgs[w.id] } : null; },
     unlocked: unlocked,
+    floats: function () { if (!CFG) return false; var w = def(SEL); if (!usable(w)) w = CFG.wagons[0]; return !!w.float; },
     clear: function () { if (!CFG) return 0; var w = def(SEL); if (!usable(w)) w = CFG.wagons[0]; return w.clear || 0; }
   };
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -54,7 +55,7 @@
     if (t.closest('#wgg-copy')) { var c = document.getElementById('wgg-mycode'); try { navigator.clipboard.writeText(c.textContent).then(function () { msg('Copied. Keep it somewhere safe.'); }, function () { msg('Select the code and copy it.'); }); } catch (e3) { msg('Select the code and copy it.'); } }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !ov.hidden) close(); });
-  Promise.all([fetch('data/wagons.json?v=6').then(function (r) { return r.json(); }), fetch('data/topics-config.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
+  Promise.all([fetch('data/wagons.json?v=7').then(function (r) { return r.json(); }), fetch('data/topics-config.json').then(function (r) { return r.json(); }).catch(function () { return null; })]).then(function (a) {
     CFG = a[0]; SB = a[1]; CFG.wagons.forEach(function (w) { if (w.sprite) { var im = new Image(); im.src = w.sprite; imgs[w.id] = im; } });
     // back from Stripe: ?wagon_session=cs_... means a payment just finished
     var m = /[?&]wagon_session=([A-Za-z0-9_]+)/.exec(location.search);

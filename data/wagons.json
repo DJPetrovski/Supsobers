@@ -29,7 +29,8 @@
       "credit": "Wooden Covered Wagon by BytesCrafter",
       "blurb": "Westward, one sober day at a time.",
       "clear": 22,
-      "perk": "Rolls over pills and cans"
+      "perk": "Rolls over pills and cans. Floats across water",
+      "float": true
     },
     {
       "id": "carriage",
@@ -51,7 +52,8 @@
       "credit": "Medieval Wagon (Sketchfab, CC BY 4.0)",
       "blurb": "Built for a long haul.",
       "clear": 26,
-      "perk": "Rolls over pills, cans and pill bottles"
+      "perk": "Rolls over pills, cans and pill bottles. Floats across water",
+      "float": true
     }
   ],
   "unlock": {
