@@ -28,7 +28,7 @@ ALIAS = {
     "smiley face killers": "Smiley face murder theory", "paul mccartney is dead theory": "Paul is dead",
     "chris benoit and the benoit family": "Chris Benoit", "lisa \"left eye\" lopes": "Lisa Lopes", "vic morrow and the twilight zone kids": "Vic Morrow",
     "amityville": "Amityville Horror", "the notorious b.i.g.": "The Notorious B.I.G.", "polio conspiracy": "", "killdozer": "", "david crowley": "",
-    "duke of kent": "", "bush family": "Bush family", "clinton family": "Clinton family",
+    "duke of kent": "", "seth rich": "Murder of Seth Rich", "maura murray": "Disappearance of Maura Murray", "cathriona white": "", "bush family": "Bush family", "clinton family": "Clinton family",
 }
 API = "https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages|pageprops&ppprop=disambiguation&piprop=thumbnail&pithumbsize=420&"
 def direct(name):
