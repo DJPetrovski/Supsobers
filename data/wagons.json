@@ -1,10 +1,53 @@
 {
   "_note": "Wagon garage. free:true wagons are open to everyone; the rest unlock with a supporter tip. sprite is the picture drawn in the game; scale sets its width in game units. credit is the 3D model author (CC BY 4.0).",
   "wagons": [
-    { "id": "red", "name": "Little Red Wagon", "free": true, "blurb": "The one you started with." },
-    { "id": "classic", "name": "Farm Wagon", "free": true, "sprite": "media/wagons/classic.png", "scale": 72, "credit": "Final Wagon by ishwolfy", "blurb": "Hauled hay, now hauls you." },
-    { "id": "covered", "name": "Covered Wagon", "free": false, "sprite": "media/wagons/covered.png", "scale": 76, "credit": "Wooden Covered Wagon by BytesCrafter", "blurb": "Westward, one sober day at a time." },
-    { "id": "carriage", "name": "Victorian Carriage", "free": false, "sprite": "media/wagons/carriage.png", "scale": 74, "credit": "Victorian Wagon by Mr A McBride", "blurb": "Ride in style. Do not fall off." }
+    {
+      "id": "red",
+      "name": "Little Red Wagon",
+      "free": true,
+      "blurb": "The one you started with."
+    },
+    {
+      "id": "classic",
+      "name": "Farm Wagon",
+      "free": true,
+      "sprite": "media/wagons/classic.png",
+      "scale": 72,
+      "credit": "Final Wagon by ishwolfy",
+      "blurb": "Hauled hay, now hauls you."
+    },
+    {
+      "id": "covered",
+      "name": "Covered Wagon",
+      "free": false,
+      "sprite": "media/wagons/covered.png",
+      "scale": 76,
+      "credit": "Wooden Covered Wagon by BytesCrafter",
+      "blurb": "Westward, one sober day at a time."
+    },
+    {
+      "id": "carriage",
+      "name": "Victorian Carriage",
+      "free": false,
+      "sprite": "media/wagons/carriage.png",
+      "scale": 74,
+      "credit": "Victorian Wagon by Mr A McBride",
+      "blurb": "Ride in style. Do not fall off."
+    },
+    {
+      "id": "ranch",
+      "name": "Ranch Wagon",
+      "free": false,
+      "sprite": "media/wagons/ranch.png",
+      "scale": 78,
+      "credit": "Medieval Wagon (Sketchfab, CC BY 4.0)",
+      "blurb": "Built for a long haul."
+    }
   ],
-  "unlock": { "link": "", "minDollars": 2, "title": "Unlock every wagon", "pitch": "Tip any amount ($2 or more) to unlock all the supporter wagons. It unlocks the moment you pay, and you get a restore code for your other devices." }
+  "unlock": {
+    "link": "",
+    "minDollars": 2,
+    "title": "Unlock every wagon",
+    "pitch": "Tip any amount ($2 or more) to unlock all the supporter wagons. It unlocks the moment you pay, and you get a restore code for your other devices."
+  }
 }
