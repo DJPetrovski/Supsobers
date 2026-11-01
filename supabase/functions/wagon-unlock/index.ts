@@ -25,8 +25,14 @@ Deno.serve(async (req) => {
   let body: any = {}; try { body = await req.json(); } catch (_) {}
 
   if (body.action === "claim") {
-    const sid = String(body.session_id || "");
-    if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(sid)) return json({ ok: false, error: "bad session" }, 400);
+    let sid = String(body.session_id || "").trim();
+    if (!/^(cs_(test|live)_|pi_)[A-Za-z0-9]+$/.test(sid)) return json({ ok: false, error: "bad session" }, 400);
+    if (sid.startsWith("pi_")) {   // a payment id: find the checkout session that made it
+      const lr = await fetch("https://api.stripe.com/v1/checkout/sessions?limit=1&payment_intent=" + sid, { headers: { Authorization: "Bearer " + Deno.env.get("STRIPE_SECRET_KEY") } });
+      const lj = lr.ok ? await lr.json() : null;
+      if (!lj || !lj.data || !lj.data.length) return json({ ok: false, error: "Payment not found." }, 404);
+      sid = lj.data[0].id;
+    }
     const prev = await db.from("wagon_unlocks").select("code,uses").eq("session_id", sid).maybeSingle();
     if (prev.data) {
       if (prev.data.uses >= MAXD) return json({ ok: false, error: "This payment has been used on too many devices." }, 403);
