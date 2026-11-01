@@ -540,6 +540,7 @@
       for (var j = 0; j < h.treeList.length; j++) { var t = h.treeList[j]; if (Math.hypot(tx - t.x, ty - t.y) < 0.6) { stopped = true; break; } }
       if (!stopped) { fx = tx; fy = ty; }
     }
+    if (tType !== 'water') { thud(s.putt ? 0.35 : 0.55, tType); slideSfx(clamp(Math.hypot(fx - p[0], fy - p[1]) / 6, 0.25, 1.3) + 0.15, s.putt ? 0.12 : 0.22, tType); }
     G.roll = { putt: !!s.putt, x0: p[0], y0: p[1], x1: fx, y1: fy, t: 0, dur: clamp(Math.hypot(fx - p[0], fy - p[1]) / 6, 0.25, 1.3), bank: s.bank, rot: s.rot }; G.phase = 'roll';
   }
   function rest(pos, why) {
@@ -593,7 +594,7 @@
   var SND = { on: true, voice: true, music: false, sc: false };
   try { var _sv = JSON.parse(localStorage.getItem('ss-disc-snd') || '{}'); if (_sv.on === false) SND.on = false; if (_sv.voice === false) SND.voice = false; if (_sv.music === true) SND.music = true; if (_sv.sc === true && !SND.music) SND.sc = true; } catch (e) {}
   function saveSnd() { try { localStorage.setItem('ss-disc-snd', JSON.stringify(SND)); } catch (e) {} }
-  var SFX_LIST = ['chain', 'chain2', 'rattle', 'hit1', 'hit2', 'throw1', 'throw2', 'splash', 'steps', 'bark1', 'bark2', 'bark3', 'bark4', 'say1', 'say2', 'say3', 'say4', 'say5', 'yay1', 'clap', 'clap2'], sfxBuf = {}, sfxStarted = false;
+  var SFX_LIST = ['chain', 'chain2', 'rattle', 'hit1', 'hit2', 'throw1', 'throw2', 'splash', 'steps', 'bark1', 'bark2', 'bark3', 'bark4', 'say1', 'say2', 'say3', 'say4', 'say5', 'yay1', 'clap', 'clap2', 'pant'], sfxBuf = {}, sfxStarted = false;
   function audioCtx() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); return actx; } catch (e) { return null; } }
   function sfxPreload() {
     if (sfxStarted) return; sfxStarted = true; var c = audioCtx(); if (!c) return;
@@ -606,6 +607,27 @@
   function sfx(name, vol, rate) {
     if (!SND.on) return false; var b = sfxBuf[name], c = actx; if (!b || !c) return false;
     try { if (c.state === 'suspended') c.resume(); var src = c.createBufferSource(), g = c.createGain(); src.buffer = b; src.playbackRate.value = rate || 1; g.gain.value = vol == null ? 0.8 : vol; src.connect(g); g.connect(c.destination); src.start(); return true; } catch (e) { return false; }
+  }
+  var noiseBuf = null;
+  function noiseB(c) { if (noiseBuf) return noiseBuf; noiseBuf = c.createBuffer(1, c.sampleRate * 2, c.sampleRate); var d = noiseBuf.getChannelData(0); for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return noiseBuf; }
+  function thud(vol, terr) {   // disc smacks the ground: low body thump + short grassy crack
+    if (!SND.on) return; var c = audioCtx(); if (!c) return; try {
+      var t = c.currentTime, hard = terr === 'path' || terr === 'green', o = c.createOscillator(), og = c.createGain();
+      o.type = 'sine'; o.frequency.setValueAtTime(hard ? 190 : 120, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.14);
+      og.gain.setValueAtTime(0.0001, t); og.gain.exponentialRampToValueAtTime(vol * 0.9, t + 0.008); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+      o.connect(og); og.connect(c.destination); o.start(t); o.stop(t + 0.2);
+      var n = c.createBufferSource(), f = c.createBiquadFilter(), ng = c.createGain(); n.buffer = noiseB(c); f.type = 'bandpass'; f.frequency.value = hard ? 2400 : 900; f.Q.value = 0.7;
+      ng.gain.setValueAtTime(vol * (hard ? 0.7 : 0.45), t); ng.gain.exponentialRampToValueAtTime(0.0001, t + (hard ? 0.09 : 0.14));
+      n.connect(f); f.connect(ng); ng.connect(c.destination); n.start(t, Math.random()); n.stop(t + 0.2);
+    } catch (e) {}
+  }
+  function slideSfx(dur, vol, terr) {   // disc skidding/rolling across grass: swishy filtered noise that fades as it slows
+    if (!SND.on) return; var c = audioCtx(); if (!c) return; try {
+      var t = c.currentTime, hard = terr === 'path' || terr === 'green', n = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+      n.buffer = noiseB(c); n.loop = true; f.type = 'bandpass'; f.Q.value = 0.9; f.frequency.setValueAtTime(hard ? 3200 : 1700, t); f.frequency.exponentialRampToValueAtTime(hard ? 1200 : 500, t + dur);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.04); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      n.connect(f); f.connect(g); g.connect(c.destination); n.start(t, Math.random()); n.stop(t + dur + 0.05);
+    } catch (e) {}
   }
   function pickN(prefix, n) { return prefix + (1 + Math.floor(Math.random() * n)); }
   var lastCurse = 0;
@@ -976,6 +998,57 @@
       if (dog && scene) { var old = dog.g, ng = makeBullDog(); ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng; }
     }).catch(function () { BULL.loading = false; });
   }
+  /* ---------- real 3D models (glTF): a German shepherd with a skeleton and four animations, and a real disc golf basket ----------
+     Dog (Metel) by ajlanaondar0 and Disc Golf Basket FREE DOWNLOAD by Ethica, both CC BY 4.0 (credited in the site footer).
+     If a file cannot load, the hand-built dog and basket stay in place. */
+  var GLB = { loading: false, dog: null, basket: null };
+  function loadGlbAssets() {
+    if (GLB.loading || !T) return; GLB.loading = true;
+    var sc = document.createElement('script'); sc.src = 'js/vendor/gltf-bundle.js?v=1';
+    sc.onerror = function () {};
+    sc.onload = function () {
+      try {
+        var L = new window.GLTFLoader(); L.setMeshoptDecoder(window.MeshoptDecoder);
+        L.load('models/dog/shepherd.glb?v=1', function (g) { GLB.dog = g; if (dog && scene) { var old = dog.g, ng = makeGlbDog(); ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng; } }, undefined, function () {});
+        L.load('models/basket.glb?v=1', function (g) { GLB.basket = g.scene; if (basketObj && basketObj.group) attachGlbBasket(basketObj.group); }, undefined, function () {});
+      } catch (e) {}
+    };
+    document.head.appendChild(sc);
+  }
+  function makeGlbDog() {
+    var g = new T.Group(); g.rotation.order = 'YXZ';
+    var m = window.SkeletonUtils.clone(GLB.dog.scene), holder = new T.Group(), S = 105;   // the model is tiny: ~0.0095 long, so x105 makes a ~1 m shepherd
+    holder.scale.setScalar(S); holder.position.set(0.0125 * S, -0.02 * S, -0.062 * S); holder.add(m); g.add(holder);
+    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; if (o.material) { o.material.envMapIntensity = 0.45; o.material.roughness = Math.max(o.material.roughness || 0, 0.8); o.material.metalness = 0; } } });
+    var mixer = new T.AnimationMixer(m), acts = {};
+    GLB.dog.animations.forEach(function (c) { acts[c.name] = mixer.clipAction(c); });
+    var hit = hitSphere(g, 0.75, 0, 0.45, 0);
+    g.userData = { glb: true, mixer: mixer, acts: acts, cur: null, hit: hit, tail: new T.Group(), head: new T.Group(), body: new T.Group(), legs: [new T.Group(), new T.Group(), new T.Group(), new T.Group()], tongue: new T.Group() };
+    return g;
+  }
+  var lastPant = 0;
+  function glbPose(d, u, dt) {   // pick the animation from what the dog is doing, blend into it, and let the skeleton do the rest
+    var want = d.pet > 0 ? 'Dog_Happy' : d.v > 0.5 ? 'Dog_Run_Arround' : d.still > 7 ? 'Dog_Lie_Idle_01' : 'Dog_Stand_Idle_01_Bot';
+    var a = u.acts[want] || u.acts['Dog_Stand_Idle_01_Bot'];
+    if (a && u.cur !== a) { a.reset().setEffectiveWeight(1).fadeIn(0.3).play(); if (u.cur) u.cur.fadeOut(0.3); u.cur = a; }
+    if (u.cur && want === 'Dog_Run_Arround') u.cur.setEffectiveTimeScale(clamp(d.v / 5, 0.5, 1.6)); else if (u.cur) u.cur.setEffectiveTimeScale(1);
+    u.mixer.update(dt);
+    // a little panting when the dog has been waiting a while
+    if (d.still > 4 && d.pet <= 0) { var nw = performance.now(); if (nw - lastPant > 9000) { lastPant = nw; sfx('pant', 0.35, 0.95 + Math.random() * 0.1); } }
+    if (d.v > 3 && d.pet <= 0) { var nr = performance.now(); if (nr - (updateDog.lastRunPant || 0) > 4000) { updateDog.lastRunPant = nr; sfx('pant', 0.3, 1.25); } }
+  }
+  function attachGlbBasket(g) {
+    if (!GLB.basket || g.userData.glbDone || !window.SkeletonUtils) return; g.userData.glbDone = true;
+    g.children.slice().forEach(function (c) {   // hide the hand-built basket, but keep the shadow patch, the pennant pole and the flag
+      var keep = (c === (basketObj && basketObj.flag)) || (c.geometry && c.geometry.parameters && (c.geometry.parameters.height === 5.2 || c.geometry.parameters.radius === 0.62));
+      if (!keep) c.visible = false;
+    });
+    var m = GLB.basket.clone(true), H = 21.96, sc = 1.45 / H, holder = new T.Group(); holder.scale.setScalar(sc);
+    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = false; if (o.material) o.material.envMapIntensity = 0.9; } });
+    var chains = null; m.traverse(function (o) { if (o.name === 'defaultMaterial_5') chains = o; });
+    if (chains) { var pv = new T.Group(); pv.position.set(0, 21, 0); m.add(pv); chains.position.y -= 21; pv.add(chains); if (basketObj) basketObj.pivot = pv; }
+    holder.add(m); g.add(holder);
+  }
   function makeBullDog() {
     var g = new T.Group(); g.rotation.order = 'YXZ'; var body = new T.Group(); body.position.set(0, 0.36, 0); g.add(body);
     var mesh = new T.Mesh(BULL.geo, BULL.mat); mesh.scale.setScalar(0.7); mesh.position.set(0, -0.36, 0); mesh.castShadow = true; mesh.receiveShadow = true; mesh.frustumCulled = false; body.add(mesh);
@@ -1003,7 +1076,7 @@
   var heartTex = null;
   function heartTexture() { if (heartTex) return heartTex; var c = document.createElement('canvas'); c.width = c.height = 64; var g = c.getContext('2d'); g.fillStyle = '#ff3d5e'; g.beginPath(); g.moveTo(32, 56); g.bezierCurveTo(4, 36, 6, 10, 24, 10); g.bezierCurveTo(30, 10, 32, 15, 32, 18); g.bezierCurveTo(32, 15, 34, 10, 40, 10); g.bezierCurveTo(58, 10, 60, 36, 32, 56); g.fill(); g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; g.stroke(); heartTex = new T.CanvasTexture(c); heartTex.encoding = T.sRGBEncoding; return heartTex; }
   function ensureDog() {
-    if (dog) return; var g = BULL.ready ? makeBullDog() : makeDog(); scene.add(g);
+    if (dog) return; var g = GLB.dog ? makeGlbDog() : BULL.ready ? makeBullDog() : makeDog(); scene.add(g);
     dog = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0 };
     for (var i = 0; i < 10; i++) { var sp = new T.Sprite(new T.SpriteMaterial({ map: heartTexture(), transparent: true, depthWrite: false, fog: false })); sp.visible = false; sp.userData = { life: 0 }; scene.add(sp); hearts.push(sp); }
   }
@@ -1037,6 +1110,7 @@
     }
     var u = dog.g.userData, sitT = (dog.pet > 0 || dog.still > 1.4) ? 1 : 0; dog.sit += (sitT - dog.sit) * (1 - Math.exp(-dt * 6));
     dog.ph += dog.v * dt * 2.3; var sw = Math.sin(dog.ph) * Math.min(0.85, dog.v * 0.22) * (1 - dog.sit);
+    if (u.glb) glbPose(dog, u, dt); else {
     u.legs[0].rotation.x = sw; u.legs[3].rotation.x = sw; u.legs[1].rotation.x = -sw; u.legs[2].rotation.x = -sw;
     u.legs[0].rotation.x += dog.sit * 0.5; u.legs[1].rotation.x += dog.sit * 0.5; u.legs[2].rotation.x = -sw - dog.sit * 1.4; u.legs[3].rotation.x = sw - dog.sit * 1.4;
     u.legs[0].scale.y = u.legs[1].scale.y = 1 + dog.sit * 0.55;
@@ -1044,13 +1118,14 @@
     var happy = dog.pet > 0, wagS = happy ? 16 : (dog.v > 0.5 ? 9 : 5), wagA = happy ? 0.9 : 0.5; dog.wag += dt * wagS; u.tail.rotation.y = Math.sin(dog.wag) * wagA; u.tail.rotation.x = 0.3 + (dog.v > 3 ? 0.4 : 0);
     u.head.rotation.z = happy ? 0.32 * Math.sin(simTime * 3) + 0.15 : 0; u.head.rotation.x = happy ? -0.15 : Math.sin(dog.ph * 2) * 0.06 * Math.min(1, dog.v / 3) + 0.08; u.tongue.visible = happy || dog.v > 4 || dog.still > 3;
     if (u.bull) deformBull(u);
+    }
     if (dog.bounce > 0) dog.bounce -= dt; var gy = gh(dog.x, dog.y) + (dog.bounce > 0 ? Math.abs(Math.sin(dog.bounce * 12)) * 0.22 : 0); dog.g.position.set(dog.x, gy, -dog.y); dog.g.rotation.y = Math.PI - dog.yaw; dog.g.visible = true;
     hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
   }
   function spawnHeart() { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(dog.x + rnd(-0.25, 0.25), dog.g.position.y + 1.1 + rnd(0, 0.2), -dog.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
   }
   function bark(n) {
-    if (!SND.on) return; if (sfx(pickN('bark', 4), 0.5)) return;
+    if (!SND.on) return; if (sfx(pickN('bark', 4), 0.5, 0.92 + Math.random() * 0.2)) return;
     try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
       (n === 1 ? [0] : [0, 0.2]).forEach(function (off) { var t0 = actx.currentTime + off, o = actx.createOscillator(), gn = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(340, t0); o.frequency.exponentialRampToValueAtTime(150, t0 + 0.13); f.type = 'bandpass'; f.frequency.value = 720; f.Q.value = 1.1; gn.gain.setValueAtTime(0.0001, t0); gn.gain.exponentialRampToValueAtTime(0.2, t0 + 0.015); gn.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15); o.connect(f); f.connect(gn); gn.connect(actx.destination); o.start(t0); o.stop(t0 + 0.18); });
     } catch (e) {}
@@ -1338,9 +1413,11 @@
     // a tall pennant so the basket can be found from the tee
     var fp = new T.Mesh(new T.CylinderGeometry(0.012, 0.012, 5.2, 6), new T.MeshStandardMaterial({ color: 0xeeeeee })); fp.position.set(-0.7, 2.6, 0); g.add(fp);
     var sh = new T.Shape(); sh.moveTo(0, 0); sh.lineTo(1.1, -0.28); sh.lineTo(0, -0.56); var flag = new T.Mesh(new T.ShapeGeometry(sh), new T.MeshBasicMaterial({ color: 0xff2a35, side: T.DoubleSide })); flag.position.set(-0.7, 5.15, 0); basketObj.flag = flag; g.add(flag);
+    if (GLB.basket) attachGlbBasket(g);
     return g;
   }
   function updateChains(t, amp) {
+    if (basketObj && basketObj.pivot) { basketObj.pivot.rotation.z = Math.sin(t * 9) * 0.09 * amp; basketObj.pivot.rotation.x = Math.cos(t * 7.3) * 0.09 * amp; }
     var ch = basketObj.chain, N = ch.N, S = ch.S, a = ch.arr, o = 0;
     for (var tier = 0; tier < 2; tier++) {
       for (var i = 0; i < N; i++) {
@@ -1829,7 +1906,7 @@
         loading = false; msgEl.hidden = true;
         if (!ok) { failed = true; flash('The 3D view could not load. Check your connection and reload.'); return; }
         try { initThree(); } catch (e) { failed = true; flash('This browser cannot run the 3D view (WebGL is off).'); return; }
-        ready = true; if (!G) newRound(); else { buildCourse(G.h); placeDog(); snapCam(); beginTour(); } play();
+        ready = true; loadGlbAssets(); if (!G) newRound(); else { buildCourse(G.h); placeDog(); snapCam(); beginTour(); } play();
       });
       return;
     }
