@@ -10,8 +10,13 @@
   function validEmail(s) { return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(s) && s.length < 120; }
   function subscribe(email) {
     var jobs = [];
-    if (cfg.endpoint) { var b = new URLSearchParams(); b.set(cfg.emailField || 'email', email); jobs.push(fetch(cfg.endpoint, { method: 'POST', mode: 'no-cors', body: b })); }
-    if (cfg.notify || !cfg.endpoint) jobs.push(fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: W3F, subject: 'New weekly-email signup', from_name: 'supsobers.com list', email: email, replyto: email, message: 'Please add to the weekly email list: ' + email }) }));
+    if (cfg.viaFunction) jobs.push(fetch('data/topics-config.json').then(function (r) { return r.json(); }).then(function (sb) {
+      return fetch(sb.supabaseUrl + '/functions/v1/newsletter-signup', { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: sb.anonKey, Authorization: 'Bearer ' + sb.anonKey }, body: JSON.stringify({ email: email }) })
+        .then(function (r) { return r.json(); }).then(function (j) { if (!j.ok) throw new Error('signup failed'); }).catch(function () { return backup(); });
+    }));
+    else if (cfg.endpoint) { var b = new URLSearchParams(); b.set(cfg.emailField || 'email', email); jobs.push(fetch(cfg.endpoint, { method: 'POST', mode: 'no-cors', body: b })); }
+    function backup() { return fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: W3F, subject: 'New weekly-email signup', from_name: 'supsobers.com list', email: email, replyto: email, message: 'Please add to the weekly email list: ' + email }) }); }
+    if (cfg.notify || (!cfg.endpoint && !cfg.viaFunction)) jobs.push(backup());
     return Promise.all(jobs).then(function () { store({ state: 'joined', t: Date.now() }); return true; });
   }
   window.SS = window.SS || {}; SS.subscribe = subscribe;
