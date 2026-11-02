@@ -1,0 +1,21 @@
+name: Friday newsletter
+
+on:
+  schedule:
+    - cron: "0 23 * * 5"    # Friday 4pm Mountain (5pm during daylight time), after the deep dive is up
+  workflow_dispatch:         # run it by hand from the Actions tab to see the preview
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and send the digest
+        run: python3 scripts/build_digest.py
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          DIGEST_SEND: ${{ vars.DIGEST_SEND }}
+          DIGEST_FORCE: ${{ github.event_name == 'workflow_dispatch' && 'true' || '' }}
