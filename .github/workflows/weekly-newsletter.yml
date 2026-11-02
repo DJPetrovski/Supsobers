@@ -2,8 +2,9 @@ name: Friday newsletter
 
 on:
   schedule:
-    - cron: "0 23 * * 5"    # Friday 4pm Mountain (5pm during daylight time), after the deep dive is up
-  workflow_dispatch:         # run it by hand from the Actions tab to see the preview
+    - cron: "0 21 * * 5"    # 3:00 pm Mountain in summer time
+    - cron: "0 22 * * 5"    # 3:00 pm Mountain in winter time (the script only acts between 3 and 5 pm there, and once a day)
+  workflow_dispatch:         # run by hand from the Actions tab: builds a DRAFT in Kit so you can check it
 
 permissions:
   contents: write
@@ -17,5 +18,11 @@ jobs:
         run: python3 scripts/build_digest.py
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
-          DIGEST_SEND: ${{ vars.DIGEST_SEND }}
-          DIGEST_FORCE: ${{ github.event_name == 'workflow_dispatch' && 'true' || '' }}
+          # scheduled runs send for real (3:33 pm Denver); set a repo variable DIGEST_PAUSE=true to pause that
+          DIGEST_SEND: ${{ github.event_name == 'schedule' && vars.DIGEST_PAUSE != 'true' && 'true' || '' }}
+      - name: Remember that this week went out
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/digest-last.txt
+          git diff --cached --quiet || (git commit -m "Newsletter sent" && git pull -q --rebase origin main && git push)
