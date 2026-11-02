@@ -16,6 +16,6 @@ jobs:
       - name: Build and send the digest
         run: python3 scripts/build_digest.py
         env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
           DIGEST_SEND: ${{ vars.DIGEST_SEND }}
           DIGEST_FORCE: ${{ github.event_name == 'workflow_dispatch' && 'true' || '' }}

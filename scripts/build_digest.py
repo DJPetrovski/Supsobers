@@ -3,8 +3,8 @@
 
 Reads the channel's public RSS feed (it includes Shorts), keeps what was posted in the last 7 days, and builds a
 minimal email. Always writes data/digest-preview.md so you can see what would go out.
-If BUTTONDOWN_API_KEY is set it also creates the email in Buttondown: as a draft by default, or sends it right away
-when DIGEST_SEND=true. It only runs on Fridays (Denver time) unless DIGEST_FORCE=true, and never sends an empty email.
+If KIT_API_KEY is set it also creates the email in Kit as a broadcast: a draft by default, or scheduled to go out
+in a couple of minutes when DIGEST_SEND=true. It only runs on Fridays (Denver time) unless DIGEST_FORCE=true, and never sends an empty email.
 """
 import datetime
 import json
@@ -37,6 +37,20 @@ def is_short(vid):
         return r.status == 200
     except Exception:
         return False
+
+
+def to_html(deep, vids, shorts, link):
+    from html import escape as e
+    a = lambda i, s=False: '<a href="%s">%s</a>' % (link(i, s), e(i["title"]))
+    h = []
+    if deep:
+        h.append("<h2>This week's deep dive</h2>" + "".join("<p><strong>%s</strong></p>" % a(d) for d in deep))
+    if vids:
+        h.append("<h3>Also this week</h3><ul>" + "".join("<li>%s</li>" % a(v) for v in vids) + "</ul>")
+    if shorts:
+        h.append("<h3>Shorts</h3><ul>" + "".join("<li>%s</li>" % a(x, True) for x in shorts) + "</ul>")
+    h.append('<p>Search every episode, transcript and connection: <a href="%s">supsobers.com</a></p>' % SITE)
+    return "".join(h)
 
 
 def main():
@@ -88,15 +102,17 @@ def main():
     open(os.path.join(ROOT, "data", "digest-preview.md"), "w", encoding="utf-8").write("Subject: %s\n\n%s" % (subject, body))
     print("Digest built:", subject, "|", len(deep), "deep,", len(vids), "videos,", len(shorts), "shorts")
 
-    key = os.environ.get("BUTTONDOWN_API_KEY", "").strip()
+    key = os.environ.get("KIT_API_KEY", "").strip()
     if not key:
-        print("No BUTTONDOWN_API_KEY set; preview only.")
+        print("No KIT_API_KEY set; preview only.")
         return 0
-    status = "about_to_send" if os.environ.get("DIGEST_SEND") == "true" else "draft"
-    req = urllib.request.Request("https://api.buttondown.com/v1/emails", method="POST",
-                                 data=json.dumps({"subject": subject, "body": body, "status": status}).encode(),
-                                 headers={"Authorization": "Token " + key, "Content-Type": "application/json", "User-Agent": "supsobers-digest"})
-    print("Buttondown:", urllib.request.urlopen(req, timeout=30).status, status)
+    html = to_html(deep, vids, shorts, link)
+    payload = {"subject": subject, "content": html, "public": False}
+    if os.environ.get("DIGEST_SEND") == "true":
+        payload["send_at"] = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    req = urllib.request.Request("https://api.kit.com/v4/broadcasts", method="POST", data=json.dumps(payload).encode(),
+                                 headers={"X-Kit-Api-Key": key, "Content-Type": "application/json", "Accept": "application/json", "User-Agent": "supsobers-digest"})
+    print("Kit:", urllib.request.urlopen(req, timeout=30).status, "scheduled" if "send_at" in payload else "draft")
     return 0
 
 
