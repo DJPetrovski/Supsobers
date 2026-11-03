@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "title": "The Black Book",
+      "type": "Searchable tool",
+      "date": "",
+      "description": "Name index of the redacted address book, with a link from every name to the scanned page. Names only.",
+      "url": "blackbook.html",
+      "cta": "Search the book"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Epstein Archive | Sup Sobers</title><meta name="description" content="A growing archive of searchable Epstein records and research from Sobering Stories.">
+<style>
+@font-face{font-family:"3rd Man";src:url(fonts/3rd-Man.woff) format("woff"),url(fonts/3rd-Man.otf) format("opentype");font-display:swap}
+:root{--void:#060102;--panel:#12080a;--line:#3a1216;--ember:#ff2a35;--ink:#f1e9e4;--dim:#a8968f;--warn:#ffcf5a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);font:16px/1.5 Georgia,serif;padding-block:0 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto}
+a{color:var(--ember)}
+header{padding:28px 0 8px}
+.back{font:14px system-ui,sans-serif;text-decoration:none}
+h1{font-family:"3rd Man",Georgia,serif;font-weight:400;font-size:clamp(34px,8vw,60px);line-height:1;margin:14px 0 6px;color:var(--ember);letter-spacing:.02em}
+.sub{color:var(--dim);margin:0 0 18px}
+.notice{border:1px solid var(--warn);background:#201808;color:#ffe9b0;padding:12px 14px;border-radius:6px;font:14px/1.5 system-ui,sans-serif;margin:0 0 18px}
+.notice b{color:var(--warn)}
+#q{width:100%;font:18px system-ui,sans-serif;padding:14px 16px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+#q:focus{outline:2px solid var(--ember);outline-offset:1px}
+.meta{font:13px system-ui,sans-serif;color:var(--dim);margin:10px 2px}
+ul{list-style:none;margin:0;padding:0}
+li button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;gap:12px;width:100%;padding:11px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+li button:hover,li button:focus-visible{background:var(--panel);outline:1px solid var(--ember)}
+.nm{min-width:0;overflow-wrap:anywhere}
+.pg{font:13px system-ui,sans-serif;color:var(--dim);white-space:nowrap}
+mark{background:#5a0f15;color:#fff;border-radius:2px}
+.tag{font:11px system-ui,sans-serif;color:var(--dim);border:1px solid var(--line);border-radius:3px;padding:0 5px;margin-left:8px;text-transform:uppercase;letter-spacing:.06em}
+.browse{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.browse button{font:13px system-ui,sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px 9px;cursor:pointer}
+.browse button:hover{border-color:var(--ember)}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;flex-direction:column;z-index:10;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#modal.on{display:flex}
+.bar{display:flex;gap:8px;align-items:center;padding:10px max(12px,env(safe-area-inset-left,0px));font:14px system-ui,sans-serif;flex-wrap:wrap}
+.bar button{font:14px system-ui,sans-serif;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:7px 12px;cursor:pointer}
+.bar .t{flex:1;min-width:140px;color:var(--dim)}
+.view{flex:1;overflow:auto;background:#fff;margin:0 8px 8px;border-radius:4px;-webkit-overflow-scrolling:touch}
+.view img{display:block;width:100%;min-width:700px;max-width:none;height:auto}
+.warn2{font:12px system-ui,sans-serif;color:var(--dim);padding:0 14px 8px}
+footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+.card{display:block;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:16px 18px;margin:0 0 12px;color:inherit;text-decoration:none}
+.card:hover,.card:focus-visible{border-color:var(--ember);outline:none}
+.card h2{font-family:"3rd Man",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 4px;color:var(--ember)}
+.card p{margin:4px 0;color:var(--dim)}.card .k{font:12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}.card .go{font:14px system-ui,sans-serif;color:var(--ember);margin-top:8px;display:inline-block}
+</style></head><body><div class="wrap">
+<header><a class="back" href="/">&larr; Sup Sobers</a><h1>Epstein Archive</h1>
+<p class="sub">Records, tools and research, added as they are processed. Every piece links back to its source material.</p></header>
+<div class="notice"><b>Context matters.</b> Documents in this archive include names of many people for many reasons. Appearing in a record is not evidence of wrongdoing.</div>
+<div id="list"></div><p class="meta" id="m"></p>
+<footer>More coming. Have a document you think belongs here? Get in touch through the Contact page.</footer></div>
+<script>
+fetch("data/epstein-archive.json").then(function(r){return r.json()}).then(function(d){
+var h="";(d.items||[]).forEach(function(i){var e=function(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+h+='<a class="card" href="'+e(i.url)+'"><span class="k">'+e(i.type)+(i.date?' · '+e(i.date):'')+'</span><h2>'+e(i.title)+'</h2><p>'+e(i.description)+'</p><span class="go">'+e(i.cta||"Open")+' &rarr;</span></a>'});
+document.getElementById("list").innerHTML=h;document.getElementById("m").textContent=(d.items||[]).length+" item"+((d.items||[]).length===1?"":"s")+" so far";
+}).catch(function(){document.getElementById("m").textContent="Could not load the archive list."});
+</script></body></html>
