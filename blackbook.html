@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Epstein Black Book Search | Sup Sobers</title>
+<meta name="description" content="Search the names in the redacted copy of Jeffrey Epstein's address book. Names only, with a link to the scanned page. Appearing in the book is not evidence of wrongdoing.">
+<style>
+@font-face{font-family:"3rd Man";src:url(fonts/3rd-Man.woff) format("woff"),url(fonts/3rd-Man.otf) format("opentype");font-display:swap}
+:root{--void:#060102;--panel:#12080a;--line:#3a1216;--ember:#ff2a35;--ink:#f1e9e4;--dim:#a8968f;--warn:#ffcf5a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);font:16px/1.5 Georgia,serif;padding-block:0 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto}
+a{color:var(--ember)}
+header{padding:28px 0 8px}
+.back{font:14px system-ui,sans-serif;text-decoration:none}
+h1{font-family:"3rd Man",Georgia,serif;font-weight:400;font-size:clamp(34px,8vw,60px);line-height:1;margin:14px 0 6px;color:var(--ember);letter-spacing:.02em}
+.sub{color:var(--dim);margin:0 0 18px}
+.notice{border:1px solid var(--warn);background:#201808;color:#ffe9b0;padding:12px 14px;border-radius:6px;font:14px/1.5 system-ui,sans-serif;margin:0 0 18px}
+.notice b{color:var(--warn)}
+#q{width:100%;font:18px system-ui,sans-serif;padding:14px 16px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+#q:focus{outline:2px solid var(--ember);outline-offset:1px}
+.meta{font:13px system-ui,sans-serif;color:var(--dim);margin:10px 2px}
+ul{list-style:none;margin:0;padding:0}
+li button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;gap:12px;width:100%;padding:11px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+li button:hover,li button:focus-visible{background:var(--panel);outline:1px solid var(--ember)}
+.nm{min-width:0;overflow-wrap:anywhere}
+.pg{font:13px system-ui,sans-serif;color:var(--dim);white-space:nowrap}
+mark{background:#5a0f15;color:#fff;border-radius:2px}
+.tag{font:11px system-ui,sans-serif;color:var(--dim);border:1px solid var(--line);border-radius:3px;padding:0 5px;margin-left:8px;text-transform:uppercase;letter-spacing:.06em}
+.browse{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.browse button{font:13px system-ui,sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px 9px;cursor:pointer}
+.browse button:hover{border-color:var(--ember)}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;flex-direction:column;z-index:10;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#modal.on{display:flex}
+.bar{display:flex;gap:8px;align-items:center;padding:10px max(12px,env(safe-area-inset-left,0px));font:14px system-ui,sans-serif;flex-wrap:wrap}
+.bar button{font:14px system-ui,sans-serif;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:7px 12px;cursor:pointer}
+.bar .t{flex:1;min-width:140px;color:var(--dim)}
+.view{flex:1;overflow:auto;background:#fff;margin:0 8px 8px;border-radius:4px;-webkit-overflow-scrolling:touch}
+.view img{display:block;width:100%;min-width:700px;max-width:none;height:auto}
+.warn2{font:12px system-ui,sans-serif;color:var(--dim);padding:0 14px 8px}
+footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+</style></head><body><div class="wrap">
+<header><a class="back" href="/">&larr; Sup Sobers</a>
+<h1>The Black Book</h1>
+<p class="sub">A searchable name index of the redacted address book. Click a name to see the scanned page.</p></header>
+<div class="notice"><b>Read this first.</b> This is an index of an address book, not a list of accusers, victims or suspects. People appear in it for every reason: business, family, staff, doctors, restaurants, hotels, acquaintances. <b>Being listed is not evidence that someone did anything wrong.</b> Phone numbers, emails and street addresses were already blacked out in the copy used here and are not included in the search. Names were typed in by hand from a scan, so check the page image before you rely on a spelling.</div>
+<input id="q" type="search" placeholder="Search a name, e.g. Trump, Maxwell, Ghislaine…" autocomplete="off" autofocus aria-label="Search names">
+<div class="meta" id="meta"></div>
+<div class="browse" id="az"></div>
+<ul id="res"></ul>
+<footer>Source: the redacted scan of the book as released publicly (92 scanned pages; printed page numbers run 6–97). The section headings (hotels, travel, medical and so on) are in the book too, and are shown tagged as <span class="tag">section</span> or as plain businesses. Spotted a misspelling? Tell me and I will fix it.</footer>
+</div>
+<div id="modal" role="dialog" aria-modal="true" aria-label="Scanned page"><div class="bar"><button id="prev">&larr; Prev</button><button id="next">Next &rarr;</button><span class="t" id="mt"></span><button id="x">Close</button></div><div class="view" id="vw"><img id="im" alt="Scanned black book page"></div><div class="warn2">Appearing in this book is not evidence of wrongdoing.</div></div>
+<script>
+(function(){
+var E=[],cur=1,$=function(i){return document.getElementById(i)};
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]+/g," ").replace(/\s+/g," ").trim()}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function hl(name,toks){var out=esc(name);toks.forEach(function(t){if(t.length<2)return;out=out.replace(new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return out}
+function show(list,toks,limit){
+  var h="",n=Math.min(list.length,limit);
+  for(var i=0;i<n;i++){var e=list[i];h+='<li><button data-p="'+e.p+'"><span class="nm">'+hl(e.n,toks)+(e.s?'<span class="tag">section</span>':'')+'</span><span class="pg">book p. '+e.b+'</span></button></li>'}
+  $("res").innerHTML=h;
+  $("meta").textContent=list.length+(list.length===1?" match":" matches")+(list.length>limit?" (showing first "+limit+")":"");
+}
+function run(){
+  var q=norm($("q").value);
+  if(!q){$("meta").textContent=E.length+" entries across 92 scanned pages";$("res").innerHTML="";return}
+  var toks=q.split(" "),out=[];
+  E.forEach(function(e){
+    var k=e._k,ok=true,score=0;
+    for(var i=0;i<toks.length;i++){var t=toks[i],ix=k.indexOf(t);if(ix<0){ok=false;break}score+=(ix===0||k.charAt(ix-1)===" ")?0:5}
+    if(ok){if(k.indexOf(q)===0)score-=3;out.push([score,e])}
+  });
+  out.sort(function(a,b){return a[0]-b[0]||a[1].p-b[1].p});
+  show(out.map(function(o){return o[1]}),toks,200);
+}
+function open(p){cur=Math.max(1,Math.min(92,p));var f=("0"+cur).slice(-2);$("im").src="img/blackbook/"+f+".webp";$("mt").textContent="Scan "+cur+" of 92 · printed book page "+(cur+5);$("modal").classList.add("on");$("vw").scrollTop=0;try{history.replaceState(null,"","#"+cur)}catch(e){}}
+function close(){$("modal").classList.remove("on");$("im").removeAttribute("src");try{history.replaceState(null,"",location.pathname)}catch(e){}}
+$("res").addEventListener("click",function(ev){var b=ev.target.closest("button[data-p]");if(b)open(+b.dataset.p)});
+$("prev").onclick=function(){open(cur-1)};$("next").onclick=function(){open(cur+1)};$("x").onclick=close;
+document.addEventListener("keydown",function(e){if(!$("modal").classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")open(cur-1);if(e.key==="ArrowRight")open(cur+1)});
+var t;$("q").addEventListener("input",function(){clearTimeout(t);t=setTimeout(run,60)});
+fetch("data/blackbook.json").then(function(r){return r.json()}).then(function(d){
+  E=d.entries;E.forEach(function(e){e._k=norm(e.n)});
+  var az=$("az"),L="ABCDEFGHIJKLMNOPQRSTUVWYZ".split("");
+  az.innerHTML=L.map(function(c){return '<button data-l="'+c+'">'+c+'</button>'}).join("");
+  az.addEventListener("click",function(ev){var b=ev.target.closest("button[data-l]");if(!b)return;
+    var c=b.dataset.l.toLowerCase();var l=E.filter(function(e){return e._k.charAt(0)===c});$("q").value="";show(l,[],400)});
+  run();
+  var m=location.hash.match(/^#(\d{1,2})$/);if(m)open(+m[1]);
+}).catch(function(){$("meta").textContent="Could not load the index."});
+})();
+</script></body></html>
