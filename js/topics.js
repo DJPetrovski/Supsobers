@@ -79,6 +79,7 @@
   function cleanQuery(t) { return t.replace(/^the\s+(death|story|case|murder|mystery|disappearance)\s+of\s+/i, '').replace(/^(death|story|case|murder|disappearance)\s+of\s+/i, '').replace(/\s+(case|story|murder|death|mystery)$/i, '').trim(); }
   function photoFor(t, cb) {
     var k = tkey(t.title), o = t.image_url || overrides[k] || overrides[t.title]; if (o) return cb(o);
+    return cb('');   // no vetted photo: show initials, never a guessed search result (it once put Jim Carrey on Cathriona White)
     var c = PH[k]; if (c && Date.now() - c.t < PH_TTL) return cb(c.u);
     phQueue.push({ t: t, k: k, cb: cb }); pump();
   }
