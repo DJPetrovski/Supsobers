@@ -35,6 +35,16 @@ mark{background:#5a0f15;color:#fff;border-radius:2px}
 .view{flex:1;overflow:auto;background:#fff;margin:0 8px 8px;border-radius:4px;-webkit-overflow-scrolling:touch}
 .view img{display:block;width:100%;min-width:700px;max-width:none;height:auto}
 .warn2{font:12px system-ui,sans-serif;color:var(--dim);padding:0 14px 8px}
+.book{margin-top:40px}.book h2{font-family:"3rd Man",Georgia,serif;font-weight:400;font-size:clamp(26px,6vw,38px);color:var(--ember);margin:0 0 4px}
+.book .acts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.book .acts a,.book .acts button{font:14px system-ui,sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:8px 13px;cursor:pointer;text-decoration:none}
+.book .acts a:hover,.book .acts button:hover{border-color:var(--ember)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px 14px}
+.sh{all:unset;cursor:pointer;display:block;position:relative;background:#e9e2d4;padding:5px 5px 18px;border-radius:2px;box-shadow:0 6px 16px rgba(0,0,0,.7),0 0 0 1px #000;transform:rotate(var(--r,0deg));transition:transform .15s,box-shadow .15s}
+.sh:nth-child(3n+1){--r:-1.4deg}.sh:nth-child(3n+2){--r:.9deg}.sh:nth-child(3n){--r:-.4deg}
+.sh:hover,.sh:focus-visible{transform:rotate(0) scale(1.05);z-index:2;box-shadow:0 10px 26px rgba(255,42,53,.35),0 0 0 1px var(--ember)}
+.sh img{display:block;width:100%;height:auto;background:#fff;filter:contrast(1.05)}
+.sh span{position:absolute;left:0;right:0;bottom:2px;text-align:center;font:11px system-ui,sans-serif;color:#3a2a22}
 footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
 </style></head><body><div class="wrap">
 <header><a class="back" href="epstein.html">&larr; Epstein Archive</a>
@@ -45,6 +55,9 @@ footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;borde
 <div class="meta" id="meta"></div>
 <div class="browse" id="az"></div>
 <ul id="res"></ul>
+<section class="book" id="book"><h2>Flip through the book</h2><p class="sub">All 92 scanned pages, as released. Tap any page to read it full size, then use the arrows to keep turning.</p>
+<div class="acts"><button id="start">Start at the first page</button><a href="media/epstein-black-book-redacted.pdf" download>Download the PDF</a></div>
+<div class="shelf" id="shelf"></div></section>
 <footer>Source: the redacted scan of the book as released publicly (92 scanned pages; printed page numbers run 6–97). The section headings (hotels, travel, medical and so on) are in the book too, and are shown tagged as <span class="tag">section</span> or as plain businesses. Spotted a misspelling? Tell me and I will fix it.</footer>
 </div>
 <div id="modal" role="dialog" aria-modal="true" aria-label="Scanned page"><div class="bar"><button id="prev">&larr; Prev</button><button id="next">Next &rarr;</button><span class="t" id="mt"></span><button id="x">Close</button></div><div class="view" id="vw"><img id="im" alt="Scanned black book page"></div><div class="warn2">Appearing in this book is not evidence of wrongdoing.</div></div>
@@ -77,6 +90,8 @@ function close(){$("modal").classList.remove("on");$("im").removeAttribute("src"
 $("res").addEventListener("click",function(ev){var b=ev.target.closest("button[data-p]");if(b)open(+b.dataset.p)});
 $("prev").onclick=function(){open(cur-1)};$("next").onclick=function(){open(cur+1)};$("x").onclick=close;
 document.addEventListener("keydown",function(e){if(!$("modal").classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")open(cur-1);if(e.key==="ArrowRight")open(cur+1)});
+var sh="";for(var i=1;i<=92;i++){var f=("0"+i).slice(-2);sh+='<button class="sh" data-p="'+i+'" aria-label="Open scan '+i+'"><img loading="lazy" width="300" height="195" alt="" src="img/blackbook/t/'+f+'.webp"><span>p. '+(i+5)+'</span></button>'}
+$("shelf").innerHTML=sh;$("shelf").addEventListener("click",function(ev){var b=ev.target.closest("button[data-p]");if(b)open(+b.dataset.p)});$("start").onclick=function(){open(1)};
 var t;$("q").addEventListener("input",function(){clearTimeout(t);t=setTimeout(run,60)});
 fetch("data/blackbook.json").then(function(r){return r.json()}).then(function(d){
   E=d.entries;E.forEach(function(e){e._k=norm(e.n)});
