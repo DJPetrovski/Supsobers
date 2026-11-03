@@ -59,7 +59,7 @@
     inner.appendChild(el('b', 'hj-h', 'Still watching?'));
     inner.appendChild(el('p', 'hj-p', 'Want one email a week with everything I posted? No more than once a week, ever.'));
     var row = el('div', 'hj-row'), yes = el('button', 'hj-btn hj-yes', 'Yes, send it'), no = el('button', 'hj-btn', 'No thanks');
-    yes.type = no.type = 'button'; row.appendChild(yes); row.appendChild(no); inner.appendChild(row); box.appendChild(inner); screen.appendChild(box);
+    yes.type = no.type = 'button'; row.appendChild(yes); row.appendChild(no); inner.appendChild(row); box.appendChild(inner); box.addEventListener('click', function (e) { e.stopPropagation(); }); screen.appendChild(box);
     requestAnimationFrame(function () { box.classList.add('on'); yes.focus({ preventScroll: true }); });
     document.addEventListener('keydown', onKey);
     no.addEventListener('click', function () { close('no'); });
