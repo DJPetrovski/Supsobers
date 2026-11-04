@@ -1935,7 +1935,7 @@
     gmat.onBeforeCompile = function (sh) { sh.uniforms.detailMap = groundU = { value: WINTER ? winDetail : (grassPhoto || detailTex) }; sh.uniforms.detailRep = groundRepU = { value: new T.Vector2(MAPX * 2 / dsc, gp.span / dsc) };
       sh.fragmentShader = sh.fragmentShader.replace('void main() {', 'uniform sampler2D detailMap; uniform vec2 detailRep;\nvoid main() {').replace('#include <map_fragment>', '#include <map_fragment>\n float dd = clamp(1.0 - length(vViewPosition) / 60.0, 0.0, 1.0); vec3 dtl = mix(texture2D(detailMap, vUv * detailRep).rgb, texture2D(detailMap, vUv * detailRep * 0.21 + vec2(0.37)).rgb, 0.45); diffuseColor.rgb *= mix(vec3(1.0), dtl * 1.45, dd * 0.95);'); };
     ground.rotation.x = -Math.PI / 2; ground.position.set(0, 0, -(gp.ymin + gp.ymax) / 2); ground.receiveShadow = true; courseGroup.add(ground);
-    var far = new T.Mesh(new T.PlaneGeometry(4000, 4000), new T.MeshBasicMaterial({ color: WINTER ? 0xdde4eb : 0x4a6a35 })); far.rotation.x = -Math.PI / 2; far.position.y = -0.6; courseGroup.add(far);
+    var far = new T.Mesh(new T.PlaneGeometry(4000, 4000), new T.MeshBasicMaterial({ color: WINTER ? 0xdde4eb : 0x4a6a35 })); far.rotation.x = -Math.PI / 2; var gz = ground.geometry.attributes.position, lowZ = 0; for (var zi = 0; zi < gz.count; zi++) lowZ = Math.min(lowZ, gz.getZ(zi)); far.position.y = Math.min(-0.6, lowZ - 0.35); courseGroup.add(far);   // always under the lowest ground, or it shows through the dips as a flat green sheet
     // water surfaces
     h.water.forEach(function (w) {
       var ell = w[4] === 'e', wt = waterNormal.clone(); wt.needsUpdate = true; wt.repeat.set((ell ? w[2] * 2 : w[2] - w[0]) / 5, (ell ? w[3] * 2 : w[3] - w[1]) / 5);
