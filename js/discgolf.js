@@ -1055,7 +1055,7 @@
       var hd = new Uint32Array(buf.slice(0, 8)), N = hd[0], M = hd[1];
       var pos = new Float32Array(buf.slice(8, 8 + N * 12)), nor = new Float32Array(buf.slice(8 + N * 12, 8 + N * 24)), idx = new Uint16Array(buf.slice(8 + N * 24, 8 + N * 24 + M * 6));
       var geo = new T.BufferGeometry(); geo.setAttribute('position', new T.BufferAttribute(pos, 3)); geo.setAttribute('normal', new T.BufferAttribute(nor, 3)); geo.setAttribute('uv', new T.BufferAttribute(new Float32Array(N * 2), 2)); geo.setIndex(new T.BufferAttribute(idx, 1));
-      var mat = new T.MeshStandardMaterial({ color: 0xa8957c, roughness: 0.8, metalness: 0, envMapIntensity: 0.55 });
+      var mat = new T.MeshStandardMaterial({ color: 0xeedcb0, roughness: 0.85, metalness: 0, envMapIntensity: 0.55 });
       mat.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.1 * vec3(1.0, 0.97, 0.92);\n#include <dithering_fragment>'); };
       mat.userData.keep = true; geo.userData.keep = true; LULU.geo = geo; LULU.base = pos; LULU.mat = mat; LULU.ready = true; ensureDog2();
     }).catch(function () { LULU.loading = false; });
