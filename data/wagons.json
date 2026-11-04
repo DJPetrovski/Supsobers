@@ -65,6 +65,72 @@
       "clear": 16,
       "float": true,
       "perk": "Rolls over pills and cans. Floats across water (it is a tub)"
+    },
+    {
+      "id": "muttcutts",
+      "name": "Dog Wagon",
+      "sprite": "media/wagons/muttcutts.png",
+      "scale": 84,
+      "credit": "Wagon-dog by lionarts3d",
+      "blurb": "A very good boy on wheels. Sniffs out the next sober day.",
+      "clear": 28,
+      "perk": "Rolls over pills, cans and pill bottles",
+      "free": false
+    },
+    {
+      "id": "flyer",
+      "name": "Red Flyer",
+      "sprite": "media/wagons/flyer.png",
+      "scale": 70,
+      "credit": "Radio Flyer Wagon by cukoo",
+      "blurb": "Every kid's first wagon, all grown up.",
+      "clear": 14,
+      "perk": "Rolls over pills",
+      "free": false
+    },
+    {
+      "id": "flyerrod",
+      "name": "Hot Rod Flyer",
+      "sprite": "media/wagons/flyerrod.png",
+      "scale": 74,
+      "credit": "Radioflyer by Sunchipp",
+      "blurb": "Big back wheels. Bigger attitude.",
+      "clear": 24,
+      "perk": "Rolls over pills and cans",
+      "free": false
+    },
+    {
+      "id": "prairie",
+      "name": "Prairie Schooner",
+      "sprite": "media/wagons/prairie.png",
+      "scale": 82,
+      "credit": "Covered wagon by Chenchanchong",
+      "blurb": "Pioneers did it the hard way. So can you.",
+      "clear": 22,
+      "perk": "Rolls over pills and cans",
+      "free": false
+    },
+    {
+      "id": "mailwagon",
+      "name": "Mail Wagon",
+      "sprite": "media/wagons/mailwagon.png",
+      "scale": 78,
+      "credit": "Rural Free Delivery wagon by Aldemona",
+      "blurb": "Special delivery: one sober you.",
+      "clear": 24,
+      "perk": "Tall wheels roll over pills and cans",
+      "free": false
+    },
+    {
+      "id": "foldable",
+      "name": "Beach Wagon",
+      "sprite": "media/wagons/foldable.png",
+      "scale": 58,
+      "credit": "Foldable Wagon by abdullahyeahyea",
+      "blurb": "Collapses for the car, rolls for the rest.",
+      "clear": 12,
+      "perk": "Rolls over pills",
+      "free": false
     }
   ],
   "unlock": {
