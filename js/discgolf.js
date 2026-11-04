@@ -1056,13 +1056,13 @@
       var mat = new T.MeshStandardMaterial({ map: tex2('models/dog/color.jpg?v=1', true), normalMap: tex2('models/dog/normal.jpg?v=1', false), normalScale: new T.Vector2(0.8, 0.8), roughness: 0.82, metalness: 0, envMapIntensity: 0.6 });
       mat.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.1 * vec3(1.0, 0.97, 0.92);\n#include <dithering_fragment>'); };
       mat.userData.keep = true; geo.userData.keep = true;
-      BULL.geo = geo; BULL.pos = pos; BULL.base = base; BULL.lists = lists; BULL.w = w; BULL.pz = pz; BULL.mat = mat; BULL.mx = 0.9; BULL.last = ''; BULL.ready = true;
+      BULL.geo = geo; BULL.pos = pos; BULL.base = base; BULL.lists = lists; BULL.w = w; BULL.pz = pz; BULL.mat = mat; BULL.mx = 0.9; BULL.lw = 0.9 * 1.0; BULL.last = ''; BULL.ready = true;
       swapDog();
     }).catch(function () { BULL.loading = false; BULL.failed = true; swapDog(); });
   }
   /* Lulu, the whippet: a static, untextured mesh (decimated from the 130k-triangle original in models/dog/lulu.bin), skinned to the same shepherd skeleton as Chapo,
      so she runs, idles and gets petted with the same animations. She is faster than Chapo and never barks. */
-  var LULU = { ready: false, loading: false, mx: 1.1 };
+  var LULU = { ready: false, loading: false, mx: 1.1, lw: 1.0 };
   function loadLulu() {
     if (LULU.ready || LULU.loading || !T) return; LULU.loading = true;
     fetch('models/dog/lulu.bin?v=1').then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); }).then(function (buf) {
@@ -1071,28 +1071,29 @@
       var geo = new T.BufferGeometry(); geo.setAttribute('position', new T.BufferAttribute(pos, 3)); geo.setAttribute('normal', new T.BufferAttribute(nor, 3)); geo.setAttribute('uv', new T.BufferAttribute(new Float32Array(N * 2), 2)); geo.setIndex(new T.BufferAttribute(idx, 1));
       var mat = new T.MeshStandardMaterial({ color: 0xeedcb0, roughness: 0.85, metalness: 0, envMapIntensity: 0.55 });
       mat.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.1 * vec3(1.0, 0.97, 0.92);\n#include <dithering_fragment>'); };
-      mat.userData.keep = true; geo.userData.keep = true; LULU.geo = geo; LULU.base = pos; LULU.mat = mat; LULU.ready = true; ensureDog2();
+      mat.userData.keep = true; geo.userData.keep = true; LULU.geo = geo; LULU.base = pos; LULU.mat = mat; LULU.ready = true; ensureDog2(); upgradeLp();
     }).catch(function () { LULU.loading = false; });
   }
   function ensureDog2() {
     if (dog2 || !dog || !scene || !LULU.ready || !GLB.dog || !window.bullSkin || !(BULL.ready || BULL.failed || !BULL.loading)) return;
     var g = makeGlbDog(LULU); if (!g.userData.skinned) { LULU.ready = false; LULU.loading = true; return; } g.scale.setScalar(0.94); scene.add(g);
     dog2 = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0, side: -1 };
-    if (G && ready) { var sp = dogSpot(dog2); dog2.x = sp.x; dog2.y = sp.y; dog2.yaw = G.base; }
+    if (G && ready) { var sp = dogSpot(dog2); dog2.x = sp.x; dog2.y = sp.y; dog2.yaw = G.base; } upgradeLp();
   }
   /* ---------- real 3D models (glTF): a German shepherd with a skeleton and four animations, and a real disc golf basket ----------
      Dog (Metel) by ajlanaondar0 and Disc Golf Basket FREE DOWNLOAD by Ethica, both CC BY 4.0 (credited in the site footer).
      If a file cannot load, the hand-built dog and basket stay in place. */
-  var GLB = { loading: false, dog: null, basket: null };
+  var GLB = { loading: false, dog: null, basket: null, lp: null };
   function loadGlbAssets() {
     if (GLB.loading || !T) return; GLB.loading = true;
-    var bs = document.createElement('script'); bs.src = 'js/bullskin.js?v=1'; document.head.appendChild(bs);
+    var bs = document.createElement('script'); bs.src = 'js/bullskin.js?v=3'; document.head.appendChild(bs);
     var sc = document.createElement('script'); sc.src = 'js/vendor/gltf-bundle.js?v=1';
     sc.onerror = function () {}; bs.onload = function () { setTimeout(swapDog, 50); };
     sc.onload = function () {
       try {
         var L = new window.GLTFLoader(); L.setMeshoptDecoder(window.MeshoptDecoder);
         L.load('models/dog/shepherd.glb?v=2', function (g) { fixRunClip(g); GLB.dog = g; swapDog(); }, undefined, function () {});
+        /* low-poly rig parked: skinned bull looks crumpled on it */ if (window.DD_LP) L.load('models/dog/lowpoly.glb?v=1', function (g) { GLB.lp = g; upgradeLp(); }, undefined, function () {});
         L.load('models/basket.glb?v=1', function (g) { GLB.basket = g.scene; if (basketObj && basketObj.group) attachGlbBasket(basketObj.group); }, undefined, function () {});
       } catch (e) {}
     };
@@ -1100,7 +1101,7 @@
   }
   function swapDog() {   // use the best dog available: the bull terrier skinned to the shepherd's skeleton, else the shepherd, else the older meshes
     if (!dog || !scene) return; var old = dog.g, ng = (GLB.dog && ((BULL.ready && window.bullSkin) || !BULL.loading || BULL.failed)) ? makeGlbDog() : (BULL.ready && !GLB.dog) ? makeBullDog() : null; if (!ng) return;
-    ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng; ensureDog2();
+    ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng; ensureDog2(); upgradeLp();
   }
   function fixRunClip(g) {   // the run clip circles round a path and rolls the body; pin the body to the standing pose so the dog runs on the spot and the game moves it
     var idle = null, run = null; g.animations.forEach(function (c) { if (c.name === 'Dog_Stand_Idle_01_Bot') idle = c; if (c.name === 'Dog_Run_Arround') run = c; }); if (!idle || !run) return;
@@ -1127,7 +1128,96 @@
     return g;
   }
   var lastPant = 0;
-  function glbPose(d, u, dt) {   // pick the animation from what the dog is doing, blend into it, and let the skeleton do the rest
+
+  /* ---------- the better animations: a rigged dog with real walk, sit and gallop clips (CC BY 4.0, creosine; models/dog/lowpoly.glb) ----------
+     We only use its skeleton and its one long "take": the take is cut into clips (walk 0-1.33 s, sit down, sit idle, gallop 16-17.33 s, stand idle),
+     the take's root-motion bone is dropped (the game moves the dog), and Chapo and Lulu are skinned to this skeleton instead of the shepherd's. */
+  var LPCLIPS = null;
+  function lpClips() {
+    if (LPCLIPS) return LPCLIPS; var take = GLB.lp.animations[0], F = 30, out = {};
+    function cut(name, a, b) { var c = T.AnimationUtils.subclip(take, name, Math.round(a * F), Math.round(b * F), F); c.tracks = c.tracks.filter(function (t) { return !/Footsteps/.test(t.name); }); out[name] = c; }
+    cut('walk', 0, 1.3333); cut('sitdown', 1.3333, 2.0); cut('sit', 14.2, 15.5); cut('run', 16.0, 17.3333); cut('stand', 19.0, 22.0);
+    return (LPCLIPS = out);
+  }
+  function lpBone(sk, re) { for (var i = 0; i < sk.bones.length; i++) if (re.test(sk.bones[i].name)) return i; return -1; }
+  function makeLpDog(K) {
+    if (!GLB.lp || !K.ready || !window.bullSkin || !window.SkeletonUtils) return null;
+    var g = new T.Group(); g.rotation.order = 'YXZ'; var m = window.SkeletonUtils.clone(GLB.lp.scene), holder = new T.Group(); holder.add(m); g.add(holder); g.updateMatrixWorld(true);
+    var sm = null; m.traverse(function (o) { if (o.isSkinnedMesh && !sm) sm = o; }); if (!sm) return null; var sk = sm.skeleton, nb = sk.bones.length, P = [], i;
+    P = window.bullBindPos(T, sm);
+    var ix = { head: lpBone(sk, /HeadNub/), tail: lpBone(sk, /TailNub/), pel: lpBone(sk, /Pelvis/), sp: lpBone(sk, /Spine1/), toeL: lpBone(sk, /L_Toe0Nub/), toeR: lpBone(sk, /R_Toe0Nub/), hL: lpBone(sk, /L_Hand/), hR: lpBone(sk, /R_Hand/) };
+    for (var kk in ix) if (ix[kk] < 0) return null;
+    var f = P[ix.head].clone().sub(P[ix.pel]).normalize(), feet = [P[ix.toeL], P[ix.toeR], P[ix.hL], P[ix.hR]], fc = new T.Vector3(); feet.forEach(function (q) { fc.add(q); }); fc.multiplyScalar(0.25);
+    var up = P[ix.sp].clone().sub(fc); up.sub(f.clone().multiplyScalar(up.dot(f)));
+    up.normalize(); var lat = new T.Vector3().crossVectors(up, f).normalize();
+    var cT = P[ix.tail].dot(f), cH = P[ix.head].dot(f), yFoot = Math.min.apply(null, feet.map(function (q) { return q.dot(up); })) - 0.02 * (cH - cT), yHead = P[ix.head].dot(up) + 0.03 * (cH - cT), lc = 0; P.forEach(function (q) { lc += q.dot(lat); }); lc /= nb;
+    var cP = P[ix.pel].dot(f), BL = cH - cP, zA = cP - 0.16 * BL, zB = cH + 0.12 * BL, bb = K.bb, sc = (zB - zA) / (bb[5] - bb[4]);   // bb = [minx, maxx, miny, maxy, minz, maxz] of the dog mesh
+    var N = K.base.length / 3, nor = new Float32Array(N * 3), kn = K.geo.attributes.normal.array;
+    for (i = 0; i < N; i++) { var nx = kn[i * 3], ny = kn[i * 3 + 1], nz = kn[i * 3 + 2]; nor[i * 3] = lat.x * nx + up.x * ny + f.x * nz; nor[i * 3 + 1] = lat.y * nx + up.y * ny + f.y * nz; nor[i * 3 + 2] = lat.z * nx + up.z * ny + f.z * nz; }
+    // which bones each vertex may follow: a leg only follows its own leg bones, the head and neck follow the neck chain, the tail its own, the rest the spine
+    function grp(re) { var o = new Uint8Array(nb); for (var q = 0; q < nb; q++) if (re.test(sk.bones[q].name)) o[q] = 1; return o; }
+    var G_ = { fl: grp(/L_Clavicle|L_UpperArm|L_Forearm|L_Hand_/), fr: grp(/R_Clavicle|R_UpperArm|R_Forearm|R_Hand_/), bl: grp(/L_Thigh|L_Calf|L_HorseLink|L_Foot|L_Toe0_/), br: grp(/R_Thigh|R_Calf|R_HorseLink|R_Foot|R_Toe0_/),
+      torso: grp(/Pelvis|Spine_03|Spine1/), head: grp(/Neck_05|Neck1|Head_07|Spine1/), tail: grp(/Tail_00|Tail1|Tail2|Pelvis/) };
+    function union(a, b) { var o = new Uint8Array(nb); for (var q = 0; q < nb; q++) o[q] = a[q] | b[q]; return o; }
+    var U = { fl: union(G_.fl, G_.torso), fr: union(G_.fr, G_.torso), bl: union(G_.bl, G_.torso), br: union(G_.br, G_.torso) };
+    var legs = [['fl', lpBone(sk, /L_UpperArm/), lpBone(sk, /L_Hand_/)], ['fr', lpBone(sk, /R_UpperArm/), lpBone(sk, /R_Hand_/)], ['bl', lpBone(sk, /L_Thigh/), lpBone(sk, /L_Foot/)], ['br', lpBone(sk, /R_Thigh/), lpBone(sk, /R_Foot/)]].map(function (q) { return { k: q[0], a: P[q[1]].dot(lat), c: P[q[1]].dot(f), b: P[q[1]].dot(up), fa: P[q[2]].dot(lat), fc: P[q[2]].dot(f) }; });
+    var cNeck = P[lpBone(sk, /Neck_05/)].dot(f), bSp = P[ix.sp].dot(up), cPelv = P[ix.pel].dot(f), legW = 0.2 * BL;
+    function cand(r) {
+      var a = r.dot(lat), b = r.dot(up), c = r.dot(f), best = null, bd = 1e9;
+      legs.forEach(function (L) { var t = clamp((b - L.b) / Math.max(1e-6, (yFoot - L.b)), 0, 1), ax = L.a + (L.fa - L.a) * t, cx = L.c + (L.fc - L.c) * t, dd = Math.hypot(a - ax, c - cx); if (b < L.b + 0.06 * BL && dd < bd) { bd = dd; best = L; } });
+      if (best && bd < legW) return U[best.k];
+      if (c > cNeck - 0.02 * BL && b > bSp - 0.12 * BL) return G_.head;
+      if (c < cPelv - 0.1 * BL && b > P[ix.pel].dot(up) - 0.25 * BL) return G_.tail;
+      return G_.torso;
+    }
+    var bsk = null;
+    try {
+      bsk = window.bullSkin(T, m, { pos: K.base, nor: nor, cand: cand, uv: K.geo.attributes.uv.array, idx: K.geo.index.array, mat: K.mat, skipRe: /^_rootJoint$|^Bip001_01$|Footsteps/,
+        xf: function (x, y, z) { var a = lc + x * sc * K.lw, b = yFoot + (y - bb[2]) / (bb[3] - bb[2]) * (yHead - yFoot), c = zA + (z - bb[4]) * sc; return [lat.x * a + up.x * b + f.x * c, lat.y * a + up.y * b + f.y * c, lat.z * a + up.z * b + f.z * c]; } });
+    } catch (e) { bsk = null; }
+    if (!bsk) return null; bsk.castShadow = true;
+    // stand the model up in the game's frame (y up, nose toward +z), about one metre long, feet on the ground
+    sm.updateMatrixWorld(true); var W = P.map(function (q) { return q.clone().applyMatrix4(sm.matrixWorld); });
+    var fw = W[ix.head].clone().sub(W[ix.pel]).normalize(), uw = W[ix.sp].clone().sub(W[ix.toeL].clone().add(W[ix.toeR]).multiplyScalar(0.5)); uw.sub(fw.clone().multiplyScalar(uw.dot(fw))).normalize();
+    var lw = new T.Vector3().crossVectors(uw, fw).normalize(), B = new T.Matrix4().makeBasis(lw, uw, fw); holder.quaternion.setFromRotationMatrix(B).invert();
+    var len = W[ix.head].distanceTo(W[ix.tail]); holder.scale.setScalar(1.05 / len); g.updateMatrixWorld(true);
+    var mixer = new T.AnimationMixer(m), acts = {}, cl = lpClips(); Object.keys(cl).forEach(function (n) { acts[n] = mixer.clipAction(cl[n].clone()); });
+    acts.sitdown.setLoop(T.LoopOnce, 1); acts.sitdown.clampWhenFinished = true; acts.stand.setLoop(T.LoopPingPong, Infinity);
+    acts.stand.play(); mixer.update(0); sm.updateMatrixWorld(true); g.updateMatrixWorld(true);
+    var tb = [ix.toeL, ix.toeR, ix.hL, ix.hR].map(function (k) { return sk.bones[k].getWorldPosition(new T.Vector3()); }), minY = Math.min.apply(null, tb.map(function (q) { return q.y; }));
+    var mid = sk.bones[ix.pel].getWorldPosition(new T.Vector3()); holder.position.set(-(mid.x - g.position.x), -(minY - g.position.y), -(mid.z - g.position.z)); g.updateMatrixWorld(true);
+    var bones = { tail: [lpBone(sk, /Tail_00/), lpBone(sk, /Tail1/), lpBone(sk, /Tail2/)], head: lpBone(sk, /Head_07/) };
+    var hit = hitSphere(g, 0.75, 0, 0.45, 0);
+    g.userData = { glb: true, lp: true, skinned: true, mixer: mixer, acts: acts, cur: null, hit: hit, sk: sk, lb: bones, mode: 'stand', modeT: 0, tail: new T.Group(), head: new T.Group(), body: new T.Group(), legs: [new T.Group(), new T.Group(), new T.Group(), new T.Group()], tongue: new T.Group() };
+    return g;
+  }
+  function lpPose(d, u, dt) {
+    var moving = d.v > 0.5, sitWant = !moving && (d.pet > 0 || d.still > 1.4), mode = moving ? (d.v > 3.4 ? 'run' : 'walk') : sitWant ? 'sit' : 'stand';
+    if (mode !== u.mode) {
+      var from = u.mode; u.mode = mode; u.modeT = 0; var A = u.acts, next = A[mode];
+      if (mode === 'sit') next = A.sitdown; if (!next) next = A.stand;
+      if (u.cur !== next) { next.reset().setEffectiveWeight(1).fadeIn(0.25).play(); if (u.cur) u.cur.fadeOut(0.25); u.cur = next; }
+    } else if (!u.cur) { u.cur = u.acts.stand; u.cur.play(); }
+    u.modeT += dt; if (mode === 'sit' && u.cur === u.acts.sitdown && u.modeT > 0.55) { var s2 = u.acts.sit; s2.reset().setEffectiveWeight(1).fadeIn(0.2).play(); u.cur.fadeOut(0.2); u.cur = s2; }
+    if (mode === 'walk') u.cur.setEffectiveTimeScale(clamp(d.v / 1.7, 0.6, 1.5)); else if (mode === 'run') u.cur.setEffectiveTimeScale(clamp(d.v / 7.5, 0.7, 1.6)); else u.cur.setEffectiveTimeScale(1);
+    u.mixer.update(dt);
+    // a wagging tail and a happy head tilt on top of the clip (the clip has neither)
+    var happy = d.pet > 0 || (mode === 'sit' && d.still > 2 && d.still < 6), wagS = happy ? 15 : (moving ? 9 : 4), wagA = happy ? 0.7 : 0.28; d.wag += dt * wagS; var ww = Math.sin(d.wag) * wagA;
+    u.lb.tail.forEach(function (bi, k) { if (bi >= 0) { var b = u.sk.bones[bi]; b.rotateZ(ww * (k === 0 ? 0.6 : 0.5)); } });
+    if (d.pet > 0 && u.lb.head >= 0) u.sk.bones[u.lb.head].rotateX(0.25 * Math.sin(simTime * 3));
+    if (d.still > 4 && d.pet <= 0) { var nw = performance.now(); if (nw - lastPant > 9000) { lastPant = nw; sfx('pant', 0.35, 0.95 + Math.random() * 0.1); } }
+    if (d.v > 3 && d.pet <= 0) { var nr = performance.now(); if (nr - (updateDog.lastRunPant || 0) > 4000) { updateDog.lastRunPant = nr; sfx('pant', 0.3, 1.25); } }
+  }
+  function lpBounds(K) { if (K.bb) return; var p = K.base, a = [1e9, -1e9, 1e9, -1e9, 1e9, -1e9]; for (var i = 0; i < p.length; i += 3) for (var c = 0; c < 3; c++) { a[c * 2] = Math.min(a[c * 2], p[i + c]); a[c * 2 + 1] = Math.max(a[c * 2 + 1], p[i + c]); } K.bb = a; }
+  function upgradeLp() {   // swap Chapo and Lulu onto the new skeleton once everything they need has loaded
+    if (!GLB.lp || !scene || !window.bullSkin) return;
+    [[dog, BULL], [dog2, LULU]].forEach(function (q) {
+      var dd = q[0], K = q[1]; if (!dd || dd.g.userData.lp || !K.ready) return; lpBounds(K); var ng = makeLpDog(K); if (!ng) return;
+      var old = dd.g; ng.position.copy(old.position); ng.rotation.copy(old.rotation); ng.scale.copy(old.scale); scene.remove(old); scene.add(ng); dd.g = ng;
+    });
+  }
+  function glbPose(d, u, dt) {
+    if (u.lp) return lpPose(d, u, dt);   // pick the animation from what the dog is doing, blend into it, and let the skeleton do the rest
     var want = d.pet > 0 ? 'Dog_Happy' : d.v > 0.5 ? 'Dog_Run_Arround' : d.still > 7 ? 'Dog_Lie_Idle_01' : 'Dog_Stand_Idle_01_Bot';
     var a = u.acts[want] || u.acts['Dog_Stand_Idle_01_Bot'];
     if (a && u.cur !== a) { a.reset().setEffectiveWeight(1).fadeIn(0.3).play(); if (u.cur) u.cur.fadeOut(0.3); u.cur = a; }
@@ -1177,7 +1267,7 @@
   function heartTexture() { if (heartTex) return heartTex; var c = document.createElement('canvas'); c.width = c.height = 64; var g = c.getContext('2d'); g.fillStyle = '#ff3d5e'; g.beginPath(); g.moveTo(32, 56); g.bezierCurveTo(4, 36, 6, 10, 24, 10); g.bezierCurveTo(30, 10, 32, 15, 32, 18); g.bezierCurveTo(32, 15, 34, 10, 40, 10); g.bezierCurveTo(58, 10, 60, 36, 32, 56); g.fill(); g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 3; g.stroke(); heartTex = new T.CanvasTexture(c); heartTex.encoding = T.sRGBEncoding; return heartTex; }
   function ensureDog() {
     if (dog) return; var g = GLB.dog ? makeGlbDog() : BULL.ready ? makeBullDog() : makeDog(); scene.add(g);
-    dog = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0 };
+    dog = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0 }; upgradeLp();
     for (var i = 0; i < 10; i++) { var sp = new T.Sprite(new T.SpriteMaterial({ map: heartTexture(), transparent: true, depthWrite: false, fog: false })); sp.visible = false; sp.userData = { life: 0 }; scene.add(sp); hearts.push(sp); }
   }
   function dogSpot(d) {
@@ -2024,6 +2114,6 @@
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
-  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
+  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, lpPose: function (d, u, dt) { return lpPose(d, u, dt); }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
   newRound();
 })();
