@@ -100,11 +100,12 @@
   function rollOut(s, surface) {
     var vh = Math.sqrt(s.v[0] * s.v[0] + s.v[1] * s.v[1]); if (vh < 0.1) return [0, 0];
     var flat = 1 - sstep(0.08, 0.5, Math.abs(s.bank));
-    var keep = 0.12 + 0.34 * flat;                              // flat landings roll, hyzer / anhyzer landings stop quickly
-    var vg = vh * keep, decel = 2.8 * (surface || 1), dist = vg * vg / (2 * decel);
+    var edge = sstep(0.5, 0.8, Math.abs(s.bank)) * sstep(4, 10, vh);   // a disc that lands steeply on its edge keeps rolling like a wheel
+    var keep = 0.12 + 0.34 * flat + 0.5 * edge;                 // flat landings roll, hyzer / anhyzer landings stop quickly, edge landings roll on
+    var vg = vh * keep, decel = (2.8 - 1.5 * edge) * (surface || 1), dist = vg * vg / (2 * decel);
     var hx = s.v[0] / vh, hy = s.v[1] / vh;
     // an anhyzer disc rolls off to the side it is tilted toward; hyzer skips the other way
-    var turn = -s.spin * s.bank * 0.9 * flat, c = Math.cos(turn), sn = Math.sin(turn);
+    var turn = -s.spin * s.bank * 0.9 * flat + s.spin * Math.sign(s.bank || 1) * 0.28 * edge, c = Math.cos(turn), sn = Math.sin(turn);   // a rolling disc curves toward its low side
     return [(hx * c + hy * sn) * dist, (hy * c - hx * sn) * dist];
   }
 

@@ -273,7 +273,7 @@
     G = { hole: 0, scores: [], phase: 'aim', strokes: 0, lie: null, prev: null, aimOff: 0, flight: null, trail: [], throws: [], roll: null, rest: 0, done: false, wob: 0, drop: null, chainHit: false, streak: 0, roundPen: 0, holeHits: 0 };
     startHole();
   }
-  function startHole() { try { clearPoops(); } catch (e) {}
+  function startHole() { try { clearPoops(); } catch (e) {} if (G) G.pMiss = 0;
     var h = buildHole(G.hole); G.h = h; G.strokes = 0; G.lie = [h.tee[0], h.tee[1]]; G.prev = null; G.throws = [[h.tee[0], h.tee[1]]]; G.trail = []; G.flight = null; G.phase = 'aim'; G.aimOff = 0; G.wind = h.wind; G.plan = null; G.prevPts = null; showPrevUntil = performance.now() + 3500; G.wob = 0; G.drop = null; G.chainHit = false; G.holeHits = 0; G.pen = 0;
     pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket()) + ' m to the basket.' + (PETS === 0 ? ' Your dog is here: tap it to pet it.' : ''));
     if (ready) buildCourse(h);
@@ -402,12 +402,12 @@
     if (l > pg.R) { x *= pg.R / l; y *= pg.R / l; }
     pull.rx = x; pull.ry = y; pull.R = pg.R; pull.raw = clamp(y / (pg.R * 0.92), 0, 1); pull.p = Math.min(pull.raw, CAP);
     var dead = pg.R * 0.07, bx = clamp((Math.abs(x) - dead) / (pg.R * 0.5 - dead), 0, 1);
-    pull.bank0 = bx * 25 * (x < 0 ? -1 : 1);   // pull back to the right: hyzer (fades left). Pull back to the left: anhyzer (curves right).
+    pull.bank0 = bx * 40 * (x < 0 ? -1 : 1);   // pull back to the right: hyzer (fades left). Pull back to the left: anhyzer (curves right).
     shakePull();
   }
   function shakePull() {   // a full-power pull shakes a little, like a real arm
     if (!pull) return; var sh = pull.raw > 0.85 ? Math.sin(performance.now() * 0.047) * ((pull.raw - 0.85) / 0.15) * 2.5 : 0;
-    pull.bank = clamp(pull.bank0 + sh, -25, 25); sBank.value = pull.bank.toFixed(1); previewDirty = true;
+    pull.bank = clamp(pull.bank0 + sh, -45, 45); sBank.value = pull.bank.toFixed(1); previewDirty = true;
   }
   glc.addEventListener('pointermove', function (e) {
     if (pull) { if (e.pointerId === pull.id) updatePull(e.clientX, e.clientY); return; }
@@ -484,6 +484,8 @@
     }
     if (dxy > rch + BR + 0.25) G.chainHit = false;
     if (z >= 0.4 && z <= 0.8 && dxy < 0.36 + BR) { s.v[0] = ox * 1.8 - s.v[0] * 0.25; s.v[1] = oy * 1.8 - s.v[1] * 0.25; s.v[2] = Math.max(s.v[2], 0.4) * 0.4 + 0.6; p[0] = b[0] + ox * (0.36 + BR + 0.02); p[1] = b[1] + oy * (0.36 + BR + 0.02); return { kind: 'tray', spd: spd }; }
+    if (z > -0.15 && z < 0.4 && dxy < 0.14 + BR * 0.3) { var kp = 0.12; s.v[0] = ox * 0.8 - s.v[0] * kp; s.v[1] = oy * 0.8 - s.v[1] * kp; s.v[2] = Math.abs(s.v[2]) * 0.15 + 0.3; p[0] = b[0] + ox * (0.14 + BR * 0.3 + 0.02); p[1] = b[1] + oy * (0.14 + BR * 0.3 + 0.02); return { kind: 'pole', spd: spd }; }   // the pole itself
+    if (z > -0.15 && z < 0.2 && dxy < 0.34 + BR) { s.v[0] = ox * 0.9 - s.v[0] * 0.18; s.v[1] = oy * 0.9 - s.v[1] * 0.18; s.v[2] = Math.abs(s.v[2]) * 0.12 + 0.25; p[0] = b[0] + ox * (0.34 + BR + 0.02); p[1] = b[1] + oy * (0.34 + BR + 0.02); return { kind: 'base', spd: spd }; }   // the base and feet on the ground
     if (z >= 1.4 && z <= 1.62 && dxy < 0.27) { s.v[0] = ox * 2 + s.v[0] * 0.1; s.v[1] = oy * 2 + s.v[1] * 0.1; s.v[2] = Math.abs(s.v[2]) * 0.2 + 0.8; return { kind: 'top', spd: spd }; }
     return null;
   }
@@ -514,7 +516,7 @@
         if (z > 0.1 && z < th && d < rr) {
           var nx = dx / (d || 1), ny = dy / (d || 1), dot = s.v[0] * nx + s.v[1] * ny;
           s.v[0] = (s.v[0] - 1.6 * dot * nx) * 0.18; s.v[1] = (s.v[1] - 1.6 * dot * ny) * 0.18; s.v[2] = Math.min(s.v[2], 0) * 0.3 - 1;
-          p[0] = t.x + nx * (rr + 0.05); p[1] = t.y + ny * (rr + 0.05); if (G.hit !== 'tree') G.holeHits++; G.hit = 'tree'; hitSfx(); s.bank *= 0.2; G.shake = 0.25;
+          p[0] = t.x + nx * (rr + 0.05); p[1] = t.y + ny * (rr + 0.05); if (G.hit !== 'tree') { G.holeHits++; curse(1); } G.hit = 'tree'; hitSfx(); s.bank *= 0.2; G.shake = 0.25;
         }
       }
       for (var oi = 0; oi < h.obst.length; oi++) {
@@ -531,7 +533,7 @@
       if (bc) {
         if (bc.kind === 'in') { holeOut(bc.spd); return; }
         G.hit = bc.kind; hitSfx(); G.shake = 0.18;
-        flash(bc.kind === 'rattle' ? 'Rattled out!' : bc.kind === 'top' ? 'Off the top!' : 'Off the tray!');
+        flash(bc.kind === 'rattle' ? 'Rattled out!' : bc.kind === 'top' ? 'Off the top!' : bc.kind === 'pole' ? 'Off the pole!' : bc.kind === 'base' ? 'Off the base!' : 'Off the tray!');
       }
       var gz = gh(p[0], p[1]), wl = waterLevelAt(h, p[0], p[1]); if (wl !== null && wl > gz) gz = wl;
       if (p[2] <= gz && (s.v[2] < 0 || p[2] < gz - 0.05)) {
@@ -556,6 +558,7 @@
     for (var i = 1; i <= steps && !stopped; i++) {
       var tx = p[0] + ro[0] * i / steps, ty = p[1] + ro[1] * i / steps;
       if (inWater(h, tx, ty)) { fx = tx; fy = ty; stopped = true; break; }
+      if (Math.hypot(tx - h.basket[0], ty - h.basket[1]) < 0.4) { stopped = true; break; }   // the basket's base and pole stop a slide
       for (var jo = 0; jo < h.obst.length; jo++) { var oo = h.obst[jo]; if (Math.hypot(tx - oo.x, ty - oo.y) < oo.r + 0.15) { stopped = true; break; } }
       if (stopped) break;
       for (var j = 0; j < h.treeList.length; j++) { var t = h.treeList[j]; if (Math.hypot(tx - t.x, ty - t.y) < 0.6) { stopped = true; break; } }
@@ -576,7 +579,7 @@
       var dthrow = Math.hypot(pos[0] - G.prev[0], pos[1] - G.prev[1]); if (dthrow >= 120) award('bomb'); G.lie = [pos[0], pos[1]]; G.throws.push([pos[0], pos[1]]);
       var db = distToBasket();
       if (wasPutt && db > 0.35) {
-        curse(0.6); var pm = G.pm; if (pm) { var cm2 = Math.round(Math.abs(pm.lat) * 100);
+        G.pMiss = (G.pMiss || 0) + 1; curse(G.pMiss >= 2 ? 1 : 0.69); var pm = G.pm; if (pm) { var cm2 = Math.round(Math.abs(pm.lat) * 100);
           G.puttNote = pm.z < 0.4 && pm.d > 0.9 ? 'Short: it needed more power.' : pm.z > 1.4 ? 'Too hard: it sailed over the top.' : pm.z < 0.8 ? 'Too low: it hit the tray.' : Math.abs(pm.lat) > 0.3 ? 'Missed ' + (pm.lat > 0 ? 'right' : 'left') + ' by ' + cm2 + ' cm: aim a touch ' + (pm.lat > 0 ? 'left' : 'right') + '.' : 'Right on line, it just did not stay in.'; }
       }
       if (db > 0.35) setTimeout(function () { sfx('steps', 0.2); }, 700);
@@ -587,7 +590,7 @@
     if (G.strokes >= G.h.par + 5) { say('Pick it up. Max strokes this hole.'); holeOutScore(false); return; }
     aimBase(); G.aimOff = 0; pickDiscFor(); syncUi();
   }
-  function holeOut(spd) {
+  function holeOut(spd) { G.pMiss = 0;
     var s = G.flight, b = G.h.basket; G.drop = { t: 0, x0: s.p[0], y0: s.p[1], z0: s.p[2], x1: b[0], y1: b[1], z1: G.h.bz + 0.8, bank: s.bank }; G.wob = Math.max(G.wob, clamp(spd / 14, 0.4, 1.2)); G.shake = 0.2; G.flight.v = [0, 0, 0];
     if (s.pizza) award('pizza'); if (s.putt && G.prev && Math.hypot(b[0] - G.prev[0], b[1] - G.prev[1]) >= 10) award('clutch');
     chainSound(); flash('Chains!'); mp('throw', b, 'hole'); holeOutScore(false, true);
