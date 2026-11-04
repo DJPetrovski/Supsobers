@@ -273,7 +273,7 @@
     G = { hole: 0, scores: [], phase: 'aim', strokes: 0, lie: null, prev: null, aimOff: 0, flight: null, trail: [], throws: [], roll: null, rest: 0, done: false, wob: 0, drop: null, chainHit: false, streak: 0, roundPen: 0, holeHits: 0 };
     startHole();
   }
-  function startHole() {
+  function startHole() { try { clearPoops(); } catch (e) {}
     var h = buildHole(G.hole); G.h = h; G.strokes = 0; G.lie = [h.tee[0], h.tee[1]]; G.prev = null; G.throws = [[h.tee[0], h.tee[1]]]; G.trail = []; G.flight = null; G.phase = 'aim'; G.aimOff = 0; G.wind = h.wind; G.plan = null; G.prevPts = null; showPrevUntil = performance.now() + 3500; G.wob = 0; G.drop = null; G.chainHit = false; G.holeHits = 0; G.pen = 0;
     pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket()) + ' m to the basket.' + (PETS === 0 ? ' Your dog is here: tap it to pet it.' : ''));
     if (ready) buildCourse(h);
@@ -1299,6 +1299,8 @@
       d.still = 0;
     } else {
       d.still += dt; var ta = Math.atan2(cam.x - d.x, cam.y - d.y); d.yaw += angDiff(ta, d.yaw) * (1 - Math.exp(-dt * 2.2));
+      if (d.pooCd === undefined) d.pooCd = 20 + Math.random() * 30; d.pooCd -= dt;   // every so often a waiting dog squats and does its business
+      if (!(d.poo > 0) && d.pooCd <= 0 && d.still > 4 && d.pet <= 0 && Math.random() < dt * 0.05) { d.poo = 3.2; d.pooMade = false; d.pooCd = 70 + Math.random() * 70; }
     }
     var u = d.g.userData, sitT = (d.pet > 0 || d.still > 1.4) ? 1 : 0; d.sit += (sitT - d.sit) * (1 - Math.exp(-dt * 6));
     d.ph += d.v * dt * 2.3; var sw = Math.sin(d.ph) * Math.min(0.85, d.v * 0.22) * (1 - d.sit);
@@ -1316,10 +1318,29 @@
     var sy = Math.sin(d.yaw), cy = Math.cos(d.yaw), hF = gh(d.x + sy * 0.55, d.y + cy * 0.55), hB = gh(d.x - sy * 0.55, d.y - cy * 0.55), hP = gh(d.x - cy * 0.3, d.y + sy * 0.3), hM = gh(d.x + cy * 0.3, d.y - sy * 0.3);
     var tp = -Math.atan2(hF - hB, 1.1), tr = Math.atan2(hP - hM, 0.6); d.tp = (d.tp || 0) + (tp - (d.tp || 0)) * (1 - Math.exp(-dt * 8)); d.tr = (d.tr || 0) + (tr - (d.tr || 0)) * (1 - Math.exp(-dt * 8));
     d.g.rotation.x = clamp(d.tp, -0.7, 0.7); d.g.rotation.z = clamp(d.tr, -0.5, 0.5);
+    if (d.poo > 0) {
+      if (d.v > 0.5 || d.pet > 0) d.poo = 0; else {
+        d.poo -= dt; var pt = 3.2 - d.poo, pk = Math.min(1, pt / 0.6) * Math.min(1, Math.max(0, d.poo) / 0.5);   // down into a squat, hold, come back up
+        d.g.rotation.x -= 0.42 * pk; d.g.position.y -= 0.12 * pk; d.g.rotation.z += Math.sin(simTime * 38) * 0.025 * pk;
+        if (!d.pooMade && pt > 1.7) { d.pooMade = true; spawnPoop(d); }
+      }
+    }
+    stepPoops(dt);
     if (o.hearts) hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
   }
   var CHAPO = { run: 8, walk: 5, pull: 0.9, acc: 6, hearts: true }, LULU_P = { run: 12.5, walk: 6, pull: 1.3, acc: 10, hearts: false };
   function updateDog(dt) { stepDog(dog, dt, CHAPO); stepDog(dog2, dt, LULU_P); }
+  var poops = [], POOP_MAT = null;
+  function spawnPoop(d) {
+    if (!scene) return; if (!POOP_MAT) POOP_MAT = new T.MeshLambertMaterial({ color: 0x5b3a1f });
+    var g = new T.Group(), a = [[0.11, 0.05, 0], [0.085, 0.045, 0.045], [0.055, 0.04, 0.085]];
+    a.forEach(function (q) { var m = new T.Mesh(new T.SphereGeometry(q[0], 10, 8), POOP_MAT); m.scale.y = 0.6; m.position.y = q[2]; g.add(m); });
+    var tip = new T.Mesh(new T.ConeGeometry(0.035, 0.07, 8), POOP_MAT); tip.position.y = 0.12; tip.rotation.z = 0.35; g.add(tip);
+    var px = d.x - Math.sin(d.yaw) * 0.5, py = d.y - Math.cos(d.yaw) * 0.5; g.position.set(px, gh(px, py) + 0.02, -py); g.rotation.y = Math.random() * 6.3; scene.add(g);
+    g.scale.setScalar(0.8); g.userData.life = 90; poops.push(g); while (poops.length > 8) { var o = poops.shift(); scene.remove(o); }
+  }
+  function stepPoops(dt) { for (var i = poops.length - 1; i >= 0; i--) { var g = poops[i]; g.userData.life -= dt; if (g.userData.life < 3) g.scale.setScalar(Math.max(0.01, 0.8 * g.userData.life / 3)); if (g.userData.life <= 0) { scene.remove(g); poops.splice(i, 1); } } }
+  function clearPoops() { poops.forEach(function (g) { scene.remove(g); }); poops.length = 0; }
   function spawnHeart(d) { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(d.x + rnd(-0.25, 0.25), d.g.position.y + 1.1 + rnd(0, 0.2), -d.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
   }
   function bark(n) {
@@ -2114,6 +2135,6 @@
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
-  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, lpPose: function (d, u, dt) { return lpPose(d, u, dt); }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
+  window.__dd = function () { return { poops: function () { return poops; }, spawnPoop: spawnPoop, snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, lpPose: function (d, u, dt) { return lpPose(d, u, dt); }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
   newRound();
 })();
