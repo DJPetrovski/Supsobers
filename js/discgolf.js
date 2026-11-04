@@ -604,7 +604,7 @@
   var SND = { on: true, voice: true, music: false, sc: false };
   try { var _sv = JSON.parse(localStorage.getItem('ss-disc-snd') || '{}'); if (_sv.on === false) SND.on = false; if (_sv.voice === false) SND.voice = false; if (_sv.music === true) SND.music = true; if (_sv.sc === true && !SND.music) SND.sc = true; } catch (e) {}
   function saveSnd() { try { localStorage.setItem('ss-disc-snd', JSON.stringify(SND)); } catch (e) {} }
-  var SFX_LIST = ['chain', 'chain2', 'rattle', 'hit1', 'hit2', 'throw1', 'throw2', 'splash', 'steps', 'bark1', 'bark2', 'bark3', 'bark4', 'say1', 'say2', 'say3', 'say4', 'say5', 'yay1', 'clap', 'clap2', 'pant'], sfxBuf = {}, sfxStarted = false;
+  var SFX_LIST = ['chain', 'chain2', 'rattle', 'hit1', 'hit2', 'throw1', 'throw2', 'splash', 'steps', 'bark1', 'bark2', 'bark3', 'bark4', 'bark5', 'bark6', 'bark7', 'bark8', 'bark9', 'bark10', 'bark11', 'bark12', 'bark13', 'bark14', 'bark15', 'bark16', 'say1', 'say2', 'say3', 'say4', 'say5', 'yay1', 'clap', 'clap2', 'pant'], sfxBuf = {}, sfxStarted = false;
   function audioCtx() { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); return actx; } catch (e) { return null; } }
   function sfxPreload() {
     if (sfxStarted) return; sfxStarted = true; var c = audioCtx(); if (!c) return;
@@ -1195,7 +1195,7 @@
   function spawnHeart() { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(dog.x + rnd(-0.25, 0.25), dog.g.position.y + 1.1 + rnd(0, 0.2), -dog.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
   }
   function bark(n) {
-    if (!SND.on) return; if (sfx(pickN('bark', 4), 0.5, 0.92 + Math.random() * 0.2)) return;
+    if (!SND.on) return; var bi; do { bi = 1 + Math.floor(Math.random() * 16); } while (bi === bark.last); bark.last = bi; if (sfx('bark' + bi, 0.42 + Math.random() * 0.2, 0.94 + Math.random() * 0.12)) return;
     try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume();
       (n === 1 ? [0] : [0, 0.2]).forEach(function (off) { var t0 = actx.currentTime + off, o = actx.createOscillator(), gn = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(340, t0); o.frequency.exponentialRampToValueAtTime(150, t0 + 0.13); f.type = 'bandpass'; f.frequency.value = 720; f.Q.value = 1.1; gn.gain.setValueAtTime(0.0001, t0); gn.gain.exponentialRampToValueAtTime(0.2, t0 + 0.015); gn.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.15); o.connect(f); f.connect(gn); gn.connect(actx.destination); o.start(t0); o.stop(t0 + 0.18); });
     } catch (e) {}
