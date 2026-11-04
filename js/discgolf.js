@@ -264,6 +264,11 @@
   var disc = P.DISCS.destroyer, spin = 1, best = 0, previewDirty = true, ready = false, loading = false, failed = false, simTime = 0;
   try { best = +localStorage.getItem('ss-disc-best') || 0; } catch (e) {}
 
+  /* online "Play together": js/discmp.js plugs into these hooks (all optional, nothing happens when it is not loaded) */
+  var MPH = window.DiscMPHooks = window.DiscMPHooks || {};
+  function mp(fn, a, b, c) { try { if (MPH[fn]) MPH[fn](a, b, c); } catch (e) {} }
+  window.DiscCore = { game: function () { return G; }, courseId: function () { return COURSE.id; }, holes: function () { return HOLE_N; }, say: function (t) { say(t); },
+    useCourse: function (id) { if (COURSE.id !== id && COURSES.some(function (c) { return c.id === id; })) { setCourse(id); newRound(); } }, restart: function () { newRound(); }, courses: function () { return COURSES.map(function (c) { return { id: c.id, name: c.name }; }); } };
   function newRound() {
     G = { hole: 0, scores: [], phase: 'aim', strokes: 0, lie: null, prev: null, aimOff: 0, flight: null, trail: [], throws: [], roll: null, rest: 0, done: false, wob: 0, drop: null, chainHit: false, streak: 0, roundPen: 0, holeHits: 0 };
     startHole();
@@ -274,6 +279,7 @@
     if (ready) buildCourse(h);
     if (skipBtn) skipBtn.hidden = true; G.tour = null;
     snapCam(); previewDirty = true; if (ready) { placeDog(); beginTour(); }
+    mp('hole', h, G.hole);
   }
   function distToBasket() { return Math.hypot(G.h.basket[0] - G.lie[0], G.h.basket[1] - G.lie[1]); }
   function aimBase() { G.base = Math.atan2(G.h.basket[0] - G.lie[0], G.h.basket[1] - G.lie[1]); }
@@ -546,7 +552,7 @@
   }
   function rest(pos, why) {
     var h = G.h, wasPutt = !!(G.flight && G.flight.putt); G.phase = 'rest'; G.rest = performance.now(); G.restDisc = G.flight ? G.flight.disc : disc; G.flight = null;
-    var t = why || terrain(h, pos[0], pos[1]);
+    var t = why || terrain(h, pos[0], pos[1]); mp('throw', pos, t);
     if (t === 'water' || t === 'ob') {
       if (t === 'water') sfx('splash', 0.8); curse(1);
       G.strokes++; G.roundPen++; G.lie = [G.prev[0], G.prev[1]];
@@ -570,12 +576,12 @@
   function holeOut(spd) {
     var s = G.flight, b = G.h.basket; G.drop = { t: 0, x0: s.p[0], y0: s.p[1], z0: s.p[2], x1: b[0], y1: b[1], z1: G.h.bz + 0.8, bank: s.bank }; G.wob = Math.max(G.wob, clamp(spd / 14, 0.4, 1.2)); G.shake = 0.2; G.flight.v = [0, 0, 0];
     if (s.pizza) award('pizza'); if (s.putt && G.prev && Math.hypot(b[0] - G.prev[0], b[1] - G.prev[1]) >= 10) award('clutch');
-    chainSound(); flash('Chains!'); holeOutScore(false, true);
+    chainSound(); flash('Chains!'); mp('throw', b, 'hole'); holeOutScore(false, true);
   }
   function holeOutScore(tapIn, chains) {
     G.phase = 'holed'; var st = G.strokes, par = G.h.par, diff = st - par; G.scores.push(st);
     var name = st === 1 ? 'ACE!' : diff <= -2 ? 'Eagle!' : diff === -1 ? 'Birdie!' : diff === 0 ? 'Par. Straight and sober.' : diff === 1 ? 'Bogey. A small stumble.' : 'Rough one. Keep your head up.';
-    awardHole(st, par, chains);
+    awardHole(st, par, chains); mp('score', st, G.hole, G.hole === HOLE_N - 1);
     if (st === 1 || diff <= -2) { sfx('yay1', 0.9); setTimeout(function () { sfx('clap', 0.7); }, 600); } else if (diff === -1) setTimeout(function () { sfx('clap2', 0.7); }, 500); else if (diff >= 2) curse(0.8);
     var last = G.hole === HOLE_N - 1; G.done = last;
     overT.textContent = (chains ? 'CHAINS! ' : '') + name;
