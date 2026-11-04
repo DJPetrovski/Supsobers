@@ -837,6 +837,22 @@
     c.fillStyle = f.col; c.strokeStyle = '#000'; c.lineWidth = 2; c.beginPath(); c.arc(X(f.lat), Y(f.z), 6, 0, 6.3); c.fill(); c.stroke();
     c.fillStyle = '#fff'; c.font = '700 10px system-ui, sans-serif'; c.fillText('Basket as it arrives', bx + bw / 2, by + bh + 14); c.restore();
   }
+  var _pz = null, _pzT = 0;
+  function drawBasketZone(f, aimA, full) {   // a make-window drawn on the basket itself: green = on line, yellow = edge, red = miss, plus how far left/right
+    if (!G || !T || !f) return; var c = hctx, W = hud._w, H = hud._h, b = G.h.basket, bz = G.h.bz, lx = Math.cos(aimA), ly = -Math.sin(aimA); camera.updateMatrixWorld(); _pv = _pv || new T.Vector3();
+    function P2(lat, z) { _pv.set(b[0] + lx * lat, bz + z, -(b[1] + ly * lat)).project(camera); return { x: (_pv.x + 1) / 2 * W, y: (1 - _pv.y) / 2 * H, ok: _pv.z < 1 && _pv.z > -1 }; }
+    var a = P2(-0.42, 1.4), bq = P2(0.42, 1.4), cq = P2(0.42, 0.8), dq = P2(-0.42, 0.8), m = P2(0, 1.1); if (!a.ok || !bq.ok || !m.ok) return;
+    var k = Math.max(1, 44 / Math.max(1, Math.abs(bq.x - a.x))), ex = function (q) { return { x: m.x + (q.x - m.x) * k, y: m.y + (q.y - m.y) * k }; };   // never smaller than a fingertip
+    var A = ex(a), B = ex(bq), C = ex(cq), D = ex(dq), lat = f.lat, al = Math.abs(lat), col = al < 0.2 ? '#3be072' : al < 0.42 ? '#ffd23a' : '#ff4a3a', cm = Math.round(al * 100);
+    if (full) col = f.col;
+    c.save(); c.globalAlpha = 0.28; c.fillStyle = col; c.beginPath(); c.moveTo(A.x, A.y); c.lineTo(B.x, B.y); c.lineTo(C.x, C.y); c.lineTo(D.x, D.y); c.closePath(); c.fill();
+    c.globalAlpha = 1; c.strokeStyle = col; c.lineWidth = 2.5; c.stroke(); c.strokeStyle = 'rgba(0,0,0,.55)'; c.lineWidth = 1; c.stroke();
+    var q = P2(clamp(lat, -0.6, 0.6), full ? clamp(f.z, 0.2, 1.8) : 1.1), qx = m.x + (q.x - m.x) * k, qy = m.y + (q.y - m.y) * (full ? k : 1);   // where the disc will cross
+    c.fillStyle = col; c.strokeStyle = '#000'; c.lineWidth = 2; c.beginPath(); c.arc(qx, full ? qy : m.y, 6, 0, 6.3); c.fill(); c.stroke();
+    var txt = al < 0.08 ? 'Dead center' : cm + ' cm ' + (lat > 0 ? 'right' : 'left') + (al < 0.2 ? ' (good)' : al < 0.42 ? ' (edge)' : ' (miss)');
+    c.font = '800 13px system-ui, sans-serif'; c.textAlign = 'center'; var tw = c.measureText(txt).width + 16, ty = Math.min(D.y, C.y) + 22; c.fillStyle = 'rgba(8,14,24,.82)'; c.fillRect(m.x - tw / 2, ty - 14, tw, 20); c.fillStyle = col; c.fillText(txt, m.x, ty);
+    c.restore();
+  }
   function drawSwipe() {
     if (!sw || !sw.pts.length) return; var r = glc.getBoundingClientRect(), pts = sw.pts, sp = splitSwipe(pts), going = sp.back >= 24 && sp.fwd.length > 1 && sp.fwd[0].y - pts[pts.length - 1].y > 6, si = going ? swipeInfo(sp.fwd) : { p: 0 }, W = hud._w, Hh = hud._h;
     hctx.save(); hctx.lineCap = 'round'; hctx.lineJoin = 'round';
@@ -848,7 +864,14 @@
     hctx.fillStyle = si.p > 0.85 ? '#ff6a4a' : si.p > 0.5 ? '#ffd23a' : '#3be072'; hctx.fillRect(gx - 6, gy1 - gh2 * si.p, 12, gh2 * si.p);
     if (GUIDE && G) { var ip = idealPw(distToBasket(), PSTYLE === 'pizza'), ty = gy1 - gh2 * ip; hctx.fillStyle = '#fff'; hctx.fillRect(gx - 14, ty - 1.5, 28, 3); hctx.font = '700 10px system-ui, sans-serif'; hctx.textAlign = 'left'; hctx.fillText('ideal', gx + 16, ty + 3); }
     hctx.fillStyle = '#fff'; hctx.font = '800 13px system-ui, sans-serif'; hctx.textAlign = 'center'; hctx.fillText(Math.round(si.p * 100) + '%', gx, gy0 - 12); hctx.restore();
-    if (going && si.up > 10) { var nw2 = performance.now(), off2 = clamp(si.ang * 0.6, -0.35, 0.35), pw2 = clamp(si.p, 0.05, 1); if (nw2 - _fcT > 70 || !_fc) { _fcT = nw2; _fc = puttForecast(pw2, off2); G.prevPts = _fc.pts; } drawForecast(_fc); } else _fc = null;
+    if (going && si.up > 10) { var nw2 = performance.now(), off2 = clamp(si.ang * 0.6, -0.35, 0.35), pw2 = clamp(si.p, 0.05, 1); if (nw2 - _fcT > 70 || !_fc) { _fcT = nw2; _fc = puttForecast(pw2, off2); G.prevPts = _fc.pts; } drawBasketZone(_fc, G.base + off2, true); drawForecast(_fc); }
+    else { _fc = null;
+      if (sp.back >= 24 && G) {   // still pulling back: the push will retrace the backswing, so the aim it points at is already known
+        var a0 = pts[0], b0 = pts[sp.bi], offB = clamp(Math.atan2(a0.x - b0.x, Math.max(1, b0.y - a0.y)) * 0.6, -0.35, 0.35), nw3 = performance.now();
+        if (nw3 - _pzT > 70 || !_pz) { _pzT = nw3; _pz = puttForecast(idealPw(distToBasket(), PSTYLE === 'pizza'), offB); }
+        drawBasketZone(_pz, G.base + offB, false);
+      } else _pz = null;
+    }
   }
   var _pv = null;
   function drawPath() {   // the planned line (red) stays up through the flight; the flight itself is drawn over it in white
