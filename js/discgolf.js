@@ -488,6 +488,20 @@
     return null;
   }
 
+  /* Tree collision follows what you see. The radii below were measured from the canopy meshes (oakG and pineG), per height band, so a disc that
+     reaches the leaves hits the leaves. 0.85 of the drawn radius is solid: the card edges are ragged, so the outer fringe is let through. */
+  var OAK_PROF = [0.38, 0.45, 0.47, 0.43, 0.52, 0.47, 0.52, 0.44, 0.43, 0.38, 0.2, 0.14], PINE_PROF = [0.8, 0.7, 0.51, 0.59, 0.43, 0.49, 0.35, 0.36, 0.24, 0.25, 0.09, 0.07];
+  function profAt(pr, f) { var x = clamp(f, 0, 1) * pr.length - 0.5, i = Math.floor(x), a = pr[clamp(i, 0, pr.length - 1)], b = pr[clamp(i + 1, 0, pr.length - 1)]; return a + (b - a) * clamp(x - i, 0, 1); }
+  function treeGeom(t) {   // [canopy bottom, canopy top, radius scale] in metres above the tree's ground
+    if (t.kind === 'oak') { var tho = t.h * t.s * (WINTER ? 1.35 : 1.05); return WINTER ? [tho * 0.4, tho, tho * 0.9 * 0.4] : [tho * 0.386, tho * 1.134, tho * 0.9]; }
+    var thp = t.h * t.s * 0.96, wx = 3.0 * (thp / 10) * (0.9 + t.tone * 0.2) + 0.25; return [-0.036 * thp, 0.975 * thp, wx];
+  }
+  function treeTop(t) { return treeGeom(t)[1]; }
+  function treeR(t, z) {
+    if (z < 0 || z > treeTop(t)) return 0; var g = treeGeom(t), r = 0.42;   // the trunk
+    if (z >= g[0] && z <= g[1]) r = Math.max(r, profAt(t.kind === 'oak' ? OAK_PROF : PINE_PROF, (z - g[0]) / (g[1] - g[0])) * g[2] * (t.gate ? 0.5 : 0.85));   // gate trees keep a slimmer fringe so the gaps the holes are built around stay playable
+    return r;
+  }
   function flightStep(dt) {
     var s = G.flight, h = G.h, near = Math.hypot(s.p[0] - h.basket[0], s.p[1] - h.basket[1]) < 8, n = Math.max(1, Math.round(dt * 120)) * (near ? 3 : 1), sub = dt / n;
     for (var k = 0; k < n; k++) {
@@ -495,8 +509,8 @@
       if (Math.round(s.t * 40) !== s._lt) { s._lt = Math.round(s.t * 40); G.trail.push([p[0], p[1], p[2]]); if (G.trail.length > 520) G.trail.shift(); }
       var tl = h.treeList;
       for (var i = 0; i < tl.length; i++) {
-        var t = tl[i]; if (Math.abs(t.x - p[0]) > 3 || Math.abs(t.y - p[1]) > 3) continue;
-        var dx = p[0] - t.x, dy = p[1] - t.y, d = Math.hypot(dx, dy), z = p[2] - t.g, th = t.h * t.s, rr = z < 2 ? 0.45 : (z < th ? (t.kind === 'oak' ? 0.5 + 1.6 * t.s * Math.sin(clamp((z - 2) / (th - 2), 0, 1) * 3.0 + 0.2) * 0.9 : 0.45 + 1.15 * t.s * (1 - (z - 2) / (th - 2))) : 0); if (rr < 0.45) rr = 0.45;
+        var t = tl[i]; if (Math.abs(t.x - p[0]) > 7 || Math.abs(t.y - p[1]) > 7) continue;
+        var dx = p[0] - t.x, dy = p[1] - t.y, d = Math.hypot(dx, dy), z = p[2] - t.g, th = treeTop(t), rr = treeR(t, z);
         if (z > 0.1 && z < th && d < rr) {
           var nx = dx / (d || 1), ny = dy / (d || 1), dot = s.v[0] * nx + s.v[1] * ny;
           s.v[0] = (s.v[0] - 1.6 * dot * nx) * 0.18; s.v[1] = (s.v[1] - 1.6 * dot * ny) * 0.18; s.v[2] = Math.min(s.v[2], 0) * 0.3 - 1;
@@ -2010,6 +2024,6 @@
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
-  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
+  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
   newRound();
 })();
