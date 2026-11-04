@@ -462,7 +462,7 @@
     var ps = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, 0); if (o.pizza) { ps.pizza = true; ps.bank = 0; ps.bank0 = 0; } G.plan = pathFrom(ps, !!o.putt); G.prevPts = null;
     G.strokes++; G.prev = [G.lie[0], G.lie[1]];
     var s = P.launch(G.lie[0], G.lie[1], disc, pw, aim(), hy, la, spin, noise); s.p[2] = gh(G.lie[0], G.lie[1]) + 1.2; if (o.pizza) { s.pizza = true; s.bank = 0; s.bank0 = 0; } s.putt = !!o.putt;
-    bark(1); sfx(Math.random() < 0.5 ? 'throw1' : 'throw2', 0.7); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } G.pcHd = undefined; G.flight = s; G.pm = null; G.puttNote = ''; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
+    bark(1); sfx(Math.random() < 0.5 ? 'throw1' : 'throw2', 0.7); if (dog) { dog.still = 0; dog.pet = 0; dog.bounce = 0.5; } if (dog2) { dog2.still = 0; dog2.pet = 0; dog2.bounce = 0.4; } G.pcHd = undefined; G.flight = s; G.pm = null; G.puttNote = ''; G.trail = [[s.p[0], s.p[1], s.p[2]]]; G.phase = 'fly'; G.hit = null; G.chainHit = false; G.flightDisc = disc; syncUi();
   }
   function wind() { return [G.wind[0] * 0.55, G.wind[1] * 0.55]; }
 
@@ -941,7 +941,7 @@
   if (replayBtn) replayBtn.addEventListener('click', function () { if (G && G.phase === 'aim') beginTour(true); });
   syncTourUi();
 
-  var tourObjs = [], dog = null, hearts = [], crits = [], birds = [], PETS = 0, SPOTS = 0, petAt = 0, _sph = null;
+  var tourObjs = [], dog = null, dog2 = null, hearts = [], crits = [], birds = [], PETS = 0, SPOTS = 0, petAt = 0, _sph = null;
   try { PETS = +localStorage.getItem('ss-disc-pets') || 0; SPOTS = +localStorage.getItem('ss-disc-spots') || 0; } catch (e) {}
   function sph() { return _sph || (_sph = new T.SphereGeometry(1, 12, 9)); }
   function lm(c, r) { return new T.MeshStandardMaterial({ color: c, roughness: r == null ? 0.95 : r }); }
@@ -1042,9 +1042,29 @@
       var mat = new T.MeshStandardMaterial({ map: tex2('models/dog/color.jpg?v=1', true), normalMap: tex2('models/dog/normal.jpg?v=1', false), normalScale: new T.Vector2(0.8, 0.8), roughness: 0.82, metalness: 0, envMapIntensity: 0.6 });
       mat.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.1 * vec3(1.0, 0.97, 0.92);\n#include <dithering_fragment>'); };
       mat.userData.keep = true; geo.userData.keep = true;
-      BULL.geo = geo; BULL.pos = pos; BULL.base = base; BULL.lists = lists; BULL.w = w; BULL.pz = pz; BULL.mat = mat; BULL.last = ''; BULL.ready = true;
+      BULL.geo = geo; BULL.pos = pos; BULL.base = base; BULL.lists = lists; BULL.w = w; BULL.pz = pz; BULL.mat = mat; BULL.mx = 0.9; BULL.last = ''; BULL.ready = true;
       swapDog();
     }).catch(function () { BULL.loading = false; BULL.failed = true; swapDog(); });
+  }
+  /* Lulu, the whippet: a static, untextured mesh (decimated from the 130k-triangle original in models/dog/lulu.bin), skinned to the same shepherd skeleton as Chapo,
+     so she runs, idles and gets petted with the same animations. She is faster than Chapo and never barks. */
+  var LULU = { ready: false, loading: false, mx: 1.1 };
+  function loadLulu() {
+    if (LULU.ready || LULU.loading || !T) return; LULU.loading = true;
+    fetch('models/dog/lulu.bin?v=1').then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); }).then(function (buf) {
+      var hd = new Uint32Array(buf.slice(0, 8)), N = hd[0], M = hd[1];
+      var pos = new Float32Array(buf.slice(8, 8 + N * 12)), nor = new Float32Array(buf.slice(8 + N * 12, 8 + N * 24)), idx = new Uint16Array(buf.slice(8 + N * 24, 8 + N * 24 + M * 6));
+      var geo = new T.BufferGeometry(); geo.setAttribute('position', new T.BufferAttribute(pos, 3)); geo.setAttribute('normal', new T.BufferAttribute(nor, 3)); geo.setAttribute('uv', new T.BufferAttribute(new Float32Array(N * 2), 2)); geo.setIndex(new T.BufferAttribute(idx, 1));
+      var mat = new T.MeshStandardMaterial({ color: 0xa8957c, roughness: 0.8, metalness: 0, envMapIntensity: 0.55 });
+      mat.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <dithering_fragment>', 'float rimF = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), 3.0); gl_FragColor.rgb += rimF * 0.1 * vec3(1.0, 0.97, 0.92);\n#include <dithering_fragment>'); };
+      mat.userData.keep = true; geo.userData.keep = true; LULU.geo = geo; LULU.base = pos; LULU.mat = mat; LULU.ready = true; ensureDog2();
+    }).catch(function () { LULU.loading = false; });
+  }
+  function ensureDog2() {
+    if (dog2 || !dog || !scene || !LULU.ready || !GLB.dog || !window.bullSkin || !(BULL.ready || BULL.failed || !BULL.loading)) return;
+    var g = makeGlbDog(LULU); if (!g.userData.skinned) { LULU.ready = false; LULU.loading = true; return; } g.scale.setScalar(0.94); scene.add(g);
+    dog2 = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0, side: -1 };
+    if (G && ready) { var sp = dogSpot(dog2); dog2.x = sp.x; dog2.y = sp.y; dog2.yaw = G.base; }
   }
   /* ---------- real 3D models (glTF): a German shepherd with a skeleton and four animations, and a real disc golf basket ----------
      Dog (Metel) by ajlanaondar0 and Disc Golf Basket FREE DOWNLOAD by Ethica, both CC BY 4.0 (credited in the site footer).
@@ -1066,7 +1086,7 @@
   }
   function swapDog() {   // use the best dog available: the bull terrier skinned to the shepherd's skeleton, else the shepherd, else the older meshes
     if (!dog || !scene) return; var old = dog.g, ng = (GLB.dog && ((BULL.ready && window.bullSkin) || !BULL.loading || BULL.failed)) ? makeGlbDog() : (BULL.ready && !GLB.dog) ? makeBullDog() : null; if (!ng) return;
-    ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng;
+    ng.position.copy(old.position); ng.rotation.y = old.rotation.y; scene.remove(old); scene.add(ng); dog.g = ng; ensureDog2();
   }
   function fixRunClip(g) {   // the run clip circles round a path and rolls the body; pin the body to the standing pose so the dog runs on the spot and the game moves it
     var idle = null, run = null; g.animations.forEach(function (c) { if (c.name === 'Dog_Stand_Idle_01_Bot') idle = c; if (c.name === 'Dog_Run_Arround') run = c; }); if (!idle || !run) return;
@@ -1076,19 +1096,20 @@
       for (var a = 0; a < cnt; a++) for (var b = 0; b < n; b++) v[a * n + b] = it.values[b]; run.tracks[ri] = new rt.constructor(rt.name, rt.times, v);
     });
   }
-  function makeGlbDog() {
+  function makeGlbDog(skin) {
+    var K = skin || BULL;
     var g = new T.Group(); g.rotation.order = 'YXZ';
     var m = window.SkeletonUtils.clone(GLB.dog.scene), holder = new T.Group(), S = 105;   // the model is tiny: ~0.0095 long, so x105 makes a ~1 m shepherd
     holder.scale.setScalar(S); holder.position.set(0.0125 * S, -0.02 * S, -0.062 * S); holder.add(m); g.add(holder);
-    if (BULL.ready && window.bullSkin) {
-      var bg = BULL.geo, bsk = null; try { bsk = window.bullSkin(T, m, { pos: BULL.base, nor: bg.attributes.normal.array, uv: bg.attributes.uv.array, idx: bg.index.array, mat: BULL.mat, map: { x: function (x) { return x * 0.9; }, y: function (y) { return -0.653 + y / 1.086 * 1.306; }, z: function (z) { return z / 0.604 * 0.92; } } }); } catch (e) { bsk = null; }
+    if (K.ready && window.bullSkin) {
+      var bg = K.geo, bsk = null; try { bsk = window.bullSkin(T, m, { pos: K.base, nor: bg.attributes.normal.array, uv: bg.attributes.uv.array, idx: bg.index.array, mat: K.mat, map: { x: function (x) { return x * K.mx; }, y: function (y) { return -0.653 + y / 1.086 * 1.306; }, z: function (z) { return z / 0.604 * 0.92; } } }); } catch (e) { bsk = null; }
       if (bsk) bsk.castShadow = true;
     }
-    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; if (o.material && o.material !== BULL.mat) { o.material.envMapIntensity = 0.45; o.material.roughness = Math.max(o.material.roughness || 0, 0.8); o.material.metalness = 0; } } });
+    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; if (o.material && o.material !== K.mat) { o.material.envMapIntensity = 0.45; o.material.roughness = Math.max(o.material.roughness || 0, 0.8); o.material.metalness = 0; } } });
     var mixer = new T.AnimationMixer(m), acts = {};
     GLB.dog.animations.forEach(function (c) { acts[c.name] = mixer.clipAction(c); });
     var hit = hitSphere(g, 0.75, 0, 0.45, 0);
-    g.userData = { glb: true, mixer: mixer, acts: acts, cur: null, hit: hit, tail: new T.Group(), head: new T.Group(), body: new T.Group(), legs: [new T.Group(), new T.Group(), new T.Group(), new T.Group()], tongue: new T.Group() };
+    g.userData = { glb: true, skinned: !!bsk, mixer: mixer, acts: acts, cur: null, hit: hit, tail: new T.Group(), head: new T.Group(), body: new T.Group(), legs: [new T.Group(), new T.Group(), new T.Group(), new T.Group()], tongue: new T.Group() };
     return g;
   }
   var lastPant = 0;
@@ -1096,7 +1117,7 @@
     var want = d.pet > 0 ? 'Dog_Happy' : d.v > 0.5 ? 'Dog_Run_Arround' : d.still > 7 ? 'Dog_Lie_Idle_01' : 'Dog_Stand_Idle_01_Bot';
     var a = u.acts[want] || u.acts['Dog_Stand_Idle_01_Bot'];
     if (a && u.cur !== a) { a.reset().setEffectiveWeight(1).fadeIn(0.3).play(); if (u.cur) u.cur.fadeOut(0.3); u.cur = a; }
-    if (u.cur && want === 'Dog_Run_Arround') u.cur.setEffectiveTimeScale(clamp(d.v / 5, 0.5, 1.6)); else if (u.cur) u.cur.setEffectiveTimeScale(1);
+    if (u.cur && want === 'Dog_Run_Arround') u.cur.setEffectiveTimeScale(clamp(d.v / 5, 0.5, 2.1)); else if (u.cur) u.cur.setEffectiveTimeScale(1);
     u.mixer.update(dt);
     // a little panting when the dog has been waiting a while
     if (d.still > 4 && d.pet <= 0) { var nw = performance.now(); if (nw - lastPant > 9000) { lastPant = nw; sfx('pant', 0.35, 0.95 + Math.random() * 0.1); } }
@@ -1145,54 +1166,57 @@
     dog = { g: g, x: 0, y: 0, yaw: 0, v: 0, ph: 0, pet: 0, sit: 0, still: 0, wag: 0, last: 0 };
     for (var i = 0; i < 10; i++) { var sp = new T.Sprite(new T.SpriteMaterial({ map: heartTexture(), transparent: true, depthWrite: false, fog: false })); sp.visible = false; sp.userData = { life: 0 }; scene.add(sp); hearts.push(sp); }
   }
-  function dogSpot() {   // the dog waits off to the side, well out of the way of the tee and the line of flight
-    var a = G.base, key = G.lie[0].toFixed(1) + ',' + G.lie[1].toFixed(1) + ',' + a.toFixed(2) + ',' + G.hole;
-    if (dog && dog.spotKey === key) return dog.spot;
-    var rx = Math.cos(a), ry = -Math.sin(a), fx = Math.sin(a), fy = Math.cos(a), L = camera.aspect < 0.9 ? 3.6 : 7.5, list = [[L, 9], [-L, 9], [L * 1.4, 14], [-L * 1.4, 14], [L, 5], [-L, 5], [L * 1.8, 10], [-L * 1.8, 10], [L, 18], [-L, 18]], pick = null;
+  function dogSpot(d) {
+    d = d || dog; var sd = d && d.side || 1;   // the dog waits off to the side, well out of the way of the tee and the line of flight
+    var a = G.base, key = sd + ':' + G.lie[0].toFixed(1) + ',' + G.lie[1].toFixed(1) + ',' + a.toFixed(2) + ',' + G.hole;
+    if (d && d.spotKey === key) return d.spot;
+    var rx = Math.cos(a), ry = -Math.sin(a), fx = Math.sin(a), fy = Math.cos(a), L = camera.aspect < 0.9 ? 3.6 : 7.5, list = [[L, 9], [-L, 9], [L * 1.4, 14], [-L * 1.4, 14], [L, 5], [-L, 5], [L * 1.8, 10], [-L * 1.8, 10], [L, 18], [-L, 18]].map(function (q) { return [q[0] * sd, q[1] + (sd < 0 ? 3 : 0)]; }), pick = null;
     for (var i = 0; i < list.length && !pick; i++) { var x = G.lie[0] + rx * list[i][0] + fx * list[i][1], y = G.lie[1] + ry * list[i][0] + fy * list[i][1]; if (!blocked(x, y) && terrain(G.h, x, y) !== 'ob' && !blocked(x + 1, y) && !blocked(x - 1, y)) pick = { x: x, y: y }; }
     if (!pick) pick = { x: G.lie[0] + rx * 9, y: G.lie[1] + ry * 9 };
-    if (dog) { dog.spotKey = key; dog.spot = pick; } return pick;
+    if (d) { d.spotKey = key; d.spot = pick; } return pick;
   }
-  function placeDog() { ensureDog(); var s = dogSpot(); dog.x = s.x; dog.y = s.y; dog.v = 0; dog.yaw = G.base; dog.pet = 0; dog.sit = 0; dog.still = 0; }
+  function placeDog() { ensureDog(); [dog, dog2].forEach(function (d) { if (!d) return; var s = dogSpot(d); d.x = s.x; d.y = s.y; d.v = 0; d.yaw = G.base; d.pet = 0; d.sit = 0; d.still = 0; }); }
   function blocked(x, y) { if (inWater(G.h, x, y)) return true; var tl = G.h.treeList; for (var i = 0; i < tl.length; i++) { var t = tl[i]; if (Math.abs(t.x - x) < 0.8 && Math.abs(t.y - y) < 0.8) return true; } return false; }
-  function updateDog(dt) {
-    if (!dog || !G) return; var tg = null, run = false;
+  function stepDog(d, dt, o) {
+    if (!d || !G) return; var tg = null, run = false;
     if (G.phase === 'fly' && G.flight) { tg = { x: G.flight.p[0], y: G.flight.p[1] }; run = true; }
     else if (G.phase === 'roll' && G.roll) { tg = { x: G.roll.x1, y: G.roll.y1 }; run = true; }
-    else if (G.phase === 'holed') { var b = G.h.basket, a2 = G.base; tg = { x: b[0] + Math.cos(a2) * 2.2 - Math.sin(a2) * 1.5, y: b[1] - Math.sin(a2) * 2.2 - Math.cos(a2) * 1.5 }; }
-    else tg = dogSpot();
-    var dx = tg.x - dog.x, dy = tg.y - dog.y, dist = Math.hypot(dx, dy), want = 0;
-    if (dist > 70) { dog.x = tg.x; dog.y = tg.y; dist = 0; dx = dy = 0; }
-    if (dog.pet > 0) dog.pet -= dt; else if (dist > (run ? 2.5 : 1.0)) want = Math.min(run ? 8 : 5, 1.0 + dist * 0.9);
-    if (want > 0) { var ad = Math.abs(angDiff(Math.atan2(dx, dy), dog.yaw)); want *= Math.max(0.12, Math.cos(Math.min(ad, 1.45))); }   // turn first, then run: no more orbiting the target
-    dog.v += (want - dog.v) * (1 - Math.exp(-dt * 6));
-    if (dog.v > 0.2) {
-      var th = Math.atan2(dx, dy); dog.yaw += angDiff(th, dog.yaw) * (1 - Math.exp(-dt * 9));
-      var nx = dog.x + Math.sin(dog.yaw) * dog.v * dt, ny = dog.y + Math.cos(dog.yaw) * dog.v * dt;
-      if (!blocked(nx, ny)) { dog.x = nx; dog.y = ny; } else { dog.v *= 0.3; dog.yaw += 0.08; }
-      dog.still = 0;
+    else if (G.phase === 'holed') { var b = G.h.basket, a2 = G.base; var sd2 = d.side || 1; tg = { x: b[0] + Math.cos(a2) * 2.2 * sd2 - Math.sin(a2) * 1.5, y: b[1] - Math.sin(a2) * 2.2 * sd2 - Math.cos(a2) * 1.5 }; }
+    else tg = dogSpot(d);
+    var dx = tg.x - d.x, dy = tg.y - d.y, dist = Math.hypot(dx, dy), want = 0;
+    if (dist > 70) { d.x = tg.x; d.y = tg.y; dist = 0; dx = dy = 0; }
+    if (d.pet > 0) d.pet -= dt; else if (dist > (run ? 2.5 : 1.0)) want = Math.min(run ? o.run : o.walk, 1.0 + dist * o.pull);
+    if (want > 0) { var ad = Math.abs(angDiff(Math.atan2(dx, dy), d.yaw)); want *= Math.max(0.12, Math.cos(Math.min(ad, 1.45))); }   // turn first, then run: no more orbiting the target
+    d.v += (want - d.v) * (1 - Math.exp(-dt * o.acc));
+    if (d.v > 0.2) {
+      var th = Math.atan2(dx, dy); d.yaw += angDiff(th, d.yaw) * (1 - Math.exp(-dt * 9));
+      var nx = d.x + Math.sin(d.yaw) * d.v * dt, ny = d.y + Math.cos(d.yaw) * d.v * dt;
+      if (!blocked(nx, ny)) { d.x = nx; d.y = ny; } else { d.v *= 0.3; d.yaw += 0.08; }
+      d.still = 0;
     } else {
-      dog.still += dt; var ta = Math.atan2(cam.x - dog.x, cam.y - dog.y); dog.yaw += angDiff(ta, dog.yaw) * (1 - Math.exp(-dt * 2.2));
+      d.still += dt; var ta = Math.atan2(cam.x - d.x, cam.y - d.y); d.yaw += angDiff(ta, d.yaw) * (1 - Math.exp(-dt * 2.2));
     }
-    var u = dog.g.userData, sitT = (dog.pet > 0 || dog.still > 1.4) ? 1 : 0; dog.sit += (sitT - dog.sit) * (1 - Math.exp(-dt * 6));
-    dog.ph += dog.v * dt * 2.3; var sw = Math.sin(dog.ph) * Math.min(0.85, dog.v * 0.22) * (1 - dog.sit);
-    if (u.glb) glbPose(dog, u, dt); else {
+    var u = d.g.userData, sitT = (d.pet > 0 || d.still > 1.4) ? 1 : 0; d.sit += (sitT - d.sit) * (1 - Math.exp(-dt * 6));
+    d.ph += d.v * dt * 2.3; var sw = Math.sin(d.ph) * Math.min(0.85, d.v * 0.22) * (1 - d.sit);
+    if (u.glb) glbPose(d, u, dt); else {
     u.legs[0].rotation.x = sw; u.legs[3].rotation.x = sw; u.legs[1].rotation.x = -sw; u.legs[2].rotation.x = -sw;
-    u.legs[0].rotation.x += dog.sit * 0.5; u.legs[1].rotation.x += dog.sit * 0.5; u.legs[2].rotation.x = -sw - dog.sit * 1.4; u.legs[3].rotation.x = sw - dog.sit * 1.4;
-    u.legs[0].scale.y = u.legs[1].scale.y = 1 + dog.sit * 0.55;
-    u.body.rotation.x = -dog.sit * 0.55; u.body.position.y = 0.36 - dog.sit * 0.17 + Math.abs(Math.sin(dog.ph)) * 0.03 * Math.min(1, dog.v / 3);
-    var happy = dog.pet > 0, wagS = happy ? 16 : (dog.v > 0.5 ? 9 : 5), wagA = happy ? 0.9 : 0.5; dog.wag += dt * wagS; u.tail.rotation.y = Math.sin(dog.wag) * wagA; u.tail.rotation.x = 0.3 + (dog.v > 3 ? 0.4 : 0);
-    u.head.rotation.z = happy ? 0.32 * Math.sin(simTime * 3) + 0.15 : 0; u.head.rotation.x = happy ? -0.15 : Math.sin(dog.ph * 2) * 0.06 * Math.min(1, dog.v / 3) + 0.08; u.tongue.visible = happy || dog.v > 4 || dog.still > 3;
+    u.legs[0].rotation.x += d.sit * 0.5; u.legs[1].rotation.x += d.sit * 0.5; u.legs[2].rotation.x = -sw - d.sit * 1.4; u.legs[3].rotation.x = sw - d.sit * 1.4;
+    u.legs[0].scale.y = u.legs[1].scale.y = 1 + d.sit * 0.55;
+    u.body.rotation.x = -d.sit * 0.55; u.body.position.y = 0.36 - d.sit * 0.17 + Math.abs(Math.sin(d.ph)) * 0.03 * Math.min(1, d.v / 3);
+    var happy = d.pet > 0, wagS = happy ? 16 : (d.v > 0.5 ? 9 : 5), wagA = happy ? 0.9 : 0.5; d.wag += dt * wagS; u.tail.rotation.y = Math.sin(d.wag) * wagA; u.tail.rotation.x = 0.3 + (d.v > 3 ? 0.4 : 0);
+    u.head.rotation.z = happy ? 0.32 * Math.sin(simTime * 3) + 0.15 : 0; u.head.rotation.x = happy ? -0.15 : Math.sin(d.ph * 2) * 0.06 * Math.min(1, d.v / 3) + 0.08; u.tongue.visible = happy || d.v > 4 || d.still > 3;
     if (u.bull) deformBull(u);
     }
-    if (dog.bounce > 0) dog.bounce -= dt; var gy = gh(dog.x, dog.y) + (dog.bounce > 0 ? Math.abs(Math.sin(dog.bounce * 12)) * 0.22 : 0); dog.g.position.set(dog.x, gy, -dog.y); dog.g.rotation.y = Math.PI - dog.yaw; dog.g.visible = true;
-    // lean with the ground: nose up on a climb, body rolled on a side slope, so the dog sits on the hill instead of floating or sinking into it
-    var sy = Math.sin(dog.yaw), cy = Math.cos(dog.yaw), hF = gh(dog.x + sy * 0.55, dog.y + cy * 0.55), hB = gh(dog.x - sy * 0.55, dog.y - cy * 0.55), hP = gh(dog.x - cy * 0.3, dog.y + sy * 0.3), hM = gh(dog.x + cy * 0.3, dog.y - sy * 0.3);
-    var tp = -Math.atan2(hF - hB, 1.1), tr = Math.atan2(hP - hM, 0.6); dog.tp = (dog.tp || 0) + (tp - (dog.tp || 0)) * (1 - Math.exp(-dt * 8)); dog.tr = (dog.tr || 0) + (tr - (dog.tr || 0)) * (1 - Math.exp(-dt * 8));
-    dog.g.rotation.x = clamp(dog.tp, -0.7, 0.7); dog.g.rotation.z = clamp(dog.tr, -0.5, 0.5);
-    hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
+    if (d.bounce > 0) d.bounce -= dt; var gy = gh(d.x, d.y) + (d.bounce > 0 ? Math.abs(Math.sin(d.bounce * 12)) * 0.22 : 0); d.g.position.set(d.x, gy, -d.y); d.g.rotation.y = Math.PI - d.yaw; d.g.visible = true;
+    // lean with the ground: nose up on a climb, body rolled on a side slope, so the d sits on the hill instead of floating or sinking into it
+    var sy = Math.sin(d.yaw), cy = Math.cos(d.yaw), hF = gh(d.x + sy * 0.55, d.y + cy * 0.55), hB = gh(d.x - sy * 0.55, d.y - cy * 0.55), hP = gh(d.x - cy * 0.3, d.y + sy * 0.3), hM = gh(d.x + cy * 0.3, d.y - sy * 0.3);
+    var tp = -Math.atan2(hF - hB, 1.1), tr = Math.atan2(hP - hM, 0.6); d.tp = (d.tp || 0) + (tp - (d.tp || 0)) * (1 - Math.exp(-dt * 8)); d.tr = (d.tr || 0) + (tr - (d.tr || 0)) * (1 - Math.exp(-dt * 8));
+    d.g.rotation.x = clamp(d.tp, -0.7, 0.7); d.g.rotation.z = clamp(d.tr, -0.5, 0.5);
+    if (o.hearts) hearts.forEach(function (sp) { var d = sp.userData; if (d.life <= 0) { sp.visible = false; return; } d.life -= dt; sp.position.x += d.vx * dt; sp.position.y += d.vy * dt; sp.position.z += d.vz * dt; var k = clamp(d.life / 1.3, 0, 1); sp.material.opacity = Math.min(1, k * 2); var sc = 0.28 + (1 - k) * 0.22; sp.scale.set(sc, sc, 1); if (d.life <= 0) sp.visible = false; });
   }
-  function spawnHeart() { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(dog.x + rnd(-0.25, 0.25), dog.g.position.y + 1.1 + rnd(0, 0.2), -dog.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
+  var CHAPO = { run: 8, walk: 5, pull: 0.9, acc: 6, hearts: true }, LULU_P = { run: 12.5, walk: 6, pull: 1.3, acc: 10, hearts: false };
+  function updateDog(dt) { stepDog(dog, dt, CHAPO); stepDog(dog2, dt, LULU_P); }
+  function spawnHeart(d) { for (var i = 0; i < hearts.length; i++) { var sp = hearts[i]; if (sp.userData.life <= 0) { sp.userData.life = 1.3; sp.userData.vx = rnd(-0.25, 0.25); sp.userData.vy = rnd(0.7, 1.2); sp.userData.vz = rnd(-0.25, 0.25); sp.position.set(d.x + rnd(-0.25, 0.25), d.g.position.y + 1.1 + rnd(0, 0.2), -d.y + rnd(-0.25, 0.25)); sp.visible = true; sp.material.opacity = 1; return; } }
   }
   function bark(n) {
     if (!SND.on) return; var bi; do { bi = 1 + Math.floor(Math.random() * 16); } while (bi === bark.last); bark.last = bi; if (sfx('bark' + bi, 0.42 + Math.random() * 0.2, 0.94 + Math.random() * 0.12)) return;
@@ -1201,10 +1225,10 @@
     } catch (e) {}
   }
   var PET_SAY = ['Good dog!', 'Who is a good dog? You are!', 'Best caddy on the course.', 'Tail wag level: maximum.', 'Belly scritches accepted.', 'Professional disc fetcher.', 'Zero bogeys in this dog’s heart.'];
-  function petDog() {
-    var now = performance.now(); dog.pet = 2.4; dog.still = 2; PETS++; try { localStorage.setItem('ss-disc-pets', String(PETS)); } catch (e) {}
-    for (var i = 0; i < 3; i++) spawnHeart(); if (now - petAt > 1400) { say(PET_SAY[PETS % PET_SAY.length] + ' ❤ ' + PETS + (PETS === 1 ? ' pet' : ' pets')); } petAt = now;
-    if (PETS % 4 === 1) bark(); award('pup'); if (PETS >= 25) award('pup25');
+  function petDog(d) {
+    d = d || dog; var now = performance.now(); d.pet = 2.4; d.still = 2; PETS++; try { localStorage.setItem('ss-disc-pets', String(PETS)); } catch (e) {}
+    for (var i = 0; i < 3; i++) spawnHeart(d); if (now - petAt > 1400) { say(PET_SAY[PETS % PET_SAY.length] + ' ❤ ' + PETS + (PETS === 1 ? ' pet' : ' pets')); } petAt = now;
+    if (PETS % 4 === 1 && d === dog) bark(); award('pup'); if (PETS >= 25) award('pup25');
   }
 
   // critters: rabbits that bolt, squirrels that run up trees, birds circling overhead
@@ -1237,7 +1261,7 @@
   }
   function nearestTree(x, y, maxd) { var best = null, bd = maxd, tl = G.h.treeList; for (var i = 0; i < tl.length; i++) { var t = tl[i], d = Math.hypot(t.x - x, t.y - y); if (d < bd && d > 1) { bd = d; best = t; } } return best; }
   function updateCrits(dt) {
-    var threats = [[G.lie[0], G.lie[1]]]; if (dog) threats.push([dog.x, dog.y]); if (G.flight) threats.push([G.flight.p[0], G.flight.p[1]]); if (G.roll) threats.push([G.roll.x1, G.roll.y1]);
+    var threats = [[G.lie[0], G.lie[1]]]; if (dog) threats.push([dog.x, dog.y]); if (dog2) threats.push([dog2.x, dog2.y]); if (G.flight) threats.push([G.flight.p[0], G.flight.p[1]]); if (G.roll) threats.push([G.roll.x1, G.roll.y1]);
     crits.forEach(function (c) {
       c.t += dt; var sq = c.kind === 'squirrel', near = null, nd = 1e9;
       threats.forEach(function (q) { var d = Math.hypot(q[0] - c.x, q[1] - c.y); if (d < nd) { nd = d; near = q; } });
@@ -1270,11 +1294,11 @@
   function pickLife(e) {
     if (!ready || !dog || !camera) return false; ray = ray || new T.Raycaster(); ndc = ndc || new T.Vector2();
     var r = glc.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height * 2 - 1)); ray.setFromCamera(ndc, camera);
-    var best = null, bd = 1e9, hd = ray.intersectObject(dog.g.userData.hit, false);
-    if (hd.length) { best = { dog: true }; bd = hd[0].distance; }
+    var best = null, bd = 1e9;
+    [dog, dog2].forEach(function (dd) { if (!dd) return; var hd = ray.intersectObject(dd.g.userData.hit, false); if (hd.length && hd[0].distance < bd) { best = { dog: dd }; bd = hd[0].distance; } });
     crits.forEach(function (c) { var hh = ray.intersectObject(c.g.userData.hit, false); if (hh.length && hh[0].distance < bd) { bd = hh[0].distance; best = { c: c }; } });
     if (!best) return false;
-    if (best.dog) petDog(); else spotCrit(best.c);
+    if (best.dog) petDog(best.dog); else spotCrit(best.c);
     return true;
   }
   function spotCrit(c) {
@@ -1413,7 +1437,7 @@
     prevEnd = new T.Mesh(new T.RingGeometry(0.3, 0.38, 28), new T.MeshBasicMaterial({ toneMapped: false, color: 0xb7bfc8, transparent: true, opacity: 0.45, side: T.DoubleSide, depthWrite: false })); prevEnd.rotation.x = -Math.PI / 2; scene.add(prevEnd);
     teeRing = new T.Mesh(new T.RingGeometry(0.28, 0.4, 28), new T.MeshBasicMaterial({ toneMapped: false, color: 0xff2a35, side: T.DoubleSide })); teeRing.rotation.x = -Math.PI / 2; scene.add(teeRing);
     courseGroup = new T.Group(); scene.add(courseGroup);
-    loadBull();
+    loadBull(); loadLulu();
     resize();
   }
 
@@ -1986,6 +2010,6 @@
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
-  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, dog: function () { return dog; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
+  window.__dd = function () { return { snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
   newRound();
 })();
