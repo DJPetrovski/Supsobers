@@ -478,7 +478,7 @@
       G.chainHit = true;
       var ux = s.v[0] / vh, uy = s.v[1] / vh, miss = Math.abs(dx * uy - dy * ux);   // how far off centre the line of flight is
       var soft = clamp(1.03 - (spd - 8) / 19, 0.1, 0.97), aimQ = miss < 0.15 ? 1 : miss < 0.28 ? 0.78 : 0.45, rising = s.v[2] > 1.5 ? 0.5 : 1;
-      if (Math.random() < soft * aimQ * rising) return { kind: 'in', spd: spd };
+      chainKick(dx, dy, spd); if (Math.random() < soft * aimQ * rising) return { kind: 'in', spd: spd };
       s.v[0] = ox * Math.min(4, 0.3 * vh) + s.v[0] * -0.12 + rnd(-0.6, 0.6); s.v[1] = oy * Math.min(4, 0.3 * vh) + s.v[1] * -0.12 + rnd(-0.6, 0.6); s.v[2] = rnd(0.5, 2); G.wob = Math.max(G.wob, clamp(spd / 18, 0.3, 1));
       return { kind: 'rattle', spd: spd };
     }
@@ -531,7 +531,8 @@
       if (s.putt) { var pdx = p[0] - h.basket[0], pdy = p[1] - h.basket[1], pd = Math.hypot(pdx, pdy); if (!G.pm || pd < G.pm.d) { var pA = G.base + G.aimOff; G.pm = { d: pd, z: p[2] - h.bz, lat: pdx * Math.cos(pA) - pdy * Math.sin(pA) }; } }
       var bc = basketCheck(s);
       if (bc) {
-        if (bc.kind === 'in') { holeOut(bc.spd); return; }
+        if (bc.kind === 'in') { slowT = 1.3; holeOut(bc.spd); return; }
+        if (bc.kind === 'rattle' || bc.kind === 'tray') slowT = 0.9;
         G.hit = bc.kind; hitSfx(); G.shake = 0.18;
         flash(bc.kind === 'rattle' ? 'Rattled out!' : bc.kind === 'top' ? 'Off the top!' : bc.kind === 'pole' ? 'Off the pole!' : bc.kind === 'base' ? 'Off the base!' : 'Off the tray!');
       }
@@ -893,13 +894,22 @@
     if (tr && tr.length > 1 && G.phase !== 'charge') { var tp = tr.map(function (q) { return [q[0], q[1], q[2]]; }); stroke(tp, 'rgba(0,0,0,.5)', 3.4, 1); stroke(tp, '#ffffff', 1.7, 1); if (G.phase === 'rest' || G.phase === 'holed') dot(tp[tp.length - 1], '#ffffff', 3.4); }
     c.restore();
   }
+  var HELD3D = false, _hv = null, _hd = null;
+  function heldDepth(on) { if (_hd === on || !discMesh) return; _hd = on; discMesh.traverse(function (o) { if (o.material) { (Array.isArray(o.material) ? o.material : [o.material]).forEach(function (m) { m.depthTest = !on; }); } }); discMesh.renderOrder = on ? 50 : 0; }
+  function heldDiscScreen() {   // where the thing you hold sits on the screen
+    var W = hud._w || 600, H = hud._h || 400, now = performance.now();
+    if (puttMode()) { var pt = puttGeo(), x = pt.x, y = pt.y; if (sw && sw.pts.length) { var r = glc.getBoundingClientRect(), q = sw.pts[sw.pts.length - 1]; x = clamp(q.x - r.left, 30, W - 30); y = clamp(q.y - r.top, 30, H - 20); } else y += Math.sin(now / 520) * 3; return { x: x, y: y }; }
+    var pg = pullGeo(), rx = 0, ry = 0, bank;
+    if (pull) { rx = pull.rx; ry = pull.ry; } else if (charging) { bank = +sBank.value; ry = chargeLevel() * pg.R * 0.92; rx = bank / 25 * pg.R * 0.5; } else ry = Math.sin(now / 520) * 3;
+    return { x: pg.hx + rx, y: pg.hy + ry };
+  }
   function drawPuttDisc() {   // the putter waits in the middle of the screen: touch it, pull it back, push it forward
     var pt = puttGeo(), c = hctx, now = performance.now(), x = pt.x, y = pt.y, hold = false, pizza = PSTYLE === 'pizza';
     if (sw && sw.pts.length) { var r = glc.getBoundingClientRect(), q = sw.pts[sw.pts.length - 1]; x = clamp(q.x - r.left, 30, hud._w - 30); y = clamp(q.y - r.top, 30, hud._h - 20); hold = true; }
     var dw = clamp(hud._h * 0.085, 26, 44), bob = hold ? 0 : Math.sin(now / 520) * 3; y += bob;
     c.save(); c.lineCap = 'round';
     if (!hold) { c.strokeStyle = 'rgba(255,255,255,.4)'; c.lineWidth = 2; c.setLineDash([3, 6]); c.beginPath(); c.ellipse(pt.x, pt.y, pt.hit, pt.hit * 0.55, 0, 0, 6.3); c.stroke(); c.setLineDash([]); }
-    c.translate(x, y); c.globalAlpha = hold ? 0.97 : 0.88; c.shadowColor = hold ? 'rgba(0,0,0,.5)' : 'rgba(255,255,255,.75)'; c.shadowBlur = hold ? 8 : 14 + Math.sin(now / 380) * 6;
+    c.translate(x, y); c.globalAlpha = hold ? 0.97 : 0.88; if (HELD3D) c.globalAlpha = 0; c.shadowColor = hold ? 'rgba(0,0,0,.5)' : 'rgba(255,255,255,.75)'; c.shadowBlur = hold ? 8 : 14 + Math.sin(now / 380) * 6;
     c.fillStyle = disc.col; c.strokeStyle = '#05080c'; c.lineWidth = 2; c.beginPath(); if (pizza) c.ellipse(0, 0, dw * 0.5, dw * 0.9, 0, 0, 6.3); else c.ellipse(0, 0, dw, dw * 0.42, 0, 0, 6.3); c.fill(); c.stroke(); c.shadowBlur = 0;
     c.fillStyle = 'rgba(255,255,255,.28)'; c.beginPath(); c.ellipse(0, -dw * 0.06, dw * 0.66, dw * 0.24, 0, 0, 6.3); c.fill();
     c.restore();
@@ -925,7 +935,7 @@
     c.fillStyle = 'rgba(255,255,255,.6)'; [-1, 1].forEach(function (sd) { c.beginPath(); c.arc(pg.hx + sd * ax, ay, 3.2, 0, 6.3); c.fill(); });
     // the disc, tilted to show the hyzer / anhyzer it will fly with
     var tilt = bank / 25 * 0.5, dw = clamp(pg.R * 0.3, 24, 38);
-    c.save(); c.translate(x, y); c.rotate(tilt); c.globalAlpha = idle ? 0.78 : 0.96;
+    c.save(); c.translate(x, y); c.rotate(tilt); c.globalAlpha = idle ? 0.78 : 0.96; if (HELD3D) c.globalAlpha = 0;
     c.shadowColor = idle ? 'rgba(255,255,255,.7)' : 'rgba(0,0,0,.5)'; c.shadowBlur = idle ? 14 + Math.sin(now / 380) * 6 : 8;
     c.fillStyle = disc.col; c.strokeStyle = '#05080c'; c.lineWidth = 2; c.beginPath(); c.ellipse(0, 0, dw, dw * 0.42, 0, 0, 6.3); c.fill(); c.stroke(); c.shadowBlur = 0;
     c.fillStyle = 'rgba(255,255,255,.28)'; c.beginPath(); c.ellipse(0, -dw * 0.06, dw * 0.66, dw * 0.24, 0, 0, 6.3); c.fill();
@@ -1661,6 +1671,27 @@
     if (GLB.basket) attachGlbBasket(g);
     return g;
   }
+  var CH_X = new Float32Array(48), CH_V = new Float32Array(48), CH_ON = false;
+  function chainKick(dx, dy, power) {   // a disc hitting the chains pushes the ones it touches; the swing then travels round the ring
+    var hit = Math.atan2(-dy, dx), k = clamp(power / 12, 0.25, 1.3), N = 24;
+    for (var tr = 0; tr < 2; tr++) for (var i = 0; i < N; i++) {
+      var ang = i / N * Math.PI * 2 + (tr ? 0.13 : 0), w = Math.cos(ang - hit); w = w > 0 ? w * w : 0.08;
+      CH_V[tr * N + i] += k * (0.9 * w + 0.35) * (0.7 + 0.6 * Math.random()) * (i % 2 ? 1 : 0.75);
+    }
+    CH_ON = true;
+  }
+  function stepChainPhys(dt) {
+    if (!CH_ON) return false; var N = 24, e = 0; dt = Math.min(dt, 1 / 30);
+    for (var sub = 0; sub < 2; sub++) { var h = dt / 2;
+      for (var tr = 0; tr < 2; tr++) for (var i = 0; i < N; i++) {
+        var id = tr * N + i, l = tr * N + (i + N - 1) % N, r = tr * N + (i + 1) % N, a = -150 * CH_X[id] - 3.4 * CH_V[id] + 85 * (CH_X[l] + CH_X[r] - 2 * CH_X[id]);
+        CH_V[id] += a * h;
+      }
+      for (var j = 0; j < 48; j++) { CH_X[j] = clamp(CH_X[j] + CH_V[j] * h, -0.14, 0.14); e += CH_X[j] * CH_X[j] + CH_V[j] * CH_V[j] * 0.002; }
+    }
+    if (e < 1e-6) { CH_X.fill(0); CH_V.fill(0); CH_ON = false; return true; }   // one last redraw at rest
+    return true;
+  }
   function updateChains(t, amp) {
     if (basketObj && basketObj.pivot) { basketObj.pivot.rotation.z = Math.sin(t * 9) * 0.09 * amp; basketObj.pivot.rotation.x = Math.cos(t * 7.3) * 0.09 * amp; }
     var ch = basketObj.chain, N = ch.N, S = ch.S, a = ch.arr, o = 0;
@@ -1669,7 +1700,7 @@
         var ang = i / N * Math.PI * 2 + (tier ? 0.13 : 0), cx = Math.cos(ang), sz = Math.sin(ang), prev = null;
         var yTop = tier ? 1.02 : 1.4, yBot = tier ? 0.74 : 1.02, rTop = tier ? 0.34 : 0.205, rBot = tier ? 0.2 : 0.34;
         for (var s = 0; s <= S; s++) {
-          var f = s / S, y = mix(yTop, yBot, f), r = mix(rTop, rBot, f) + 0.012 * Math.sin(f * 3.14), sway = amp * 0.09 * Math.sin(t * 14 + i * 0.9 + f * 5 + tier) * Math.sin(f * 1.5708 + 0.3), tw = amp * 0.05 * Math.cos(t * 11 + i * 1.7) * f;
+          var f = s / S, y = mix(yTop, yBot, f), r = mix(rTop, rBot, f) + 0.012 * Math.sin(f * 3.14), sway = amp * 0.09 * Math.sin(t * 14 + i * 0.9 + f * 5 + tier) * Math.sin(f * 1.5708 + 0.3) + CH_X[tier * N + i] * Math.sin(f * 1.5708 + 0.3), tw = amp * 0.05 * Math.cos(t * 11 + i * 1.7) * f;
           var px = cx * (r + sway) - sz * tw, pz = sz * (r + sway) + cx * tw;
           if (prev) { a[o++] = prev[0]; a[o++] = prev[1]; a[o++] = prev[2]; a[o++] = px; a[o++] = y; a[o++] = pz; }
           prev = [px, y, pz];
@@ -2095,14 +2126,16 @@
     sun.target.position.set(fx, 0, fz); sun.position.set(fx + sunOff[0], sunOff[1], fz + sunOff[2]);   // sun ahead and to the right, low in the sky
     var sky = scene.getObjectByName('sky'); if (sky) sky.position.copy(camera.position);
     // the disc
-    discMesh.visible = false; markMeshes.forEach(function (m) { m.visible = false; });
+    discMesh.visible = false; markMeshes.forEach(function (m) { m.visible = false; }); HELD3D = false; heldDepth(false);
     var d = G.flightDisc || disc;
     if (G.phase === 'fly' && G.flight) { var st = G.flight; paintDisc(discMesh, st.disc); discMesh.position.set(st.p[0], st.p[2], -st.p[1]); discPose(discMesh, st.pizza ? { v: st.v, theta: st.theta, bank: 1.35, spin: st.spin, rot: st.rot } : st, 1.9); discMesh.visible = true; }
     else if (G.phase === 'roll' && G.roll) { var rr = G.roll, kk = clamp(rr.t / rr.dur, 0, 1), e = 1 - (1 - kk) * (1 - kk); paintDisc(discMesh, G.restDisc || disc); flatPose(discMesh, mix(rr.x0, rr.x1, e), mix(rr.y0, rr.y1, e), gh(mix(rr.x0, rr.x1, e), mix(rr.y0, rr.y1, e)) + 0.025, 1.6, 0, rr.rot + kk * 8); discMesh.visible = true; }
     else if (G.phase === 'holed' && G.drop) { var dr = G.drop; dr.t += dt; var kd = clamp(dr.t / 0.45, 0, 1), ez = kd * kd; paintDisc(discMesh, G.flightDisc || disc); flatPose(discMesh, mix(dr.x0, dr.x1, kd), mix(dr.y0, dr.y1, kd), mix(dr.z0, dr.z1, ez), 1.6, 0, dr.t * 3); discMesh.rotation.x = 0; discMesh.visible = true; }
     else if (G.phase === 'aim' || G.phase === 'charge') {   // the disc is held ready, tilted the way the sliders are set
       var a0 = aim(), overhead = puttMode() && PSTYLE === 'pizza', hv = { v: [Math.sin(a0), Math.cos(a0), 0], theta: ((+sLa.value) / 57.3) * 0.6, bank: overhead ? 1.35 : (+sBank.value) / 57.3, spin: spin, rot: simTime * 2 };
-      paintDisc(discMesh, disc); discMesh.position.set(G.lie[0] + Math.cos(a0) * 0.5, gh(G.lie[0], G.lie[1]) + (overhead ? 1.7 : 1.05), -(G.lie[1] - Math.sin(a0) * 0.5)); discPose(discMesh, hv, 1.9); discMesh.visible = true;
+      paintDisc(discMesh, disc); var hs = heldDiscScreen(), hw = hud._w || 600, hh2 = hud._h || 400; HELD3D = true;   // the disc you touch is the disc that gets thrown: drawn in 3D where your finger holds it
+      _hv = _hv || new T.Vector3(); _hv.set(hs.x / hw * 2 - 1, 1 - hs.y / hh2 * 2, 0.5).unproject(camera).sub(camera.position).normalize();
+      discMesh.position.copy(camera.position).addScaledVector(_hv, 2.3); discPose(discMesh, hv, 1.55); discMesh.visible = true; heldDepth(true);
     }
     else if (G.phase === 'rest') { paintDisc(discMesh, G.restDisc || disc); flatPose(discMesh, G.lie[0], G.lie[1], gh(G.lie[0], G.lie[1]) + 0.03, 1.8, 0, 0); discMesh.visible = true; }
     // earlier lies
@@ -2114,7 +2147,8 @@
     trailGeo.setDrawRange(0, 0); prevLine.visible = false; prevEnd.visible = false;
     if (previewDirty) computePreview();
     // basket chains rattle, flag flutter, water ripple
-    if (G.wob > 0.01) { updateChains(simTime, G.wob); G.wob *= Math.exp(-dt * 1.7); } else if (G.wob) { G.wob = 0; updateChains(0, 0); }
+    var cp = stepChainPhys(dt);
+    if (G.wob > 0.01) { updateChains(simTime, G.wob); G.wob *= Math.exp(-dt * 1.7); } else if (G.wob) { G.wob = 0; updateChains(0, 0); } else if (cp) updateChains(0, 0);
     if (basketObj && basketObj.flag) basketObj.flag.rotation.y = Math.sin(simTime * 3) * 0.25;
     waterMats.forEach(function (m, i) { if (m.normalMap) { m.normalMap.offset.x = (simTime * 0.02) % 1; m.normalMap.offset.y = (simTime * 0.013 + i * 0.3) % 1; } });
     swayMats.forEach(function (m) { if (m.userData.sh) m.userData.sh.uniforms.uTime.value = simTime; });
@@ -2133,8 +2167,18 @@
     R.render(scene, camera); drawHud();
     if (pull && pull.raw > 0.85) shakePull();
   }
+  var slowT = 0, qAvg = 0.016, qT = 0, qLevel = 0, qBase = 0;
+  function adaptQuality(rdt) {   // keep it smooth: if frames run long, drop the pixel density a step; if there is lots of headroom, bring it back
+    qAvg += (rdt - qAvg) * 0.04; qT += rdt; if (qT < 2.5 || !R) return; qT = 0;
+    if (!qBase) qBase = Math.min(window.devicePixelRatio || 1, 2);
+    var want = qLevel;
+    if (qAvg > 0.026 && qLevel < 3) want = qLevel + 1; else if (qAvg < 0.0185 && qLevel > 0) want = qLevel - 1;
+    if (want !== qLevel) { qLevel = want; R.setPixelRatio(Math.max(0.75, qBase * [1, 0.85, 0.7, 0.55][qLevel])); resize(); }
+  }
   function frame(now) {
-    if (!running) return; var dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now;
+    if (!running) return; var rdt = Math.max(0, Math.min(0.05, (now - last) / 1000)), dt = rdt; last = now;
+    adaptQuality(rdt);
+    if (slowT > 0) { slowT -= rdt; dt = rdt * (slowT > 0.4 ? 0.3 : 0.3 + 0.7 * (1 - Math.max(0, slowT) / 0.4)); }   // slow motion while the chains swing, then ease back to normal
     if (G.phase === 'fly') flightStep(dt);
     else if (G.phase === 'tour') { G.tour.t += dt; if (G.tour.t >= G.tour.dur) endTour(); }
     else if (G.phase === 'roll') { G.roll.t += dt; if (G.roll.t >= G.roll.dur) { var r = G.roll; G.roll = null; rest([r.x1, r.y1]); } }
@@ -2161,6 +2205,6 @@
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'dd') play(); else pause(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') pause(); else if (!root.hidden) play(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else if (!root.hidden && !document.querySelector('[data-view="craving"]').hidden) play(); });
-  window.__dd = function () { return { poops: function () { return poops; }, spawnPoop: spawnPoop, snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, lpPose: function (d, u, dt) { return lpPose(d, u, dt); }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
+  window.__dd = function () { return { disc3d: function () { return discMesh; }, held: function () { return HELD3D; }, poops: function () { return poops; }, spawnPoop: spawnPoop, snap: snapCam, G: G, P: P, HOLES: HOLES, startHole: startHole, award: award, holeOutScore: holeOutScore, doThrow: doThrow, cam: cam, scene: scene, R: R, camera: camera, look: function () { return LOOK; }, lpPose: function (d, u, dt) { return lpPose(d, u, dt); }, treeR: treeR, stepF: flightStep, dog: function () { return dog; }, dog2: function () { return dog2; }, crits: function () { return crits; }, gh: gh, step: flightStep, pet: function () { return PETS; } }; };
   newRound();
 })();
