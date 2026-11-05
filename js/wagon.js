@@ -86,7 +86,7 @@
   function paintHud() {
     elTime.textContent = fmt(st.t); elDay.textContent = 'Day ' + (st.day + 1); elChips.textContent = st.chips; elBest.textContent = best ? fmt(best) : '--'; paintCoin(true);
   }
-  function say(t) { toast.textContent = t; toast.classList.add('on'); clearTimeout(st.toastT); st.toastT = setTimeout(function () { toast.classList.remove('on'); }, 3800); }
+  function say(t, warn) { toast.textContent = t; toast.classList.toggle('warn', !!warn); toast.classList.remove('on'); void toast.offsetWidth; toast.classList.add('on'); clearTimeout(st.toastT); st.toastT = setTimeout(function () { toast.classList.remove('on'); }, warn ? 2800 : 3800); }   // warn = big, outlined, pulsing hazard call-out
 
   // "Ahhh f***": the same reaction voices as the disc game, and the same sound settings (Menu > Sound in Disc-ipline)
   function fallVoice() {
@@ -164,7 +164,7 @@
       for (var i = 0; i < chips.length; i++) { var c = chips[i]; if (!c.got && Math.abs(c.x - s.x) < 40 && Math.abs(c.y - (s.y - 22)) < 40) { c.got = true; s.chips++; paintHud(); for (var q = 0; q < 6; q++) parts.push({ x: c.x, y: c.y, vx: rnd(-120, 120), vy: rnd(-140, 40), l: 0.5, c: '#ffd45a' }); } }
       for (var j = 0; j < rocks.length; j++) {
         var r = rocks[j];
-        if (!r.warned && r.x - s.x < 650 && r.x > s.x && !s.warnedKinds[r.kind]) { r.warned = true; s.warnedKinds[r.kind] = 1; if (s.t < 200) say('Watch out. Jump it with Shift.'); }
+        if (!r.warned && r.x - s.x < 650 && r.x > s.x && !s.warnedKinds[r.kind]) { r.warned = true; s.warnedKinds[r.kind] = 1; if (s.t < 200) say('\u26A0 WATCH OUT! JUMP IT!', true); }
         if (r.hit || Math.abs(r.x - s.x) > r.w / 2 + 16) continue;
         if (s.y > ground(r.x) - r.h) {
           if (window.SSWagon && r.h <= window.SSWagon.clear()) {   // a bigger wagon's wheels just roll over the small stuff
@@ -173,13 +173,13 @@
           r.hit = true; s.flash = 1;
           for (var q2 = 0; q2 < 8; q2++) parts.push({ x: r.x, y: ground(r.x) - r.h / 2, vx: rnd(-120, 120), vy: rnd(-180, -20), l: 0.6, c: r.kind === 'pills' ? '#ff6b73' : '#c98a3a' });
           if (d > 0.3) crash('Hit the stuff.');
-          else { s.v *= 0.45; s.air = true; s.vx = Math.max(100, s.v * 0.8); s.vy = -170; say('Ouch. Stay away from that stuff.'); }
+          else { s.v *= 0.45; s.air = true; s.vx = Math.max(100, s.v * 0.8); s.vy = -170; say('OUCH! STAY AWAY FROM THAT STUFF', true); }
         }
       }
       s.floating = false;
       for (var pj = 0; pj < pools.length; pj++) {
         var pl2 = pools[pj]; if (!pl2.ready) continue;
-        if (!pl2.warned && pl2.x0 - s.x < 700 && pl2.x0 > s.x) { pl2.warned = true; if (!s.warnedPool) { s.warnedPool = 1; say('Liquid ahead. Jump it, or you will not climb out.'); } }
+        if (!pl2.warned && pl2.x0 - s.x < 700 && pl2.x0 > s.x) { pl2.warned = true; if (!s.warnedPool) { s.warnedPool = 1; say('\u26A0 LIQUID AHEAD! JUMP IT!', true); } }
         if (s.x > pl2.x0 + 6 && s.x < pl2.x1 - 6 && s.y > pl2.surf + 2 && window.SSWagon && window.SSWagon.floats()) {   // a floating wagon rides the surface straight across
           if (!s.floating) { for (var q5 = 0; q5 < 10; q5++) parts.push({ x: s.x, y: pl2.surf, vx: rnd(-80, 80), vy: rnd(-160, -40), l: 0.6, c: POOL[pl2.kind][0] }); if (!s.floatSaid) { s.floatSaid = 1; say('Floating! Your wagon rides the water.'); } }
           var fv = s.air ? s.vx : s.v; s.floating = true; s.y = pl2.surf; s.air = false; s.vy = 0; s.v = Math.max(110, fv) * (1 - 0.2 * dt); s.still = 0; continue;
