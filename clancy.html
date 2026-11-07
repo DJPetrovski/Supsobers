@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lindsay Clancy Archive | Sup Sobers</title>
+<meta name="description" content="Every trial day and courtroom hearing in Commonwealth v. Lindsay Clancy, the court documents, and new developments, each linked to its source.">
+<style>
+@font-face{font-family:"3rd Man";src:url(fonts/3rd-Man.woff) format("woff"),url(fonts/3rd-Man.otf) format("opentype");font-display:swap}
+:root{--void:#060102;--panel:#12080a;--line:#3a1216;--ember:#ff2a35;--ink:#f1e9e4;--dim:#a8968f;--warn:#ffcf5a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);font:16px/1.5 Georgia,serif;padding-block:0 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:900px;margin:0 auto}a{color:var(--ember)}
+header{padding:28px 0 8px}.back{font:14px system-ui,sans-serif;text-decoration:none}
+h1{font-family:"3rd Man",Georgia,serif;font-weight:400;font-size:clamp(34px,8vw,60px);line-height:1;margin:14px 0 6px;color:var(--ember);letter-spacing:.02em}
+.sub{color:var(--dim);margin:0 0 16px}
+.notice{border:1px solid var(--warn);background:#201808;color:#ffe9b0;padding:12px 14px;border-radius:6px;font:14px/1.5 system-ui,sans-serif;margin:0 0 14px}.notice b{color:var(--warn)}
+.status{border-left:3px solid var(--ember);background:var(--panel);padding:10px 14px;margin:0 0 18px;font:15px/1.5 system-ui,sans-serif}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.tabs button{font:14px system-ui,sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:7px 12px;cursor:pointer}
+.tabs button[aria-selected=true]{border-color:var(--ember);color:#fff;background:#2a0b0f}
+#q{width:100%;font:17px system-ui,sans-serif;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);margin:0 0 12px}
+#q:focus{outline:2px solid var(--ember);outline-offset:1px}
+.row{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:12px 14px;margin:0 0 10px}
+.row .k{font:12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+.row h3{margin:2px 0 4px;font:600 17px/1.35 Georgia,serif}.row p{margin:4px 0;color:var(--dim);font-size:15px}
+.row .links{display:flex;flex-wrap:wrap;gap:10px;font:14px system-ui,sans-serif;margin-top:6px}
+.play{display:block;position:relative;margin-top:10px;aspect-ratio:16/9;max-width:100%;background:#000 center/cover no-repeat;border:1px solid var(--line);border-radius:6px;cursor:pointer;width:100%;padding:0}
+.play::after{content:"\25B6";position:absolute;inset:0;display:grid;place-items:center;font-size:44px;color:#fff;text-shadow:0 2px 14px #000}
+.play:hover,.play:focus-visible{border-color:var(--ember);outline:none}
+iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:6px;margin-top:10px}
+.meta{font:13px system-ui,sans-serif;color:var(--dim);margin:10px 2px}
+footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+#gate{position:fixed;inset:0;background:rgba(6,1,2,.97);z-index:20;display:grid;place-items:center;padding:20px}
+#gate div{max-width:520px;border:1px solid var(--warn);background:#161006;border-radius:8px;padding:20px;font:15px/1.55 system-ui,sans-serif}
+#gate h2{font-family:"3rd Man",Georgia,serif;font-weight:400;font-size:30px;color:var(--warn);margin:0 0 8px}
+#gate button{font:15px system-ui,sans-serif;background:var(--ember);color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;margin-right:10px}
+#gate a{font-size:14px}
+</style></head><body>
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gt"><div>
+<h2 id="gt">Content warning</h2>
+<p>This archive covers the 2023 deaths of three young children. The trial videos include testimony about the children's deaths, autopsy findings, suicide and psychiatric crisis, and are unedited.</p>
+<p>No photographs of the children or crime scene are hosted here. If you or someone you know is struggling after childbirth, Postpartum Support International's helpline is 1-800-944-4773.</p>
+<button id="go" type="button">I understand, continue</button><a href="/">Leave</a></div></div>
+<div class="wrap">
+<header><a class="back" href="/">&larr; Sup Sobers</a><h1>Lindsay Clancy Archive</h1>
+<p class="sub"><i>Commonwealth v. Clancy</i>, Plymouth Superior Court, Massachusetts. Trial days, hearings and filings, each linked to its source.</p></header>
+<div class="status" id="status"></div>
+<div class="notice"><b>Context.</b> Video comes from the Associated Press and other outlets' public streams. Documents are those made public by the court, the District Attorney and others. Items that are sealed or not posted are listed as such, not summarized.</div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<input id="q" type="search" placeholder="Search this archive (a witness, a date, a topic)" autocomplete="off">
+<div id="list"></div><p class="meta" id="m"></p>
+<footer>New developments are added here as they come out. Have a public record or video that belongs in this archive? Send it through the Contact page. Primary source site: <a href="https://www.clancycase.com/" target="_blank" rel="noopener">clancycase.com</a>.</footer></div>
+<script>
+(function(){
+var D=null,tab="trial",q=document.getElementById("q"),list=document.getElementById("list");
+function e(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fd(s){if(!s)return"";var p=s.split("-"),mo=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+ if(p.length==1)return p[0];var m=mo[+p[1]-1];return p.length==2?m+" "+p[0]:m+" "+(+p[2])+", "+p[0]}
+function vid(id,t){return'<button class="play" type="button" data-yt="'+e(id)+'" style="background-image:url(https://i.ytimg.com/vi/'+e(id)+'/hqdefault.jpg)" aria-label="Play video: '+e(t)+'"></button>'}
+var TABS=[["trial","Trial days"],["hearings","Hearings"],["documents","Documents"],["updates","Updates"],["photos","Photos"]];
+document.getElementById("tabs").innerHTML=TABS.map(function(t){return'<button role="tab" data-t="'+t[0]+'">'+t[1]+'</button>'}).join("");
+function render(){
+ var n=q.value.trim().toLowerCase(),h="",c=0;
+ [].forEach.call(document.querySelectorAll("#tabs button"),function(b){b.setAttribute("aria-selected",b.dataset.t===tab)});
+ q.hidden=tab==="photos";
+ function ok(s){return!n||s.toLowerCase().indexOf(n)>-1}
+ if(tab==="trial")D.trial.forEach(function(x){var lab=x.day?"Day "+x.day:"Intro";if(!ok(lab+" "+x.title+" "+fd(x.date)))return;c++;
+  h+='<div class="row"><span class="k">'+lab+(x.date?" · "+fd(x.date):"")+'</span><h3>'+e(x.title)+'</h3>'+(x.yt?vid(x.yt,x.title)+'<div class="links"><a href="https://www.youtube.com/watch?v='+e(x.yt)+'" target="_blank" rel="noopener">Watch on YouTube</a></div>':'')+'</div>'});
+ if(tab==="hearings")D.hearings.forEach(function(x){if(!ok(x.title+" "+x.note))return;c++;
+  h+='<div class="row"><span class="k">'+(fd(x.date)||"Date not published")+'</span><h3>'+e(x.title)+'</h3><p>'+e(x.note)+'</p>'+(x.links||[]).map(function(l){return l.yt?vid(l.yt,l.t)+'<div class="links"><a href="https://www.youtube.com/watch?v='+e(l.yt)+'" target="_blank" rel="noopener">'+e(l.t)+'</a></div>':'<div class="links"><a href="'+e(l.u)+'" target="_blank" rel="noopener">'+e(l.t)+'</a></div>'}).join("")+'</div>'});
+ if(tab==="documents")D.documents.forEach(function(x){if(!ok(x.t+" "+x.s))return;c++;
+  h+='<div class="row"><span class="k">'+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3></div>'});
+ if(tab==="updates")D.updates.forEach(function(x){if(!ok(x.t+" "+x.s))return;c++;
+  h+='<div class="row"><span class="k">'+fd(x.date)+' · '+e(x.s)+'</span><p style="color:var(--ink)">'+e(x.t)+'</p><div class="links"><a href="'+e(x.u)+'" target="_blank" rel="noopener">Read the report</a></div></div>'});
+ if(tab==="photos"){h='<div class="row"><h3>No crime scene photos are hosted here</h3><p>The victims are three young children, so this archive does not publish photographs of them or of the scene. Only the video and documents above, which the court and the news media released, are linked.</p><p>If the court releases non-graphic exhibits, such as exterior or location images, they will be added here with their source. The unsealed search warrant materials in Documents describe what investigators recorded.</p></div>'}
+ list.innerHTML=h;document.getElementById("m").textContent=tab==="photos"?"":c+" item"+(c===1?"":"s");
+ if(tab!=="photos"&&!c)list.innerHTML='<p class="meta">Nothing matches that search.</p>';
+}
+document.getElementById("tabs").addEventListener("click",function(ev){var b=ev.target.closest("button");if(b){tab=b.dataset.t;render()}});
+q.addEventListener("input",render);
+list.addEventListener("click",function(ev){var b=ev.target.closest(".play");if(!b)return;
+ var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.yt+"?autoplay=1&rel=0";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="Court video";b.replaceWith(f)});
+document.getElementById("go").onclick=function(){document.getElementById("gate").remove()};
+fetch("data/clancy.json?v=1").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
+})();
+</script></body></html>
