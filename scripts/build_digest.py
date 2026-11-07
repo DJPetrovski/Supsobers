@@ -6,8 +6,8 @@ deep dive (same storyline in data/threads.json, or the closest titles). The pict
 scripts/make_newsletter_art.cjs and live in img/newsletter/.
 
 It reads the public RSS feed, so it needs no login. Always writes data/digest-preview.html. If KIT_API_KEY is set it
-creates the broadcast in Kit: a draft, or (DIGEST_SEND=true) scheduled for 3:33 pm Denver time. On scheduled runs it only
-goes between 3 pm and midnight Denver on a Friday, and never twice in one day (data/digest-last.txt).
+creates the broadcast in Kit: a draft, or (DIGEST_SEND=true) scheduled for 7:00 pm Denver time. On scheduled runs it only
+goes between 6 pm and midnight Denver on a Friday, and never twice in one day (data/digest-last.txt).
 """
 import datetime
 import json
@@ -149,8 +149,8 @@ def main():
     scheduled = os.environ.get("DIGEST_SEND") == "true"
     last_path = os.path.join(ROOT, "data", "digest-last.txt")
     if scheduled and os.environ.get("DIGEST_FORCE") != "true":
-        if now.weekday() != 4 or not (15 <= now.hour <= 23):   # GitHub's scheduler can start a run hours late, so allow the whole Friday evening
-            print("Not the Friday send window (3 pm to midnight Denver); nothing to do.")
+        if now.weekday() != 4 or not (18 <= now.hour <= 23):   # GitHub's scheduler can start a run hours late, so allow the whole Friday evening
+            print("Not the Friday send window (6 pm to midnight Denver); nothing to do.")
             return 0
         if os.path.exists(last_path) and open(last_path).read().strip() == now.date().isoformat():
             print("Already sent today.")
@@ -189,7 +189,7 @@ def main():
         return 0
     payload = {"subject": subject, "content": html, "public": False}
     if scheduled:
-        at = now.replace(hour=15, minute=33, second=0, microsecond=0)
+        at = now.replace(hour=19, minute=0, second=0, microsecond=0)
         if at < now + datetime.timedelta(minutes=2):
             at = now + datetime.timedelta(minutes=3)
         payload["send_at"] = at.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
