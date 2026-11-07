@@ -14,6 +14,7 @@ import time
 import json
 import os
 import re
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 from html import escape as e
@@ -21,6 +22,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 CHANNEL_ID = "UCSJ4pxGHNTVl5J1I22s7agA"
+FROM_ADDRESS = os.environ.get("DIGEST_FROM", "").strip() or "supsobers@gmail.com"   # the sending address for every newsletter
 SITE = "https://supsobers.com"
 ART = SITE + "/img/newsletter/"
 NS = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
@@ -214,9 +216,25 @@ def main():
         if at < now + datetime.timedelta(minutes=2):
             at = now + datetime.timedelta(minutes=3)
         payload["send_at"] = at.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    req = urllib.request.Request("https://api.kit.com/v4/broadcasts", method="POST", data=json.dumps(payload).encode(),
-                                 headers={"X-Kit-Api-Key": key, "Content-Type": "application/json", "Accept": "application/json", "User-Agent": "supsobers-digest"})
-    print("Kit:", urllib.request.urlopen(req, timeout=30).status, ("scheduled for " + payload["send_at"]) if scheduled else "draft")
+    payload["email_address"] = FROM_ADDRESS    # every newsletter goes out from this address (it has to be a verified From address in Kit)
+
+    def post(pl):
+        req = urllib.request.Request("https://api.kit.com/v4/broadcasts", method="POST", data=json.dumps(pl).encode(),
+                                     headers={"X-Kit-Api-Key": key, "Content-Type": "application/json", "Accept": "application/json", "User-Agent": "supsobers-digest"})
+        return urllib.request.urlopen(req, timeout=30)
+
+    try:
+        print("Kit:", post(payload).status, ("scheduled for " + payload["send_at"]) if scheduled else "draft", "from", FROM_ADDRESS)
+    except urllib.error.HTTPError as ex:
+        detail = ex.read().decode("utf-8", "replace")[:300]
+        print("Kit refused the send (%s): %s" % (ex.code, detail))
+        if ex.code not in (400, 422):
+            raise
+        # most likely the From address is not verified in Kit yet. Never send from the wrong address: save a DRAFT instead so nothing is lost.
+        for k in ("send_at", "email_address"):
+            payload.pop(k, None)
+        print("Kit: saved a DRAFT instead (%s). Verify %s under Kit > Settings > Email, set it on the draft, and send it by hand." % (post(payload).status, FROM_ADDRESS))
+        return 1
     if scheduled:
         open(last_path, "w").write(now.date().isoformat())
     return 0
