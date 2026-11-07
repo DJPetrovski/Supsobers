@@ -249,7 +249,9 @@
   {
    "t": "Search warrant applications, affidavits and returns (unsealed Oct. 2023)",
    "s": "Hosted PDF",
-   "u": "https://htv-prod-media.s3.amazonaws.com/files/clancy-search-warrant-applications-6538020282ac9.pdf"
+   "u": "media/clancy/docs/search-warrants.pdf",
+   "orig": "https://htv-prod-media.s3.amazonaws.com/files/clancy-search-warrant-applications-6538020282ac9.pdf",
+   "copy": true
   },
   {
    "t": "Arraignment, Feb. 2023",
@@ -264,7 +266,9 @@
   {
    "t": "Superior Court arraignment news release (PDF), Oct. 2023",
    "s": "Plymouth County DA",
-   "u": "https://plymouthda.com/wp-content/uploads/2023/10/LClancySUPARR.pdf"
+   "u": "media/clancy/docs/da-superior-arraignment.pdf",
+   "orig": "https://plymouthda.com/wp-content/uploads/2023/10/LClancySUPARR.pdf",
+   "copy": true
   },
   {
    "t": "Motion for reconsideration",
@@ -279,7 +283,9 @@
   {
    "t": "Requests by the father of the child victims, July 20, 2026",
    "s": "Internet Archive",
-   "u": "https://archive.org/details/clancy-father-motion"
+   "u": "media/clancy/docs/father-motion.pdf",
+   "orig": "https://archive.org/details/clancy-father-motion",
+   "copy": true
   },
   {
    "t": "Model jury instruction 9.200, Lack of Criminal Responsibility",
@@ -319,16 +325,16 @@
  ],
  "photos": [
   {
-   "t": "Evidence shown in court (Court TV)",
-   "s": "Court TV",
-   "note": "Exhibits shown at trial, credited \"court evidence\".",
-   "u": "https://www.courttv.com/news/lindsay-clancy-murder-trial-see-the-evidence-from-court/"
-  },
-  {
    "t": "Crime scene photos shown in court (TMZ)",
    "s": "TMZ",
-   "note": "Photo gallery of the home and items shown to the jury, per TMZ. Check the page for what each image depicts.",
+   "note": "Original gallery of the exhibits copied below.",
    "u": "https://www.tmz.com/2026/08/13/lindsay-clancy-crime-scene-photos-from-triple-murder/"
+  },
+  {
+   "t": "Evidence shown in court (Court TV)",
+   "s": "Court TV",
+   "note": "Other exhibits shown in court, such as family and surveillance photos (not copied here).",
+   "u": "https://www.courttv.com/news/lindsay-clancy-murder-trial-see-the-evidence-from-court/"
   },
   {
    "t": "Crime scene photos shown in court (Yahoo)",
@@ -337,5 +343,163 @@
    "u": "https://www.yahoo.com/news/us/articles/lindsay-clancy-murder-trial-see-201500901.html"
   }
  ],
- "photoNote": "Autopsy photographs and the 911 call were impounded by the judge before trial (media may not record or display them), so they are not publicly available and are not in this archive. Photos below are linked from the outlets that published them; they are not copied here."
+ "photoNote": "Autopsy photographs and the 911 call were impounded by the judge before trial (media may not record or display them), so they are not publicly available and are not in this archive. If they are ever officially released they will be added.",
+ "gallery": [
+  {
+   "n": 1,
+   "f": "media/clancy/scene/clancy-scene-01.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 2,
+   "f": "media/clancy/scene/clancy-scene-02.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 3,
+   "f": "media/clancy/scene/clancy-scene-03.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 4,
+   "f": "media/clancy/scene/clancy-scene-04.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 5,
+   "f": "media/clancy/scene/clancy-scene-05.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 6,
+   "f": "media/clancy/scene/clancy-scene-06.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 7,
+   "f": "media/clancy/scene/clancy-scene-07.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 8,
+   "f": "media/clancy/scene/clancy-scene-08.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 9,
+   "f": "media/clancy/scene/clancy-scene-09.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 10,
+   "f": "media/clancy/scene/clancy-scene-10.jpg",
+   "l": "Inside the home: rooms"
+  },
+  {
+   "n": 11,
+   "f": "media/clancy/scene/clancy-scene-11.jpg",
+   "l": "Inside the home: kitchen cabinets"
+  },
+  {
+   "n": 12,
+   "f": "media/clancy/scene/clancy-scene-12.jpg",
+   "l": "Inside the home: kitchen cabinets"
+  },
+  {
+   "n": 13,
+   "f": "media/clancy/scene/clancy-scene-13.jpg",
+   "l": "Medication bottles"
+  },
+  {
+   "n": 14,
+   "f": "media/clancy/scene/clancy-scene-14.jpg",
+   "l": "Medication bottles"
+  },
+  {
+   "n": 15,
+   "f": "media/clancy/scene/clancy-scene-15.jpg",
+   "l": "Papers and envelope"
+  },
+  {
+   "n": 16,
+   "f": "media/clancy/scene/clancy-scene-16.jpg",
+   "l": "Exterior of the home and ladders"
+  },
+  {
+   "n": 17,
+   "f": "media/clancy/scene/clancy-scene-17.jpg",
+   "l": "Exterior of the home and ladders"
+  },
+  {
+   "n": 18,
+   "f": "media/clancy/scene/clancy-scene-18.jpg",
+   "l": "Exterior of the home and ladders"
+  },
+  {
+   "n": 19,
+   "f": "media/clancy/scene/clancy-scene-19.jpg",
+   "l": "Bedroom: window and furniture"
+  },
+  {
+   "n": 20,
+   "f": "media/clancy/scene/clancy-scene-20.jpg",
+   "l": "Resistance bands (measured and tagged)"
+  },
+  {
+   "n": 21,
+   "f": "media/clancy/scene/clancy-scene-21.jpg",
+   "l": "Resistance bands (measured and tagged)"
+  },
+  {
+   "n": 22,
+   "f": "media/clancy/scene/clancy-scene-22.jpg",
+   "l": "Resistance bands (measured and tagged)"
+  },
+  {
+   "n": 23,
+   "f": "media/clancy/scene/clancy-scene-23.jpg",
+   "l": "Bedroom: bed and nightstand"
+  },
+  {
+   "n": 24,
+   "f": "media/clancy/scene/clancy-scene-24.jpg",
+   "l": "Bedroom: bed and nightstand"
+  },
+  {
+   "n": 25,
+   "f": "media/clancy/scene/clancy-scene-25.jpg",
+   "l": "Bedroom: drawers and a notebook"
+  },
+  {
+   "n": 26,
+   "f": "media/clancy/scene/clancy-scene-26.jpg",
+   "l": "Bedroom: drawers and a notebook"
+  },
+  {
+   "n": 27,
+   "f": "media/clancy/scene/clancy-scene-27.jpg",
+   "l": "Bedroom: drawers and a notebook"
+  },
+  {
+   "n": 28,
+   "f": "media/clancy/scene/clancy-scene-28.jpg",
+   "l": "Medical exhibit: forearm injuries (defendant)"
+  },
+  {
+   "n": 29,
+   "f": "media/clancy/scene/clancy-scene-29.jpg",
+   "l": "Medical exhibit: forearm injuries (defendant)"
+  },
+  {
+   "n": 30,
+   "f": "media/clancy/scene/clancy-scene-30.jpg",
+   "l": "Medical exhibit: forearm injuries (defendant)"
+  },
+  {
+   "n": 31,
+   "f": "media/clancy/scene/clancy-scene-31.jpg",
+   "l": "Medical exhibit: forearm injuries (defendant)"
+  }
+ ],
+ "galleryNote": "31 trial exhibits shown in court, credited to Plymouth Superior Court and published by TMZ on Aug. 13, 2026. Copied here so they stay available. They show rooms, objects, the exterior and medical exhibits; none shows the children. Labels are general categories. Exhibit stickers are the court's."
 }
