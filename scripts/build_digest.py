@@ -10,6 +10,7 @@ creates the broadcast in Kit: a draft, or (DIGEST_SEND=true) scheduled for 7:00 
 goes between 6 pm and midnight Denver on a Friday, and never twice in one day (data/digest-last.txt).
 """
 import datetime
+import time
 import json
 import os
 import re
@@ -47,6 +48,29 @@ def probe(url):
         return ex.code
     except Exception:
         return 0
+
+
+def recent_entries(known):
+    """(id, title, published) for the channel's recent videos. YouTube's feed throws a 500 now and then, so try it a few
+    times; if it keeps failing, fall back to the site's own video list (data/videos.json, refreshed by its own workflow)."""
+    last = None
+    for wait in (0, 5, 15, 30):
+        time.sleep(wait)
+        try:
+            root = ET.fromstring(fetch("https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID).read())
+            return [(en.find("yt:videoId", NS).text, (en.find("a:title", NS).text or "").strip(),
+                     datetime.datetime.fromisoformat(en.find("a:published", NS).text.replace("Z", "+00:00"))) for en in root.findall("a:entry", NS)]
+        except Exception as ex:
+            last = ex
+            print("YouTube feed failed (%s); retrying" % ex)
+    print("YouTube feed is down; using data/videos.json instead (%s)" % last)
+    out = []
+    for v in known.values():
+        try:
+            out.append((v["id"], v["title"], datetime.datetime.fromisoformat(v["at"].replace("Z", "+00:00"))))
+        except Exception:
+            pass
+    return out
 
 
 def is_short(vid):
@@ -155,15 +179,12 @@ def main():
         if os.path.exists(last_path) and open(last_path).read().strip() == now.date().isoformat():
             print("Already sent today.")
             return 0
-    root = ET.fromstring(fetch("https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID).read())
     since = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)
     known = {v["id"]: v for v in load("videos.json").get("videos", [])}
     deep, vids, shorts = [], [], []
-    for en in root.findall("a:entry", NS):
-        at = datetime.datetime.fromisoformat(en.find("a:published", NS).text.replace("Z", "+00:00"))
+    for vid, title, at in recent_entries(known):
         if at < since:
             continue
-        vid, title = en.find("yt:videoId", NS).text, (en.find("a:title", NS).text or "").strip()
         if MEMBERS.search(title):
             continue
         item = {"id": vid, "title": title, "seconds": known.get(vid, {}).get("seconds", 0)}
