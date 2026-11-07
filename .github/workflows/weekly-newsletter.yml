@@ -3,7 +3,7 @@ name: Friday newsletter
 on:
   schedule:
     - cron: "0 21 * * 5"    # 3:00 pm Mountain in summer time
-    - cron: "0 22 * * 5"    # 3:00 pm Mountain in winter time (the script only acts between 3 and 5 pm there, and once a day)
+    - cron: "0 22 * * 5"    # 3:00 pm Mountain in winter time (the script only acts on Friday from 3 pm to midnight there, and once a day)
   workflow_dispatch:         # run by hand from the Actions tab: builds a DRAFT in Kit so you can check it
 
 permissions:

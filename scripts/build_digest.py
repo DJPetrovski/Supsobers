@@ -7,7 +7,7 @@ scripts/make_newsletter_art.cjs and live in img/newsletter/.
 
 It reads the public RSS feed, so it needs no login. Always writes data/digest-preview.html. If KIT_API_KEY is set it
 creates the broadcast in Kit: a draft, or (DIGEST_SEND=true) scheduled for 3:33 pm Denver time. On scheduled runs it only
-goes between 3 and 5 pm Denver on a Friday, and never twice in one day (data/digest-last.txt).
+goes between 3 pm and midnight Denver on a Friday, and never twice in one day (data/digest-last.txt).
 """
 import datetime
 import json
@@ -149,8 +149,8 @@ def main():
     scheduled = os.environ.get("DIGEST_SEND") == "true"
     last_path = os.path.join(ROOT, "data", "digest-last.txt")
     if scheduled and os.environ.get("DIGEST_FORCE") != "true":
-        if now.weekday() != 4 or not (15 <= now.hour <= 17):
-            print("Not the Friday send window (3-5 pm Denver); nothing to do.")
+        if now.weekday() != 4 or not (15 <= now.hour <= 23):   # GitHub's scheduler can start a run hours late, so allow the whole Friday evening
+            print("Not the Friday send window (3 pm to midnight Denver); nothing to do.")
             return 0
         if os.path.exists(last_path) and open(last_path).read().strip() == now.date().isoformat():
             print("Already sent today.")
