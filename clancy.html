@@ -73,7 +73,7 @@ document.getElementById("tabs").innerHTML=TABS.map(function(t){return'<button ro
 function render(){
  var n=q.value.trim().toLowerCase(),h="",c=0;
  [].forEach.call(document.querySelectorAll("#tabs button"),function(b){b.setAttribute("aria-selected",b.dataset.t===tab)});
- q.hidden=tab==="photos";
+ 
  function ok(s){return!n||s.toLowerCase().indexOf(n)>-1}
  if(tab==="trial")D.trial.forEach(function(x){var lab=x.day?"Day "+x.day:"Intro";if(!ok(lab+" "+x.title+" "+fd(x.date)))return;c++;
   h+='<div class="row"><span class="k">'+lab+(x.date?" · "+fd(x.date):"")+'</span><h3>'+e(x.title)+'</h3>'+(x.yt?vid(x.yt,x.title)+'<div class="links"><a href="https://www.youtube.com/watch?v='+e(x.yt)+'" target="_blank" rel="noopener">Watch on YouTube</a></div>':'')+'</div>'});
@@ -83,12 +83,12 @@ function render(){
   h+='<div class="row"><span class="k">'+e(x.s)+(x.copy?' · saved copy':'')+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3>'+(x.copy?'<div class="links"><a href="'+e(x.orig)+'" target="_blank" rel="noopener">Original source</a></div>':'')+'</div>'});
  if(tab==="updates")D.updates.forEach(function(x){if(!ok(x.t+" "+x.s))return;c++;
   h+='<div class="row"><span class="k">'+fd(x.date)+' · '+e(x.s)+'</span><p style="color:var(--ink)">'+e(x.t)+'</p><div class="links"><a href="'+e(x.u)+'" target="_blank" rel="noopener">Read the report</a></div></div>'});
- if(tab==="photos"){h='<div class="row"><h3>Court-impounded material</h3><p>'+e(D.photoNote)+'</p></div><div class="row"><span class="k">Trial exhibits · '+(D.gallery||[]).length+' photos</span><p>'+e(D.galleryNote)+'</p></div><div class="grid">';(D.gallery||[]).forEach(function(g,i){if(n&&(g.l+" exhibit photo").toLowerCase().indexOf(n)<0)return;c++;h+='<button type="button" data-lb="'+i+'"><img loading="lazy" src="'+e(g.f)+'" alt="'+e(g.l)+'"><span>'+g.n+'. '+e(g.l)+'</span></button>'});h+='</div>';(D.photos||[]).forEach(function(x){h+='<div class="row"><span class="k">'+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3><p>'+e(x.note)+'</p></div>'})}
+ if(tab==="photos"){h='<div class="row"><h3>Court-impounded material</h3><p>'+e(D.photoNote)+'</p></div><div class="row"><span class="k">Trial exhibits · '+(D.gallery||[]).length+' photos</span><p>'+e(D.galleryNote)+'</p></div><div class="grid">';(D.gallery||[]).forEach(function(g,i){if(n&&!n.split(/\s+/).every(function(w){return(g.l+" exhibit photo").toLowerCase().indexOf(w)>-1}))return;c++;h+='<button type="button" data-lb="'+i+'"><img loading="lazy" src="'+e(g.f)+'" alt="'+e(g.l)+'"><span>'+g.n+'. '+e(g.l)+'</span></button>'});h+='</div>';(D.photos||[]).forEach(function(x){h+='<div class="row"><span class="k">'+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3><p>'+e(x.note)+'</p></div>'})}
  list.innerHTML=h;document.getElementById("m").textContent=c+" item"+(c===1?"":"s");
  if(!c&&tab!=="photos")list.innerHTML='<p class="meta">Nothing matches that search.</p>';
 }
 document.getElementById("tabs").addEventListener("click",function(ev){var b=ev.target.closest("button");if(b){tab=b.dataset.t;render()}});
-var st=0;q.addEventListener("input",function(){clearTimeout(st);if(q.value.trim().length<3){render();return}st=setTimeout(deep,350)});q.addEventListener("focus",function(){window.ClancySearch&&ClancySearch.warm()});
+var st=0;q.addEventListener("input",function(){clearTimeout(st);if(q.value.trim().length<3||tab==="photos"){render();return}st=setTimeout(deep,350)});q.addEventListener("focus",function(){window.ClancySearch&&ClancySearch.warm()});
 function hl(t,qs){var ws=ClancySearch.words(qs);var s=e(t);ws.forEach(function(w){s=s.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return s}
 function snip(x,qs){var ws=ClancySearch.words(qs),lo=x.toLowerCase(),p=-1;for(var i=0;i<ws.length&&p<0;i++)p=lo.indexOf(ws[i]);var a=Math.max(0,(p<0?0:p)-120);return(a?"\u2026":"")+x.slice(a,a+380)+(a+380<x.length?"\u2026":"")}
 function ts(s){var h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60;return(h?h+":"+(m<10?"0":""):"")+m+":"+(r<10?"0":"")+r}
@@ -109,6 +109,6 @@ var li=0,L=document.getElementById("lb");function lb(i){var G=D.gallery;li=(i+G.
 document.getElementById("lbp").onclick=function(){lb(li-1)};document.getElementById("lbn").onclick=function(){lb(li+1)};document.getElementById("lbx").onclick=function(){L.classList.remove("on")};
 document.addEventListener("keydown",function(ev){if(!L.classList.contains("on"))return;if(ev.key==="Escape")L.classList.remove("on");if(ev.key==="ArrowRight")lb(li+1);if(ev.key==="ArrowLeft")lb(li-1)});
 document.getElementById("go").onclick=function(){document.getElementById("gate").remove()};
-fetch("data/clancy.json?v=3").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
+fetch("data/clancy.json?v=4").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
 })();
 </script></body></html>
