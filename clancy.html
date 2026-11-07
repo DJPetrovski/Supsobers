@@ -36,7 +36,7 @@ footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;borde
 <div id="gate" role="dialog" aria-modal="true" aria-labelledby="gt"><div>
 <h2 id="gt">Content warning</h2>
 <p>This archive covers the 2023 deaths of three young children. The trial videos include testimony about the children's deaths, autopsy findings, suicide and psychiatric crisis, and are unedited.</p>
-<p>No photographs of the children or crime scene are hosted here. If you or someone you know is struggling after childbirth, Postpartum Support International's helpline is 1-800-944-4773.</p>
+<p>Photos are linked from the outlets that published them; some may show disturbing scenes. If you or someone you know is struggling after childbirth, Postpartum Support International's helpline is 1-800-944-4773.</p>
 <button id="go" type="button">I understand, continue</button><a href="/">Leave</a></div></div>
 <div class="wrap">
 <header><a class="back" href="/">&larr; Sup Sobers</a><h1>Lindsay Clancy Archive</h1>
@@ -69,15 +69,15 @@ function render(){
   h+='<div class="row"><span class="k">'+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3></div>'});
  if(tab==="updates")D.updates.forEach(function(x){if(!ok(x.t+" "+x.s))return;c++;
   h+='<div class="row"><span class="k">'+fd(x.date)+' · '+e(x.s)+'</span><p style="color:var(--ink)">'+e(x.t)+'</p><div class="links"><a href="'+e(x.u)+'" target="_blank" rel="noopener">Read the report</a></div></div>'});
- if(tab==="photos"){h='<div class="row"><h3>No crime scene photos are hosted here</h3><p>The victims are three young children, so this archive does not publish photographs of them or of the scene. Only the video and documents above, which the court and the news media released, are linked.</p><p>If the court releases non-graphic exhibits, such as exterior or location images, they will be added here with their source. The unsealed search warrant materials in Documents describe what investigators recorded.</p></div>'}
- list.innerHTML=h;document.getElementById("m").textContent=tab==="photos"?"":c+" item"+(c===1?"":"s");
- if(tab!=="photos"&&!c)list.innerHTML='<p class="meta">Nothing matches that search.</p>';
+ if(tab==="photos"){h='<div class="row"><h3>Court-impounded material</h3><p>'+e(D.photoNote)+'</p></div>';(D.photos||[]).forEach(function(x){c++;h+='<div class="row"><span class="k">'+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3><p>'+e(x.note)+'</p></div>'})}
+ list.innerHTML=h;document.getElementById("m").textContent=c+" item"+(c===1?"":"s");
+ if(!c&&tab!=="photos")list.innerHTML='<p class="meta">Nothing matches that search.</p>';
 }
 document.getElementById("tabs").addEventListener("click",function(ev){var b=ev.target.closest("button");if(b){tab=b.dataset.t;render()}});
 q.addEventListener("input",render);
 list.addEventListener("click",function(ev){var b=ev.target.closest(".play");if(!b)return;
  var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.yt+"?autoplay=1&rel=0";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="Court video";b.replaceWith(f)});
 document.getElementById("go").onclick=function(){document.getElementById("gate").remove()};
-fetch("data/clancy.json?v=1").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
+fetch("data/clancy.json?v=2").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
 })();
 </script></body></html>

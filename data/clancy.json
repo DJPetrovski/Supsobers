@@ -303,6 +303,12 @@
    "t": "Judge declares a mistrial after the jury reports it cannot reach a unanimous decision. Clancy is expected to remain in a state psychiatric hospital. The DA says a retrial decision is coming.",
    "u": "https://www.wbur.org/news/2026/09/04/lindsay-clancy-murder-trial-verdict-massachusetts",
    "s": "WBUR"
+  },
+  {
+   "date": "2026-07-24",
+   "t": "Judge impounds the 911 call and autopsy photographs at the request of the father; media may not record or display them. Both could still be presented to the jury and seen by the public in the courtroom.",
+   "u": "https://www.nbcboston.com/news/local/lindsay-clancy-911-call-photos-ruling/3986717/",
+   "s": "NBC Boston"
   }
  ],
  "sources": [
@@ -310,5 +316,26 @@
    "t": "clancycase.com (primary source archive)",
    "u": "https://www.clancycase.com/"
   }
- ]
+ ],
+ "photos": [
+  {
+   "t": "Evidence shown in court (Court TV)",
+   "s": "Court TV",
+   "note": "Exhibits shown at trial, credited \"court evidence\".",
+   "u": "https://www.courttv.com/news/lindsay-clancy-murder-trial-see-the-evidence-from-court/"
+  },
+  {
+   "t": "Crime scene photos shown in court (TMZ)",
+   "s": "TMZ",
+   "note": "Photo gallery of the home and items shown to the jury, per TMZ. Check the page for what each image depicts.",
+   "u": "https://www.tmz.com/2026/08/13/lindsay-clancy-crime-scene-photos-from-triple-murder/"
+  },
+  {
+   "t": "Crime scene photos shown in court (Yahoo)",
+   "s": "Yahoo News",
+   "note": "Syndicated copy of the same gallery.",
+   "u": "https://www.yahoo.com/news/us/articles/lindsay-clancy-murder-trial-see-201500901.html"
+  }
+ ],
+ "photoNote": "Autopsy photographs and the 911 call were impounded by the judge before trial (media may not record or display them), so they are not publicly available and are not in this archive. Photos below are linked from the outlets that published them; they are not copied here."
 }
