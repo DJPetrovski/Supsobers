@@ -24,5 +24,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/digest-last.txt
+          # a draft run (run by hand) never writes this file, and git add on a missing file stops with exit code 128
+          [ -f data/digest-last.txt ] && git add data/digest-last.txt || true
           git diff --cached --quiet || (git commit -m "Newsletter sent" && git pull -q --rebase origin main && git push)
