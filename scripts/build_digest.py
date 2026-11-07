@@ -187,7 +187,7 @@ def main():
             continue
         if MEMBERS.search(title):
             continue
-        item = {"id": vid, "title": title, "seconds": known.get(vid, {}).get("seconds", 0)}
+        item = {"id": vid, "title": title, "seconds": known.get(vid, {}).get("seconds", 0), "at": at}
         if is_short(vid):
             shorts.append(item)
         elif item["seconds"] >= 30 * 60:
@@ -197,7 +197,7 @@ def main():
     if not (deep or vids or shorts):
         print("Nothing new this week; no email.")
         return 0
-    deep.sort(key=lambda d: -d["seconds"])          # the longest new episode is the lead story
+    deep.sort(key=lambda d: d["at"], reverse=True)          # the newest deep dive is the lead story
     tandem = related(deep[0]["id"], deep[0]["title"], known, {x["id"] for x in deep + vids}) if deep else []
     subject = ("Breaking: " + deep[0]["title"]) if deep else "This week at Sobering Stories"
     html = render(now.date(), deep, vids, shorts, tandem)
