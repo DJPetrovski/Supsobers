@@ -88,7 +88,7 @@
   function momentsFor(chunks, toks, ex) {
     var qs = toks.map(wst).filter(Boolean), xs = ex.direct.filter(function (t) { return t.length > 3 && t.indexOf(' ') < 0; }).map(wst), found = [];
     if (!qs.length) return [];
-    function is(w, list) { for (var k = 0; k < list.length; k++) if (w === list[k] || (list[k].length >= 5 && w.indexOf(list[k]) === 0)) return k; return -1; }
+    function is(w, list) { for (var k = 0; k < list.length; k++) { var a = list[k]; if (w === a || (a.length >= 5 && w.indexOf(a) === 0) || (a.length >= 6 && w.length >= 6 && (a.indexOf(w) === 0 || w.indexOf(a.slice(0, a.length - 2)) === 0))) return k; } return -1; }
     chunks.forEach(function (c, ci) {
       var re = /[A-Za-z0-9][A-Za-z0-9'\u2019-]*/g, m, ws = [], hit = {}, n = 0, first = -1;
       while ((m = re.exec(c[1] || ''))) {
@@ -148,7 +148,7 @@
         var bestC = 0, topW = 0; toks.forEach(function (t) { topW = Math.max(topW, wOf(t)); });
         transcripts[v.id].forEach(function (c) {
           var tx = norm(c[1]), n = 0, bg = c[2] ? ' ' + c[2] + ' ' : '', wsum = 0, wgot = 0, topHit = true;
-          toks.forEach(function (t) { var st = stem(t), w = wOf(t), got = tx.indexOf(st) >= 0 || (bg && bg.indexOf(' ' + hash32(st) + ' ') >= 0); wsum += w; if (got) { n++; wgot += w; } else if (w === topW) topHit = false; });
+          toks.forEach(function (t) { var st = stem(t), rt = st.length >= 7 ? st.slice(0, -2) : st, w = wOf(t), got = tx.indexOf(rt) >= 0 || (bg && bg.indexOf(' ' + hash32(st) + ' ') >= 0); wsum += w; if (got) { n++; wgot += w; } else if (w === topW) topHit = false; });
           if (toks.length > 1 && dfMap && (!topHit || wgot < wsum * 0.6)) n = 0;
           ex.direct.forEach(function (t) { if (t.length > 3 && tx.indexOf(t) >= 0) n += 0.5; });
           if (n > bestC) { bestC = n; at = c[0]; snip = c[1]; }

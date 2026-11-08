@@ -64,7 +64,7 @@ mark{background:#5a0f15;color:#fff;border-radius:2px}.ai{font:13px system-ui,san
 <div id="list"></div><p class="meta" id="m"></p>
 <div id="lb" role="dialog" aria-modal="true"><div class="bar"><span class="t" id="lbt"></span><button id="lbp" type="button">&larr; Prev</button><button id="lbn" type="button">Next &rarr;</button><a id="lbd" download>Download</a><button id="lbx" type="button">Close</button></div><img id="lbi" alt=""></div>
 <footer>New developments are added here as they come out. Have a public record or video that belongs in this archive? Send it through the Contact page. Primary source site: <a href="https://www.clancycase.com/" target="_blank" rel="noopener">clancycase.com</a>.</footer></div>
-<script>window.CL_V=4;</script><script src="js/ask.js?v=1"></script><script src="js/clancy-search.js?v=3"></script>
+<script>window.CL_V=4;</script><script src="js/ask.js?v=1"></script><script src="js/clancy-search.js?v=6"></script>
 <script>
 (function(){
 var D=null,tab="trial",old=false,q=document.getElementById("q"),list=document.getElementById("list");
@@ -95,8 +95,8 @@ function render(){
 list.addEventListener("click",function(ev){if(ev.target.id==="tlflip"){old=!old;render()}});
 document.getElementById("tabs").addEventListener("click",function(ev){var b=ev.target.closest("button");if(b){tab=b.dataset.t;render()}});
 var st=0;q.addEventListener("input",function(){clearTimeout(st);if(q.value.trim().length<3||tab==="photos"){render();return}st=setTimeout(deep,350)});q.addEventListener("focus",function(){window.ClancySearch&&ClancySearch.warm()});
-function hl(t,qs){var ws=ClancySearch.words(qs);var s=e(t);ws.forEach(function(w){s=s.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return s}
-function snip(x,qs){var ws=ClancySearch.words(qs),lo=x.toLowerCase(),p=-1;for(var i=0;i<ws.length&&p<0;i++)p=lo.indexOf(ws[i]);var a=Math.max(0,(p<0?0:p)-120);return(a?"\u2026":"")+x.slice(a,a+380)+(a+380<x.length?"\u2026":"")}
+function hl(t,qs){var ws=ClancySearch.roots(qs);var s=e(t);ws.forEach(function(w){s=s.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return s}
+function snip(x,qs){var ws=ClancySearch.roots(qs),lo=x.toLowerCase(),p=-1;for(var i=0;i<ws.length&&p<0;i++)p=lo.indexOf(ws[i]);var a=Math.max(0,(p<0?0:p)-120);return(a?"\u2026":"")+x.slice(a,a+380)+(a+380<x.length?"\u2026":"")}
 function ts(s){var h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60;return(h?h+":"+(m<10?"0":""):"")+m+":"+(r<10?"0":"")+r}
 function ask(qs,hits){var box=document.getElementById("ans");if(!box||!window.AskAI||!hits.length||ClancySearch.words(qs).length<2)return;
  AskAI.enabled().then(function(on){if(!on)return;box.hidden=false;box.innerHTML="<b>Answer</b>Reading the most relevant testimony and documents\u2026";

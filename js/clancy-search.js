@@ -24,12 +24,14 @@
     }).catch(function () { state = 'failed'; waiters.splice(0).forEach(function (f) { f(); }); });
   }
   function words(q) { return q.toLowerCase().replace(/[^a-z0-9'\s]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 1 && !STOP.test(w); }); }
+  /* a word's root, so bifurcate finds bifurcated and bifurcation, and jury finds jurors' */
+  function root(w) { if (w.length >= 8) return w.slice(0, w.length - 2); if (w.length >= 6) return w.replace(/(ing|ed|es|s|e|y)$/, ''); if (w.length >= 5) return w.replace(/(s)$/, ''); return w; }
   function keyword(q) {
     var ws = words(q), phrase = q.trim().toLowerCase(), out = [];
     if (!ws.length) return out;
     for (var i = 0; i < T.length; i++) {
       var x = T[i].x.toLowerCase(), s = 0;
-      for (var k = 0; k < ws.length; k++) if (x.indexOf(ws[k]) > -1) s++;
+      for (var k = 0; k < ws.length; k++) if (x.indexOf(root(ws[k])) > -1) s++;
       if (!s) continue;
       var sc = s / ws.length; if (phrase.length > 3 && x.indexOf(phrase) > -1) sc += 1;
       if (sc >= 0.99 || ws.length === 1) out.push({ i: i, s: sc });
@@ -59,12 +61,13 @@
         m.forEach(function (r) { cand[r.i] = { i: r.i, sem: r.s, kw: 0 }; });
         kw.forEach(function (r) { (cand[r.i] = cand[r.i] || { i: r.i, sem: 0, kw: 0 }).kw = Math.min(1.5, r.s); });
         var list = Object.keys(cand).map(function (k) {
-          var c = cand[k]; c.s = ready ? c.sem + 0.06 * Math.min(1, c.kw) : c.kw; return c;
+          var c = cand[k]; var exact = c.kw >= 1 ? (ws.length <= 2 ? 1 : 0.12) : 0; c.s = ready ? c.sem + exact : c.kw; return c;
         }).sort(function (a, b) { return b.s - a.s; });
-        var top = list.length ? list[0].s : 0, seen = {}, dup = {}, hits = [];
+        var topSem = 0; list.forEach(function (r) { if (r.sem > topSem) topSem = r.sem; });
+        var seen = {}, dup = {}, hits = [], hasKw = kw.some(function (r) { return r.s >= 1; });
         list.forEach(function (r) {
           if (hits.length >= 24) return;
-          if (ready && r.sem < top - 0.14 && r.kw < 1) return;
+          if (ready && r.kw < 1 && (r.sem < topSem - 0.14 || (hasKw && ws.length <= 2 && r.sem < 0.62))) return;
           var c = T[r.i], key = c.k + c.id + ':' + Math.floor(c.at / (c.k === 'v' ? 150 : 1));
           if (seen[key]) return; seen[key] = 1;
           var sig = c.x.slice(0, 90).toLowerCase(); if (dup[sig]) return; dup[sig] = 1;
@@ -74,5 +77,5 @@
       });
     });
   }
-  window.ClancySearch = { search: search, warm: loadMeaning, words: words, state: function () { return state; } };
+  window.ClancySearch = { search: search, warm: loadMeaning, words: words, roots: function (q) { return words(q).map(root); }, state: function () { return state; } };
 })();
