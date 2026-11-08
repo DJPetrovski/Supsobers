@@ -72,7 +72,7 @@ function e(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"
 function fd(s){if(!s)return"";var p=s.split("-"),mo=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
  if(p.length==1)return p[0];var m=mo[+p[1]-1];return p.length==2?m+" "+p[0]:m+" "+(+p[2])+", "+p[0]}
 function vid(id,t){return'<button class="play" type="button" data-yt="'+e(id)+'" style="background-image:url(https://i.ytimg.com/vi/'+e(id)+'/hqdefault.jpg)" aria-label="Play video: '+e(t)+'"></button>'}
-var TABS=[["trial","Trial days"],["hearings","Hearings"],["documents","Documents"],["updates","Updates"],["photos","Photos"]];
+var TABS=[["trial","Trial days"],["hearings","Hearings"],["press","Press"],["documents","Documents"],["civil","Civil cases"],["updates","Updates"],["photos","Photos"],["claims","Claims vs. record"]];
 document.getElementById("tabs").innerHTML=TABS.map(function(t){return'<button role="tab" data-t="'+t[0]+'">'+t[1]+'</button>'}).join("");
 function render(){
  var n=q.value.trim().toLowerCase(),h="",c=0;
@@ -88,6 +88,12 @@ function render(){
  if(tab==="updates"){var U=D.updates.slice().sort(function(a,b){return(a.date<b.date?-1:a.date>b.date?1:0)*(old?1:-1)}),yr="";h+='<div class="tlbar"><button type="button" id="tlflip">'+(old?"Show newest first":"Show oldest first")+'</button><span class="meta" style="margin:0">'+U.length+' events, Jan. 24, 2023 to today</span></div><div class="tl">';
   U.forEach(function(x){if(!ok(x.t+" "+x.s+" "+fd(x.date)))return;c++;var y=x.date.slice(0,4);if(y!==yr){yr=y;h+='<div class="tly">'+y+'</div>'}
    h+='<div class="tle'+(x.m?" m":"")+'"><span class="k">'+fd(x.date)+(x.s?' \u00b7 '+e(x.s):'')+'</span><p>'+e(x.t)+'</p>'+(x.u?'<div class="links"><a href="'+e(x.u)+'" target="_blank" rel="noopener">Source</a></div>':'')+'</div>'});h+='</div>'}
+ if(tab==="press")(D.press||[]).slice().sort(function(a,b){return(b.date||"0").localeCompare(a.date||"0")}).forEach(function(x){if(!ok(x.title+" "+x.who+" "+x.s))return;c++;
+  h+='<div class="row"><span class="k">'+e(x.who)+' \u00b7 '+(fd(x.date)||"Date not published")+' \u00b7 '+e(x.s)+'</span><h3>'+e(x.title)+'</h3>'+(x.yt?vid(x.yt,x.title)+'<div class="links"><a href="https://www.youtube.com/watch?v='+e(x.yt)+'" target="_blank" rel="noopener">Watch on YouTube</a></div>':'<div class="links"><a href="'+e(x.u)+'" target="_blank" rel="noopener">Watch or read</a></div>')+'</div>'});
+ if(tab==="civil")(D.civil||[]).forEach(function(x){if(!ok(x.title+" "+x.note+" "+x.court))return;c++;
+  h+='<div class="row"><span class="k">'+e(x.court||"Background")+(x.filed?' \u00b7 filed '+fd(x.filed):'')+' \u00b7 '+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.title)+'</a></h3>'+(x.status?'<p style="color:var(--ink)"><b>Status:</b> '+e(x.status)+'</p>':'')+'<p>'+e(x.note)+'</p></div>'});
+ if(tab==="claims"){h+='<div class="row"><p>'+e(D.claimsNote||"")+'</p></div>';(D.claims||[]).forEach(function(x){if(!ok(x.claim+" "+x.record))return;c++;
+  h+='<div class="row"><span class="k">Claim</span><h3>'+e(x.claim)+'</h3><p style="color:var(--ink)"><b>'+e(x.status)+'</b></p><p>'+e(x.record)+'</p><div class="links">'+(x.sources||[]).map(function(s){return'<a href="'+e(s.u)+'" target="_blank" rel="noopener">'+e(s.t)+'</a>'}).join("")+'</div></div>'})}
  if(tab==="photos"){h='<div class="row"><h3>Court-impounded material</h3><p>'+e(D.photoNote)+'</p></div><div class="row"><span class="k">Trial exhibits · '+(D.gallery||[]).length+' photos</span><p>'+e(D.galleryNote)+'</p></div><div class="grid">';(D.gallery||[]).forEach(function(g,i){if(n&&!n.split(/\s+/).every(function(w){return(g.l+" exhibit photo").toLowerCase().indexOf(w)>-1}))return;c++;h+='<button type="button" data-lb="'+i+'"><img loading="lazy" src="'+e(g.f)+'" alt="'+e(g.l)+'"><span>'+g.n+'. '+e(g.l)+'</span></button>'});h+='</div>';(D.photos||[]).forEach(function(x){h+='<div class="row"><span class="k">'+e(x.s)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3><p>'+e(x.note)+'</p></div>'})}
  list.innerHTML=h;document.getElementById("m").textContent=c+" item"+(c===1?"":"s");
  if(!c&&tab!=="photos")list.innerHTML='<p class="meta">Nothing matches that search.</p>';
@@ -121,6 +127,6 @@ var li=0,L=document.getElementById("lb");function lb(i){var G=D.gallery;li=(i+G.
 document.getElementById("lbp").onclick=function(){lb(li-1)};document.getElementById("lbn").onclick=function(){lb(li+1)};document.getElementById("lbx").onclick=function(){L.classList.remove("on")};
 document.addEventListener("keydown",function(ev){if(!L.classList.contains("on"))return;if(ev.key==="Escape")L.classList.remove("on");if(ev.key==="ArrowRight")lb(li+1);if(ev.key==="ArrowLeft")lb(li-1)});
 document.getElementById("go").onclick=function(){document.getElementById("gate").remove()};
-fetch("data/clancy.json?v=5").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
+fetch("data/clancy.json?v=6").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
 })();
 </script></body></html>

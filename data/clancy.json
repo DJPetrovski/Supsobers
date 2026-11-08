@@ -731,5 +731,140 @@
    "l": "Medical exhibit: forearm wounds (defendant)"
   }
  ],
- "galleryNote": "31 trial exhibits shown in court, credited to Plymouth Superior Court and published by TMZ on Aug. 13, 2026, copied here so they stay available. They include the basement rooms, the bedroom with blood spatter, the cabinets and medications, the exterior, the resistance bands and the defendant's wounds. None shows the children. Exhibit stickers are the court's. Search this tab with words like bedroom, blood, knife or wounds. No X-rays have been published."
+ "galleryNote": "31 trial exhibits shown in court, credited to Plymouth Superior Court and published by TMZ on Aug. 13, 2026, copied here so they stay available. They include the basement rooms, the bedroom with blood spatter, the cabinets and medications, the exterior, the resistance bands and the defendant's wounds. None shows the children. Exhibit stickers are the court's. Search this tab with words like bedroom, blood, knife or wounds. No X-rays have been published.",
+ "press": [
+  {
+   "who": "Defense",
+   "date": "2026-08-27",
+   "title": "Kevin Reddington speaks outside the courthouse after jurors are sent home",
+   "s": "East Idaho News",
+   "yt": "LdzYTrYt0a4"
+  },
+  {
+   "who": "Defense",
+   "date": "2026-09-03",
+   "title": "With no verdict, Reddington addresses the media scrum outside court",
+   "s": "USA Today",
+   "yt": "yeNSL17gQqE"
+  },
+  {
+   "who": "Defense",
+   "date": "",
+   "title": "Reddington answers questions from the media scrum outside the courthouse",
+   "s": "YouTube",
+   "yt": "7OZQeC8b5gA"
+  },
+  {
+   "who": "Defense",
+   "date": "2026-09-04",
+   "title": "Lead defense attorney speaks after the mistrial is declared",
+   "s": "PBS NewsHour",
+   "u": "https://www.pbs.org/newshour/nation/watch-lindsay-clancys-lead-defense-attorney-speaks-after-mistrial-declared-in-murder-case"
+  },
+  {
+   "who": "Defense",
+   "date": "2026-09-04",
+   "title": "Reddington speaks on the mistrial",
+   "s": "NBC News",
+   "u": "https://www.nbcnews.com/video/lindsay-clancy-defense-attorney-reddington-speaks-mistrial-269350981767"
+  },
+  {
+   "who": "Defense",
+   "date": "",
+   "title": "Clancy's lawyer speaks outside of the courthouse",
+   "s": "NBC News",
+   "u": "https://www.nbcnews.com/video/shorts/lindsay-clancy-s-lawyer-speaks-outside-of-courthouse-268595269865"
+  },
+  {
+   "who": "Defense",
+   "date": "",
+   "title": "Kevin Reddington speaks after a Lindsay Clancy hearing",
+   "s": "Fox News",
+   "u": "https://www.foxnews.com/video/6405918119112"
+  },
+  {
+   "who": "Prosecution",
+   "date": "2026-09-04",
+   "title": "Prosecutors react after the mistrial is declared",
+   "s": "PBS NewsHour",
+   "u": "https://pbs.org/newshour/nation/watch-prosecutors-react-after-mistrial-declared-in-lindsay-clancy-murder-case"
+  },
+  {
+   "who": "Prosecution",
+   "date": "2026-09-04",
+   "title": "District Attorney speaks after the mistrial",
+   "s": "FOX 9",
+   "u": "https://www.fox9.com/video/fmc-bornrya324mganhj"
+  },
+  {
+   "who": "Prosecution",
+   "date": "2026-09-04",
+   "title": "District Attorney's first written statement after the mistrial",
+   "s": "Mediaite",
+   "u": "https://mediaite.com/media/news/district-attorney-lashes-out-in-first-statement-after-lindsay-clancy-mistrial-cruel-and-calculated-killing-of-three-innocents"
+  }
+ ],
+ "civil": [
+  {
+   "title": "Lindsay Clancy v. her mental health providers",
+   "court": "Norfolk Superior Court",
+   "filed": "2026-01",
+   "status": "Pending. No hearings scheduled as of Sept. 2026.",
+   "note": "Claims her providers failed to diagnose bipolar disorder and prescribed medications that allegedly triggered a psychotic break. Eleven defendants, including Dr. Jennifer Tufts, Aster Mental Health, South Shore Health and McLean Hospital. In August 2026 several defendants asked for a medical malpractice tribunal; Aster says she never told Dr. Tufts about hallucinations or thoughts of harming herself or her children. Counsel: Rosemary Scapicchio, Andrew Meyer Jr., Bill Thompson.",
+   "u": "https://www.boston.com/news/crime/2026/09/10/lindsay-clancy-patrick-clancy-civil-lawsuits/",
+   "s": "Boston.com"
+  },
+  {
+   "title": "Patrick Clancy wrongful death suit",
+   "court": "Norfolk Superior Court",
+   "filed": "2026-01",
+   "status": "Pending. A hearing on the motion to dismiss was scheduled for Oct. 28, 2026.",
+   "note": "Alleges Lindsay's providers prescribed many powerful medications that worsened her condition and led to the children's deaths. Four defendants: Dr. Jennifer Tufts, Rebecca Jollotta, Aster Mental Health and South Shore Health. In April 2026 all four moved to dismiss, arguing they owed the children no duty of care and citing the state law limiting mental health professionals' duty to warn. Patrick's lawyers (Todd & Weld) say it does not apply because the deaths were a foreseeable result of the alleged malpractice.",
+   "u": "https://www.nbcboston.com/news/local/lindsay-clancy-husband-files-wrongful-death-lawsuit-against-doctors/3881949/",
+   "s": "NBC Boston"
+  },
+  {
+   "title": "How the two civil cases connect to the criminal case",
+   "court": "",
+   "filed": "",
+   "status": "",
+   "note": "Both suits turn on what Lindsay told her providers and what they prescribed, the same questions the criminal jury heard from the psychiatrists. A guide to the duty-to-warn law that could affect both cases.",
+   "u": "https://masslegalresources.com/2026/09/29/lindsay-patrick-clancy-malpractice-lawsuits-duty-to-warn-tribunal/",
+   "s": "Mass Legal Resources"
+  },
+  {
+   "title": "Civil suits in the trial coverage",
+   "court": "",
+   "filed": "",
+   "status": "",
+   "note": "Boston Globe explainer on both suits during the trial.",
+   "u": "https://www.bostonglobe.com/2026/08/04/metro/lindsay-clancy-trial-patrick-civil-suits/",
+   "s": "Boston Globe"
+  }
+ ],
+ "claims": [
+  {
+   "claim": "Patrick Clancy was in a relationship with his current partner before January 2023, earlier than he has said.",
+   "status": "Not supported by the material in this archive.",
+   "record": "A search of all 27 trial days, the intro stream and the 299-page search warrant file found no testimony, exhibit or affidavit describing any relationship by Patrick Clancy before the children's deaths. The documented timeline is that he moved to New York in spring 2023, filed for divorce in February 2024, moved in with a new partner in 2025 and married in April 2026. The partner is not named in the sources used here and is not named in this archive.",
+   "sources": [
+    {
+     "t": "Killing of the Clancy children (Wikipedia)",
+     "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children"
+    }
+   ]
+  },
+  {
+   "claim": "Online theories that Patrick Clancy was involved in the children's deaths.",
+   "status": "Circulates online; not part of the trial record.",
+   "record": "The prosecution and defense positions at trial centered on Lindsay Clancy's mental state, not on any other person's involvement. Reporting on the online theories describes them as internet speculation.",
+   "sources": [
+    {
+     "t": "Online sleuthing and the vitriol against Patrick Clancy (Variety)",
+     "u": "https://variety.com/2026/digital/news/patrick-clancy-didnt-do-it-why-does-the-internet-think-hes-guilty-1236838968/"
+    }
+   ]
+  }
+ ],
+ "claimsNote": "This tab tracks widely repeated claims about the case and what the public record shows on each. If you have a specific document, exhibit or testimony timestamp that supports a claim, send it through the Contact page and it will be added with its source."
 }
