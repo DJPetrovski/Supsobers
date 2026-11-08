@@ -191,8 +191,10 @@
         });
       });
       siteAnswer(q, host, order, vids);
-      host.appendChild(el('p', 'gs-h', 'Also matches by meaning'));
+      var sentence = q.split(/\s+/).filter(Boolean).length >= 4;
+      host.appendChild(el('p', 'gs-h', sentence ? 'Best matches for your question' : 'Also matches by meaning'));
       kids.forEach(function (k) { host.appendChild(k); });
+      if (sentence) { list.insertBefore(host, list.firstChild); rows.splice(0, rows.length, ...kids.filter(function (k) { return k.classList.contains('gs-row'); }).concat(rows.filter(function (r) { return kids.indexOf(r) < 0; }))); list.scrollTop = 0; }
       if (sel < 0) hilite(0);
     });
   }

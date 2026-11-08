@@ -14,7 +14,7 @@
     get('data/transcripts.json').then(function (d) { if (d && !d.error && Object.keys(d).length) { transcripts = d; document.dispatchEvent(new Event('ss:transcripts')); } });
   }
 
-  var STOP = /^(the|a|an|of|about|on|in|and|or|to|with|for|from|by|at|is|was|were|are|did|does|do|how|why|what|who|whom|when|where|which|me|my|show|find|any|anything|all|some|video|videos|episode|episodes|watch|that|this|these|those|it|its|you|your|i|we|they|there|tell|please|related|stuff|things)$/;
+  var STOP = /^(the|a|an|of|about|on|in|and|or|to|with|for|from|by|at|is|was|were|are|did|does|do|how|why|what|who|whom|when|where|which|me|my|show|find|any|anything|all|some|video|videos|episode|episodes|watch|that|this|these|those|it|its|you|your|i|we|they|there|tell|please|related|stuff|things|not|no|nor|can|could|will|would|should|shall|may|might|must|has|have|had|be|been|being|am|than|then|so|just|really|very|too|also|if|but|as|into|out|up|down|over|under|more|most|much|many|his|her|him|she|he|their|them|our|us|give|gave|get|got|say|said|tell|told|go|went|come|came|make|made|happen|happened|happens|going|know|think|thing|way|like|want|wants|take|took)$/;
   function norm(s) { return (s || '').toLowerCase().replace(/[’']/g, "'").replace(/-/g, ' ').replace(/[^a-z0-9'\/ ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
   function words(s) { return norm(s).split(' ').filter(Boolean); }
   function stem(w) {
@@ -98,6 +98,7 @@
         if (hl && first < 0) first = ws.length - 1;
       }
       if (first < 0 || n < Math.max(1, qs.length * 0.6)) return;
+      if (qs.length > 1 && dfMap) { var rare = 0, ri = 0; qs.forEach(function (t, k) { var w = wOf(t); if (w > rare) { rare = w; ri = k; } }); if (!hit[ri]) return; }
       var lo = Math.max(0, first - 8), hi = Math.min(ws.length - 1, first + 11), a = ws[lo].s, b = ws[hi].e, hits = [];
       for (var i = lo; i <= hi; i++) if (ws[i].hl) hits.push([ws[i].s - a, ws[i].e - a]);
       var next = chunks[ci + 1] ? chunks[ci + 1][0] : c[0] + 45, dur = Math.max(10, Math.min(90, next - c[0]));
@@ -108,12 +109,19 @@
     found.forEach(function (f) { if (out.length < 3 && out.every(function (o) { return Math.abs(o.at - f.at) > 20; })) out.push(f); });
     return out.sort(function (x, y) { return x.at - y.at; });
   }
+  /* how rare each word is across everything said in the videos: a rare word (jury) must be present, a common one (agree) alone proves little */
+  var dfMap = null, dfN = 0, dfFor = null;
+  function buildDF() {
+    if (dfMap || !transcripts) return; dfMap = {}; dfN = 0;
+    Object.keys(transcripts).forEach(function (id) { transcripts[id].forEach(function (c) { dfN++; var seen = {}; (norm(c[1]).split(' ')).forEach(function (w) { if (w.length < 3) return; var k = stem(w); if (!seen[k]) { seen[k] = 1; dfMap[k] = (dfMap[k] || 0) + 1; } }); }); });
+  }
+  function wOf(t) { if (!dfMap) return 1; var d = dfMap[stem(t)] || 0; return Math.max(0.15, Math.log((dfN + 1) / (d + 1))); }
   /* smart(q, videos) -> [{ v, s, why, at, snip, kind }] best first. kind: 'match' | 'related' */
   function smart(q, videos) {
     var toks = words(q).filter(function (w) { return !STOP.test(w); });
     if (!toks.length) toks = words(q);
     if (!toks.length) return [];
-    askTranscripts(); buildVocab(videos);
+    askTranscripts(); buildVocab(videos); buildDF();
     var fixed = toks.map(fixTypo), changed = fixed.join(' ') !== toks.join(' ');
     toks = fixed; if (changed) q = toks.join(' ');
     var ex = expand(q, toks), res = [], byId = {};
@@ -137,10 +145,11 @@
       }
       var at = 0, snip = '', moments = [];
       if (transcripts && transcripts[v.id]) {
-        var bestC = 0;
+        var bestC = 0, topW = 0; toks.forEach(function (t) { topW = Math.max(topW, wOf(t)); });
         transcripts[v.id].forEach(function (c) {
-          var tx = norm(c[1]), n = 0, bg = c[2] ? ' ' + c[2] + ' ' : '';
-          toks.forEach(function (t) { var st = stem(t); if (tx.indexOf(st) >= 0 || (bg && bg.indexOf(' ' + hash32(st) + ' ') >= 0)) n++; });
+          var tx = norm(c[1]), n = 0, bg = c[2] ? ' ' + c[2] + ' ' : '', wsum = 0, wgot = 0, topHit = true;
+          toks.forEach(function (t) { var st = stem(t), w = wOf(t), got = tx.indexOf(st) >= 0 || (bg && bg.indexOf(' ' + hash32(st) + ' ') >= 0); wsum += w; if (got) { n++; wgot += w; } else if (w === topW) topHit = false; });
+          if (toks.length > 1 && dfMap && (!topHit || wgot < wsum * 0.6)) n = 0;
           ex.direct.forEach(function (t) { if (t.length > 3 && tx.indexOf(t) >= 0) n += 0.5; });
           if (n > bestC) { bestC = n; at = c[0]; snip = c[1]; }
         });
