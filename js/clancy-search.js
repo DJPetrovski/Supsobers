@@ -1,8 +1,9 @@
 /* Lindsay Clancy archive search: words AND meaning, across every trial-day transcript and every document page.
-   Meaning search uses the same small model as the rest of the site, running in the visitor's browser (free, nothing sent anywhere).
+   Meaning search uses a small open model (BGE-small), running in the visitor's browser (free, nothing sent anywhere).
    Data: data/clancy-text.json (passages), data/clancy-embeddings.bin (one 384-number vector per passage). */
 (function () {
   var LIB = 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js', DIM = 384;
+  var QP = 'Represent this sentence for searching relevant passages: ';
   var T = null, V = null, ex = null, state = 'idle', waiters = [];
   var STOP = /^(the|a|an|and|or|of|to|in|on at is was were did do does what who when where why how about for with from that this it he she they her his their i you me my)$/;
   function jget(p) { return fetch(p).then(function (r) { if (!r.ok) throw new Error(p); return r.json(); }); }
@@ -14,7 +15,7 @@
     var lib = import(LIB).then(function (L) {
       L.env.allowRemoteModels = false; L.env.allowLocalModels = true; L.env.localModelPath = new URL('models/', document.baseURI).href;
       try { L.env.backends.onnx.wasm.numThreads = 1; } catch (e) {}
-      return L.pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', { quantized: true });
+      return L.pipeline('feature-extraction', 'Xenova/bge-small-en-v1.5', { quantized: true });
     });
     Promise.all([loadText(), bin, lib]).then(function (r) {
       V = new Int8Array(r[1]); ex = r[2];
@@ -39,7 +40,7 @@
     return new Promise(function (res) {
       function run() {
         if (state !== 'ready') return res([]);
-        ex([q], { pooling: 'mean', normalize: true }).then(function (o) {
+        ex([QP + q], { pooling: 'mean', normalize: true }).then(function (o) {
           var qv = o.data, n = T.length, out = [];
           for (var i = 0; i < n; i++) { var d = 0, b = i * DIM; for (var k = 0; k < DIM; k++) d += qv[k] * V[b + k]; out.push({ i: i, s: d / 127 }); }
           out.sort(function (a, b) { return b.s - a.s; }); res(out.slice(0, 40));
@@ -52,17 +53,24 @@
   function search(q) {
     loadMeaning();
     return loadText().then(function () {
-      var kw = keyword(q);
+      var ws = words(q), kw = keyword(q);
       return meaning(q).then(function (m) {
-        var seen = {}, hits = [];
-        function add(r, why) {
-          var c = T[r.i], key = c.k + c.id + ':' + Math.floor(c.at / (c.k === 'v' ? 120 : 1));
+        var cand = {}, ready = state === 'ready';
+        m.forEach(function (r) { cand[r.i] = { i: r.i, sem: r.s, kw: 0 }; });
+        kw.forEach(function (r) { (cand[r.i] = cand[r.i] || { i: r.i, sem: 0, kw: 0 }).kw = Math.min(1.5, r.s); });
+        var list = Object.keys(cand).map(function (k) {
+          var c = cand[k]; c.s = ready ? c.sem + 0.06 * Math.min(1, c.kw) : c.kw; return c;
+        }).sort(function (a, b) { return b.s - a.s; });
+        var top = list.length ? list[0].s : 0, seen = {}, dup = {}, hits = [];
+        list.forEach(function (r) {
+          if (hits.length >= 24) return;
+          if (ready && r.sem < top - 0.14 && r.kw < 1) return;
+          var c = T[r.i], key = c.k + c.id + ':' + Math.floor(c.at / (c.k === 'v' ? 150 : 1));
           if (seen[key]) return; seen[key] = 1;
-          hits.push({ c: c, why: why, s: r.s });
-        }
-        kw.slice(0, 12).forEach(function (r) { add(r, 'words'); });
-        m.filter(function (r) { return r.s > 0.28; }).slice(0, 14).forEach(function (r) { add(r, 'meaning'); });
-        return { hits: hits.slice(0, 24), meaning: state === 'ready' };
+          var sig = c.x.slice(0, 90).toLowerCase(); if (dup[sig]) return; dup[sig] = 1;
+          hits.push({ c: c, why: r.kw >= 1 && r.sem ? 'words + meaning' : (r.sem && ready ? 'meaning' : 'words'), s: r.s });
+        });
+        return { hits: hits, meaning: ready };
       });
     });
   }

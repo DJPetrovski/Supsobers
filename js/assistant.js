@@ -106,6 +106,32 @@
       for (var i = 0; i < PAGES.length; i++) if (PAGES[i][1].test(t)) { var dest = PAGES[i][0]; reply('Taking you to ' + (dest === 'web' ? 'It\'s All Connected' : dest === 'half' ? 'My Better Half' : dest) + '.'); closePanel(); go(dest); return; }
     }
     var q = t.replace(/^(please |hey |ok |okay )+/, '').replace(/^(play|watch|find|search( for)?|look (up|for)|show me|i want to (watch|see)|can you (find|play))\s+/, '').replace(/^(a |an |the |some |any )/, '');
+    function tryAnswer(fail) {
+      if (!(window.AskAI && window.SS && SS.semantic)) return fail();
+      var w2 = say('Looking through the videos...', false);
+      AskAI.enabled().then(function (on) {
+        if (!on) { w2.remove(); return fail(); }
+        if (SS.loadTranscripts) SS.loadTranscripts(); var tw = SS.hasTranscripts && SS.hasTranscripts() ? Promise.resolve() : new Promise(function (ok) { document.addEventListener('ss:transcripts', function () { ok(); }, { once: true }); setTimeout(ok, 25000); });
+        return tw.then(function () { return SS.semantic.query(q); }).then(function (hits) {
+          var ps = [];
+          hits.forEach(function (h) {
+            if (h.at < 0 || h.s < 0.44 || ps.length >= 8) return;
+            var v = vids().filter(function (x) { return x.id === h.id; })[0], tr = SS.transcript && SS.transcript(h.id), c = tr && tr.filter(function (x) { return x[0] === h.at; })[0];
+            if (v && c && ps.every(function (p) { return p.v.id !== v.id || Math.abs(p.at - h.at) >= 60; })) ps.push({ l: v.title + ' at ' + Math.floor(h.at / 60) + ':' + ('0' + Math.floor(h.at % 60)).slice(-2), x: c[1], v: v, at: h.at });
+          });
+          if (!ps.length) { w2.remove(); return fail(); }
+          return AskAI.ask(q, ps.map(function (p) { return { l: p.l, x: p.x }; }), 'site').then(function (t) {
+            w2.remove(); var b = say('', true); b.textContent = '';
+            AskAI.render(b, t, function (n) { var p = ps[n - 1]; if (!p) return null; var a = el('a', '', '[' + n + ']'); a.href = '#'; a.addEventListener('click', function (e) { e.preventDefault(); closePanel(); SS.openPlayer(p.v, p.at); }); return a; });
+            b.appendChild(el('small', 'as-note', ' Tap a number to play that moment.'));
+          });
+        });
+      }).catch(function () { w2.remove(); fail(); });
+    }
+    var isQuestion = /^(what|why|how|who|whom|when|where|which|did|does|do|is|was|were|are|can|could|tell me|explain|has|have)\b/.test(t) && q.split(' ').length >= 4;
+    if (isQuestion && window.AskAI) return tryAnswer(function () { rest(); });
+    rest();
+    function rest() {
     var res = window.SS && SS.searchAll ? SS.searchAll(q) : null;
     var hits = res ? res.videos.map(function (x) { return x.v; }) : [];
     if (hits.length) {
@@ -118,6 +144,9 @@
     if (res && (res.merch.length || res.story.length || res.more.length || res.ab.length)) {
       reply('No videos match, but I found other things on the site.'); chips([{ label: 'See results for "' + q + '"', run: function () { closePanel(); SS.openSearch(q); } }]); return;
     }
+    if (window.AskAI && q.split(' ').length >= 3) return tryAnswer(notFound);
+    notFound();
+    function notFound() {
     if (cfg.endpoint) {
       var wait = say('Thinking...', false);
       fetch(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: raw, history: history.slice(-8), page: (location.hash || '#home').slice(1), video: now ? { id: now.id, title: now.title } : null }) })
@@ -126,6 +155,8 @@
       return;
     }
     reply('I did not find "' + q + '" on the site. Try one of these topics, or I can look it up on the web:'); topicChips(5); chips(webLinks(q));
+    }
+    }
   }
 
   /* ---------- listening ---------- */

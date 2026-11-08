@@ -1,5 +1,6 @@
-// Supabase Edge Function: clancy-answer
-// Writes a short, cited answer to a visitor's question from passages the Clancy archive search already found.
+// Supabase Edge Function: ask
+// Writes a short, cited answer to a visitor's question from passages the site's own search already found.
+// Used by the Lindsay Clancy archive (scope "clancy") and by the rest of supsobers.com (scope "site").
 // The browser does the searching; this function only reads the passages it is handed and asks Claude to answer from them.
 // Secrets: ANTHROPIC_API_KEY (required). Optional: CLANCY_MODEL (default claude-haiku-5-5), ALLOWED_ORIGINS (comma list, default supsobers.com).
 const ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") || "https://supsobers.com,https://www.supsobers.com").split(",").map((s) => s.trim());
@@ -11,7 +12,7 @@ const cors = (o: string) => ({
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Vary": "Origin",
 });
-const SYSTEM = `You answer questions for a research archive of Commonwealth v. Lindsay Clancy (Plymouth Superior Court, Massachusetts; mistrial Sept. 4, 2026).
+const CLANCY = `You answer questions for a research archive of Commonwealth v. Lindsay Clancy (Plymouth Superior Court, Massachusetts; mistrial Sept. 4, 2026).
 You are given numbered passages: auto-captioned trial video (speakers are not labeled, the text may contain misheard words and names) and OCR text of court documents.
 Rules:
 - Answer ONLY from the passages. If they do not answer the question, say so plainly and say what they do cover. Never use outside knowledge or guess.
@@ -19,6 +20,12 @@ Rules:
 - Testimony is what a witness said under oath, not an established fact. Attribute it ("a witness testified...", "the warrant affidavit states..."). When witnesses disagree, say so.
 - Be neutral and complete. No moralizing, no commentary, no speculation about guilt. Do not editorialize about the people involved.
 - Keep it under 180 words. Plain sentences. No headings.`;
+const SITE = `You answer questions for supsobers.com, the site of the YouTube channel Sobering Stories (host: DJ). You are given numbered passages from the channel's own video transcripts (auto-captioned, so names and words may be misheard) with the video title and time.
+Rules:
+- Answer ONLY from the passages. If they do not answer the question, say so plainly and say what they do cover. Never use outside knowledge, never guess.
+- Cite every claim with the passage number in square brackets, like [2]. Several numbers are fine: [1][3].
+- Say which video it comes from when helpful ("In the video X, ..."). What a video says is the video's claim, not an established fact; attribute it.
+- Neutral and direct. No moralizing. Keep it under 160 words. Plain sentences. No headings.`;
 const hits: Record<string, number[]> = {};
 Deno.serve(async (req) => {
   const o = req.headers.get("origin") || "";
@@ -40,7 +47,7 @@ Deno.serve(async (req) => {
   const r = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "x-api-key": KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-    body: JSON.stringify({ model: MODEL, max_tokens: 500, system: SYSTEM, messages: [{ role: "user", content }] }),
+    body: JSON.stringify({ model: MODEL, max_tokens: 500, system: b.scope === "site" ? SITE : CLANCY, messages: [{ role: "user", content }] }),
   });
   const d = await r.json().catch(() => ({}));
   const text = (d?.content || []).filter((c: any) => c.type === "text").map((c: any) => c.text).join("").trim();

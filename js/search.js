@@ -190,9 +190,30 @@
           rows.push(b); kids.push(b);
         });
       });
+      siteAnswer(q, host, order, vids);
       host.appendChild(el('p', 'gs-h', 'Also matches by meaning'));
       kids.forEach(function (k) { host.appendChild(k); });
       if (sel < 0) hilite(0);
+    });
+  }
+  /* AI-written answer from the best-matching transcript moments, shown on top when the answer feature is switched on (js/ask.js) */
+  function siteAnswer(q, host, order, vids) {
+    if (!window.AskAI || q.split(/\s+/).filter(Boolean).length < 3) return;
+    var ps = [];
+    order.forEach(function (g) {
+      var v = vids.filter(function (x) { return x.id === g.id; })[0], tr = SS.transcript && SS.transcript(g.id);
+      if (!v || !tr) return;
+      g.m.forEach(function (m) { var c = tr.filter(function (x) { return x[0] === m.at; })[0]; if (c && ps.length < 8) ps.push({ l: v.title + ' at ' + stampT(m.at), x: c[1], v: v, at: m.at }); });
+    });
+    if (!ps.length) return;
+    AskAI.enabled().then(function (on) {
+      if (!on) return;
+      var box = el('div', 'gs-ai'); box.appendChild(el('p', 'gs-h', 'Answer')); var body = el('div', 'gs-ai-t', 'Reading the best moments\u2026'); box.appendChild(body);
+      host.insertBefore(box, host.firstChild);
+      AskAI.ask(q, ps.map(function (p) { return { l: p.l, x: p.x }; }), 'site').then(function (t) {
+        AskAI.render(body, t, function (n) { var p = ps[n - 1]; if (!p) return null; var a = el('a', 'gs-ai-c', '[' + n + ']'); a.href = '#'; a.title = p.l; a.addEventListener('click', function (e) { e.preventDefault(); closePanel(); SS.openPlayer(p.v, p.at); }); return a; });
+        box.appendChild(el('small', 'gs-ai-n', 'Written by AI from what is said in the videos (auto-captions can contain errors). Tap a number to play that moment.'));
+      }).catch(function () { box.remove(); });
     });
   }
   function stampT(t) { var h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), sec = ('0' + Math.floor(t % 60)).slice(-2); return (h ? h + ':' + ('0' + m).slice(-2) : m) + ':' + sec; }

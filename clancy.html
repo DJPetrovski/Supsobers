@@ -42,6 +42,7 @@ footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;borde
 #lb .bar button,#lb .bar a{font:14px system-ui,sans-serif;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:7px 12px;cursor:pointer;text-decoration:none}
 #lb .t{flex:1;min-width:140px;color:var(--dim)}#lb img{flex:1;min-height:0;object-fit:contain;width:100%}
 .hit{border-left:3px solid var(--line)}.hit .why{font:11px system-ui,sans-serif;color:var(--dim);float:right}
+#ans{border:1px solid var(--ember);background:#1a0809;border-radius:8px;padding:12px 14px;margin:0 0 12px;font:15px/1.55 system-ui,sans-serif}#ans b{font:12px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ember);display:block;margin-bottom:6px}#ans small{display:block;color:var(--dim);margin-top:8px;font-size:12px}#ans a{text-decoration:none;font-weight:600}
 mark{background:#5a0f15;color:#fff;border-radius:2px}.ai{font:13px system-ui,sans-serif;color:var(--dim);margin:0 0 10px}
 </style></head><body>
 <div id="gate" role="dialog" aria-modal="true" aria-labelledby="gt"><div>
@@ -56,11 +57,11 @@ mark{background:#5a0f15;color:#fff;border-radius:2px}.ai{font:13px system-ui,san
 <div class="notice"><b>Context.</b> Video comes from the Associated Press and other outlets' public streams. Documents are those made public by the court, the District Attorney and others. Items that are sealed or not posted are listed as such, not summarized.</div>
 <div class="tabs" role="tablist" id="tabs"></div>
 <input id="q" type="search" placeholder="Ask the archive: a witness, a date, a question, anything said in court" autocomplete="off">
-<p class="ai" id="ai">Searches every trial-day transcript and every document page, by words and by meaning.</p>
+<p class="ai" id="ai">Ask a question in plain words. It finds the relevant moments in the trial videos and the documents, by meaning.</p>
 <div id="list"></div><p class="meta" id="m"></p>
 <div id="lb" role="dialog" aria-modal="true"><div class="bar"><span class="t" id="lbt"></span><button id="lbp" type="button">&larr; Prev</button><button id="lbn" type="button">Next &rarr;</button><a id="lbd" download>Download</a><button id="lbx" type="button">Close</button></div><img id="lbi" alt=""></div>
 <footer>New developments are added here as they come out. Have a public record or video that belongs in this archive? Send it through the Contact page. Primary source site: <a href="https://www.clancycase.com/" target="_blank" rel="noopener">clancycase.com</a>.</footer></div>
-<script>window.CL_V=3;</script><script src="js/clancy-search.js?v=1"></script>
+<script>window.CL_V=4;</script><script src="js/ask.js?v=1"></script><script src="js/clancy-search.js?v=3"></script>
 <script>
 (function(){
 var D=null,tab="trial",q=document.getElementById("q"),list=document.getElementById("list");
@@ -92,14 +93,20 @@ var st=0;q.addEventListener("input",function(){clearTimeout(st);if(q.value.trim(
 function hl(t,qs){var ws=ClancySearch.words(qs);var s=e(t);ws.forEach(function(w){s=s.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return s}
 function snip(x,qs){var ws=ClancySearch.words(qs),lo=x.toLowerCase(),p=-1;for(var i=0;i<ws.length&&p<0;i++)p=lo.indexOf(ws[i]);var a=Math.max(0,(p<0?0:p)-120);return(a?"\u2026":"")+x.slice(a,a+380)+(a+380<x.length?"\u2026":"")}
 function ts(s){var h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60;return(h?h+":"+(m<10?"0":""):"")+m+":"+(r<10?"0":"")+r}
+function ask(qs,hits){var box=document.getElementById("ans");if(!box||!window.AskAI||!hits.length||ClancySearch.words(qs).length<2)return;
+ AskAI.enabled().then(function(on){if(!on)return;box.hidden=false;box.innerHTML="<b>Answer</b>Reading the most relevant testimony and documents\u2026";
+ var ps=hits.slice(0,8).map(function(x){return{l:x.c.k==="v"?x.c.l+" at "+ts(x.c.at):x.c.l+", page "+x.c.at,x:x.c.x}});
+ AskAI.ask(qs,ps,"clancy").then(function(t){if(q.value.trim()!==qs)return;box.innerHTML="<b>Answer from the testimony and documents</b>";var d=document.createElement("div");box.appendChild(d);
+  AskAI.render(d,t,function(n){if(n<1||n>ps.length)return null;var a=document.createElement("a");a.href="#hit-"+n;a.textContent="["+n+"]";return a});
+  var s=document.createElement("small");s.textContent="Written by AI from the passages below, which are automatic captions and scanned documents and may contain errors. Testimony is what witnesses said, not established fact. Check the numbered passages and the video.";box.appendChild(s)}).catch(function(){box.hidden=true})})}
 function deep(){var qs=q.value.trim();[].forEach.call(document.querySelectorAll("#tabs button"),function(b){b.setAttribute("aria-selected","false")});
  list.innerHTML='<p class="meta">Searching the transcripts and documents\u2026</p>';
  ClancySearch.search(qs).then(function(r){if(q.value.trim()!==qs)return;var o="";
-  document.getElementById("ai").textContent=r.meaning?"Matched by words and by meaning across all transcripts and documents.":"Matched by words. The meaning search is still loading or unavailable.";
-  r.hits.forEach(function(x){var c=x.c;
-   if(c.k==="v")o+='<div class="row hit"><span class="why">'+x.why+'</span><span class="k">'+e(c.l)+' · '+ts(c.at)+'</span><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="https://www.youtube.com/watch?v='+e(c.id)+'&t='+c.at+'s" target="_blank" rel="noopener">Watch from '+ts(c.at)+'</a><button type="button" class="seek" data-yt="'+e(c.id)+'" data-at="'+c.at+'" style="all:unset;color:var(--ember);cursor:pointer;text-decoration:underline">Play here</button></div></div>';
-   else o+='<div class="row hit"><span class="why">'+x.why+'</span><span class="k">Document · page '+c.at+'</span><h3>'+e(c.l)+'</h3><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="'+e(c.u)+'#page='+c.at+'" target="_blank" rel="noopener">Open page '+c.at+'</a></div></div>'});
-  list.innerHTML=o||'<p class="meta">Nothing found. Try different words, or ask it as a question.</p>';document.getElementById("m").textContent=r.hits.length+" result"+(r.hits.length===1?"":"s")})}
+  document.getElementById("ai").textContent=r.meaning?"Ranked by meaning across all transcripts and documents. Ask it as a question.":"Matched by words. The meaning search is still loading or unavailable.";
+  window.CL_HITS=r.hits;r.hits.forEach(function(x,ix){var c=x.c,N=ix+1;
+   if(c.k==="v")o+='<div class="row hit" id="hit-'+N+'"><span class="why">'+x.why+'</span><span class="k">['+N+'] '+e(c.l)+' · '+ts(c.at)+'</span><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="https://www.youtube.com/watch?v='+e(c.id)+'&t='+c.at+'s" target="_blank" rel="noopener">Watch from '+ts(c.at)+'</a><button type="button" class="seek" data-yt="'+e(c.id)+'" data-at="'+c.at+'" style="all:unset;color:var(--ember);cursor:pointer;text-decoration:underline">Play here</button></div></div>';
+   else o+='<div class="row hit" id="hit-'+N+'"><span class="why">'+x.why+'</span><span class="k">['+N+'] Document · page '+c.at+'</span><h3>'+e(c.l)+'</h3><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="'+e(c.u)+'#page='+c.at+'" target="_blank" rel="noopener">Open page '+c.at+'</a></div></div>'});
+  list.innerHTML='<div id="ans" hidden></div>'+(o||'<p class="meta">Nothing found. Try different words, or ask it as a question.</p>');ask(qs,r.hits);document.getElementById("m").textContent=r.hits.length+" result"+(r.hits.length===1?"":"s")})}
 
 list.addEventListener("click",function(ev){var sk=ev.target.closest(".seek");if(sk){var fr=document.createElement("iframe");fr.src="https://www.youtube-nocookie.com/embed/"+sk.dataset.yt+"?autoplay=1&rel=0&start="+sk.dataset.at;fr.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";fr.allowFullscreen=true;sk.closest(".row").appendChild(fr);sk.remove();return}
  var gb=ev.target.closest("[data-lb]");if(gb){lb(+gb.dataset.lb);return}
