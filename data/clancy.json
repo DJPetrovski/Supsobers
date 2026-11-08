@@ -378,16 +378,173 @@
    "s": "Boston.com"
   },
   {
+   "date": "2026-09-14",
+   "t": "The judge impounds the juror list indefinitely after a juror's identity is exposed on social media.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
    "date": "2026-09-04",
    "t": "Judge declares a mistrial after the jury reports it cannot reach a unanimous decision. Clancy is expected to remain in a state psychiatric hospital. The DA says a retrial decision is coming.",
    "u": "https://www.wbur.org/news/2026/09/04/lindsay-clancy-murder-trial-verdict-massachusetts",
-   "s": "WBUR"
+   "s": "WBUR",
+   "m": "milestone"
+  },
+  {
+   "date": "2026-09-03",
+   "t": "The judge re-instructs the jury on reasonable doubt and directs it to keep deliberating.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com"
+  },
+  {
+   "date": "2026-09-01",
+   "t": "Deliberations continue. The jury tells the judge it cannot agree; a woman is arrested outside the courthouse for aggravated intimidation of a juror.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
+   "date": "2026-08-27",
+   "t": "Closing arguments. The judge instructs the jury and deliberations begin.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com",
+   "m": "milestone"
+  },
+  {
+   "date": "2026-08-24",
+   "t": "The judge denies a defense mistrial motion after a rebuttal witness raised religion, and reprimands the prosecution.",
+   "u": "https://www.cnn.com/2026/08/24/us/lindsay-clancy-trial-psychologist-rebuttal",
+   "s": "CNN"
+  },
+  {
+   "date": "2026-08-21",
+   "t": "The defense rests and the Commonwealth begins rebuttal.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com"
+  },
+  {
+   "date": "2026-08-10",
+   "t": "The defense case begins.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com"
+  },
+  {
+   "date": "2026-08-07",
+   "t": "The Commonwealth rests its case.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com"
+  },
+  {
+   "date": "2026-07-27",
+   "t": "Opening statements. Patrick Clancy begins testifying. Trial video is in the Trial days tab.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com",
+   "m": "milestone"
   },
   {
    "date": "2026-07-24",
    "t": "Judge impounds the 911 call and autopsy photographs at the request of the father; media may not record or display them. Both could still be presented to the jury and seen by the public in the courtroom.",
    "u": "https://www.nbcboston.com/news/local/lindsay-clancy-911-call-photos-ruling/3986717/",
    "s": "NBC Boston"
+  },
+  {
+   "date": "2026-07-20",
+   "t": "Jury selection begins. The father of the children files motions to restrict public display of the 911 call and autopsy photographs.",
+   "u": "https://archive.org/details/clancy-father-motion",
+   "s": "Internet Archive",
+   "m": "milestone"
+  },
+  {
+   "date": "2026-04-22",
+   "t": "The judge rejects a defense motion to reconsider that offered a written stipulation of involvement.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
+   "date": "2026-03-31",
+   "t": "The judge denies the defense request to split the trial so the jury would decide the facts before criminal responsibility.",
+   "u": "https://www.nbcboston.com/news/local/lindsay-clancy-murder-case-judge-issues-key-ruling/3925435/",
+   "s": "NBC Boston"
+  },
+  {
+   "date": "2026-02-20",
+   "t": "Clancy appears in person in a courtroom for the first time since her arrest, at a Plymouth Superior Court pretrial hearing.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com"
+  },
+  {
+   "date": "2025-12",
+   "t": "Defense attorney Kevin Reddington gives notice that he will pursue a not guilty by reason of mental illness defense.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
+   "date": "2025-11",
+   "t": "The defense seeks a change of venue to Boston. Judge William Sullivan denies it.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
+   "date": "2025-05",
+   "t": "The court hears argument on the defendant's psychiatric records and the reporter's notes. No public filing.",
+   "u": "https://www.courttv.com/news/lindsay-clancy-hearing-weighs-psych-records-and-reporters-notes/",
+   "s": "Court TV"
+  },
+  {
+   "date": "2025-03-19",
+   "t": "The New Yorker contests a court order to turn over recordings of its interviews with Patrick Clancy, citing the First Amendment.",
+   "u": "https://www.bostonglobe.com/2025/03/19/metro/lindsay-clancy-patrick-clancy-new-yorker-magazine-first-amendment/",
+   "s": "Boston Globe"
+  },
+  {
+   "date": "2024",
+   "t": "The court orders a psychiatric examination of the defendant and approves DNA testing. No public filing.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com"
+  },
+  {
+   "date": "2023-10-24",
+   "t": "Search warrant applications, affidavits and returns are unsealed, detailing evidence from the home and her internet search history.",
+   "u": "https://www.bostonglobe.com/2023/10/24/metro/lindsay-clancy-update/",
+   "s": "Boston Globe"
+  },
+  {
+   "date": "2023-10",
+   "t": "Clancy is arraigned in Superior Court, held at Tewksbury State Hospital rather than a courtroom, and pleads not guilty.",
+   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-on-charges-that-she-murdered-her-three-children/",
+   "s": "Plymouth County DA"
+  },
+  {
+   "date": "2023-09-15",
+   "t": "A Plymouth County grand jury indicts her on three counts of murder and three counts of strangulation.",
+   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-indicted-on-charges-that-she-murdered-her-three-children/",
+   "s": "Plymouth County DA",
+   "m": "milestone"
+  },
+  {
+   "date": "2023-02-07",
+   "t": "Clancy is arraigned in Plymouth District Court by video from her hospital bed and pleads not guilty.",
+   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-in-murder-of-her-three-children/",
+   "s": "Plymouth County DA",
+   "m": "milestone"
+  },
+  {
+   "date": "2023-01-27",
+   "t": "Callan is declared brain dead and removed from life support. Prosecutors add a third murder charge.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
+   "date": "2023-01-25",
+   "t": "An arrest warrant is issued charging strangulation, assault and battery with a dangerous weapon, and two counts of murder.",
+   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+   "s": "Wikipedia"
+  },
+  {
+   "date": "2023-01-24",
+   "t": "Cora, Dawson and Callan Clancy are killed at the family home in Duxbury, Massachusetts. Their mother, Lindsay Clancy, falls from a second-story window and is seriously injured.",
+   "u": "https://www.clancycase.com/timeline",
+   "s": "clancycase.com",
+   "m": "start"
   }
  ],
  "sources": [
