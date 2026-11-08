@@ -841,30 +841,5 @@
    "u": "https://www.bostonglobe.com/2026/08/04/metro/lindsay-clancy-trial-patrick-civil-suits/",
    "s": "Boston Globe"
   }
- ],
- "claims": [
-  {
-   "claim": "Patrick Clancy was in a relationship with his current partner before January 2023, earlier than he has said.",
-   "status": "Not supported by the material in this archive.",
-   "record": "A search of all 27 trial days, the intro stream and the 299-page search warrant file found no testimony, exhibit or affidavit describing any relationship by Patrick Clancy before the children's deaths. The documented timeline is that he moved to New York in spring 2023, filed for divorce in February 2024, moved in with a new partner in 2025 and married in April 2026. The partner is not named in the sources used here and is not named in this archive.",
-   "sources": [
-    {
-     "t": "Killing of the Clancy children (Wikipedia)",
-     "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children"
-    }
-   ]
-  },
-  {
-   "claim": "Online theories that Patrick Clancy was involved in the children's deaths.",
-   "status": "Circulates online; not part of the trial record.",
-   "record": "The prosecution and defense positions at trial centered on Lindsay Clancy's mental state, not on any other person's involvement. Reporting on the online theories describes them as internet speculation.",
-   "sources": [
-    {
-     "t": "Online sleuthing and the vitriol against Patrick Clancy (Variety)",
-     "u": "https://variety.com/2026/digital/news/patrick-clancy-didnt-do-it-why-does-the-internet-think-hes-guilty-1236838968/"
-    }
-   ]
-  }
- ],
- "claimsNote": "This tab tracks widely repeated claims about the case and what the public record shows on each. If you have a specific document, exhibit or testimony timestamp that supports a claim, send it through the Contact page and it will be added with its source."
+ ]
 }
