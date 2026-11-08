@@ -7,7 +7,15 @@ import json, os, re, glob, html
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 SRC = os.path.join(ROOT, "clancy-src")
 D = json.load(open(os.path.join(ROOT, "data", "clancy.json")))
-CH = 60
+CH = 90      # seconds of speech per passage
+STRIDE = 60  # a new passage starts every 60 s, so passages overlap and an answer is never cut in half
+FILL = re.compile(r"\b(um+|uh+|er|erm|hmm+|mm+|ah)\b[,.]?\s*", re.I)
+def clean(t):
+    t = re.sub(r"\[[^\]]*\]", " ", t)
+    t = FILL.sub(" ", t)
+    t = re.sub(r"\b(\w+)( \1\b)+", r"\1", t, flags=re.I)  # 'I I I want' -> 'I want'
+    return re.sub(r"\s+", " ", t).strip()
+
 
 def ts(t):
     p = [float(x) for x in t.replace(",", ".").split(":")]
@@ -40,13 +48,16 @@ for h in D["hearings"]:
 
 for p in sorted(glob.glob(os.path.join(SRC, "captions", "t_*.en.vtt"))):
     vid = os.path.basename(p)[2:13]
-    cues, cur, start = vtt(p), [], None
-    for t, s in cues:
-        if start is None: start = t
-        cur.append(s)
-        if t - start >= CH:
-            chunks.append({"k": "v", "id": vid, "at": int(start), "l": titles.get(vid, vid), "x": " ".join(cur)}); cur, start = [], None
-    if cur: chunks.append({"k": "v", "id": vid, "at": int(start), "l": titles.get(vid, vid), "x": " ".join(cur)})
+    cues = vtt(p)
+    if not cues: continue
+    end, t0 = cues[-1][0], 0
+    j = 0
+    while t0 <= end:
+        seg = [s for t, s in cues if t0 <= t < t0 + CH]
+        x = clean(" ".join(seg))
+        if len(x) > 80:
+            chunks.append({"k": "v", "id": vid, "at": int(t0), "l": titles.get(vid, vid), "x": x})
+        t0 += STRIDE
 
 DOCS = {  # file stem -> (label, url shown to people)
     "warrants": ("Search warrant applications, affidavits and returns", "media/clancy/docs/search-warrants.pdf"),
