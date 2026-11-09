@@ -51,4 +51,4 @@ var h="";(d.items||[]).forEach(function(i){var e=function(s){return String(s||""
 h+='<a class="card" href="'+e(i.url)+'"><span class="k">'+e(i.type)+(i.date?' · '+e(i.date):'')+'</span><h2>'+e(i.title)+'</h2><p>'+e(i.description)+'</p><span class="go">'+e(i.cta||"Open")+' &rarr;</span></a>'});
 document.getElementById("list").innerHTML=h;document.getElementById("m").textContent=(d.items||[]).length+" item"+((d.items||[]).length===1?"":"s")+" so far";
 }).catch(function(){document.getElementById("m").textContent="Could not load the archive list."});
-</script></body></html>
+</script><script src="js/visitors.js?v=1" defer></script></body></html>
