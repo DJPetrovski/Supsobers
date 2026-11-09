@@ -1,861 +1,873 @@
 {
- "updated": "2026-11-08",
- "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. Prosecutors say they intend to retry Lindsay Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Motions to dismiss on double jeopardy, for holdout juror records and for a gag order are under advisement; next hearing Nov. 16, 2026. Clancy remains in custody.",
- "trial": [
-  {
-   "day": 0,
-   "date": null,
-   "title": "Introductory AP stream",
-   "yt": "jWETnxWhZEc"
-  },
-  {
-   "day": 1,
-   "date": "2026-07-27",
-   "title": "Opening statements; Patrick Clancy testimony begins",
-   "yt": "1swqtF0njEM"
-  },
-  {
-   "day": 2,
-   "date": "2026-07-29",
-   "title": "Patrick Clancy testimony continues; errands; discovery of the children",
-   "yt": "WC9TXPdbTiw"
-  },
-  {
-   "day": 3,
-   "date": "2026-07-30",
-   "title": "First responders' testimony",
-   "yt": "QccQj6ii2AA"
-  },
-  {
-   "day": 4,
-   "date": "2026-07-31",
-   "title": "Jury site visits; emergency room physicians",
-   "yt": "u6mb1-ISWeA"
-  },
-  {
-   "day": 5,
-   "date": "2026-08-03",
-   "title": "Further emergency room physician testimony",
-   "yt": "eLGLPrJqeIU"
-  },
-  {
-   "day": 6,
-   "date": "2026-08-04",
-   "title": "Surgeon's testimony; police execute search warrant",
-   "yt": "QFMgqDhcctY"
-  },
-  {
-   "day": 7,
-   "date": "2026-08-05",
-   "title": "Toxicology results; family nanny testimony",
-   "yt": "ip4mF-36cEY"
-  },
-  {
-   "day": 8,
-   "date": "2026-08-06",
-   "title": "Medical examiner testimony on autopsies; pediatrician and teachers",
-   "yt": "ggHh06HUQ-s"
-  },
-  {
-   "day": 9,
-   "date": "2026-08-07",
-   "title": "Additional medical and childcare witnesses; Commonwealth rests",
-   "yt": "f8cM-Np-qyg"
-  },
-  {
-   "day": 10,
-   "date": "2026-08-10",
-   "title": "Defense case begins; psychiatrists testify",
-   "yt": "W_0EFNZffrI"
-  },
-  {
-   "day": 11,
-   "date": "2026-08-11",
-   "title": "Psychiatric nurse practitioner testimony",
-   "yt": "9Kb8h7x_v4Y"
-  },
-  {
-   "day": 12,
-   "date": "2026-08-12",
-   "title": "Mental health counselor; defense-called medical examiner",
-   "yt": "sG-txwieA5c"
-  },
-  {
-   "day": 13,
-   "date": "2026-08-13",
-   "title": "Digital forensic evidence; web searches from devices",
-   "yt": "DCBWoWhsTpA"
-  },
-  {
-   "day": 14,
-   "date": "2026-08-17",
-   "title": "Digital examiner; coworker and family testimony",
-   "yt": "1tyKO8mTdOM"
-  },
-  {
-   "day": 15,
-   "date": "2026-08-18",
-   "title": "Mother-in-law, clinical psychiatrist, forensic pathologist; parents' testimony",
-   "yt": "D5L_c9Mla1U"
-  },
-  {
-   "day": 16,
-   "date": "2026-08-19",
-   "title": "Clinical psychologist on postpartum psychosis",
-   "yt": "VQQb9BbgwHg"
-  },
-  {
-   "day": 17,
-   "date": "2026-08-20",
-   "title": "Hospital chaplain testimony; crowds outside courthouse",
-   "yt": "O4n7dElz4B0"
-  },
-  {
-   "day": 18,
-   "date": "2026-08-21",
-   "title": "Defense psychiatrist; defense rests; first Commonwealth rebuttal expert",
-   "yt": "kh-IIOUhPkc"
-  },
-  {
-   "day": 19,
-   "date": "2026-08-24",
-   "title": "Commonwealth rebuttal; cross-examination; mistrial motion denied",
-   "yt": "ox_mjjNIBeg"
-  },
-  {
-   "day": 20,
-   "date": "2026-08-25",
-   "title": "Kirk Heilbrun and Dr. Gregory Saathoff testimony",
-   "yt": "jJrmim2MRgo"
-  },
-  {
-   "day": 21,
-   "date": "2026-08-26",
-   "title": "Final rebuttal testimony on mental state and criminal responsibility",
-   "yt": "0df9TJdy1rM"
-  },
-  {
-   "day": 22,
-   "date": "2026-08-27",
-   "title": "Closing statements; jury instructions; deliberations begin",
-   "yt": "7DYnyiYwgiQ"
-  },
-  {
-   "day": 23,
-   "date": "2026-08-28",
-   "title": "Second day of deliberations; no verdict",
-   "yt": "WznETfwrbK8"
-  },
-  {
-   "day": 24,
-   "date": "2026-08-31",
-   "title": "Third day of deliberations; no verdict",
-   "yt": "s_tInPfCu5w"
-  },
-  {
-   "day": 25,
-   "date": "2026-09-01",
-   "title": "Fourth day of deliberations; no verdict",
-   "yt": "w9W_ti2TgfU"
-  },
-  {
-   "day": 26,
-   "date": "2026-09-02",
-   "title": "Fifth day of deliberations; no verdict",
-   "yt": "uLrimqjHSHw"
-  },
-  {
-   "day": 27,
-   "date": "2026-09-03",
-   "title": "Sixth day of deliberations; judge re-instructs on reasonable doubt",
-   "yt": "WD8_dQxZWAw"
-  },
-  {
-   "day": 28,
-   "date": "2026-09-04",
-   "title": "Mistrial declared. No video was published for this date.",
-   "yt": ""
-  }
- ],
- "hearings": [
-  {
-   "date": "2023-02",
-   "title": "District court arraignment",
-   "note": "Clancy appeared by video from Tewksbury State Hospital, pleaded not guilty and was held without bail.",
-   "links": [
+  "updated": "2026-11-09",
+  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss (manifest necessity for a mistrial), the motion to investigate the holdout juror, and the prosecution's gag order request. Prosecutors intend to retry Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Next hearing Nov. 16, 2026. Clancy remains in custody.",
+  "trial": [
     {
-     "t": "Full arraignment (courtCHOPT)",
-     "yt": "MBXClPdSU0A"
+      "day": 0,
+      "date": null,
+      "title": "Introductory AP stream",
+      "yt": "jWETnxWhZEc"
     },
     {
-     "t": "Prosecution and defense arguments (CBS Boston)",
-     "yt": "3ueFBcu-uW8"
+      "day": 1,
+      "date": "2026-07-27",
+      "title": "Opening statements; Patrick Clancy testimony begins",
+      "yt": "1swqtF0njEM"
+    },
+    {
+      "day": 2,
+      "date": "2026-07-29",
+      "title": "Patrick Clancy testimony continues; errands; discovery of the children",
+      "yt": "WC9TXPdbTiw"
+    },
+    {
+      "day": 3,
+      "date": "2026-07-30",
+      "title": "First responders' testimony",
+      "yt": "QccQj6ii2AA"
+    },
+    {
+      "day": 4,
+      "date": "2026-07-31",
+      "title": "Jury site visits; emergency room physicians",
+      "yt": "u6mb1-ISWeA"
+    },
+    {
+      "day": 5,
+      "date": "2026-08-03",
+      "title": "Further emergency room physician testimony",
+      "yt": "eLGLPrJqeIU"
+    },
+    {
+      "day": 6,
+      "date": "2026-08-04",
+      "title": "Surgeon's testimony; police execute search warrant",
+      "yt": "QFMgqDhcctY"
+    },
+    {
+      "day": 7,
+      "date": "2026-08-05",
+      "title": "Toxicology results; family nanny testimony",
+      "yt": "ip4mF-36cEY"
+    },
+    {
+      "day": 8,
+      "date": "2026-08-06",
+      "title": "Medical examiner testimony on autopsies; pediatrician and teachers",
+      "yt": "ggHh06HUQ-s"
+    },
+    {
+      "day": 9,
+      "date": "2026-08-07",
+      "title": "Additional medical and childcare witnesses; Commonwealth rests",
+      "yt": "f8cM-Np-qyg"
+    },
+    {
+      "day": 10,
+      "date": "2026-08-10",
+      "title": "Defense case begins; psychiatrists testify",
+      "yt": "W_0EFNZffrI"
+    },
+    {
+      "day": 11,
+      "date": "2026-08-11",
+      "title": "Psychiatric nurse practitioner testimony",
+      "yt": "9Kb8h7x_v4Y"
+    },
+    {
+      "day": 12,
+      "date": "2026-08-12",
+      "title": "Mental health counselor; defense-called medical examiner",
+      "yt": "sG-txwieA5c"
+    },
+    {
+      "day": 13,
+      "date": "2026-08-13",
+      "title": "Digital forensic evidence; web searches from devices",
+      "yt": "DCBWoWhsTpA"
+    },
+    {
+      "day": 14,
+      "date": "2026-08-17",
+      "title": "Digital examiner; coworker and family testimony",
+      "yt": "1tyKO8mTdOM"
+    },
+    {
+      "day": 15,
+      "date": "2026-08-18",
+      "title": "Mother-in-law, clinical psychiatrist, forensic pathologist; parents' testimony",
+      "yt": "D5L_c9Mla1U"
+    },
+    {
+      "day": 16,
+      "date": "2026-08-19",
+      "title": "Clinical psychologist on postpartum psychosis",
+      "yt": "VQQb9BbgwHg"
+    },
+    {
+      "day": 17,
+      "date": "2026-08-20",
+      "title": "Hospital chaplain testimony; crowds outside courthouse",
+      "yt": "O4n7dElz4B0"
+    },
+    {
+      "day": 18,
+      "date": "2026-08-21",
+      "title": "Defense psychiatrist; defense rests; first Commonwealth rebuttal expert",
+      "yt": "kh-IIOUhPkc"
+    },
+    {
+      "day": 19,
+      "date": "2026-08-24",
+      "title": "Commonwealth rebuttal; cross-examination; mistrial motion denied",
+      "yt": "ox_mjjNIBeg"
+    },
+    {
+      "day": 20,
+      "date": "2026-08-25",
+      "title": "Kirk Heilbrun and Dr. Gregory Saathoff testimony",
+      "yt": "jJrmim2MRgo"
+    },
+    {
+      "day": 21,
+      "date": "2026-08-26",
+      "title": "Final rebuttal testimony on mental state and criminal responsibility",
+      "yt": "0df9TJdy1rM"
+    },
+    {
+      "day": 22,
+      "date": "2026-08-27",
+      "title": "Closing statements; jury instructions; deliberations begin",
+      "yt": "7DYnyiYwgiQ"
+    },
+    {
+      "day": 23,
+      "date": "2026-08-28",
+      "title": "Second day of deliberations; no verdict",
+      "yt": "WznETfwrbK8"
+    },
+    {
+      "day": 24,
+      "date": "2026-08-31",
+      "title": "Third day of deliberations; no verdict",
+      "yt": "s_tInPfCu5w"
+    },
+    {
+      "day": 25,
+      "date": "2026-09-01",
+      "title": "Fourth day of deliberations; no verdict",
+      "yt": "w9W_ti2TgfU"
+    },
+    {
+      "day": 26,
+      "date": "2026-09-02",
+      "title": "Fifth day of deliberations; no verdict",
+      "yt": "uLrimqjHSHw"
+    },
+    {
+      "day": 27,
+      "date": "2026-09-03",
+      "title": "Sixth day of deliberations; judge re-instructs on reasonable doubt",
+      "yt": "WD8_dQxZWAw"
+    },
+    {
+      "day": 28,
+      "date": "2026-09-04",
+      "title": "Mistrial declared. No video was published for this date.",
+      "yt": ""
     }
-   ]
-  },
-  {
-   "date": "2023-10",
-   "title": "Superior Court arraignment",
-   "note": "Held at the hospital rather than in a courtroom, after the Sept. 15, 2023 grand jury indictments.",
-   "links": [
+  ],
+  "hearings": [
     {
-     "t": "DA news release",
-     "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-on-charges-that-she-murdered-her-three-children/"
+      "date": "2023-02",
+      "title": "District court arraignment",
+      "note": "Clancy appeared by video from Tewksbury State Hospital, pleaded not guilty and was held without bail.",
+      "links": [
+        {
+          "t": "Full arraignment (courtCHOPT)",
+          "yt": "MBXClPdSU0A"
+        },
+        {
+          "t": "Prosecution and defense arguments (CBS Boston)",
+          "yt": "3ueFBcu-uW8"
+        }
+      ]
+    },
+    {
+      "date": "2023-10",
+      "title": "Superior Court arraignment",
+      "note": "Held at the hospital rather than in a courtroom, after the Sept. 15, 2023 grand jury indictments.",
+      "links": [
+        {
+          "t": "DA news release",
+          "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-on-charges-that-she-murdered-her-three-children/"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-31",
+      "title": "Bifurcation ruling",
+      "note": "The defense asked to split the trial so the jury decides the facts before criminal responsibility. The court denied it. The filings are not public.",
+      "links": []
+    },
+    {
+      "date": "",
+      "title": "Dispute over New Yorker interview recordings",
+      "note": "Prosecutors sought recordings of the magazine's interviews with Patrick Clancy. The magazine resisted on First Amendment grounds and the dispute delayed the trial. The filings are not public.",
+      "links": []
+    },
+    {
+      "date": "",
+      "title": "Dispute over psychiatric records",
+      "note": "Prosecutors sought Clancy's medical records. Argued together with the reporter's notes question. The filings are not public.",
+      "links": []
+    },
+    {
+      "date": "2026-07-20",
+      "title": "Request by the father of the child victims",
+      "note": "A July 24 order granted part of it. The order is described by the source site but not posted.",
+      "links": [
+        {
+          "t": "Request (Internet Archive)",
+          "u": "https://archive.org/details/clancy-father-motion"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "title": "Mistrial and emergency petition",
+      "note": "The judge declared a mistrial. The Supreme Judicial Court denied the defense's emergency stay request.",
+      "links": [
+        {
+          "t": "Emergency petition to the SJC (DocumentCloud)",
+          "u": "https://www.documentcloud.org/documents/28601634-adobe-scan-sep-4-2026/"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "title": "First hearing after the mistrial",
+      "note": "Defense renewed its motion for a required finding of not guilty and sought release of impounded juror notes and sidebar records. The judge took matters under advisement and set Nov. 2 for the double jeopardy motion, the holdout juror motion and the Commonwealth's gag order request.",
+      "links": [
+        {
+          "t": "Hearing livestream (Law & Crime)",
+          "yt": "TfaD0OWBXWg"
+        },
+        {
+          "t": "Live updates (CBS Boston)",
+          "u": "https://www.cbsnews.com/boston/live-updates/lindsay-clancy-murder-trial-mistrial-hearing-watch-live-updates/"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "title": "Ruling: motion for required finding of not guilty denied",
+      "note": "Judge William Sullivan found the evidence sufficient to send the case to a jury and left the criminal responsibility question to the jury.",
+      "links": [
+        {
+          "t": "CBS Boston report",
+          "u": "https://www.cbsnews.com/boston/news/lindsay-clancy-motion-not-guilty-ruling-judge-william-sullivan/"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "title": "Motions hearing: double jeopardy, holdout juror records, gag order",
+      "note": "All three motions taken under advisement. Prosecutors say they intend a retrial; no date set, March 2027 floated. Sharp exchange between defense counsel and the judge over naming the juror in open court.",
+      "links": [
+        {
+          "t": "Hearing livestream (NBC10 Boston)",
+          "yt": "ra4wL1i-WwM"
+        },
+        {
+          "t": "Commonwealth Confidential recap (NBC10 Boston)",
+          "yt": "FcVow0adpFs"
+        },
+        {
+          "t": "Live coverage (Boston.com)",
+          "u": "https://www.boston.com/news/crime/2026/11/02/livestream-lindsay-clancy-hearing-monday-nov-2-2026/"
+        },
+        {
+          "t": "ABC News report",
+          "u": "https://abcnews.com/US/lindsay-clancy-due-court-hearing-future-criminal-case/story?id=137756310"
+        },
+        {
+          "t": "CNN report",
+          "u": "https://www.cnn.com/2026/11/02/us/lindsay-clancy-court-hearing-retrial"
+        },
+        {
+          "t": "NBC News report",
+          "u": "https://www.nbcnews.com/news/us-news/lindsay-clancy-returns-court-defense-seeks-block-retrial-murder-case-rcna596609"
+        },
+        {
+          "t": "Courthouse News report",
+          "u": "https://www.courthousenews.com/prosecutors-float-retrial-for-lindsay-clancy-at-hearing-to-dismiss-murder-case/"
+        },
+        {
+          "t": "Boston Globe report",
+          "u": "https://www.bostonglobe.com/2026/11/02/metro/lindsay-clancy-retrial-juror-gag-order-dismissal/"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Scheduled: status / trial assignment conference, 10 a.m.",
+      "note": "Judge hopes to rule on the pending motions. Upcoming, not yet held.",
+      "links": []
     }
-   ]
-  },
-  {
-   "date": "2026-03-31",
-   "title": "Bifurcation ruling",
-   "note": "The defense asked to split the trial so the jury decides the facts before criminal responsibility. The court denied it. The filings are not public.",
-   "links": []
-  },
-  {
-   "date": "",
-   "title": "Dispute over New Yorker interview recordings",
-   "note": "Prosecutors sought recordings of the magazine's interviews with Patrick Clancy. The magazine resisted on First Amendment grounds and the dispute delayed the trial. The filings are not public.",
-   "links": []
-  },
-  {
-   "date": "",
-   "title": "Dispute over psychiatric records",
-   "note": "Prosecutors sought Clancy's medical records. Argued together with the reporter's notes question. The filings are not public.",
-   "links": []
-  },
-  {
-   "date": "2026-07-20",
-   "title": "Request by the father of the child victims",
-   "note": "A July 24 order granted part of it. The order is described by the source site but not posted.",
-   "links": [
+  ],
+  "documents": [
     {
-     "t": "Request (Internet Archive)",
-     "u": "https://archive.org/details/clancy-father-motion"
+      "t": "Search warrant applications, affidavits and returns (unsealed Oct. 2023)",
+      "s": "Hosted PDF",
+      "u": "media/clancy/docs/search-warrants.pdf",
+      "orig": "https://htv-prod-media.s3.amazonaws.com/files/clancy-search-warrant-applications-6538020282ac9.pdf",
+      "copy": true
+    },
+    {
+      "t": "Arraignment, Feb. 2023",
+      "s": "Plymouth County DA",
+      "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-in-murder-of-her-three-children/"
+    },
+    {
+      "t": "Indictment, Sept. 2023",
+      "s": "Plymouth County DA",
+      "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-indicted-on-charges-that-she-murdered-her-three-children/"
+    },
+    {
+      "t": "Superior Court arraignment news release (PDF), Oct. 2023",
+      "s": "Plymouth County DA",
+      "u": "media/clancy/docs/da-superior-arraignment.pdf",
+      "orig": "https://plymouthda.com/wp-content/uploads/2023/10/LClancySUPARR.pdf",
+      "copy": true
+    },
+    {
+      "t": "Motion for reconsideration",
+      "s": "Scribd",
+      "u": "https://www.scribd.com/document/1023188039/Lindsay-Clancy-motion-for-reconsideration"
+    },
+    {
+      "t": "Emergency petition to the Supreme Judicial Court, Sept. 4, 2026",
+      "s": "DocumentCloud",
+      "u": "https://www.documentcloud.org/documents/28601634-adobe-scan-sep-4-2026/"
+    },
+    {
+      "t": "Requests by the father of the child victims, July 20, 2026",
+      "s": "Internet Archive",
+      "u": "media/clancy/docs/father-motion.pdf",
+      "orig": "https://archive.org/details/clancy-father-motion",
+      "copy": true
+    },
+    {
+      "t": "Model jury instruction 9.200, Lack of Criminal Responsibility",
+      "s": "Massachusetts Trial Court",
+      "u": "https://www.mass.gov/doc/9200-lack-of-criminal-responsibility/download"
+    },
+    {
+      "t": "M.G.L. c. 265, § 2, Punishment for murder",
+      "s": "Massachusetts Legislature",
+      "u": "https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleI/Chapter265/Section2"
+    },
+    {
+      "t": "M.G.L. c. 123, § 16, Not guilty by reason of mental illness",
+      "s": "Massachusetts Legislature",
+      "u": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXVII/Chapter123/Section16"
     }
-   ]
-  },
-  {
-   "date": "2026-09-04",
-   "title": "Mistrial and emergency petition",
-   "note": "The judge declared a mistrial. The Supreme Judicial Court denied the defense's emergency stay request.",
-   "links": [
+  ],
+  "updates": [
     {
-     "t": "Emergency petition to the SJC (DocumentCloud)",
-     "u": "https://www.documentcloud.org/documents/28601634-adobe-scan-sep-4-2026/"
+      "date": "2026-11-09",
+      "t": "Judge Sullivan denies the defense motion to dismiss on double jeopardy grounds, writing that there was a \"manifest necessity for a mistrial based on the jury's deadlock\" and that a retrial on the murder indictments does not violate double jeopardy. He also denies the defense motion to investigate the holdout juror and denies the prosecution's request for a gag order on attorneys' public statements. Prosecutors intend to retry Clancy, possibly in 2027, but have not said whether on the same or reduced charges. Next hearing Nov. 16.",
+      "u": "https://abcnews.com/US/judge-denies-lindsay-clancys-motion-dismiss-case/story?id=137987186",
+      "s": "ABC News"
+    },
+    {
+      "date": "2026-11-09",
+      "t": "Same ruling reported: motion to dismiss denied; gag order request denied; next hearing Nov. 16; prosecutors have not decided whether to pursue the same charges or a reduced charge.",
+      "u": "https://www.wfsb.com/2026/11/09/judge-denies-lindsay-clancys-motion-dismiss-charges-deaths-her-3-kids/",
+      "s": "WFSB"
+    },
+    {
+      "date": "2026-11-02",
+      "t": "Motions hearing. Prosecutors say the case is headed for a retrial but do not say on what charges and set no date. Judge Sullivan takes the defense double jeopardy motion to dismiss under advisement, along with the defense request for records on the holdout juror and the prosecution's request for a gag order on attorneys' public statements. The judge says March 2027 is probably realistic for a retrial; the defense wants spring. Next hearing Nov. 16 at 10 a.m. Clancy remains in custody.",
+      "u": "https://abcnews.com/US/lindsay-clancy-due-court-hearing-future-criminal-case/story?id=137756310",
+      "s": "ABC News"
+    },
+    {
+      "date": "2026-10-01",
+      "t": "Judge Sullivan denies the defense motion for a required finding of not guilty, finding the Commonwealth's evidence sufficient to go to a jury and that the criminal responsibility question belongs to the jury given the conflicting expert testimony.",
+      "u": "https://www.cbsnews.com/boston/news/lindsay-clancy-motion-not-guilty-ruling-judge-william-sullivan/",
+      "s": "CBS Boston"
+    },
+    {
+      "date": "2026-09-29",
+      "t": "First hearing since the mistrial. The defense argues for a required finding of not guilty and asks that juror notes and sidebar records be unimpounded for a double jeopardy motion; prosecutors oppose. DA Tim Cruz says no decision yet on retrial or charges. Judge sets Nov. 2 for the motion to dismiss, the holdout juror motion and the gag order request. Clancy remains committed at Tewksbury State Hospital.",
+      "u": "https://www.boston.com/news/crime/2026/09/29/lindsay-clancy-hearing-livestream-september-29/",
+      "s": "Boston.com"
+    },
+    {
+      "date": "2026-09-14",
+      "t": "The judge impounds the juror list indefinitely after a juror's identity is exposed on social media.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2026-09-04",
+      "t": "Judge declares a mistrial after the jury reports it cannot reach a unanimous decision. Clancy is expected to remain in a state psychiatric hospital. The DA says a retrial decision is coming.",
+      "u": "https://www.wbur.org/news/2026/09/04/lindsay-clancy-murder-trial-verdict-massachusetts",
+      "s": "WBUR",
+      "m": "milestone"
+    },
+    {
+      "date": "2026-09-03",
+      "t": "The judge re-instructs the jury on reasonable doubt and directs it to keep deliberating.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com"
+    },
+    {
+      "date": "2026-09-01",
+      "t": "Deliberations continue. The jury tells the judge it cannot agree; a woman is arrested outside the courthouse for aggravated intimidation of a juror.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2026-08-27",
+      "t": "Closing arguments. The judge instructs the jury and deliberations begin.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com",
+      "m": "milestone"
+    },
+    {
+      "date": "2026-08-24",
+      "t": "The judge denies a defense mistrial motion after a rebuttal witness raised religion, and reprimands the prosecution.",
+      "u": "https://www.cnn.com/2026/08/24/us/lindsay-clancy-trial-psychologist-rebuttal",
+      "s": "CNN"
+    },
+    {
+      "date": "2026-08-21",
+      "t": "The defense rests and the Commonwealth begins rebuttal.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com"
+    },
+    {
+      "date": "2026-08-10",
+      "t": "The defense case begins.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com"
+    },
+    {
+      "date": "2026-08-07",
+      "t": "The Commonwealth rests its case.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com"
+    },
+    {
+      "date": "2026-07-27",
+      "t": "Opening statements. Patrick Clancy begins testifying. Trial video is in the Trial days tab.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com",
+      "m": "milestone"
+    },
+    {
+      "date": "2026-07-24",
+      "t": "Judge impounds the 911 call and autopsy photographs at the request of the father; media may not record or display them. Both could still be presented to the jury and seen by the public in the courtroom.",
+      "u": "https://www.nbcboston.com/news/local/lindsay-clancy-911-call-photos-ruling/3986717/",
+      "s": "NBC Boston"
+    },
+    {
+      "date": "2026-07-20",
+      "t": "Jury selection begins. The father of the children files motions to restrict public display of the 911 call and autopsy photographs.",
+      "u": "https://archive.org/details/clancy-father-motion",
+      "s": "Internet Archive",
+      "m": "milestone"
+    },
+    {
+      "date": "2026-04-22",
+      "t": "The judge rejects a defense motion to reconsider that offered a written stipulation of involvement.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2026-03-31",
+      "t": "The judge denies the defense request to split the trial so the jury would decide the facts before criminal responsibility.",
+      "u": "https://www.nbcboston.com/news/local/lindsay-clancy-murder-case-judge-issues-key-ruling/3925435/",
+      "s": "NBC Boston"
+    },
+    {
+      "date": "2026-02-20",
+      "t": "Clancy appears in person in a courtroom for the first time since her arrest, at a Plymouth Superior Court pretrial hearing.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com"
+    },
+    {
+      "date": "2025-12",
+      "t": "Defense attorney Kevin Reddington gives notice that he will pursue a not guilty by reason of mental illness defense.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2025-11",
+      "t": "The defense seeks a change of venue to Boston. Judge William Sullivan denies it.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2025-05",
+      "t": "The court hears argument on the defendant's psychiatric records and the reporter's notes. No public filing.",
+      "u": "https://www.courttv.com/news/lindsay-clancy-hearing-weighs-psych-records-and-reporters-notes/",
+      "s": "Court TV"
+    },
+    {
+      "date": "2025-03-19",
+      "t": "The New Yorker contests a court order to turn over recordings of its interviews with Patrick Clancy, citing the First Amendment.",
+      "u": "https://www.bostonglobe.com/2025/03/19/metro/lindsay-clancy-patrick-clancy-new-yorker-magazine-first-amendment/",
+      "s": "Boston Globe"
+    },
+    {
+      "date": "2024",
+      "t": "The court orders a psychiatric examination of the defendant and approves DNA testing. No public filing.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com"
+    },
+    {
+      "date": "2023-10-24",
+      "t": "Search warrant applications, affidavits and returns are unsealed, detailing evidence from the home and her internet search history.",
+      "u": "https://www.bostonglobe.com/2023/10/24/metro/lindsay-clancy-update/",
+      "s": "Boston Globe"
+    },
+    {
+      "date": "2023-10",
+      "t": "Clancy is arraigned in Superior Court, held at Tewksbury State Hospital rather than a courtroom, and pleads not guilty.",
+      "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-on-charges-that-she-murdered-her-three-children/",
+      "s": "Plymouth County DA"
+    },
+    {
+      "date": "2023-09-15",
+      "t": "A Plymouth County grand jury indicts her on three counts of murder and three counts of strangulation.",
+      "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-indicted-on-charges-that-she-murdered-her-three-children/",
+      "s": "Plymouth County DA",
+      "m": "milestone"
+    },
+    {
+      "date": "2023-02-07",
+      "t": "Clancy is arraigned in Plymouth District Court by video from her hospital bed and pleads not guilty.",
+      "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-in-murder-of-her-three-children/",
+      "s": "Plymouth County DA",
+      "m": "milestone"
+    },
+    {
+      "date": "2023-01-27",
+      "t": "Callan is declared brain dead and removed from life support. Prosecutors add a third murder charge.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2023-01-25",
+      "t": "An arrest warrant is issued charging strangulation, assault and battery with a dangerous weapon, and two counts of murder.",
+      "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
+      "s": "Wikipedia"
+    },
+    {
+      "date": "2023-01-24",
+      "t": "Cora, Dawson and Callan Clancy are killed at the family home in Duxbury, Massachusetts. Their mother, Lindsay Clancy, falls from a second-story window and is seriously injured.",
+      "u": "https://www.clancycase.com/timeline",
+      "s": "clancycase.com",
+      "m": "start"
     }
-   ]
-  },
-  {
-   "date": "2026-09-29",
-   "title": "First hearing after the mistrial",
-   "note": "Defense renewed its motion for a required finding of not guilty and sought release of impounded juror notes and sidebar records. The judge took matters under advisement and set Nov. 2 for the double jeopardy motion, the holdout juror motion and the Commonwealth's gag order request.",
-   "links": [
+  ],
+  "sources": [
     {
-     "t": "Hearing livestream (Law & Crime)",
-     "yt": "TfaD0OWBXWg"
-    },
-    {
-     "t": "Live updates (CBS Boston)",
-     "u": "https://www.cbsnews.com/boston/live-updates/lindsay-clancy-murder-trial-mistrial-hearing-watch-live-updates/"
+      "t": "clancycase.com (primary source archive)",
+      "u": "https://www.clancycase.com/"
     }
-   ]
-  },
-  {
-   "date": "2026-10-01",
-   "title": "Ruling: motion for required finding of not guilty denied",
-   "note": "Judge William Sullivan found the evidence sufficient to send the case to a jury and left the criminal responsibility question to the jury.",
-   "links": [
+  ],
+  "photos": [
     {
-     "t": "CBS Boston report",
-     "u": "https://www.cbsnews.com/boston/news/lindsay-clancy-motion-not-guilty-ruling-judge-william-sullivan/"
+      "t": "Crime scene photos shown in court (TMZ)",
+      "s": "TMZ",
+      "note": "Original gallery of the exhibits copied below.",
+      "u": "https://www.tmz.com/2026/08/13/lindsay-clancy-crime-scene-photos-from-triple-murder/"
+    },
+    {
+      "t": "Evidence shown in court (Court TV)",
+      "s": "Court TV",
+      "note": "Other exhibits shown in court, such as family and surveillance photos (not copied here).",
+      "u": "https://www.courttv.com/news/lindsay-clancy-murder-trial-see-the-evidence-from-court/"
+    },
+    {
+      "t": "Crime scene photos shown in court (Yahoo)",
+      "s": "Yahoo News",
+      "note": "Syndicated copy of the same gallery.",
+      "u": "https://www.yahoo.com/news/us/articles/lindsay-clancy-murder-trial-see-201500901.html"
     }
-   ]
-  },
-  {
-   "date": "2026-11-02",
-   "title": "Motions hearing: double jeopardy, holdout juror records, gag order",
-   "note": "All three motions taken under advisement. Prosecutors say they intend a retrial; no date set, March 2027 floated. Sharp exchange between defense counsel and the judge over naming the juror in open court.",
-   "links": [
+  ],
+  "photoNote": "Autopsy photographs and the 911 call were impounded by the judge before trial (media may not record or display them), so they are not publicly available and are not in this archive. If they are ever officially released they will be added.",
+  "gallery": [
     {
-     "t": "Hearing livestream (NBC10 Boston)",
-     "yt": "ra4wL1i-WwM"
+      "n": 1,
+      "f": "media/clancy/scene/clancy-scene-01.jpg",
+      "l": "Basement exercise room: stationary bike"
     },
     {
-     "t": "Commonwealth Confidential recap (NBC10 Boston)",
-     "yt": "FcVow0adpFs"
+      "n": 2,
+      "f": "media/clancy/scene/clancy-scene-02.jpg",
+      "l": "Exercise room corner: resistance bands hanging on the door"
     },
     {
-     "t": "Live coverage (Boston.com)",
-     "u": "https://www.boston.com/news/crime/2026/11/02/livestream-lindsay-clancy-hearing-monday-nov-2-2026/"
+      "n": 3,
+      "f": "media/clancy/scene/clancy-scene-03.jpg",
+      "l": "Resistance bands hooked on the door"
     },
     {
-     "t": "ABC News report",
-     "u": "https://abcnews.com/US/lindsay-clancy-due-court-hearing-future-criminal-case/story?id=137756310"
+      "n": 4,
+      "f": "media/clancy/scene/clancy-scene-04.jpg",
+      "l": "Hallway to the office and playroom"
     },
     {
-     "t": "CNN report",
-     "u": "https://www.cnn.com/2026/11/02/us/lindsay-clancy-court-hearing-retrial"
+      "n": 5,
+      "f": "media/clancy/scene/clancy-scene-05.jpg",
+      "l": "Office and playroom: items on the floor"
     },
     {
-     "t": "NBC News report",
-     "u": "https://www.nbcnews.com/news/us-news/lindsay-clancy-returns-court-defense-seeks-block-retrial-murder-case-rcna596609"
+      "n": 6,
+      "f": "media/clancy/scene/clancy-scene-06.jpg",
+      "l": "Resistance band and dumbbell on the floor"
     },
     {
-     "t": "Courthouse News report",
-     "u": "https://www.courthousenews.com/prosecutors-float-retrial-for-lindsay-clancy-at-hearing-to-dismiss-murder-case/"
+      "n": 7,
+      "f": "media/clancy/scene/clancy-scene-07.jpg",
+      "l": "Basement room seen from the hallway"
     },
     {
-     "t": "Boston Globe report",
-     "u": "https://www.bostonglobe.com/2026/11/02/metro/lindsay-clancy-retrial-juror-gag-order-dismissal/"
+      "n": 8,
+      "f": "media/clancy/scene/clancy-scene-08.jpg",
+      "l": "Basement bedroom: blood spots on carpet, scattered debris"
+    },
+    {
+      "n": 9,
+      "f": "media/clancy/scene/clancy-scene-09.jpg",
+      "l": "Basement bedroom: blood spot on carpet"
+    },
+    {
+      "n": 10,
+      "f": "media/clancy/scene/clancy-scene-10.jpg",
+      "l": "Basement bedroom: medical supplies and debris on carpet"
+    },
+    {
+      "n": 11,
+      "f": "media/clancy/scene/clancy-scene-11.jpg",
+      "l": "Kitchen cabinet with medications"
+    },
+    {
+      "n": 12,
+      "f": "media/clancy/scene/clancy-scene-12.jpg",
+      "l": "Cabinet shelf with medications"
+    },
+    {
+      "n": 13,
+      "f": "media/clancy/scene/clancy-scene-13.jpg",
+      "l": "Prescription bottles labeled for Lindsay Clancy"
+    },
+    {
+      "n": 14,
+      "f": "media/clancy/scene/clancy-scene-14.jpg",
+      "l": "Bag of prescription bottles"
+    },
+    {
+      "n": 15,
+      "f": "media/clancy/scene/clancy-scene-15.jpg",
+      "l": "Papers, a card and an envelope"
+    },
+    {
+      "n": 16,
+      "f": "media/clancy/scene/clancy-scene-16.jpg",
+      "l": "Exterior of the home: ladders at the windows"
+    },
+    {
+      "n": 17,
+      "f": "media/clancy/scene/clancy-scene-17.jpg",
+      "l": "Exterior: window and shingles, close-up"
+    },
+    {
+      "n": 18,
+      "f": "media/clancy/scene/clancy-scene-18.jpg",
+      "l": "Exterior: window and railing, close-up"
+    },
+    {
+      "n": 19,
+      "f": "media/clancy/scene/clancy-scene-19.jpg",
+      "l": "Bedroom: bedside table and curtain with blood spatter"
+    },
+    {
+      "n": 20,
+      "f": "media/clancy/scene/clancy-scene-20.jpg",
+      "l": "Resistance band, measured and tagged (yellow)"
+    },
+    {
+      "n": 21,
+      "f": "media/clancy/scene/clancy-scene-21.jpg",
+      "l": "Resistance band, measured and tagged (black)"
+    },
+    {
+      "n": 22,
+      "f": "media/clancy/scene/clancy-scene-22.jpg",
+      "l": "Resistance band, measured and tagged (blue)"
+    },
+    {
+      "n": 23,
+      "f": "media/clancy/scene/clancy-scene-23.jpg",
+      "l": "Bedroom: bed with a phone on the comforter"
+    },
+    {
+      "n": 24,
+      "f": "media/clancy/scene/clancy-scene-24.jpg",
+      "l": "Bedroom: bedside table with a bloody knife and blood spatter"
+    },
+    {
+      "n": 25,
+      "f": "media/clancy/scene/clancy-scene-25.jpg",
+      "l": "Chest of drawers with a red cord"
+    },
+    {
+      "n": 26,
+      "f": "media/clancy/scene/clancy-scene-26.jpg",
+      "l": "Open drawer with a notebook"
+    },
+    {
+      "n": 27,
+      "f": "media/clancy/scene/clancy-scene-27.jpg",
+      "l": "Notebook held by an investigator, drawers behind"
+    },
+    {
+      "n": 28,
+      "f": "media/clancy/scene/clancy-scene-28.jpg",
+      "l": "Medical exhibit: forearm wounds (defendant)"
+    },
+    {
+      "n": 29,
+      "f": "media/clancy/scene/clancy-scene-29.jpg",
+      "l": "Medical exhibit: forearm wounds (defendant)"
+    },
+    {
+      "n": 30,
+      "f": "media/clancy/scene/clancy-scene-30.jpg",
+      "l": "Medical exhibit: forearm wounds (defendant)"
+    },
+    {
+      "n": 31,
+      "f": "media/clancy/scene/clancy-scene-31.jpg",
+      "l": "Medical exhibit: forearm wounds (defendant)"
     }
-   ]
-  },
-  {
-   "date": "2026-11-16",
-   "title": "Scheduled: status / trial assignment conference, 10 a.m.",
-   "note": "Judge hopes to rule on the pending motions. Upcoming, not yet held.",
-   "links": []
-  }
- ],
- "documents": [
-  {
-   "t": "Search warrant applications, affidavits and returns (unsealed Oct. 2023)",
-   "s": "Hosted PDF",
-   "u": "media/clancy/docs/search-warrants.pdf",
-   "orig": "https://htv-prod-media.s3.amazonaws.com/files/clancy-search-warrant-applications-6538020282ac9.pdf",
-   "copy": true
-  },
-  {
-   "t": "Arraignment, Feb. 2023",
-   "s": "Plymouth County DA",
-   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-in-murder-of-her-three-children/"
-  },
-  {
-   "t": "Indictment, Sept. 2023",
-   "s": "Plymouth County DA",
-   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-indicted-on-charges-that-she-murdered-her-three-children/"
-  },
-  {
-   "t": "Superior Court arraignment news release (PDF), Oct. 2023",
-   "s": "Plymouth County DA",
-   "u": "media/clancy/docs/da-superior-arraignment.pdf",
-   "orig": "https://plymouthda.com/wp-content/uploads/2023/10/LClancySUPARR.pdf",
-   "copy": true
-  },
-  {
-   "t": "Motion for reconsideration",
-   "s": "Scribd",
-   "u": "https://www.scribd.com/document/1023188039/Lindsay-Clancy-motion-for-reconsideration"
-  },
-  {
-   "t": "Emergency petition to the Supreme Judicial Court, Sept. 4, 2026",
-   "s": "DocumentCloud",
-   "u": "https://www.documentcloud.org/documents/28601634-adobe-scan-sep-4-2026/"
-  },
-  {
-   "t": "Requests by the father of the child victims, July 20, 2026",
-   "s": "Internet Archive",
-   "u": "media/clancy/docs/father-motion.pdf",
-   "orig": "https://archive.org/details/clancy-father-motion",
-   "copy": true
-  },
-  {
-   "t": "Model jury instruction 9.200, Lack of Criminal Responsibility",
-   "s": "Massachusetts Trial Court",
-   "u": "https://www.mass.gov/doc/9200-lack-of-criminal-responsibility/download"
-  },
-  {
-   "t": "M.G.L. c. 265, § 2, Punishment for murder",
-   "s": "Massachusetts Legislature",
-   "u": "https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleI/Chapter265/Section2"
-  },
-  {
-   "t": "M.G.L. c. 123, § 16, Not guilty by reason of mental illness",
-   "s": "Massachusetts Legislature",
-   "u": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXVII/Chapter123/Section16"
-  }
- ],
- "updates": [
-  {
-   "date": "2026-11-02",
-   "t": "Motions hearing. Prosecutors say the case is headed for a retrial but do not say on what charges and set no date. Judge Sullivan takes the defense double jeopardy motion to dismiss under advisement, along with the defense request for records on the holdout juror and the prosecution's request for a gag order on attorneys' public statements. The judge says March 2027 is probably realistic for a retrial; the defense wants spring. Next hearing Nov. 16 at 10 a.m. Clancy remains in custody.",
-   "u": "https://abcnews.com/US/lindsay-clancy-due-court-hearing-future-criminal-case/story?id=137756310",
-   "s": "ABC News"
-  },
-  {
-   "date": "2026-10-01",
-   "t": "Judge Sullivan denies the defense motion for a required finding of not guilty, finding the Commonwealth's evidence sufficient to go to a jury and that the criminal responsibility question belongs to the jury given the conflicting expert testimony.",
-   "u": "https://www.cbsnews.com/boston/news/lindsay-clancy-motion-not-guilty-ruling-judge-william-sullivan/",
-   "s": "CBS Boston"
-  },
-  {
-   "date": "2026-09-29",
-   "t": "First hearing since the mistrial. The defense argues for a required finding of not guilty and asks that juror notes and sidebar records be unimpounded for a double jeopardy motion; prosecutors oppose. DA Tim Cruz says no decision yet on retrial or charges. Judge sets Nov. 2 for the motion to dismiss, the holdout juror motion and the gag order request. Clancy remains committed at Tewksbury State Hospital.",
-   "u": "https://www.boston.com/news/crime/2026/09/29/lindsay-clancy-hearing-livestream-september-29/",
-   "s": "Boston.com"
-  },
-  {
-   "date": "2026-09-14",
-   "t": "The judge impounds the juror list indefinitely after a juror's identity is exposed on social media.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2026-09-04",
-   "t": "Judge declares a mistrial after the jury reports it cannot reach a unanimous decision. Clancy is expected to remain in a state psychiatric hospital. The DA says a retrial decision is coming.",
-   "u": "https://www.wbur.org/news/2026/09/04/lindsay-clancy-murder-trial-verdict-massachusetts",
-   "s": "WBUR",
-   "m": "milestone"
-  },
-  {
-   "date": "2026-09-03",
-   "t": "The judge re-instructs the jury on reasonable doubt and directs it to keep deliberating.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com"
-  },
-  {
-   "date": "2026-09-01",
-   "t": "Deliberations continue. The jury tells the judge it cannot agree; a woman is arrested outside the courthouse for aggravated intimidation of a juror.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2026-08-27",
-   "t": "Closing arguments. The judge instructs the jury and deliberations begin.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com",
-   "m": "milestone"
-  },
-  {
-   "date": "2026-08-24",
-   "t": "The judge denies a defense mistrial motion after a rebuttal witness raised religion, and reprimands the prosecution.",
-   "u": "https://www.cnn.com/2026/08/24/us/lindsay-clancy-trial-psychologist-rebuttal",
-   "s": "CNN"
-  },
-  {
-   "date": "2026-08-21",
-   "t": "The defense rests and the Commonwealth begins rebuttal.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com"
-  },
-  {
-   "date": "2026-08-10",
-   "t": "The defense case begins.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com"
-  },
-  {
-   "date": "2026-08-07",
-   "t": "The Commonwealth rests its case.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com"
-  },
-  {
-   "date": "2026-07-27",
-   "t": "Opening statements. Patrick Clancy begins testifying. Trial video is in the Trial days tab.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com",
-   "m": "milestone"
-  },
-  {
-   "date": "2026-07-24",
-   "t": "Judge impounds the 911 call and autopsy photographs at the request of the father; media may not record or display them. Both could still be presented to the jury and seen by the public in the courtroom.",
-   "u": "https://www.nbcboston.com/news/local/lindsay-clancy-911-call-photos-ruling/3986717/",
-   "s": "NBC Boston"
-  },
-  {
-   "date": "2026-07-20",
-   "t": "Jury selection begins. The father of the children files motions to restrict public display of the 911 call and autopsy photographs.",
-   "u": "https://archive.org/details/clancy-father-motion",
-   "s": "Internet Archive",
-   "m": "milestone"
-  },
-  {
-   "date": "2026-04-22",
-   "t": "The judge rejects a defense motion to reconsider that offered a written stipulation of involvement.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2026-03-31",
-   "t": "The judge denies the defense request to split the trial so the jury would decide the facts before criminal responsibility.",
-   "u": "https://www.nbcboston.com/news/local/lindsay-clancy-murder-case-judge-issues-key-ruling/3925435/",
-   "s": "NBC Boston"
-  },
-  {
-   "date": "2026-02-20",
-   "t": "Clancy appears in person in a courtroom for the first time since her arrest, at a Plymouth Superior Court pretrial hearing.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com"
-  },
-  {
-   "date": "2025-12",
-   "t": "Defense attorney Kevin Reddington gives notice that he will pursue a not guilty by reason of mental illness defense.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2025-11",
-   "t": "The defense seeks a change of venue to Boston. Judge William Sullivan denies it.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2025-05",
-   "t": "The court hears argument on the defendant's psychiatric records and the reporter's notes. No public filing.",
-   "u": "https://www.courttv.com/news/lindsay-clancy-hearing-weighs-psych-records-and-reporters-notes/",
-   "s": "Court TV"
-  },
-  {
-   "date": "2025-03-19",
-   "t": "The New Yorker contests a court order to turn over recordings of its interviews with Patrick Clancy, citing the First Amendment.",
-   "u": "https://www.bostonglobe.com/2025/03/19/metro/lindsay-clancy-patrick-clancy-new-yorker-magazine-first-amendment/",
-   "s": "Boston Globe"
-  },
-  {
-   "date": "2024",
-   "t": "The court orders a psychiatric examination of the defendant and approves DNA testing. No public filing.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com"
-  },
-  {
-   "date": "2023-10-24",
-   "t": "Search warrant applications, affidavits and returns are unsealed, detailing evidence from the home and her internet search history.",
-   "u": "https://www.bostonglobe.com/2023/10/24/metro/lindsay-clancy-update/",
-   "s": "Boston Globe"
-  },
-  {
-   "date": "2023-10",
-   "t": "Clancy is arraigned in Superior Court, held at Tewksbury State Hospital rather than a courtroom, and pleads not guilty.",
-   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-on-charges-that-she-murdered-her-three-children/",
-   "s": "Plymouth County DA"
-  },
-  {
-   "date": "2023-09-15",
-   "t": "A Plymouth County grand jury indicts her on three counts of murder and three counts of strangulation.",
-   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-indicted-on-charges-that-she-murdered-her-three-children/",
-   "s": "Plymouth County DA",
-   "m": "milestone"
-  },
-  {
-   "date": "2023-02-07",
-   "t": "Clancy is arraigned in Plymouth District Court by video from her hospital bed and pleads not guilty.",
-   "u": "https://plymouthda.com/news/2023-press-releases/duxbury-woman-arraigned-in-murder-of-her-three-children/",
-   "s": "Plymouth County DA",
-   "m": "milestone"
-  },
-  {
-   "date": "2023-01-27",
-   "t": "Callan is declared brain dead and removed from life support. Prosecutors add a third murder charge.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2023-01-25",
-   "t": "An arrest warrant is issued charging strangulation, assault and battery with a dangerous weapon, and two counts of murder.",
-   "u": "https://en.wikipedia.org/wiki/Killing_of_the_Clancy_children",
-   "s": "Wikipedia"
-  },
-  {
-   "date": "2023-01-24",
-   "t": "Cora, Dawson and Callan Clancy are killed at the family home in Duxbury, Massachusetts. Their mother, Lindsay Clancy, falls from a second-story window and is seriously injured.",
-   "u": "https://www.clancycase.com/timeline",
-   "s": "clancycase.com",
-   "m": "start"
-  }
- ],
- "sources": [
-  {
-   "t": "clancycase.com (primary source archive)",
-   "u": "https://www.clancycase.com/"
-  }
- ],
- "photos": [
-  {
-   "t": "Crime scene photos shown in court (TMZ)",
-   "s": "TMZ",
-   "note": "Original gallery of the exhibits copied below.",
-   "u": "https://www.tmz.com/2026/08/13/lindsay-clancy-crime-scene-photos-from-triple-murder/"
-  },
-  {
-   "t": "Evidence shown in court (Court TV)",
-   "s": "Court TV",
-   "note": "Other exhibits shown in court, such as family and surveillance photos (not copied here).",
-   "u": "https://www.courttv.com/news/lindsay-clancy-murder-trial-see-the-evidence-from-court/"
-  },
-  {
-   "t": "Crime scene photos shown in court (Yahoo)",
-   "s": "Yahoo News",
-   "note": "Syndicated copy of the same gallery.",
-   "u": "https://www.yahoo.com/news/us/articles/lindsay-clancy-murder-trial-see-201500901.html"
-  }
- ],
- "photoNote": "Autopsy photographs and the 911 call were impounded by the judge before trial (media may not record or display them), so they are not publicly available and are not in this archive. If they are ever officially released they will be added.",
- "gallery": [
-  {
-   "n": 1,
-   "f": "media/clancy/scene/clancy-scene-01.jpg",
-   "l": "Basement exercise room: stationary bike"
-  },
-  {
-   "n": 2,
-   "f": "media/clancy/scene/clancy-scene-02.jpg",
-   "l": "Exercise room corner: resistance bands hanging on the door"
-  },
-  {
-   "n": 3,
-   "f": "media/clancy/scene/clancy-scene-03.jpg",
-   "l": "Resistance bands hooked on the door"
-  },
-  {
-   "n": 4,
-   "f": "media/clancy/scene/clancy-scene-04.jpg",
-   "l": "Hallway to the office and playroom"
-  },
-  {
-   "n": 5,
-   "f": "media/clancy/scene/clancy-scene-05.jpg",
-   "l": "Office and playroom: items on the floor"
-  },
-  {
-   "n": 6,
-   "f": "media/clancy/scene/clancy-scene-06.jpg",
-   "l": "Resistance band and dumbbell on the floor"
-  },
-  {
-   "n": 7,
-   "f": "media/clancy/scene/clancy-scene-07.jpg",
-   "l": "Basement room seen from the hallway"
-  },
-  {
-   "n": 8,
-   "f": "media/clancy/scene/clancy-scene-08.jpg",
-   "l": "Basement bedroom: blood spots on carpet, scattered debris"
-  },
-  {
-   "n": 9,
-   "f": "media/clancy/scene/clancy-scene-09.jpg",
-   "l": "Basement bedroom: blood spot on carpet"
-  },
-  {
-   "n": 10,
-   "f": "media/clancy/scene/clancy-scene-10.jpg",
-   "l": "Basement bedroom: medical supplies and debris on carpet"
-  },
-  {
-   "n": 11,
-   "f": "media/clancy/scene/clancy-scene-11.jpg",
-   "l": "Kitchen cabinet with medications"
-  },
-  {
-   "n": 12,
-   "f": "media/clancy/scene/clancy-scene-12.jpg",
-   "l": "Cabinet shelf with medications"
-  },
-  {
-   "n": 13,
-   "f": "media/clancy/scene/clancy-scene-13.jpg",
-   "l": "Prescription bottles labeled for Lindsay Clancy"
-  },
-  {
-   "n": 14,
-   "f": "media/clancy/scene/clancy-scene-14.jpg",
-   "l": "Bag of prescription bottles"
-  },
-  {
-   "n": 15,
-   "f": "media/clancy/scene/clancy-scene-15.jpg",
-   "l": "Papers, a card and an envelope"
-  },
-  {
-   "n": 16,
-   "f": "media/clancy/scene/clancy-scene-16.jpg",
-   "l": "Exterior of the home: ladders at the windows"
-  },
-  {
-   "n": 17,
-   "f": "media/clancy/scene/clancy-scene-17.jpg",
-   "l": "Exterior: window and shingles, close-up"
-  },
-  {
-   "n": 18,
-   "f": "media/clancy/scene/clancy-scene-18.jpg",
-   "l": "Exterior: window and railing, close-up"
-  },
-  {
-   "n": 19,
-   "f": "media/clancy/scene/clancy-scene-19.jpg",
-   "l": "Bedroom: bedside table and curtain with blood spatter"
-  },
-  {
-   "n": 20,
-   "f": "media/clancy/scene/clancy-scene-20.jpg",
-   "l": "Resistance band, measured and tagged (yellow)"
-  },
-  {
-   "n": 21,
-   "f": "media/clancy/scene/clancy-scene-21.jpg",
-   "l": "Resistance band, measured and tagged (black)"
-  },
-  {
-   "n": 22,
-   "f": "media/clancy/scene/clancy-scene-22.jpg",
-   "l": "Resistance band, measured and tagged (blue)"
-  },
-  {
-   "n": 23,
-   "f": "media/clancy/scene/clancy-scene-23.jpg",
-   "l": "Bedroom: bed with a phone on the comforter"
-  },
-  {
-   "n": 24,
-   "f": "media/clancy/scene/clancy-scene-24.jpg",
-   "l": "Bedroom: bedside table with a bloody knife and blood spatter"
-  },
-  {
-   "n": 25,
-   "f": "media/clancy/scene/clancy-scene-25.jpg",
-   "l": "Chest of drawers with a red cord"
-  },
-  {
-   "n": 26,
-   "f": "media/clancy/scene/clancy-scene-26.jpg",
-   "l": "Open drawer with a notebook"
-  },
-  {
-   "n": 27,
-   "f": "media/clancy/scene/clancy-scene-27.jpg",
-   "l": "Notebook held by an investigator, drawers behind"
-  },
-  {
-   "n": 28,
-   "f": "media/clancy/scene/clancy-scene-28.jpg",
-   "l": "Medical exhibit: forearm wounds (defendant)"
-  },
-  {
-   "n": 29,
-   "f": "media/clancy/scene/clancy-scene-29.jpg",
-   "l": "Medical exhibit: forearm wounds (defendant)"
-  },
-  {
-   "n": 30,
-   "f": "media/clancy/scene/clancy-scene-30.jpg",
-   "l": "Medical exhibit: forearm wounds (defendant)"
-  },
-  {
-   "n": 31,
-   "f": "media/clancy/scene/clancy-scene-31.jpg",
-   "l": "Medical exhibit: forearm wounds (defendant)"
-  }
- ],
- "galleryNote": "31 trial exhibits shown in court, credited to Plymouth Superior Court and published by TMZ on Aug. 13, 2026, copied here so they stay available. They include the basement rooms, the bedroom with blood spatter, the cabinets and medications, the exterior, the resistance bands and the defendant's wounds. None shows the children. Exhibit stickers are the court's. Search this tab with words like bedroom, blood, knife or wounds. No X-rays have been published.",
- "press": [
-  {
-   "who": "Defense",
-   "date": "2026-08-27",
-   "title": "Kevin Reddington speaks outside the courthouse after jurors are sent home",
-   "s": "East Idaho News",
-   "yt": "LdzYTrYt0a4"
-  },
-  {
-   "who": "Defense",
-   "date": "2026-09-03",
-   "title": "With no verdict, Reddington addresses the media scrum outside court",
-   "s": "USA Today",
-   "yt": "yeNSL17gQqE"
-  },
-  {
-   "who": "Defense",
-   "date": "",
-   "title": "Reddington answers questions from the media scrum outside the courthouse",
-   "s": "YouTube",
-   "yt": "7OZQeC8b5gA"
-  },
-  {
-   "who": "Defense",
-   "date": "2026-09-04",
-   "title": "Lead defense attorney speaks after the mistrial is declared",
-   "s": "PBS NewsHour",
-   "u": "https://www.pbs.org/newshour/nation/watch-lindsay-clancys-lead-defense-attorney-speaks-after-mistrial-declared-in-murder-case"
-  },
-  {
-   "who": "Defense",
-   "date": "2026-09-04",
-   "title": "Reddington speaks on the mistrial",
-   "s": "NBC News",
-   "u": "https://www.nbcnews.com/video/lindsay-clancy-defense-attorney-reddington-speaks-mistrial-269350981767"
-  },
-  {
-   "who": "Defense",
-   "date": "",
-   "title": "Clancy's lawyer speaks outside of the courthouse",
-   "s": "NBC News",
-   "u": "https://www.nbcnews.com/video/shorts/lindsay-clancy-s-lawyer-speaks-outside-of-courthouse-268595269865"
-  },
-  {
-   "who": "Defense",
-   "date": "",
-   "title": "Kevin Reddington speaks after a Lindsay Clancy hearing",
-   "s": "Fox News",
-   "u": "https://www.foxnews.com/video/6405918119112"
-  },
-  {
-   "who": "Prosecution",
-   "date": "2026-09-04",
-   "title": "Prosecutors react after the mistrial is declared",
-   "s": "PBS NewsHour",
-   "u": "https://pbs.org/newshour/nation/watch-prosecutors-react-after-mistrial-declared-in-lindsay-clancy-murder-case"
-  },
-  {
-   "who": "Prosecution",
-   "date": "2026-09-04",
-   "title": "District Attorney speaks after the mistrial",
-   "s": "FOX 9",
-   "u": "https://www.fox9.com/video/fmc-bornrya324mganhj"
-  },
-  {
-   "who": "Prosecution",
-   "date": "2026-09-04",
-   "title": "District Attorney's first written statement after the mistrial",
-   "s": "Mediaite",
-   "u": "https://mediaite.com/media/news/district-attorney-lashes-out-in-first-statement-after-lindsay-clancy-mistrial-cruel-and-calculated-killing-of-three-innocents"
-  }
- ],
- "civil": [
-  {
-   "title": "Lindsay Clancy v. her mental health providers",
-   "court": "Norfolk Superior Court",
-   "filed": "2026-01",
-   "status": "Pending. No hearings scheduled as of Sept. 2026.",
-   "note": "Claims her providers failed to diagnose bipolar disorder and prescribed medications that allegedly triggered a psychotic break. Eleven defendants, including Dr. Jennifer Tufts, Aster Mental Health, South Shore Health and McLean Hospital. In August 2026 several defendants asked for a medical malpractice tribunal; Aster says she never told Dr. Tufts about hallucinations or thoughts of harming herself or her children. Counsel: Rosemary Scapicchio, Andrew Meyer Jr., Bill Thompson.",
-   "u": "https://www.boston.com/news/crime/2026/09/10/lindsay-clancy-patrick-clancy-civil-lawsuits/",
-   "s": "Boston.com"
-  },
-  {
-   "title": "Patrick Clancy wrongful death suit",
-   "court": "Norfolk Superior Court",
-   "filed": "2026-01",
-   "status": "Pending. A hearing on the motion to dismiss was scheduled for Oct. 28, 2026.",
-   "note": "Alleges Lindsay's providers prescribed many powerful medications that worsened her condition and led to the children's deaths. Four defendants: Dr. Jennifer Tufts, Rebecca Jollotta, Aster Mental Health and South Shore Health. In April 2026 all four moved to dismiss, arguing they owed the children no duty of care and citing the state law limiting mental health professionals' duty to warn. Patrick's lawyers (Todd & Weld) say it does not apply because the deaths were a foreseeable result of the alleged malpractice.",
-   "u": "https://www.nbcboston.com/news/local/lindsay-clancy-husband-files-wrongful-death-lawsuit-against-doctors/3881949/",
-   "s": "NBC Boston"
-  },
-  {
-   "title": "How the two civil cases connect to the criminal case",
-   "court": "",
-   "filed": "",
-   "status": "",
-   "note": "Both suits turn on what Lindsay told her providers and what they prescribed, the same questions the criminal jury heard from the psychiatrists. A guide to the duty-to-warn law that could affect both cases.",
-   "u": "https://masslegalresources.com/2026/09/29/lindsay-patrick-clancy-malpractice-lawsuits-duty-to-warn-tribunal/",
-   "s": "Mass Legal Resources"
-  },
-  {
-   "title": "Civil suits in the trial coverage",
-   "court": "",
-   "filed": "",
-   "status": "",
-   "note": "Boston Globe explainer on both suits during the trial.",
-   "u": "https://www.bostonglobe.com/2026/08/04/metro/lindsay-clancy-trial-patrick-civil-suits/",
-   "s": "Boston Globe"
-  }
- ]
+  ],
+  "galleryNote": "31 trial exhibits shown in court, credited to Plymouth Superior Court and published by TMZ on Aug. 13, 2026, copied here so they stay available. They include the basement rooms, the bedroom with blood spatter, the cabinets and medications, the exterior, the resistance bands and the defendant's wounds. None shows the children. Exhibit stickers are the court's. Search this tab with words like bedroom, blood, knife or wounds. No X-rays have been published.",
+  "press": [
+    {
+      "who": "Defense",
+      "date": "2026-08-27",
+      "title": "Kevin Reddington speaks outside the courthouse after jurors are sent home",
+      "s": "East Idaho News",
+      "yt": "LdzYTrYt0a4"
+    },
+    {
+      "who": "Defense",
+      "date": "2026-09-03",
+      "title": "With no verdict, Reddington addresses the media scrum outside court",
+      "s": "USA Today",
+      "yt": "yeNSL17gQqE"
+    },
+    {
+      "who": "Defense",
+      "date": "",
+      "title": "Reddington answers questions from the media scrum outside the courthouse",
+      "s": "YouTube",
+      "yt": "7OZQeC8b5gA"
+    },
+    {
+      "who": "Defense",
+      "date": "2026-09-04",
+      "title": "Lead defense attorney speaks after the mistrial is declared",
+      "s": "PBS NewsHour",
+      "u": "https://www.pbs.org/newshour/nation/watch-lindsay-clancys-lead-defense-attorney-speaks-after-mistrial-declared-in-murder-case"
+    },
+    {
+      "who": "Defense",
+      "date": "2026-09-04",
+      "title": "Reddington speaks on the mistrial",
+      "s": "NBC News",
+      "u": "https://www.nbcnews.com/video/lindsay-clancy-defense-attorney-reddington-speaks-mistrial-269350981767"
+    },
+    {
+      "who": "Defense",
+      "date": "",
+      "title": "Clancy's lawyer speaks outside of the courthouse",
+      "s": "NBC News",
+      "u": "https://www.nbcnews.com/video/shorts/lindsay-clancy-s-lawyer-speaks-outside-of-courthouse-268595269865"
+    },
+    {
+      "who": "Defense",
+      "date": "",
+      "title": "Kevin Reddington speaks after a Lindsay Clancy hearing",
+      "s": "Fox News",
+      "u": "https://www.foxnews.com/video/6405918119112"
+    },
+    {
+      "who": "Prosecution",
+      "date": "2026-09-04",
+      "title": "Prosecutors react after the mistrial is declared",
+      "s": "PBS NewsHour",
+      "u": "https://pbs.org/newshour/nation/watch-prosecutors-react-after-mistrial-declared-in-lindsay-clancy-murder-case"
+    },
+    {
+      "who": "Prosecution",
+      "date": "2026-09-04",
+      "title": "District Attorney speaks after the mistrial",
+      "s": "FOX 9",
+      "u": "https://www.fox9.com/video/fmc-bornrya324mganhj"
+    },
+    {
+      "who": "Prosecution",
+      "date": "2026-09-04",
+      "title": "District Attorney's first written statement after the mistrial",
+      "s": "Mediaite",
+      "u": "https://mediaite.com/media/news/district-attorney-lashes-out-in-first-statement-after-lindsay-clancy-mistrial-cruel-and-calculated-killing-of-three-innocents"
+    }
+  ],
+  "civil": [
+    {
+      "title": "Lindsay Clancy v. her mental health providers",
+      "court": "Norfolk Superior Court",
+      "filed": "2026-01",
+      "status": "Pending. No hearings scheduled as of Sept. 2026.",
+      "note": "Claims her providers failed to diagnose bipolar disorder and prescribed medications that allegedly triggered a psychotic break. Eleven defendants, including Dr. Jennifer Tufts, Aster Mental Health, South Shore Health and McLean Hospital. In August 2026 several defendants asked for a medical malpractice tribunal; Aster says she never told Dr. Tufts about hallucinations or thoughts of harming herself or her children. Counsel: Rosemary Scapicchio, Andrew Meyer Jr., Bill Thompson.",
+      "u": "https://www.boston.com/news/crime/2026/09/10/lindsay-clancy-patrick-clancy-civil-lawsuits/",
+      "s": "Boston.com"
+    },
+    {
+      "title": "Patrick Clancy wrongful death suit",
+      "court": "Norfolk Superior Court",
+      "filed": "2026-01",
+      "status": "Pending. A hearing on the motion to dismiss was scheduled for Oct. 28, 2026.",
+      "note": "Alleges Lindsay's providers prescribed many powerful medications that worsened her condition and led to the children's deaths. Four defendants: Dr. Jennifer Tufts, Rebecca Jollotta, Aster Mental Health and South Shore Health. In April 2026 all four moved to dismiss, arguing they owed the children no duty of care and citing the state law limiting mental health professionals' duty to warn. Patrick's lawyers (Todd & Weld) say it does not apply because the deaths were a foreseeable result of the alleged malpractice.",
+      "u": "https://www.nbcboston.com/news/local/lindsay-clancy-husband-files-wrongful-death-lawsuit-against-doctors/3881949/",
+      "s": "NBC Boston"
+    },
+    {
+      "title": "How the two civil cases connect to the criminal case",
+      "court": "",
+      "filed": "",
+      "status": "",
+      "note": "Both suits turn on what Lindsay told her providers and what they prescribed, the same questions the criminal jury heard from the psychiatrists. A guide to the duty-to-warn law that could affect both cases.",
+      "u": "https://masslegalresources.com/2026/09/29/lindsay-patrick-clancy-malpractice-lawsuits-duty-to-warn-tribunal/",
+      "s": "Mass Legal Resources"
+    },
+    {
+      "title": "Civil suits in the trial coverage",
+      "court": "",
+      "filed": "",
+      "status": "",
+      "note": "Boston Globe explainer on both suits during the trial.",
+      "u": "https://www.bostonglobe.com/2026/08/04/metro/lindsay-clancy-trial-patrick-civil-suits/",
+      "s": "Boston Globe"
+    }
+  ]
 }
