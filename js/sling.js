@@ -1,45 +1,52 @@
 /* Sobercade game 5: Smash the Stash. A slingshot physics game: fling sobriety chips at stacks of bottles, pill bottles,
-   baggies and needles until the whole stash is gone. Original art and code. Physics by matter-js (MIT), loaded only when the game is opened. */
+   baggies and needles until the whole stash is gone. Original art and code. Physics by matter-js (MIT), loaded only when the game is opened.
+   Real units, like Disc-ipline: 200 pixels are one metre, gravity is 9.81 m/s2, every object has its real weight in kilograms,
+   the sling is a spring (so a heavier shot leaves slower), and things break by the energy of the hit in joules. Physics runs 120 times a second. */
 (function () {
   'use strict';
   var root = document.getElementById('sl'); if (!root) return;
   function $(id) { return document.getElementById(id); }
   var cv = $('sl-canvas'), ctx = cv.getContext('2d'), over = $('sl-over'), elLv = $('sl-lv'), elScore = $('sl-score'), btnMute = $('sl-mute');
-  var W = 960, H = 540, GY = 484, SX = 150, SY = 372, MAXPULL = 95, POWER = 0.16, GRAV = 0.2778, STEP = 1000 / 60;
+  var W = 960, H = 540, GY = 484, SX = 150, SY = 372, MAXPULL = 95, PXM = 200, GRAV = 9.81, SPRING = 89, DT = 1000 / 120, STEP = 1000 / 60, AIR = 0.001;
+  var GS = GRAV * PXM / 1e6;   // gravity in pixels per millisecond squared, which is what the physics engine wants
+  function toMs(v) { return v * 60 / PXM; }   // engine speed (pixels per 1/60 s) to metres per second
+  function toPx(v) { return v * PXM / 60; }
+  function launchSpeed(pullPx, kg) { return (pullPx / PXM) * Math.sqrt(SPRING / kg); }   // spring: half k x squared becomes half m v squared
   var M = null, engine = null, objs = [], projs = [], shots = [], parts = [], pops = [], state = 'menu', lvl = 0, score = 0, armed = false;
-  var drag = null, flyT = 0, quietT = 0, endT = 0, tip = '', tipT = 0, shake = 0, tick = 0, bg = null, running = false, raf = 0, last = 0, acc = 0, headless = false;
+  var drag = null, kb = null, kbAng = 35, runId = 0, flyT = 0, quietT = 0, endT = 0, tip = '', tipT = 0, shake = 0, tick = 0, bg = null, running = false, raf = 0, last = 0, acc = 0, headless = false;
 
   /* ---------- what things are made of ---------- */
+  // kg = real weight, hp = joules of impact it can take before it breaks, f = friction, e = bounce
   var K = {
-    crate: { w: 40, h: 40, hp: 70, d: 0.0012, m: 'wood', pts: 100 },
-    post: { w: 14, h: 80, hp: 40, d: 0.0012, m: 'wood', pts: 100 },
-    beam: { w: 110, h: 14, hp: 40, d: 0.0012, m: 'wood', pts: 100 },
-    keg: { w: 44, h: 54, hp: 260, d: 0.003, m: 'steel', pts: 150 },
-    beer: { w: 20, h: 58, hp: 18, d: 0.001, m: 'glass', pts: 500, t: 1, c: '#7a4316' },
-    wine: { w: 22, h: 68, hp: 18, d: 0.001, m: 'glass', pts: 500, t: 1, c: '#1f6a43' },
-    whiskey: { w: 30, h: 46, hp: 24, d: 0.001, m: 'glass', pts: 500, t: 1, c: '#c26d1c' },
-    pill: { w: 26, h: 38, hp: 22, d: 0.001, m: 'pill', pts: 500, t: 1, c: '#ff8a1e' },
-    bag: { w: 32, h: 24, hp: 14, d: 0.0008, m: 'bag', pts: 500, t: 1, c: '#e8f0ff' },
-    syr: { w: 58, h: 10, hp: 10, d: 0.0008, m: 'glass', pts: 500, t: 1, c: '#dfe9f5' }
+    crate: { w: 40, h: 40, kg: 0.6, hp: 6, f: 0.5, e: 0.15, m: 'wood', pts: 100 },
+    post: { w: 14, h: 80, kg: 0.45, hp: 4, f: 0.5, e: 0.15, m: 'wood', pts: 100 },
+    beam: { w: 110, h: 14, kg: 0.66, hp: 4, f: 0.5, e: 0.15, m: 'wood', pts: 100 },
+    keg: { w: 44, h: 54, kg: 5.6, hp: 70, f: 0.4, e: 0.2, m: 'steel', pts: 150 },
+    beer: { w: 20, h: 58, kg: 0.55, hp: 0.8, f: 0.35, e: 0.1, m: 'glass', pts: 500, t: 1, c: '#7a4316' },
+    wine: { w: 22, h: 68, kg: 1.2, hp: 1.2, f: 0.35, e: 0.1, m: 'glass', pts: 500, t: 1, c: '#1f6a43' },
+    whiskey: { w: 30, h: 46, kg: 1.0, hp: 1.0, f: 0.35, e: 0.1, m: 'glass', pts: 500, t: 1, c: '#c26d1c' },
+    pill: { w: 26, h: 38, kg: 0.05, hp: 0.06, f: 0.4, e: 0.25, m: 'pill', pts: 500, t: 1, c: '#ff8a1e' },
+    bag: { w: 32, h: 24, kg: 0.03, hp: 0.04, f: 0.6, e: 0.02, m: 'bag', pts: 500, t: 1, c: '#e8f0ff' },
+    syr: { w: 44, h: 8, kg: 0.012, hp: 0.03, f: 0.4, e: 0.1, m: 'glass', pts: 500, t: 1, c: '#dfe9f5' }
   };
   var P = {
-    chip: { r: 14, d: 0.004, name: 'Sobriety chip', tip: '' },
-    coffee: { r: 16, d: 0.009, name: 'Black coffee', tip: 'Black coffee is heavy. Use it on the kegs.' },
-    trio: { r: 13, d: 0.004, name: 'Three chips', tip: 'Three chips: tap while it flies to split it up.' },
-    blast: { r: 14, d: 0.003, name: 'Clear head', tip: 'Clear head: tap while it flies and it bursts.' }
+    chip: { r: 14, kg: 0.3, name: 'Sobriety chip', tip: '' },
+    coffee: { r: 16, kg: 0.6, name: 'Black coffee', tip: 'Black coffee is heavy: it hits hard but flies slower.' },
+    trio: { r: 13, kg: 0.3, name: 'Three chips', tip: 'Three chips: tap while it flies to split it up.' },
+    blast: { r: 14, kg: 0.25, name: 'Clear head', tip: 'Clear head: tap while it flies and it bursts.' }
   };
   function it(k, x, b, w) { return { k: k, x: x, b: b, w: w }; }
   var LEVELS = [
-    { name: 'First Step', shots: ['chip', 'chip', 'chip', 'chip'], items: [it('crate', 640, 0), it('crate', 720, 0), it('crate', 800, 0), it('beer', 640, 40), it('wine', 720, 40), it('beer', 800, 40)] },
+    { name: 'First Step', shots: ['chip', 'chip', 'chip', 'chip', 'chip'], items: [it('crate', 640, 0), it('crate', 720, 0), it('crate', 800, 0), it('beer', 640, 40), it('wine', 720, 40), it('beer', 800, 40)] },
     { name: 'House Rules', shots: ['chip', 'chip', 'chip', 'chip'], items: [it('post', 660, 0), it('post', 760, 0), it('beam', 710, 80, 130), it('pill', 710, 0), it('beer', 680, 94), it('beer', 740, 94)] },
     { name: 'Two Towers', shots: ['chip', 'chip', 'coffee', 'chip', 'chip'], items: [it('crate', 620, 0), it('crate', 620, 40), it('whiskey', 620, 80), it('crate', 800, 0), it('crate', 800, 40), it('crate', 800, 80), it('pill', 800, 120), it('bag', 710, 0)] },
     { name: 'Keg Stand', shots: ['coffee', 'chip', 'coffee', 'chip', 'chip'], items: [it('keg', 600, 0), it('keg', 600, 54), it('post', 700, 0), it('post', 800, 0), it('beam', 750, 80, 130), it('wine', 750, 0), it('pill', 730, 94), it('bag', 775, 94)] },
     { name: 'Spread Thin', shots: ['trio', 'trio', 'chip', 'trio'], items: [it('crate', 540, 0), it('crate', 630, 0), it('crate', 720, 0), it('crate', 810, 0), it('crate', 900, 0), it('beer', 540, 40), it('pill', 630, 40), it('wine', 720, 40), it('bag', 810, 40), it('beer', 900, 40)] },
-    { name: 'Second Story', shots: ['chip', 'coffee', 'trio', 'coffee', 'chip'], items: [it('post', 644, 0), it('post', 740, 0), it('post', 836, 0), it('beam', 692, 80, 96), it('beam', 788, 80, 96), it('post', 692, 94), it('post', 788, 94), it('beam', 740, 174, 130), it('pill', 692, 0), it('whiskey', 788, 0), it('beer', 740, 94), it('syr', 740, 188)] },
+    { name: 'Second Story', shots: ['chip', 'coffee', 'trio', 'coffee', 'chip'], items: [it('post', 644, 0), it('post', 740, 0), it('post', 836, 0), it('beam', 692, 80, 96), it('beam', 788, 80, 96), it('post', 692, 94), it('post', 788, 94), it('beam', 740, 174, 130), it('pill', 692, 0), it('wine', 885, 0), it('beer', 740, 94), it('syr', 740, 188)] },
     { name: 'Clear Head', shots: ['blast', 'chip', 'blast', 'coffee', 'chip'], items: [it('keg', 650, 0), it('keg', 750, 0), it('keg', 850, 0), it('beam', 700, 54, 96), it('beam', 800, 54, 96), it('pill', 700, 0), it('bag', 800, 0), it('keg', 700, 68), it('keg', 800, 68), it('beam', 750, 122, 130), it('whiskey', 750, 136)] },
-    { name: 'Tall Order', shots: ['chip', 'trio', 'coffee', 'chip'], items: [it('keg', 680, 0), it('crate', 680, 54), it('crate', 680, 94), it('crate', 680, 134), it('keg', 760, 0), it('crate', 760, 54), it('crate', 760, 94), it('crate', 760, 134), it('beam', 720, 174, 130), it('wine', 720, 188), it('bag', 720, 0), it('pill', 680, 188), it('beer', 760, 188)] },
-    { name: 'Fortress', shots: ['blast', 'coffee', 'trio', 'coffee', 'chip', 'chip'], items: [it('keg', 610, 0), it('keg', 610, 54), it('keg', 870, 0), it('keg', 870, 54), it('post', 680, 0), it('post', 800, 0), it('beam', 740, 80, 150), it('whiskey', 710, 0), it('pill', 770, 0), it('crate', 740, 94), it('wine', 740, 134), it('beer', 695, 94), it('beer', 785, 94)] },
-    { name: 'Last Call', shots: ['chip', 'coffee', 'blast', 'trio', 'coffee', 'blast', 'chip'], items: [it('post', 580, 0), it('post', 660, 0), it('post', 740, 0), it('post', 820, 0), it('post', 900, 0), it('beam', 620, 80, 80), it('beam', 700, 80, 80), it('beam', 780, 80, 80), it('beam', 860, 80, 80), it('pill', 620, 0), it('wine', 700, 0), it('whiskey', 780, 0), it('bag', 860, 0), it('beer', 620, 94), it('crate', 700, 94), it('pill', 700, 134), it('crate', 780, 94), it('bag', 780, 134), it('wine', 860, 94)] }
+    { name: 'Tall Order', shots: ['chip', 'trio', 'coffee', 'chip'], items: [it('keg', 680, 0), it('crate', 680, 54), it('crate', 680, 94), it('crate', 680, 134), it('keg', 760, 0), it('crate', 760, 54), it('crate', 760, 94), it('crate', 760, 134), it('beam', 720, 174, 130), it('wine', 720, 188), it('bag', 600, 0), it('pill', 680, 188), it('beer', 760, 188)] },
+    { name: 'Fortress', shots: ['coffee', 'chip', 'trio', 'blast', 'chip'], items: [it('keg', 610, 0), it('keg', 610, 54), it('keg', 870, 0), it('keg', 870, 54), it('post', 680, 0), it('post', 800, 0), it('beam', 740, 80, 150), it('whiskey', 710, 0), it('pill', 770, 0), it('crate', 740, 94), it('wine', 740, 134), it('beer', 695, 94), it('beer', 785, 94)] },
+    { name: 'Last Call', shots: ['chip', 'coffee', 'blast', 'trio', 'coffee', 'blast', 'chip', 'chip'], items: [it('post', 580, 0), it('post', 660, 0), it('post', 740, 0), it('post', 820, 0), it('post', 900, 0), it('beam', 620, 80, 80), it('beam', 700, 80, 80), it('beam', 780, 80, 80), it('beam', 860, 80, 80), it('pill', 620, 0), it('wine', 700, 0), it('whiskey', 780, 0), it('bag', 860, 0), it('beer', 620, 94), it('crate', 700, 94), it('pill', 700, 134), it('crate', 780, 94), it('bag', 780, 134), it('wine', 860, 94)] }
   ];
 
   /* ---------- saved progress ---------- */
@@ -52,17 +59,22 @@
   function audio() { if (save.mute || headless) return null; try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume(); } catch (e) { ac = null; } return ac; }
   function tone(f0, f1, dur, type, vol) { var a = audio(); if (!a) return; var o = a.createOscillator(), g = a.createGain(), t = a.currentTime; o.type = type || 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur); g.gain.setValueAtTime(vol || 0.15, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur); o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + 0.02); }
   function noise(dur, hp, vol) { var a = audio(); if (!a) return; var n = Math.floor(a.sampleRate * dur), b = a.createBuffer(1, n, a.sampleRate), d = b.getChannelData(0); for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n); var s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(); s.buffer = b; f.type = 'highpass'; f.frequency.value = hp; g.gain.value = vol || 0.2; s.connect(f); f.connect(g); g.connect(a.destination); s.start(); }
+  /* Recorded sounds are optional. The whoosh, knock and clap are borrowed from the disc golf game. To add real glass, metal or other sounds,
+     put mp3 files in media/sling/ and list them here, for example glass: ['sling/glass1', 'sling/glass2']. With no file, the synth plays. */
+  var REC = { sling: ['disc/throw1', 'disc/throw2'], wood: ['disc/hit1', 'disc/hit2'], win: ['disc/clap'], glass: [], steel: [], soft: [], pill: [], blast: [], fail: [] }, buf = {}, recOn = false;
+  function preload() { if (recOn || headless) return; var a = audio(); if (!a) return; recOn = true; Object.keys(REC).forEach(function (k) { REC[k].forEach(function (n) { fetch('media/' + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (ab) { if (ab) a.decodeAudioData(ab, function (b) { buf[n] = b; }, function () {}); }).catch(function () {}); }); }); }
+  function rec(kind, vol, rate) { var a = audio(); if (!a) return true; var have = REC[kind].filter(function (n) { return buf[n]; }); if (!have.length) return false; try { var src = a.createBufferSource(), g = a.createGain(); src.buffer = buf[have[Math.floor(Math.random() * have.length)]]; src.playbackRate.value = rate || (0.92 + Math.random() * 0.16); g.gain.value = vol == null ? 0.7 : vol; src.connect(g); g.connect(a.destination); src.start(); return true; } catch (e) { return false; } }
   var lastKnock = 0;
   var SND = {
-    sling: function () { tone(520, 140, 0.18, 'triangle', 0.18); },
-    glass: function () { noise(0.22, 3200, 0.22); tone(2400 + Math.random() * 900, 1500, 0.12, 'sine', 0.06); tone(3300 + Math.random() * 900, 2100, 0.16, 'sine', 0.05); },
-    wood: function () { noise(0.12, 500, 0.2); tone(180, 70, 0.12, 'square', 0.07); },
-    steel: function () { tone(310, 240, 0.3, 'triangle', 0.12); noise(0.08, 1500, 0.1); },
-    soft: function () { noise(0.14, 900, 0.14); },
-    knock: function (v) { if (tick - lastKnock < 5) return; lastKnock = tick; tone(150, 70, 0.08, 'sine', Math.min(0.14, 0.03 + v * 0.008)); },
-    blast: function () { noise(0.5, 200, 0.3); tone(220, 40, 0.5, 'sawtooth', 0.12); },
+    sling: function () { if (!rec('sling', 0.6)) tone(520, 140, 0.18, 'triangle', 0.18); },
+    glass: function () { if (rec('glass', 0.8)) return; noise(0.22, 3200, 0.22); tone(2400 + Math.random() * 900, 1500, 0.12, 'sine', 0.06); tone(3300 + Math.random() * 900, 2100, 0.16, 'sine', 0.05); },
+    wood: function () { if (rec('wood', 0.7)) return; noise(0.12, 500, 0.2); tone(180, 70, 0.12, 'square', 0.07); },
+    steel: function () { if (rec('steel', 0.7)) return; tone(310, 240, 0.3, 'triangle', 0.12); noise(0.08, 1500, 0.1); },
+    soft: function () { if (!rec('soft', 0.6)) noise(0.14, 900, 0.14); },
+    knock: function (E) { if (tick - lastKnock < 5) return; lastKnock = tick; tone(150, 70, 0.08, 'sine', Math.min(0.14, 0.03 + E * 0.012)); },
+    blast: function () { if (rec('blast', 0.8)) return; noise(0.5, 200, 0.3); tone(220, 40, 0.5, 'sawtooth', 0.12); },
     split: function () { tone(700, 1100, 0.1, 'triangle', 0.1); },
-    win: function () { [523, 659, 784, 1047].forEach(function (f, i) { setTimeout(function () { tone(f, f, 0.22, 'triangle', 0.14); }, i * 110); }); },
+    win: function () { rec('win', 0.5); [523, 659, 784, 1047].forEach(function (f, i) { setTimeout(function () { tone(f, f, 0.22, 'triangle', 0.14); }, i * 110); }); },
     fail: function () { tone(300, 150, 0.4, 'triangle', 0.12); }
   };
 
@@ -70,19 +82,20 @@
   function wakeAll() { if (!M) return; M.Composite.allBodies(engine.world).forEach(function (b) { if (!b.isStatic) M.Sleeping.set(b, false); }); }
   function addObj(k, x, base, w) {
     var def = K[k], ww = w || def.w, hh = def.h;
-    var body = M.Bodies.rectangle(x, GY - base - hh / 2, ww, hh, { density: def.d, friction: 0.7, frictionStatic: 1, restitution: def.m === 'glass' ? 0.05 : 0.1, chamfer: k === 'keg' ? { radius: 6 } : null, slop: 0.02 });
+    var body = M.Bodies.rectangle(x, GY - base - hh / 2, ww, hh, { friction: def.f, frictionStatic: 0.7, restitution: def.e, frictionAir: AIR, chamfer: k === 'keg' ? { radius: 6 } : null, slop: 0.02 });
+    M.Body.setMass(body, def.kg * (w ? w / def.w : 1));
     var o = { body: body, k: k, def: def, w: ww, h: hh, hp: def.hp, max: def.hp, t: !!def.t, seed: Math.random() * 1000 };
     body.plugin.o = o; objs.push(o); M.Composite.add(engine.world, body); return o;
   }
   function build(n) {
-    lvl = Math.max(0, Math.min(LEVELS.length - 1, n)); var L = LEVELS[lvl];
-    engine = M.Engine.create({ enableSleeping: true, positionIterations: 10, velocityIterations: 8 });
-    objs = []; projs = []; parts = []; pops = []; score = 0; armed = false; drag = null; flyT = quietT = endT = 0; shake = 0;
-    M.Composite.add(engine.world, M.Bodies.rectangle(W / 2, GY + 60, W * 3, 120, { isStatic: true, friction: 0.9, frictionStatic: 1 }));
+    lvl = Math.max(0, Math.min(LEVELS.length - 1, n)); var L = LEVELS[lvl]; runId++;
+    engine = M.Engine.create({ enableSleeping: true, positionIterations: 10, velocityIterations: 8 }); engine.gravity.x = 0; engine.gravity.y = 1; engine.gravity.scale = GS;
+    objs = []; projs = []; parts = []; pops = []; score = 0; armed = false; drag = null; kb = null; flyT = quietT = endT = 0; shake = 0;
+    M.Composite.add(engine.world, M.Bodies.rectangle(W / 2, GY + 60, W * 3, 120, { isStatic: true, friction: 0.8, frictionStatic: 0.9, restitution: 0.1 }));
     L.items.forEach(function (i) { addObj(i.k, i.x, i.b, i.w); });
     shots = L.shots.slice(); state = 'aim'; tip = ''; tipT = 0;
     M.Events.on(engine, 'collisionStart', onHit);
-    for (var s = 0; s < 40; s++) M.Engine.update(engine, STEP);   // let the stack settle before anyone sees it
+    for (var s = 0; s < 120; s++) M.Engine.update(engine, DT);   // let the stack settle before anyone sees it
     hud(); showTip();
   }
   function showTip() { if (headless) return; var t = shots[0]; if (t && P[t].tip && !save.seen[t]) { tip = P[t].tip; tipT = 420; save.seen[t] = 1; keep(); } }
@@ -94,12 +107,12 @@
     if (!armed) return;
     for (var i = 0; i < ev.pairs.length; i++) {
       var pr = ev.pairs[i], A = pr.bodyA.parent || pr.bodyA, B = pr.bodyB.parent || pr.bodyB, a = A.plugin.o, b = B.plugin.o;
-      var rel = Math.hypot(A.velocity.x - B.velocity.x, A.velocity.y - B.velocity.y);
-      var ma = A.isStatic ? 0 : A.mass, mb = B.isStatic ? 0 : B.mass, red = !ma ? mb : (!mb ? ma : ma * mb / (ma + mb)), imp = rel * red;
+      var rel = toMs(Math.hypot(A.velocity.x - B.velocity.x, A.velocity.y - B.velocity.y));   // closing speed in m/s
+      var ma = A.isStatic ? 0 : A.mass, mb = B.isStatic ? 0 : B.mass, red = !ma ? mb : (!mb ? ma : ma * mb / (ma + mb)), E = 0.5 * red * rel * rel;   // joules the hit has to give
       if (a && a.proj) touched(a); if (b && b.proj) touched(b);
-      if (imp < 2.4) continue;
-      if (!headless) SND.knock(imp);
-      var dmg = imp * 4; if (a && !a.proj) hurt(a, dmg); if (b && !b.proj) hurt(b, dmg);
+      if (E < 0.02) continue;
+      if (!headless && E > 0.15) SND.knock(E);
+      if (a && !a.proj) hurt(a, E); if (b && !b.proj) hurt(b, E);
     }
   }
   function touched(p) { if (p.hit) return; p.hit = true; if (p.type === 'blast' && !p.used) p.fuse = 40; }
@@ -118,8 +131,8 @@
   }
   function burst(x, y, n, col, shape) { for (var i = 0; i < n; i++) { var a = Math.random() * 6.283, v = 1.5 + Math.random() * 4.5; parts.push({ x: x + (Math.random() - 0.5) * 14, y: y + (Math.random() - 0.5) * 20, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2, life: 0, max: 34 + Math.random() * 26, col: shape === 'pill' ? ['#ff5964', '#ffd23a', '#58c7ff', '#ffffff'][i % 4] : col, s: 3 + Math.random() * 4, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.5, shape: shape }); } }
   function explode(p) {
-    p.used = true; var x = p.body.position.x, y = p.body.position.y, R = 135;
-    objs.slice().forEach(function (o) { var dx = o.body.position.x - x, dy = o.body.position.y - y, d = Math.hypot(dx, dy); if (d > R) return; var f = 1 - d / R, k = 15 * f / Math.sqrt(Math.max(1, o.body.mass)); M.Sleeping.set(o.body, false); M.Body.setVelocity(o.body, { x: o.body.velocity.x + dx / (d || 1) * k, y: o.body.velocity.y + dy / (d || 1) * k - 2 * f }); hurt(o, 130 * f); });
+    p.used = true; var x = p.body.position.x, y = p.body.position.y, R = 150;
+    objs.slice().forEach(function (o) { var dx = o.body.position.x - x, dy = o.body.position.y - y, d = Math.hypot(dx, dy); if (d > R) return; var f = 1 - d / R, k = toPx(Math.min(8, 1.5 * f / o.body.mass)); M.Sleeping.set(o.body, false); M.Body.setVelocity(o.body, { x: o.body.velocity.x + dx / (d || 1) * k, y: o.body.velocity.y + dy / (d || 1) * k - k * 0.15 }); hurt(o, 8 * f * f); });   // a 1.5 newton-second shove and up to 8 joules, fading with distance
     removeProj(p); wakeAll();
     if (!headless) { SND.blast(); shake = 9; for (var i = 0; i < 26; i++) { var a = i / 26 * 6.283; parts.push({ x: x, y: y, vx: Math.cos(a) * 7, vy: Math.sin(a) * 7, life: 0, max: 26, col: i % 2 ? '#9fe8ff' : '#ffffff', s: 5, rot: 0, vr: 0, shape: 'dot', nog: 1 }); } pops.push({ x: x, y: y, t: 0, ring: R }); }
   }
@@ -128,18 +141,19 @@
   /* ---------- the sling ---------- */
   function mkProj(type, x, y, vx, vy, r) {
     var def = P[type], rr = r || def.r;
-    var body = M.Bodies.circle(x, y, rr, { density: def.d, friction: 0.5, restitution: 0.25, frictionAir: 0.002 });
+    var body = M.Bodies.circle(x, y, rr, { friction: 0.45, restitution: 0.3, frictionAir: AIR }); M.Body.setMass(body, r ? def.kg / 3 : def.kg);
     var p = { body: body, proj: true, type: type, r: rr, hit: false, used: false, fuse: 0, age: 0, spin: Math.random() * 6 };
     body.plugin.o = p; M.Composite.add(engine.world, body); M.Body.setVelocity(body, { x: vx, y: vy }); projs.push(p); return p;
   }
   function launch(dx, dy) {   // dx, dy: how far the pouch was pulled from rest
     var type = shots.shift(); armed = true; wakeAll();
-    mkProj(type, SX + dx, SY + dy, -dx * POWER, -dy * POWER);
-    state = 'fly'; flyT = quietT = 0; drag = null; tipT = Math.min(tipT, 60); if (!headless) SND.sling();
+    var d = Math.hypot(dx, dy) || 1, v = toPx(launchSpeed(d, P[type].kg));
+    mkProj(type, SX + dx, SY + dy, -dx / d * v, -dy / d * v);
+    state = 'fly'; flyT = quietT = 0; drag = null; kb = null; tipT = Math.min(tipT, 60); if (!headless) SND.sling();
   }
   function ability() {
     for (var i = projs.length - 1; i >= 0; i--) { var p = projs[i]; if (p.used || p.hit) continue;
-      if (p.type === 'trio') { p.used = true; var v = p.body.velocity, x = p.body.position.x, y = p.body.position.y; [-0.2, 0.2].forEach(function (a) { var c = Math.cos(a), s = Math.sin(a), q = mkProj('trio', x, y + (a > 0 ? 16 : -16), v.x * c - v.y * s, v.x * s + v.y * c, 10); q.used = true; }); M.Body.scale(p.body, 10 / p.r, 10 / p.r); p.r = 10; if (!headless) SND.split(); return true; }
+      if (p.type === 'trio') { p.used = true; var v = p.body.velocity, x = p.body.position.x, y = p.body.position.y; [-0.2, 0.2].forEach(function (a) { var c = Math.cos(a), s = Math.sin(a), q = mkProj('trio', x, y + (a > 0 ? 16 : -16), v.x * c - v.y * s, v.x * s + v.y * c, 10); q.used = true; }); M.Body.scale(p.body, 10 / p.r, 10 / p.r); M.Body.setMass(p.body, P.trio.kg / 3); p.r = 10; if (!headless) SND.split(); return true; }
       if (p.type === 'blast') { explode(p); return true; }
     }
     return false;
@@ -151,7 +165,7 @@
 
   /* ---------- one tick of the game ---------- */
   function step() {
-    tick++; M.Engine.update(engine, STEP);
+    tick++; M.Engine.update(engine, DT); M.Engine.update(engine, DT);
     var i, o, moving = false;
     for (i = objs.length - 1; i >= 0; i--) { o = objs[i]; var p = o.body.position; if (p.y > H + 80 || p.x > W + 140 || p.x < -220) { kill(o); continue; } if (!o.body.isSleeping && o.body.speed > 0.3) moving = true; }
     for (i = projs.length - 1; i >= 0; i--) { var q = projs[i]; q.age++; var bp = q.body.position; if (q.fuse && --q.fuse === 0 && !q.used) { explode(q); continue; } if (bp.y > H + 80 || bp.x > W + 140 || bp.x < -220) { removeProj(q); continue; } if (!q.body.isSleeping && q.body.speed > 0.35) moving = true; }
@@ -173,7 +187,7 @@
     if (won) { score += unused * 1000; stars = 1 + Math.min(2, unused); save.stars[lvl] = Math.max(save.stars[lvl] || 0, stars); save.best[lvl] = Math.max(save.best[lvl] || 0, score); save.open = Math.max(save.open, Math.min(LEVELS.length, lvl + 2)); keep(); }
     if (headless) return;
     hud(); if (won) SND.win(); else SND.fail();
-    setTimeout(function () { panel(won ? 'win' : 'fail', stars, unused); }, won ? 500 : 300);
+    var id = runId; setTimeout(function () { if (id === runId && state === 'done') panel(won ? 'win' : 'fail', stars, unused); }, won ? 500 : 300);
   }
 
   /* ---------- overlay panels ---------- */
@@ -187,7 +201,7 @@
     over.innerHTML = '<div>' + h + '</div>'; over.hidden = false;
   }
   over.addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return; audio();
+    var b = e.target.closest('button'); if (!b) return; audio(); preload();
     if (b.dataset.l != null) return start(+b.dataset.l);
     var a = b.dataset.a; if (a === 'play') start(Math.min(save.open, LEVELS.length) - 1); else if (a === 'next') start(lvl + 1); else if (a === 'retry') start(lvl); else if (a === 'levels') panel('levels');
   });
@@ -245,7 +259,16 @@
     }
     ctx.restore();
   }
-  function pouch() { return drag ? { x: SX + drag.x, y: SY + drag.y } : { x: SX, y: SY }; }
+  // the pull right now: from the pointer, or from the keyboard (hold Space to charge). A full-power pull shakes a little, like a real arm.
+  function curPull() {
+    var d = drag;
+    if (!d && kb) { var lv = Math.min(1, (performance.now() - kb.t) / 1050), a = kbAng * Math.PI / 180; d = { x: -Math.cos(a) * MAXPULL * lv, y: Math.sin(a) * MAXPULL * lv }; }
+    if (!d) return null;
+    var raw = Math.hypot(d.x, d.y) / MAXPULL;
+    if (raw > 0.85) { var sh = Math.sin(performance.now() * 0.047) * ((raw - 0.85) / 0.15) * 0.045, c = Math.cos(sh), n = Math.sin(sh); d = { x: d.x * c - d.y * n, y: d.x * n + d.y * c }; }
+    return d;
+  }
+  function pouch() { var d = curPull(); return d ? { x: SX + d.x, y: SY + d.y } : { x: SX, y: SY }; }
   function draw() {
     var cw = cv.width, sc = cw / W; ctx.setTransform(sc, 0, 0, sc, 0, 0);
     if (!bg) backdrop();
@@ -257,7 +280,13 @@
     if (loaded) { ctx.strokeStyle = '#3a1410'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(SX + 16, SY - 10); ctx.lineTo(p.x, p.y); ctx.stroke(); }
     for (i = 0; i < objs.length; i++) drawObj(objs[i]);
     // aim line
-    if (drag && loaded) { var vx = -drag.x * POWER, vy = -drag.y * POWER, x = p.x, y = p.y; for (var s = 1; s <= 64; s++) { vx *= 0.998; vy = vy * 0.998 + GRAV; x += vx; y += vy; if (y > GY) break; if (s % 4 === 0) { ctx.fillStyle = 'rgba(255,255,255,' + (0.85 - s / 90) + ')'; ctx.beginPath(); ctx.arc(x, y, 3.2 - s / 40, 0, 6.283); ctx.fill(); } } }
+    var pl = loaded ? curPull() : null;
+    if (pl) {   // the dotted path uses the same sums as the physics engine, so the shot flies where the dots say
+      var pd = Math.hypot(pl.x, pl.y) || 1, v0 = launchSpeed(pd, P[shots[0]].kg), vv = toPx(v0) / 2, vx = -pl.x / pd * vv, vy = -pl.y / pd * vv, x = p.x, y = p.y, fa = 1 - AIR * (DT / STEP), gd = GS * DT * DT;
+      for (var s = 1; s <= 150; s++) { vx *= fa; vy = vy * fa + gd; x += vx; y += vy; if (y > GY || x > W) break; if (s % 6 === 0) { ctx.fillStyle = 'rgba(255,255,255,' + Math.max(0.12, 0.9 - s / 170) + ')'; ctx.beginPath(); ctx.arc(x, y, Math.max(1.4, 3.4 - s / 60), 0, 6.283); ctx.fill(); } }
+      var pct = Math.round(pd / MAXPULL * 100); ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; var lab = pct + '%  ' + v0.toFixed(1) + ' m/s', lw = ctx.measureText(lab).width + 20;
+      ctx.fillStyle = 'rgba(10,3,8,.78)'; rr(SX - lw / 2 + 6, SY - 96, lw, 24, 12); ctx.fill(); ctx.fillStyle = pct > 85 ? '#ffd23a' : '#fff'; ctx.fillText(lab, SX + 6, SY - 84);
+    } else if (loaded) { var gl = 0.5 + 0.5 * Math.sin(tick / 11); ctx.strokeStyle = 'rgba(255,226,122,' + (0.25 + gl * 0.5) + ')'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p.x, p.y, P[shots[0]].r + 6 + gl * 3, 0, 6.283); ctx.stroke(); }
     if (loaded) drawProj(shots[0], p.x, p.y, P[shots[0]].r, 0, true);
     for (i = 0; i < projs.length; i++) { var q = projs[i]; drawProj(q.type, q.body.position.x, q.body.position.y, q.r, q.body.angle, q.type === 'trio' && !q.used); }
     // sling: front band, front arm and post
@@ -276,7 +305,7 @@
     var left = targetsLeft(); ctx.font = 'bold 15px sans-serif'; ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(0,0,0,.45)'; rr(W - 178, 12, 166, 28, 14); ctx.fill(); ctx.fillStyle = '#fff'; ctx.fillText(left + ' left to smash', W - 26, 27);
     ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(0,0,0,.45)'; rr(12, 12, 190, 28, 14); ctx.fill(); ctx.fillStyle = '#fff'; ctx.fillText((lvl + 1) + '. ' + LEVELS[lvl].name, 26, 27);
     if (tipT > 0 && tip) { ctx.globalAlpha = Math.min(1, tipT / 40); ctx.textAlign = 'center'; ctx.font = 'bold 17px sans-serif'; var tw = ctx.measureText(tip).width + 36; ctx.fillStyle = 'rgba(10,3,8,.8)'; rr(W / 2 - tw / 2, 58, tw, 36, 18); ctx.fill(); ctx.strokeStyle = '#ffd23a'; ctx.lineWidth = 1.5; ctx.stroke(); ctx.fillStyle = '#fff'; ctx.fillText(tip, W / 2, 77); ctx.globalAlpha = 1; }
-    if (state === 'aim' && !drag && !armed && lvl === 0 && shots.length) { var bob = Math.sin(tick / 14) * 5; ctx.textAlign = 'center'; ctx.font = 'bold 15px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.fillText('Drag back and let go', SX + 4, SY - 60 + bob); }
+    if (state === 'aim' && !drag && !kb && !armed && lvl === 0 && shots.length) { var bob = Math.sin(tick / 14) * 5; ctx.textAlign = 'center'; ctx.font = 'bold 15px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.fillText('Pull the glowing chip back and let go', SX + 60, SY - 70 + bob); }
   }
 
   /* ---------- running the game ---------- */
@@ -295,7 +324,8 @@
     if (state === 'fly') { if (!ability() && flyT > 80 && shots.length && targetsLeft() && Math.hypot(p.x - SX, p.y - SY) < 110) nextShot(); }
   });
   cv.addEventListener('pointermove', function (e) { if (drag) { e.preventDefault(); drag = pull(pt(e)); } });
-  function release(e) { if (!drag) return; var d = drag; if (Math.hypot(d.x, d.y) < 14) { drag = null; return; } launch(d.x, d.y); }
+  function say(t) { tip = t; tipT = 170; }
+  function release(e) { if (!drag) return; var d = curPull(); if (Math.hypot(d.x, d.y) < 16) { drag = null; say('Pull it back further, then let go.'); return; } launch(d.x, d.y); }
   cv.addEventListener('pointerup', release); cv.addEventListener('pointercancel', function () { drag = null; });
   cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 
@@ -304,7 +334,11 @@
   $('sl-levels').addEventListener('click', function () { panel('levels'); });
   function muteLabel() { btnMute.textContent = save.mute ? 'Sound: off' : 'Sound: on'; btnMute.setAttribute('aria-pressed', String(save.mute)); }
   btnMute.addEventListener('click', function () { save.mute = !save.mute; keep(); muteLabel(); }); muteLabel();
-  document.addEventListener('keydown', function (e) { if (root.hidden || !running || /input|textarea|select/i.test((e.target.tagName || ''))) return; if (e.key === 'r' || e.key === 'R') start(lvl); else if (e.key === ' ' && state === 'fly') { e.preventDefault(); ability(); } });
+  document.addEventListener('keydown', function (e) { if (root.hidden || !running || /input|textarea|select/i.test((e.target.tagName || ''))) return; if (e.key === 'r' || e.key === 'R') start(lvl);
+    else if (e.key === ' ' && state === 'fly') { e.preventDefault(); ability(); }
+    else if (e.key === ' ' && state === 'aim' && shots.length && !drag) { e.preventDefault(); if (!kb && !e.repeat) { audio(); kb = { t: performance.now() }; } }
+    else if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && state === 'aim') { e.preventDefault(); kbAng = Math.max(0, Math.min(80, kbAng + (e.key === 'ArrowUp' ? 2 : -2))); if (!kb && !drag) say('Aim ' + kbAng + ' degrees. Hold Space to pull back, let go to fire.'); } });
+  document.addEventListener('keyup', function (e) { if (e.key !== ' ' || !kb) return; var d = curPull(); kb = null; if (state !== 'aim' || root.hidden) return; if (Math.hypot(d.x, d.y) < 16) { say('Hold Space longer, then let go.'); return; } launch(d.x, d.y); });
   function still() { size(); if (!bg) backdrop(); var sc = cv.width / W; ctx.setTransform(sc, 0, 0, sc, 0, 0); ctx.drawImage(bg, 0, 0); }
   document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'sl') { if (!engine) { panel('intro'); still(); } go(); } else stop(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') stop(); else if (!root.hidden) go(); });
@@ -319,11 +353,12 @@
       if (!window.Matter) return null; M = window.Matter; headless = true; var res;
       try { build(n); var guard = 0;
         for (var i = 0; i < plan.length && state !== 'done'; i++) { var s = plan[i], a = s.a * Math.PI / 180, d = MAXPULL * s.p; launch(-Math.cos(a) * d, Math.sin(a) * d); var t = 0; while (state === 'fly' && guard++ < 20000) { step(); t++; if (s.tap && t === s.tap) ability(); } }
-        res = { left: targetsLeft(), score: score, won: state === 'done' && !targetsLeft(), shotsLeft: shots.length };
+        res = { left: targetsLeft(), score: score, won: state === 'done' && !targetsLeft(), shotsLeft: shots.length, kinds: objs.filter(function (o) { return o.t; }).map(function (o) { return o.k + '@' + Math.round(o.body.position.x) + ',' + Math.round(GY - o.body.position.y); }) };
       } finally { headless = false; engine = null; state = 'menu'; }
       return res;
     },
-    settle: function (n) { if (!window.Matter) return null; M = window.Matter; headless = true; build(n); var before = objs.map(function (o) { return { x: o.body.position.x, y: o.body.position.y, a: o.body.angle }; }); for (var i = 0; i < 400; i++) M.Engine.update(engine, STEP); var worst = 0; objs.forEach(function (o, i) { worst = Math.max(worst, Math.hypot(o.body.position.x - before[i].x, o.body.position.y - before[i].y), Math.abs(o.body.angle - before[i].a) * 30); }); headless = false; engine = null; state = 'menu'; return worst; },
+    settle: function (n) { if (!window.Matter) return null; M = window.Matter; headless = true; build(n); var before = objs.map(function (o) { return { x: o.body.position.x, y: o.body.position.y, a: o.body.angle }; }); for (var i = 0; i < 800; i++) M.Engine.update(engine, DT); var worst = 0; objs.forEach(function (o, i) { worst = Math.max(worst, Math.hypot(o.body.position.x - before[i].x, o.body.position.y - before[i].y), Math.abs(o.body.angle - before[i].a) * 30); }); headless = false; engine = null; state = 'menu'; return worst; },
+    flight: function (ang, pw, type) { if (!window.Matter) return null; M = window.Matter; headless = true; build(0); objs.slice().forEach(function (o) { M.Composite.remove(engine.world, o.body); }); objs = []; shots = [type || 'chip']; var a = ang * Math.PI / 180, d = MAXPULL * pw, dx = -Math.cos(a) * d, dy = Math.sin(a) * d, kg = P[shots[0]].kg, v0 = launchSpeed(d, kg), vv = toPx(v0) / 2, vx = -dx / d * vv, vy = -dy / d * vv, x = SX + dx, y = SY + dy, fa = 1 - AIR * (DT / STEP), gd = GS * DT * DT, worst = 0, n = 0; launch(dx, dy); var b = projs[0].body; while (n < 400) { M.Engine.update(engine, DT); vx *= fa; vy = vy * fa + gd; x += vx; y += vy; n++; if (y > GY - 20) break; worst = Math.max(worst, Math.hypot(b.position.x - x, b.position.y - y)); } var res = { v0: v0, worstPx: worst, steps: n, time: n / 120, rangeM: (b.position.x - SX - dx) / PXM, vacuumRangeM: null }; var h0 = (GY - 20 - (SY + dy)) / PXM, vxm = v0 * Math.cos(a), vym = v0 * Math.sin(a); res.vacuumRangeM = vxm * (vym + Math.sqrt(vym * vym + 2 * GRAV * h0)) / GRAV; headless = false; engine = null; state = 'menu'; return res; },
     state: function () { return { state: state, lvl: lvl, shots: shots.slice(), left: engine ? targetsLeft() : -1, score: score, running: running }; }
   };
 })();
