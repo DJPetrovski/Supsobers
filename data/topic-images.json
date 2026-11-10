@@ -54,7 +54,7 @@
  "marilynmanson": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Marilyn_Manson_2024.jpg/500px-Marilyn_Manson_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "miazapata": "https://upload.wikimedia.org/wikipedia/en/f/f6/MiaZapata.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
  "michaelkwilliams": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Omar_Michael_Williams_2012_Shankbone.JPG/500px-Omar_Michael_Williams_2012_Shankbone.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
- "michelelamy": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Michele_Lamy_Paris_Fashion_Week_Autumn_Winter_2019.jpg/500px-Michele_Lamy_Paris_Fashion_Week_Autumn_Winter_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+ "michelelamy": "media/topics/michele-lamy.jpg",
  "michellemcnamara": "https://upload.wikimedia.org/wikipedia/en/5/58/Michelle_McNamara.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
  "mindymccready": "https://upload.wikimedia.org/wikipedia/en/c/cd/Mindy_McCready.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
  "nataliewood": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Natalie_Wood_Allan_Warren.jpg/500px-Natalie_Wood_Allan_Warren.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -86,5 +86,6 @@
  "tupacshakur": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Tupac_Shakur_in_1995.jpg/500px-Tupac_Shakur_in_1995.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "vicmorrowandthetwilightzonekids": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Vic_Morrow_in_1971.jpg/500px-Vic_Morrow_in_1971.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "youngdolph": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Young_Dolph_February_2017.png/500px-Young_Dolph_February_2017.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
- "natachajaitt": "media/topics/natacha-jaitt.jpg"
+ "natachajaitt": "media/topics/natacha-jaitt.jpg",
+ "bushfamily": "media/topics/bush-family.jpg"
 }
