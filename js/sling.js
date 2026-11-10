@@ -1,7 +1,8 @@
 /* Sobercade game 5: Smash the Stash. A slingshot physics game: fling sobriety chips at stacks of bottles, pill bottles,
    baggies and needles until the whole stash is gone. Original art and code. Physics by matter-js (MIT), loaded only when the game is opened.
    Real units, like Disc-ipline: 200 pixels are one metre, gravity is 9.81 m/s2, every object has its real weight in kilograms,
-   the sling is a spring (so a heavier shot leaves slower), and things break by the energy of the hit in joules. Physics runs 120 times a second. */
+   the sling is a spring (so a heavier shot leaves slower), and things break by the energy of the hit in joules. Physics runs 120 times a second.
+   The sums are done in metric because that is what the physics needs; anything shown to the player is in American units (mph, feet, pounds). */
 (function () {
   'use strict';
   var root = document.getElementById('sl'); if (!root) return;
@@ -284,7 +285,7 @@
     if (pl) {   // the dotted path uses the same sums as the physics engine, so the shot flies where the dots say
       var pd = Math.hypot(pl.x, pl.y) || 1, v0 = launchSpeed(pd, P[shots[0]].kg), vv = toPx(v0) / 2, vx = -pl.x / pd * vv, vy = -pl.y / pd * vv, x = p.x, y = p.y, fa = 1 - AIR * (DT / STEP), gd = GS * DT * DT;
       for (var s = 1; s <= 150; s++) { vx *= fa; vy = vy * fa + gd; x += vx; y += vy; if (y > GY || x > W) break; if (s % 6 === 0) { ctx.fillStyle = 'rgba(255,255,255,' + Math.max(0.12, 0.9 - s / 170) + ')'; ctx.beginPath(); ctx.arc(x, y, Math.max(1.4, 3.4 - s / 60), 0, 6.283); ctx.fill(); } }
-      var pct = Math.round(pd / MAXPULL * 100); ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; var lab = pct + '%  ' + v0.toFixed(1) + ' m/s', lw = ctx.measureText(lab).width + 20;
+      var pct = Math.round(pd / MAXPULL * 100); ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; var lab = pct + '%  ' + Math.round(v0 * 2.23694) + ' mph', lw = ctx.measureText(lab).width + 20;
       ctx.fillStyle = 'rgba(10,3,8,.78)'; rr(SX - lw / 2 + 6, SY - 96, lw, 24, 12); ctx.fill(); ctx.fillStyle = pct > 85 ? '#ffd23a' : '#fff'; ctx.fillText(lab, SX + 6, SY - 84);
     } else if (loaded) { var gl = 0.5 + 0.5 * Math.sin(tick / 11); ctx.strokeStyle = 'rgba(255,226,122,' + (0.25 + gl * 0.5) + ')'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p.x, p.y, P[shots[0]].r + 6 + gl * 3, 0, 6.283); ctx.stroke(); }
     if (loaded) drawProj(shots[0], p.x, p.y, P[shots[0]].r, 0, true);

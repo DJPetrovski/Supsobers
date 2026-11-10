@@ -275,7 +275,7 @@
   }
   function startHole() { try { clearPoops(); } catch (e) {} if (G) G.pMiss = 0;
     var h = buildHole(G.hole); G.h = h; G.strokes = 0; G.lie = [h.tee[0], h.tee[1]]; G.prev = null; G.throws = [[h.tee[0], h.tee[1]]]; G.trail = []; G.flight = null; G.phase = 'aim'; G.aimOff = 0; G.wind = h.wind; G.plan = null; G.prevPts = null; showPrevUntil = performance.now() + 3500; G.wob = 0; G.drop = null; G.chainHit = false; G.holeHits = 0; G.pen = 0;
-    pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket()) + ' m to the basket.' + (PETS === 0 ? ' Your dog is here: tap it to pet it.' : ''));
+    pickDiscFor(); aimBase(); syncUi(); over.hidden = true; say('Hole ' + (G.hole + 1) + ': ' + h.name + '. Par ' + h.par + '. ' + Math.round(distToBasket() / 0.3048) + ' ft to the basket.' + (PETS === 0 ? ' Your dog is here: tap it to pet it.' : ''));
     if (ready) buildCourse(h);
     if (skipBtn) skipBtn.hidden = true; G.tour = null;
     snapCam(); previewDirty = true; if (ready) { placeDog(); beginTour(); }
@@ -581,11 +581,11 @@
       var db = distToBasket();
       if (wasPutt && db > 0.35) {
         G.pMiss = (G.pMiss || 0) + 1; curse(G.pMiss >= 2 ? 1 : 0.69); var pm = G.pm; if (pm) { var cm2 = Math.round(Math.abs(pm.lat) * 100);
-          G.puttNote = pm.z < 0.4 && pm.d > 0.9 ? 'Short: it needed more power.' : pm.z > 1.4 ? 'Too hard: it sailed over the top.' : pm.z < 0.8 ? 'Too low: it hit the tray.' : Math.abs(pm.lat) > 0.3 ? 'Missed ' + (pm.lat > 0 ? 'right' : 'left') + ' by ' + cm2 + ' cm: aim a touch ' + (pm.lat > 0 ? 'left' : 'right') + '.' : 'Right on line, it just did not stay in.'; }
+          G.puttNote = pm.z < 0.4 && pm.d > 0.9 ? 'Short: it needed more power.' : pm.z > 1.4 ? 'Too hard: it sailed over the top.' : pm.z < 0.8 ? 'Too low: it hit the tray.' : Math.abs(pm.lat) > 0.3 ? 'Missed ' + (pm.lat > 0 ? 'right' : 'left') + ' by ' + Math.round(cm2 / 2.54) + ' in: aim a touch ' + (pm.lat > 0 ? 'left' : 'right') + '.' : 'Right on line, it just did not stay in.'; }
       }
       if (db > 0.35) setTimeout(function () { sfx('steps', 0.2); }, 700);
-      if (G.hit === 'tree') say('Tree! ' + Math.round(dthrow) + ' m. ' + Math.round(db) + ' m to the basket.');
-      else say((G.puttNote ? G.puttNote + ' ' : '') + Math.round(dthrow) + ' m. ' + (db < 1.2 ? 'Right at the basket.' : Math.round(db) + ' m to the basket.') + (t === 'rough' ? ' In the rough.' : ''));
+      if (G.hit === 'tree') say('Tree! ' + Math.round(dthrow / 0.3048) + ' ft. ' + Math.round(db / 0.3048) + ' ft to the basket.');
+      else say((G.puttNote ? G.puttNote + ' ' : '') + Math.round(dthrow / 0.3048) + ' ft. ' + (db < 1.2 ? 'Right at the basket.' : Math.round(db / 0.3048) + ' ft to the basket.') + (t === 'rough' ? ' In the rough.' : ''));
       if (db < 0.35) { G.strokes++; say('Kicked to the base: tap-in.'); holeOutScore(true); return; }
     }
     if (G.strokes >= G.h.par + 5) { say('Pick it up. Max strokes this hole.'); holeOutScore(false); return; }
@@ -822,7 +822,7 @@
     if (landed && best.d > 0.9 && best.z < 0.3) { r.txt = 'Too soft: falls short'; r.col = '#ff6a4a'; }
     else if (best.z > 1.4) { r.txt = 'Too hard: sails over'; r.col = '#ff6a4a'; }
     else if (best.z < 0.8) { r.txt = 'Too low: hits the tray'; r.col = '#ff6a4a'; }
-    else if (Math.abs(best.lat) > 0.42) { r.txt = 'Wide ' + (best.lat > 0 ? 'right' : 'left') + ' by ' + cm + ' cm'; r.col = '#ff6a4a'; }
+    else if (Math.abs(best.lat) > 0.42) { r.txt = 'Wide ' + (best.lat > 0 ? 'right' : 'left') + ' by ' + Math.round(cm / 2.54) + ' in'; r.col = '#ff6a4a'; }
     else {
       var soft = clamp(1.03 - (best.spd - 8) / 19, 0.1, 0.97), aq = Math.abs(best.lat) < 0.15 ? 1 : Math.abs(best.lat) < 0.28 ? 0.78 : 0.45, rs = best.vz > 1.5 ? 0.5 : 1;
       r.chance = Math.round(soft * aq * rs * 100); r.txt = r.chance >= 75 ? 'On target' : r.chance >= 45 ? 'Close' : 'Risky: edge of the chains'; r.col = r.chance >= 75 ? '#3be072' : r.chance >= 45 ? '#ffd23a' : '#ff9a3a';
@@ -853,7 +853,7 @@
     c.globalAlpha = 1; c.strokeStyle = col; c.lineWidth = 2.5; c.stroke(); c.strokeStyle = 'rgba(0,0,0,.55)'; c.lineWidth = 1; c.stroke();
     var q = P2(clamp(lat, -0.6, 0.6), full ? clamp(f.z, 0.2, 1.8) : 1.1), qx = m.x + (q.x - m.x) * k, qy = m.y + (q.y - m.y) * (full ? k : 1);   // where the disc will cross
     c.fillStyle = col; c.strokeStyle = '#000'; c.lineWidth = 2; c.beginPath(); c.arc(qx, full ? qy : m.y, 6, 0, 6.3); c.fill(); c.stroke();
-    var txt = al < 0.08 ? 'Dead center' : cm + ' cm ' + (lat > 0 ? 'right' : 'left') + (al < 0.2 ? ' (good)' : al < 0.42 ? ' (edge)' : ' (miss)');
+    var txt = al < 0.08 ? 'Dead center' : Math.round(cm / 2.54) + ' in ' + (lat > 0 ? 'right' : 'left') + (al < 0.2 ? ' (good)' : al < 0.42 ? ' (edge)' : ' (miss)');
     c.font = '800 13px system-ui, sans-serif'; c.textAlign = 'center'; var tw = c.measureText(txt).width + 16, ty = Math.min(D.y, C.y) + 22; c.fillStyle = 'rgba(8,14,24,.82)'; c.fillRect(m.x - tw / 2, ty - 14, tw, 20); c.fillStyle = col; c.fillText(txt, m.x, ty);
     c.restore();
   }
@@ -913,7 +913,7 @@
     c.fillStyle = disc.col; c.strokeStyle = '#05080c'; c.lineWidth = 2; c.beginPath(); if (pizza) c.ellipse(0, 0, dw * 0.5, dw * 0.9, 0, 0, 6.3); else c.ellipse(0, 0, dw, dw * 0.42, 0, 0, 6.3); c.fill(); c.stroke(); c.shadowBlur = 0;
     c.fillStyle = 'rgba(255,255,255,.28)'; c.beginPath(); c.ellipse(0, -dw * 0.06, dw * 0.66, dw * 0.24, 0, 0, 6.3); c.fill();
     c.restore();
-    if (!hold) { c.save(); c.font = '800 13px system-ui, sans-serif'; c.textAlign = 'center'; c.shadowColor = 'rgba(0,0,0,.9)'; c.shadowBlur = 5; c.fillStyle = '#fff'; c.fillText('Touch the disc · pull back · push forward', pt.x, pt.y + dw * 0.42 + 30 + bob); if (GUIDE) { c.font = '700 12px system-ui, sans-serif'; c.fillStyle = '#9fe9b4'; c.fillText(distToBasket().toFixed(1) + ' m · aim for about ' + Math.round(idealPw(distToBasket(), pizza) * 100) + '% power (the white mark)', pt.x, pt.y - dw * 0.42 - 30 + bob); } c.restore(); }
+    if (!hold) { c.save(); c.font = '800 13px system-ui, sans-serif'; c.textAlign = 'center'; c.shadowColor = 'rgba(0,0,0,.9)'; c.shadowBlur = 5; c.fillStyle = '#fff'; c.fillText('Touch the disc · pull back · push forward', pt.x, pt.y + dw * 0.42 + 30 + bob); if (GUIDE) { c.font = '700 12px system-ui, sans-serif'; c.fillStyle = '#9fe9b4'; c.fillText(Math.round(distToBasket() / 0.3048) + ' ft · aim for about ' + Math.round(idealPw(distToBasket(), pizza) * 100) + '% power (the white mark)', pt.x, pt.y - dw * 0.42 - 30 + bob); } c.restore(); }
   }
   function drawPull() {   // the slingshot: a disc you pull back, a power line, and the tilt it will fly with
     if (G && G.phase === 'aim' && puttMode()) { drawPuttDisc(); return; }
@@ -2034,7 +2034,7 @@
     // tee sign: hole number, par and distance
     (function () {
       var c = document.createElement('canvas'); c.width = 256; c.height = 160; var g = c.getContext('2d'); g.fillStyle = '#1d4a2a'; g.fillRect(0, 0, 256, 160); g.strokeStyle = '#f3efe2'; g.lineWidth = 6; g.strokeRect(6, 6, 244, 148);
-      g.fillStyle = '#f3efe2'; g.textAlign = 'center'; g.font = '800 70px system-ui, sans-serif'; g.fillText(String(G.hole + 1), 128, 78); g.font = '700 26px system-ui, sans-serif'; g.fillText('PAR ' + h.par + '  ' + Math.round(Math.hypot(h.basket[0] - h.tee[0], h.basket[1] - h.tee[1])) + ' m', 128, 118); g.font = '600 15px system-ui, sans-serif'; g.fillText(h.name.toUpperCase(), 128, 142);
+      g.fillStyle = '#f3efe2'; g.textAlign = 'center'; g.font = '800 70px system-ui, sans-serif'; g.fillText(String(G.hole + 1), 128, 78); g.font = '700 26px system-ui, sans-serif'; g.fillText('PAR ' + h.par + '  ' + Math.round(Math.hypot(h.basket[0] - h.tee[0], h.basket[1] - h.tee[1]) / 0.3048) + ' ft', 128, 118); g.font = '600 15px system-ui, sans-serif'; g.fillText(h.name.toUpperCase(), 128, 142);
       var tx = new T.CanvasTexture(c); tx.encoding = T.sRGBEncoding; var hd = Math.atan2(h.path[1][0] - h.path[0][0], h.path[1][1] - h.path[0][1]);
       var sg = new T.Group(), post = new T.Mesh(new T.CylinderGeometry(0.04, 0.04, 1.3, 8), new T.MeshStandardMaterial({ color: 0x4a3a2c, roughness: 1 })); post.position.y = 0.65; post.castShadow = true; sg.add(post);
       var bd = new T.Mesh(new T.BoxGeometry(0.9, 0.56, 0.05), new T.MeshStandardMaterial({ map: tx, roughness: 0.7 })); bd.position.y = 1.25; bd.castShadow = true; sg.add(bd);
@@ -2110,8 +2110,8 @@
     var tt = Math.round(cb.bottom - sb.top + 6 + (W < 600 ? 2 * rw + 8 : 0)); if (toast._top !== tt) { toast._top = tt; toast.style.top = tt + 'px'; }
     hctx.save(); hctx.translate(cxw, cyw); hctx.fillStyle = 'rgba(8,2,6,.72)'; hctx.strokeStyle = 'rgba(255,42,53,.5)'; hctx.beginPath(); hctx.arc(0, 0, rw, 0, 6.3); hctx.fill(); hctx.stroke();
     hctx.rotate(ang); hctx.fillStyle = '#ffd1d4'; hctx.globalAlpha = 0.4 + Math.min(0.6, ws / 5); hctx.beginPath(); hctx.moveTo(0, -16); hctx.lineTo(7, -3); hctx.lineTo(2.5, -3); hctx.lineTo(2.5, 14); hctx.lineTo(-2.5, 14); hctx.lineTo(-2.5, -3); hctx.lineTo(-7, -3); hctx.closePath(); hctx.fill(); hctx.restore();
-    hctx.fillStyle = '#ffd1d4'; hctx.font = '700 11px system-ui, sans-serif'; hctx.textAlign = 'left'; hctx.fillText('WIND ' + ws.toFixed(0) + ' m/s', cxw + rw + 8, cyw - 4);
-    hctx.fillStyle = 'rgba(8,2,6,.72)'; var txt = Math.round(distToBasket()) + ' m to basket'; hctx.font = '700 13px system-ui, sans-serif'; var tw = hctx.measureText(txt).width + 16; hctx.fillRect(cxw + rw + 6, cyw + 2, tw, 22); hctx.fillStyle = '#fff'; hctx.fillText(txt, cxw + rw + 14, cyw + 18);
+    hctx.fillStyle = '#ffd1d4'; hctx.font = '700 11px system-ui, sans-serif'; hctx.textAlign = 'left'; hctx.fillText('WIND ' + Math.round(ws * 2.23694) + ' mph', cxw + rw + 8, cyw - 4);
+    hctx.fillStyle = 'rgba(8,2,6,.72)'; var txt = Math.round(distToBasket() / 0.3048) + ' ft to basket'; hctx.font = '700 13px system-ui, sans-serif'; var tw = hctx.measureText(txt).width + 16; hctx.fillRect(cxw + rw + 6, cyw + 2, tw, 22); hctx.fillStyle = '#fff'; hctx.fillText(txt, cxw + rw + 14, cyw + 18);
   }
 
   /* ---------- frame ---------- */
