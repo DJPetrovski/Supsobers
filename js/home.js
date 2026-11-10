@@ -41,7 +41,7 @@
     spotify: function () { return '<h3>Spotify</h3><p>The podcast</p>'; },
     half: function () { return '<h3>My Better<br>Half</h3><p>Kim: Reverie Revival Colorado</p>'; },
     music: function () { return '<h3>Music</h3><p>DJ\'s house mixes. Play them here.</p>'; },
-    craving: function () { return '<h3>Kraving Killer</h3><p>Play something dumb until it passes</p>'; },
+    craving: function () { return '<h3>Sobercade</h3><p>Play something dumb until it passes</p>'; },
     contact: function () { return '<h3>Contact</h3><p>Open the laptop. Send a message.</p>'; },
     discord: function () { return '<h3>Discord</h3><p>Join the server</p>'; },
     voice: function () { return '<h3>Voice</h3><p>Say what you want. Press again to talk.</p>'; },
