@@ -77,7 +77,7 @@
  "romanpolanski": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/2023.11.13._Roman_Polanski_Photo_Mariusz_Kubik_06.JPG/500px-2023.11.13._Roman_Polanski_Photo_Mariusz_Kubik_06.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "samcooke": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Sam_Cooke_2.jpg/500px-Sam_Cooke_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "sharontate": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Sharon_Tate_Valley_of_the_Dolls_1967_-_Restoration.jpg/500px-Sharon_Tate_Valley_of_the_Dolls_1967_-_Restoration.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
- "sineadoconnor": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Sinead_O%27Connor_%2814828633401%29_%28cropped%29.jpg/500px-Sinead_O%27Connor_%2814828633401%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+ "sineadoconnor": "media/topics/sinead-oconnor.jpg",
  "sushantsinghrajput": "https://upload.wikimedia.org/wikipedia/commons/9/96/Sushant_Singh_Rajput_snapped_at_the_promotions_of_%27M.S._Dhoni_-_The_Untold_Story%27_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
  "tavistockinstitute": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/The_office_of_the_Tavistock_Institute_of_Human_Relations.jpg/500px-The_office_of_the_Tavistock_Institute_of_Human_Relations.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "taylorhawkins": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/FoosLollBerlin190917-21_%28cropped%29.jpg/500px-FoosLollBerlin190917-21_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -88,5 +88,9 @@
  "youngdolph": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Young_Dolph_February_2017.png/500px-Young_Dolph_February_2017.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
  "natachajaitt": "media/topics/natacha-jaitt.jpg",
  "bushfamily": "media/topics/bush-family.jpg",
- "johnnylewis": "media/topics/johnny-lewis.jpg"
+ "johnnylewis": "media/topics/johnny-lewis.jpg",
+ "stevenavery": "media/topics/steven-avery.jpg",
+ "chriswatts": "media/topics/chris-watts.jpg",
+ "jodiarias": "media/topics/jodi-arias.jpg",
+ "sethrich": "media/topics/seth-rich.jpg"
 }
