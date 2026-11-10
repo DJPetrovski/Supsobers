@@ -61,6 +61,7 @@
   }
   wire('es', '.es-top', '.es-screenwrap', 'Tap to play');
   wire('wg', '.wg-top', '.wg-stage', 'Tap to play');
+  wire('sl', '.sl-top', '.sl-stage', 'Tap to play');
   (function () {   // the web: the Pop out button is already in its control row
     var st = document.getElementById('web-stage'), b = document.getElementById('web-pop'); if (!st || !b) return;
     b.addEventListener('click', function () { popOut(st, !st.classList.contains('po')); });
@@ -87,8 +88,8 @@
   function onLand() {
     if (!land.matches || open) return;
     var v = document.querySelector('[data-view="craving"]'); if (!v || v.hidden) return;
-    var es = document.getElementById('es'), wg = document.getElementById('wg');
-    if (es && !es.hidden) popOut(es, true); else if (wg && !wg.hidden) popOut(wg, true);
+    var es = document.getElementById('es'), wg = document.getElementById('wg'), sl = document.getElementById('sl');
+    if (es && !es.hidden) popOut(es, true); else if (wg && !wg.hidden) popOut(wg, true); else if (sl && !sl.hidden) popOut(sl, true);
   }
   // landing on a game with the phone already sideways does the same
   document.addEventListener('ss:cvgame', function () { setTimeout(onLand, 150); });
