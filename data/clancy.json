@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss (manifest necessity for a mistrial), the motion to investigate the holdout juror, and the prosecution's gag order request. Prosecutors intend to retry Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Next hearing Nov. 16, 2026. Clancy remains in custody.",
   "trial": [
     {
@@ -375,6 +375,12 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-09",
+      "t": "WBUR: Judge Sullivan denies three motions ahead of the retrial hearing: the defense double jeopardy motion to dismiss (jurors may be dismissed only under specific criteria, which were not met), the defense request for a limited inquiry into the holdout juror (an \"improper intrusion\" into the juror's privacy), and the prosecution's gag order request on defense attorney Kevin Reddington (the Commonwealth \"failed to meet its burden to justify the extreme remedy of a prior restraint\"). The report says the DA has not said whether he will seek a retrial or on what charges; if lesser charges are pursued the defense could request a bench trial. Next hearing Nov. 16 in Plymouth.",
+      "u": "https://www.wbur.org/news/2026/11/09/lindsay-clancy-double-jeapardy-motions-denied",
+      "s": "WBUR"
+    },
     {
       "date": "2026-11-09",
       "t": "Judge Sullivan's 17-page order denying the double jeopardy motion is made public. It recounts the jury notes of Sept. 1-3 (deadlock notes; a Tuey-Rodriguez charge on Sept. 2; a limited inquiry and reinstruction on reasonable doubt on Sept. 3; the foreperson's note that Juror Doe acknowledged doubt but refused to apply it), finds manifest necessity, and rejects the defense argument that the court should have questioned the foreperson or Juror Doe first. A single justice of the SJC had earlier denied the defense emergency appeal. Reportedly 11 jurors accepted the insanity defense and one wanted first-degree murder. Prosecutors have not said whether the retrial will be on the same or different charges.",
