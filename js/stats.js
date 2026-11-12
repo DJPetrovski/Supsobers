@@ -1,5 +1,5 @@
 /* Visitor stats: GoatCounter (no cookies, no personal tracking). Each tab counts as its own page.
-   The footer shows a public "people stopped by" number once GoatCounter's public counter is switched on; until then it stays hidden. */
+   The public "people stopped by" line in the footer is handled by visitors.js. */
 (function () {
   'use strict';
   var CODE = 'supsobers', host = location.hostname;
@@ -19,12 +19,5 @@
     document.addEventListener('ss:route', function (e) { setTimeout(function () { send(e.detail.name); }, 50); });
     send((location.hash || '#home').slice(1));   // the first view was routed before this script ran
   }
-  // public counter in the footer (needs "Allow adding visitor counts on your website" in GoatCounter settings)
-  var out = document.getElementById('stat-people');
-  if (out) fetch('https://' + CODE + '.goatcounter.com/counter/TOTAL.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
-    var n = d && d.count_unique ? parseInt(String(d.count_unique).replace(/\D/g, ''), 10) : 0;
-    if (!n) return;
-    out.querySelector('b').textContent = n.toLocaleString();
-    out.hidden = false;
-  }).catch(function () {});
+  // the public counter line in the footer is filled in by visitors.js
 })();
