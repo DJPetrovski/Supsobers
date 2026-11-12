@@ -925,7 +925,7 @@
   "kind": "asr"
  },
  "gkCUWG7Eqy8": {
-  "tried": "2026-11-11",
+  "tried": "2026-11-12",
   "status": "ok",
   "kind": "standard"
  },
@@ -975,7 +975,13 @@
   "kind": "asr"
  },
  "BzRA6YPmPWI": {
-  "tried": "2026-11-10",
-  "status": "none"
+  "tried": "2026-11-12",
+  "status": "ok",
+  "kind": "asr"
+ },
+ "qknhEVWZwfA": {
+  "tried": "2026-11-12",
+  "status": "ok",
+  "kind": "asr"
  }
 }
