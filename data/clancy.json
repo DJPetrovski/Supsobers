@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-11",
-  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss (manifest necessity for a mistrial), the motion to investigate the holdout juror, and the prosecution's gag order request. Prosecutors intend to retry Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Next hearing Nov. 16, 2026. Clancy remains in custody.",
+  "updated": "2026-11-12",
+  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss (manifest necessity for a mistrial), the motion to investigate the holdout juror, and the prosecution's gag order request. Prosecutors intend to retry Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Next hearing Nov. 16, 2026. Clancy remains in custody. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected (Boston.com).",
   "trial": [
     {
       "day": 0,
@@ -375,6 +375,18 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-09",
+      "t": "Boston.com: Martin G. Weinberg, appellate counsel on the defense team, says he expects to appeal the double jeopardy ruling to the Massachusetts Supreme Judicial Court in the \"very near future.\" A conference on the retrial decision is expected about a week after the ruling (Nov. 16). Judge Sullivan floated a March 2027 trial; defense attorney Reddington said he is eyeing April. DA Tim Cruz has not said whether he will seek first-degree murder again or reduce the charges.",
+      "u": "https://www.boston.com/news/crime/2026/11/09/lindsay-clancy-motion-to-dismiss-denied/",
+      "s": "Boston.com"
+    },
+    {
+      "date": "2026-11-09",
+      "t": "Boston 25 News: Judge Sullivan denies the dismissal motion, finding the deadlock created manifest necessity for the mistrial. The prosecution's gag order request was denied without prejudice, so it can be renewed. The 26-day trial had about 90 witnesses and roughly 300 exhibits; jurors deliberated about 27 hours over four days by Sept. 2. No retrial date set.",
+      "u": "https://www.boston25news.com/news/local/judge-clears-way-lindsay-clancy-retrial-rejecting-bid-dismiss-murder-charges/DDVAS3W3LBE3XGUCCKCPHJKY2Q/",
+      "s": "Boston 25 News"
+    },
     {
       "date": "2026-11-09",
       "t": "WBUR: Judge Sullivan denies three motions ahead of the retrial hearing: the defense double jeopardy motion to dismiss (jurors may be dismissed only under specific criteria, which were not met), the defense request for a limited inquiry into the holdout juror (an \"improper intrusion\" into the juror's privacy), and the prosecution's gag order request on defense attorney Kevin Reddington (the Commonwealth \"failed to meet its burden to justify the extreme remedy of a prior restraint\"). The report says the DA has not said whether he will seek a retrial or on what charges; if lesser charges are pursued the defense could request a bench trial. Next hearing Nov. 16 in Plymouth.",
