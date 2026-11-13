@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss (manifest necessity for a mistrial), the motion to investigate the holdout juror, and the prosecution's gag order request. Prosecutors intend to retry Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Next hearing Nov. 16, 2026. Clancy remains in custody. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected (Boston.com).",
   "trial": [
     {
@@ -306,6 +306,14 @@
         {
           "t": "Boston Globe report",
           "u": "https://www.bostonglobe.com/2026/11/02/metro/lindsay-clancy-retrial-juror-gag-order-dismissal/"
+        },
+        {
+          "t": "Hearing video (PBS NewsHour)",
+          "yt": "RIJ49KsdiHM"
+        },
+        {
+          "t": "PBS NewsHour report",
+          "u": "https://www.pbs.org/newshour/nation/watch-live-lindsay-clancy-returns-to-court-with-question-of-retrial-uncertain"
         }
       ]
     },
@@ -375,6 +383,18 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-09",
+      "t": "NBC Boston: Judge Sullivan denies the bids to dismiss the three murder indictments and to question the holdout juror, and rejects the prosecution request to limit lawyers' media comments. Another hearing is set for the following week, when a retrial date could be set. The Plymouth DA's office has not said whether it will retry Clancy and plans to wait until pending motions, including any appeals, are resolved.",
+      "u": "https://www.nbcboston.com/news/local/lindsay-clancy-case-update-judge-ruling-murder-juror/4046440/",
+      "s": "NBC Boston"
+    },
+    {
+      "date": "2026-11-09",
+      "t": "NBC News: Clancy loses bids to dismiss murder charges and to question the \"holdout juror\" (ruling report).",
+      "u": "https://www.nbcnews.com/news/us-news/lindsay-clancy-loses-bids-dismiss-murder-charges-question-holdout-juro-rcna608432",
+      "s": "NBC News"
+    },
     {
       "date": "2026-11-09",
       "t": "Boston.com: Martin G. Weinberg, appellate counsel on the defense team, says he expects to appeal the double jeopardy ruling to the Massachusetts Supreme Judicial Court in the \"very near future.\" A conference on the retrial decision is expected about a week after the ruling (Nov. 16). Judge Sullivan floated a March 2027 trial; defense attorney Reddington said he is eyeing April. DA Tim Cruz has not said whether he will seek first-degree murder again or reduce the charges.",
