@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="fonts/3rd-Man.woff" as="font" type="font/woff" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=1794635758">
+  <link rel="stylesheet" href="css/styles.css?v=1794642980">
 </head>
 <body>
   <canvas id="rain" aria-hidden="true"></canvas>
@@ -373,12 +373,12 @@
         <p class="es-help">Hold <b>B</b> (or press and hold the screen) to dive and gain speed. Let go near the top of a hill to launch, and tap <b>Shift</b> (or the JUMP button) to jump. Grab the gold chips. It starts calm and slowly gets steeper, shorter and rockier. If you fall off the wagon, climb back on.</p>
       </div>
       <div class="sl" id="sl" hidden>
-        <div class="sl-top"><b>Smash the Stash</b><span class="sl-hud"><span id="sl-lv">Level 1</span><span>Score <b id="sl-score">0</b></span><button type="button" class="sl-b" id="sl-restart" aria-label="Restart this level" title="Restart this level">&#8635;</button><button type="button" class="sl-b" id="sl-view" title="Look at the tower up close, or back at the whole scene">View</button><button type="button" class="sl-b" id="sl-levels">Levels</button><button type="button" class="sl-b" id="sl-mute" aria-pressed="false">Sound: on</button></span></div>
+        <div class="sl-top"><b>Smash the Stash</b><span class="sl-hud"><span id="sl-lv">Level 1</span><span>Score <b id="sl-score">0</b></span><button type="button" class="sl-b" id="sl-restart" aria-label="Restart this level" title="Restart this level">&#8635;</button><button type="button" class="sl-b" id="sl-3d" aria-pressed="false" title="Switch between the side view and looking down the sling in 3D">3D view</button><button type="button" class="sl-b" id="sl-view" title="Look at the tower up close, or back at the whole scene">View</button><button type="button" class="sl-b" id="sl-levels">Levels</button><button type="button" class="sl-b" id="sl-mute" aria-pressed="false">Sound: on</button></span></div>
         <div class="sl-stage">
-          <canvas id="sl-canvas" width="960" height="540" aria-label="Smash the Stash: a slingshot game. Drag the sling back and let go to launch a sobriety chip at the bottles."></canvas>
+          <canvas id="sl-canvas3d" aria-hidden="true"></canvas><canvas id="sl-canvas" width="960" height="540" aria-label="Smash the Stash: a slingshot game. Drag the sling back and let go to launch a sobriety chip at the bottles."></canvas>
           <div class="sl-over" id="sl-over"></div>
         </div>
-        <p class="es-help">Pull the glowing chip back and let go: the further you pull, the harder it flies. Smash every bottle, pill bottle, baggie, needle and joint. Clear a level in one or two shots for three stars. <b>TNT</b> explodes, wood burns and the fire spreads, <b>whiskey</b> feeds a fire, and <b>moonshine</b> rots wood away. Drag the scene (or use the Left and Right keys) to look around, scroll to zoom, or press <b>View</b>. Tap or press Space while a truth bomb or the three chips are in the air to set them off early. On a keyboard: Up and Down aim, hold <b>Space</b> to pull back and let go to fire, <b>R</b> restarts.</p>
+        <p class="es-help">Pull the glowing chip back and let go: the further you pull, the harder it flies. Smash every bottle, pill bottle, baggie, needle and joint. Clear a level in one or two shots for three stars. <b>TNT</b> explodes, wood burns and the fire spreads, <b>whiskey</b> feeds a fire, and <b>moonshine</b> rots wood away. Drag the scene (or use the Left and Right keys) to look around, scroll to zoom, or press <b>View</b>. Press <b>3D view</b> to look down the sling instead: there you drag down to pull back and sideways to aim higher or lower. Tap or press Space while a truth bomb or the three chips are in the air to set them off early. On a keyboard: Up and Down aim, hold <b>Space</b> to pull back and let go to fire, <b>R</b> restarts.</p>
       </div>
       <div class="bk" id="bk" hidden>
         <div class="bk-menu" id="bk-menu">
@@ -647,7 +647,7 @@
   <script src="js/discphys.js?v=1793761663" defer></script>
   <script src="js/discgolf.js?v=1794343467" defer></script>
   <script src="js/discmp.js?v=1793702000" defer></script>
-  <script src="js/sling.js?v=1794642625" defer></script>
+  <script src="js/sling.js?v=1794643092" defer></script>
   <script src="js/dismiss.js?v=1793432570" defer></script>
   <script src="js/popout.js?v=1794341615" defer></script>
   <script src="js/scplayer.js?v=1793432570" defer></script>

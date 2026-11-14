@@ -2297,3 +2297,9 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 }
 .sl.po .sl-over { inset: 0; }
 @media (max-width: 520px) { .sl-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; } .sl-grid small { display: none; } .sl-hud { gap: 8px; font-size: .8rem; } }
+
+/* Smash the Stash: the 3D view sits under the labels */
+#sl-canvas3d { display: none; position: absolute; inset: 0; width: 100%; height: 100%; }
+.sl.v3 #sl-canvas3d { display: block; }
+.sl.v3 #sl-canvas { position: relative; z-index: 1; background: transparent; cursor: ns-resize; }
+.sl.v3 #sl-view { display: none; }
