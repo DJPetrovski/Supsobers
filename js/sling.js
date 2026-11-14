@@ -376,8 +376,6 @@
     var d = drag;
     if (!d && kb) { var lv = Math.min(1, (performance.now() - kb.t) / 1050), a = kbAng * Math.PI / 180; d = { x: -Math.cos(a) * MAXPULL * lv, y: Math.sin(a) * MAXPULL * lv }; }
     if (!d) return null;
-    var raw = Math.hypot(d.x, d.y) / MAXPULL;
-    if (raw > 0.85) { var sh = Math.sin(performance.now() * 0.047) * ((raw - 0.85) / 0.15) * 0.03, c = Math.cos(sh), n = Math.sin(sh); d = { x: d.x * c - d.y * n, y: d.x * n + d.y * c }; }
     return d;
   }
   function pouch() { var d = curPull(); return d ? { x: SX + d.x, y: SY + d.y } : { x: SX, y: SY }; }
@@ -417,7 +415,7 @@
     if (flash > 0.02) { ctx.fillStyle = 'rgba(255,240,200,' + flash * 0.55 + ')'; ctx.fillRect(0, 0, W, H); }
     var left = targetsLeft(); ctx.font = 'bold 15px sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(0,0,0,.45)'; rr(W - 178, 12, 166, 28, 14); ctx.fill(); ctx.fillStyle = '#fff'; ctx.fillText(left + ' left to smash', W - 26, 27);
     ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(0,0,0,.45)'; rr(12, 12, 200, 28, 14); ctx.fill(); ctx.fillStyle = '#fff'; ctx.fillText((lvl + 1) + '. ' + LEVELS[lvl].name, 26, 27);
-    if (pl) { var pct = Math.round(Math.hypot(pl.x, pl.y) / MAXPULL * 100), mph = Math.round(launchSpeed(Math.hypot(pl.x, pl.y), P[shots[0]].kg) * 2.23694), lab = P[shots[0]].name + '  ' + pct + '%  ' + mph + ' mph'; ctx.textAlign = 'center'; ctx.font = 'bold 15px sans-serif'; var lw = ctx.measureText(lab).width + 24; ctx.fillStyle = 'rgba(10,3,8,.8)'; rr(W / 2 - lw / 2, H - 44, lw, 28, 14); ctx.fill(); ctx.fillStyle = pct > 85 ? '#ffd23a' : '#fff'; ctx.fillText(lab, W / 2, H - 30); }
+    if (pl) { var pct = Math.round(Math.hypot(pl.x, pl.y) / MAXPULL * 100), mph = Math.round(launchSpeed(Math.hypot(pl.x, pl.y), P[shots[0]].kg) * 2.23694), lab = P[shots[0]].name + '  ' + (pct >= 100 ? 'MAX' : pct + '%') + '  ' + mph + ' mph'; ctx.textAlign = 'center'; ctx.font = 'bold 15px sans-serif'; var lw = ctx.measureText(lab).width + 24; ctx.fillStyle = 'rgba(10,3,8,.8)'; rr(W / 2 - lw / 2, H - 44, lw, 28, 14); ctx.fill(); ctx.fillStyle = pct >= 100 ? '#ffd23a' : '#fff'; ctx.fillText(lab, W / 2, H - 30); }
     else if (loaded && armed === false && lvl > 0) { ctx.textAlign = 'center'; ctx.font = 'bold 14px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fillText('Up next: ' + P[shots[0]].name, W / 2, H - 28); }
     if (tipT > 0 && tip) { ctx.globalAlpha = Math.min(1, tipT / 40); ctx.textAlign = 'center'; ctx.font = 'bold 17px sans-serif'; var tw = ctx.measureText(tip).width + 36; ctx.fillStyle = 'rgba(10,3,8,.8)'; rr(W / 2 - tw / 2, 58, tw, 36, 18); ctx.fill(); ctx.strokeStyle = '#ffd23a'; ctx.lineWidth = 1.5; ctx.stroke(); ctx.fillStyle = '#fff'; ctx.fillText(tip, W / 2, 77); ctx.globalAlpha = 1; }
     if (state === 'aim' && !drag && !kb && !armed && lvl === 0 && shots.length) { var bob = Math.sin(tick / 14) * 4, hp = { x: (SX - cam.x) * z, y: H - (H - SY) * z }; ctx.textAlign = 'left'; ctx.font = 'bold 15px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fillText('Pull the glowing chip back and let go', hp.x + 30, hp.y - 46 + bob); }
