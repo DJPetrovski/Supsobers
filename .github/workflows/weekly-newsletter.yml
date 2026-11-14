@@ -5,6 +5,10 @@ on:
     - cron: "30 0 * * 6"    # 6:30 pm Mountain on Friday in summer time (that is Saturday 00:30 UTC)
     - cron: "30 1 * * 6"    # 6:30 pm Mountain on Friday in winter time (the script only acts on Friday 6 pm to midnight there, and once a day; it builds the email then and sends it at 7:00 pm)
   workflow_dispatch:         # run by hand from the Actions tab: builds a DRAFT in Kit so you can check it
+    inputs:
+      send:                  # for the nights GitHub's scheduler runs late or not at all
+        description: "Type yes to send for real. Only works Friday 6 pm to midnight Mountain, and only once a day."
+        default: "no"
 
 permissions:
   contents: write
@@ -19,7 +23,7 @@ jobs:
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
           # scheduled runs send for real (7:00 pm Denver); set a repo variable DIGEST_PAUSE=true to pause that
-          DIGEST_SEND: ${{ github.event_name == 'schedule' && vars.DIGEST_PAUSE != 'true' && 'true' || '' }}
+          DIGEST_SEND: ${{ (github.event_name == 'schedule' || inputs.send == 'yes') && vars.DIGEST_PAUSE != 'true' && 'true' || '' }}
       - name: Remember that this week went out
         run: |
           git config user.name "github-actions[bot]"
