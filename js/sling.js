@@ -37,7 +37,8 @@
     moon: { w: 28, h: 36, kg: 0.9, hp: 0.9, f: 0.35, e: 0.1, m: 'glass', b: 'liq', pts: 500, t: 1, c: '#bfeede' },
     pill: { w: 26, h: 38, kg: 0.05, hp: 0.06, f: 0.4, e: 0.25, m: 'pill', b: 'melt', pts: 500, t: 1, c: '#ff8a1e' },
     bag: { w: 32, h: 24, kg: 0.03, hp: 0.04, f: 0.6, e: 0.02, m: 'bag', b: 'melt', pts: 500, t: 1, c: '#e8f0ff' },
-    syr: { w: 44, h: 8, kg: 0.012, hp: 0.03, f: 0.4, e: 0.1, m: 'glass', b: 'melt', pts: 500, t: 1, c: '#dfe9f5' }
+    syr: { w: 44, h: 8, kg: 0.012, hp: 0.03, f: 0.4, e: 0.1, m: 'syr', b: 'melt', pts: 500, t: 1, c: '#dfe9f5' },
+    joint: { w: 38, h: 8, kg: 0.01, hp: 0.03, f: 0.6, e: 0.05, m: 'joint', b: 'melt', pts: 500, t: 1, c: '#efe6cf' }
   };
   // the chips come in the real sobriety-chip colours; bigger means heavier
   var P = {
@@ -58,12 +59,12 @@
     { name: 'Bar Shelf', shots: ['green', 'red', 'blue', 'white'], items: cat(house(1100, 0, 150), house(1100, 94, 150), house(1100, 188, 150), [it('wine', 1070, 0), it('whiskey', 1130, 0), it('beer', 1070, 94), it('moon', 1130, 94), it('pill', 1070, 188), it('beer', 1130, 188), it('wine', 1100, 282), it('tnt', 990, 0)]) },
     { name: 'Double Trouble', shots: ['green', 'bomb', 'red', 'blue'], items: cat(col('crate', 1000, 5), col('crate', 1160, 5), [it('beam', 1080, 200, 204), it('tnt', 1080, 214), it('wine', 1080, 250), it('beer', 1000, 214), it('beer', 1160, 214), it('keg', 1080, 0), it('whiskey', 1080, 54), it('pill', 1039, 0), it('pill', 1121, 0)]) },
     { name: 'Fire Sale', shots: ['bomb', 'red', 'green', 'white'], items: cat(col('crate', 1000, 3), col('crate', 1040, 3), col('crate', 1080, 3), [it('beer', 1000, 120), it('whiskey', 1040, 120), it('beer', 1080, 120), it('crate', 1120, 0), it('crate', 1160, 0), it('pill', 1120, 40), it('bag', 1160, 40)], col('crate', 1200, 2), [it('wine', 1200, 80)]) },
-    { name: 'Brick House', shots: ['bomb', 'bronze', 'red', 'white', 'green'], items: cat(col('brick', 1000, 6), col('brick', 1180, 6), [it('beam', 1090, 144, 230), it('tnt', 1090, 0), it('whiskey', 1090, 36), it('beer', 1040, 0), it('wine', 1140, 0), it('pill', 1040, 158), it('moon', 1090, 158), it('pill', 1140, 158)]) },
-    { name: 'House Rules', shots: ['red', 'green', 'red'], items: cat(house(1050, 0, 130), [it('pill', 1050, 0), it('beer', 1020, 94), it('beer', 1080, 94), it('tnt', 955, 0)], col('crate', 1140, 2), [it('whiskey', 1140, 80)]) },
-    { name: 'Powder Keg', shots: ['red', 'blue', 'white', 'green'], items: [it('tnt', 945, 0), it('keg', 1000, 0), it('tnt', 1048, 0), it('keg', 1096, 0), it('beam', 1048, 54, 150), it('crate', 1005, 68), it('crate', 1091, 68), it('beer', 1005, 108), it('beer', 1091, 108), it('wine', 1048, 68), it('tnt', 1190, 0), it('pill', 1190, 36), it('bag', 1245, 0)] },
+    { name: 'Brick House', shots: ['bomb', 'bronze', 'red', 'white', 'green'], items: cat(col('brick', 1000, 6), col('brick', 1180, 6), [it('beam', 1090, 144, 230), it('tnt', 1090, 0), it('whiskey', 1090, 36), it('beer', 1040, 0), it('wine', 1140, 0), it('syr', 1040, 158), it('moon', 1090, 158), it('joint', 1140, 158)]) },
+    { name: 'House Rules', shots: ['red', 'green', 'red'], items: cat(house(1050, 0, 130), [it('joint', 1050, 0), it('beer', 1020, 94), it('beer', 1080, 94), it('tnt', 955, 0)], col('crate', 1140, 2), [it('whiskey', 1140, 80)]) },
+    { name: 'Powder Keg', shots: ['red', 'blue', 'white', 'green'], items: [it('tnt', 945, 0), it('keg', 1000, 0), it('tnt', 1048, 0), it('keg', 1096, 0), it('beam', 1048, 54, 150), it('crate', 1005, 68), it('crate', 1091, 68), it('beer', 1005, 108), it('beer', 1091, 108), it('wine', 1048, 68), it('tnt', 1190, 0), it('syr', 1190, 36), it('bag', 1245, 0)] },
     { name: 'Domino Effect', shots: ['green', 'red', 'white'], items: cat([950, 1000, 1050, 1100, 1150, 1200].map(function (x) { return it('post', x, 0); }), [it('pill', 975, 0), it('bag', 1025, 0), it('pill', 1075, 0), it('bag', 1125, 0), it('pill', 1175, 0), it('wine', 1245, 0)]) },
     { name: 'Moonshine Still', shots: ['white', 'red', 'green', 'blue'], items: cat(house(1100, 0, 140), house(1100, 94, 140), house(1100, 188, 140), [it('pill', 1065, 0), it('moon', 1100, 0), it('beer', 1135, 0), it('beer', 1065, 94), it('moon', 1100, 94), it('pill', 1135, 94), it('bag', 1065, 188), it('moon', 1100, 188), it('wine', 1135, 188), it('whiskey', 1100, 282)]) },
-    { name: 'Last Call', shots: ['blue', 'bomb', 'red', 'trio', 'bronze'], items: cat(house(1000, 0, 130), house(1130, 0, 130), house(1260, 0, 130), house(1065, 94, 130), house(1195, 94, 130), house(1130, 188, 130), [it('wine', 1000, 0), it('tnt', 1130, 0), it('pill', 1130, 36), it('whiskey', 1260, 0), it('beer', 1065, 94), it('moon', 1195, 94), it('bag', 1105, 188), it('pill', 1150, 188), it('wine', 1130, 282), it('keg', 1400, 0), it('beer', 1400, 54)], col('crate', 1340, 2), [it('tnt', 1340, 80), it('whiskey', 1340, 116)]) }
+    { name: 'Last Call', shots: ['blue', 'bomb', 'red', 'trio', 'bronze'], items: cat(house(1000, 0, 130), house(1130, 0, 130), house(1260, 0, 130), house(1065, 94, 130), house(1195, 94, 130), house(1130, 188, 130), [it('wine', 1000, 0), it('tnt', 1130, 0), it('pill', 1130, 36), it('whiskey', 1260, 0), it('beer', 1065, 94), it('moon', 1195, 94), it('bag', 1105, 188), it('joint', 1150, 188), it('wine', 1130, 282), it('keg', 1400, 0), it('beer', 1400, 54)], col('crate', 1340, 2), [it('tnt', 1340, 80), it('whiskey', 1340, 116)]) }
   ];
   var WORLD = 'Sunrise';
 
@@ -72,28 +73,52 @@
   try { var sv = JSON.parse(localStorage.getItem('ss-sling2') || 'null'); if (sv && typeof sv === 'object') { save.open = Math.max(1, Math.min(LEVELS.length, sv.open | 0)); save.stars = sv.stars || []; save.best = sv.best || []; save.mute = !!sv.mute; save.seen = sv.seen || {}; } } catch (e) {}
   function keep() { try { localStorage.setItem('ss-sling2', JSON.stringify(save)); } catch (e) {} }
 
-  /* ---------- sound: tiny synth, no files ---------- */
-  var ac = null;
-  function audio() { if (save.mute || headless) return null; try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume(); } catch (e) { ac = null; } return ac; }
-  function tone(f0, f1, dur, type, vol) { var a = audio(); if (!a) return; var o = a.createOscillator(), g = a.createGain(), t = a.currentTime; o.type = type || 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur); g.gain.setValueAtTime(vol || 0.15, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur); o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + 0.02); }
-  function noise(dur, hp, vol) { var a = audio(); if (!a) return; var n = Math.floor(a.sampleRate * dur), b = a.createBuffer(1, n, a.sampleRate), d = b.getChannelData(0); for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n); var s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(); s.buffer = b; f.type = 'highpass'; f.frequency.value = hp; g.gain.value = vol || 0.2; s.connect(f); f.connect(g); g.connect(a.destination); s.start(); }
-  /* Recorded sounds are optional. The whoosh, knock and clap are borrowed from the disc golf game. To add real glass, metal or other sounds,
-     put mp3 files in media/sling/ and list them here, for example glass: ['sling/glass1', 'sling/glass2']. With no file, the synth plays. */
-  var REC = { sling: ['disc/throw1', 'disc/throw2'], wood: ['disc/hit1', 'disc/hit2'], win: ['disc/clap'], glass: [], steel: [], soft: [], pill: [], blast: [], fail: [] }, buf = {}, recOn = false;
+  /* ---------- sound: soft, close-up, ASMR-style. Everything is made by a tiny synth, no files needed. ----------
+     Glass tinkles, baggies crinkle, needles crack like plastic, pills crumble like chalk, joints crunch like dry leaves.
+     Real recordings are optional: put mp3 files in media/sling/ and list them in REC, for example glass: ['sling/glass1', 'sling/glass2'];
+     a listed recording plays instead of the synth for that sound. */
+  var ac = null, out = null, nbuf = null, lastAt = {}, recent = [];
+  function audio() {
+    if (save.mute || headless) return null;
+    try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume();
+      if (!out) { var c = ac.createDynamicsCompressor(); c.threshold.value = -20; c.ratio.value = 5; c.attack.value = 0.004; c.release.value = 0.2; out = ac.createGain(); out.gain.value = 0.85; out.connect(c); c.connect(ac.destination);
+        var n = ac.sampleRate * 2; nbuf = ac.createBuffer(1, n, ac.sampleRate); var d = nbuf.getChannelData(0); for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1; }
+    } catch (e) { ac = null; }
+    return ac;
+  }
+  // a soft note: quick fade in, long gentle fade out
+  function ping(f0, f1, dur, vol, when, type) { var a = audio(); if (!a) return; var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + (when || 0); o.type = type || 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.connect(g); g.connect(out); o.start(t); o.stop(t + dur + 0.03); }
+  // a tiny grain of filtered hiss: the building block of crinkles, crumbles and crackles
+  function grain(when, dur, f, q, vol, kind) { var a = audio(); if (!a) return; var s = a.createBufferSource(), fl = a.createBiquadFilter(), g = a.createGain(), t = a.currentTime + (when || 0); s.buffer = nbuf; fl.type = kind || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + Math.min(0.004, dur / 3)); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); s.connect(fl); fl.connect(g); g.connect(out); s.start(t, Math.random() * 1.8, dur + 0.02); }
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  // keeps a pile-up of breaking things gentle: at most one of each sound every `gap` ms, and quieter when a lot is going on
+  function calm(kind, gap) { var now = performance.now(); if (now - (lastAt[kind] || 0) < gap) return 0; lastAt[kind] = now; recent = recent.filter(function (t) { return now - t < 300; }); recent.push(now); return recent.length > 5 ? 0.45 : recent.length > 2 ? 0.7 : 1; }
+  var REC = { sling: [], glass: [], bag: [], syr: [], pill: [], joint: [], wood: [], steel: [], blast: [], win: [], fail: [] }, buf = {}, recOn = false;
   function preload() { if (recOn || headless) return; var a = audio(); if (!a) return; recOn = true; Object.keys(REC).forEach(function (k) { REC[k].forEach(function (n) { fetch('media/' + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (ab) { if (ab) a.decodeAudioData(ab, function (b) { buf[n] = b; }, function () {}); }).catch(function () {}); }); }); }
-  function rec(kind, vol, rate) { var a = audio(); if (!a) return true; var have = REC[kind].filter(function (n) { return buf[n]; }); if (!have.length) return false; try { var src = a.createBufferSource(), g = a.createGain(); src.buffer = buf[have[Math.floor(Math.random() * have.length)]]; src.playbackRate.value = rate || (0.92 + Math.random() * 0.16); g.gain.value = vol == null ? 0.7 : vol; src.connect(g); g.connect(a.destination); src.start(); return true; } catch (e) { return false; } }
-  var lastKnock = 0;
+  function rec(kind, vol) { var a = audio(); if (!a) return true; var have = (REC[kind] || []).filter(function (n) { return buf[n]; }); if (!have.length) return false; try { var src = a.createBufferSource(), g = a.createGain(); src.buffer = buf[have[Math.floor(Math.random() * have.length)]]; src.playbackRate.value = rnd(0.94, 1.06); g.gain.value = vol == null ? 0.5 : vol; src.connect(g); g.connect(out); src.start(); return true; } catch (e) { return false; } }
   var SND = {
-    sling: function () { if (!rec('sling', 0.6)) tone(520, 140, 0.18, 'triangle', 0.18); },
-    glass: function () { if (rec('glass', 0.8)) return; noise(0.22, 3200, 0.22); tone(2400 + Math.random() * 900, 1500, 0.12, 'sine', 0.06); tone(3300 + Math.random() * 900, 2100, 0.16, 'sine', 0.05); },
-    wood: function () { if (rec('wood', 0.7)) return; noise(0.12, 500, 0.2); tone(180, 70, 0.12, 'square', 0.07); },
-    steel: function () { if (rec('steel', 0.7)) return; tone(310, 240, 0.3, 'triangle', 0.12); noise(0.08, 1500, 0.1); },
-    soft: function () { if (!rec('soft', 0.6)) noise(0.14, 900, 0.14); },
-    knock: function (E) { if (tick - lastKnock < 5) return; lastKnock = tick; tone(150, 70, 0.08, 'sine', Math.min(0.14, 0.03 + E * 0.012)); },
-    blast: function () { if (rec('blast', 0.8)) return; noise(0.5, 200, 0.3); tone(220, 40, 0.5, 'sawtooth', 0.12); },
-    split: function () { tone(700, 1100, 0.1, 'triangle', 0.1); },
-    win: function () { rec('win', 0.5); [523, 659, 784, 1047].forEach(function (f, i) { setTimeout(function () { tone(f, f, 0.22, 'triangle', 0.14); }, i * 110); }); },
-    fail: function () { tone(300, 150, 0.4, 'triangle', 0.12); }
+    sling: function () { if (rec('sling', 0.35)) return; grain(0, 0.22, 900, 0.7, 0.07); ping(240, 150, 0.16, 0.05); },
+    // glass: a soft crack, then shards tinkling down
+    glass: function () { var v = calm('glass', 45); if (!v || rec('glass', 0.45 * v)) return; ping(520, 340, 0.05, 0.05 * v); for (var i = 0; i < 4; i++) grain(rnd(0, 0.06), rnd(0.02, 0.04), rnd(4200, 7500), 2, 0.05 * v); for (i = 0; i < 8; i++) { var f = rnd(1900, 5600); ping(f, f * 0.985, rnd(0.25, 0.6), rnd(0.012, 0.03) * v, Math.pow(Math.random(), 1.6) * 0.5); } },
+    // baggie: plastic crinkle
+    bag: function () { var v = calm('bag', 60); if (!v || rec('bag', 0.45 * v)) return; var t = 0; for (var i = 0; i < 16; i++) { t += rnd(0.008, 0.045); grain(t, rnd(0.006, 0.02), rnd(2600, 6500), 1.2, rnd(0.02, 0.055) * v, 'highpass'); } },
+    // needle: thin plastic cracking
+    syr: function () { var v = calm('syr', 60); if (!v || rec('syr', 0.45 * v)) return; [0, 0.05, 0.12].forEach(function (t, i) { grain(t + rnd(0, 0.01), 0.012, rnd(1900, 2700), 7, (0.11 - i * 0.025) * v); }); ping(950, 700, 0.04, 0.03 * v, 0.004); },
+    // pill bottle: chalk or soft rock crumbling
+    pill: function () { var v = calm('pill', 60); if (!v || rec('pill', 0.45 * v)) return; ping(170, 110, 0.06, 0.06 * v); var t = 0; for (var i = 0; i < 16; i++) { t += rnd(0.01, 0.035); grain(t, rnd(0.025, 0.055), rnd(500, 1500), 2.2, rnd(0.03, 0.075) * v * (1 - i / 22)); } },
+    // joint: dry leaves crumbling
+    joint: function () { var v = calm('joint', 60); if (!v || rec('joint', 0.45 * v)) return; var t = 0; for (var i = 0; i < 20; i++) { t += Math.random() < 0.3 ? rnd(0.04, 0.09) : rnd(0.004, 0.02); grain(t, rnd(0.008, 0.03), rnd(2400, 5200), 0.9, rnd(0.015, 0.045) * v); } },
+    wood: function () { var v = calm('wood', 50); if (!v || rec('wood', 0.4 * v)) return; ping(230, 140, 0.09, 0.08 * v); for (var i = 0; i < 3; i++) grain(rnd(0, 0.05), 0.03, rnd(700, 1200), 3, 0.045 * v); },
+    steel: function () { var v = calm('steel', 80); if (!v || rec('steel', 0.4 * v)) return; ping(520, 516, 0.9, 0.04 * v); ping(1385, 1378, 0.6, 0.02 * v); },
+    rock: function () { var v = calm('rock', 60); if (!v) return; ping(120, 80, 0.08, 0.07 * v); var t = 0; for (var i = 0; i < 10; i++) { t += rnd(0.01, 0.04); grain(t, rnd(0.03, 0.06), rnd(300, 900), 2, rnd(0.03, 0.06) * v); } },
+    soft: function () { var v = calm('soft', 60); if (!v) return; for (var i = 0; i < 6; i++) grain(rnd(0, 0.2), rnd(0.03, 0.08), rnd(1200, 3000), 0.8, 0.03 * v); },
+    knock: function (E) { if (!calm('knock', 90)) return; ping(140, 90, 0.07, Math.min(0.06, 0.012 + E * 0.004)); },
+    // explosion: a deep, soft whoomp instead of a harsh bang
+    blast: function () { var v = calm('blast', 120) || 0.4; if (rec('blast', 0.45 * v)) return; ping(85, 36, 0.8, 0.2 * v); grain(0, 0.7, 260, 0.6, 0.11 * v, 'lowpass'); for (var i = 0; i < 6; i++) grain(rnd(0.1, 0.7), 0.012, rnd(2000, 4000), 1, 0.02 * v, 'highpass'); },
+    crackle: function () { if (!calm('crackle', 55)) return; grain(0, rnd(0.004, 0.012), rnd(1800, 4500), 1.5, rnd(0.015, 0.04), 'highpass'); },
+    split: function () { ping(880, 870, 0.2, 0.04); ping(1320, 1310, 0.25, 0.03, 0.05); },
+    win: function () { if (rec('win', 0.4)) return; [523, 659, 784, 1047].forEach(function (f, i) { ping(f, f * 0.997, 0.9, 0.06, i * 0.13); }); },
+    fail: function () { if (rec('fail', 0.4)) return; ping(392, 388, 0.5, 0.05); ping(311, 308, 0.7, 0.05, 0.22); }
   };
 
   /* ---------- building a level ---------- */
@@ -150,9 +175,12 @@
     hud(); pops.push({ x: x, y: y - 10, t: 0, s: '+' + o.def.pts });
     if (m === 'glass') { SND.glass(); burst(x, y, 16, o.def.c, 'tri', 1.3); burst(x, y, 6, '#ffffff', 'dot', 1); }
     else if (m === 'wood') { SND.wood(); burst(x, y, o.fire ? 6 : 12, o.fire ? '#2b1a12' : '#b98248', 'rect', 1.2); }
-    else if (m === 'steel' || m === 'brick') { SND.steel(); burst(x, y, 12, m === 'brick' ? '#a5543c' : '#9aa3ad', 'rect', 1.2); }
-    else if (m === 'pill') { SND.glass(); burst(x, y, 6, o.def.c, 'tri', 1); burst(x, y, 14, '', 'pill', 1.2); }
-    else if (m === 'bag') { SND.soft(); burst(x, y, 20, '#ffffff', 'dot', 1); }
+    else if (m === 'steel') { SND.steel(); burst(x, y, 12, '#9aa3ad', 'rect', 1.2); }
+    else if (m === 'brick') { SND.rock(); burst(x, y, 12, '#a5543c', 'rect', 1.2); }
+    else if (m === 'pill') { SND.pill(); burst(x, y, 6, o.def.c, 'tri', 1); burst(x, y, 14, '', 'pill', 1.2); }
+    else if (m === 'bag') { SND.bag(); burst(x, y, 20, '#ffffff', 'dot', 1); }
+    else if (m === 'syr') { SND.syr(); burst(x, y, 8, '#dfe9f5', 'rect', 1); }
+    else if (m === 'joint') { SND.joint(); burst(x, y, 16, '#7d8a4a', 'dot', 0.9); burst(x, y, 6, '#efe6cf', 'rect', 0.8); }
     if (o.t) shake = Math.max(shake, 5);
   }
   function burst(x, y, n, col, shape, pw) { for (var i = 0; i < n; i++) { var a = Math.random() * 6.283, v = (2 + Math.random() * 6) * (pw || 1); parts.push({ x: x + (Math.random() - 0.5) * 14, y: y + (Math.random() - 0.5) * 20, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 3, life: 0, max: 40 + Math.random() * 40, col: shape === 'pill' ? ['#ff5964', '#ffd23a', '#58c7ff', '#ffffff'][i % 4] : col, s: 3 + Math.random() * 5, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.6, shape: shape, bounce: 1 }); } }
@@ -182,7 +210,7 @@
     for (var i = objs.length - 1; i >= 0; i--) {
       var o = objs[i]; if (!o) continue;
       if (o.rot) { o.rot++; o.hp -= o.max / 80; if (!headless && o.rot % 4 === 0) parts.push({ x: o.body.position.x + (Math.random() - 0.5) * o.w, y: o.body.position.y + o.h / 2, vx: 0, vy: 1, life: 0, max: 30, col: '#9dffcf', s: 4, rot: 0, vr: 0, shape: 'dot' }); if (o.hp <= 0) { kill(o); continue; } }
-      if (!o.fire) continue; o.fire++;
+      if (!o.fire) continue; o.fire++; if (!headless && Math.random() < 0.35) SND.crackle();
       var b = o.def.b || 'wood', f = o.fire;
       if (!headless && f % 2 === 0 && parts.length < 600) { var bx = o.body.bounds; parts.push({ x: bx.min.x + Math.random() * (bx.max.x - bx.min.x), y: bx.min.y + Math.random() * (bx.max.y - bx.min.y) * 0.6, vx: (Math.random() - 0.5) * 0.8, vy: -1.2 - Math.random() * 1.6, life: 0, max: 20 + Math.random() * 16, col: '', s: 7 + Math.random() * 9, rot: 0, vr: 0, shape: 'fire', nog: 1 }); if (f % 12 === 0) parts.push({ x: o.body.position.x, y: bx.min.y, vx: (Math.random() - 0.5) * 0.6, vy: -1.4, life: 0, max: 70, col: 'rgba(40,34,36,.4)', s: 12 + Math.random() * 10, rot: 0, vr: 0, shape: 'smoke', nog: 1 }); }
       if (b === 'tnt') { if (f > 20) kill(o); continue; }
@@ -263,7 +291,7 @@
   function starRow(n) { var s = ''; for (var i = 0; i < 3; i++) s += '<span class="' + (i < n ? 'on' : '') + '">&#9733;</span>'; return '<div class="sl-stars" aria-label="' + n + ' of 3 stars">' + s + '</div>'; }
   function panel(kind, stars) {
     var h = '';
-    if (kind === 'intro') h = '<h3>Smash the Stash</h3><p>Pull back the sling and let a sobriety chip fly. Smash every bottle, pill bottle, baggie and needle. Hit the TNT, start a fire or break the moonshine to bring a whole tower down. Clear a level in one or two shots for three stars.</p><div class="sl-act"><button type="button" class="btn btn-primary" data-a="play">' + (save.open > 1 ? 'Keep going' : 'Play') + '</button>' + (save.open > 1 ? '<button type="button" class="btn" data-a="levels">Levels</button>' : '') + '</div>';
+    if (kind === 'intro') h = '<h3>Smash the Stash</h3><p>Pull back the sling and let a sobriety chip fly. Smash every bottle, pill bottle, baggie, needle and joint. Hit the TNT, start a fire or break the moonshine to bring a whole tower down. Clear a level in one or two shots for three stars.</p><div class="sl-act"><button type="button" class="btn btn-primary" data-a="play">' + (save.open > 1 ? 'Keep going' : 'Play') + '</button>' + (save.open > 1 ? '<button type="button" class="btn" data-a="levels">Levels</button>' : '') + '</div>';
     else if (kind === 'win') { var lastL = lvl === LEVELS.length - 1; h = '<h3>' + (used === 1 ? 'One shot!' : lastL ? 'Last call is cancelled' : 'Stash smashed') + '</h3>' + starRow(stars) + '<p>Score <b>' + score.toLocaleString() + '</b> in ' + used + ' shot' + (used > 1 ? 's' : '') + '.' + (stars < 3 ? ' Clear it in two shots or fewer for three stars.' : '') + (lastL ? ' You cleared every tower in this world.' : '') + '</p><div class="sl-act">' + (lastL ? '' : '<button type="button" class="btn btn-primary" data-a="next">Next level</button>') + '<button type="button" class="btn" data-a="retry">Replay</button><button type="button" class="btn" data-a="levels">Levels</button></div>'; }
     else if (kind === 'fail') { var n = targetsLeft(); h = '<h3>So close</h3><p>' + n + ' still standing. Cravings pass, and so do bad rounds. Go again.</p><div class="sl-act"><button type="button" class="btn btn-primary" data-a="retry">Try again</button><button type="button" class="btn" data-a="levels">Levels</button></div>'; }
     else if (kind === 'levels') { h = '<h3>World 1: ' + WORLD + '</h3><div class="sl-grid">'; LEVELS.forEach(function (L, i) { var open = i < save.open, st = save.stars[i] || 0; h += '<button type="button" data-l="' + i + '"' + (open ? '' : ' disabled') + ' aria-label="Level ' + (i + 1) + ', ' + L.name + (open ? '' : ', locked') + '"><b>' + (open ? i + 1 : '&#128274;') + '</b><small>' + L.name + '</small><i>' + (open ? '&#9733;'.repeat(st) + '<u>' + '&#9733;'.repeat(3 - st) + '</u>' : '') + '</i></button>'; }); h += '</div><p style="margin-top:10px;font-size:.8rem">More worlds are on the way.</p>'; }
@@ -320,10 +348,11 @@
     function hills(col, base, amp, f, ph) { c.fillStyle = col; c.beginPath(); c.moveTo(0, H); for (var x = 0; x <= 1300; x += 8) c.lineTo(x, base - Math.sin(x * f + ph) * amp - Math.sin(x * f * 2.3 + ph * 2) * amp * 0.4); c.lineTo(1300, H); c.fill(); }
     hills('rgba(74,34,84,.75)', 430, 28, 0.008, 1); hills('#2c1436', 468, 20, 0.013, 4);
   }
-  function drawNew(o) {   // brick, TNT and moonshine; everything else is drawn by drawObj
+  function drawNew(o) {   // brick, TNT, moonshine and joints; everything else is drawn by drawObj
     var b = o.body, w = o.w, h = o.h, k = o.k; ctx.save(); ctx.translate(b.position.x, b.position.y); ctx.rotate(b.angle);
     if (k === 'brick') { ctx.fillStyle = '#a5543c'; ctx.fillRect(-w / 2, -h / 2, w, h); ctx.strokeStyle = '#5e2a1c'; ctx.lineWidth = 2; ctx.strokeRect(-w / 2 + 1, -h / 2 + 1, w - 2, h - 2); ctx.strokeStyle = 'rgba(60,24,14,.55)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(-w / 2, 0); ctx.lineTo(w / 2, 0); ctx.moveTo(0, -h / 2); ctx.lineTo(0, 0); ctx.moveTo(-w / 4, 0); ctx.lineTo(-w / 4, h / 2); ctx.moveTo(w / 4, 0); ctx.lineTo(w / 4, h / 2); ctx.stroke(); cracks(o); }
     else if (k === 'tnt') { ctx.fillStyle = '#c8281e'; ctx.fillRect(-w / 2, -h / 2, w, h); ctx.strokeStyle = '#5c0d08'; ctx.lineWidth = 2; ctx.strokeRect(-w / 2 + 1, -h / 2 + 1, w - 2, h - 2); ctx.fillStyle = '#f6e7c8'; ctx.fillRect(-w / 2 + 2, -8, w - 4, 16); ctx.fillStyle = '#1b0503'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('TNT', 0, 1); ctx.strokeStyle = '#3a2a1a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(4, -h / 2); ctx.quadraticCurveTo(10, -h / 2 - 8, 14, -h / 2 - 4); ctx.stroke(); if (Math.sin(tick / 6 + o.seed) > 0) { ctx.fillStyle = '#ffd23a'; ctx.beginPath(); ctx.arc(14, -h / 2 - 4, 2.5, 0, 6.283); ctx.fill(); } }
+    else if (k === 'joint') { ctx.fillStyle = '#efe6cf'; ctx.beginPath(); ctx.moveTo(-w / 2, -1.5); ctx.lineTo(w / 2 - 6, -h / 2); ctx.lineTo(w / 2 - 6, h / 2); ctx.lineTo(-w / 2, 1.5); ctx.closePath(); ctx.fill(); ctx.strokeStyle = 'rgba(120,105,70,.8)'; ctx.lineWidth = 1; ctx.stroke(); ctx.fillStyle = '#cdbf9a'; ctx.fillRect(-w / 2, -1.5, 7, 3); ctx.strokeStyle = '#b9a97c'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(w / 2 - 6, 0); ctx.lineTo(w / 2, -2); ctx.stroke(); ctx.strokeStyle = 'rgba(120,105,70,.35)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(-6, -2.5); ctx.lineTo(-2, 2.5); ctx.moveTo(6, -3); ctx.lineTo(10, 3); ctx.stroke(); }
     else if (k === 'moon') { ctx.fillStyle = '#8d8676'; ctx.fillRect(-9, -h / 2, 18, 6); ctx.fillStyle = 'rgba(205,245,232,.55)'; rr(-w / 2, -h / 2 + 5, w, h - 5, 5); ctx.fill(); ctx.strokeStyle = 'rgba(230,255,246,.9)'; ctx.lineWidth = 1.5; ctx.stroke(); ctx.fillStyle = 'rgba(150,255,205,.5)'; ctx.fillRect(-w / 2 + 2, -h / 2 + 12, w - 4, h - 14); ctx.fillStyle = '#12301f'; ctx.font = 'bold 9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('XXX', 0, 4); }
     ctx.restore();
   }
@@ -362,7 +391,7 @@
     var p = pouch(), loaded = state === 'aim' && shots.length;
     ctx.lineCap = 'round'; ctx.strokeStyle = '#4a2a12'; ctx.lineWidth = 11; ctx.beginPath(); ctx.moveTo(SX + 4, SY + 40); ctx.lineTo(SX + 20, SY - 14); ctx.stroke();
     if (loaded) { ctx.strokeStyle = '#3a1410'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(SX + 20, SY - 12); ctx.lineTo(p.x, p.y); ctx.stroke(); }
-    for (i = 0; i < objs.length; i++) { var o = objs[i]; if (o.k === 'brick' || o.k === 'tnt' || o.k === 'moon') drawNew(o); else drawObj(o);
+    for (i = 0; i < objs.length; i++) { var o = objs[i]; if (o.k === 'brick' || o.k === 'tnt' || o.k === 'moon' || o.k === 'joint') drawNew(o); else drawObj(o);
       if (o.alc || o.rot || o.fire) { var bd = o.body; ctx.save(); ctx.translate(bd.position.x, bd.position.y); ctx.rotate(bd.angle); ctx.fillStyle = o.fire ? 'rgba(20,8,4,' + Math.min(0.6, o.fire / 140) + ')' : o.rot ? 'rgba(120,255,190,' + Math.min(0.55, 0.2 + o.rot / 160) + ')' : 'rgba(255,170,60,.28)'; ctx.fillRect(-o.w / 2, -o.h / 2, o.w, o.h); ctx.restore(); } }
     var pl = loaded ? curPull() : null;
     if (pl) {
