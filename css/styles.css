@@ -2303,3 +2303,15 @@ html.po-lock, html.po-lock body { overflow: hidden; }
 .sl.v3 #sl-canvas3d { display: block; }
 .sl.v3 #sl-canvas { position: relative; z-index: 1; background: transparent; cursor: ns-resize; }
 .sl.v3 #sl-view { display: none; }
+
+/* Smash the Stash, 3D mode */
+#sl3 { position: absolute; inset: 0; z-index: 3; line-height: 1.3; background: #140b2c; }
+#sl3[hidden] { display: none; }
+#sl3-canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+.sl3-tag { position: absolute; padding: 5px 13px; border-radius: 999px; background: rgba(0,0,0,.5); color: #fff; font: 700 clamp(.68rem, 1.6vw, .9rem)/1.2 system-ui, sans-serif; pointer-events: none; max-width: 92%; text-align: center; }
+.sl3-tl { top: 8px; left: 8px; } .sl3-tr { top: 8px; right: 8px; }
+.sl3-bot { bottom: 8px; left: 50%; transform: translateX(-50%); background: rgba(10,3,8,.8); }
+.sl3-bot:empty { display: none; }
+.sl3-arc { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); display: grid; justify-items: center; gap: 4px; padding: 8px 4px; border-radius: 14px; background: rgba(0,0,0,.45); color: #fff; font: 700 .7rem system-ui, sans-serif; }
+.sl3-arc input { writing-mode: vertical-lr; direction: rtl; width: 22px; height: clamp(80px, 30vh, 150px); accent-color: #ffd23a; }
+.sl.m3 #sl-view { display: none; }

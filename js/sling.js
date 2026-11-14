@@ -292,7 +292,7 @@
   function starRow(n) { var s = ''; for (var i = 0; i < 3; i++) s += '<span class="' + (i < n ? 'on' : '') + '">&#9733;</span>'; return '<div class="sl-stars" aria-label="' + n + ' of 3 stars">' + s + '</div>'; }
   function panel(kind, stars) {
     var h = '';
-    if (kind === 'intro') h = '<h3>Smash the Stash</h3><p>Pull back the sling and let a sobriety chip fly. Smash every bottle, pill bottle, baggie, needle and joint. Hit the TNT, start a fire or break the moonshine to bring a whole tower down. Clear a level in one or two shots for three stars.</p><div class="sl-act"><button type="button" class="btn btn-primary" data-a="play">' + (save.open > 1 ? 'Keep going' : 'Play') + '</button>' + (save.open > 1 ? '<button type="button" class="btn" data-a="levels">Levels</button>' : '') + '</div>';
+    if (kind === 'intro') h = '<h3>Smash the Stash</h3><p>Pull back the sling and let a sobriety chip fly. Smash every bottle, pill bottle, baggie, needle and joint. Clear a level in one or two shots for three stars.</p><p><b>Classic</b> is the side-on game. <b>3D</b> puts the towers in a real field: aim left, right, up and down.</p><div class="sl-act"><button type="button" class="btn btn-primary" data-a="play">' + (save.open > 1 ? 'Keep going (classic)' : 'Play classic') + '</button><button type="button" class="btn btn-primary" data-a="m3">Play 3D</button>' + (save.open > 1 ? '<button type="button" class="btn" data-a="levels">Classic levels</button>' : '') + '</div>';
     else if (kind === 'win') { var lastL = lvl === LEVELS.length - 1; h = '<h3>' + (used === 1 ? 'One shot!' : lastL ? 'Last call is cancelled' : 'Stash smashed') + '</h3>' + starRow(stars) + '<p>Score <b>' + score.toLocaleString() + '</b> in ' + used + ' shot' + (used > 1 ? 's' : '') + '.' + (stars < 3 ? ' Clear it in two shots or fewer for three stars.' : '') + (lastL ? ' You cleared every tower in this world.' : '') + '</p><div class="sl-act">' + (lastL ? '' : '<button type="button" class="btn btn-primary" data-a="next">Next level</button>') + '<button type="button" class="btn" data-a="retry">Replay</button><button type="button" class="btn" data-a="levels">Levels</button></div>'; }
     else if (kind === 'fail') { var n = targetsLeft(); h = '<h3>So close</h3><p>' + n + ' still standing. Cravings pass, and so do bad rounds. Go again.</p><div class="sl-act"><button type="button" class="btn btn-primary" data-a="retry">Try again</button><button type="button" class="btn" data-a="levels">Levels</button></div>'; }
     else if (kind === 'levels') { h = '<h3>World 1: ' + WORLD + '</h3><div class="sl-grid">'; LEVELS.forEach(function (L, i) { var open = i < save.open, st = save.stars[i] || 0; h += '<button type="button" data-l="' + i + '"' + (open ? '' : ' disabled') + ' aria-label="Level ' + (i + 1) + ', ' + L.name + (open ? '' : ', locked') + '"><b>' + (open ? i + 1 : '&#128274;') + '</b><small>' + L.name + '</small><i>' + (open ? '&#9733;'.repeat(st) + '<u>' + '&#9733;'.repeat(3 - st) + '</u>' : '') + '</i></button>'; }); h += '</div><p style="margin-top:10px;font-size:.8rem">More worlds are on the way.</p>'; }
@@ -301,9 +301,17 @@
   over.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return; audio(); preload();
     if (b.dataset.l != null) return start(+b.dataset.l);
-    var a = b.dataset.a; if (a === 'play') start(Math.min(save.open, LEVELS.length) - 1); else if (a === 'next') start(lvl + 1); else if (a === 'retry') start(lvl); else if (a === 'levels') panel('levels');
+    var a = b.dataset.a; if (a === 'play') start(Math.min(save.open, LEVELS.length) - 1); else if (a === 'next') start(lvl + 1); else if (a === 'retry') start(lvl); else if (a === 'levels') panel('levels'); else if (a === 'm3') open3();
   });
   function start(n) { need(function () { over.hidden = true; build(n); go(); }); }
+  // 3D mode is its own game (js/sling3d.js). You pick a mode from the menu; you cannot switch in the middle of a level.
+  window.__slSnd = { SND: SND, audio: audio, preload: preload };
+  function in3() { return root.classList.contains('m3'); }
+  function open3() {
+    stop(); over.hidden = true; root.classList.add('m3');
+    function run() { window.Sling3D.open({ onExit: function () { root.classList.remove('m3'); engine = null; state = 'menu'; panel('intro'); still(); } }); }
+    if (window.Sling3D) return run(); var sc = document.createElement('script'); sc.src = 'js/sling3d.js?v=1794644610'; sc.onload = run; sc.onerror = function () { root.classList.remove('m3'); panel('intro'); }; document.head.appendChild(sc);
+  }
 
   /* ---------- the camera: the whole scene while you aim, then it follows the shot and closes in on the tower ---------- */
   function clampCam(c) { c.z = Math.max(FITZ, Math.min(1.25, c.z)); c.x = Math.max(0, Math.min(WW - W / c.z, c.x)); }
@@ -514,7 +522,7 @@
     if (!running) return; raf = requestAnimationFrame(frame); if (tick % 30 === 0 || !engine) size(); var dt = Math.min(50, t - last); last = t;
     if (engine && state !== 'menu') { var rate = slow > 0 ? 0.25 : 1; if (slow > 0) slow--; acc += dt * rate; var n = 0; while (acc >= DT && n < NSUB * 2) { substep(); acc -= DT; n++; } if (acc > DT) acc = 0; visuals(rate * dt / STEP); camTick(); draw(); }
   }
-  function go() { if (running || root.hidden || !engine) return; var v = document.querySelector('[data-view="craving"]'); if (v && v.hidden) return; running = true; last = performance.now(); acc = 0; size(); raf = requestAnimationFrame(frame); }
+  function go() { if (running || root.hidden || !engine || in3()) return; var v = document.querySelector('[data-view="craving"]'); if (v && v.hidden) return; running = true; last = performance.now(); acc = 0; size(); raf = requestAnimationFrame(frame); }
   function stop() { running = false; cancelAnimationFrame(raf); }
   function need(cb) { if (window.Matter) { M = window.Matter; return cb(); } var s = document.createElement('script'); s.src = 'js/vendor/matter.min.js?v=0.19.0'; s.onload = function () { M = window.Matter; cb(); }; s.onerror = function () { over.innerHTML = '<div><h3>Could not load the game</h3><p>Check your connection and try again.</p></div>'; over.hidden = false; }; document.head.appendChild(s); }
 
@@ -545,12 +553,13 @@
   cv.addEventListener('wheel', function (e) { if (!engine || state === 'menu') return; e.preventDefault(); manual = true; var s = pt(e), w = toWorld(s); camT.z = cam.z * (e.deltaY < 0 ? 1.12 : 0.89); clampCam(camT); camT.x = w.x - s.x / camT.z; clampCam(camT); }, { passive: false });
 
   /* ---------- buttons, tabs and pausing ---------- */
-  $('sl-restart').addEventListener('click', function () { if (engine) start(lvl); });
-  $('sl-levels').addEventListener('click', function () { panel('levels'); });
+  $('sl-restart').addEventListener('click', function () { if (in3()) return window.Sling3D.restart(); if (engine) start(lvl); });
+  $('sl-levels').addEventListener('click', function () { if (in3()) return window.Sling3D.levels(); panel('levels'); });
   if (btnView) btnView.addEventListener('click', function () { if (!engine) return; if (manual && cam.z > FITZ + 0.1) { manual = false; return; } manual = true; camT.z = Math.max(FITZ, Math.min(1, W / (tower.x1 - tower.x0 + 200))); camT.x = (tower.x0 + tower.x1) / 2 - (W / camT.z) / 2; clampCam(camT); });
   function muteLabel() { btnMute.textContent = save.mute ? 'Sound: off' : 'Sound: on'; btnMute.setAttribute('aria-pressed', String(save.mute)); }
   btnMute.addEventListener('click', function () { save.mute = !save.mute; keep(); muteLabel(); }); muteLabel();
   document.addEventListener('keydown', function (e) { if (root.hidden || !running || /input|textarea|select/i.test((e.target.tagName || ''))) return;
+    if (in3()) return;
     if (e.key === 'r' || e.key === 'R') start(lvl);
     else if (e.key === ' ' && state === 'fly') { e.preventDefault(); ability(); }
     else if (e.key === ' ' && state === 'aim' && shots.length && !drag) { e.preventDefault(); if (!kb && !e.repeat) { audio(); kb = { t: performance.now() }; } }
@@ -558,7 +567,7 @@
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); manual = true; camT.z = cam.z; camT.x = cam.x + (e.key === 'ArrowRight' ? 140 : -140); clampCam(camT); } });
   document.addEventListener('keyup', function (e) { if (e.key !== ' ' || !kb) return; var d = curPull(); kb = null; if (state !== 'aim' || root.hidden) return; if (Math.hypot(d.x, d.y) < 22) { say('Hold Space longer, then let go.'); return; } launch(d.x, d.y); });
   function still() { size(); if (!bg) backdrop(); var sc = cv.width / W; ctx.setTransform(sc, 0, 0, sc, 0, 0); ctx.drawImage(bg, 0, 0); }
-  document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'sl') { if (!engine) { panel('intro'); still(); } go(); } else stop(); });
+  document.addEventListener('ss:cvgame', function (e) { if (e.detail === 'sl') { if (in3()) return; if (!engine) { panel('intro'); still(); } go(); } else stop(); });
   document.addEventListener('ss:route', function (e) { if (e.detail.name !== 'craving') stop(); else if (!root.hidden) go(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else if (!root.hidden) go(); });
   window.addEventListener('resize', function () { if (running) size(); else if (!root.hidden && !engine) still(); });
