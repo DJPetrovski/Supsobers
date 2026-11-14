@@ -10,7 +10,7 @@
   var root = document.getElementById('sl'); if (!root) return;
   function $(id) { return document.getElementById(id); }
   var cv = $('sl-canvas'), ctx = cv.getContext('2d'), over = $('sl-over'), elLv = $('sl-lv'), elScore = $('sl-score'), btnMute = $('sl-mute'), btnView = $('sl-view');
-  var W = 960, H = 540, GY = 484, WW = 1600, SX = 220, SY = 336, MAXPULL = 150, PXM = 200, GRAV = 9.81, SPRING = 110, NSUB = 4, DT = 1000 / 240, STEP = 1000 / 60, AIR = 0.001, FITZ = W / WW;
+  var W = 960, H = 540, GY = 484, WW = 1600, SX = 220, SY = 336, MAXPULL = 150, PXM = 200, GRAV = 9.81, SPRING = 70, NSUB = 4, DT = 1000 / 240, STEP = 1000 / 60, AIR = 0.001, FITZ = W / WW;
   var GS = GRAV * PXM / 1e6;
   function toMs(v) { return v * 60 / PXM; }
   function toPx(v) { return v * PXM / 60; }
@@ -25,20 +25,20 @@
      kg = real weight, hp = joules of impact it can take, f = friction, e = bounce, b = what fire does to it:
      wood burns away and spreads the fire, tnt explodes, liq bursts and splashes, melt and crack are destroyed by heat. */
   var K = {
-    crate: { w: 40, h: 40, kg: 0.6, hp: 12, f: 0.5, e: 0.15, m: 'wood', b: 'wood', pts: 100 },
-    post: { w: 14, h: 80, kg: 0.45, hp: 8, f: 0.5, e: 0.15, m: 'wood', b: 'wood', pts: 100 },
-    beam: { w: 110, h: 14, kg: 0.66, hp: 8, f: 0.5, e: 0.15, m: 'wood', b: 'wood', pts: 100 },
+    crate: { w: 40, h: 40, kg: 0.6, hp: 18, f: 0.5, e: 0.15, m: 'wood', b: 'wood', pts: 100 },
+    post: { w: 14, h: 80, kg: 0.45, hp: 12, f: 0.5, e: 0.15, m: 'wood', b: 'wood', pts: 100 },
+    beam: { w: 110, h: 14, kg: 0.66, hp: 12, f: 0.5, e: 0.15, m: 'wood', b: 'wood', pts: 100 },
     brick: { w: 44, h: 24, kg: 2.2, hp: 60, f: 0.6, e: 0.1, m: 'brick', pts: 150 },
     keg: { w: 44, h: 54, kg: 5.6, hp: 150, f: 0.4, e: 0.2, m: 'steel', pts: 150 },
     tnt: { w: 36, h: 36, kg: 0.7, hp: 3, f: 0.5, e: 0.1, m: 'tnt', b: 'tnt', pts: 300 },
-    beer: { w: 20, h: 58, kg: 0.55, hp: 0.8, f: 0.35, e: 0.1, m: 'glass', b: 'crack', pts: 500, t: 1, c: '#7a4316' },
-    wine: { w: 22, h: 68, kg: 1.2, hp: 1.2, f: 0.35, e: 0.1, m: 'glass', b: 'crack', pts: 500, t: 1, c: '#1f6a43' },
-    whiskey: { w: 30, h: 46, kg: 1.0, hp: 1.0, f: 0.35, e: 0.1, m: 'glass', b: 'liq', pts: 500, t: 1, c: '#c26d1c' },
-    moon: { w: 28, h: 36, kg: 0.9, hp: 0.9, f: 0.35, e: 0.1, m: 'glass', b: 'liq', pts: 500, t: 1, c: '#bfeede' },
-    pill: { w: 26, h: 38, kg: 0.05, hp: 0.06, f: 0.4, e: 0.25, m: 'pill', b: 'melt', pts: 500, t: 1, c: '#ff8a1e' },
-    bag: { w: 32, h: 24, kg: 0.03, hp: 0.04, f: 0.6, e: 0.02, m: 'bag', b: 'melt', pts: 500, t: 1, c: '#e8f0ff' },
-    syr: { w: 44, h: 8, kg: 0.012, hp: 0.03, f: 0.4, e: 0.1, m: 'syr', b: 'melt', pts: 500, t: 1, c: '#dfe9f5' },
-    joint: { w: 38, h: 8, kg: 0.01, hp: 0.03, f: 0.6, e: 0.05, m: 'joint', b: 'melt', pts: 500, t: 1, c: '#efe6cf' }
+    beer: { w: 20, h: 58, kg: 0.55, hp: 1.5, f: 0.35, e: 0.1, m: 'glass', pts: 500, t: 1, c: '#7a4316' },
+    wine: { w: 22, h: 68, kg: 1.2, hp: 2.2, f: 0.35, e: 0.1, m: 'glass', pts: 500, t: 1, c: '#1f6a43' },
+    whiskey: { w: 30, h: 46, kg: 1.0, hp: 2.0, f: 0.35, e: 0.1, m: 'glass', b: 'liq', pts: 500, t: 1, c: '#c26d1c' },
+    moon: { w: 28, h: 36, kg: 0.9, hp: 1.6, f: 0.35, e: 0.1, m: 'glass', b: 'liq', pts: 500, t: 1, c: '#bfeede' },
+    pill: { w: 26, h: 38, kg: 0.05, hp: 0.12, f: 0.4, e: 0.25, m: 'pill', b: 'melt', pts: 500, t: 1, c: '#ff8a1e' },
+    bag: { w: 32, h: 24, kg: 0.03, hp: 0.08, f: 0.6, e: 0.02, m: 'bag', b: 'melt', pts: 500, t: 1, c: '#e8f0ff' },
+    syr: { w: 44, h: 8, kg: 0.012, hp: 0.05, f: 0.4, e: 0.1, m: 'syr', b: 'melt', pts: 500, t: 1, c: '#dfe9f5' },
+    joint: { w: 38, h: 8, kg: 0.01, hp: 0.05, f: 0.6, e: 0.05, m: 'joint', b: 'melt', pts: 500, t: 1, c: '#efe6cf' }
   };
   // the chips come in the real sobriety-chip colours; bigger means heavier
   var P = {
@@ -46,7 +46,7 @@
     red: { r: 13, kg: 0.25, lab: '30', c: ['#ffb3ad', '#e23b30', '#8f150e', '#fff'], name: 'Red chip', tip: '' },
     green: { r: 15, kg: 0.4, lab: '90', c: ['#b9f5c5', '#2fae4e', '#12602a', '#fff'], name: 'Green chip', tip: 'Green chip: heavier, so it shoves harder.' },
     blue: { r: 17, kg: 0.6, lab: '6m', c: ['#b7dcff', '#2f7fe0', '#123f85', '#fff'], name: 'Blue chip', tip: 'Blue chip: big and heavy. It ploughs through wood.' },
-    bronze: { r: 21, kg: 1.0, lab: '1yr', c: ['#ffe2b0', '#c8842f', '#6e4210', '#fff'], name: 'Bronze chip', tip: 'Bronze one-year chip: the wrecking ball.' },
+    bronze: { r: 21, kg: 0.8, lab: '1yr', c: ['#ffe2b0', '#c8842f', '#6e4210', '#fff'], name: 'Bronze chip', tip: 'Bronze one-year chip: the wrecking ball.' },
     trio: { r: 13, kg: 0.36, lab: '', c: ['#ffffff', '#d9dde3', '#8d949e', '#3c424a'], name: 'Three chips', tip: 'Three chips: they split apart in the air. Tap to split them sooner.' },
     bomb: { r: 15, kg: 0.45, lab: '', c: [], name: 'Truth bomb', tip: 'Truth bomb: it explodes when it lands. Tap to set it off sooner.' }
   };
@@ -55,14 +55,14 @@
   function house(x, b, w) { return [it('post', x - w / 2 + 7, b), it('post', x + w / 2 - 7, b), it('beam', x, b + 80, w)]; }
   function cat() { return Array.prototype.concat.apply([], arguments); }
   var LEVELS = [
-    { name: 'First Step', shots: ['red', 'red', 'green'], items: [it('tnt', 950, 0), it('crate', 1000, 0), it('crate', 1045, 0), it('beer', 1000, 40), it('beer', 1045, 40), it('wine', 1095, 0)] },
-    { name: 'Bar Shelf', shots: ['green', 'red', 'blue', 'white'], items: cat(house(1100, 0, 150), house(1100, 94, 150), house(1100, 188, 150), [it('wine', 1070, 0), it('whiskey', 1130, 0), it('beer', 1070, 94), it('moon', 1130, 94), it('pill', 1070, 188), it('beer', 1130, 188), it('wine', 1100, 282), it('tnt', 990, 0)]) },
+    { name: 'First Step', shots: ['red', 'red', 'green', 'red'], items: [it('crate', 1000, 0), it('crate', 1060, 0), it('crate', 1120, 0), it('beer', 1000, 40), it('beer', 1060, 40), it('wine', 1120, 40), it('pill', 1180, 0)] },
+    { name: 'House Rules', shots: ['red', 'green', 'red', 'white'], items: cat(house(1050, 0, 130), [it('joint', 1050, 0), it('beer', 1020, 94), it('beer', 1080, 94)], col('crate', 1140, 2), [it('whiskey', 1140, 80)]) },
     { name: 'Double Trouble', shots: ['green', 'bomb', 'red', 'blue'], items: cat(col('crate', 1000, 5), col('crate', 1160, 5), [it('beam', 1080, 200, 204), it('tnt', 1080, 214), it('wine', 1080, 250), it('beer', 1000, 214), it('beer', 1160, 214), it('keg', 1080, 0), it('whiskey', 1080, 54), it('pill', 1039, 0), it('pill', 1121, 0)]) },
-    { name: 'Fire Sale', shots: ['bomb', 'red', 'green', 'white'], items: cat(col('crate', 1000, 3), col('crate', 1040, 3), col('crate', 1080, 3), [it('beer', 1000, 120), it('whiskey', 1040, 120), it('beer', 1080, 120), it('crate', 1120, 0), it('crate', 1160, 0), it('pill', 1120, 40), it('bag', 1160, 40)], col('crate', 1200, 2), [it('wine', 1200, 80)]) },
+    { name: 'Bar Shelf', shots: ['green', 'red', 'blue', 'white'], items: cat(house(1100, 0, 150), house(1100, 94, 150), house(1100, 188, 150), [it('wine', 1070, 0), it('whiskey', 1130, 0), it('beer', 1070, 94), it('moon', 1130, 94), it('pill', 1070, 188), it('beer', 1130, 188), it('wine', 1100, 282)]) },
     { name: 'Brick House', shots: ['bomb', 'bronze', 'red', 'white', 'green'], items: cat(col('brick', 1000, 6), col('brick', 1180, 6), [it('beam', 1090, 144, 230), it('tnt', 1090, 0), it('whiskey', 1090, 36), it('beer', 1040, 0), it('wine', 1140, 0), it('syr', 1040, 158), it('moon', 1090, 158), it('joint', 1140, 158)]) },
-    { name: 'House Rules', shots: ['red', 'green', 'red'], items: cat(house(1050, 0, 130), [it('joint', 1050, 0), it('beer', 1020, 94), it('beer', 1080, 94), it('tnt', 955, 0)], col('crate', 1140, 2), [it('whiskey', 1140, 80)]) },
+    { name: 'Fire Sale', shots: ['red', 'bomb', 'green', 'white'], items: cat(col('crate', 1000, 3), col('crate', 1040, 3), col('crate', 1080, 3), [it('beer', 1000, 120), it('whiskey', 1040, 120), it('beer', 1080, 120), it('crate', 1120, 0), it('crate', 1160, 0), it('pill', 1120, 40), it('bag', 1160, 40)], col('crate', 1200, 2), [it('wine', 1200, 80)]) },
     { name: 'Powder Keg', shots: ['red', 'blue', 'white', 'green'], items: [it('tnt', 945, 0), it('keg', 1000, 0), it('tnt', 1048, 0), it('keg', 1096, 0), it('beam', 1048, 54, 150), it('crate', 1005, 68), it('crate', 1091, 68), it('beer', 1005, 108), it('beer', 1091, 108), it('wine', 1048, 68), it('tnt', 1190, 0), it('syr', 1190, 36), it('bag', 1245, 0)] },
-    { name: 'Domino Effect', shots: ['green', 'red', 'white'], items: cat([950, 1000, 1050, 1100, 1150, 1200].map(function (x) { return it('post', x, 0); }), [it('pill', 975, 0), it('bag', 1025, 0), it('pill', 1075, 0), it('bag', 1125, 0), it('pill', 1175, 0), it('wine', 1245, 0)]) },
+    { name: 'Domino Effect', shots: ['green', 'red', 'white', 'red', 'green'], items: cat([950, 1000, 1050, 1100, 1150, 1200].map(function (x) { return it('post', x, 0); }), [it('pill', 975, 0), it('bag', 1025, 0), it('pill', 1075, 0), it('bag', 1125, 0), it('pill', 1175, 0), it('wine', 1245, 0)]) },
     { name: 'Moonshine Still', shots: ['white', 'red', 'green', 'blue'], items: cat(house(1100, 0, 140), house(1100, 94, 140), house(1100, 188, 140), [it('pill', 1065, 0), it('moon', 1100, 0), it('beer', 1135, 0), it('beer', 1065, 94), it('moon', 1100, 94), it('pill', 1135, 94), it('bag', 1065, 188), it('moon', 1100, 188), it('wine', 1135, 188), it('whiskey', 1100, 282)]) },
     { name: 'Last Call', shots: ['blue', 'bomb', 'red', 'trio', 'bronze'], items: cat(house(1000, 0, 130), house(1130, 0, 130), house(1260, 0, 130), house(1065, 94, 130), house(1195, 94, 130), house(1130, 188, 130), [it('wine', 1000, 0), it('tnt', 1130, 0), it('pill', 1130, 36), it('whiskey', 1260, 0), it('beer', 1065, 94), it('moon', 1195, 94), it('bag', 1105, 188), it('joint', 1150, 188), it('wine', 1130, 282), it('keg', 1400, 0), it('beer', 1400, 54)], col('crate', 1340, 2), [it('tnt', 1340, 80), it('whiskey', 1340, 116)]) }
   ];
@@ -73,52 +73,53 @@
   try { var sv = JSON.parse(localStorage.getItem('ss-sling2') || 'null'); if (sv && typeof sv === 'object') { save.open = Math.max(1, Math.min(LEVELS.length, sv.open | 0)); save.stars = sv.stars || []; save.best = sv.best || []; save.mute = !!sv.mute; save.seen = sv.seen || {}; } } catch (e) {}
   function keep() { try { localStorage.setItem('ss-sling2', JSON.stringify(save)); } catch (e) {} }
 
-  /* ---------- sound: soft, close-up, ASMR-style. Everything is made by a tiny synth, no files needed. ----------
-     Glass tinkles, baggies crinkle, needles crack like plastic, pills crumble like chalk, joints crunch like dry leaves.
-     Real recordings are optional: put mp3 files in media/sling/ and list them in REC, for example glass: ['sling/glass1', 'sling/glass2'];
-     a listed recording plays instead of the synth for that sound. */
-  var ac = null, out = null, nbuf = null, lastAt = {}, recent = [];
+  /* ---------- sound: real recordings of what is breaking, kept soft and close ----------
+     Glass, wood, metal, rock and rustling leaves are short recordings in media/sling/ (Kenney's "Impact Sounds", CC0).
+     A bottle is a heavy glass hit followed by lighter ones, like shards settling. Plastic crinkle, fire crackle and the
+     whoosh of the sling are made from filtered hiss. To use your own recording, replace an mp3 in media/sling/ (see its README). */
+  var ac = null, out = null, nbuf = null, lastAt = {}, recent = [], buf = {}, recOn = false;
+  var GROUPS = { gh: 5, gm: 5, gl: 5, wh: 5, wp: 3, wl: 5, mh: 5, rk: 5, sf: 5, gn: 5, lf: 5, pn: 3 };
   function audio() {
     if (save.mute || headless) return null;
     try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume();
-      if (!out) { var c = ac.createDynamicsCompressor(); c.threshold.value = -20; c.ratio.value = 5; c.attack.value = 0.004; c.release.value = 0.2; out = ac.createGain(); out.gain.value = 0.85; out.connect(c); c.connect(ac.destination);
+      if (!out) { var c = ac.createDynamicsCompressor(); c.threshold.value = -18; c.ratio.value = 4; c.attack.value = 0.004; c.release.value = 0.2; out = ac.createGain(); out.gain.value = 0.9; out.connect(c); c.connect(ac.destination);
         var n = ac.sampleRate * 2; nbuf = ac.createBuffer(1, n, ac.sampleRate); var d = nbuf.getChannelData(0); for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1; }
     } catch (e) { ac = null; }
     return ac;
   }
-  // a soft note: quick fade in, long gentle fade out
-  function ping(f0, f1, dur, vol, when, type) { var a = audio(); if (!a) return; var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + (when || 0); o.type = type || 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.connect(g); g.connect(out); o.start(t); o.stop(t + dur + 0.03); }
-  // a tiny grain of filtered hiss: the building block of crinkles, crumbles and crackles
-  function grain(when, dur, f, q, vol, kind) { var a = audio(); if (!a) return; var s = a.createBufferSource(), fl = a.createBiquadFilter(), g = a.createGain(), t = a.currentTime + (when || 0); s.buffer = nbuf; fl.type = kind || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + Math.min(0.004, dur / 3)); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); s.connect(fl); fl.connect(g); g.connect(out); s.start(t, Math.random() * 1.8, dur + 0.02); }
+  function preload() { if (recOn || headless) return; var a = audio(); if (!a) return; recOn = true; Object.keys(GROUPS).forEach(function (g) { for (var i = 1; i <= GROUPS[g]; i++) (function (n) { fetch('media/sling/' + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (ab) { if (ab) a.decodeAudioData(ab, function (b) { buf[n] = b; }, function () {}); }).catch(function () {}); })(g + i); }); }
   function rnd(a, b) { return a + Math.random() * (b - a); }
-  // keeps a pile-up of breaking things gentle: at most one of each sound every `gap` ms, and quieter when a lot is going on
-  function calm(kind, gap) { var now = performance.now(); if (now - (lastAt[kind] || 0) < gap) return 0; lastAt[kind] = now; recent = recent.filter(function (t) { return now - t < 300; }); recent.push(now); return recent.length > 5 ? 0.45 : recent.length > 2 ? 0.7 : 1; }
-  var REC = { sling: [], glass: [], bag: [], syr: [], pill: [], joint: [], wood: [], steel: [], blast: [], win: [], fail: [] }, buf = {}, recOn = false;
-  function preload() { if (recOn || headless) return; var a = audio(); if (!a) return; recOn = true; Object.keys(REC).forEach(function (k) { REC[k].forEach(function (n) { fetch('media/' + n + '.mp3').then(function (r) { return r.ok ? r.arrayBuffer() : null; }).then(function (ab) { if (ab) a.decodeAudioData(ab, function (b) { buf[n] = b; }, function () {}); }).catch(function () {}); }); }); }
-  function rec(kind, vol) { var a = audio(); if (!a) return true; var have = (REC[kind] || []).filter(function (n) { return buf[n]; }); if (!have.length) return false; try { var src = a.createBufferSource(), g = a.createGain(); src.buffer = buf[have[Math.floor(Math.random() * have.length)]]; src.playbackRate.value = rnd(0.94, 1.06); g.gain.value = vol == null ? 0.5 : vol; src.connect(g); g.connect(out); src.start(); return true; } catch (e) { return false; } }
+  // play one of a group's recordings (a random take, at a slightly different pitch each time so nothing sounds repeated)
+  function play(g, vol, rate, when) { var a = audio(); if (!a) return true; var have = []; for (var i = 1; i <= GROUPS[g]; i++) if (buf[g + i]) have.push(buf[g + i]); if (!have.length) return false; try { var src = a.createBufferSource(), gn = a.createGain(); src.buffer = have[Math.floor(Math.random() * have.length)]; src.playbackRate.value = (rate || 1) * rnd(0.94, 1.06); gn.gain.value = vol; src.connect(gn); gn.connect(out); src.start(a.currentTime + (when || 0)); return true; } catch (e) { return false; } }
+  // a low thump, and a grain of filtered hiss (crinkle, crumble, crackle, whoosh)
+  function thump(f0, f1, dur, vol, when) { var a = audio(); if (!a) return; var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + (when || 0); o.type = 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.connect(g); g.connect(out); o.start(t); o.stop(t + dur + 0.03); }
+  function grain(when, dur, f, q, vol, kind) { var a = audio(); if (!a) return; var s = a.createBufferSource(), fl = a.createBiquadFilter(), g = a.createGain(), t = a.currentTime + (when || 0); s.buffer = nbuf; fl.type = kind || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + Math.min(0.004, dur / 3)); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); s.connect(fl); fl.connect(g); g.connect(out); s.start(t, Math.random() * 1.8, dur + 0.02); }
+  // keeps a pile-up of breaking things from turning into a wall of noise
+  function calm(kind, gap) { var now = performance.now(); if (now - (lastAt[kind] || 0) < gap) return 0; lastAt[kind] = now; recent = recent.filter(function (t) { return now - t < 300; }); recent.push(now); return recent.length > 5 ? 0.5 : recent.length > 2 ? 0.75 : 1; }
   var SND = {
-    sling: function () { if (rec('sling', 0.35)) return; grain(0, 0.22, 900, 0.7, 0.07); ping(240, 150, 0.16, 0.05); },
-    // glass: a soft crack, then shards tinkling down
-    glass: function () { var v = calm('glass', 45); if (!v || rec('glass', 0.45 * v)) return; ping(520, 340, 0.05, 0.05 * v); for (var i = 0; i < 4; i++) grain(rnd(0, 0.06), rnd(0.02, 0.04), rnd(4200, 7500), 2, 0.05 * v); for (i = 0; i < 8; i++) { var f = rnd(1900, 5600); ping(f, f * 0.985, rnd(0.25, 0.6), rnd(0.012, 0.03) * v, Math.pow(Math.random(), 1.6) * 0.5); } },
+    sling: function () { grain(0, 0.2, 900, 0.7, 0.09); grain(0.03, 0.16, 2200, 0.8, 0.04); thump(200, 120, 0.12, 0.06); },
+    // a bottle: the smash, then smaller pieces landing
+    glass: function () { var v = calm('glass', 40); if (!v) return; if (!play('gh', 0.75 * v)) { grain(0, 0.12, 5000, 1, 0.12 * v, 'highpass'); return; } play('gm', 0.45 * v, 1.05, rnd(0.04, 0.09)); play('gl', 0.35 * v, 1.2, rnd(0.12, 0.2)); play('gl', 0.22 * v, 1.35, rnd(0.24, 0.36)); },
     // baggie: plastic crinkle
-    bag: function () { var v = calm('bag', 60); if (!v || rec('bag', 0.45 * v)) return; var t = 0; for (var i = 0; i < 16; i++) { t += rnd(0.008, 0.045); grain(t, rnd(0.006, 0.02), rnd(2600, 6500), 1.2, rnd(0.02, 0.055) * v, 'highpass'); } },
-    // needle: thin plastic cracking
-    syr: function () { var v = calm('syr', 60); if (!v || rec('syr', 0.45 * v)) return; [0, 0.05, 0.12].forEach(function (t, i) { grain(t + rnd(0, 0.01), 0.012, rnd(1900, 2700), 7, (0.11 - i * 0.025) * v); }); ping(950, 700, 0.04, 0.03 * v, 0.004); },
-    // pill bottle: chalk or soft rock crumbling
-    pill: function () { var v = calm('pill', 60); if (!v || rec('pill', 0.45 * v)) return; ping(170, 110, 0.06, 0.06 * v); var t = 0; for (var i = 0; i < 16; i++) { t += rnd(0.01, 0.035); grain(t, rnd(0.025, 0.055), rnd(500, 1500), 2.2, rnd(0.03, 0.075) * v * (1 - i / 22)); } },
+    bag: function () { var v = calm('bag', 60); if (!v) return; play('sf', 0.25 * v, 1.3); var t = 0; for (var i = 0; i < 16; i++) { t += rnd(0.008, 0.045); grain(t, rnd(0.006, 0.02), rnd(2600, 6500), 1.2, rnd(0.03, 0.07) * v, 'highpass'); } },
+    // needle: thin plastic snapping
+    syr: function () { var v = calm('syr', 60); if (!v) return; play('gn', 0.45 * v, 1.7); [0, 0.05, 0.11].forEach(function (t, i) { grain(t + rnd(0, 0.01), 0.012, rnd(1900, 2700), 7, (0.12 - i * 0.03) * v); }); },
+    // pill bottle: chalk or soft rock cracking and crumbling
+    pill: function () { var v = calm('pill', 60); if (!v) return; play('rk', 0.4 * v, 1.5); var t = 0.03; for (var i = 0; i < 12; i++) { t += rnd(0.01, 0.035); grain(t, rnd(0.025, 0.05), rnd(500, 1500), 2.2, rnd(0.03, 0.07) * v * (1 - i / 16)); } },
     // joint: dry leaves crumbling
-    joint: function () { var v = calm('joint', 60); if (!v || rec('joint', 0.45 * v)) return; var t = 0; for (var i = 0; i < 20; i++) { t += Math.random() < 0.3 ? rnd(0.04, 0.09) : rnd(0.004, 0.02); grain(t, rnd(0.008, 0.03), rnd(2400, 5200), 0.9, rnd(0.015, 0.045) * v); } },
-    wood: function () { var v = calm('wood', 50); if (!v || rec('wood', 0.4 * v)) return; ping(230, 140, 0.09, 0.08 * v); for (var i = 0; i < 3; i++) grain(rnd(0, 0.05), 0.03, rnd(700, 1200), 3, 0.045 * v); },
-    steel: function () { var v = calm('steel', 80); if (!v || rec('steel', 0.4 * v)) return; ping(520, 516, 0.9, 0.04 * v); ping(1385, 1378, 0.6, 0.02 * v); },
-    rock: function () { var v = calm('rock', 60); if (!v) return; ping(120, 80, 0.08, 0.07 * v); var t = 0; for (var i = 0; i < 10; i++) { t += rnd(0.01, 0.04); grain(t, rnd(0.03, 0.06), rnd(300, 900), 2, rnd(0.03, 0.06) * v); } },
-    soft: function () { var v = calm('soft', 60); if (!v) return; for (var i = 0; i < 6; i++) grain(rnd(0, 0.2), rnd(0.03, 0.08), rnd(1200, 3000), 0.8, 0.03 * v); },
-    knock: function (E) { if (!calm('knock', 90)) return; ping(140, 90, 0.07, Math.min(0.06, 0.012 + E * 0.004)); },
-    // explosion: a deep, soft whoomp instead of a harsh bang
-    blast: function () { var v = calm('blast', 120) || 0.4; if (rec('blast', 0.45 * v)) return; ping(85, 36, 0.8, 0.2 * v); grain(0, 0.7, 260, 0.6, 0.11 * v, 'lowpass'); for (var i = 0; i < 6; i++) grain(rnd(0.1, 0.7), 0.012, rnd(2000, 4000), 1, 0.02 * v, 'highpass'); },
+    joint: function () { var v = calm('joint', 60); if (!v) return; if (play('lf', 0.6 * v, 1.25)) { play('lf', 0.35 * v, 1.5, 0.12); return; } var t = 0; for (var i = 0; i < 18; i++) { t += rnd(0.004, 0.03); grain(t, rnd(0.008, 0.03), rnd(2400, 5200), 0.9, rnd(0.02, 0.05) * v); } },
+    wood: function () { var v = calm('wood', 45); if (!v) return; if (!play('wh', 0.65 * v)) { thump(230, 140, 0.09, 0.09 * v); return; } play('wp', 0.4 * v, 1, rnd(0.03, 0.08)); },
+    steel: function () { var v = calm('steel', 80); if (!v) return; if (!play('mh', 0.55 * v)) thump(300, 220, 0.2, 0.06 * v); },
+    rock: function () { var v = calm('rock', 60); if (!v) return; if (!play('rk', 0.6 * v)) thump(120, 80, 0.08, 0.08 * v); },
+    soft: function () { var v = calm('soft', 60); if (!v) return; play('sf', 0.4 * v); for (var i = 0; i < 6; i++) grain(rnd(0, 0.2), rnd(0.03, 0.08), rnd(1200, 3000), 0.8, 0.03 * v); },
+    // things bumping and landing without breaking: glass clinks, everything else knocks like wood
+    knock: function (E, glassy) { if (!calm(glassy ? 'clink' : 'knock', 90)) return; var vol = Math.min(0.4, 0.06 + E * 0.05); if (!play(glassy ? 'gl' : 'wl', vol, glassy ? 0.95 : 1)) thump(140, 90, 0.07, Math.min(0.06, 0.012 + E * 0.004)); },
+    // explosion: a deep thud and rumble with debris, not a harsh bang
+    blast: function () { var v = calm('blast', 120) || 0.5; play('pn', 0.9 * v, 0.45); play('rk', 0.5 * v, 0.5, 0.02); play('wh', 0.4 * v, 0.6, 0.06); thump(80, 34, 0.8, 0.22 * v); grain(0, 0.7, 240, 0.6, 0.12 * v, 'lowpass'); },
     crackle: function () { if (!calm('crackle', 55)) return; grain(0, rnd(0.004, 0.012), rnd(1800, 4500), 1.5, rnd(0.015, 0.04), 'highpass'); },
-    split: function () { ping(880, 870, 0.2, 0.04); ping(1320, 1310, 0.25, 0.03, 0.05); },
-    win: function () { if (rec('win', 0.4)) return; [523, 659, 784, 1047].forEach(function (f, i) { ping(f, f * 0.997, 0.9, 0.06, i * 0.13); }); },
-    fail: function () { if (rec('fail', 0.4)) return; ping(392, 388, 0.5, 0.05); ping(311, 308, 0.7, 0.05, 0.22); }
+    split: function () { play('wl', 0.3, 1.6); },
+    win: function () { [392, 494, 587].forEach(function (f, i) { thump(f, f * 0.995, 0.5, 0.05, i * 0.14); }); },
+    fail: function () { thump(220, 150, 0.5, 0.06); }
   };
 
   /* ---------- building a level ---------- */
@@ -155,12 +156,13 @@
       if (window.__slLog) window.__slLog.push([a ? a.k || a.type : 'ground', b ? b.k || b.type : 'ground', +E.toFixed(2), tick]);
       if (a && a.proj) touched(a, b, E); if (b && b.proj) touched(b, a, E);
       if (E < 0.02) continue;
-      if (!headless && E > 0.15) { SND.knock(E); if (E > 1.5 && parts.length < 500) dust((A.position.x + B.position.x) / 2, Math.max(A.position.y, B.position.y), Math.min(8, 2 + E)); }
+      if (!headless && E > 0.15) { SND.knock(E, (a && a.def && a.def.m === 'glass') || (b && b.def && b.def.m === 'glass')); if (E > 1.5 && parts.length < 500) dust((A.position.x + B.position.x) / 2, Math.max(A.position.y, B.position.y), Math.min(8, 2 + E)); }
       var p = a && a.proj ? a : (b && b.proj ? b : null), o = p === a ? b : a;
       if (p && o && !o.proj) {   // a chip that breaks something keeps going with whatever energy is left over
         var v = vel(p.body), Ep = 0.5 * p.body.mass * Math.pow(toMs(Math.hypot(v.x, v.y)), 2), need = o.hp;
-        hurt(o, E * 1.6);
-        if (o.dead && Ep > need) { var k = Math.sqrt(1 - need / Ep) * 0.9; p.punch = { x: v.x * k, y: v.y * k }; }
+        var soft = o.def.m !== 'wood' && o.def.m !== 'brick' && o.def.m !== 'steel' && o.def.m !== 'tnt';   // glass and other light things barely slow a chip; wood and brick take most of its speed
+        hurt(o, E);
+        if (o.dead && Ep > need) { var k = Math.sqrt(1 - need / Ep) * (soft ? 0.85 : 0.3); p.punch = { x: v.x * k, y: v.y * k }; }
       } else { if (a && !a.proj) hurt(a, E); if (b && !b.proj) hurt(b, E); }
     }
   }
@@ -169,7 +171,7 @@
   function kill(o) {
     if (o.dead) return; o.dead = true; M.Composite.remove(engine.world, o.body); objs.splice(objs.indexOf(o), 1); wakeAll();
     score += o.def.pts; var x = o.body.position.x, y = o.body.position.y, m = o.def.m, k = o.k;
-    if (k === 'tnt') booms.push({ x: x, y: y, t: 5, R: 210, J: 4.5, E: 38 });
+    if (k === 'tnt') booms.push({ x: x, y: y, t: 5, R: 150, J: 3, E: 18 });
     else if (k === 'whiskey') splash(x, y, 'alc'); else if (k === 'moon') splash(x, y, 'rot');
     if (headless) return;
     hud(); pops.push({ x: x, y: y - 10, t: 0, s: '+' + o.def.pts });
@@ -187,7 +189,7 @@
   function dust(x, y, n) { for (var i = 0; i < n; i++) parts.push({ x: x + (Math.random() - 0.5) * 20, y: y, vx: (Math.random() - 0.5) * 2.4, vy: -Math.random() * 1.2, life: 0, max: 30 + Math.random() * 20, col: 'rgba(210,190,170,.5)', s: 8 + Math.random() * 10, rot: 0, vr: 0, shape: 'smoke', nog: 1 }); }
   // an explosion: a shove (newton-seconds), damage (joules) and heat, all fading with distance
   function boom(x, y, R, J, E) {
-    objs.slice().forEach(function (o) { var dx = o.body.position.x - x, dy = o.body.position.y - y, d = Math.hypot(dx, dy); if (d > R || o.dead) return; var f = 1 - d / R, k = toPx(Math.min(14, J * f / o.body.mass)); M.Sleeping.set(o.body, false); var ov = vel(o.body); M.Body.setVelocity(o.body, { x: ov.x + dx / (d || 1) * k, y: ov.y + dy / (d || 1) * k - k * 0.25 }); M.Body.setAngularVelocity(o.body, M.Body.getAngularVelocity(o.body) + (Math.random() - 0.5) * 0.3 * f); hurt(o, E * f * f); if (!o.dead && f > 0.3) ignite(o); });
+    objs.slice().forEach(function (o) { var dx = o.body.position.x - x, dy = o.body.position.y - y, d = Math.hypot(dx, dy); if (d > R || o.dead) return; var f = 1 - d / R, k = toPx(Math.min(14, J * f / o.body.mass)); M.Sleeping.set(o.body, false); var ov = vel(o.body); M.Body.setVelocity(o.body, { x: ov.x + dx / (d || 1) * k, y: ov.y + dy / (d || 1) * k - k * 0.25 }); M.Body.setAngularVelocity(o.body, M.Body.getAngularVelocity(o.body) + (Math.random() - 0.5) * 0.3 * f); hurt(o, E * f * f); if (!o.dead && f > 0.5) ignite(o); });
     projs.forEach(function (p) { var dx = p.body.position.x - x, dy = p.body.position.y - y, d = Math.hypot(dx, dy); if (d > R || d < 1) return; var k = toPx(Math.min(14, J * (1 - d / R) / p.body.mass)); var pv = vel(p.body); M.Body.setVelocity(p.body, { x: pv.x + dx / d * k, y: pv.y + dy / d * k }); });
     wakeAll(); if (headless) return;
     SND.blast(); shake = Math.max(shake, 16); flash = 1; slow = Math.max(slow, 26); pops.push({ x: x, y: y, t: 0, ring: R });
@@ -209,16 +211,15 @@
   function burnTick() {
     for (var i = objs.length - 1; i >= 0; i--) {
       var o = objs[i]; if (!o) continue;
-      if (o.rot) { o.rot++; o.hp -= o.max / 80; if (!headless && o.rot % 4 === 0) parts.push({ x: o.body.position.x + (Math.random() - 0.5) * o.w, y: o.body.position.y + o.h / 2, vx: 0, vy: 1, life: 0, max: 30, col: '#9dffcf', s: 4, rot: 0, vr: 0, shape: 'dot' }); if (o.hp <= 0) { kill(o); continue; } }
+      if (o.rot) { o.rot++; o.hp -= o.max / 150; if (!headless && o.rot % 4 === 0) parts.push({ x: o.body.position.x + (Math.random() - 0.5) * o.w, y: o.body.position.y + o.h / 2, vx: 0, vy: 1, life: 0, max: 30, col: '#9dffcf', s: 4, rot: 0, vr: 0, shape: 'dot' }); if (o.hp <= 0) { kill(o); continue; } }
       if (!o.fire) continue; o.fire++; if (!headless && Math.random() < 0.35) SND.crackle();
       var b = o.def.b || 'wood', f = o.fire;
       if (!headless && f % 2 === 0 && parts.length < 600) { var bx = o.body.bounds; parts.push({ x: bx.min.x + Math.random() * (bx.max.x - bx.min.x), y: bx.min.y + Math.random() * (bx.max.y - bx.min.y) * 0.6, vx: (Math.random() - 0.5) * 0.8, vy: -1.2 - Math.random() * 1.6, life: 0, max: 20 + Math.random() * 16, col: '', s: 7 + Math.random() * 9, rot: 0, vr: 0, shape: 'fire', nog: 1 }); if (f % 12 === 0) parts.push({ x: o.body.position.x, y: bx.min.y, vx: (Math.random() - 0.5) * 0.6, vy: -1.4, life: 0, max: 70, col: 'rgba(40,34,36,.4)', s: 12 + Math.random() * 10, rot: 0, vr: 0, shape: 'smoke', nog: 1 }); }
       if (b === 'tnt') { if (f > 20) kill(o); continue; }
       if (b === 'liq') { if (f > 26) { var x = o.body.position.x, y = o.body.position.y, k = o.k; kill(o); if (k === 'whiskey') { booms.push({ x: x, y: y, t: 1, R: 120, J: 1.2, E: 6 }); } } continue; }
       if (b === 'melt') { if (f > 24) kill(o); continue; }
-      if (b === 'crack') { if (f > 80) kill(o); continue; }
-      o.hp -= o.max / (o.alc ? 60 : 130);   // wood: about two seconds to burn through, one if it is soaked in whiskey
-      if (f % 10 === 0) for (var j = 0; j < objs.length; j++) { var q = objs[j]; if (q !== o && !q.fire && (q.def.b || q.alc) && near(o, q, q.alc ? 34 : 16) && (q.alc || f > 24)) ignite(q); }
+      o.hp -= o.max / (o.alc ? 110 : 240);   // wood: about four seconds to burn through, two if it is soaked in whiskey
+      if (f % 10 === 0) for (var j = 0; j < objs.length; j++) { var q = objs[j]; if (q !== o && !q.fire && (q.def.b || q.alc) && near(o, q, q.alc ? 30 : 10) && (q.alc || f > 60)) ignite(q); }
       if (o.hp <= 0) kill(o);
     }
     for (i = booms.length - 1; i >= 0; i--) { var e = booms[i]; if (--e.t <= 0) { booms.splice(i, 1); boom(e.x, e.y, e.R, e.J, e.E); } }
@@ -240,7 +241,7 @@
     state = 'fly'; flyT = quietT = 0; drag = null; kb = null; manual = false; tipT = Math.min(tipT, 60); if (!headless) SND.sling();
   }
   function split(p) { p.used = true; var v = vel(p.body), x = p.body.position.x, y = p.body.position.y; [-0.16, 0.16].forEach(function (a) { var c = Math.cos(a), s = Math.sin(a), q = mkProj('trio', x, y + (a > 0 ? 14 : -14), v.x * c - v.y * s, v.x * s + v.y * c, true); q.used = true; }); M.Body.scale(p.body, 9 / p.r, 9 / p.r); M.Body.setMass(p.body, P.trio.kg / 3); p.r = 9; if (!headless) SND.split(); }
-  function blowUp(p) { p.used = true; var x = p.body.position.x, y = p.body.position.y; removeProj(p); boom(x, y, 240, 6, 46); }
+  function blowUp(p) { p.used = true; var x = p.body.position.x, y = p.body.position.y; removeProj(p); boom(x, y, 170, 4, 24); }
   function ability() {
     for (var i = projs.length - 1; i >= 0; i--) { var p = projs[i]; if (p.used) continue;
       if (p.type === 'trio' && !p.hit) { split(p); return true; }
@@ -340,12 +341,12 @@
     ctx.restore();
   }
   function backdrop() {
-    bg = document.createElement('canvas'); bg.width = 1300; bg.height = H; var c = bg.getContext('2d'), g = c.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, '#140b2c'); g.addColorStop(0.42, '#4b2357'); g.addColorStop(0.74, '#d9603f'); g.addColorStop(0.92, '#ffc46b'); g.addColorStop(1, '#ffd58a'); c.fillStyle = g; c.fillRect(0, 0, 1300, H);
-    for (var i = 0; i < 90; i++) { c.fillStyle = 'rgba(255,255,255,' + (0.15 + Math.random() * 0.5) + ')'; c.fillRect(Math.random() * 1300, Math.random() * 210, 1.5, 1.5); }
+    bg = document.createElement('canvas'); bg.width = 1900; bg.height = H; var c = bg.getContext('2d'), g = c.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#140b2c'); g.addColorStop(0.42, '#4b2357'); g.addColorStop(0.74, '#d9603f'); g.addColorStop(0.92, '#ffc46b'); g.addColorStop(1, '#ffd58a'); c.fillStyle = g; c.fillRect(0, 0, 1900, H);
+    for (var i = 0; i < 90; i++) { c.fillStyle = 'rgba(255,255,255,' + (0.15 + Math.random() * 0.5) + ')'; c.fillRect(Math.random() * 1900, Math.random() * 210, 1.5, 1.5); }
     var sg = c.createRadialGradient(820, 470, 10, 820, 470, 260); sg.addColorStop(0, 'rgba(255,240,190,.95)'); sg.addColorStop(0.25, 'rgba(255,200,110,.55)'); sg.addColorStop(1, 'rgba(255,160,80,0)'); c.fillStyle = sg; c.fillRect(520, 200, 600, 340);
     c.fillStyle = '#fff3c4'; c.beginPath(); c.arc(820, 478, 62, Math.PI, 0); c.fill();
-    function hills(col, base, amp, f, ph) { c.fillStyle = col; c.beginPath(); c.moveTo(0, H); for (var x = 0; x <= 1300; x += 8) c.lineTo(x, base - Math.sin(x * f + ph) * amp - Math.sin(x * f * 2.3 + ph * 2) * amp * 0.4); c.lineTo(1300, H); c.fill(); }
+    function hills(col, base, amp, f, ph) { c.fillStyle = col; c.beginPath(); c.moveTo(0, H); for (var x = 0; x <= 1900; x += 8) c.lineTo(x, base - Math.sin(x * f + ph) * amp - Math.sin(x * f * 2.3 + ph * 2) * amp * 0.4); c.lineTo(1900, H); c.fill(); }
     hills('rgba(74,34,84,.75)', 430, 28, 0.008, 1); hills('#2c1436', 468, 20, 0.013, 4);
   }
   function drawNew(o) {   // brick, TNT, moonshine and joints; everything else is drawn by drawObj
@@ -428,9 +429,15 @@
   }
 
   /* ---------- running the game ---------- */
-  function size() { var r = cv.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1), w = Math.max(320, Math.round(r.width * d)); if (cv.width !== w) { cv.width = w; cv.height = Math.round(w * H / W); } }
+  // in the full-screen pop-out on a sideways phone the picture fills the whole screen: the view gets wider, never stretched
+  function size() {
+    var r = cv.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1); if (r.width < 10 || r.height < 10) return;
+    var wide = root.classList.contains('po') && r.width / r.height > 1.3, nw = wide ? Math.max(760, Math.min(1500, Math.round(H * r.width / r.height))) : 960;
+    if (nw !== W) { W = nw; FITZ = W / WW; clampCam(cam); clampCam(camT); }
+    var w = Math.max(320, Math.round(r.width * d)), h = Math.round(w * H / W); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+  }
   function frame(t) {
-    if (!running) return; raf = requestAnimationFrame(frame); var dt = Math.min(50, t - last); last = t;
+    if (!running) return; raf = requestAnimationFrame(frame); if (tick % 30 === 0 || !engine) size(); var dt = Math.min(50, t - last); last = t;
     if (engine && state !== 'menu') { var rate = slow > 0 ? 0.25 : 1; if (slow > 0) slow--; acc += dt * rate; var n = 0; while (acc >= DT && n < NSUB * 2) { substep(); acc -= DT; n++; } if (acc > DT) acc = 0; visuals(rate * dt / STEP); camTick(); draw(); }
   }
   function go() { if (running || root.hidden || !engine) return; var v = document.querySelector('[data-view="craving"]'); if (v && v.hidden) return; running = true; last = performance.now(); acc = 0; size(); raf = requestAnimationFrame(frame); }
@@ -490,7 +497,7 @@
     levels: LEVELS.length,
     sim: function (n, plan) { if (!window.Matter) return null; M = window.Matter; headless = true; try { return simShots(n, plan); } finally { headless = false; engine = null; state = 'menu'; } },
     settle: function (n) { if (!window.Matter) return null; M = window.Matter; headless = true; build(n); var before = objs.map(function (o) { return { x: o.body.position.x, y: o.body.position.y, a: o.body.angle }; }); for (var i = 0; i < 1600; i++) M.Engine.update(engine, DT); var worst = 0; objs.forEach(function (o, i) { worst = Math.max(worst, Math.hypot(o.body.position.x - before[i].x, o.body.position.y - before[i].y), Math.abs(o.body.angle - before[i].a) * 30); }); headless = false; engine = null; state = 'menu'; return worst; },
-    aims: function (n) { if (!window.Matter) return null; M = window.Matter; headless = true; build(n); var r = { vmax: launchSpeed(MAXPULL, P[shots[0]].kg), type: shots[0], pts: objs.map(function (o) { return { k: o.k, dx: (o.body.position.x - SX) / PXM, dy: (SY - o.body.position.y) / PXM, h: o.h / PXM }; }) }; headless = false; engine = null; state = 'menu'; return r; },
+    aims: function (n) { if (!window.Matter) return null; M = window.Matter; headless = true; build(n); var vm = {}; Object.keys(P).forEach(function (k) { vm[k] = launchSpeed(MAXPULL, P[k].kg); }); var r = { vmax: launchSpeed(MAXPULL, P[shots[0]].kg), type: shots[0], vm: vm, shots: shots.slice(), pts: objs.map(function (o) { return { k: o.k, dx: (o.body.position.x - SX) / PXM, dy: (SY - o.body.position.y) / PXM, h: o.h / PXM }; }) }; headless = false; engine = null; state = 'menu'; return r; },
     state: function () { return { state: state, lvl: lvl, shots: shots.slice(), left: engine ? targetsLeft() : -1, score: score, used: used, running: running, cam: { x: Math.round(cam.x), z: +cam.z.toFixed(2) }, objs: objs.length }; }
   };
 })();
