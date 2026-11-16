@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-13",
-  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury. On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss (manifest necessity for a mistrial), the motion to investigate the holdout juror, and the prosecution's gag order request. Prosecutors intend to retry Clancy but have not said on what charges; no retrial date set (judge floated March 2027). Next hearing Nov. 16, 2026. Clancy remains in custody. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected (Boston.com).",
+  "updated": "2026-11-16",
+  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected.",
   "trial": [
     {
       "day": 0,
@@ -322,6 +322,21 @@
       "title": "Scheduled: status / trial assignment conference, 10 a.m.",
       "note": "Judge hopes to rule on the pending motions. Upcoming, not yet held.",
       "links": []
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Retrial scheduling hearing",
+      "note": "Judge Sullivan set the retrial for March 29, 2027 over prosecution objection; final pretrial conference Feb. 18, 2027. DA has not announced the charges it will pursue.",
+      "links": [
+        {
+          "t": "NBC Boston live coverage",
+          "u": "https://www.nbcboston.com/news/local/lindsay-clancy-trial-live-stream-live-updates-today/4050017/"
+        },
+        {
+          "t": "Fox News report",
+          "u": "https://www.foxnews.com/us/lindsay-clancy-retried-murder-killing-three-children"
+        }
+      ]
     }
   ],
   "documents": [
@@ -383,6 +398,24 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-16",
+      "t": "Fox News: Judge Sullivan sets March 29, 2027 as the start of the Clancy retrial over prosecution objection (ADA Jennifer Sprague argued for May; prosecutors later suggested late April). Final pretrial conference set for Feb. 18, 2027. The DA's office did not say what charges it will pursue; Reddington says he expects first-degree murder counts and wants DA Tim Cruz to reduce to second-degree. First trial deadlocked 11-1 for acquittal.",
+      "u": "https://www.foxnews.com/us/lindsay-clancy-retried-murder-killing-three-children",
+      "s": "Fox News"
+    },
+    {
+      "date": "2026-11-16",
+      "t": "NBC Boston: live updates from the Nov. 16 hearing in Plymouth Superior Court, where a retrial date was to be set (headline: Judge sets March 2027 date for Clancy retrial).",
+      "u": "https://www.nbcboston.com/news/local/lindsay-clancy-trial-live-stream-live-updates-today/4050017/",
+      "s": "NBC Boston"
+    },
+    {
+      "date": "2026-11-16",
+      "t": "ABC4 / The Hill / Fox 5 NY: reports that the judge set the Clancy retrial for March 2027 (ABC4: 'Judge sets retrial date for Lindsay Clancy'; The Hill: 'Judge William Sullivan sets Lindsay Clancy retrial for March 2027').",
+      "u": "https://www.abc4.com/news/national/judge-sets-retrial-date-for-lindsay-clancy/",
+      "s": "ABC4"
+    },
     {
       "date": "2026-11-09",
       "t": "NBC Boston: Judge Sullivan denies the bids to dismiss the three murder indictments and to question the holdout juror, and rejects the prosecution request to limit lawyers' media comments. Another hearing is set for the following week, when a retrial date could be set. The Plymouth DA's office has not said whether it will retry Clancy and plans to wait until pending motions, including any appeals, are resolved.",
