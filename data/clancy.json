@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-16",
-  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected.",
+  "updated": "2026-11-17",
+  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected. Per CBS Boston (Nov. 16), prosecutors will retry on first-degree murder charges; next status hearing is Dec. 30, 2026; defense plans to renew its request for a split trial.",
   "trial": [
     {
       "day": 0,
@@ -392,6 +392,30 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-16",
+      "t": "CBS Boston: Prosecutors will retry Clancy on first-degree murder charges, per the Nov. 16 hearing coverage. DA Tim Cruz was not in court. Judge Sullivan (retiring June 2027) set a March 29, 2027 trial over the Commonwealth's request for May; next status hearing Dec. 30; Reddington plans to again request a split trial (guilt / mental state), which the judge denied previously. Includes full hearing video.",
+      "u": "https://www.cbsnews.com/boston/news/lindsay-clancy-hearing/",
+      "s": "CBS Boston"
+    },
+    {
+      "date": "2026-11-16",
+      "t": "CNN: Lindsay Clancy's retrial scheduled for March 2027.",
+      "u": "https://www.cnn.com/2026/11/16/us/lindsay-clancy-case-update-retrial",
+      "s": "CNN"
+    },
+    {
+      "date": "2026-11-16",
+      "t": "NBC News: Lindsay Clancy will face retrial in March over the strangulation deaths of her three children.",
+      "u": "https://www.nbcnews.com/news/us-news/lindsay-clancy-will-face-retrial-march-deaths-three-children-rcna609608",
+      "s": "NBC News"
+    },
+    {
+      "date": "2026-11-16",
+      "t": "Boston Globe: Judge sets March date for Lindsay Clancy retrial in the killings of her three children.",
+      "u": "https://www.bostonglobe.com/2026/11/16/metro/lindsay-clancy-court-hearing-murder/",
+      "s": "Boston Globe"
+    },
     {
       "date": "2026-11-16",
       "t": "Fox News: Judge Sullivan sets March 29, 2027 as the start of the Clancy retrial over prosecution objection (ADA Jennifer Sprague argued for May; prosecutors later suggested late April). Final pretrial conference set for Feb. 18, 2027. The DA's office did not say what charges it will pursue; Reddington says he expects first-degree murder counts and wants DA Tim Cruz to reduce to second-degree. First trial deadlocked 11-1 for acquittal.",
