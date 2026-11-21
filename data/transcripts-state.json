@@ -993,5 +993,10 @@
   "tried": "2026-11-17",
   "status": "ok",
   "kind": "asr"
+ },
+ "nlLFJCAvlBc": {
+  "tried": "2026-11-21",
+  "status": "ok",
+  "kind": "asr"
  }
 }
