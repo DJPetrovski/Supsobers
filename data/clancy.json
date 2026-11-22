@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected. Per CBS Boston (Nov. 16), prosecutors will retry on first-degree murder charges; next status hearing is Dec. 30, 2026; defense plans to renew its request for a split trial. On Nov. 19, 2026 SJC Justice Dewar found full-court review of the defense appeal warranted; briefs due Dec. 3, Dec. 17, Dec. 28 with oral argument expected January 2027. Jury notes from the first trial were released Nov. 18.",
   "trial": [
     {
@@ -394,9 +394,20 @@
       "t": "M.G.L. c. 123, § 16, Not guilty by reason of mental illness",
       "s": "Massachusetts Legislature",
       "u": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXVII/Chapter123/Section16"
+    },
+    {
+      "t": "SJ-2026-0506 P001: Petition for Relief Pursuant to G.L. c. 211 §3 with Certificate of Service (PDF copy hosted by LA Magazine; docket-numbered, not verified against the SJC docket)",
+      "s": "LA Magazine (PDF)",
+      "u": "https://lamag.com/wp-content/uploads/2026/11/SJ-2026-0506_P001_Petition-for-Relief-Pursuant-to-G.-L.-c.-211-sec.-3-with-Certificate-of-Service.pdf"
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-22",
+      "t": "Newly located docket-numbered PDF copy of the defense SJC petition (SJ-2026-0506, P001) added to documents. No new rulings, hearings or video found since Nov. 19.",
+      "u": "https://lamag.com/wp-content/uploads/2026/11/SJ-2026-0506_P001_Petition-for-Relief-Pursuant-to-G.-L.-c.-211-sec.-3-with-Certificate-of-Service.pdf",
+      "s": "LA Magazine (PDF)"
+    },
     {
       "date": "2026-11-19",
       "t": "ABC News: Full SJC to review Clancy double jeopardy appeal. The 55-page filing argues a retrial would violate double jeopardy because the judge declared a mistrial without questioning the holdout juror. Defense vowed not to seek a stay so Judge Sullivan hears the retrial before he retires. Prosecutors have not explicitly said which charges they will pursue. Includes AP/Pool video clip of the Nov. 16 court appearance.",
