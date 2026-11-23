@@ -506,7 +506,37 @@ body.watch #bgfix .bgv{opacity:1}
 body.watch #bgfix .backdrop{opacity:.1}
 body.watch #bg-back{display:inline-block;background:#2a0b0f;border-color:var(--ember)}
 body.watch #bg-watch{display:none}
-body:not(.watch) .wrap{cursor:default}
+.wrap,footer.about{max-width:980px}
+</style>
+<style id="browse-css">
+.browsev{display:none}.browsev.on{display:block}
+.bnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.bnav button{font:13px system-ui,sans-serif;color:var(--ink);background:rgba(18,8,10,.88);border:1px solid var(--line);border-radius:5px;padding:7px 11px;cursor:pointer}
+.bnav button:hover{border-color:var(--ember)}
+.bsec{margin:0 0 14px;border:1px solid var(--line);border-radius:8px;background:rgba(6,1,2,.6);scroll-margin-top:12px}
+.bsec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;min-height:48px}
+.bsec>summary::-webkit-details-marker{display:none}
+.bsec>summary::after{content:"+";font:22px/1 system-ui,sans-serif;color:var(--ember);margin-left:6px}
+.bsec[open]>summary::after{content:"\2212"}
+.bsec h2{margin:0;font:600 clamp(18px,4.5vw,22px)/1.25 Georgia,serif;flex:1}
+.bn{font:13px system-ui,sans-serif;color:var(--ink-dim)}
+.bd{margin:0;padding:0 16px 10px;color:var(--ink-dim);font:14px/1.5 system-ui,sans-serif}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:12px;padding:4px 14px 14px}
+.bcard{display:flex;flex-direction:column;background:rgba(18,8,10,.92);border:1px solid var(--line);border-radius:8px;overflow:hidden;min-width:0}
+.bplay{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;background:#000;cursor:pointer;overflow:hidden}
+.bplay img{width:100%;height:100%;object-fit:cover;display:block}
+button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place-items:center;font-size:36px;color:#fff;text-shadow:0 2px 14px #000}
+.bplay:hover,.bplay:focus-visible{outline:2px solid var(--ember);outline-offset:-2px}
+.bplay iframe,.bplay video{width:100%;height:100%;border:0;display:block;background:#000}
+.bcb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.bk{font:12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim);overflow-wrap:anywhere}
+.bcb h3{margin:0;font:600 16px/1.3 Georgia,serif;overflow-wrap:anywhere}
+.bcb p{margin:0;font:13.5px/1.45 system-ui,sans-serif;color:var(--ink-dim);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blinks{display:flex;gap:14px;font:13px system-ui,sans-serif;margin-top:4px}
+.blinks a{color:var(--ember);padding:4px 0}
+.bmore{display:block;margin:0 14px 14px;font:14px system-ui,sans-serif;color:var(--ink);background:#2a0b0f;border:1px solid var(--ember);border-radius:6px;padding:11px 16px;cursor:pointer;width:calc(100% - 28px)}
+@media(max-width:560px){#bgbar{top:auto;bottom:0;left:0;right:0;max-width:none;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,1,2,.92);border-top:1px solid var(--line);gap:8px}#bgbar button{flex:none;white-space:nowrap;min-height:40px}body{padding-bottom:64px}.bgrid{grid-template-columns:1fr;padding:4px 10px 12px}.bnav{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4px;padding-bottom:4px;-webkit-overflow-scrolling:touch}.bnav button{flex:none;white-space:nowrap;min-height:40px}.bsec>summary{padding:12px}}
+@media(min-width:561px) and (max-width:1000px){.bgrid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head><body>
 <div id="bgfix" aria-hidden="true"><div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
@@ -538,7 +568,8 @@ body:not(.watch) .wrap{cursor:default}
 
   <nav class="controls">
     <div class="tabs" role="tablist" aria-label="Media type">
-      <button class="tab" data-tab="grid" aria-pressed="true">Thumbnails</button>
+      <button class="tab" data-tab="browse" aria-pressed="true">Browse</button>
+      <button class="tab" data-tab="grid" aria-pressed="false">Thumbnails</button>
       <button class="tab" data-tab="all" aria-pressed="false">3D timeline</button>
       <button class="tab" data-tab="web" aria-pressed="false">Web</button>
       <button class="tab" data-tab="list" aria-pressed="false">List</button>
@@ -571,6 +602,7 @@ body:not(.watch) .wrap{cursor:default}
       <div class="axis" id="axis"></div>
       <div class="compare" id="compare"></div>
     </section>
+    <section id="browse-root" class="browsev" aria-label="Videos organized by type"></section>
     <section id="grid-root" class="gridv" aria-label="Grid of entries"></section>
     <section id="list-root" class="listv" aria-label="List of entries"></section>
     <section id="web-root" class="webv" aria-label="Web of entries">
@@ -722,7 +754,7 @@ body:not(.watch) .wrap{cursor:default}
   // scroll stops (touch or wheel): preview the tile nearest the middle of the view
   var idleT = 0;
   function pickMiddle() {
-    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web") ? null : "#timeline-root .card";
+    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web" || tab === "browse") ? null : "#timeline-root .card";
     if (!sel) return;
     var tlr = document.getElementById("timeline-root"), best = null, bd = 1e9, vw = window.innerWidth, vh = window.innerHeight;
     document.querySelectorAll(sel).forEach(function (c) {
@@ -752,6 +784,86 @@ body:not(.watch) .wrap{cursor:default}
     });
   }
 
+
+  // ---------- Browse: videos organized by type ----------
+  var BROWSE_SECS = [
+    { k: "footage", t: "Footage from the day", d: "Raw video and bystander footage from September 10, filmed on or near campus." },
+    { k: "news", t: "News coverage", d: "Reports from TV and online news outlets." },
+    { k: "official", t: "Official statements & press conferences", d: "The FBI, the governor, prosecutors and other officials." },
+    { k: "court", t: "Court & trial", d: "Arraignment, hearings and trial coverage." },
+    { k: "candace", t: "Candace Owens", d: "Her own episodes first, then videos about what she has said." },
+    { k: "shorts", t: "Shorts, reels & TikToks", d: "Short vertical clips." },
+    { k: "creators", t: "Creators & commentary", d: "Independent commentators, podcasters and analysts. Views are those of their creators." },
+    { k: "aftermath", t: "Aftermath & tributes", d: "Memorials and the days that followed." },
+    { k: "photos", t: "Photos", d: "" }
+  ];
+  var NEWS_RE = /news|fox|cnn|abc|nbc|cbs|associated press|reuters|npr|ksl|kutv|tribune|times|post\b|telegraph|independent|\bthe hill\b|\bthe sun\b|c-span|bbc|gb news|lbc|hindustan|firstpost|ndtv|ctv|\bmint\b|scripps|journal|today|economic|broadcast|wham|republic|mirror|\bnow\b|diario|midday|7news|fbi|u\.s\. news|livestream|live stream/i;
+  function isShort(e) { return /\/shorts\/|tiktok|instagram\.com|\/reel|fb\.watch/i.test(e.sourceUrl || "") || /\bshorts?\b/i.test(e.sourceName || ""); }
+  function browseKey(e) {
+    if (e.mediaType === "milestone") return null;
+    if (e.mediaType === "photo") return "photos";
+    var short = isShort(e), txt = (e.title || "") + " " + (e.sourceName || "") + " " + (e.description || "");
+    if (e.clip || localVid(e.sourceUrl) || (e.category === "eyewitness" && !short)) return "footage";
+    if (/candace/i.test((e.title || "") + " " + (e.sourceName || ""))) return "candace";
+    if (short) return "shorts";
+    if (e.category === "aftermath") return "aftermath";
+    if ((e.category === "official" || NEWS_RE.test(e.sourceName || "")) && /tyler robinson|hearing|trial|arraign|court|judge|prosecut|plea\b/i.test((e.title || "") + " " + (e.sourceName || ""))) return "court";
+    if (e.category === "official") return "official";
+    if (e.category === "breaking" || NEWS_RE.test(e.sourceName || "")) return "news";
+    return "creators";
+  }
+  var BR = { open: { footage: 1, news: 1 }, shown: {} };
+  function browseCard(e) {
+    var c = document.createElement("article"); c.className = "bcard";
+    var th = thumbOf(e), pb = document.createElement("button"); pb.type = "button"; pb.className = "bplay"; pb.setAttribute("aria-label", "Play: " + e.title);
+    if (th) { var im = document.createElement("img"); im.alt = ""; im.loading = "lazy"; im.decoding = "async"; im.src = th; im.onerror = function () { im.remove(); }; pb.appendChild(im); }
+    pb._e = e; c.appendChild(pb);
+    var b = document.createElement("div"); b.className = "bcb";
+    var url = e.sourceUrl || e.archiveUrl || "";
+    b.innerHTML = '<span class="bk">' + escapeHtml((e.sourceName || "").replace(/ \(YouTube[^)]*\)/, "")) + " · " + escapeHtml(e.date) + '</span><h3>' + escapeHtml(e.title) + '</h3><p>' + escapeHtml(e.description || "") + '</p><div class="blinks">' + (url ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener">Source</a>' : "") + (e.archiveUrl ? '<a href="' + escapeHtml(e.archiveUrl) + '" target="_blank" rel="noopener">Archived copy</a>' : "") + "</div>";
+    c.appendChild(b); return c;
+  }
+  function browseFill(sec, list, grid, more) {
+    var n = BR.shown[sec] || 0, nx = Math.min(list.length, n + 18);
+    for (var i = n; i < nx; i++) grid.appendChild(browseCard(list[i]));
+    BR.shown[sec] = nx; more.hidden = nx >= list.length; more.textContent = "Show " + Math.min(18, list.length - nx) + " more (" + (list.length - nx) + " left)";
+  }
+  function renderBrowse() {
+    var root = document.getElementById("browse-root"), q = (state.query || "").toLowerCase(), secs = {}, total = 0;
+    BROWSE_SECS.forEach(function (s) { secs[s.k] = []; }); BR.shown = {};
+    ENTRIES.forEach(function (e) { var k = browseKey(e); if (!k) return; if (q && (e.title + " " + e.description + " " + e.sourceName).toLowerCase().indexOf(q) === -1) return; secs[k].push(e); total++; });
+    BROWSE_SECS.forEach(function (s) {
+      secs[s.k].sort(function (a, b) {
+        if (s.k === "candace") { var x = /^Candace Owens \(/.test(a.sourceName) ? 0 : 1, y = /^Candace Owens \(/.test(b.sourceName) ? 0 : 1; if (x !== y) return x - y; }
+        return s.k === "footage" ? a.timestamp.localeCompare(b.timestamp) : b.timestamp.localeCompare(a.timestamp);
+      });
+    });
+    root.innerHTML = "";
+    var nav = document.createElement("nav"); nav.className = "bnav"; nav.setAttribute("aria-label", "Jump to a section");
+    BROWSE_SECS.forEach(function (s) { if (!secs[s.k].length) return; var a = document.createElement("button"); a.type = "button"; a.textContent = s.t.replace(" & press conferences", "") + " " + secs[s.k].length; a.addEventListener("click", function () { var d = document.getElementById("bsec-" + s.k); d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); }); nav.appendChild(a); });
+    root.appendChild(nav);
+    if (!total) { root.insertAdjacentHTML("beforeend", '<p class="empty-state">Nothing matches that search.</p>'); return; }
+    BROWSE_SECS.forEach(function (s) {
+      var list = secs[s.k]; if (!list.length) return;
+      var d = document.createElement("details"); d.className = "bsec"; d.id = "bsec-" + s.k; d.open = !!q || !!BR.open[s.k];
+      d.innerHTML = '<summary><h2>' + escapeHtml(s.t) + '</h2><span class="bn">' + list.length + '</span></summary>' + (s.d ? '<p class="bd">' + escapeHtml(s.d) + '</p>' : "") + '<div class="bgrid"></div><button type="button" class="bmore" hidden></button>';
+      var grid = d.querySelector(".bgrid"), more = d.querySelector(".bmore");
+      more.addEventListener("click", function () { browseFill(s.k, list, grid, more); });
+      var fill = function () { if (!BR.shown[s.k]) browseFill(s.k, list, grid, more); };
+      d.addEventListener("toggle", function () { if (d.open) fill(); }); if (d.open) fill();
+      root.appendChild(d);
+    });
+  }
+  document.getElementById("browse-root").addEventListener("click", function (ev) {
+    var b = ev.target.closest(".bplay"); if (!b || !b._e) return;
+    var e = b._e, id = (e.clip && e.clip.yt) || ytId(e.sourceUrl), host = document.createElement("div"); host.className = "bplay on";
+    if (id) { host.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="' + escapeHtml(e.title) + '"></iframe>'; }
+    else if (localVid(e.sourceUrl)) { host.innerHTML = '<video controls autoplay playsinline src="' + escapeHtml(e.sourceUrl) + '"></video>'; }
+    else { window.open(e.sourceUrl || e.archiveUrl, "_blank", "noopener"); return; }
+    if (typeof bgStop === "function") bgStop();
+    b.replaceWith(host);
+  });
+
   function renderChips(activeCats) {
     var root = document.getElementById("category-chips");
     root.innerHTML = "";
@@ -775,7 +887,7 @@ body:not(.watch) .wrap{cursor:default}
   }
 
   var state = {
-    tab: "grid",
+    tab: "browse",
     activeCats: new Set(Object.keys(CATEGORIES)),
     query: ""
   };
@@ -793,7 +905,7 @@ body:not(.watch) .wrap{cursor:default}
   }
 
   function renderTimeline() {
-    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
+    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "browse") renderBrowse(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
     var list = filteredEntries();
     var root = document.getElementById("timeline-root");
     var empty = document.getElementById("empty");
@@ -1249,9 +1361,9 @@ body:not(.watch) .wrap{cursor:default}
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
     var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
-    document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
+    document.getElementById("browse-root").classList.toggle("on", state.tab === "browse"); document.getElementById("category-chips").hidden = isMap || state.tab === "browse"; document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
     if (state.tab !== "web") stopWeb();
-    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
