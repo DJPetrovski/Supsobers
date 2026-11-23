@@ -64,7 +64,7 @@ mark{background:#5a0f15;color:#fff;border-radius:2px}.ai{font:13px system-ui,san
 <div id="list"></div><p class="meta" id="m"></p>
 <div id="lb" role="dialog" aria-modal="true"><div class="bar"><span class="t" id="lbt"></span><button id="lbp" type="button">&larr; Prev</button><button id="lbn" type="button">Next &rarr;</button><a id="lbd" download>Download</a><button id="lbx" type="button">Close</button></div><img id="lbi" alt=""></div>
 <footer>New developments are added here as they come out. Have a public record or video that belongs in this archive? Send it through the Contact page. Primary source site: <a href="https://www.clancycase.com/" target="_blank" rel="noopener">clancycase.com</a>.</footer></div>
-<script>window.CL_V=4;</script><script src="js/ask.js?v=1"></script><script src="js/clancy-search.js?v=6"></script>
+<script>window.CL_V=5;</script><script src="js/ask.js?v=1"></script><script src="js/clancy-search.js?v=6"></script>
 <script>
 (function(){
 var D=null,tab="trial",old=false,q=document.getElementById("q"),list=document.getElementById("list");
@@ -168,6 +168,6 @@ var li=0,L=document.getElementById("lb");function lb(i){var G=D.gallery;li=(i+G.
 document.getElementById("lbp").onclick=function(){lb(li-1)};document.getElementById("lbn").onclick=function(){lb(li+1)};document.getElementById("lbx").onclick=function(){L.classList.remove("on")};
 document.addEventListener("keydown",function(ev){if(!L.classList.contains("on"))return;if(ev.key==="Escape")L.classList.remove("on");if(ev.key==="ArrowRight")lb(li+1);if(ev.key==="ArrowLeft")lb(li-1)});
 document.getElementById("go").onclick=function(){document.getElementById("gate").remove()};
-fetch("data/clancy.json?v=7").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
+fetch("data/clancy.json?v=8").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
 })();
 </script><script src="js/visitors.js?v=1794517598" defer></script></body></html>
