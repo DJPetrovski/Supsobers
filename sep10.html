@@ -562,6 +562,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
 .ptile{position:relative;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#000;cursor:pointer;aspect-ratio:4/3;display:block}
 .ptile img{width:100%;height:100%;object-fit:cover;display:block}
 .ptile span{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 7px;font:12.5px/1.3 system-ui,sans-serif;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.pembed{margin:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(18,8,10,.92);grid-column:span 2}.pembed iframe{width:100%;height:520px;border:0;display:block;background:#fff}.pembed figcaption{padding:10px 12px;font:13.5px/1.45 system-ui,sans-serif;color:var(--ink-dim)}.pembed a{color:var(--ember)}@media(max-width:560px){.pembed{grid-column:1/-1}}
 .ptile:hover,.ptile:focus-visible{border-color:var(--ember);outline:none}
 #plb{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;padding:56px 8px 8px}
 #plb[hidden]{display:none}
@@ -983,7 +984,17 @@ body.lb-on{overflow:hidden}
   lbEl.addEventListener("click", function (ev) { if (ev.target === lbEl) lbClose(); });
   document.addEventListener("keydown", function (ev) { if (lbEl.hidden) return; if (ev.key === "Escape") lbClose(); if (ev.key === "ArrowRight") lbShow(LB.i + 1); if (ev.key === "ArrowLeft") lbShow(LB.i - 1); });
   (function () { var x0 = null; lbEl.addEventListener("touchstart", function (ev) { x0 = ev.touches[0].clientX; }, { passive: true }); lbEl.addEventListener("touchend", function (ev) { if (x0 == null) return; var dx = ev.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) lbShow(LB.i + (dx < 0 ? 1 : -1)); }, { passive: true }); })();
-  function photoTile(ph, ctx) { var b = document.createElement("button"); b.type = "button"; b.className = "ptile"; b.setAttribute("aria-label", "Open photo: " + (ph.title || ph.caption || "")); var im = document.createElement("img"); im.loading = "lazy"; im.decoding = "async"; im.alt = ""; im.src = ph.thumb || ph.src; b.appendChild(im);
+  function embedSrc(u) { var m; u = u || "";
+    if ((m = /^https?:\/\/(?:www\.)?(?:x|twitter)\.com\/[^\/]+\/status\/(\d+)/.exec(u))) return "https://platform.twitter.com/embed/Tweet.html?id=" + m[1];
+    if ((m = /^https?:\/\/(?:www\.)?instagram\.com\/(p|reel)\/([\w-]+)/.exec(u))) return "https://www.instagram.com/" + m[1] + "/" + m[2] + "/embed";
+    if (/^https:\/\/embed\.gettyimages\.com\/embed\/\d+/.test(u)) return u;
+    if ((m = /^https?:\/\/(?:www\.)?facebook\.com\/.+/.exec(u))) return "https://www.facebook.com/plugins/post.php?width=500&show_text=true&href=" + encodeURIComponent(u);
+    return null; }
+  function photoTile(ph, ctx) {
+    if (ph.embed) { var d = document.createElement("figure"); d.className = "pembed"; var src = embedSrc(ph.embed);
+      if (src) { var f = document.createElement("iframe"); f.src = src; f.loading = "lazy"; f.title = ph.title || "Embedded photo"; f.setAttribute("sandbox", "allow-scripts allow-same-origin allow-popups"); f.referrerPolicy = "no-referrer-when-downgrade"; d.appendChild(f); }
+      var c = document.createElement("figcaption"); c.innerHTML = "<b>" + escapeHtml(ph.title || "") + "</b>" + (ph.caption ? "<br>" + escapeHtml(ph.caption) : "") + '<br><a href="' + escapeHtml(ph.sourceUrl || ph.embed) + '" target="_blank" rel="noopener">' + escapeHtml(ph.source || "View original") + "</a>"; d.appendChild(c); return d; }
+    var b = document.createElement("button"); b.type = "button"; b.className = "ptile"; b.setAttribute("aria-label", "Open photo: " + (ph.title || ph.caption || "")); var im = document.createElement("img"); im.loading = "lazy"; im.decoding = "async"; im.alt = ""; im.src = ph.thumb || ph.src; b.appendChild(im);
     var t = document.createElement("span"); t.textContent = ph.title || ph.caption || ""; b.appendChild(t); b.addEventListener("click", function () { lbOpen(ctx, ctx.indexOf(ph)); }); return b; }
   function renderPhotos() {
     var root = document.getElementById("photos-root"), q = (state.query || "").trim(); root.innerHTML = "";
@@ -993,7 +1004,7 @@ body.lb-on{overflow:hidden}
     var nav = document.createElement("nav"); nav.className = "bnav"; root.appendChild(nav);
     PHGROUPS.forEach(function (g) {
       var items = list.filter(function (ph) { return (ph.group || "other") === g[0]; }); if (!items.length) return;
-      var sec = document.createElement("section"); sec.className = "pgroup"; sec.id = "pg-" + g[0]; sec.innerHTML = "<h2>" + escapeHtml(g[1]) + ' <span class="bn">' + items.length + "</span></h2>" + (g[2] ? '<p class="bd">' + escapeHtml(g[2]) + "</p>" : ""); var grid = document.createElement("div"); grid.className = "pgrid"; items.forEach(function (ph) { grid.appendChild(photoTile(ph, items)); }); sec.appendChild(grid); root.appendChild(sec);
+      var sec = document.createElement("section"); sec.className = "pgroup"; sec.id = "pg-" + g[0]; sec.innerHTML = "<h2>" + escapeHtml(g[1]) + ' <span class="bn">' + items.length + "</span></h2>" + (g[2] ? '<p class="bd">' + escapeHtml(g[2]) + "</p>" : ""); var grid = document.createElement("div"); grid.className = "pgrid"; var still = items.filter(function (x) { return !x.embed; }); items.forEach(function (ph) { grid.appendChild(photoTile(ph, still)); }); sec.appendChild(grid); root.appendChild(sec);
       var nb = document.createElement("button"); nb.type = "button"; nb.textContent = g[1].split(":")[0] + " " + items.length; nb.addEventListener("click", function () { sec.scrollIntoView({ behavior: "smooth", block: "start" }); }); nav.appendChild(nb);
     });
     if (linked.length) { var sec2 = document.createElement("section"); sec2.className = "pgroup"; sec2.innerHTML = "<h2>Photos on other sites <span class=\"bn\">" + linked.length + '</span></h2><p class="bd">These open on the publisher\'s page.</p>'; var g2 = document.createElement("div"); g2.className = "bgrid"; linked.forEach(function (e) { var c = browseCard(e); c.querySelector(".bplay").remove(); g2.appendChild(c); }); sec2.appendChild(g2); root.appendChild(sec2); }
