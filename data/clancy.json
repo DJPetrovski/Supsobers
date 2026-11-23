@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected. Per CBS Boston (Nov. 16), prosecutors will retry on first-degree murder charges; next status hearing is Dec. 30, 2026; defense plans to renew its request for a split trial. On Nov. 19, 2026 SJC Justice Dewar found full-court review of the defense appeal warranted; briefs due Dec. 3, Dec. 17, Dec. 28 with oral argument expected January 2027. Jury notes from the first trial were released Nov. 18.",
   "trial": [
     {
@@ -396,6 +396,12 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-23",
+      "t": "Boston 25 News: Superior Court Judge Michael Doolin denied the defendants' motion to dismiss Patrick Clancy's wrongful death suit against Dr. Jennifer Tufts, nurse Rebecca Jallotta (spelled Jollotta elsewhere in this archive) and their institutions, writing there are \"sufficient facts to plausibly suggest that the decedents' deaths were a foreseeable result of defendant's alleged conduct.\" The case proceeds past the motion stage.",
+      "u": "https://boston25news.com/news/local/judge-allows-patrick-clancys-lawsuit-against-ex-wifes-mental-health-providers-move-forward/INL25V4OH5ADXOYFLEG3P7QUDA",
+      "s": "Boston 25 News"
+    },
     {
       "date": "2026-11-22",
       "t": "Corrected the trial-day numbering: the Associated Press stream the archive listed as an unnumbered \"Introductory\" video is Day 1 (opening statements), so every trial day's video moves up one entry. Day numbers now match AP and Rev. The Sept. 4 mistrial day has a video (AP, Day 28).",
@@ -1017,7 +1023,7 @@
       "title": "Patrick Clancy wrongful death suit",
       "court": "Norfolk Superior Court",
       "filed": "2026-01",
-      "status": "Pending. A hearing on the motion to dismiss was scheduled for Oct. 28, 2026.",
+      "status": "Motion to dismiss denied by Judge Michael Doolin (reported Nov. 23, 2026); case proceeds.",
       "note": "Alleges Lindsay's providers prescribed many powerful medications that worsened her condition and led to the children's deaths. Four defendants: Dr. Jennifer Tufts, Rebecca Jollotta, Aster Mental Health and South Shore Health. In April 2026 all four moved to dismiss, arguing they owed the children no duty of care and citing the state law limiting mental health professionals' duty to warn. Patrick's lawyers (Todd & Weld) say it does not apply because the deaths were a foreseeable result of the alleged malpractice.",
       "u": "https://www.nbcboston.com/news/local/lindsay-clancy-husband-files-wrongful-death-lawsuit-against-doctors/3881949/",
       "s": "NBC Boston"
