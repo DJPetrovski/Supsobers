@@ -596,6 +596,15 @@ body.lb-on{overflow:hidden}
 .qwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 @media(max-width:700px){#qsvg{min-width:760px}#qsvg .qt{font-size:14px}#qsvg .qt.dim{font-size:13px}.quad{padding:10px;margin-inline:-4px}.qwrap::after{content:"Swipe sideways to see the whole map";display:block}}
 </style>
+<style id="docs-css">
+.docsv{display:none}.docsv.on{display:block}
+.dnote{margin:0 0 14px;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--ember);border-radius:8px;background:rgba(18,8,10,.9);font:14px/1.55 system-ui,sans-serif;color:var(--ink)}.dnote a{color:var(--ember)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px;margin-top:10px}
+.dcard{display:flex;flex-direction:column;gap:5px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:rgba(18,8,10,.92);min-width:0}
+.dcard h3{margin:0;font:600 17px/1.3 Georgia,serif;overflow-wrap:anywhere}.dcard p{margin:0;font:14px/1.5 system-ui,sans-serif;color:var(--ink-dim)}
+.dcard .dby{font-size:12.5px}.dcard .dof{color:#7fbcac;font-weight:600}.dcard .dsn{color:var(--ink);padding-top:6px;border-top:1px solid var(--line)}.dcard .dsn a{color:var(--ember);font-weight:600}.dcard .dmore{font-size:12.5px}
+.dcard mark{background:#6b1018;color:#fff;padding:0 2px;border-radius:2px}
+</style>
 </head><body>
 <div id="bgfix" aria-hidden="true"><div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
 <svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -635,6 +644,7 @@ body.lb-on{overflow:hidden}
       <button class="tab" data-tab="map" aria-pressed="false">Compare angles</button>
       <button class="tab" data-tab="video" aria-pressed="false">Videos</button>
       <button class="tab" data-tab="photo" aria-pressed="false">Photos</button>
+      <button class="tab" data-tab="docs" aria-pressed="false">Documents</button>
     </div>
     <div class="filter-row" id="category-chips"></div>
     <div class="filter-row">
@@ -675,6 +685,7 @@ body.lb-on{overflow:hidden}
       <div class="plctl"><button type="button" id="pl-prev">&#9198; Back</button><button type="button" id="pl-toggle">&#9208; Pause</button><button type="button" id="pl-next">Next &#9197;</button><a id="pl-open" target="_blank" rel="noopener">Source</a></div>
       <details class="plq"><summary>Up next</summary><ol id="pl-list"></ol></details>
     </div>
+    <section id="docs-root" class="docsv" aria-label="Case documents"></section>
     <section id="photos-root" class="photosv" aria-label="Photo archive"></section>
     <section id="browse-root" class="browsev" aria-label="Videos organized by type"></section>
     <section id="grid-root" class="gridv" aria-label="Grid of entries"></section>
@@ -828,7 +839,7 @@ body.lb-on{overflow:hidden}
   // scroll stops (touch or wheel): preview the tile nearest the middle of the view
   var idleT = 0;
   function pickMiddle() {
-    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web" || tab === "browse" || tab === "photo") ? null : "#timeline-root .card";
+    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web" || tab === "browse" || tab === "photo" || tab === "docs") ? null : "#timeline-root .card";
     if (!sel) return;
     var tlr = document.getElementById("timeline-root"), best = null, bd = 1e9, vw = window.innerWidth, vh = window.innerHeight;
     document.querySelectorAll(sel).forEach(function (c) {
@@ -1038,6 +1049,45 @@ body.lb-on{overflow:hidden}
     if (!nav.children.length) nav.remove();
   }
   fetch("data/photos.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : []; }).then(function (a) { if (Array.isArray(a)) { window.PHOTOS = a; if (state.tab === "photo") renderPhotos(); else if (state.tab === "browse") renderBrowse(); } }).catch(function () {});
+
+  // ---------- official documents (searchable) ----------
+  var DOCS = { list: null, text: null, loading: false };
+  var DOC_TYPES = ["Charging & arrest", "State filings", "Defense filings", "Victim filings", "Hearing transcripts", "Case updates"];
+  function docLoad(cb) {
+    if (DOCS.list && DOCS.text) return cb();
+    if (DOCS.loading) return; DOCS.loading = true;
+    Promise.all([fetch("data/kirk-docs.json?v=1").then(function (r) { return r.json(); }), fetch("data/kirk-doc-text.json?v=1").then(function (r) { return r.json(); })]).then(function (a) { DOCS.list = a[0]; DOCS.text = a[1]; DOCS.loading = false; cb(); }).catch(function () { DOCS.loading = false; var r = document.getElementById("docs-root"); if (r) r.innerHTML = '<p class="empty-state">The documents could not be loaded. Please try again.</p>'; });
+  }
+  function docDate(d) { var p = (d || "").split("-"), mo = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; if (p.length === 1) return p[0]; return p.length === 2 ? mo[+p[1] - 1] + " " + p[0] : mo[+p[1] - 1] + " " + (+p[2]) + ", " + p[0]; }
+  function docSnip(t, words) { var lo = t.toLowerCase(), pos = -1; for (var i = 0; i < words.length && pos < 0; i++) pos = lo.indexOf(words[i]); var a = Math.max(0, pos - 110), x = escapeHtml((a ? "…" : "") + t.slice(a, a + 300) + (a + 300 < t.length ? "…" : "")); words.forEach(function (w) { x = x.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig"), "<mark>$1</mark>"); }); return x; }
+  function renderDocs() {
+    var root = document.getElementById("docs-root"); root.innerHTML = '<p class="pnote">Loading the documents…</p>';
+    docLoad(function () {
+      var q = (state.query || "").trim().toLowerCase(), words = q.split(/\s+/).filter(function (w) { return w.length > 1; }), h = "";
+      var note = document.createElement("div"); note.className = "dnote";
+      note.innerHTML = "<b>State of Utah v. Tyler James Robinson</b>, Fourth Judicial District Court, Utah County, Case No. 251403576. These are public court and prosecutor records. A filing is one side's argument or allegation, not a finding, and the redactions are the court's. Each link opens the PDF where it is published; items marked as a copy are hosted by a news outlet. The full docket can be searched in the <a href=\"https://www.utcourts.gov/en/court-records-publications/records/xchange.html\" target=\"_blank\" rel=\"noopener\">Utah Courts Xchange public case search</a>. Use the search box above to search inside every document.";
+      root.innerHTML = ""; root.appendChild(note);
+      var res = [];
+      DOCS.list.forEach(function (d) {
+        var pages = DOCS.text[d.id] || [], hits = [], titleHit = !words.length || words.every(function (w) { return (d.title + " " + d.summary + " " + d.type + " " + d.filedBy).toLowerCase().indexOf(w) > -1; });
+        if (words.length) pages.forEach(function (t, i) { var lo = t.toLowerCase(); if (words.every(function (w) { return lo.indexOf(w) > -1; })) hits.push(i); });
+        if (!words.length || titleHit || hits.length) res.push({ d: d, hits: hits, pages: pages });
+      });
+      if (words.length) res.sort(function (a, b) { return b.hits.length - a.hits.length; });
+      var bar = document.createElement("p"); bar.className = "pnote"; bar.textContent = words.length ? res.length + " document" + (res.length === 1 ? "" : "s") + " match “" + state.query + "”" : DOCS.list.length + " documents and case updates, newest filings first within each group."; root.appendChild(bar);
+      if (!res.length) { root.insertAdjacentHTML("beforeend", '<p class="empty-state">No document matches that search. Try fewer or different words.</p>'); return; }
+      function card(r) {
+        var d = r.d, c = document.createElement("article"); c.className = "dcard";
+        var link = d.url + (d.pages && r.hits.length ? "#page=" + (r.hits[0] + 1) : "");
+        var sn = ""; r.hits.slice(0, 3).forEach(function (pi) { sn += '<p class="dsn"><a href="' + escapeHtml(d.url + "#page=" + (pi + 1)) + '" target="_blank" rel="noopener">Page ' + (pi + 1) + "</a> " + docSnip(r.pages[pi], words) + "</p>"; });
+        if (r.hits.length > 3) sn += '<p class="dmore">and ' + (r.hits.length - 3) + " more page" + (r.hits.length - 3 === 1 ? "" : "s") + " with these words.</p>";
+        c.innerHTML = '<span class="bk">' + escapeHtml(d.type) + " · " + escapeHtml(docDate(d.date)) + (d.pages ? " · " + d.pages + " pages" : "") + (d.official ? ' · <b class="dof">Official source</b>' : "") + "</span><h3>" + escapeHtml(d.title) + "</h3><p>" + escapeHtml(d.summary) + '</p><p class="dby">Filed by or from: ' + escapeHtml(d.filedBy) + " · " + escapeHtml(d.source) + "</p>" + sn + '<div class="blinks"><a href="' + escapeHtml(link) + '" target="_blank" rel="noopener">' + (d.pages ? "Open the PDF" : "Open the source page") + "</a></div>";
+        return c;
+      }
+      if (words.length) { var g0 = document.createElement("div"); g0.className = "dgrid"; res.forEach(function (r) { g0.appendChild(card(r)); }); root.appendChild(g0); return; }
+      DOC_TYPES.forEach(function (ty) { var items = res.filter(function (r) { return r.d.type === ty; }).sort(function (a, b) { return b.d.date.localeCompare(a.d.date); }); if (!items.length) return; var sec = document.createElement("section"); sec.className = "pgroup"; sec.innerHTML = "<h2>" + escapeHtml(ty) + ' <span class="bn">' + items.length + "</span></h2>"; var g = document.createElement("div"); g.className = "dgrid"; items.forEach(function (r) { g.appendChild(card(r)); }); sec.appendChild(g); root.appendChild(sec); });
+    });
+  }
   function renderChips(activeCats) {
     var root = document.getElementById("category-chips");
     root.innerHTML = "";
@@ -1079,7 +1129,7 @@ body.lb-on{overflow:hidden}
   }
 
   function renderTimeline() {
-    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "photo") renderPhotos(); if (state.tab === "browse") renderBrowse(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
+    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo" || state.tab === "docs") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "docs") renderDocs(); if (state.tab === "photo") renderPhotos(); if (state.tab === "browse") renderBrowse(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
     var list = filteredEntries();
     var root = document.getElementById("timeline-root");
     var empty = document.getElementById("empty");
@@ -1606,9 +1656,9 @@ body.lb-on{overflow:hidden}
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
     var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
-    document.getElementById("browse-root").classList.toggle("on", state.tab === "browse"); document.getElementById("photos-root").classList.toggle("on", state.tab === "photo"); document.getElementById("category-chips").hidden = isMap || state.tab === "browse" || state.tab === "photo"; document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
+    document.getElementById("browse-root").classList.toggle("on", state.tab === "browse"); document.getElementById("photos-root").classList.toggle("on", state.tab === "photo"); document.getElementById("docs-root").classList.toggle("on", state.tab === "docs"); document.getElementById("category-chips").hidden = isMap || state.tab === "browse" || state.tab === "photo" || state.tab === "docs"; document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
     if (state.tab !== "web") stopWeb();
-    if (isMap) { buildQuad(); renderMap(); } else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    if (isMap) { buildQuad(); renderMap(); } else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo" || state.tab === "docs") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
