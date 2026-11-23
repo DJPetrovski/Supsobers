@@ -1384,6 +1384,7 @@ body.lb-on{overflow:hidden}
     });
     var timed = sorted.filter(function (e) { return e.time && !/not verified/i.test(e.time); });
     for (var i = 1; i < timed.length; i++) { var dt = Math.abs(Date.parse(timed[i].timestamp) - Date.parse(timed[i - 1].timestamp)) / 60000; if (dt <= 90) edges.push({ a: by[timed[i - 1].id], b: by[timed[i].id], kind: "time", len: 55, why: "Filmed or aired " + Math.max(1, Math.round(dt)) + " min apart" }); }
+    edges.forEach(function (ed) { ed.a._d = (ed.a._d || 0) + 1; ed.b._d = (ed.b._d || 0) + 1; });
     var all = hubs.concat(nodes), it, i2, j;
     for (it = 0; it < 420; it++) {
       var cool = 1 - it / 420;
@@ -1393,9 +1394,9 @@ body.lb-on{overflow:hidden}
       }
       edges.forEach(function (ed) {
         var A = ed.a, B = ed.b, dx = B.x - A.x, dy = B.y - A.y, dz = B.z - A.z, d = Math.sqrt(dx * dx + dy * dy + dz * dz) + 0.01, k = (d - ed.len) * 0.03 / d;
-        A.vx += dx * k; A.vy += dy * k; A.vz += dz * k; B.vx -= dx * k; B.vy -= dy * k; B.vz -= dz * k;
+        var kA = 1 / Math.sqrt(A._d || 1), kB = 1 / Math.sqrt(B._d || 1); A.vx += dx * k * kA; A.vy += dy * k * kA; A.vz += dz * k * kA; B.vx -= dx * k * kB; B.vy -= dy * k * kB; B.vz -= dz * k * kB;
       });
-      all.forEach(function (n) { if (n.fixed) return; n.vx -= n.x * 0.002; n.vy -= n.y * 0.002; n.vz -= n.z * 0.002; var m = 0.82 * cool + 0.1; n.x += n.vx * m; n.y += n.vy * m; n.z += n.vz * m; n.vx *= 0.6; n.vy *= 0.6; n.vz *= 0.6; });
+      all.forEach(function (n) { if (n.fixed) return; n.vx -= n.x * 0.002; n.vy -= n.y * 0.002; n.vz -= n.z * 0.002; var sp = Math.sqrt(n.vx * n.vx + n.vy * n.vy + n.vz * n.vz); if (sp > 18) { var sc2 = 18 / sp; n.vx *= sc2; n.vy *= sc2; n.vz *= sc2; } var m = 0.82 * cool + 0.1; n.x += n.vx * m; n.y += n.vy * m; n.z += n.vz * m; n.vx *= 0.6; n.vy *= 0.6; n.vz *= 0.6; });
     }
     nodes.forEach(function (n) { n.nb = []; }); hubs.forEach(function (n) { n.nb = []; });
     edges.forEach(function (ed) { ed.a.nb.push({ n: ed.b, ed: ed }); ed.b.nb.push({ n: ed.a, ed: ed }); });
