@@ -47,6 +47,23 @@ footer{font:13px/1.5 system-ui,sans-serif;color:var(--dim);margin-top:30px;borde
 .tl{position:relative;margin-left:8px;padding-left:20px;border-left:2px solid var(--line)}.tly{font:600 13px system-ui,sans-serif;letter-spacing:.1em;color:var(--ember);margin:18px 0 8px -20px;background:var(--void);padding:2px 8px 2px 0}.tly:first-child{margin-top:0}
 .tle{position:relative;margin:0 0 12px;padding:8px 12px;background:var(--panel);border:1px solid var(--line);border-radius:8px}.tle::before{content:"";position:absolute;left:-28px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--line);border:2px solid var(--void)}.tle.m{border-color:var(--ember)}.tle.m::before{background:var(--ember)}.tle p{margin:3px 0;font-size:15px}
 mark{background:#5a0f15;color:#fff;border-radius:2px}.ai{font:13px system-ui,sans-serif;color:var(--dim);margin:0 0 10px}
+.card{position:relative;margin:0 0 28px;border:1px solid #5a1a20;border-left:6px solid var(--ember);border-radius:12px;background:linear-gradient(180deg,#1f0d10,#150709);box-shadow:0 10px 30px rgba(0,0,0,.65),0 0 0 1px rgba(255,42,53,.12);transform:translateY(-2px);transition:transform .15s,box-shadow .15s;overflow:hidden}
+.card:hover,.card:focus-within{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.8),0 0 0 1px rgba(255,42,53,.5)}
+@media(prefers-reduced-motion:reduce){.card{transition:none;transform:none}.card:hover,.card:focus-within{transform:none}}
+.chd{padding:16px 18px 14px;background:#260e12}
+.cday{display:inline-block;font:700 12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--ember);padding:3px 11px;border-radius:999px}
+.ctitle{margin:10px 0 0;font:700 clamp(21px,4.6vw,28px)/1.2 Georgia,serif;color:#fff}
+.csec{padding:14px 18px 6px;border-top:1px solid var(--line)}
+.clab{margin:0 0 10px;font:700 13px system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--ember)}
+.clab small{font:12px system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--dim);margin-left:6px}
+.mom{background:#0d0406;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 10px}
+.mom .mt{font:12px system-ui,sans-serif;color:var(--dim)}.mom .mt .why{float:right}
+.mom p{color:var(--ink);font-size:15px;margin:6px 0}
+.btn{display:inline-block;font:600 14px system-ui,sans-serif;color:#fff;background:#2a0b0f;border:1px solid var(--ember);border-radius:6px;padding:7px 12px;text-decoration:none;cursor:pointer}
+.btn:hover,.btn:focus-visible{background:var(--ember);outline:none}.btn.alt{border-color:#6b5a54;background:#1b1214}.btn.alt:hover{background:#3a2a2e}
+.csec .links{gap:8px}.csec details summary{cursor:pointer;font:600 14px system-ui,sans-serif;color:var(--ember);margin:0 0 10px}
+.csec .foot{padding:0 0 10px}
+#evx>h2.meta{font:700 16px system-ui,sans-serif;color:var(--ink);margin:30px 0 8px}#evx>h2.meta a{font-weight:400;margin-left:8px}
 </style></head><body>
 <div id="gate" role="dialog" aria-modal="true" aria-labelledby="gt"><div>
 <h2 id="gt">Content warning</h2>
@@ -140,27 +157,34 @@ var RVM=null;function revMap(){return RVM?Promise.resolve(RVM):fetch("data/clanc
 function revData(qs){var rs=ClancySearch.roots(qs),ph=qs.trim().toLowerCase();if(!rs.length)return Promise.resolve(null);
  return Promise.all([revText(),revIdx(),revMap()]).then(function(a){var out=[];a[0].p.forEach(function(x){var lo=x.x.toLowerCase();for(var k=0;k<rs.length;k++)if(lo.indexOf(rs[k])<0)return;out.push({x:x,s:(ph.length>3&&lo.indexOf(ph)>-1)?2:1})});
   out.sort(function(a,b){return b.s-a.s});return{out:out,T:a[0],R:a[1],M:a[2]}}).catch(function(){return null})}
-function rvItem(o,RD,qs){var x=o.x,t=RD.R.t[x.i];return'<div class="rvi"><span class="k">Transcript (Rev, titled “'+e(t.t.replace('MA v. Lindsay Clancy ',''))+'”) · '+ts(x.a)+'</span><p style="color:var(--ink)">'+hl(snip(x.x,qs),qs)+'</p><div class="links"><a href="'+e(RD.T.b[x.i]+"?ts="+x.a)+'" target="_blank" rel="noopener">Read in Rev at '+ts(x.a)+'</a> <a href="'+e(t.u)+'" target="_blank" rel="noopener">Full transcript</a></div></div>'}
-function rvBlock(items,RD,qs){if(!items.length)return"";var h='<div class="rv" style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--dim)">'+items.slice(0,2).map(function(o){return rvItem(o,RD,qs)}).join("");
- if(items.length>2)h+='<details><summary class="meta" style="cursor:pointer">'+(items.length-2)+' more transcript passage'+(items.length-2===1?"":"s")+' from this day</summary>'+items.slice(2,30).map(function(o){return rvItem(o,RD,qs)}).join("")+(items.length>30?'<p class="meta">Showing 30 of '+items.length+'. Open the full transcript to see the rest.</p>':'')+'</details>';return h+'</div>'}
+function vAt(c){return"https://www.youtube.com/watch?v="+e(c.id)+"&t="+c.at+"s"}
+function momV(x,N,qs){var c=x.c;return'<div class="mom" id="hit-'+N+'"><div class="mt">['+N+'] · at '+ts(c.at)+'<span class="why">'+x.why+'</span></div><p>'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a class="btn" href="'+vAt(c)+'" target="_blank" rel="noopener">▶ Watch from '+ts(c.at)+'</a><button type="button" class="seek btn alt" data-yt="'+e(c.id)+'" data-at="'+c.at+'">Play here</button></div></div>'}
+function momR(o,RD,qs){var x=o.x;return'<div class="mom"><div class="mt">at '+ts(x.a)+'</div><p>'+hl(snip(x.x,qs),qs)+'</p><div class="links"><a class="btn" href="'+e(RD.T.b[x.i]+"?ts="+x.a)+'" target="_blank" rel="noopener">Read in Rev at '+ts(x.a)+'</a></div></div>'}
+function more(items,fn,keep,cap,noun){var h=items.slice(0,keep).map(fn).join("");if(items.length>keep)h+='<details><summary>Show '+(items.length-keep)+' more '+noun+(items.length-keep===1?"":"s")+'</summary>'+items.slice(keep,cap).map(fn).join("")+(items.length>cap?'<p class="meta">Showing '+cap+' of '+items.length+'.</p>':'')+'</details>';return h}
+function secV(g,qs){var n=g.items.length;if(!n)return'<section class="csec"><h4 class="clab">▶ Video</h4><div class="links foot"><a class="btn" href="https://www.youtube.com/watch?v='+e(g.id)+'" target="_blank" rel="noopener">▶ Watch the full video</a></div></section>';
+ return'<section class="csec"><h4 class="clab">▶ Video<small>'+n+' matching moment'+(n===1?"":"s")+'</small></h4>'+more(g.items,function(i){return momV(i.x,i.N,qs)},3,25,"video moment")+'</section>'}
+function secR(items,RD,qs){if(!items||!items.length)return"";var t=RD.R.t[items[0].x.i];
+ return'<section class="csec"><h4 class="clab">☰ Transcript<small>Rev · '+items.length+' matching passage'+(items.length===1?"":"s")+'</small></h4>'+more(items,function(o){return momR(o,RD,qs)},2,30,"transcript passage")+'<div class="links foot"><a class="btn alt" href="'+e(t.u)+'" target="_blank" rel="noopener">Open the full transcript on Rev</a></div></section>'}
+function card(day,title,body){return'<article class="card"><header class="chd">'+(day?'<span class="cday">'+day+'</span>':'')+'<h3 class="ctitle">'+title+'</h3></header>'+body+'</article>'}
 function deep(){var qs=q.value.trim();[].forEach.call(document.querySelectorAll("#tabs button"),function(b){b.setAttribute("aria-selected","false")});
  list.innerHTML='<p class="meta">Searching the transcripts and documents…</p>';
- Promise.all([ClancySearch.search(qs),revData(qs)]).then(function(z){var r=z[0],RD=z[1];if(q.value.trim()!==qs)return;var o="",byV={},loose=[],tot=0;
+ Promise.all([ClancySearch.search(qs),revData(qs)]).then(function(z){var r=z[0],RD=z[1];if(q.value.trim()!==qs)return;var o="",byV={},byT={},tot=0,groups=[],gi={};
   document.getElementById("ai").textContent=r.meaning?"Ranked by meaning across all transcripts and documents. Ask it as a question.":"Matched by words. The meaning search is still loading or unavailable.";
-  if(RD){tot=RD.out.length;RD.out.forEach(function(it){var v=RD.M[it.x.i];if(v){(byV[v]=byV[v]||[]).push(it)}else loose.push(it)})}
-  var used={};window.CL_HITS=r.hits;
-  r.hits.forEach(function(x,ix){var c=x.c,N=ix+1;
-   if(c.k==="v"){var extra="";if(byV[c.id]&&!used[c.id]){used[c.id]=1;extra=rvBlock(byV[c.id],RD,qs)}
-    o+='<div class="row hit" id="hit-'+N+'"><span class="why">'+x.why+'</span><span class="k">['+N+'] '+e(c.l)+' · '+ts(c.at)+'</span><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="https://www.youtube.com/watch?v='+e(c.id)+'&t='+c.at+'s" target="_blank" rel="noopener">Watch from '+ts(c.at)+'</a><button type="button" class="seek" data-yt="'+e(c.id)+'" data-at="'+c.at+'" style="all:unset;color:var(--ember);cursor:pointer;text-decoration:underline">Play here</button></div>'+extra+'</div>'}
-   else o+='<div class="row hit" id="hit-'+N+'"><span class="why">'+x.why+'</span><span class="k">['+N+'] Document · page '+c.at+'</span><h3>'+e(c.l)+'</h3><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="'+e(c.u)+'#page='+c.at+'" target="_blank" rel="noopener">Open page '+c.at+'</a></div></div>'});
-  Object.keys(byV).forEach(function(v){if(used[v])return;var tr=D.trial.filter(function(t){return t.yt===v})[0];if(!tr)return;
-   o+='<div class="row hit"><span class="k">'+(tr.day?"Day "+tr.day:"Intro")+(tr.date?" · "+fd(tr.date):"")+'</span><h3>'+e(tr.title)+'</h3><div class="links"><a href="https://www.youtube.com/watch?v='+e(v)+'" target="_blank" rel="noopener">Watch on YouTube</a></div>'+rvBlock(byV[v],RD,qs)+'</div>'});
-  if(loose.length)o+='<h2 class="meta" style="margin:22px 0 4px">Other court transcripts (Rev) · '+loose.length+' passage'+(loose.length===1?"":"s")+(loose.length>40?", showing the first 40":"")+'</h2>'+loose.slice(0,40).map(function(it){return'<div class="row hit">'+rvItem(it,RD,qs)+'</div>'}).join("");
+  if(RD){tot=RD.out.length;RD.out.forEach(function(it){var v=RD.M[it.x.i];if(v)(byV[v]=byV[v]||[]).push(it);else(byT[it.x.i]=byT[it.x.i]||[]).push(it)})}
+  window.CL_HITS=r.hits;
+  r.hits.forEach(function(x,ix){var c=x.c,N=ix+1;if(c.k==="v"){var g=gi[c.id];if(!g){g=gi[c.id]={t:"v",id:c.id,items:[],lab:c.l};groups.push(g)}g.items.push({x:x,N:N})}else groups.push({t:"d",x:x,N:N})});
+  Object.keys(byV).forEach(function(v){if(!gi[v]){var tr=D.trial.filter(function(t){return t.yt===v})[0];if(tr){gi[v]={t:"v",id:v,items:[],lab:""};groups.push(gi[v])}}});
+  groups.forEach(function(g){
+   if(g.t==="d"){var c=g.x.c;o+=card("Document · page "+c.at,e(c.l),'<section class="csec"><h4 class="clab">Document<small>'+g.x.why+'</small></h4><div class="mom" id="hit-'+g.N+'"><p>'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a class="btn" href="'+e(c.u)+'#page='+c.at+'" target="_blank" rel="noopener">Open page '+c.at+'</a></div></div></section>');return}
+   var tr=D.trial.filter(function(t){return t.yt===g.id})[0],day,title;
+   if(tr){day=(tr.day?"Day "+tr.day:"Intro")+(tr.date?" · "+fd(tr.date):"");title=e(tr.title)}else{day="Video";title=e(g.lab||"Court video")}
+   o+=card(day,title,secV(g,qs)+secR(byV[g.id],RD,qs))});
+  Object.keys(byT).forEach(function(i){var t=RD.R.t[i];o+=card("Court transcript · posted "+fd(t.date),e(t.t),secR(byT[i],RD,qs))});
   window.CL_SUM={v:r.hits.length,t:tot,e:0};
-  list.innerHTML='<div id="rsum" class="row" style="position:sticky;top:0;z-index:2"></div><div id="ans" hidden></div>'+(o||'<p class="meta">Nothing found. Try different words, or ask it as a question.</p>')+'<div id="evx">'+everywhere(qs)+'</div>';
+  list.innerHTML='<div id="rsum" class="row"></div><div id="ans" hidden></div>'+(o||'<p class="meta">Nothing found. Try different words, or ask it as a question.</p>')+'<div id="evx">'+everywhere(qs)+'</div>';
   CL_SUM.e=document.querySelectorAll("#evx .row").length;sumUp(qs);ask(qs,r.hits)})}
 
-list.addEventListener("click",function(ev){var sk=ev.target.closest(".seek");if(sk){var fr=document.createElement("iframe");fr.src="https://www.youtube-nocookie.com/embed/"+sk.dataset.yt+"?autoplay=1&rel=0&start="+sk.dataset.at;fr.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";fr.allowFullscreen=true;sk.closest(".row").appendChild(fr);sk.remove();return}
+list.addEventListener("click",function(ev){var sk=ev.target.closest(".seek");if(sk){var fr=document.createElement("iframe");fr.src="https://www.youtube-nocookie.com/embed/"+sk.dataset.yt+"?autoplay=1&rel=0&start="+sk.dataset.at;fr.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";fr.allowFullscreen=true;sk.closest(".mom,.row").appendChild(fr);sk.remove();return}
  var gb=ev.target.closest("[data-lb]");if(gb){lb(+gb.dataset.lb);return}
  var b=ev.target.closest(".play");if(!b)return;
  var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.yt+"?autoplay=1&rel=0";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;f.title="Court video";b.replaceWith(f)});
@@ -168,6 +192,6 @@ var li=0,L=document.getElementById("lb");function lb(i){var G=D.gallery;li=(i+G.
 document.getElementById("lbp").onclick=function(){lb(li-1)};document.getElementById("lbn").onclick=function(){lb(li+1)};document.getElementById("lbx").onclick=function(){L.classList.remove("on")};
 document.addEventListener("keydown",function(ev){if(!L.classList.contains("on"))return;if(ev.key==="Escape")L.classList.remove("on");if(ev.key==="ArrowRight")lb(li+1);if(ev.key==="ArrowLeft")lb(li-1)});
 document.getElementById("go").onclick=function(){document.getElementById("gate").remove()};
-fetch("data/clancy.json?v=8").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
+fetch("data/clancy.json?v=9").then(function(r){return r.json()}).then(function(d){D=d;document.getElementById("status").innerHTML="<b>Status:</b> "+e(d.status)+" <span style=\"color:var(--dim)\">Updated "+fd(d.updated)+".</span>";render()}).catch(function(){list.innerHTML='<p class="meta">Could not load the archive.</p>'});
 })();
 </script><script src="js/visitors.js?v=1794517598" defer></script></body></html>
