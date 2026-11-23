@@ -582,6 +582,20 @@ body.lb-on{overflow:hidden}
 .stage{overflow:visible;overflow:clip}
 .stage.fs{overflow:auto}
 </style>
+<style id="quad-css">
+.quad{margin:0 0 16px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(6,1,2,.72)}
+.quad h3{margin:0 0 6px;font:600 20px/1.2 Georgia,serif}
+.qnote,.qsrc{margin:0 0 10px;font:13.5px/1.5 system-ui,sans-serif;color:var(--ink-dim)}.qsrc{margin:10px 0 0;font-size:12.5px}.qsrc a{color:var(--ember)}
+.qwrap{border:1px solid var(--line);border-radius:8px;overflow:hidden;touch-action:pan-y}
+#qsvg{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none}
+#qsvg .qt{font:600 13px system-ui,sans-serif;fill:#e9e2d0}#qsvg .qt.dim{fill:#8d949a;font-weight:500;font-size:12px}#qsvg .qt.b{font-size:15px}#qsvg .qt.warn{fill:#ff9a8c}
+#qsvg .qpin{cursor:grab;touch-action:none}#qsvg .qpin:focus-visible circle{stroke:#fff}
+#qsvg .qpn{font:700 14px system-ui,sans-serif;fill:#060102;pointer-events:none}
+.qinfo{margin:10px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:14px/1.5 system-ui,sans-serif;color:var(--ink);background:rgba(18,8,10,.9);min-height:48px}
+.qinfo span{color:var(--ink-dim)}.qinfo a{color:var(--ember)}.qinfo button{font:13px system-ui,sans-serif;color:var(--ink);background:#2a0b0f;border:1px solid var(--line);border-radius:5px;padding:5px 10px;cursor:pointer}
+.qwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:700px){#qsvg{min-width:760px}#qsvg .qt{font-size:14px}#qsvg .qt.dim{font-size:13px}.quad{padding:10px;margin-inline:-4px}.qwrap::after{content:"Swipe sideways to see the whole map";display:block}}
+</style>
 </head><body>
 <div id="bgfix" aria-hidden="true"><div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
 <svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -643,6 +657,13 @@ body.lb-on{overflow:hidden}
       <div class="map-bar">
         <div class="zoom" role="group" aria-label="Zoom level" id="zoom"></div>
         <p class="map-hint">Time runs left to right. Drag or swipe sideways to move through the day, and hover or tap a marker for details. Raw clips are lined up on the moment of the shot. Once you tell a clip when the shot happens inside it, the clip slides into true sync with the others.</p>
+      </div>
+      <div class="quad" id="quad">
+        <h3>Where the cameras were</h3>
+        <p class="qnote">A schematic of the courtyard, not to scale. The tent, the tiered seating, the crowd and the Losee Center roof come from news reports (listed below the map). Nobody has published where each filmer stood, so every video starts in the Unplaced tray. Drag a pin onto the map to try an angle; pins you place are marked as your guess and stay on your device. Verified positions will be added here with a source.</p>
+        <div class="qwrap"><svg id="qsvg" viewBox="0 0 1000 660" role="img" aria-label="Schematic map of the courtyard"></svg></div>
+        <div class="qinfo" id="qinfo" aria-live="polite">Tap or drag a pin to see the video.</div>
+        <p class="qsrc">Sources: <a href="https://www.ksl.com/article/51373502/what-security-measures-were-in-place-at-fatal-charlie-kirk-event" target="_blank" rel="noopener">KSL</a> (tent at the bottom of a tiered outdoor amphitheater surrounded by buildings; Losee Center to the east), <a href="https://www.aljazeera.com/news/2025/9/11/when-and-where-charlie-kirk-was-shot-a-visual-timeline" target="_blank" rel="noopener">Al Jazeera</a> (Kirk at a table under the tent; shooter on the Losee Center roof), <a href="https://local.sltrib.com/uvu-shooting" target="_blank" rel="noopener">Salt Lake Tribune</a> (crowd of about 3,000). Reports disagree on the distance to the roof, from about 140 yards to 200 to 300 yards. The positions of other buildings and of the crowd within the courtyard are not given in these reports, so they are drawn only as general areas.</p>
       </div>
       <div class="axis" id="axis"></div>
       <div class="compare" id="compare"></div>
@@ -1155,6 +1176,72 @@ body.lb-on{overflow:hidden}
     renderTimeline();
   });
 
+
+  // ---------- map of the courtyard with camera pins ----------
+  var QV = { built: false, pins: {}, ver: {}, cur: null };
+  function qsvgEl(n, a, t) { var e = document.createElementNS("http://www.w3.org/2000/svg", n); for (var k in a) e.setAttribute(k, a[k]); if (t) e.textContent = t; return e; }
+  function qLoad() { try { return JSON.parse(localStorage.getItem("sep10-pins") || "{}") || {}; } catch (er) { return {}; } }
+  function qSave() { try { localStorage.setItem("sep10-pins", JSON.stringify(QV.pins)); } catch (er) {} }
+  function buildQuad() {
+    var svg = document.getElementById("qsvg"); if (!svg || QV.built) return; QV.built = true; QV.pins = qLoad();
+    var X = svg, ns = function (n, a, t) { var e = qsvgEl(n, a, t); X.appendChild(e); return e; };
+    ns("rect", { x: 0, y: 0, width: 1000, height: 660, fill: "#0d1511" });
+    // other campus buildings (positions not given in reports)
+    [[20, 20, 200, 120], [20, 170, 120, 150], [20, 350, 120, 130], [330, 20, 260, 90], [250, 520, 480, 36]].forEach(function (b) { ns("rect", { x: b[0], y: b[1], width: b[2], height: b[3], rx: 6, fill: "#1a1f24", stroke: "#2c343b", "stroke-dasharray": "5 4" }); });
+    ns("text", { x: 120, y: 90, "text-anchor": "middle", class: "qt dim" }, "Other campus buildings");
+    ns("text", { x: 120, y: 105, "text-anchor": "middle", class: "qt dim" }, "(not mapped)");
+    // courtyard and tiers
+    ns("rect", { x: 160, y: 130, width: 560, height: 440, rx: 14, fill: "#17202a", stroke: "#26313c" });
+    [190, 150, 110, 72].forEach(function (r, i) { ns("path", { d: "M " + (330 - r * 1.5) + " 470 A " + r * 1.5 + " " + r * 1.2 + " 0 0 1 " + (330 + r * 1.5) + " 470", fill: "none", stroke: i % 2 ? "#33414f" : "#3d4d5c", "stroke-width": 14 }); });
+    ns("text", { x: 330, y: 150, "text-anchor": "middle", class: "qt dim" }, "Tiered amphitheater");
+    // crowd dots (areas only, positions not given in reports)
+    var seed = 7; function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    for (var i = 0; i < 230; i++) { var a = Math.PI * (1 + rnd()), rr = 40 + rnd() * 210; var cx = 330 + Math.cos(a) * rr * 1.5 * 0.9, cy = 470 + Math.sin(a) * rr * 1.15 * 0.9; if (cy > 462) continue; ns("circle", { cx: cx.toFixed(1), cy: cy.toFixed(1), r: 3.2, fill: "rgba(243,233,210,.55)" }); }
+    ns("text", { x: 330, y: 205, "text-anchor": "middle", class: "qt" }, "Crowd, about 3,000 (exact spread not reported)");
+    // tent
+    ns("rect", { x: 300, y: 474, width: 60, height: 40, rx: 4, fill: "#f3e9d2", stroke: "#b22234", "stroke-width": 3 });
+    ns("text", { x: 330, y: 538, "text-anchor": "middle", class: "qt b" }, "Tent: Kirk's seat");
+    ns("circle", { cx: 330, cy: 494, r: 6, fill: "#b22234" });
+    // Losee Center
+    ns("rect", { x: 790, y: 120, width: 190, height: 270, rx: 8, fill: "#222a31", stroke: "#3a4650" });
+    ns("text", { x: 885, y: 150, "text-anchor": "middle", class: "qt b" }, "Losee Center");
+    ns("text", { x: 885, y: 168, "text-anchor": "middle", class: "qt dim" }, "(east of the amphitheater)");
+    ns("rect", { x: 800, y: 250, width: 90, height: 40, rx: 4, fill: "rgba(178,34,52,.25)", stroke: "#ff6a5f", "stroke-dasharray": "4 3" });
+    ns("text", { x: 845, y: 310, "text-anchor": "middle", class: "qt" }, "Roof position (reported)");
+    ns("line", { x1: 800, y1: 270, x2: 360, y2: 490, stroke: "#ff6a5f", "stroke-width": 2, "stroke-dasharray": "8 6" });
+    ns("text", { x: 590, y: 352, "text-anchor": "middle", class: "qt warn", transform: "rotate(-24 590 352)" }, "Reported 140 to 300 yards (sources disagree)");
+    ns("text", { x: 975, y: 420, "text-anchor": "end", class: "qt dim" }, "E →");
+    // tray
+    ns("rect", { x: 10, y: 585, width: 980, height: 70, rx: 8, fill: "rgba(255,255,255,.04)", stroke: "#3a1216" });
+    ns("text", { x: 978, y: 603, "text-anchor": "end", class: "qt dim" }, "Unplaced: filmer position not verified. Drag a pin up onto the map.");
+    QV.layer = ns("g", {}); QV.sight = qsvgEl("line", { stroke: "#7fbcac", "stroke-width": 2, "stroke-dasharray": "3 4", visibility: "hidden" }); X.insertBefore(QV.sight, QV.layer);
+    QV.clips = ENTRIES.filter(function (e) { return e.clip && e.clip.kind === "raw"; });
+    fetch("data/vantage.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : {}; }).then(function (v) { QV.ver = v || {}; drawPins(); }).catch(function () { drawPins(); });
+  }
+  function pinPos(e, k) { if (QV.ver[e.id]) return { x: QV.ver[e.id].x, y: QV.ver[e.id].y, v: true }; if (QV.pins[e.id]) return QV.pins[e.id]; return { x: 60 + k * 120, y: 628, tray: true }; }
+  function drawPins() {
+    var L = QV.layer; if (!L) return; L.innerHTML = "";
+    QV.clips.forEach(function (e, k) {
+      var P = pinPos(e, k), g = qsvgEl("g", { class: "qpin" + (P.v ? " ver" : P.tray ? " tray" : " guess"), transform: "translate(" + P.x + " " + P.y + ")", tabindex: 0, role: "button", "aria-label": e.title });
+      g.appendChild(qsvgEl("circle", { r: 19, fill: P.v ? "#7fbcac" : "#f6c97e", stroke: "#060102", "stroke-width": 2, "stroke-dasharray": P.v ? "" : "3 2" }));
+      g.appendChild(qsvgEl("text", { y: 6, "text-anchor": "middle", class: "qpn" }, String(k + 1)));
+      if (P.tray) g.appendChild(qsvgEl("text", { y: -22, "text-anchor": "middle", class: "qt dim" }, (e.sourceName || "").replace(/ \(YouTube[^)]*\)/, "").slice(0, 18)));
+      g._e = e; g._k = k; L.appendChild(g);
+      var drag = null;
+      g.addEventListener("pointerdown", function (ev) { if (QV.ver[e.id]) { qInfo(e, P); return; } drag = { moved: false }; try { g.setPointerCapture(ev.pointerId); } catch (x) {} ev.preventDefault(); });
+      g.addEventListener("pointermove", function (ev) { if (!drag) return; var svg = document.getElementById("qsvg"), r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width * 1000, y = (ev.clientY - r.top) / r.height * 660; x = Math.max(15, Math.min(985, x)); y = Math.max(15, Math.min(645, y)); drag.moved = true; g.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ")"); drag.x = x; drag.y = y; qSight(x, y); });
+      g.addEventListener("pointerup", function () { if (!drag) return; var d = drag; drag = null; if (d.moved) { if (d.y > 575) delete QV.pins[e.id]; else QV.pins[e.id] = { x: Math.round(d.x), y: Math.round(d.y) }; qSave(); drawPins(); } qInfo(e, QV.pins[e.id] || pinPos(e, k)); });
+      g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); qInfo(e, pinPos(e, k)); } });
+    });
+  }
+  function qSight(x, y) { if (!QV.sight) return; if (y > 575) { QV.sight.setAttribute("visibility", "hidden"); return; } QV.sight.setAttribute("x1", x); QV.sight.setAttribute("y1", y); QV.sight.setAttribute("x2", 330); QV.sight.setAttribute("y2", 494); QV.sight.setAttribute("visibility", "visible"); }
+  function qInfo(e, P) {
+    var box = document.getElementById("qinfo"), ver = QV.ver[e.id], placed = P && !P.tray;
+    if (placed) qSight(P.x, P.y); else if (QV.sight) QV.sight.setAttribute("visibility", "hidden");
+    box.innerHTML = "<b>" + escapeHtml(e.title) + "</b><br><span>" + escapeHtml((e.sourceName || "")) + "</span><br>" + (ver ? "Position verified: " + escapeHtml(ver.note || "") + (ver.sourceUrl ? ' <a href="' + escapeHtml(ver.sourceUrl) + '" target="_blank" rel="noopener">Source</a>' : "") : placed ? "<i>Your guess. The filmer's real position has not been verified.</i>" : "<i>Not placed. The filmer's position has not been verified.</i>") + '<br><a href="' + escapeHtml(e.sourceUrl) + '" target="_blank" rel="noopener">Watch this video</a>' + (placed && !ver ? ' &middot; <button type="button" id="qreset">Send back to tray</button>' : "");
+    var rb = document.getElementById("qreset"); if (rb) rb.addEventListener("click", function () { delete QV.pins[e.id]; qSave(); drawPins(); qInfo(e, { tray: true }); });
+  }
+
   // ---------- shot-moment map ----------
   var DAY0 = Date.parse("2025-09-10T06:00:00Z") / 1000;       // midnight in Utah (MDT)
   var SHOT_S = 12 * 3600 + 23 * 60 + 30;
@@ -1517,7 +1604,7 @@ body.lb-on{overflow:hidden}
     var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
     document.getElementById("browse-root").classList.toggle("on", state.tab === "browse"); document.getElementById("photos-root").classList.toggle("on", state.tab === "photo"); document.getElementById("category-chips").hidden = isMap || state.tab === "browse" || state.tab === "photo"; document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
     if (state.tab !== "web") stopWeb();
-    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    if (isMap) { buildQuad(); renderMap(); } else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
