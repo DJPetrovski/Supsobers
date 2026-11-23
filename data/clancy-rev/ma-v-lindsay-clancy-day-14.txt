@@ -1,0 +1,2897 @@
+Bailiff ([00:02]):
+This court is now in session. Please be seated.
+Clerk ([00:04]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([00:05]):
+Yes, please.
+Clerk ([00:06]):
+Your Honor, before the court today, we have the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by attorney Kevin Reddington and the Commonwealth is represented by Assistant District Attorney Jennifer Sprague and Assistant District Attorney Shannon Buckingham.
+Judge William Sullivan ([00:12]):
+All right. Well, good morning everyone. Good morning, counsel.
+Jennifer Sprague ([00:12]):
+Morning.
+Judge William Sullivan ([00:12]):
+Good morning, Ms. Clancy.
+Lindsay Clancy ([00:12]):
+Morning, Your Honor.
+Judge William Sullivan ([00:12]):
+All right. Before we bring the jury in, could I see everybody just for a few seconds?
+Crew ([00:12]):
+Camera speed.
+Bailiff ([00:12]):
+All rise, please. Hear ye, hear ye, hear ye, all persons having anything to do before the Honorable William Sullivan, Justice of the Superior Court now sitting in Plymouth within and for the Commonwealth of Massachusetts, this court is now in session. Please be seated.
+Clerk ([00:12]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([00:12]):
+Please.
+Clerk ([00:12]):
+Your Honor, before the court today, we have the continuation of the jury trial in the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by attorney Kevin Reddington. The Commonwealth is represented by Assistant District Attorney Jennifer Sprague and Assistant District Attorney Shannon Buckingham.
+Judge William Sullivan ([00:20]):
+Well, good morning everyone.
+Courtroom ([00:21]):
+Good morning.
+Judge William Sullivan ([03:04]):
+Nice to see everyone. I hope everybody had a chance to kind of rest up a little bit and come back here and we're going to get right back to the trial. So what I want to do first, ask you those questions since we had a long break, and then talk a little bit about the schedule and today's schedule and kind of where we go from here. So first question, as you know, has any member of the jury read, seen, heard, or overheard anything from any source about any aspect of this case that would affect your ability to be a fair and impartial juror?
+Jury ([03:40]):
+No, Your Honor.
+Judge William Sullivan ([03:40]):
+All right. Next question. Is there any other serious matter or concern bearing on your service as a juror in this case that anybody needs to bring to my attention at this time?
+Jury ([03:47]):
+No, Your Honor.
+Judge William Sullivan ([03:48]):
+Again, thank you so much for following those instructions. So today's schedule is that it may be kind of a little bit stop and start. Okay? So kind of bear with us on that. Might be a couple times you got to take a break just after a short amount of time and then we'll bring you back in. It's just the nature of cases at this point. It's anticipated that the Commonwealth will close their portion of the evidence today. All right. Then at that point, the defendant has the opportunity, if they want to, to present witnesses and evidence if they want to. But remember, they don't have to. The burden of proof is always on the Commonwealth. If the defendant offers evidence, then the Commonwealth is then given the opportunity to offer rebuttal evidence. All right. And so that's kind of the next phase that we're about to go into after the Commonwealth rests. And I'll go into a little bit more kind of how that goes, but I just kind of wanted you to kind of see where we are and where everything's going to fit procedurally as we go forward from here.
+([04:57])So with that, we're going to return to the Commonwealth's case. And Attorney Sprague.
+Jennifer Sprague ([05:00]):
+Thank you, Your Honor. Commonwealth calls Ian Whiffin.
+Clerk ([05:29]):
+Good morning. Do you solemnly swear that the testimony of the evidence you shall give to the court and and the jury [inaudible 00:05:33] and nothing but the truth, so help you God?
+Ian Whiffin ([05:33]):
+I would rather affirm I do.
+Clerk ([05:33]):
+Thank you.
+Ian Whiffin ([05:33]):
+Thank you.
+Judge William Sullivan ([05:44]):
+All right. Good morning, sir.
+Ian Whiffin ([05:45]):
+Good morning.
+Judge William Sullivan ([05:46]):
+All right. Attorney Sprague, please.
+Jennifer Sprague ([05:48]):
+Thank you. Good morning. Can you please state and spell your name for the record?
+Ian Whiffin ([05:51]):
+Yes, it's Ian Whiffin. I-A-N W-H-I-F-F-I-N.
+Jennifer Sprague ([05:57]):
+Where do you work?
+Ian Whiffin ([05:58]):
+Cellebrite.
+Jennifer Sprague ([05:59]):
+What is Cellebrite?
+Ian Whiffin ([06:01]):
+Cellebrite is a digital intelligence company working in the digital forensics field.
+Jennifer Sprague ([06:06]):
+And how long have you worked there?
+Ian Whiffin ([06:08]):
+Since 2020.
+Jennifer Sprague ([06:11]):
+What is your role at Cellebrite?
+Ian Whiffin ([06:13]):
+I'm currently a customer engagement manager.
+Jennifer Sprague ([06:16]):
+What does that mean?
+Ian Whiffin ([06:17]):
+I work with customers helping users of our tools to understand the digital evidence that they're finding and presenting.
+Jennifer Sprague ([06:27]):
+And what does digital evidence consist of?
+Ian Whiffin ([06:30]):
+Any information which is extracted from a cell phone primarily, or from a computer, which can be interpreted by the examiner and presented as evidence. It could be call history, messages, location data, media, anything that you can find from a digital device.
+Jennifer Sprague ([06:47]):
+Could you just briefly describe your educational training background that qualifies you to do this work?
+Ian Whiffin ([06:53]):
+Yeah. I've worked in IT for many years. In 2013, I began my career within Calgary Police Service in Canada as a digital forensics examiner. That was after spending approximately 9 or 10 years working as a patrol officer in the UK and in Canada. As part of my role as a digital forensics examiner within the Calgary Police, I went on numerous training courses. The Canadian Police College, they did an introductory course into digital forensics, and then further courses focusing on mobile data provided by some vendors such as BlackLight or Cellebrite at the time, as well as further courses presented by the Canadian Police College, specifically about cell phones.
+Jennifer Sprague ([07:44]):
+And Cellebrite, the software produced by Cellebrite, is that software used to extract and analyze data from cell phones and computers?
+Ian Whiffin ([07:54]):
+Yes. There are several tools within our catalog. One of them is designed to extract as much data as possible from a cell phone. And then one of the other tools is designed to take that extracted data, decode it, decrypt it, make sense of it, and provide it to the user in a way which can be searched, filtered, organized, reported, and presented.
+Jennifer Sprague ([08:19]):
+Does Cellebrite's ability to access cell phone data continually change based on improvements that are done to the phones themselves?
+Ian Whiffin ([08:32]):
+Yes. There's constantly changes being made to devices which make it difficult to extract the data. There are changes being made to the software that means that the data that we extract is now different to the data that we extracted previously. A new feature, for example, or a change that's made by the software developer. So we're constantly changing our software to be able to extract that data and to decode more data.
+Jennifer Sprague ([08:59]):
+Were you asked to locate Apple Health data and other information that could be relevant to the investigation of an incident that occurred at 47 Summer Street in Duxbury on January 24th, 2023?
+Ian Whiffin ([09:13]):
+I was, yes.
+Jennifer Sprague ([09:14]):
+And what is Apple Health data?
+Ian Whiffin ([09:17]):
+Apple Health is a component of the iOS operating system which logs sensor data from multiple locations. So there's sensors built within an iPhone that monitor steps taken, flights climbed, for example, as well as third party devices, Apple watches, Fitbits, any other device. All the information is brought into the Apple Health application, aggregated, and made available for the user to see.
+Jennifer Sprague ([09:47]):
+Roughly how many phone extractions have you done?
+Ian Whiffin ([09:51]):
+Since around 2013, well over a thousand phones.
+Jennifer Sprague ([09:57]):
+And how many times have you done analysis on phone extractions?
+Ian Whiffin ([10:02]):
+The analysis is part and parcel. So of those thousand phones or so which I've extracted, I've done analysis on all of those phones as well.
+Jennifer Sprague ([10:09]):
+And then you've also done analysis on extractions like in this case where someone else did the extraction and provided the information to you and you did the analysis?
+Ian Whiffin ([10:19]):
+Correct. Yeah. Whenever I'm helping customers or users of our tools, they may provide me with the extracted data. So the data which I'm analyzing is more than the devices I've extracted.
+Jennifer Sprague ([10:32]):
+And have you testified previously in courts about what you've done in terms of extracting and analyzing information?
+Ian Whiffin ([10:39]):
+Yes, I've testified in multiple courts around the world approximately 28 times.
+Jennifer Sprague ([10:43]):
+Now you received a copy of the extraction for Lindsay Clancy's iPhone 13, correct?
+Ian Whiffin ([10:51]):
+Correct.
+Jennifer Sprague ([10:52]):
+And when you received that extraction, did you also want to know all the specific information about the case in the investigation?
+Ian Whiffin ([11:01]):
+Typically when I'm working a case, I don't want to know a lot of detail. I'd rather come to my own conclusions based on the data that I'm viewing rather than note the intricacies of the case. All I require is an outline, the date that something happened, the time, who was involved, basic information.
+Jennifer Sprague ([11:21]):
+And in terms of the extraction that was done on Lindsay Clancy's iPhone, that extraction, what type of extraction was it?
+Ian Whiffin ([11:30]):
+That's what's called a full file system extraction. It's essentially all of the data which has been extracted from the device that is still live.
+Jennifer Sprague ([11:39]):
+And did you use specific tools to conduct your analysis?
+Ian Whiffin ([11:43]):
+Yes. There's the Cellebrite physical analyzer tool created by Cellebrite and also my own tooling applications that I've been working on for several years.
+Jennifer Sprague ([11:53]):
+So you've actually made your own tools that allow you to examine phone extractions?
+Ian Whiffin ([11:58]):
+Correct. There's some tools that I've been working on since prior to joining Cellebrite. Tools that as an examiner I decided that I needed to create for myself and make available to others. And I still use those tools to this day.
+Jennifer Sprague ([12:14]):
+And these tools that you used, are those the tools that allow you to examine and categorize the information, the data that you find in the extraction?
+Ian Whiffin ([12:25]):
+Yes. The primary point of the tool is to go into the data, decode it, provide it in a way which is easy to filter and search, but also additional tools there that allow you to dig into the data and look at the raw information, the databases, the files, all of the raw information, which is what our tools initially decode.
+Jennifer Sprague ([12:49]):
+And did you focus in on a particular timeframe when looking at the data on the defendant's iPhone?
+Ian Whiffin ([12:58]):
+Primarily I knew that the date of the incident was 24th of January 2023. So that was the main focus of my analysis. But some of the data I was aware could be from further afield than that. So I took a look of, I think it was around three weeks before that. So early January to late January.
+Jennifer Sprague ([13:20]):
+Were you able to look at the health data on January 24th, 2023 that was in the defendant's phone extraction?
+Ian Whiffin ([13:27]):
+I was, yes.
+Jennifer Sprague ([13:29]):
+And what is health data and how does it show up on a phone?
+Ian Whiffin ([13:36]):
+The user of the phone would be able to access the health data via the health application where the information's broken down to explain how many steps have been taken over a particular period of time, the approximate distance that was traveled, the number of stair flights that were climbed. That data is stored on the device itself in a database. So as a forensic examiner, I can take a look at that database in its raw form, understand exactly where the information's coming from, and present it to the user of our forensic tools in a slightly more forensic-friendly method than the user of the application on the phone would see.
+Jennifer Sprague ([14:22]):
+Showing you on the screen here, page four of your report. Looking here, we have a section here, heart rate data. Is that correct?
+Ian Whiffin ([14:36]):
+Correct.
+Jennifer Sprague ([14:38]):
+And you're able to see here... What can you tell about the heart rate data from the extraction?
+Ian Whiffin ([14:48]):
+So heart rate data comes from wearing an Apple Watch or a similar device, not from the phone itself. In the case of this phone, there was an Apple Watch paired to the device and all of the heart rate data which is recorded periodically throughout the day is stored within the health database.
+Jennifer Sprague ([15:10]):
+And what was the name associated with the Apple Watch?
+Ian Whiffin ([15:16]):
+So as it says in the third paragraph down, the Apple Watch itself was called Lindsay's Apple Watch.
+Jennifer Sprague ([15:22]):
+And here in the report, you're able to show the recorded heart rates throughout the day. How is the heart rate recorded and sent to the phone?
+Ian Whiffin ([15:36]):
+There are sensors on the Apple Watch itself on the rear, which periodically check the heart rate at any given time. And that information is sent to the phone via Bluetooth.
+Jennifer Sprague ([15:52]):
+And are you aware of how often an iWatch will record the data and report it to an iPhone?
+Ian Whiffin ([16:01]):
+The actual cadence at which the watch is checking would depend on what the user's doing. So if you are in the middle of a workout, it would be a lot more consistent than just periodically throughout the day. And I actually don't know how often it is throughout the day if you're not doing any particular workout. There doesn't seem to be a set cadence. Every device I've looked at, it's slightly different.
+Jennifer Sprague ([16:26]):
+I'm showing you page five of your report, this database of the heart rates. For example, in several locations, there'll be a heart rate report, maybe a few seconds in between them. In others, there's seven or eight minutes in between the heart rate report. Is that where you're talking about how it varies depending on what you're doing at that point in time?
+Ian Whiffin ([16:52]):
+Yes, this is typical from what you see when you look at the database. The timestamps are never consistently a recognizable cadence.
+Jennifer Sprague ([17:02]):
+And the highlights in green, what do those represent?
+Ian Whiffin ([17:06]):
+So I actually tried to just highlight some of the high points for the day. I realized a few days ago while reviewing this, there was records there that show a high of 123 and 122, which I had not highlighted.
+Jennifer Sprague ([17:19]):
+And that's right there-
+Ian Whiffin ([17:20]):
+Correct.
+Jennifer Sprague ([17:21]):
+11:46?
+Ian Whiffin ([17:22]):
+Yes.
+Jennifer Sprague ([17:23]):
+And what was the last time a heart rate was reported from the watch to the defendant's phone?
+Ian Whiffin ([17:31]):
+So the last heart rate recorded was at 17:23:52. So 23 minutes past 5:00 in the afternoon with a heart rate of 57 beats per minute.
+Jennifer Sprague ([17:40]):
+What was the average heart rate for the day for the defendant's phone?
+Ian Whiffin ([17:45]):
+There was a range of heart rates going between as low as I believe around 50 and as high as around 122. On average, it was around high 80s, early 90s.
+Jennifer Sprague ([18:01]):
+And so at 5:23 PM, the last recording of her heart rate was 57?
+Ian Whiffin ([18:06]):
+Correct.
+Jennifer Sprague ([18:12]):
+And there aren't any further heart rates reported to the phone after that point, correct?
+Ian Whiffin ([18:17]):
+That's correct.
+Jennifer Sprague ([18:18]):
+And what are some of the reasons why a watch would no longer be reporting a heart rate to the phone?
+Ian Whiffin ([18:25]):
+If the watch was taken off, if the watch was turned off.
+Jennifer Sprague ([18:30]):
+If the battery died?
+Ian Whiffin ([18:31]):
+If the battery was dead, yes.
+Jennifer Sprague ([18:43]):
+Okay. You also mentioned flight climb data. What is that?
+Ian Whiffin ([18:47]):
+Flight climb is information which the Apple Health application stores every time it detects that you walk up a flight of stairs. So a flight of stairs will be considered either a three meter or 10 foot incline over 16 steps. So the device has detected that both the altitude has changed by 10 feet and there were steps being walked at the same time.
+Jennifer Sprague ([19:14]):
+So there's two factors being considered there. The steps that your watch monitors as you walk and then the altitude. Is that correct?
+Ian Whiffin ([19:21]):
+That's correct.
+Jennifer Sprague ([19:22]):
+And what is it? Is it GPS or something that's keeping track of your altitude?
+Ian Whiffin ([19:27]):
+The altitude is being monitored by a barometer or an altimeter, which is inside the device, just measuring for differences in air pressure.
+Jennifer Sprague ([19:35]):
+And this information, the flight climb data, can that be monitored by both a watch and your phone if you have it on you?
+Ian Whiffin ([19:43]):
+It is. Both devices have got the barometers built in. Both devices can monitor flight climb events.
+Jennifer Sprague ([19:51]):
+Can anything simulate or kind of fake out the watch or the phone into thinking that a flight of stairs is being climbed when it's not?
+Ian Whiffin ([20:04]):
+There are some circumstances where that can happen. They're typically quite rare, but it can happen.
+Jennifer Sprague ([20:13]):
+Is an example of that being in a car and going up a hill?
+Ian Whiffin ([20:16]):
+Correct. Yes. If there is movement which the device can mistake for steps at the same time as the incline is being driven, then that could accidentally record a flight climb.
+Jennifer Sprague ([20:29]):
+But if a person's not in a car and is in their home, then it would be flights climbed, not hills being driven, correct?
+Ian Whiffin ([20:39]):
+Correct. If the person is in a house and there are flight climbs being recorded, then the only rational explanation is that the person was climbing stairs.
+Jennifer Sprague ([20:55]):
+In terms of flight climb data, how is that data displayed in the health data itself?
+Ian Whiffin ([21:04]):
+Within the application or within the forensic tool?
+Jennifer Sprague ([21:08]):
+Within the forensic tool.
+Ian Whiffin ([21:09]):
+Okay. So within the forensic tool or within physical analyzer, we break down the health data into our segments. So for an hour we may say that there are three flight climbs and then it's up to the user to dig in a little further. They can select that one hour and then see how that activity breaks down over the hour. So you would see that there were two flight climbs that occurred 10 minutes after the hour and then another flight climb occurred later on.
+Jennifer Sprague ([21:40]):
+So showing you page six of your report here, the top box here, is that showing the general hour data where three flights have been climbed?
+Ian Whiffin ([21:58]):
+Correct. So in this case, the user's looking at a time period between 10:00 AM and 11:00 AM and the health data that's been pulled from the database has been aggregated. And it tells you that there's 98 samples being considered. The maximum heart rate during that hour-long period was 108. The distance traveled was approximately 759 meters, and there were five flights climbed within that hour.
+Jennifer Sprague ([22:25]):
+And then below that, you break that down a little further, correct?
+Ian Whiffin ([22:30]):
+Correct. So this is further down the screen in the interface where we can see actual time of 10:17:27 where there's two flights climbed. And again, another record at 10:17:28 where there were two flights climbed and then a further flight climb at 10:49.
+Jennifer Sprague ([22:50]):
+And then going down to the bottom here, this table, what are we seeing here in this table?
+Ian Whiffin ([22:57]):
+So you may have realized in the slide above where there was two flight climbs at 17 seconds past and two flight climbs at 18 seconds past. That's an unrealistic measurement. It's because one of those measurements comes from the phone and one comes from the watch. This table breaks it down to say which of these records came from the watch and which came from the phone because there are some which overlap.
+Jennifer Sprague ([23:24]):
+So what you're saying is the prior table, it showed the four flights of stairs being climbed at the same time within seconds, which isn't rational. But this breaks it down to show some of that data is coming from the watch and some of it's coming from the phone, correct?
+Ian Whiffin ([23:39]):
+Correct. So if we look at records at four and five here, for example, we can see a start time of 10:17:27 and an end time of 10.27:06 where the watch recorded two flight climbs. And then one second later, a start time and two seconds later for the end time, we see the watch also detected two flight climbs. This is just the same two flight climb events that happened, but both devices recorded those flight climbs with slightly different timestamps.
+Jennifer Sprague ([24:09]):
+And that will happen if I'm wearing my watch and I have my phone in my pocket and I go up the stairs?
+Ian Whiffin ([24:13]):
+That's correct.
+Jennifer Sprague ([24:14]):
+Did you do something to compare these times and make a table where you ignored or disregarded the double entries?
+Ian Whiffin ([24:36]):
+I did. I tried to correlate and discard all of the duplicate information. So where there was an event of a flight climb that was recorded on the watch on the phone, rather than provide information that said there was two flight climbs, I would ignore one of them and limit it to just the ones which we could prove happened.
+Jennifer Sprague ([24:56]):
+And that's displayed here in this chart at the bottom of page seven of your report?
+Ian Whiffin ([25:00]):
+Correct.
+Jennifer Sprague ([25:07]):
+Going to page eight of your report, we have here at the top of page eight, does that show the last flight climbs recorded on either the defendant's phone or watch?
+Ian Whiffin ([25:27]):
+It does. It shows that there was additional flight climb events logged by the phone, which were not logged by the watch at 17:03 and 17:33.
+Jennifer Sprague ([25:38]):
+So these records indicate that at 5:03 PM, the defendant's iPhone was with the person as it went up the stairs. And then at 5:33 PM, the iPhone was with the person as it went up the two flights of stairs?
+Ian Whiffin ([25:53]):
+Correct.
+Jennifer Sprague ([25:54]):
+And there's a time difference there. The start time is 5:33 PM and the end time is 5:38 PM for two flights of stairs. So that's roughly five minutes in between the two flights. Is there a way to explain that length of time?
+Ian Whiffin ([26:12]):
+The way the Apple Health data records this information aggregates it. It tries to group events together. So in this case, it would've recognized that there was a flight climb on the phone at around 17:33:34 and a second one at around 17:38: 33. And it just grouped them both into one event. It doesn't mean that it took five minutes to walk up two flights of stairs. It's just within that five minute period there were two flight climbs.
+Jennifer Sprague ([26:42]):
+So if I have my phone in my pocket and I climb up a flight of stairs and then I spend a few minutes on that floor and then still with my phone in my pocket, go up another flight of stairs, that's representative of what we're seeing here at 5:33?
+Ian Whiffin ([26:57]):
+Correct. There tends to be around a 10-minute window where it tries to check every 10 minutes, but it can reduce that window in a case like this where it sees that there's group data within a smaller time period.
+Jennifer Sprague ([27:11]):
+And then further down on page eight, we have another table here, which seems to have combined data of heart rate and flight climb data. Is that correct?
+Ian Whiffin ([27:21]):
+Correct.
+Jennifer Sprague ([27:30]):
+Did you also look at web usage on the extraction of the defendant's phone?
+Ian Whiffin ([27:56]):
+I did, yes.
+Jennifer Sprague ([27:56]):
+And what did you do to look at the web usage on the phone and what timeframe did you look at?
+Ian Whiffin ([28:01]):
+For web usage, I expanded the time of interest to early January to the 24th of January. I just took a look at any web history over that time. There was over 1,300 records recovered. I took a cursory look down that list and highlighted some which potentially were relevant to the case, and then provided the 1,300 actual records as a appendix report.
+Jennifer Sprague ([28:30]):
+And going to page 12 of your report, looks like you started here on January 10th, 2023. Is that correct?
+Ian Whiffin ([28:48]):
+That's correct.
+Jennifer Sprague ([28:53]):
+And basically here you list various searches that occurred on each day between January 10th and January 24th from the extraction. Is that correct?
+Ian Whiffin ([29:04]):
+That's correct. Broken down by day with the time of the search, the website that was visited, the title of the webpage, and then the identifier in the database.
+Jennifer Sprague ([29:22]):
+And looking at these searches, on January 12th, 2023 at 19:48, so that would be 7:48 PM, is that correct?
+Ian Whiffin ([29:40]):
+Correct.
+Jennifer Sprague ([29:41]):
+There was a search. In the title it says, "How Quickly Does Wellbutrin Work for Depression?" The title, is that what the user is putting into the search?
+Ian Whiffin ([29:51]):
+If I could see the search, please.
+Jennifer Sprague ([29:51]):
+I'll zoom in on that.
+Ian Whiffin ([30:13]):
+The top entry here we can see starts with httpswwwgoogle.com/search?q. The text after the Q, "How quickly does Wellbutrin work?" is what the user searched. Typically, that is exactly as the user typed it, assuming that there are no autocompletions in place. In this particular case, it appears it was searched using Safari. So there's no autocompletion that is essentially what the user typed in. And then the title, "How quickly does..." I can't say that word, I'm afraid.
+Jennifer Sprague ([30:56]):
+Wellbutrin?
+Ian Whiffin ([30:56]):
+"Wellbutrin," thank you, "Work for Depression Google Search" is the title of the page which Google assigns.
+Ian Whiffin ([31:00]):
+Which is the title of the page which Google assigns.
+Jennifer Sprague ([31:04]):
+So where it says after the queue, how plus quickly plus does plus, the user's not putting in those pluses, correct? What were you calling those?
+Ian Whiffin ([31:13]):
+So that's part of the attribute. It's how the data's encoded in a URL or in a web search. You can't have spaces within this address string. So they replace the spaces with the plus symbol.
+Jennifer Sprague ([31:33]):
+So I type in how quickly does... And the computer adds the pluses in the space box?
+Ian Whiffin ([31:33]):
+Yes. It's URL encoding to make it safe for the browser.
+Jennifer Sprague ([31:40]):
+And then at 7:49, there's a search for Lamictal for depression?
+Ian Whiffin ([31:46]):
+Yes. And depression spelled with a B at the end instead of an N, which demonstrates that this is what the user typed in rather than a page that was being visited.
+Jennifer Sprague ([31:58]):
+And then a few minutes later at 7:55 PM, the user typed in Elavil for depression, correct?
+Ian Whiffin ([32:03]):
+Correct.
+Jennifer Sprague ([32:22]):
+And then on page 16, on January 18th, 2023 at 10:25, we had a search there, ketamine for suicidal ideation. Is that correct?
+Ian Whiffin ([32:47]):
+Correct.
+Jennifer Sprague ([32:48]):
+And again, that's the user typing that in?
+Ian Whiffin ([32:50]):
+Yeah. Again, those words were typed in by the user.
+Jennifer Sprague ([33:02]):
+And then on January 19th, 2023, on page 17 of your report, we have symptoms of postpartum psychosis searched on January 19th?
+Ian Whiffin ([33:18]):
+Correct.
+Jennifer Sprague ([33:22]):
+And again, so we're looking at... This is AM, correct? 9:24 AM that was searched?
+Ian Whiffin ([33:28]):
+Yes, the morning.
+Jennifer Sprague ([33:29]):
+And then 9:30 AM, there's another search for psychosis symptoms?
+Ian Whiffin ([33:32]):
+Yes.
+Jennifer Sprague ([34:04]):
+Going back to that same page, page 17, at the bottom for January 24th, we have here searches for kids MiraLAX at 02:02 PM and takeout 3v at 4:13 PM. Is that correct?
+Ian Whiffin ([34:23]):
+That's correct.
+Jennifer Sprague ([34:24]):
+And then CVS Pharmacy at 4:47 PM, correct?
+Ian Whiffin ([34:28]):
+Correct.
+Jennifer Sprague ([34:37]):
+There was also an Apple note that you found in the records, correct?
+Ian Whiffin ([34:41]):
+There was.
+Jennifer Sprague ([34:43]):
+The Apple note, in your report, it says it was created on December 22nd, 2022 at 10:23 AM. Strike that. And then modified at 10:23 AM on January 23rd, 2023, correct?
+Ian Whiffin ([34:57]):
+Correct.
+Jennifer Sprague ([34:58]):
+And are you able to tell what in the note was modified?
+Ian Whiffin ([35:03]):
+No, there's no real auditable log to look back and see how many times it's been modified over the course of its life. I was able to do some amount of recovery to see that on the day it was created, it started in a very similar way to as it's written on the 24th or 23rd of January. But the exact changes between when it first was created and the last time it was modified, we don't know.
+Jennifer Sprague ([35:32]):
+And then you also looked at messages, correct?
+Ian Whiffin ([35:34]):
+Correct.
+Jennifer Sprague ([35:36]):
+And were you able to compile the messages that were sent and received between the defendant and her mother and the defendant and her husband on January 24th, 2023?
+Ian Whiffin ([35:47]):
+I did, yes.
+Jennifer Sprague ([35:48]):
+And were you able to arrange it using the tools that you use in a way that looks like you might see it on your phone?
+Ian Whiffin ([35:57]):
+Yeah, I tried to prepare it in a report, which would be easy for any viewer to understand based on their own usage of text messaging.
+Jennifer Sprague ([36:07]):
+So showing you page 19 of your report, what we have here is an enlarged version of what you might see on your phone, correct?
+Ian Whiffin ([36:18]):
+Correct.
+Jennifer Sprague ([36:20]):
+And so someone's... In blue, is this Lindsay's phone?
+Ian Whiffin ([36:23]):
+It is. The messages in blue on the right would be outgoing. The messages in gray on the left would be incoming.
+Jennifer Sprague ([36:30]):
+And so you have a photo being sent out from Lindsay's phone to her mother and then a reply coming back and that pattern goes on and on, correct?
+Ian Whiffin ([36:40]):
+Correct.
+Jennifer Sprague ([36:49]):
+And then looking at page 22, you were able to do the same in terms of her contact with Patrick Clancy that day, correct?
+Ian Whiffin ([36:57]):
+I did, yes.
+Jennifer Sprague ([36:58]):
+And so in gray, we have Patrick Clancy sending a message to Lindsay Clancy and in blue is the response, correct?
+Ian Whiffin ([37:05]):
+Correct.
+Jennifer Sprague ([37:42]):
+Excuse me. Were you also able to look at the phone calls that occurred either incoming or outgoing to the defendant's phone on January 24th, 2023?
+Ian Whiffin ([37:52]):
+I did, yes.
+Jennifer Sprague ([38:01]):
+And looking at page 27 and 28 of your report, first on page 27, just looking closely at the phone, here in the report it says 2024. Is that a typo? Is that supposed to be 2023?
+Ian Whiffin ([38:15]):
+That's meant to be 2023, yes. I apologize.
+Jennifer Sprague ([38:18]):
+Okay. And so what we see here, can you just tell us what these columns are?
+Ian Whiffin ([38:22]):
+Yeah. The start time of the call, typically when it is answered by the recipient, the end time when the calls ended. The metadata is information including who the call was to or from, how long the call lasted, and then the reason that the call disconnected. And then a record ID. So if you had the database, you could go in and find this record based on the ID number.
+Jennifer Sprague ([38:51]):
+And looking at page 28, this is the continuation of that table regarding the phone calls. Is that correct?
+Ian Whiffin ([39:00]):
+Correct.
+Jennifer Sprague ([39:00]):
+And so what we're seeing here is at 17:33, which would be 5:33 PM, there's an incoming call from Patrick to Lindsay's phone. Is that correct?
+Ian Whiffin ([39:11]):
+Correct.
+Jennifer Sprague ([39:11]):
+And it says duration, eight seconds. Sorry, zero seconds. Does that mean it was not answered?
+Ian Whiffin ([39:18]):
+In this case, it was an answered call.
+Jennifer Sprague ([39:19]):
+And then at 5:34 PM, roughly a minute later, there's an outgoing call from Lindsay's phone to Patrick's, correct?
+Ian Whiffin ([39:26]):
+Correct.
+Jennifer Sprague ([39:27]):
+And that call was approximately 14 seconds?
+Ian Whiffin ([39:30]):
+Correct.
+Jennifer Sprague ([39:31]):
+And then at 6:09 PM, another incoming call from Patrick to Lindsay that went unanswered?
+Ian Whiffin ([39:37]):
+That's correct.
+Jennifer Sprague ([39:52]):
+Now you also, in a section you called media, you have some photographs that were taken from the phone with some metadata included, correct?
+Ian Whiffin ([40:02]):
+Correct.
+Jennifer Sprague ([40:03]):
+What is metadata?
+Ian Whiffin ([40:05]):
+Metadata is information about that photograph. It could be the device that captured it, the time that it was captured, the location, information about the lens, the lighting, et cetera.
+Jennifer Sprague ([40:17]):
+And so looking at page 29 of your report, just for an example, what we have here are three photographs, correct?
+Ian Whiffin ([40:26]):
+Correct.
+Jennifer Sprague ([40:27]):
+And the metadata for the first one shows captured at South Shore Medical Center. Is that correct?
+Ian Whiffin ([40:33]):
+Correct.
+Jennifer Sprague ([40:34]):
+How were you able to determine that's where that photograph was taken?
+Ian Whiffin ([40:37]):
+The metadata of the photo included the latitude and longitude where the image was captured. I took that latitude and longitude and looked on Google Maps to see a physical address. In this case, it came down to the South Shore Medical Center.
+Jennifer Sprague ([40:56]):
+And then the third photo here, that shows captured at the home address on Summer Street. Is that correct?
+Ian Whiffin ([41:04]):
+Correct.
+Jennifer Sprague ([41:10]):
+And then you looked at device usage. What is device usage?
+Ian Whiffin ([41:21]):
+Device usage would relate to how the user is operating the device. So when they have it unlocked, locked, what applications being used any particular time. Essentially, anything which is not a message or a phone call or results in additional data like that.
+Jennifer Sprague ([41:39]):
+And looking at page 32 of your report, in that device usage log, it shows that the last time the device usage was logged was at 5:13 PM, correct?
+Ian Whiffin ([41:52]):
+So this table relates just to the locking and the unlocking of the device. So the last time the device was unlocked was at 17:13: 16. The device was locked again around two minutes later at 17:15:12, and the device was not unlocked again.
+Jennifer Sprague ([42:10]):
+And so where the device was not unlocked again after 5:16 PM, but we have a phone call being made at 5:34 PM. How does that happen?
+Ian Whiffin ([42:22]):
+There is a setting within iPhones that allow you to use a locked device to call back numbers for missed calls. So in this case, Lindsay had the missed phone call that would've shown on screen as a notification as a missed call. And without unlocking the device, you're able to call that person back.
+Jennifer Sprague ([42:42]):
+So you just press on the icon that shows up, you have a missed call, you press on that, and you can call the person back without unlocking the phone?
+Ian Whiffin ([42:49]):
+Correct.
+Jennifer Sprague ([42:53]):
+And then what is application focus?
+Ian Whiffin ([42:56]):
+Application focus is literally the application which is visible on screen at any given time.
+Jennifer Sprague ([43:03]):
+And at 4:13 PM, 16:13 on January 24th, you've highlighted it in green here. What are we seeing there?
+Ian Whiffin ([43:17]):
+At 16:13:23 until 16:14:50, the Apple Maps application was being used, visible on screen.
+Jennifer Sprague ([43:35]):
+Is it then used again at 5:13 and 5:14 PM? Or is that a different application?
+Ian Whiffin ([43:44]):
+So at 5:13 until 5:14, it was mobile Safari. So the mobile version of Safari, the internet browser was on-screen. And at 17:14:47 until 17:15:08, it was the mobile SMS or messaging application, which was on-screen.
+Jennifer Sprague ([44:03]):
+So do you just look at the part that's in parentheses to see what application was open or being used at the time?
+Ian Whiffin ([44:12]):
+Correct. What application was on-screen at the time.
+Jennifer Sprague ([44:14]):
+So for example, where it says 17:34, which would be 5:34 PM and in parentheses is in-call service. Does that represent a phone call?
+Ian Whiffin ([44:22]):
+It does. That's the screen that indicates you are in a phone call.
+Jennifer Sprague ([44:28]):
+And staying with the same page, page 34, you've made some notes here. Let's go out a little bit, regarding Apple Maps, Safari, and messaging. So can you just explain what you pulled from the data for Apple Maps?
+Ian Whiffin ([44:46]):
+Yeah. Apple Maps was used to plan a route from the user's current location, the home address, to a restaurant called 3V.
+Jennifer Sprague ([44:57]):
+And that was at 4:13 PM?
+Ian Whiffin ([44:57]):
+It was.
+Jennifer Sprague ([44:59]):
+And then in terms of Safari, you have the last unlock at 5:13 PM?
+Ian Whiffin ([45:05]):
+Yes. So the last unlock of the device was used for the purposes of viewing Safari where PDLX was searched using Google.
+Jennifer Sprague ([45:16]):
+And then in terms of messaging, what did you pull from the data there?
+Ian Whiffin ([45:19]):
+At the same time or in that same device usage. So the device was unlocked, Safari was used to search PDLX, and then the messaging application was opened to send a message to Patrick saying PDLX liquid stool softener.
+Jennifer Sprague ([45:34]):
+And that was at 5:15 PM?
+Ian Whiffin ([45:37]):
+It was.
+Jennifer Sprague ([45:44]):
+And then did you create a timeline combining all the data that we've talked about into one timeline?
+Ian Whiffin ([45:50]):
+I did, yes.
+Jennifer Sprague ([46:07]):
+And going to the last page of your report, page 43, is this the last page of the timeline?
+Ian Whiffin ([46:13]):
+It is, yes.
+Jennifer Sprague ([46:23]):
+And in that page, can you explain what we're seeing here?
+Ian Whiffin ([46:29]):
+Yes. So the very first column is the timestamp. The next few columns which show typically colored is related to the activity, which will become a little bit clearer in a moment. The column in the center explains what the record is. So if, for example, we look at the 17:13:16 record, we can see a U, which means the device was unlocked in pink. That unlock event lasted until 17:15:12. So hence that entire column is in pink and shows the relevant lock event.
+Jennifer Sprague ([47:14]):
+So here we have 5:13 device unlock.
+Ian Whiffin ([47:18]):
+Yes.
+Jennifer Sprague ([47:19]):
+5:15 device lock, and there's this column connecting them, correct?
+Ian Whiffin ([47:22]):
+Correct. And then any activity that happened during that unlock time is then shown within the rows between. So again, we see Safari open at 17:13:16. Safari was closed at 17:14:47. Messaging was opened at 17:14:47. While messages were opened, there was an outgoing message sent for PDLX. Then messaging was closed. Messaging was opened again and messaging was closed prior to the device locking. So everything in the colored columns tries to show all of the events that happened at the same time or during that parent event.
+Jennifer Sprague ([48:08]):
+And what we have here at 5:33 PM, we have the flight climb started. Is that correct?
+Ian Whiffin ([48:13]):
+Correct.
+Jennifer Sprague ([48:15]):
+And flight climb ended at 5:38. So that line again connecting them?
+Ian Whiffin ([48:19]):
+Correct. So two flight climbs occurred during that time period.
+Jennifer Sprague ([48:23]):
+And in between when the flight climb started and the flight climb ended, you had the two calls, the incoming call that was missed from Patrick and then the outgoing call to Patrick, correct?
+Ian Whiffin ([48:33]):
+Correct.
+Jennifer Sprague ([48:35]):
+So the first flight climbed had already been started. Someone had already started climbing up a flight of stairs when that first unanswered call happened, correct?
+Ian Whiffin ([48:46]):
+So flight climb started is how it's listed within the database and within the software. But it actually... The flight climb time is when the flight climb has been recognized by the device as the device has already climbed up those stairs. So even though it says flight climb started, that's technically the time that the flight climb or the first flight climb had ended.
+Jennifer Sprague ([49:12]):
+So where it says 5:33:34 flight climb started, that actually indicates the person has gone up that first flight of stairs already?
+Ian Whiffin ([49:23]):
+Yes. That indicates the phone has now realized I'm three meters higher than I was the last time I checked. Therefore, a flight climb has already been completed at that point.
+Jennifer Sprague ([49:35]):
+And then the calls happen, and then the phone realizes at 5:38 that another flight has been climbed?
+Ian Whiffin ([49:39]):
+Correct.
+Jennifer Sprague ([49:51]):
+I would move to submit the report as the next exhibit.
+Mr. Reddington ([49:53]):
+No objection.
+Judge William Sullivan ([49:53]):
+All right. The report may be admitted.
+Speaker 3 ([49:53]):
+1566.
+Jennifer Sprague ([49:53]):
+I have nothing further.
+Judge William Sullivan ([50:05]):
+All right. All right. So members of the jury, remember I said it might be a little stop and start here today. This is one of those stops. All right. So we're going to take a short break and then we'll come right back and return for the cross-examination of this witness. Okay?
+Madam Clerk ([50:21]):
+All rise please, Jurors. Thank you.
+Speaker 1 ([50:57]):
+Kendra might be coming here on Thursday.
+Speaker 2 ([50:59]):
+Why?
+Speaker 1 ([50:59]):
+She's doing that.
+Speaker 2 ([50:59]):
+Oh, staying after.
+Madam Clerk ([50:59]):
+Jurors have exited the courtroom. The court's in session.
+Judge William Sullivan ([51:08]):
+All right. So the court will be in a short recess at this time. Thanks.
+Madam Clerk ([51:30]):
+Court, all rise. This court is back in session. You may be seated.
+Judge William Sullivan ([51:34]):
+Yeah. Counsel, we ready for the jury?
+Jennifer Sprague ([51:35]):
+Yes.
+Mr. Reddington ([51:35]):
+Yes.
+Judge William Sullivan ([51:35]):
+All right. Yeah.
+Mr. Reddington ([51:35]):
+All right.
+Madam Clerk ([52:39]):
+All rise please. Jurors entering. Court is back in session. You may be seated.
+Judge William Sullivan ([53:19]):
+All right. Thank you, Madam Clerk. Mr. Reddington.
+Mr. Reddington ([53:22]):
+Thank you, Your Honor. Morning.
+Ian Whiffin ([53:23]):
+Good morning.
+Mr. Reddington ([53:25]):
+Mr. Whippen, just a couple of things. One of the takeaways or question that I had is that you were talking about in reference to the Apple Health data. Fair to say that there's an issue as to the accuracy or reliability of the Apple Health data that you've actually done research on, right?
+Ian Whiffin ([53:46]):
+I've done research on it, yes.
+Mr. Reddington ([53:48]):
+Okay. And one of the things that you did is back about a year ago, June 28th of 2025, you did a blog article on Apple Health accuracy and reliability. And it talked about using a pitch, which I think you guys referred like a football field or something?
+Ian Whiffin ([54:06]):
+It was a Brooklyn field, yes.
+Mr. Reddington ([54:07]):
+And then you had somebody put the watch in their right pocket, somebody with the left pocket, and then someone else held it in your hand, you measured it and things of that nature, right?
+Ian Whiffin ([54:15]):
+Correct. It was three phones.
+Mr. Reddington ([54:17]):
+Some of the things were off a little bit, but basically you put that in your report and you were able to draw your conclusion as to the accuracy and reliability, as you say, of the Apple Health data, right?
+Ian Whiffin ([54:28]):
+Correct.
+Mr. Reddington ([54:29]):
+Now, if someone is wearing an Apple Watch, is that what records heart rate?
+Ian Whiffin ([54:38]):
+The heart rate is on the watch, yes.
+Mr. Reddington ([54:39]):
+It is on the watch?
+Ian Whiffin ([54:40]):
+Yes.
+Mr. Reddington ([54:40]):
+Okay. And the steps that the person takes, things of that nature, the movement, is that on the phone or would that be on the watch?
+Ian Whiffin ([54:48]):
+That's on both the watch and the phone.
+Mr. Reddington ([54:50]):
+Okay. Now, if you have an Apple Watch and you test it or you examine it, would you be able to determine what information was actually recorded by the watch while the person was wearing it?
+Ian Whiffin ([55:05]):
+Yes. The information that's recorded within the Apple Health database does specify whether the information comes from the watch, the phone, or from a different device.
+Mr. Reddington ([55:15]):
+Okay. And in this case, if I understand correctly, the Apple Watch stopped recording data at, is it 5:23?
+Ian Whiffin ([55:27]):
+It was around that time.
+Mr. Reddington ([55:29]):
+Okay. You know what? I'm going to give you your report. Feel free to just refresh your memory or look at it or whatever helps you out.
+Ian Whiffin ([55:37]):
+Thank you.
+Mr. Reddington ([55:38]):
+Yep. No problem. I just want to get the times down. I think you indicated that the watch stopped recording information at 5:23 PM.
+Ian Whiffin ([55:52]):
+Yes. The last heart rate was 5:23:52.
+Mr. Reddington ([55:58]):
+52. Okay. 5:23 and 52 seconds. And then I believe the phone and watch stopped recording at 5:38, was it?
+Ian Whiffin ([56:09]):
+The last usage of the... Let me double-check this. I believe the last usage of the phone to record flight climb data was at 5:38. Yes.
+Mr. Reddington ([56:24]):
+All right. And after 5:38, it's pretty much blackout. There's no further information or recording, right?
+Ian Whiffin ([56:32]):
+Yes. Not until the phone was seized by police, I believe.
+Mr. Reddington ([56:36]):
+By the police.
+Ian Whiffin ([56:38]):
+There's other activity, but appeared to be after the incident.
+Mr. Reddington ([56:42]):
+So the further activity would have been the following morning on the 25th of January, say around 5:30, 6:00 in the morning?
+Ian Whiffin ([56:54]):
+I ended my analysis on the 24th.
+Mr. Reddington ([56:57]):
+Okay. Well, so 5:23 PM, the watch stops recording information. 5:38 PM, both the watch and the phone stopped recording any information until the police picked up the phone apparently the following day, right?
+Ian Whiffin ([57:15]):
+Again, there would've been activity later on, but it wasn't usage. It wasn't health data. It would've been things like incoming calls, if there were any.
+Mr. Reddington ([57:25]):
+Okay. So when you went through the stair climbing and talked about the steps that were taken, the distance that was taken, that stopped at 5:38 PM, right?
+Ian Whiffin ([57:39]):
+Correct.
+Mr. Reddington ([57:40]):
+Now you don't know, when I say you, I mean as a witness, but also the police. Whoever was wearing the watch, for example, if Lindsay's wearing the watch or carrying the phone after 5:38, you don't know what was happening at 5:39?
+Ian Whiffin ([57:57]):
+Correct.
+Mr. Reddington ([57:57]):
+You don't know what was happening at 5:40, 5:45, right?
+Ian Whiffin ([58:00]):
+Correct.
+Mr. Reddington ([58:01]):
+Right up till 5:58, 6:00 PM, right?
+Ian Whiffin ([58:04]):
+Purely the data on the device.
+Mr. Reddington ([58:06]):
+So it could have been, the phone could have been put down, the watch could have been put down, battery died, whatever those issues could be. And the person would still be going down the stairs, going up the stairs, going in the backyard, doing pushups, whatever.
+Ian Whiffin ([58:23]):
+Correct.
+Mr. Reddington ([58:23]):
+You just don't know, right?
+Ian Whiffin ([58:24]):
+Yes.
+Mr. Reddington ([58:24]):
+Okay. One of the things... You're familiar with the concept of location data, right?
+Ian Whiffin ([58:33]):
+Correct.
+Mr. Reddington ([58:34]):
+And location data, one of the things you looked at or you're aware of would be from Lindsay's phone on August 23rd of 2022. Is that correct?
+Ian Whiffin ([58:45]):
+Apologies. August 23rd, 2022?
+Mr. Reddington ([58:47]):
+Yeah.
+Ian Whiffin ([58:47]):
+I didn't go back anywhere near that date.
+Mr. Reddington ([58:51]):
+You have tested and written blogs though on location information, right?
+Ian Whiffin ([58:55]):
+Correct.
+Mr. Reddington ([58:55]):
+You actually testified in the case of Commonwealth versus Victor Arrington in Suffolk Superior Court in Boston in support of the accuracy of this particular artifact or information, right?
+Ian Whiffin ([59:07]):
+Correct.
+Mr. Reddington ([59:08]):
+So you're a true believer that the phone does in fact record accurately significant locations on the iPhone, right?
+Ian Whiffin ([59:17]):
+It certainly can, yes.
+Mr. Reddington ([59:18]):
+All right. And are you aware, or if I was to approach you in your expertise... It's just the doctor. That's all. You were talking earlier about latitude, longitude, things of that nature, right?
+Ian Whiffin ([59:49]):
+Yes.
+Mr. Reddington ([59:50]):
+Okay. So just to get familiar with, for example, significant location visits on Lindsay's phone, August 23rd, 2022 at 9:34. Do you know what that says or what that means?
+Ian Whiffin ([01:00:07]):
+The created time?
+Mr. Reddington ([01:00:09]):
+Yeah.
+Ian Whiffin ([01:00:09]):
+Of 9:34? When the device decided that the device had visited this location enough to consider a visit.
+Mr. Reddington ([01:00:20]):
+Okay. Do you know what that location is? If I suggest to you it's a doctor's office, would you be aware of that?
+Ian Whiffin ([01:00:26]):
+I don't recognize it from the coordinates.
+Mr. Reddington ([01:00:28]):
+Okay. Thank you. This here, you're familiar with too, as well, right? The geo data with the latitude and the longitude?
+Ian Whiffin ([01:00:48]):
+Yes.
+Mr. Reddington ([01:00:49]):
+And you're familiar with the fact that you can take the metadata off of the information on the cell phone, one of which would be latitude and longitude. You'd be able to determine, for example, that this would be the Lindsay Clancy home, correct?
+Ian Whiffin ([01:01:02]):
+Yes, correct.
+Mr. Reddington ([01:01:02]):
+You've seen this before, right?
+Ian Whiffin ([01:01:04]):
+It rings a bell, yes.
+‍
+Mr. Reddington ([01:01:05]):
+Okay. I'll offer this, Your Honor.
+Judge William Sullivan ([01:01:06]):
+Any objection?
+Jennifer Sprague ([01:01:06]):
+No objection.
+Judge William Sullivan ([01:01:09]):
+Okay. That may be admitted.
+Mr. Reddington ([01:01:11]):
+Thank you.
+Speaker 3 ([01:01:11]):
+Exhibit 267.
+Judge William Sullivan ([01:01:11]):
+All right, thank you.
+Mr. Reddington ([01:01:20]):
+Now, you have your report in front of you, right?
+Ian Whiffin ([01:01:21]):
+Yes.
+Mr. Reddington ([01:01:23]):
+And that's captioned Digital Forensic Report, and it's in evidence, so the jurors are going to be able to review it in its entirety, right?
+Ian Whiffin ([01:01:30]):
+Yes.
+Mr. Reddington ([01:01:32]):
+If I could direct your attention to page 11, I believe. Yeah, page 11. Okay.
+Ian Whiffin ([01:01:52]):
+Yes.
+Mr. Reddington ([01:01:53]):
+And just so the jurors are able to acclimate themselves to it, that would be this item here that you went through with the district attorney, right? As far as the-
+Mr. Reddington ([01:02:00]):
+With the district attorney, right? As far as the searches, Google searches?
+Ian Whiffin ([01:02:09]):
+I have a different page 11.
+Mr. Reddington ([01:02:11]):
+Different page?
+Ian Whiffin ([01:02:14]):
+That looks like this page 12.
+Mr. Reddington ([01:02:15]):
+Oh, okay. Well, let me approach you with what is your digital forensic report, Report Number One.
+Ian Whiffin ([01:02:23]):
+Yes.
+Mr. Reddington ([01:02:24]):
+Yeah. Okay. Is this the same?
+Ian Whiffin ([01:02:26]):
+So this is a revision.
+Mr. Reddington ([01:02:28]):
+A revision?
+Ian Whiffin ([01:02:30]):
+The revision submitted in February that just had a different record highlighted.
+Mr. Reddington ([01:02:36]):
+Yeah. Okay. So basically there's no big deal difference, right?
+Ian Whiffin ([01:02:39]):
+Correct.
+Mr. Reddington ([01:02:40]):
+Okay. So we can go by, you have the revised and I have the old. Can you look at January 10th on the Google search, for example?
+Ian Whiffin ([01:02:49]):
+I can.
+Mr. Reddington ([01:02:50]):
+You have it?
+Ian Whiffin ([01:02:51]):
+Yes, sir.
+Mr. Reddington ([01:02:52]):
+So looking at January 10th of 2023, just read along with me and the jurors again would be able to look at this in the jury room. Prescription information at, it says 14:55, what does that mean? 12:14 in the morning?
+Ian Whiffin ([01:03:08]):
+12:14 AM, yes.
+Mr. Reddington ([01:03:09]):
+All right. And then 19:11, which would be at 7:11 in the morning?
+Ian Whiffin ([01:03:14]):
+7:11 PM.
+Mr. Reddington ([01:03:16]):
+Oh, PM. Okay. Trazodone and Benadryl. Goes on about an hour later, trazodone headache, Google search goes on. Trazodone and ibuprofen goes on. Trazodone and Tylenol goes on to 20:32, which would be 8:32 PM. Trazodone and Tylenol interactions, right?
+Ian Whiffin ([01:03:34]):
+Correct.
+Mr. Reddington ([01:03:35]):
+Fair to say that these are things that Lindsay Googled on her cell phone. That's what this document refers to, right?
+Ian Whiffin ([01:03:42]):
+Somebody used the cell phone to Google it, yes.
+Mr. Reddington ([01:03:44]):
+Oh, you don't know who was actually using it, but this is Lindsay's cell phone-
+Ian Whiffin ([01:03:48]):
+Yes.
+Mr. Reddington ([01:03:48]):
+... you're aware of that? Just if we jump ahead, looking at all of these various Google searches, follow with me on, let's say randomly, let's say page 13, 19:48, which would be 17:48 PM, I guess. You with me on that?
+Ian Whiffin ([01:04:16]):
+Yes. 19:48.
+Mr. Reddington ([01:04:17]):
+Yeah. Yes. How quickly does Wellbutrin work for depression? That's what was Googled, right?
+Ian Whiffin ([01:04:22]):
+Correct.
+Mr. Reddington ([01:04:23]):
+Followed by Lamictal for depression. Elavil for depression. How to tell if you're sleep deprived. Ketamine for suicidal ideation, right?
+Ian Whiffin ([01:04:29]):
+Correct.
+Mr. Reddington ([01:04:30]):
+These are all searches that were done on Lindsay's cell phone. And that particular date chronologically would've been the 12th of January, right?
+Ian Whiffin ([01:04:39]):
+Correct.
+Mr. Reddington ([01:04:39]):
+Now, without boring everybody, it goes on and on and on with searches along those lines, suicidal ideation, drugs, Trazodone, mixtures, things of that nature, right?
+Ian Whiffin ([01:04:50]):
+It does.
+Mr. Reddington ([01:04:51]):
+Page 17, if you have it, would be the Apple Note counsel asked you about.
+Ian Whiffin ([01:05:01]):
+Yes.
+Mr. Reddington ([01:05:03]):
+Okay. Now, if I suggest to you, sir, that this is the Apple Note. I believe a previous witness may have read this to the jury, so they will have this in the room to read. But basically, this is the note that says, "I was the healthiest, happiest mom. I worked out every morning, meditated, took care of myself, and basically my life has turned the crap." Right?
+Ian Whiffin ([01:05:23]):
+Correct.
+Mr. Reddington ([01:05:24]):
+So what was modified in this, if you know? Because counsel asked you if there was modifications and things of that nature, and I'm just asking if you know what was modified in it?
+Ian Whiffin ([01:05:37]):
+Exactly at the moment, I don't have all of that in front of me. It's possible to see snippets going back over time. I do recall on the 22nd of December when this was created, it started with the same sentence. And there was a few essentially spelling differences as time went on. But as much as you can recover from the earlier versions of the note, it's a snippet. It's essentially two sentences. And the rest of it is-
+Mr. Reddington ([01:06:08]):
+Basically the same note.
+Ian Whiffin ([01:06:09]):
+It's essentially the same note.
+Mr. Reddington ([01:06:09]):
+Okay. Thank you, sir. Going forward onto page 18, page 19 and 20, would you agree with me that. Well, actually in 21, they basically contain photographs that were sent from Lindsay's phone to, it looks like Patrick's phone. Would you agree with that?
+Ian Whiffin ([01:06:31]):
+I believe the first few pages are sent to Mommy.
+Mr. Reddington ([01:06:38]):
+Okay. And this basically is the ... There we go. This is the snowman in the backyard being made, right?
+Ian Whiffin ([01:06:47]):
+Correct.
+Mr. Reddington ([01:06:48]):
+And then Lindsay's phone is sending the blue-
+Ian Whiffin ([01:06:54]):
+Yes, the blue message is outgoing.
+Mr. Reddington ([01:06:58]):
+... and the green is that a response?
+Ian Whiffin ([01:06:58]):
+Yes.
+Mr. Reddington ([01:06:58]):
+And can you tell me what the response is?
+Ian Whiffin ([01:07:02]):
+The one on screen at the moment is the response sent from Mommy to Lindsay's phone saying, "That's a big roll of snow. I was wondering if you got enough for the kids to play in, and it's a pretty nice day too. Gives them something to do on a day without school."
+Mr. Reddington ([01:07:16]):
+Okay. And then your report then goes on with additional photographs of the snowmen. There's a box of Cheerios apparently. And then there's a photograph of a young boy appearing to be very exuberant with his arms up in the air. And then Lindsay's phone responds with a picture of the little girl with a mask on, right?
+Ian Whiffin ([01:07:46]):
+Correct. And this is a conversation with Patrick.
+Mr. Reddington ([01:07:48]):
+Patrick. Okay. So are you able to tell what Patrick said, if anything, when he sent the picture of the little boy with his arms up in the air?
+Ian Whiffin ([01:07:56]):
+So at the very top of that message above the photograph, it says, " Got himself dressed." And that would be the message that was sent alongside the photograph.
+Mr. Reddington ([01:08:04]):
+Okay. And then what was her response?
+Ian Whiffin ([01:08:08]):
+Initially, it was just the photograph.
+Mr. Reddington ([01:08:11]):
+Did she respond any further in your report, or your research?
+Ian Whiffin ([01:08:16]):
+Sorry?
+Mr. Reddington ([01:08:16]):
+Did you see any response in your research of the phone?
+Ian Whiffin ([01:08:20]):
+I don't remember seeing any response.
+Mr. Reddington ([01:08:22]):
+All right. Can you look at page 22?
+Ian Whiffin ([01:08:26]):
+Yes.
+Mr. Reddington ([01:08:26]):
+Okay. And this would be on January 24th, 2023 at it looks ... What time? Is that 8:19 in the morning?
+Ian Whiffin ([01:08:40]):
+Yes.
+Mr. Reddington ([01:08:41]):
+Okay. So if I suggest to you, sir, you can even look in your report, this is in the same thread with the little girl making the snowman and the text about, "It looks like a nice day. Hoping you got snow," things of that nature. And there was a reference by the mother, or Mommy to get the hot chocolate ready, things of that nature, right?
+Ian Whiffin ([01:09:02]):
+The message at 8:19 AM that says, "Cutie" was sent by Patrick in a different thread to the snowman photographs.
+Mr. Reddington ([01:09:11]):
+Okay. But I'm asking you about the one that's underneath the snowman and the Mommy text. The last commentary is, "Get the hot chocolate ready."
+Ian Whiffin ([01:09:21]):
+Oh yes, that's the one from Mommy.
+Mr. Reddington ([01:09:23]):
+And that's from the mother apparently, right?
+Ian Whiffin ([01:09:25]):
+Correct.
+Mr. Reddington ([01:09:25]):
+Or someone that is in the phone as Mommy, right?
+Ian Whiffin ([01:09:28]):
+And that was at 11:33 AM.
+Mr. Reddington ([01:09:30]):
+Now, if you look on page 22, we can get to what you were talking about. It looks like January 24th at 8:19 in the morning, cell phone number 781-375-8564. And what does that say?
+Ian Whiffin ([01:09:46]):
+"Cutie."
+Mr. Reddington ([01:09:47]):
+So just tell us though. So is that Patrick's phone?
+Ian Whiffin ([01:09:50]):
+Yes, that would be the phone stored as Patrick sending a message to Lindsay's phone.
+Mr. Reddington ([01:09:55]):
+And how did Lindsay respond? Or how did her phone respond?
+Ian Whiffin ([01:09:59]):
+It appears that Lindsay reacted to an image with the love emoji.
+Mr. Reddington ([01:10:04]):
+Like a little heart thing?
+Ian Whiffin ([01:10:05]):
+Yes.
+Mr. Reddington ([01:10:05]):
+And then what did Patrick say?
+Ian Whiffin ([01:10:07]):
+Patrick asked, "How's it going?"
+Mr. Reddington ([01:10:09]):
+What'd she say?
+Ian Whiffin ([01:10:10]):
+"Good."
+Mr. Reddington ([01:10:11]):
+And then did she say anything further?
+Ian Whiffin ([01:10:13]):
+Yeah. She also responded, "Okay, her urine looked good, so nothing going wrong with her kidneys, phew."
+Mr. Reddington ([01:10:18]):
+So she indicates that her urine looked good, nothing going on with her kidneys, and then phew, like whew. Something like that, right?
+Ian Whiffin ([01:10:25]):
+That's how I read this.
+Mr. Reddington ([01:10:26]):
+P-H-E-W?
+Ian Whiffin ([01:10:27]):
+Yeah. Yes.
+Mr. Reddington ([01:10:28]):
+And then he said, "Good," right?
+Ian Whiffin ([01:10:29]):
+Yes.
+Mr. Reddington ([01:10:30]):
+And then as you go forward, there's more pictures of the kids with the snowman making the snowman. Patrick then says to her at 11:00, looks like 11:29. Am I reading that right in the morning?
+Ian Whiffin ([01:10:44]):
+11:29:12.
+Mr. Reddington ([01:10:44]):
+What does he say to her?
+Ian Whiffin ([01:10:46]):
+"You're a good mama."
+Mr. Reddington ([01:10:48]):
+And does she respond?
+Ian Whiffin ([01:10:49]):
+She responds with an emoji, which is the face covered in hearts.
+Mr. Reddington ([01:10:54]):
+The face with the hearts. And then they go back and forth with each other up until getting the menu and asking what you want for takeout and things of that nature, right?
+Ian Whiffin ([01:11:06]):
+Correct.
+Mr. Reddington ([01:11:07]):
+Page 25, just in case you were looking. All right. Can you look at page 28 for me? And page 29, I can hold them up. They basically are just a continuation of photographs, little thumbnails of the kids doing snowman and sitting in the doctor's office, right?
+Ian Whiffin ([01:11:28]):
+Correct.
+Mr. Reddington ([01:11:41]):
+Okay. One of the things that you did is that you actually performed a comprehensive search. Is that a full focus extraction? Is that what you call it?
+Ian Whiffin ([01:11:53]):
+A full file system extraction.
+Mr. Reddington ([01:11:54]):
+Okay. And you did that for the phone belonging to Lindsay Clancy, right?
+Ian Whiffin ([01:11:59]):
+Correct.
+Mr. Reddington ([01:11:59]):
+That would be what you refer to as your appendix?
+Ian Whiffin ([01:12:02]):
+The Appendix One of the Lindsay Clancy phone is 1,300 and some web search visits.
+Mr. Reddington ([01:12:11]):
+Okay. So I'm going to hand you what says Report Number One, iPhone belonging to Lindsay Clancy, and ask if you can recognize that.
+Ian Whiffin ([01:12:24]):
+Yes. This appears to be just the web history from Lindsay's phone.
+Mr. Reddington ([01:12:29]):
+Okay. So that's pretty much the ... If anybody cares to look at it, that's the entire web history, right?
+Ian Whiffin ([01:12:33]):
+Correct.
+Mr. Reddington ([01:12:34]):
+All right. I'd offer this, Your Honor.
+Judge William Sullivan ([01:12:35]):
+Any objection?
+Jennifer Sprague ([01:12:37]):
+No objection.
+Judge William Sullivan ([01:12:37]):
+All right. That may be admitted.
+Speaker 4 ([01:12:38]):
+Exhibit 268.
+Mr. Reddington ([01:12:39]):
+Then Mr. Whiffin, you also had Report Number Four, which would be the digital report for Patrick Clancy's computer.
+Ian Whiffin ([01:12:53]):
+I did.
+Mr. Reddington ([01:12:55]):
+I'd offer that, Your Honor.
+Judge William Sullivan ([01:12:56]):
+Any objection?
+Jennifer Sprague ([01:12:56]):
+No objection.
+Judge William Sullivan ([01:12:57]):
+All right. That may be admitted as well.
+Speaker 4 ([01:13:01]):
+269.
+Judge William Sullivan ([01:13:02]):
+All right. Thank you.
+Mr. Reddington ([01:13:03]):
+And then finally, Report Number Five says Surface Pro laptop belonging to Patrick Clancy.
+Ian Whiffin ([01:13:08]):
+Yes.
+Mr. Reddington ([01:13:09]):
+So this would be your search of his laptop as well, correct?
+Ian Whiffin ([01:13:13]):
+Correct.
+Mr. Reddington ([01:13:13]):
+I'd offer this.
+Jennifer Sprague ([01:13:14]):
+No objection.
+Judge William Sullivan ([01:13:16]):
+All right. That may be admitted.
+Speaker 4 ([01:13:16]):
+270.
+Mr. Reddington ([01:13:33]):
+Approaching you with an item, sir, I'm just going to ...
+Jennifer Sprague ([01:13:35]):
+[inaudible 01:13:45]-
+Mr. Reddington ([01:13:45]):
+Well, I'm just going to ask it. I'm not going to introduce.
+Jennifer Sprague ([01:13:47]):
+Thank you.
+Mr. Reddington ([01:13:53]):
+No problem. This says Extraction Report, Apple iPhone. Do you recognize that?
+Ian Whiffin ([01:14:02]):
+Yes, I didn't create it. I recognize the report.
+Mr. Reddington ([01:14:04]):
+Okay. So that is a Cellebrite report of the extraction of Lindsay's phone, correct?
+Ian Whiffin ([01:14:11]):
+May I touch?
+Mr. Reddington ([01:14:12]):
+Yeah. You can look at whatever you want. Yeah, of course.
+Ian Whiffin ([01:14:15]):
+Yes, this is a report generated by Physical Analyzer, a Cellebrite tool of the device.
+Mr. Reddington ([01:14:22]):
+Okay. Now, if you look at the report, for example, just randomly on page, let's say 90, bottom line. It says web history. I just grabbed that random. January 24th, '23, correct?
+Ian Whiffin ([01:14:41]):
+Yes.
+Mr. Reddington ([01:14:41]):
+And then you go to the right and it says Lindsay's iPhone mobile library?
+Ian Whiffin ([01:14:46]):
+Yes.
+Mr. Reddington ([01:14:47]):
+Okay. And then it has the time that it was recorded, right?
+Ian Whiffin ([01:14:51]):
+Yes.
+Mr. Reddington ([01:14:52]):
+And what time would that be on that date, which is January 24th?
+Ian Whiffin ([01:14:56]):
+It would be 9:35 local time in the morning.
+Mr. Reddington ([01:15:01]):
+So if you jump ahead to January 25, 2023, let's say, is that 7:00 in the morning?
+Ian Whiffin ([01:15:13]):
+Yes.
+Mr. Reddington ([01:15:15]):
+Okay. And that says. What is it measuring at 7:00 in the morning on January 25?
+Ian Whiffin ([01:15:20]):
+So this is for the hour of health data. So it's being aggregated and it shows that between 7:00 AM and 8:00 AM, there was 47 meters traveled.
+Mr. Reddington ([01:15:34]):
+Okay. And then it goes on and it talks about, again, 7:00 and some seconds, it talks about 134 distance travel?
+Ian Whiffin ([01:15:43]):
+Yes.
+Mr. Reddington ([01:15:45]):
+Okay. And for example, January 25 at 8:00 in the morning, it talks about distance travel, steps counted, and distance would be 47 meters or feet?
+Ian Whiffin ([01:15:56]):
+Yes. Meters.
+Mr. Reddington ([01:15:59]):
+Okay. So is that information that is coming off of the cell phone, the Apple Watch or what?
+Ian Whiffin ([01:16:07]):
+That's coming from the watch and the phone and being displayed of one amount of information.
+Mr. Reddington ([01:16:13]):
+It's coming from the watch, right?
+Ian Whiffin ([01:16:17]):
+The way that the data's presented, that it's coming from the watch or the phone.
+Mr. Reddington ([01:16:20]):
+Okay. And the data's coming from Cellebrite, right?
+Ian Whiffin ([01:16:23]):
+Correct.
+Mr. Reddington ([01:16:24]):
+And Cellebrite is God's gift to cell phone searches, right?
+Ian Whiffin ([01:16:29]):
+I think so.
+Mr. Reddington ([01:16:30]):
+I mean, you work for them and you're also a guy that created all of this stuff for them pretty much, right?
+Ian Whiffin ([01:16:35]):
+I've created some other tools, yes.
+Mr. Reddington ([01:16:37]):
+Okay. If I tell you, sir, that January 25 at 8:00 in the morning, Lindsay Clancy was in a coma, laying in a bed with tubes coming out of her body and certainly not wearing her Apple Watch. How did that happen?
+Ian Whiffin ([01:16:53]):
+Based purely on the report there, I'd suggest the data came from the phone rather than the watch.
+Mr. Reddington ([01:17:00]):
+I just told you about the watch. Did you ever look at this watch?
+Ian Whiffin ([01:17:04]):
+No, we can't actually pull data directly from the watch. We pull it from the phone.
+Mr. Reddington ([01:17:08]):
+How do you look at a watch?
+Ian Whiffin ([01:17:10]):
+We extract the data from the phone, which is synchronized from the watch to the phone.
+Mr. Reddington ([01:17:14]):
+Okay. So I'm handing you, is that an Apple Watch?
+Ian Whiffin ([01:17:18]):
+It appears to be, yes.
+Mr. Reddington ([01:17:19]):
+Okay. And if I suggest to you that this was found a number of days later in Lindsay's bedroom in a drawer that the police never seized, have you ever seen this before?
+Ian Whiffin ([01:17:31]):
+I've never seen this before, no.
+Mr. Reddington ([01:17:35]):
+How long have you been working on this case with the government?
+Ian Whiffin ([01:17:38]):
+I started looking at this case in November last year.
+Mr. Reddington ([01:17:44]):
+Okay. Thank you. That's all we have, Judge.
+Judge William Sullivan ([01:17:52]):
+All right. Redirect?
+Jennifer Sprague ([01:17:54]):
+Thank you. Sir, from the documents that defense counsel just showed you, the activity on January 25th, was it your testimony that it could have been from the watch or the phone?
+Ian Whiffin ([01:18:05]):
+It could have been either device.
+Jennifer Sprague ([01:18:06]):
+But what he showed you, did that have enough data on it to tell you specifically whether it was from the watch or the phone?
+Ian Whiffin ([01:18:13]):
+No, I'd need to take a look at the database itself and see where that information came from.
+Jennifer Sprague ([01:18:19]):
+And you were saying that you cannot pull data from the watch itself. Is that correct?
+Ian Whiffin ([01:18:26]):
+Correct. We don't extract the memory from the watch itself. We extract data from the phone, which is synchronized to the watch. So we ultimately get the watch data from the phone.
+Jennifer Sprague ([01:18:38]):
+And why is it that you don't pull it from the watch itself?
+Ian Whiffin ([01:18:44]):
+Apple's proprietary connections, the encryption that they use on the device complicates extraction. And essentially, considering we get everything from the watch via the phone, it's just additional work required to pull data from the watch, which would just be a duplicate of what we already have.
+Jennifer Sprague ([01:19:07]):
+And you said that the watch syncs itself to the phone, relaying all data that it's collecting to the phone, correct?
+Ian Whiffin ([01:19:14]):
+Correct.
+Jennifer Sprague ([01:19:15]):
+And Lindsay's watch was synced to Lindsay's phone, correct?
+Ian Whiffin ([01:19:19]):
+It was.
+Jennifer Sprague ([01:19:21]):
+And if you were able to look at the data from the dates defense counsel mentioned from the extraction itself, you would be able to tell whether the January 25th data was coming from the watch or the phone, correct?
+Ian Whiffin ([01:19:32]):
+I would, yes.
+Jennifer Sprague ([01:19:33]):
+But you can't from what he showed you, correct?
+Ian Whiffin ([01:19:35]):
+From the printout, no. I'd need the actual data.
+Jennifer Sprague ([01:19:38]):
+And if on January 25th, the police have the watch, excuse me, the phone and they're bringing it to an evidence room and then they're bringing it to storage room, is that going to show steps and distance traveled?
+Ian Whiffin ([01:19:51]):
+Yeah. While the phone is turned on, it will consistently record steps walked regardless of who's carrying it. It will consistently record flights climbed regardless of who's carrying it.
+Jennifer Sprague ([01:20:03]):
+And so if the watch is turned off in a drawer somewhere, the phone would be what's relaying ... Or, not relaying, but the phone would be what's recording the distance traveled and the steps taken, not the watch, correct?
+Ian Whiffin ([01:20:19]):
+That's the presumption. Yeah. If the watch is turned off, it's not doing anything. Any data would be from the phone.
+Jennifer Sprague ([01:20:26]):
+And earlier, defense counsel just put in some exhibits of your indexes for all the data that you looked at for the phone and the computers, correct?
+Ian Whiffin ([01:20:38]):
+Correct.
+Jennifer Sprague ([01:20:39]):
+And those indexes, do they contain everything that was on the phone and everything that was on each computer that could be pulled from the phone or the computer?
+Ian Whiffin ([01:20:52]):
+No, they were focused reports or focused searches. So from my reports, they were focused to essentially the internet history on those devices. The large Cellebrite report, again, I don't know who created that. I don't know what options were selected by that user, but there will be data on the device, which is not covered in that report by virtue of that's how decoding works.
+Jennifer Sprague ([01:21:17]):
+And on the defense counsel asked you about the flights climbed and how the last reading was at 5:38 PM, correct?
+Ian Whiffin ([01:21:24]):
+Correct.
+Jennifer Sprague ([01:21:25]):
+The last incoming phone call that you registered on your charts was the 6:09 PM phone call from Patrick to Lindsay that she did not answer, correct?
+Ian Whiffin ([01:21:35]):
+Correct.
+Jennifer Sprague ([01:21:36]):
+From 5:38 PM to 6:09 PM, were there any other flights climbed showing from either the watch or the phone?
+Ian Whiffin ([01:21:45]):
+Don't believe there was, no.
+Jennifer Sprague ([01:21:47]):
+And Your Honor, we'd move to submit the full extraction as the next exhibit. It's being copied now, so we just put a disk envelope in its place.
+Mr. Reddington ([01:21:55]):
+No objection.
+Judge William Sullivan ([01:21:56]):
+All right. That may be admitted.
+Mr. Reddington ([01:21:59]):
+If I may, Your Honor. So you make reference to 5:38 for her question that there's no flights climbed or recorded or anything up until 6:00, right? You just answered that question?
+Ian Whiffin ([01:22:07]):
+Correct.
+Mr. Reddington ([01:22:08]):
+That's because the phone was either dead, off. We already went through that. She could have been walking all over the house, the yard, anywhere, right?
+Ian Whiffin ([01:22:16]):
+Yeah. The phone did not detect anything. I don't know why the phone didn't detect anything, whether it was set-
+Mr. Reddington ([01:22:23]):
+So your answer is you don't know ... I don't mean to be rude. Your answer is you don't know why, right?
+Ian Whiffin ([01:22:28]):
+Exactly. I don't know why it wouldn't record.
+Mr. Reddington ([01:22:30]):
+Okay. And you did not report at all on the steps and distances, did you?
+Ian Whiffin ([01:22:34]):
+I didn't, no.
+Mr. Reddington ([01:22:35]):
+Okay. Thank you.
+Judge William Sullivan ([01:22:37]):
+Anything on that, Commonwealth?
+Jennifer Sprague ([01:22:38]):
+No.
+Judge William Sullivan ([01:22:38]):
+All right. Thank you, sir. You may step down. Thank you.
+Ian Whiffin ([01:22:40]):
+Thank you.
+Jennifer Sprague ([01:22:40]):
+Commonwealth rests.
+Judge William Sullivan ([01:22:40]):
+All right.
+Jennifer Sprague ([01:22:54]):
+Oh, I'm sorry, Your Honor. There are some exhibits. My mistake. I believe they're by agreement.
+Mr. Reddington ([01:22:58]):
+Yeah, they're by agreement.
+Judge William Sullivan ([01:23:00]):
+All right.
+Jennifer Sprague ([01:23:01]):
+And then we would rest.
+Judge William Sullivan ([01:23:01]):
+All right.
+Jennifer Sprague ([01:23:03]):
+We have the Tewksbury Hospital records, two discs.
+Speaker 4 ([01:23:10]):
+272A, B.
+Jennifer Sprague ([01:23:13]):
+Mass General Institute of Health Professions transcript.
+Speaker 4 ([01:23:20]):
+Exhibit 273.
+Jennifer Sprague ([01:23:26]):
+The PF transcript.
+Judge William Sullivan ([01:23:30]):
+What was that?
+Jennifer Sprague ([01:23:30]):
+The PF transcript.
+Speaker 4 ([01:23:30]):
+274.
+Jennifer Sprague ([01:23:44]):
+And then employment records from Mass General Hospital.
+Speaker 4 ([01:23:44]):
+Exhibit 275.
+Jennifer Sprague ([01:23:45]):
+We rest.
+Judge William Sullivan ([01:23:55]):
+All right. And with that the Commonwealth rests. All right. All right. So members of the jury, as you heard from Ms. Sprague, the Commonwealth has rested. All right. So at this point, I've got to address some matters with the attorneys. So I'm going to ... There's another one of those stops. We're going to take a stop at this point. Have you go back to the jury room and address a few things with the attorneys and then we'll bring you right back in. Okay?
+Madam Clerk ([01:24:23]):
+All rise, please. Jurors exiting.
+([01:24:23])Jurors are exited the courtroom. This court's in session. Please be seated.
+Mr. Reddington ([01:25:08]):
+Before we do the motion for required finding, Your Honor, is this a good time to take the morning break?
+Judge William Sullivan ([01:25:12]):
+Do you want to take a short break.
+Mr. Reddington ([01:25:15]):
+I'm looking something up, that's all. I apologize.
+Judge William Sullivan ([01:25:16]):
+All right. So the court will be in a short recess and we'll come back without the jury. We'll address the motion and then we'll kind of go from there.
+Mr. Reddington ([01:25:25]):
+Great. Thank you.
+Judge William Sullivan ([01:25:25]):
+Okay, thank you.
+Madam Clerk ([01:25:25]):
+Court all rise.
+Speaker 5 ([01:25:25]):
+... purpose of the recording. [inaudible 01:25:40] Commonwealth versus Lindsay Clancy. All parties are present excluding the jury.
+Judge William Sullivan ([01:25:43]):
+All right. So the Commonwealth having rested, Mr. Reddington, does the Defendant have a motion?
+Mr. Reddington ([01:25:50]):
+Yes, Your Honor. I passed it up to the court. I don't know if you have it in front of you. It's basically a rule 25. It doesn't have any memoranda with it, but I would argue, and I would cite to the court the case that was decided of Commonwealth versus Brunette-Selveira. It's B-R-U-N-E-T-T-E hyphen S-E-L-V-E-I-R-A. It was decided towards the end of May of '26 by the Appeals Court in Massachusetts. It was a case out of the Boston Municipal Court where defendant was charged with assault and battery on a police officer. The evidence was presented that the defendant was acting erratically and that there was an awful lot of evidence that indicated that, brought out on cross-examination from witnesses that the defendant was suffering from some type of a mental illness. Based on that evidence being presented, the government rested their case just as they've done here.
+([01:26:47])My suggestion to the court is that the evidence that's been presented on this case against Ms. Clancy, I would suggest, does not rise to the level under rule 25 where even if you take the Latimore standard and determine that the evidence would be decided in the light most favorable to the government at this stage of the case, I think the Brunette-Selveira case places, as they describe it, a negative obligation to prove a negative as part of their case in chief on the government. I suggest to Your Honor that the evidence that has been presented in this case is overwhelming, that this young woman was clearly and unequivocally suffering from a mental disease or defect, that it was occupying her waking hours, her life, that she considered all of her avenues. She attempted to go to these healthcare providers, using the term loosely, that she went to these people. She had medication after medication after medication. She was obviously acting, I suggest to the court, in a state that was observed by witnesses that in fact that she was suffering from mental disease, a defect, and then ultimately this horrific incident.
+([01:27:58])So under that Brunette- Selveira case, there's no evidence I suggest from the government that would rebut the fact that there is evidence of lack of criminal responsibility. So under Brunette-Selveira and the cases that were cited in that opinion, respectfully, I would suggest that a required finding of not guilty should be entered on the case. I also would argue to the court that I think that under the Brunette-Selveira standard and the evidence that Your Honor has before you, that the matter should be reduced down, if you will, from premeditated malice of forethought, cruelty and atrocity to second degree. I'm not arguing at this stage Commonwealth versus Gray or any of its progeny as to manslaughter, but I think the court certainly in its wise exercise of discretion has the ability and the right to reduce the charge to a second degree murder or enter a required finding.
+Judge William Sullivan ([01:28:50]):
+All right, counsel, thank you. Commonwealth.
+Jennifer Sprague ([01:28:53]):
+Thank you, Your Honor. The case that defense counsel cited, there was a presentation of the Commonwealth's evidence. Commonwealth rested. Defense called an expert who said that the defendant was not criminally responsible. And the Commonwealth relied on a cross-examination of that witness and did not call any further witnesses. So the motion was filed for a required finding at the close of all of the evidence, which is what's required under Commonwealth versus Lawson, which Brunette Silva cites and is still good law. An SJC case, 475 Mass 806 from 2016 in which the court says that a motion for required finding of not guilty by reason of lack of criminal responsibility may only be brought at the close of all of the evidence, not at the close of the Commonwealth's case. In this case, as you're aware, defense plans on presenting experts who testified that the defendant was not criminally responsible and then the Commonwealth will have a rebuttal case with their own experts. So I think the time and place for the motion would be at the close of all of the evidence and not now.
+Judge William Sullivan ([01:29:53]):
+All right. Well, I had an opportunity to take a look at Brunette-Selveira. So based on that and based on the standard as described that I have to apply at this point, I'm going to deny the defendant's motion.
+Mr. Reddington ([01:30:10]):
+I don't think I have to object, but I will.
+Judge William Sullivan ([01:30:14]):
+All right. As we say, duly noted.
+Mr. Reddington ([01:30:15]):
+Yes. Thank you, Judge. Your Honor, could I inquire? Emily Thorndike is here and has been here. I'm just wondering, is the government ready for us to do the voir dire to see if she can testify? Because she is self-employed, she has patients and has canceled them day after day. I'm just inquiring if we're ready to go on that.
+Judge William Sullivan ([01:30:33]):
+All right. So the question I think that we had put this over was in large part because of the records from McLean's. Do we know if those are in?
+Speaker 6 ([01:30:42]):
+I've been inquiring, Madam Clerk, if there's been any status from the clerk's office and I think they haven't received anything. We have a call over to McLean's. They've acknowledged the receipt. They were waiting for a call back from somebody at the office. They though that the records were produced on Friday, but clearly that wasn't the case. So we have a call. We're waiting for a return call. I've provided people in my office the Madam Clerk's email address to get it expedited as quick as possible. So we are working to try to resolve the issue and the hospital has acknowledged they received the subpoena. We just don't have a response yet. And I would just also remind that we discussed this last week and talked about doing this tomorrow on Tuesday in order to get those records and have time for everybody to get them and review them so that a proper examination of the witness can be done in a voir dire.
+Judge William Sullivan ([01:31:35]):
+Well, let's do this. Let's do this before we start going at each other. We'll see if the records come in. All right? The records come in, then we got to determine how long it takes for people to review it and get ready. So if we can do that this afternoon, great.
+Mr. Reddington ([01:31:53]):
+Okay. All right.
+Judge William Sullivan ([01:31:53]):
+If we can't, I'll hear from the parties as to why we can't. We may have to do it tomorrow. But if we can do that that today, I do understand that that witness has been here a number of days, but at this point it's a question of the records coming in, which really is out of both parties' hands. So if the records are in, the parties can get ready, we'll do that voir dire. If not, we may have to do that tomorrow.
+Speaker 6 ([01:32:20]):
+Thank you.
+Judge William Sullivan ([01:32:20]):
+Okay. All right. Ms. Reddington?
+Mr. Reddington ([01:32:21]):
+Ready. Ready for the jury, Judge.
+Judge William Sullivan ([01:32:24]):
+Yeah.
+Judge William Sullivan ([01:34:32]):
+All rise please [inaudible 01:34:03]. The court is back in session. You may be seated.
+Speaker 7 ([01:34:42]):
+Your Honor, the purpose of the record, I may return back to the trial. Commonwealth versus Lindsay Clancy [inaudible 01:34:43].
+Judge William Sullivan ([01:34:42]):
+All right. So, members of the jury, as I indicated before, the Commonwealth is rested. All right. So, at this time, I'm going to inquire of the defendant if she intends or wishes to call any witnesses at this time. Mr. Reddington?
+Mr. Reddington ([01:34:55]):
+Yes, Your Honor. Thank you. Thank you. Yeah, please. Faith, yeah, I believe she's right outside.
+Speaker 8 ([01:36:05]):
+Good afternoon. Please raise your right hand. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending [inaudible 01:36:09].
+Judge William Sullivan ([01:36:07]):
+Hi, good afternoon.
+Margaret Hamp ([01:36:07]):
+Good afternoon, Your Honor.
+Judge William Sullivan ([01:36:19]):
+I'm going to ask you if you could keep your voice up and speak into that microphone.
+Margaret Hamp ([01:36:23]):
+Okay.
+Judge William Sullivan ([01:36:24]):
+Okay? Thank you. Thank you.
+Mr. Reddington ([01:36:26]):
+I was going to say the same thing, so make sure that all the jurors way down here even can hear you. Okay?
+Margaret Hamp ([01:36:30]):
+Okay.
+Mr. Reddington ([01:36:31]):
+Tell us your name.
+Margaret Hamp ([01:36:32]):
+It's Margaret Hamp.
+Mr. Reddington ([01:36:33]):
+And what town do you live in?
+Margaret Hamp ([01:36:36]):
+Stoneham.
+Mr. Reddington ([01:36:37]):
+And what do you do for work?
+Margaret Hamp ([01:36:39]):
+I'm a labor and delivery nurse.
+Mr. Reddington ([01:36:40]):
+Where?
+Margaret Hamp ([01:36:41]):
+At Mass General.
+Mr. Reddington ([01:36:42]):
+And how long have you been working as a labor and delivery nurse?
+Margaret Hamp ([01:36:47]):
+I started on our labor and delivery unit in 2012.
+Mr. Reddington ([01:36:54]):
+Okay. So, about what, 24 years?
+Margaret Hamp ([01:36:55]):
+No. I started for the obstetrics department in 2006.
+Mr. Reddington ([01:36:59]):
+Okay. So, 20 years you've been working at the Mass General between obstetrics and labor and delivery, right?
+Margaret Hamp ([01:37:05]):
+Correct.
+Mr. Reddington ([01:37:06]):
+Do you know Lindsay?
+Margaret Hamp ([01:37:08]):
+I do.
+Mr. Reddington ([01:37:09]):
+How do you know her?
+Margaret Hamp ([01:37:10]):
+I was working on the labor floor when Lindsay first started with us.
+Mr. Reddington ([01:37:14]):
+So, this would be the labor and delivery floor and she started as a nurse, correct?
+Margaret Hamp ([01:37:19]):
+Correct.
+Mr. Reddington ([01:37:20]):
+Who had already been working there?
+Margaret Hamp ([01:37:22]):
+Correct.
+Mr. Reddington ([01:37:23]):
+And she was about what, 24 years old?
+Margaret Hamp ([01:37:26]):
+Roughly.
+Mr. Reddington ([01:37:27]):
+And came in as a young woman as a nurse, correct?
+Margaret Hamp ([01:37:30]):
+Correct.
+Mr. Reddington ([01:37:30]):
+Can you tell us to your observation. Let me ask you this. How many years did you work with her?
+Margaret Hamp ([01:37:36]):
+She started, I believe, in 2015 and I worked until 2002 when she went out with Callan.
+Mr. Reddington ([01:37:45]):
+About seven years or thereabouts. Did you know that she had a child, Cora?
+Margaret Hamp ([01:37:52]):
+Yes.
+Mr. Reddington ([01:37:53]):
+And did you know that she had a child, Dawson?
+Margaret Hamp ([01:37:55]):
+Yes.
+Mr. Reddington ([01:37:56]):
+And ultimately that she had a child, a baby that was born very, very recently, Callan. In the years that you were working with her, were you able to observe. I mean, did she like being a nurse? Did she want to work or was she a good nurse? What's your opinion?
+Margaret Hamp ([01:38:17]):
+Lindsay loved being a nurse. She was really good at being a nurse. She was compassionate. She was kind. She was a patient advocate. She was the type of nurse that you wanted taking care of you or your loved one when you walked onto our unit.
+Mr. Reddington ([01:38:37]):
+Did you observe, for example, that on occasion when she would be involved with the delivery of a baby, that she would become emotional?
+Margaret Hamp ([01:38:47]):
+Lindsay was often emotional during birth of complete strangers. She would cry and she would just say that was so beautiful. You could just tell that she really loved being in that setting.
+Mr. Reddington ([01:39:04]):
+Over those years, right up until the time of Callan being born, fair to say that you stayed friendly with her?
+Margaret Hamp ([01:39:11]):
+Yes.
+Mr. Reddington ([01:39:12]):
+And you're still friendly with her?
+Margaret Hamp ([01:39:14]):
+Yes.
+Mr. Reddington ([01:39:16]):
+Can you tell us, did you observe during the time you worked with her, how she emoted or felt about her children? All three of them?
+Margaret Hamp ([01:39:28]):
+Yes.
+Mr. Reddington ([01:39:29]):
+Tell us anything that you recall.
+Margaret Hamp ([01:39:31]):
+So, Lindsay and I worked the night shift together and often on the night shift you get to have an opportunity to really get to know your coworkers and celebrate things that are happening in their lives or support them with things that are not going so well. Lindsay asked a lot of questions of her coworkers about parenting. Simple things is she would pull the nursing staff about monogram lunchboxes right down to sleeping habits, what questions do you ask a daycare provider to make sure that you're in the right place? She was often asking her coworkers childcare parenting tips.
+Mr. Reddington ([01:40:15]):
+When she had Callan after Callan was born in the late spring of 22, did you see her after the birth of Callan?
+Margaret Hamp ([01:40:28]):
+I did not see her after the birth of Callan.
+Mr. Reddington ([01:40:30]):
+Were you aware that she had taken a leave of absence from Mass General?
+Margaret Hamp ([01:40:34]):
+Yes.
+Mr. Reddington ([01:40:34]):
+Did you stay in touch with her by phone or text?
+Margaret Hamp ([01:40:38]):
+I briefly kept in touch through text. After Callan was born, I reached out to her and I asked her for her address and how she was doing so I could send her a gift. And then a few months later she circled back to me to thank me for the gift that I had sent her.
+Mr. Reddington ([01:40:57]):
+Do you recall an incident on one occasion where she was looking or monitoring one of the children and the child was crying and you observed what happened after that?
+Margaret Hamp ([01:41:08]):
+Yes.
+Mr. Reddington ([01:41:08]):
+Tell us about that.
+Margaret Hamp ([01:41:11]):
+Lindsay often checked in on her kids while they were sleeping at night. Again, we worked the night shift and she had the ability to look at her phone and see what Cora or Callan were doing in their cribs. And she shared that with a lot of us. There was one particular night that Cora was crying. She was probably about six months old and Lindsay never let Cora cry. She wasn't at that point in parenting. And she was very communicative about that. And Cora was crying on the monitor. It was the middle of the night. And maybe after 10 minutes she started to call Pat and he wasn't answering.
+([01:41:59])And she got really worried that one Cora was crying, but now Pat wasn't answering his phone. So, in the middle of the night, she called the police to do a wellness check on her family.
+Mr. Reddington ([01:42:13]):
+Okay. And while you were working the night shift, is that pretty much what you both worked together all those years?
+Margaret Hamp ([01:42:18]):
+Yes.
+Mr. Reddington ([01:42:19]):
+Would that be through the pandemic as well?
+Margaret Hamp ([01:42:21]):
+Yes.
+Mr. Reddington ([01:42:22]):
+Would you say that that was quite a bonding experience being in labor delivery, up close and personal with patients during the pandemic at night?
+Margaret Hamp ([01:42:30]):
+Of course, it was a very challenging time as a healthcare provider.
+Mr. Reddington ([01:42:35]):
+Thank you very much. You can inquire.
+Judge William Sullivan ([01:42:36]):
+All right. Commonwealth?
+Jennifer Sprague ([01:42:45]):
+Good morning.
+Margaret Hamp ([01:42:46]):
+Morning.
+Jennifer Sprague ([01:42:47]):
+So, the incident that you just told us about where Ms. Clancy was watching the monitor overnight, you were aware that the police responded and everything was fine, right?
+Margaret Hamp ([01:43:00]):
+Yes.
+Jennifer Sprague ([01:43:01]):
+And you worked with her through 2022 when she went out with leave on Callan?
+Margaret Hamp ([01:43:10]):
+Correct.
+Jennifer Sprague ([01:43:11]):
+And you never visited their house after Callan was born, did you?
+Margaret Hamp ([01:43:16]):
+No.
+Jennifer Sprague ([01:43:17]):
+You don't know what was going on in her life, did you?
+Margaret Hamp ([01:43:19]):
+No.
+Jennifer Sprague ([01:43:20]):
+And she didn't share any of her struggles with you via text or in any other capacity, did she?
+Margaret Hamp ([01:43:25]):
+No.
+Jennifer Sprague ([01:43:27]):
+And as a labor and delivery nurse and having been trained in labor and delivery, and you said you worked obstetrics before, correct?
+Margaret Hamp ([01:43:33]):
+Correct.
+Jennifer Sprague ([01:43:35]):
+Is it fair to say that you often have patients that come to you in both those areas that have some mental illness or are on psychiatric medications, right?
+Margaret Hamp ([01:43:45]):
+Sometimes.
+Jennifer Sprague ([01:43:46]):
+And working labor and delivery, you have some training on how to handle patients that are on certain types of medications, right?
+Margaret Hamp ([01:43:56]):
+Limited training, yes.
+Jennifer Sprague ([01:43:58]):
+Well, it affects how you're going to go through a birth plan or do a delivery if a person is on some sort of long-term medication, right?
+Judge William Sullivan ([01:44:06]):
+Right.
+Jennifer Sprague ([01:44:07]):
+And so, you're aware that Zoloft is something that's deemed safe for pregnant moms and breastfeeding moms?
+Margaret Hamp ([01:44:12]):
+Yes.
+Jennifer Sprague ([01:44:12]):
+And you've had patients that have dealt with bipolar issues before?
+Margaret Hamp ([01:44:16]):
+Yes.
+Jennifer Sprague ([01:44:16]):
+And that they have to remain medication compliant in order to manage those things, right?
+Margaret Hamp ([01:44:21]):
+Yes.
+Jennifer Sprague ([01:44:22]):
+Thank you. Nothing further.
+Judge William Sullivan ([01:44:22]):
+All right Mr. Reddington.
+Mr. Reddington ([01:44:24]):
+So, your experience dealing with patients that have birthed a child as the district attorney asked and are on Zoloft and expressing issues of being a parent, were you aware of any incidents where Lindsay was with you and a woman did in fact express concern that she wanted to hurt herself or her child?
+Margaret Hamp ([01:44:49]):
+There was a particular patient that Lindsay was on staff when this patient arrived. It was a patient that arrived to the unit that had plans to harm herself while she was pregnant. And we had a conversation. Lindsay was brand new. It was the summer that she had just started. And we had a conversation about mental health in pregnancy and postpartum. And I asked her if she had ever heard of the Andrea Yates case and she hadn't. And I explained that to her and she cried. And she said, how could a mother hurt her children?
+Mr. Reddington ([01:45:36]):
+Thank you. All set.
+Margaret Hamp ([01:45:36]):
+Thank you.
+Jennifer Sprague ([01:45:36]):
+Commonwealth?
+Margaret Hamp ([01:45:36]):
+No.
+Judge William Sullivan ([01:45:36]):
+All right. You may sit down. Thank you. Counsel?
+Mr. Reddington ([01:45:57]):
+Yes, Your Honor. Ms. Ozga, please. Ozga O-Z- G-A.
+Allison Ozga ([01:46:45]):
+Thank you.
+Speaker 8 ([01:46:45]):
+Do you solemnly swear that the testimony of the evidence you shall give to the court [inaudible 01:46:46]. Thank you. You may take a seat.
+Speaker 9 ([01:46:53]):
+Just watch your step.
+Judge William Sullivan ([01:46:56]):
+Hey, good afternoon.
+Allison Ozga ([01:46:57]):
+Hi, good afternoon.
+Judge William Sullivan ([01:46:58]):
+I'm going to ask you to speak into that microphone. Keep your voice up. Okay?
+Allison Ozga ([01:47:01]):
+Okay.
+Judge William Sullivan ([01:47:02]):
+Great. Thank you. Counsel.
+Mr. Reddington ([01:47:04]):
+Thank you, Judge. Afternoon. Tell us your name please and spell it.
+Allison Ozga ([01:47:07]):
+It's Allison Ozga, A-L-L-I-S-O-N. Last name is O-Z-G-A.
+Mr. Reddington ([01:47:16]):
+You know Lindsay?
+Allison Ozga ([01:47:17]):
+I do.
+Mr. Reddington ([01:47:17]):
+Tell the jury how you know her.
+‍
+Allison Ozga ([01:47:19]):
+Lindsay's my sister.
+Mr. Reddington ([01:47:20]):
+And can you tell us, are you close to Lindsay? Do you live near each other? Do you socialize? What type of relationship have you had with her?
+Allison Ozga ([01:47:32]):
+We're very close. We have not lived in the same state for about 10 years now, but we do communicate and I do think we're very close.
+Mr. Reddington ([01:47:42]):
+And do you text with her on a regular basis?
+Allison Ozga ([01:47:44]):
+Yes.
+Mr. Reddington ([01:47:45]):
+And you talk on the phone, do you?
+Allison Ozga ([01:47:46]):
+Occasionally.
+Mr. Reddington ([01:47:48]):
+Directing your attention to the fall of... Well, actually heading into Thanksgiving, Christmas of 2022, do you remember that timeframe?
+Allison Ozga ([01:47:58]):
+Yes.
+Mr. Reddington ([01:47:59]):
+And did you have occasion to see your sister during that period of time?
+Allison Ozga ([01:48:04]):
+Yes.
+Mr. Reddington ([01:48:05]):
+And let's direct our attention to, let's say, Thanksgiving 2022. Had you noticed any change in Lindsay's personality or any observation of how she appeared to you?
+Allison Ozga ([01:48:21]):
+I will say on Thanksgiving in particular is when the first time I saw her in person after quite some time. I had known she had not been doing well via text message communication that we had. I think on Thanksgiving, her mood did not look good. Her energy, she didn't seem very energized. It definitely seemed off from how I've seen her in the past.
+Mr. Reddington ([01:48:45]):
+And were you aware that that carried through from November into December, around the holiday season, if you had stayed in touch with her?
+Allison Ozga ([01:48:56]):
+Yes.
+Mr. Reddington ([01:48:57]):
+And can you tell us what you observed about her around the holiday season as it related to her, from your observations and your texting and your communications with Lindsay? How did she appear to you at that point?
+Allison Ozga ([01:49:11]):
+The beginning of December, it seemed like she very much decompensated. I do remember her saying at one point at the beginning of December, something along the lines of, "I'm in a really tough spot." And knowing what she had shared with me previously about how her mental health had been struggling, I had this gut feeling that something was off and that she was really struggling. And I asked her if she was safe.
+Mr. Reddington ([01:49:37]):
+What did she say?
+Allison Ozga ([01:49:38]):
+She said yes at that point.
+Mr. Reddington ([01:49:40]):
+And you knew her husband, Pat?
+Allison Ozga ([01:49:41]):
+Yes.
+Mr. Reddington ([01:49:42]):
+And you knew the kids?
+Allison Ozga ([01:49:43]):
+Yes.
+Mr. Reddington ([01:49:43]):
+Obviously. Do you recall around Christmas itself and perhaps a little bit thereafter that you spoke with her and that she indicated basically, "I'm not doing okay?"
+Allison Ozga ([01:49:54]):
+Yes.
+Mr. Reddington ([01:49:56]):
+Can you tell the jury what you observed about her demeanor or her symptomology when you said she was decompensating around that time? What were they symptoms in your mind of?
+Allison Ozga ([01:50:08]):
+Based on communication with Lindsay and I started communicating with Pat directly at that time. She was reporting her mood was worsening as she described as depression. She was having more suicidal thoughts. Insomnia continued to be an issue. She was really not feeling like herself.
+Mr. Reddington ([01:50:32]):
+And did you know that during that period of time where she was telling you about the suicidal thoughts and the issue of depression, that she was seeing doctors?
+Allison Ozga ([01:50:40]):
+Yes.
+Mr. Reddington ([01:50:41]):
+And what did she tell you about seeing the doctors and if she was on any medication? And if so, what effect did they have on her?
+Allison Ozga ([01:50:48]):
+So, the first thing she said about the doctors was back in October when she said that she saw a doctor for Zoloft and had a very awful reaction to that Zoloft. Would
+Mr. Reddington ([01:50:58]):
+That be Dr. Tufts?
+Allison Ozga ([01:51:00]):
+I don't believe she shared that specific with me.
+Mr. Reddington ([01:51:03]):
+Did she share the name? Okay.
+Allison Ozga ([01:51:06]):
+Yeah. And then I think throughout our communication over the couple months of October to December, she did share with me that she was going to doctors, she was getting different prescriptions, kind of all the things that they were trying and different treatments they were looking at.
+Mr. Reddington ([01:51:18]):
+And do you recall when you were talking with her about her symptoms towards the end of December that she had, in your words, decompensated significantly and stated to you that she felt nothing and that she was scared, things of that nature?
+Allison Ozga ([01:51:35]):
+Yes.
+Mr. Reddington ([01:51:35]):
+What else did she tell you, if you recall?
+Allison Ozga ([01:51:40]):
+At the end of December, so I think it was more along the same of that she is really not feeling well. Her mood is down. She's feeling numb. She's feeling hopeless. I believe at the very end of the month, she told me she had had suicidal ideation every day for a month.
+Mr. Reddington ([01:51:55]):
+Do you recall towards the end of the month around New Year's that she voluntarily admitted herself somewhere?
+Allison Ozga ([01:52:02]):
+Yes.
+Mr. Reddington ([01:52:02]):
+Do you know where she admitted herself?
+Allison Ozga ([01:52:05]):
+McLean Hospital.
+Mr. Reddington ([01:52:07]):
+And while she was at McLean Hospital, ultimately, do you know how she got out of McLean Hospital?
+Allison Ozga ([01:52:15]):
+It was my understanding that she was weaning off of some medication that she was on and then was eventually discharged five days later.
+Mr. Reddington ([01:52:26]):
+Now, did you see her or talk to her after she left McLean Hospital trying to wean herself off of whatever medication it was? Because you don't know what the medication was, right?
+Allison Ozga ([01:52:35]):
+I believe it was Seroquel.
+Mr. Reddington ([01:52:41]):
+Seroquel. Okay. Did she tell you anything to the effect that when she got out of the hospital that she felt as though this was a step in the right direction? Did she seem as though she was trying to be positive about her life?
+Allison Ozga ([01:52:52]):
+Yes.
+Mr. Reddington ([01:52:53]):
+And tell us about that. Because up until this point you had observed her decompensating and having these symptoms and suicidal ideation and depression and feeling nothing and scary. When she got out of McLean, what did she appear to you and what did she say to you?
+Allison Ozga ([01:53:11]):
+I believe she said she felt that that was a good plan and that she was starting to feel better.
+Mr. Reddington ([01:53:17]):
+So, was your sister, in your opinion, granted she's your sister and you're biased obviously, but was she a complainer?
+Allison Ozga ([01:53:24]):
+No.
+Mr. Reddington ([01:53:25]):
+And obviously, she didn't share with you in detail her doctors and medicines and things of that nature. Is that fair?
+Allison Ozga ([01:53:33]):
+No.
+Mr. Reddington ([01:53:33]):
+But you were aware of the struggles and the hurt that she was going through?
+Allison Ozga ([01:53:37]):
+Yes.
+Mr. Reddington ([01:53:40]):
+And then through the month of January, did you have occasion to see her or were you... because you still live in different states?
+Allison Ozga ([01:53:47]):
+Yes. Yes, I did have an occasion to see her in January.
+Mr. Reddington ([01:53:52]):
+When?
+Allison Ozga ([01:53:53]):
+We went to Cora's birthday party.
+Mr. Reddington ([01:53:56]):
+And that was at the trampoline park?
+Allison Ozga ([01:53:57]):
+Yes.
+Mr. Reddington ([01:53:58]):
+How did she appear at that?
+Allison Ozga ([01:53:59]):
+I think she looked like she was going through the motions of putting together a birthday party for her daughter, but she looked tired. She looked like she was still struggling.
+Mr. Reddington ([01:54:14]):
+So, there was a difference in your observation of what you had known your sister to have as a personality?
+Allison Ozga ([01:54:21]):
+Yes.
+Mr. Reddington ([01:54:23]):
+And then of course, the horrible day. Were you aware or did somebody call you and tell you that the children had been killed?
+Allison Ozga ([01:54:32]):
+Yes.
+Mr. Reddington ([01:54:32]):
+One of them still survived and ultimately passed?
+Allison Ozga ([01:54:35]):
+Yes.
+Mr. Reddington ([01:54:37]):
+And do you recall who told you that?
+Allison Ozga ([01:54:39]):
+Yes.
+Mr. Reddington ([01:54:39]):
+Who was that?
+Allison Ozga ([01:54:40]):
+My mother.
+Mr. Reddington ([01:54:41]):
+And as a result of getting the call from your mother, what did you do?
+Allison Ozga ([01:54:45]):
+I jumped in the car, packed a bag, and I sped up to South Shore Hospital, which is where I was told she was.
+Mr. Reddington ([01:54:50]):
+Did you see her in South Shore Hospital?
+Allison Ozga ([01:54:52]):
+No.
+Mr. Reddington ([01:54:54]):
+Did you know that she was then transferred to another hospital after South Shore?
+Allison Ozga ([01:54:58]):
+Yes.
+Mr. Reddington ([01:54:59]):
+And what hospital was that?
+Allison Ozga ([01:55:00]):
+I believe it was Brigham and Women's.
+Mr. Reddington ([01:55:02]):
+And were you able to visit her in Brigham and Women's?
+Allison Ozga ([01:55:05]):
+Yes.
+Mr. Reddington ([01:55:06]):
+And did it take some time before they would allow you to visit with her?
+Allison Ozga ([01:55:09]):
+Yes.
+Mr. Reddington ([01:55:10]):
+How long, if you know?
+Allison Ozga ([01:55:16]):
+I think it was approximately two weeks.
+Mr. Reddington ([01:55:17]):
+Okay. And then you were able to see her pretty much on a regular basis?
+Allison Ozga ([01:55:21]):
+Yes.
+Mr. Reddington ([01:55:21]):
+And where does your mother and father live?
+Allison Ozga ([01:55:24]):
+In Connecticut.
+Mr. Reddington ([01:55:25]):
+And are you close to them?
+Allison Ozga ([01:55:27]):
+Yes.
+Mr. Reddington ([01:55:28]):
+Can you tell the jury from the time of this incident in January 24th of 2023 up until now, 2026, where has your mother and father been living?
+Allison Ozga ([01:55:42]):
+My parents have been spending the majority of their time up here in Massachusetts.
+Mr. Reddington ([01:55:47]):
+Why?
+Allison Ozga ([01:55:48]):
+So, that they could visit Lindsay as much as possible.
+Mr. Reddington ([01:55:50]):
+Almost on a daily basis?
+Allison Ozga ([01:55:52]):
+Yes.
+Mr. Reddington ([01:55:52]):
+Was that in a bed and breakfast or a bed and bath or was it a hotel or where were they staying?
+Allison Ozga ([01:55:57]):
+They've been living out of hotels.
+Mr. Reddington ([01:55:59]):
+Thank you. That's all. You can inquire.
+Allison Ozga ([01:56:02]):
+Commonwealth.
+Jennifer Sprague ([01:56:03]):
+Thank you. Good afternoon. Now, when Lindsay was at McLean Hospital and she was discharged, did she tell you that she asked to be discharged early to go to Cora's birthday party?
+Allison Ozga ([01:56:20]):
+I can't recall.
+Jennifer Sprague ([01:56:22]):
+And do you recall speaking to the police on January 25th, just a day after this all happened back in 2023?
+Allison Ozga ([01:56:30]):
+Yes.
+Jennifer Sprague ([01:56:31]):
+And do you recall telling them that you saw Lindsay two weeks prior to the 24th, roughly around the birthday party time, and that she seemed okay?
+Allison Ozga ([01:56:42]):
+Yes.
+Jennifer Sprague ([01:56:44]):
+Do you recall telling the police that you spoke to her in phone calls many times after she was discharged to McLean and that her tone of voice in those calls seemed better?
+Allison Ozga ([01:56:56]):
+I did not speak to her on the phone. Most of our communication was via text.
+Jennifer Sprague ([01:57:00]):
+So, you don't recall saying that to the police, that the tone of Lindsay's voice in our phone conversations was better the last couple weeks since she had been released from the hospital?
+Allison Ozga ([01:57:09]):
+I believe when I said that, I meant her tone via her text messages.
+Jennifer Sprague ([01:57:14]):
+And so, her tone in her text messages was better?
+Allison Ozga ([01:57:17]):
+A bit.
+Jennifer Sprague ([01:57:19]):
+And do you recall telling police that you spoke to Lindsay on Thursday, January 19th, 2023, and she seemed okay?
+Allison Ozga ([01:57:26]):
+Yes.
+Jennifer Sprague ([01:57:29]):
+And that was a phone call, correct?
+Allison Ozga ([01:57:30]):
+That was text message.
+Jennifer Sprague ([01:57:31]):
+Text message. Okay. So, when you were saying spoke to the police, you were referring to text messages?
+Allison Ozga ([01:57:36]):
+Correct.
+Jennifer Sprague ([01:57:37]):
+And so, in that text message, she seemed fine?
+Allison Ozga ([01:57:40]):
+She seemed okay.
+Jennifer Sprague ([01:57:41]):
+So, she had just been released from McLean Hospital at the beginning of January, and all of your communications after the birthday party were text messaged. Is that correct?
+Mr. Reddington ([01:57:52]):
+I think the dates were-
+Allison Ozga ([01:57:54]):
+I believe so, yes.
+Jennifer Sprague ([01:57:58]):
+Just so we make sure we have the date correct, after she was discharged from McLean in January of 2023 up until January 24th, 2023, all of your communications were via text?
+Allison Ozga ([01:58:08]):
+Yes.
+Jennifer Sprague ([01:58:09]):
+Did you visit her at her home that month?
+Allison Ozga ([01:58:13]):
+No.
+Jennifer Sprague ([01:58:14]):
+You didn't reach out or call her at all, correct?
+Allison Ozga ([01:58:18]):
+I reached out and called, yes. I did not visit her at her home, no.
+Jennifer Sprague ([01:58:21]):
+When you called, did she respond? Did she answer the phone?
+Allison Ozga ([01:58:25]):
+I'm sorry, let me backtrack. I can't recall whether I made a phone call. I can recall the majority of our communication between January 1st and January 24th was via text message.
+Jennifer Sprague ([01:58:37]):
+Okay. So, there could have been some phone calls?
+Allison Ozga ([01:58:40]):
+I cannot recall any phone calls.
+Jennifer Sprague ([01:58:47]):
+You are a licensed social worker, correct?
+Allison Ozga ([01:58:49]):
+Correct.
+Jennifer Sprague ([01:58:50]):
+And you're a mandated reporter, correct?
+Allison Ozga ([01:58:51]):
+Yes.
+Jennifer Sprague ([01:58:52]):
+And at any point in time between January 1st, 2023 and January 24th, 2023, did you have enough concern about the safety of the kids or the safety of your sister to file a report as a mandated reporter?
+Judge William Sullivan ([01:59:07]):
+No.
+Jennifer Sprague ([01:59:09]):
+Thank you.
+Judge William Sullivan ([01:59:09]):
+Ms. Reddington?
+Mr. Reddington ([01:59:09]):
+That's all I have, Judge. Thank you.
+Judge William Sullivan ([01:59:12]):
+Okay, thank you. You may step down.
+Mr. Reddington ([01:59:23]):
+Your Honor, I would call Paula Musgrove, please.
+Speaker 8 ([02:00:24]):
+Good afternoon. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury [inaudible 02:00:26]? Thank you. You may now seat.
+Judge William Sullivan ([02:00:28]):
+All right, good afternoon.
+Paula Musgrove ([02:00:28]):
+Good afternoon, Your Honor.
+Judge William Sullivan ([02:00:28]):
+Okay. I'm going to remind you, like I remind everybody else, just speak into the microphone. If you could keep your voice up please.
+Paula Musgrove ([02:00:31]):
+Okay.
+Judge William Sullivan ([02:00:31]):
+Thank you.
+Mr. Reddington ([02:00:33]):
+Afternoon. Tell us your name and spell your name please.
+Paula Musgrove ([02:00:36]):
+My name is Paula Musgrove. P-A-U-L-A M-U-S-G-R-O-V-E.
+Mr. Reddington ([02:00:43]):
+And this is Musgrove, fair to say that you are Lindsay's mother?
+Paula Musgrove ([02:00:47]):
+Yes, I am Lindsay's mother.
+Mr. Reddington ([02:00:49]):
+And your husband is here as well in the blue shirt, correct?
+Paula Musgrove ([02:00:52]):
+Yes.
+Mr. Reddington ([02:00:53]):
+You've been here for every day for the trial, is that correct?
+Paula Musgrove ([02:00:56]):
+Yes.
+Mr. Reddington ([02:00:56]):
+I just have a few questions for you. Obviously, tell us about Lindsay when she was a kid. Was she a good kid, good student, that type of thing?
+Paula Musgrove ([02:01:09]):
+She was a very good kid and an excellent student. Very excellent student all through school, through high school, college. Yes, excellent.
+Mr. Reddington ([02:01:19]):
+Ever been in trouble, law enforcement or schools or discipline or anything?
+Paula Musgrove ([02:01:23]):
+No.
+Mr. Reddington ([02:01:25]):
+Were you aware of her husband, Pat?
+Paula Musgrove ([02:01:27]):
+Yes.
+Mr. Reddington ([02:01:28]):
+And obviously, you knew when they got married and when they were dating and things of that nature, right?
+Paula Musgrove ([02:01:33]):
+Yes.
+Mr. Reddington ([02:01:34]):
+Went to the wedding, obviously.
+Paula Musgrove ([02:01:35]):
+Yes.
+Mr. Reddington ([02:01:36]):
+Fair to say that you were close to your daughter and Pat?
+Paula Musgrove ([02:01:39]):
+Yes.
+Mr. Reddington ([02:01:40]):
+And you knew obviously the grandchildren?
+Paula Musgrove ([02:01:43]):
+Yes.
+Mr. Reddington ([02:01:47]):
+Tell the jury how you interacted and felt about your grandchildren.
+Paula Musgrove ([02:01:54]):
+I loved my grandchildren with all my heart. You never know what it's like to love a grandchild until you become a grandmother. And it was the most beautiful thing. I loved them with all my heart.
+Mr. Reddington ([02:02:12]):
+Now, did you have occasion to see how Lindsay reacted and treated her kids as a mother?
+Paula Musgrove ([02:02:20]):
+Yes.
+Mr. Reddington ([02:02:21]):
+And granted that you're her mother, so you're obviously biased. Tell the jury what observations you made of Lindsay as a mother through the years after Cora was born, and then Dawson, and then of course Baby Callan.
+Paula Musgrove ([02:02:35]):
+Lindsay was a very loving mother. She was dedicated to her children. She was a fun mother. She was always doing things for her kids. She always wanted to be a mother, have many children. And I felt it was the best thing that ever happened to her. And she would do anything for her children She was just a loving mother.
+Mr. Reddington ([02:03:04]):
+In 2022, Callan was born, is that correct?
+Paula Musgrove ([02:03:09]):
+Yes.
+Mr. Reddington ([02:03:10]):
+Did you stay in touch with Lindsay and Pat during that period of time, the spring into the summer of 2022?
+Paula Musgrove ([02:03:16]):
+Yes.
+Mr. Reddington ([02:03:17]):
+And how often would you see them or talk to them or what would you do? You go to cookouts or have parties or how would you go to us?
+Paula Musgrove ([02:03:27]):
+Myself and my husband would travel from Connecticut to Duxbury at least two or three times a month, as well as them coming to Connecticut to visit us.
+Mr. Reddington ([02:03:37]):
+And would you agree that in the summer, for example, of 2022, that Lindsay and Pat were active with the kids and were pretty happy?
+Paula Musgrove ([02:03:47]):
+Very happy, yes.
+Mr. Reddington ([02:03:49]):
+Did you observe in the summer of '22, any changes at that point in her personality and the way she was acting with her friends in society?
+Paula Musgrove ([02:04:01]):
+In the summer, no.
+Mr. Reddington ([02:04:00]):
+... In society?
+Paula Musgrove ([02:04:01]):
+In the summer? No.
+Mr. Reddington ([02:04:03]):
+And they were having a fairly good summer?
+Paula Musgrove ([02:04:07]):
+Yes.
+Mr. Reddington ([02:04:08]):
+Did you notice at some point a change in Lindsay's demeanor?
+Paula Musgrove ([02:04:12]):
+Yes.
+Mr. Reddington ([02:04:13]):
+Tell the jury when that was.
+Paula Musgrove ([02:04:16]):
+It was sometime probably around the second week of October.
+Mr. Reddington ([02:04:20]):
+What happened that you noticed?
+Paula Musgrove ([02:04:22]):
+I noticed that she had become very anxious. She told me she was anxious about going back to work, because Callan was having trouble taking a bottle and she didn't feel right about leaving him.
+Mr. Reddington ([02:04:40]):
+And as a result of that, did she tell you that she was going to put off going back to work?
+Paula Musgrove ([02:04:45]):
+Yes. She told me she was applying for an extension.
+Mr. Reddington ([02:04:47]):
+Now, did you know at that point that she was going through any issues involving depression or anxiety or having any suicidal ideation or anything like that?
+Paula Musgrove ([02:04:58]):
+At that point, no.
+Mr. Reddington ([02:04:59]):
+At what point, if any, did you become aware that your daughter was suffering from this symptomology?
+Paula Musgrove ([02:05:06]):
+In late October.
+Mr. Reddington ([02:05:08]):
+And how did that come about?
+Paula Musgrove ([02:05:10]):
+She sent me a text message.
+Mr. Reddington ([02:05:12]):
+And do you recall when that was?
+Paula Musgrove ([02:05:14]):
+Yes, that was on October 20th.
+Mr. Reddington ([02:05:17]):
+Now, Your Honor, the government has introduced into evidence the entire of the phone dumps, if you will, and I think they put it on a disc and it's probably thousands of pages, but I do have the text thread that deals with that timeframe in October. I'd like to offer that so that it's apparent what I'm referring to rather than having to search through thousands of pages of a disc.
+Jennifer Sprague ([02:05:55]):
+No objection.
+Mr. Reddington ([02:05:55]):
+Okay.
+Judge William Sullivan ([02:05:57]):
+They may be admitted.
+Mr. Reddington ([02:05:58]):
+So approaching [inaudible 02:06:00] there you go.
+Madam Clerk ([02:06:08]):
+Exhibit 276.
+Mr. Reddington ([02:06:08]):
+Now, the text message that you're referring to, would that be on October 20th of 2022?
+Paula Musgrove ([02:06:19]):
+Yes.
+Mr. Reddington ([02:06:20]):
+And do you have that on your phone right now?
+Paula Musgrove ([02:06:22]):
+I do.
+Mr. Reddington ([02:06:23]):
+Can you just pull that up for us?
+Paula Musgrove ([02:06:24]):
+I can. Just give me a moment. Okay, I have it.
+Judge William Sullivan ([02:06:29]):
+Counsel, do you have a copy maybe that she could look at?
+Mr. Reddington ([02:06:32]):
+Oh, I have a copy.
+Judge William Sullivan ([02:06:33]):
+Yeah. That might be easier for the witness.
+Mr. Reddington ([02:06:41]):
+So I'm going to approach you with this board and ask if this is a copy of the text that you're referring to.
+Paula Musgrove ([02:06:54]):
+Yes, it is.
+Mr. Reddington ([02:06:55]):
+Would you read that for the jury?
+Paula Musgrove ([02:06:58]):
+"Mom, will you please come up and stay with me for a bit? I'm really sick. Something is wrong. I had horrible insomnia all night and I just don't know how I'm going to get through the day. I started taking the medicine my doctor prescribed for anxiety and I think it has made things worse. It's just really scary and I don't want to be alone."
+Mr. Reddington ([02:07:24]):
+You want to add this?
+Jennifer Sprague ([02:07:24]):
+Objection. It's already in evidence.
+Judge William Sullivan ([02:07:30]):
+Why don't we mark it for identification? Is that text within the-
+Mr. Reddington ([02:07:36]):
+I'd rather have it in the board.
+Judge William Sullivan ([02:07:37]):
+Well, I know you would, but we already have the-
+Mr. Reddington ([02:07:40]):
+They want a little training. Can I just start with the border label on the other board?
+Judge William Sullivan ([02:07:43]):
+No. We're going to mark that for identification. The text that has been referred and read to is within Exhibit 276, which was just offered.
+Mr. Reddington ([02:07:56]):
+I'm sorry? Which is what?
+Judge William Sullivan ([02:07:58]):
+I think it was within Exhibit 276, which was within that thread that you just offered.
+Mr. Reddington ([02:08:03]):
+Okay. So I will then... That would be 276. So that will be over here. As a result of receiving that text, did you then come up to-
+Judge William Sullivan ([02:08:12]):
+Hold on a second.
+Jennifer Sprague ([02:08:14]):
+Exhibit W for identification.
+Judge William Sullivan ([02:08:16]):
+Yeah. Okay.
+Mr. Reddington ([02:08:17]):
+Oh, thank you.
+Judge William Sullivan ([02:08:17]):
+All right. Thank you.
+Mr. Reddington ([02:08:19]):
+So as a result of that, did you come up to Duxbury?
+Paula Musgrove ([02:08:26]):
+Yes. Same day.
+Mr. Reddington ([02:08:27]):
+And tell us about that. What happened that day at the end of October?
+Paula Musgrove ([02:08:32]):
+Lindsay had been... I believe she went to the emergency room that day and she had come home. She was feeling a bit better. She told me that she couldn't sleep. She was very anxious and she was afraid.
+Mr. Reddington ([02:08:49]):
+And how long did you stay with her?
+Paula Musgrove ([02:08:53]):
+At that point?
+Mr. Reddington ([02:08:54]):
+Yes.
+Paula Musgrove ([02:08:56]):
+I believe at that point I stayed for about a week.
+Mr. Reddington ([02:09:01]):
+And was your husband with you?
+Paula Musgrove ([02:09:03]):
+He came later. He didn't come directly with me then because he was still working, so he came later.
+Mr. Reddington ([02:09:08]):
+I never asked. What did you do for work?
+Paula Musgrove ([02:09:11]):
+I worked for Weight Watchers.
+Mr. Reddington ([02:09:12]):
+And you're retired?
+Paula Musgrove ([02:09:14]):
+Yes.
+Mr. Reddington ([02:09:15]):
+How about your husband? Is he working now?
+Paula Musgrove ([02:09:17]):
+He recently retired.
+Mr. Reddington ([02:09:19]):
+And what was the nature of his work?
+Paula Musgrove ([02:09:21]):
+He was in photography.
+Mr. Reddington ([02:09:23]):
+What kind of photography?
+Paula Musgrove ([02:09:24]):
+School picture photography.
+Mr. Reddington ([02:09:26]):
+For yearbooks and things like that?
+Paula Musgrove ([02:09:28]):
+Yeah, and school pictures and you had your kids' pictures taken.
+Mr. Reddington ([02:09:31]):
+And he just recently retired?
+Paula Musgrove ([02:09:32]):
+Yes.
+Mr. Reddington ([02:09:34]):
+Is it fair to say that during the month of October into November into the holidays in December, that you and your husband would stay with Lindsay and the kids?
+Paula Musgrove ([02:09:43]):
+Yes. I stayed more than my husband, because he needed to go back home to work.
+Mr. Reddington ([02:09:48]):
+Sure. While you were staying with Lindsay, can you tell us your opinion as to her condition? Was it decompensating? Was she getting better as time went on through November and December into the holidays?
+Paula Musgrove ([02:10:01]):
+Through November into December, it was not getting better, and into the holidays.
+Mr. Reddington ([02:10:07]):
+And you knew she was on medication at that point?
+Paula Musgrove ([02:10:09]):
+Yes.
+Mr. Reddington ([02:10:10]):
+You knew she was seeing doctors at that point?
+Paula Musgrove ([02:10:12]):
+Yes.
+Mr. Reddington ([02:10:13]):
+So tell us, is there an incident that came to your mind that you recall that occurred on one evening that indicated to you how seriously she was suffering?
+Paula Musgrove ([02:10:27]):
+There were many. One particular evening that was disturbing to me was that, I mean, she was afraid. She was afraid to be alone. And she actually asked if she could sleep with me.
+Mr. Reddington ([02:10:42]):
+When was that?
+Paula Musgrove ([02:10:43]):
+That was late November, early December.
+Mr. Reddington ([02:10:47]):
+And did she indeed sleep with you on that occasion?
+Paula Musgrove ([02:10:50]):
+She did.
+Mr. Reddington ([02:10:53]):
+Continuing on through the holidays, did you guys get together for the holidays, Christmas or Thanksgiving, if you recall?
+Paula Musgrove ([02:11:01]):
+Yes. I was down there probably most of December through Christmas Eve. And then I left on Christmas Eve to come home to see my other daughter and her family. And then Lindsay actually came to my house later the day on Christmas Day.
+Mr. Reddington ([02:11:20]):
+Was she with Pat?
+Paula Musgrove ([02:11:21]):
+Yes.
+Mr. Reddington ([02:11:21]):
+Okay. And the kids?
+Paula Musgrove ([02:11:21]):
+Yes.
+Mr. Reddington ([02:11:28]):
+During that period of time, did you make further observation as time went into January? Oh, back it up. At some point she voluntarily went into McLean Hospital?
+Paula Musgrove ([02:11:39]):
+Yes.
+Mr. Reddington ([02:11:39]):
+You knew that?
+Paula Musgrove ([02:11:41]):
+Yes.
+Mr. Reddington ([02:11:42]):
+How did you know that?
+Paula Musgrove ([02:11:43]):
+I was there.
+Mr. Reddington ([02:11:44]):
+What do you mean you were there?
+Paula Musgrove ([02:11:45]):
+I was at Lindsay's house, staying with them.
+Mr. Reddington ([02:11:48]):
+You take care of the kids?
+Paula Musgrove ([02:11:49]):
+Yes.
+Mr. Reddington ([02:11:50]):
+And it's fair to say that Pat's parents, mom and dad also stepped up taking care of the kids, helping out during this period of time?
+Paula Musgrove ([02:12:00]):
+They were there, I guess, when we weren't there. I didn't really see them, but...
+Mr. Reddington ([02:12:04]):
+Right, because you guys would be different timeframes.
+Paula Musgrove ([02:12:06]):
+Right.
+Mr. Reddington ([02:12:07]):
+But you all were pulling together as a family. Is that correct?
+Paula Musgrove ([02:12:09]):
+Right.
+Mr. Reddington ([02:12:12]):
+January, leading up to January 24th, do you recall, and can you tell the jurors what, if any, observations you made of Lindsay and her condition?
+Paula Musgrove ([02:12:26]):
+Lindsay had lost a lot of weight. She had become, during this whole time, paranoid about different things that really weren't logical to become paranoid about. She would mention that this wasn't her mind. She would say to me, "This isn't me. I've never been like this before." And I would agree, because she wasn't. She was attempting to go through the motions of her day, take care of the kids as best she could. She didn't want to drive. So at times when Pat didn't go pick the kids up at school, I would drive Lindsay to pick the kids up at school, because she was afraid to drive.
+Mr. Reddington ([02:13:15]):
+Did she express to you concern in this timeframe that people at the school, teachers and other people would be able to know what she was thinking and would think that she wasn't a good mother because she was sick?
+Paula Musgrove ([02:13:31]):
+Yes. She said, "The school knows something is going on because I'm not driving my car. They see that I'm not driving my car to pick the kids up."
+Mr. Reddington ([02:13:42]):
+Do you recall the end of January that she made a statement to you about the medication in her opinion, what it was doing to her mind?
+Paula Musgrove ([02:13:50]):
+Yes.
+Mr. Reddington ([02:13:50]):
+What did she say?
+Paula Musgrove ([02:13:52]):
+She said that she couldn't remember anything. The medication was pretty much just destroying her mind and it wasn't her. She said, "This isn't me. I just want to feel better and enjoy my kids again."
+Mr. Reddington ([02:14:05]):
+Now, I know that this is difficult. In December of 2022, do you recall a time that you were in the kitchen with Lindsay and Patrick and she made a statement about her state of mind to her husband, Pat, and you were there?
+Paula Musgrove ([02:14:26]):
+Yes.
+Mr. Reddington ([02:14:27]):
+I know it's difficult. Just tell us what you remember.
+Paula Musgrove ([02:14:32]):
+I remember her being very nervous. I remember her saying, "I just have to tell you guys something." And then she told us.
+Mr. Reddington ([02:14:41]):
+What did she tell you?
+Paula Musgrove ([02:14:42]):
+She told us that she had thoughts of harming the children.
+Mr. Reddington ([02:14:48]):
+Thank you very much.
+Judge William Sullivan ([02:14:52]):
+Why don't we take the afternoon recess at this time? We'll come back for cross-examination. All right. So ma'am, you can step down.
+Paula Musgrove ([02:15:01]):
+Thank you.
+Judge William Sullivan ([02:15:09]):
+All right. So members of the jury, we're going to take the break at this time. We expect to have you back about two o'clock, okay?
+Speaker 10 ([02:15:17]):
+All rise, please, jurors exiting.
+Judge William Sullivan ([02:15:52]):
+All right. Counsel, can I see you just for a second, just kind of time-wise?
+Speaker 11 ([02:16:20]):
+This court is back in session. You may be seated.
+Madam Clerk ([02:16:22]):
+Your Honor, for the purpose of the record, we returned back to the trial, Commonwealth versus Lindsay Clancy. All parties are present, excluding the jury.
+Judge William Sullivan ([02:17:59]):
+All right. Before we proceed with this, can I just see counsel briefly, sidebar? All right. So are we ready for the jury?
+Madam Clerk ([02:17:59]):
+Yes. [inaudible 02:16:49] Thank you.
+Judge William Sullivan ([02:17:59]):
+Do you have some water up there?
+Madam Clerk ([02:17:59]):
+I do. Thank you.
+Speaker 10 ([02:17:59]):
+Court, all rise, please. Jurors are here. Court is back in session. You may be seated.
+Madam Clerk ([02:17:59]):
+Your Honor, for purpose of the record, we returned back to the trial of Commonwealth versus Lindsay Clancy. All parties are present, including the defendant and including the 18 jurors.
+Judge William Sullivan ([02:18:01]):
+All right. Thank you, Madam Clerk. Theresa Brigg?
+Jennifer Sprague ([02:18:03]):
+Thank you, Your Honor. Good afternoon.
+Paula Musgrove ([02:18:05]):
+Afternoon.
+Jennifer Sprague ([02:18:07]):
+Now, you testified in direct examination about the statements that Lindsay made in December about having thoughts about harming the children. When in December was that?
+Paula Musgrove ([02:18:21]):
+I don't exactly remember. I would say early to mid-December, probably maybe earlier rather than mid-December, but I don't exactly remember when.
+Jennifer Sprague ([02:18:33]):
+Okay. And when she made the statement that she had thoughts of harming the children, did either you or Patrick ask her what she meant by that?
+Paula Musgrove ([02:18:42]):
+I believe I remember Pat asking her if she felt like she couldn't be alone with the children and she said no.
+Jennifer Sprague ([02:18:49]):
+And after she made those statements, did you have any thoughts about committing her?
+Paula Musgrove ([02:18:57]):
+No.
+Jennifer Sprague ([02:18:58]):
+Did you have any thoughts about having her come stay with you in Connecticut away from the children?
+Paula Musgrove ([02:19:04]):
+No.
+Jennifer Sprague ([02:19:05]):
+Were you concerned for the children's safety at that point in time?
+Paula Musgrove ([02:19:10]):
+No, because I was there.
+Jennifer Sprague ([02:19:12]):
+Okay. And you were asked about some text messages in October, and those are now in exhibit, I believe, Exhibit 276. And so, you talked about the texts on the 20th when she asked you to come and she was having a hard time, right?
+Paula Musgrove ([02:19:37]):
+Yes.
+Jennifer Sprague ([02:19:38]):
+A day before, on October 19th, she had sent you a different text message stating, "Hi, mom. Would you ever consider coming to stay with us for a couple of days at a time to help with childcare so I can work? And talking to a therapist and doing a lot of thinking, I actually think going to work will help me, but it's really hard with nurses' hours to get childcare that we need. I'm thinking if you could come Sunday to mid-Tuesday, it'd be really helpful. Just a thought." Do you remember that text the day before?
+Paula Musgrove ([02:20:08]):
+Yes.
+Jennifer Sprague ([02:20:09]):
+And did you agree in a text message, you said, "I can come and help out."?
+Paula Musgrove ([02:20:14]):
+Yes.
+Jennifer Sprague ([02:20:16]):
+And then after that, that next day is when she said she was having trouble and wanted you there then, and you went that day, correct? But you said you were there for about a week, but there's a text on October 20th that's not included in this exhibit, where on October 24th at 2:36 PM, you send a text to her saying, "How are things today?" And she responds, "Good." Do you remember that?
+Paula Musgrove ([02:20:49]):
+Yes.
+Jennifer Sprague ([02:20:50]):
+So were you already home at that point when you were asking her how she was doing on the 24th?
+Paula Musgrove ([02:20:55]):
+I must have been home at that point. I honestly don't remember. I was back and forth so many times. So the timeframes are really jumbled in my head as far as how long I stayed any particular time.
+Jennifer Sprague ([02:21:07]):
+And so, you would go and help out when they asked you to, and then you would go home when things were calmed down a little bit. Is that right?
+Paula Musgrove ([02:21:16]):
+Not exactly right.
+Jennifer Sprague ([02:21:18]):
+No? And she did say on the 24th that she was doing good that day, correct?
+Paula Musgrove ([02:21:23]):
+I don't recall, but if that's what the text says, then...
+Jennifer Sprague ([02:21:26]):
+Here you go, if you can look at it.
+Paula Musgrove ([02:21:41]):
+Yeah. Okay.
+Jennifer Sprague ([02:21:42]):
+So she told you at that point on the 24th she was doing good, right?
+Paula Musgrove ([02:21:47]):
+Correct.
+Jennifer Sprague ([02:21:48]):
+You could have this page marked as the next exhibit.
+Judge William Sullivan ([02:21:51]):
+Any objection?
+Mr. Reddington ([02:21:52]):
+No.
+Judge William Sullivan ([02:21:52]):
+It may be marked.
+Madam Clerk ([02:21:52]):
+277.
+Jennifer Sprague ([02:22:05]):
+Now, you talked about a time when you went to her home and you actually ended up sleeping with her because she didn't want to be alone. Was that that October 20th visit?
+Paula Musgrove ([02:22:15]):
+No.
+Jennifer Sprague ([02:22:15]):
+When was that?
+Paula Musgrove ([02:22:17]):
+That was, I can't exactly remember when. I'm going to say probably sometime in November, the latter part of November, maybe the early part of December.
+Jennifer Sprague ([02:22:26]):
+Did she tell you why she was afraid to be alone?
+Paula Musgrove ([02:22:29]):
+She just said she was afraid to be alone. And one reason, I believe she said she didn't know if she was going to be able to sleep, but mainly she was afraid to be alone.
+Jennifer Sprague ([02:22:39]):
+And at that point in time, did you consider having her committed to a psychiatric facility?
+Paula Musgrove ([02:22:45]):
+No.
+Jennifer Sprague ([02:22:46]):
+And did you feel the need to call 911 that day or get her immediate assistance?
+Paula Musgrove ([02:22:51]):
+No.
+Jennifer Sprague ([02:22:55]):
+You mentioned that in January you saw her and she lost weight. She seemed paranoid about things, seemed to be going through the motions of each day. How often did you see her in January of 2023?
+Paula Musgrove ([02:23:11]):
+In January, I can't exactly remember how many times I saw her. We were again back and forth.
+Jennifer Sprague ([02:23:18]):
+So we have Exhibit 238, which have all of your text messages with Lindsay in January of 2023, and I just want to go through some of them with you. So on page 17 of the exhibit, this is on January 4th, 2023, so the day before she was discharged from McLean. And she sent you a text stating, "Think I'm coming home tomorrow evening! I talked to the doctor and I made up a follow-up appointment with my other psychiatrist besides Rebecca for Friday morning. So she said she'd be okay with me leaving Thursday around five." Do you remember getting those messages?
+Paula Musgrove ([02:24:13]):
+Yep.
+Jennifer Sprague ([02:24:14]):
+‍
+And were you staying at the home helping out with the kids at that point?
+Paula Musgrove ([02:24:16]):
+Yes.
+Jennifer Sprague ([02:24:19]):
+And did you go to Cora's birthday party on the 7th?
+Paula Musgrove ([02:24:23]):
+I did not. It was a children's party. I stayed home with Callan.
+Jennifer Sprague ([02:24:26]):
+Okay. And do you recall when you went home?
+Paula Musgrove ([02:24:39]):
+I don't recall.
+Jennifer Sprague ([02:24:42]):
+Looking at page 28, and there's a text from Lindsay on January 7th, 2023 at 7:02 PM to you where it says, "Make it home okay?" And you said, "Yep." Does that make sense that you would've gone home on the 7th after the birthday party?
+Paula Musgrove ([02:24:59]):
+Yes. If that's what the text says, yes.
+Jennifer Sprague ([02:25:05]):
+And then on page 29, we have text messages between yourself and Lindsay on January 8th where you ask how things are going today and she says, "Good, going to the science museum." You say, "Great, that will be fun. Sleep good last night?" And she said, "I actually did, with less Ativan, so that was good." Do you remember that?
+Paula Musgrove ([02:25:31]):
+I don't recall the exact text messages.
+Jennifer Sprague ([02:25:34]):
+Do you recall her texting you about going to the science museum?
+Paula Musgrove ([02:25:39]):
+No, I don't recall that.
+Jennifer Sprague ([02:25:41]):
+Do you think looking at them might help?
+Paula Musgrove ([02:25:43]):
+Sure.
+Jennifer Sprague ([02:25:43]):
+I'm going to show you page 29 and then page 30. Does that refresh your memory?
+Paula Musgrove ([02:26:16]):
+That's what the text says, yes.
+Jennifer Sprague ([02:26:17]):
+And then on page 34, you ask how the museum was today, and Lindsay sent you some photographs and said, "It was fun, the kids really liked it." Do you remember that?
+Paula Musgrove ([02:26:47]):
+I don't really recall the Museum of Science experience or texts, but if they're there in the text messages, then they were sent, yes.
+Jennifer Sprague ([02:26:55]):
+Okay. Then on page 39, this is January 10th. You say at 9:48 AM, "Good morning. How are you doing today?" And Lindsay responded, "Good, at the gym with the kids." You said, "Nice. Still sleeping good?" And she responded, "Pretty good. Yeah. Not perfect, but enough." And you said, "Are you feeling any better during the day?" And she said, "So far, a little bit. They said a week off the Seroquel should make more of a difference, so a couple more days till that, but I do think it's helping being off." And you responded, "Okay. A little at a time." Do you remember that conversation?
+Paula Musgrove ([02:27:38]):
+So I don't recall the exact conversation. I think I probably texted back and forth to Lindsay almost daily during that time, so I don't remember the specific text messages, but I would say if they're there, then that's what we sent back to each other.
+Jennifer Sprague ([02:27:54]):
+Okay. And then there were further text messages that day where you say, "How was your day?" Later on in the day. And she said, "It was good. Played with the kids a lot. Were able to go outside. Kingsbury Club and gymnastics kept them busy and me too." So do you remember her talking to you during that time about going to gymnastics and going to the Kingsbury Club and things like that with the children?
+Paula Musgrove ([02:28:29]):
+I don't remember the specific texts, but I do remember her doing things with the children. Yes.
+Jennifer Sprague ([02:28:44]):
+Then on January 11th, the following day, you sent a text, excuse me, "How are you feeling today?" And she responded with a photo of Callan drinking out of a Mary Lou's cup, saying, "We have another Mary Lou's fan." And you said, " Decaf, looks like he's enjoying it." And then later on you asked again, "How are you doing today?" And she said, "Hi, mom. Doing all right. Nothing new really. Just taking it day by day." You said, "Still feeling a little better?" And she said, "A little bit." You said, "Sleeping okay?" She said, "Not great last night, because Cora was up with a bellyache." Do you remember that?
+Paula Musgrove ([02:29:20]):
+So again, we texted so many times, daily, twice daily, maybe three times daily, so I can't say that I remember the specific texts. I do remember the picture of Callan with the Mary Lou cup, because that stands out in my mind. But the specific texts going back and forth, we just did it so often that I can't say I remember the specific texts you're reading back to me. But again, if they were there, then we sent them.
+Jennifer Sprague ([02:29:45]):
+Right. And do you remember Lindsay talking to you about Cora having stomach issues during the month of January?
+Paula Musgrove ([02:29:52]):
+Yes.
+Jennifer Sprague ([02:29:53]):
+And belly aches off and on?
+Paula Musgrove ([02:29:54]):
+Yes.
+Jennifer Sprague ([02:30:01]):
+And then January 13th, again, you're checking in with her. "Hi, Lindsay. How are you today?" She said, "Hi, mom. Pretty good today. How about you?" You asked about the little ones and she said, "All good. Went to the gym this morning, just hanging out, and now they have no school today." And then the following day, again, you're checking in. "Hi, Lindsay. How's your Saturday going?" She said, "Hi, mom. It's going well. Just hanging out. It's yucky here." So these are daily check-ins that you're doing, checking in on her, seeing if she's okay, seeing if she's feeling better, seeing if she's sleeping well, things like that, right?
+Paula Musgrove ([02:30:34]):
+Yes.
+Jennifer Sprague ([02:30:38]):
+You also asked her that day on the 14th, "Do you feel any different since being off the Seroquel?" She says, "Not as much as I was hoping. Going to talk to my psychiatrist about it on Monday." You say, "But some?" She says, "A little, but I still don't feel like you," but then she corrects it to me. And you ask her if she's going to be able to get outside with the kids today, and she said she's going to try." So similar conversations to that where you're talking about medication and how she's doing on the medication?
+Paula Musgrove ([02:31:11]):
+Yes, I did.
+Jennifer Sprague ([02:31:14]):
+Then the following day, on the 15th of January, you say, "Good morning. Is it a good morning for you today?" She says, "Good morning. It's pretty good going to an indoor waterpark." And she tells you that it's at the Cape Codder. Do you remember them going to the Cape Codder Water Park?
+Paula Musgrove ([02:31:30]):
+I do remember them going there, yes.
+Jennifer Sprague ([02:31:36]):
+And then on the following day on the 16th, you actually texted her, "How was the water park yesterday?" She said, "It was fun. Cora and Dawson enjoyed. Callan didn't know what to think of it. Couldn't get any pics because it was too hectic keeping track of them in the water and stuff. And it was busy, but it was a good time." Does that sound familiar, that they had a good time that day?
+Paula Musgrove ([02:31:55]):
+Yes.
+Jennifer Sprague ([02:31:56]):
+And you asked her that day if she had anything planned, and she said, "Pat took Cora skiing, so she was hanging with the boys." Do you remember that?
+Paula Musgrove ([02:32:04]):
+Not specifically. I don't remember that text.
+Jennifer Sprague ([02:32:06]):
+She, that same day, sent you some photographs of Dawson doing a drawing of a firefighter and Callan. Do you remember receiving those?
+Paula Musgrove ([02:32:15]):
+I do remember the pictures, yes.
+Jennifer Sprague ([02:32:26]):
+Then the following day, again, you're checking in every day, you say, "You're feeling better?" She says, "A little bit." You said, "Still taking the same medication?" She said, "Yes, about to have an appointment with her psychiatrist." You said, "Let me know how it goes." And she said, "Okay." And then she responds back after her appointment. "She recommended another antidepressant since my mood is still very low off the Seroquel." You asked her how she felt about it, and she told you she just wants to feel like herself again, but she's up for trying it. And she just wants to get back to who she was, right?
+Paula Musgrove ([02:32:57]):
+Correct.
+Jennifer Sprague ([02:33:00]):
+And she told you it was amitriptyline. Is that right? Do you remember that?
+Paula Musgrove ([02:33:04]):
+I don't remember the medication.
+Jennifer Sprague ([02:33:19]):
+Okay. Then on the 18th, January 18th, again, you're reaching out and she says," Hi, mom. I'm doing all right. How about you?" And you say you're good, you're thinking about visiting that weekend. And she says, "That sounds good." And you ask her about being able to get out and exercise. And she said she's been walking on the treadmill at the gym for exercise. And you asked her if she started a new medication and if she's feeling better, and she says, "Feel okay, just not great. I did start it two nights ago." You said, "Is that the one that takes a while to feel the effects?" She said, "Yep, weeks." And you said, "Is the okay that you're feeling now better than what you were feeling a few weeks ago?" And she said, "Yes." Do you remember that?
+Paula Musgrove ([02:34:03]):
+Again, I don't remember the specific text, just remember texting back and forth daily about how she's feeling, about what's different medication-wise. But I can't say I remember that specific text that you're reading me. But again, if they're there, then they were done by us.
+Jennifer Sprague ([02:34:20]):
+Right. And so, on the 19th of January, again, you're checking in and say, "How are you feeling today? Can you tell if anything is different with the new medication?" She says, "I'm feeling all right. Nothing new really yet, because it takes weeks to really work, but I'm okay." You asked if she's still sleeping well and she says, "Decently, and the kids get up a lot." So again, more of the same check-ins daily, seeing how she's doing, seeing how she's sleeping, right?
+Paula Musgrove ([02:34:47]):
+Correct.
+Jennifer Sprague ([02:35:05]):
+And then on the 20th, you reach out, "Is it pizza and movie night?" She says, "Just pizza and playing." And you tell her you're leaving at 9:00, bringing dessert for the kids. And she says, "Sounds great." So you're talking about your visit that weekend. Is that right?
+Paula Musgrove ([02:35:22]):
+Yes.
+Jennifer Sprague ([02:35:29]):
+And in these texts prior to the visit, you say that it's been a while since you've seen them. So it sounds like from these texts, you're checking in with her every day from January 7th, 2023, all the way up to your visit on January 21st, 2023, you're checking in with her. So you're at home in Connecticut from the 7th until the 21st?
+Paula Musgrove ([02:35:53]):
+Correct.
+Jennifer Sprague ([02:35:58]):
+And then on the 22nd, that Sunday, Lindsay, Pat and the older kids, they go to the Carney's house for that bonfire and get together. And you stayed home with Callan, right?
+Paula Musgrove ([02:36:08]):
+Correct.
+Jennifer Sprague ([02:36:13]):
+And then after they get home, you and your husband left. Is that correct?
+Paula Musgrove ([02:36:20]):
+Yes.
+Jennifer Sprague ([02:36:21]):
+And on the way home, you texted on January 22nd, 2023 at 7:55 PM, " Enjoyed seeing everyone this weekend. Nice to see you doing better." Is that correct?
+Paula Musgrove ([02:36:35]):
+If that's what that says, yes, that's correct. I don't exactly remember the text, but yes, if that's what it says, yes.
+Jennifer Sprague ([02:36:42]):
+So from your text, not saying she was doing great, but she was doing better than she was according to your text or appeared to be.
+Paula Musgrove ([02:36:52]):
+The text from me was meant to encourage her because I didn't think it did any good to discourage her. So the text was meant not necessarily what I actually observed that weekend, but it was meant to encourage her because I was encouraging her to do things with the kids to try to get back to normal. So it's not necessarily a representation of exactly what I observed that weekend.
+Jennifer Sprague ([02:37:19]):
+But that weekend, she was able to go to a friend's house with the older kids and Pat and spend a few hours there, correct?
+Paula Musgrove ([02:37:26]):
+Correct.
+Jennifer Sprague ([02:37:27]):
+And she was able to do activities and hang out with you and your husband. There's a photograph and evidence of the two of you sitting on the couch smiling and hanging out together. So you were able to interact with her, correct?
+Paula Musgrove ([02:37:40]):
+Correct. The photograph was taken by Cora because Cora wanted to use my phone and take her picture. So Lindsay and I were going to put a smile on our face and let Cora take a picture. Yes. But again, there was other observations I made that weekend, but I didn't think it was in Lindsay's best interest to discourage her or point out those because she was making every attempt to feel better and to do things to make herself feel better. So as a mother, I was encouraging her.
+Jennifer Sprague ([02:38:12]):
+Well, you didn't say, "I hope you feel better," or, "You're going to get there," or, "You're doing it." You actually said, "Nice to see you doing better," correct? That's what you wrote?
+Paula Musgrove ([02:38:20]):
+Those were my encouraging words, yes.
+Jennifer Sprague ([02:38:22]):
+And from January 7th up through January 22nd, Lindsay repeatedly told you she was doing okay. She was feeling a little bit better. Not completely better, not 100%, but she kept telling you, "I feel a little bit better. I feel a little bit better." You even asked her, "Is the better you're feeling now better than a few weeks ago?" And she said yes, correct?
+Paula Musgrove ([02:38:41]):
+That's correct, without my observation of her.
+Jennifer Sprague ([02:38:44]):
+And what she was responding to you in text, correct?
+Paula Musgrove ([02:38:46]):
+Correct.
+Jennifer Sprague ([02:39:01]):
+You also spoke to the police on January 25th, 2023. Do you remember that?
+Paula Musgrove ([02:39:07]):
+I do.
+Jennifer Sprague ([02:39:07]):
+Do you remember telling the police that Lindsay seemed to be improving since leaving McLean?
+Paula Musgrove ([02:39:28]):
+I do not recall. I remember speaking to the police. I had just found out what had happened and I was pretty much in shock. So anything I remember... Honestly, I remember two things I told the police. Anything else that you have there, I must have said, but I don't recall them. I've been going through my mind. I can honestly recall two things I told the police during that interview. I was pretty much in shock.
+Jennifer Sprague ([02:39:56]):
+Okay. So do you remember telling them that she seemed brighter lately?
+Paula Musgrove ([02:39:59]):
+I don't recall.
+Jennifer Sprague ([02:40:00]):
+Okay. Thank you.
+Judge William Sullivan ([02:40:01]):
+All right. Mr. Reddington.
+Mr. Reddington ([02:40:04]):
+[inaudible 02:40:43].
+Speaker 12 ([02:40:46]):
+Oh, you mean the ones that you [inaudible 02:40:47]?
+Mr. Reddington ([02:40:47]):
+Yes. [inaudible 02:40:50].
+Speaker 12 ([02:40:50]):
+Oh, this was one.
+Mr. Reddington ([02:41:11]):
+That's all right. I can check later. Just looking here through the exhibits, district attorney stood up and said to you that I had introduced into evidence and showed you Exhibit 276, which would be a list of texts dated on October 19th. Do you remember that? It was the black one. It was the copies. It wasn't green and blue. Do you recall that this was introduced into evidence? Do you recall her questioning you from this?
+Paula Musgrove ([02:41:41]):
+On October 19th?
+Mr. Reddington ([02:41:48]):
+Yeah. This is the one that I had introduced was Exhibit 276. And the date would be October 19th, your text thread.
+Paula Musgrove ([02:41:52]):
+Oh, yes, yes, yes. I'm sorry.
+Mr. Reddington ([02:41:54]):
+And then she said, "Well, there's something missing," and went up and said to you this text, which would be 277. Do you recall that? I'm going to show it to you.
+Paula Musgrove ([02:42:04]):
+Yes.
+Mr. Reddington ([02:42:15]):
+Okay. So what I had introduced was a text thread from October 19th up through and including October 20th. Is that fair to say? Right there?
+Paula Musgrove ([02:42:27]):
+Yes.
+Mr. Reddington ([02:42:28]):
+Okay. And the reason I introduced this is because we had introduced earlier a whole lot of pages text, and I wanted to focus on the text thread where she said, "Mommy, can you stay here?"
+Jennifer Sprague ([02:42:42]):
+Objection.
+Judge William Sullivan ([02:42:43]):
+Sustained.
+Mr. Reddington ([02:42:45]):
+So when the district attorney suggested that there's something missing, like I left it out or something, is it fair to say that Exhibit 277 is a totally different date? Look at the date. What is the date that the DA is talking about? You see it on there?
+Paula Musgrove ([02:43:03]):
+10/3.
+Mr. Reddington ([02:43:03]):
+10/23. It has nothing to do with the text thread that I introduced, right? It's a day or two after that, right?
+Paula Musgrove ([02:43:10]):
+Right.
+Mr. Reddington ([02:43:11]):
+If you know.
+Paula Musgrove ([02:43:11]):
+Yes.
+Mr. Reddington ([02:43:18]):
+Now, we had introduced into evidence also the Cellebrite record as Exhibit 238 that the state police for the district attorney's office had printed out. That is only the month of January. Do you recall that testimony?
+Paula Musgrove ([02:43:37]):
+Yes. Yes.
+Mr. Reddington ([02:43:40]):
+And then I introduced into evidence or tried to introduce into evidence all of the texts between you and your daughter, right?
+Paula Musgrove ([02:43:46]):
+Yes.
+Mr. Reddington ([02:43:47]):
+I think, Your Honor, that's what's in there. Thank you. Okay. I attempted to introduce it. It was objected to, I believe, and it was marked for identification. I would now like to re-offer this in its entirety.
+Judge William Sullivan ([02:43:59]):
+I see counsel sidebar, please.
+Speaker 13 ([02:44:11]):
+278 [inaudible 02:44:13].
+Mr. Reddington ([02:44:14]):
+Thank you very much. That's all I have.
+Judge William Sullivan ([02:44:14]):
+All right.
+Jennifer Sprague ([02:44:21]):
+And when you were asked about Exhibit 271 and the text messages on October 23rd and October 24th, that was to establish when you left the home that week of the 20th, correct? Because you said, "How are things today?" And she said good implying that you were no longer with them, correct?
+Paula Musgrove ([02:44:41]):
+I believe so, yes.
+Jennifer Sprague ([02:44:46]):
+Thank you.
+Judge William Sullivan ([02:44:46]):
+All right. Anything on that, Counsel?
+Mr. Reddington ([02:44:46]):
+Oh, no, thank you.
+Judge William Sullivan ([02:44:47]):
+All right. Thank you, ma'am. You sit down. Thank you.
+([02:44:47])All right, Defendant?
+Mr. Reddington ([02:44:47]):
+Yes. I call out Recker Volfovich.
+Speaker 12 ([02:44:47]):
+Good afternoon. Do you solemnly swear that the testimony [inaudible 02:46:00] shall be the truth, the whole truth, and nothing but the truth so help you God?
+Michael Volfovich ([02:44:47]):
+I do.
+Speaker 12 ([02:44:47]):
+Thank you, sir. You can just have a seat.
+Mr. Reddington ([02:44:47]):
+Just watch that one right there. Thank you.
+Judge William Sullivan ([02:46:12]):
+All right. Good afternoon. All right. Mr. Reddington, why don't you hold off? I'm going to give an instruction-
+Mr. Reddington ([02:46:14]):
+Oh, sure.
+Judge William Sullivan ([02:46:14]):
+... at this point.
+Mr. Reddington ([02:46:15]):
+Yep.
+Judge William Sullivan ([02:46:16]):
+Members of the jury, I just want to give you an instruction. It's one I probably should have given a little bit earlier in the trial as well. It's going to apply to this witness. It applies to a number of witnesses who testified earlier, and it's going to apply to a number of witnesses who testify after. And it's in regards to expert witnesses. All right?
+([02:46:34])Generally, cases that are tried in our courts, witnesses may testify only to facts that are within their own personal knowledge. That's things that they personally seen, heard, or felt. However, in a variety of cases, issues arise that are beyond the experiences of laypersons. In those type of cases, we allow a person with specialized training or experience called an expert witness to testify and to testify not only to facts, but also to opinions and the reasons for their opinions on issues that are within that witness's field of expertise and irrelevant material to the case. Because a particular witness has specialized training and experience in their field, does not put that witness on a higher level than any other witness. And you are to treat the so-called expert witness just like you would treat any other witness.
+([02:47:21])In other words, as with any other witness, it's completely up to you to decide whether you accept the testimony of any expert witness, including the opinions that they give. It's also entirely up to you to decide whether you accept the facts that are relied on by the expert and to decide what conclusions, if any, you draw from the witness's testimony. You're free to reject the testimony in opinion of such a witness in whole or in part. If you determine that the opinion is not based on sufficient education and experience, that the testimony of the witness is motivated by some bias or interest in the case. You must keep firmly in mind that you alone, you alone, decide what the facts are. So if you conclude that an expert's opinion is not based on the facts as you find those facts to be, then you may reject the testimony in the opinion of the expert in whole or in part.
+([02:48:15])You must remember that expert witnesses do not decide cases. Juries do. So in the last analysis, an expert witness is like any other witness in the sense that you alone make the judgment about how much credibility and weight you give to that expert's testimony and what conclusions you draw from the testimony. All right? And I'll go into that a little bit more at the end when I go into the more extensive instructions that I'll give you at the end of the trial. All right.
+([02:48:45])All right. Mr. Reddington.
+Mr. Reddington ([02:48:45]):
+Afternoon.
+Michael Volfovich ([02:48:45]):
+Afternoon.
+Mr. Reddington ([02:48:50]):
+Can you tell us your name and spell your name?
+Michael Volfovich ([02:48:53]):
+It's Michael Volfovich. It's V as in Victor, U-L-F as in Frank, O-V as in Victor, I- C-H.
+Mr. Reddington ([02:49:02]):
+What do you do for work, sir?
+Michael Volfovich ([02:49:03]):
+I'm an emergency medicine doctor. I work full-time at Newton-Wellesley Hospital.
+Mr. Reddington ([02:49:07]):
+Newton-Wellesley?
+Michael Volfovich ([02:49:08]):
+Yes.
+Mr. Reddington ([02:49:09]):
+Can you tell us, are you board certified, sir?
+Michael Volfovich ([02:49:12]):
+I am. I'm board certified in emergency medicine.
+Mr. Reddington ([02:49:15]):
+And that would be by the American Board of Emergency Medicine?
+Michael Volfovich ([02:49:18]):
+Correct.
+Mr. Reddington ([02:49:20]):
+How long have you been practicing emergency medicine?
+Michael Volfovich ([02:49:22]):
+I did three years of residency, and this is my 13th year as a full-time attending.
+Mr. Reddington ([02:49:27]):
+You're presently employed. Where is it?
+Michael Volfovich ([02:49:30]):
+Newton-Wellesley Hospital, primarily. And then I do some additional shifts, at Emerson Hospital in Concord.
+Mr. Reddington ([02:49:35]):
+How about medical school? Where'd you go to med school?
+Michael Volfovich ([02:49:37]):
+St. Louis University School of Medicine.
+Mr. Reddington ([02:49:40]):
+What year did you graduate?
+Michael Volfovich ([02:49:42]):
+2011.
+Mr. Reddington ([02:49:44]):
+Obviously licensed in the Commonwealth.
+Michael Volfovich ([02:49:46]):
+Yes, sir.
+Mr. Reddington ([02:49:48]):
+In the course of your training and experience, sir, do you work full-time in a particular field of medicine?
+Michael Volfovich ([02:49:56]):
+Just emergency medicine. So basically we see any and all comers, anything from ankle sprains to traumas.
+Mr. Reddington ([02:50:03]):
+Okay. Did I ask you to review some documents regarding this particular case involving Lindsay Clancy?
+Michael Volfovich ([02:50:12]):
+You did. You asked me to review the-
+Mr. Reddington ([02:50:15]):
+Sorry, what you reviewed?
+Michael Volfovich ([02:50:16]):
+Oh, sorry. You asked me to review the photos from the crime scene and then the emergency medical records from South Shore Hospital, Brigham and Women's Hospital, and then the records from her hospital stay at Brigham and Women's Hospital.
+Mr. Reddington ([02:50:28]):
+So in reviewing all of those various hospital records, sir, you're aware that on January 24th of 2023, she initially was transported to South Shore Hospital. Is that correct?
+Michael Volfovich ([02:50:38]):
+Yes, sir.
+Mr. Reddington ([02:50:39]):
+And can you tell the jurors what treatment she received at the South Shore Hospital, briefly?
+Michael Volfovich ([02:50:46]):
+So she arrived with a GCS of 10, meaning she was not really very responsive.
+Mr. Reddington ([02:50:52]):
+Let Me interrupt you just because that. What did you say, a G6?
+Michael Volfovich ([02:50:56]):
+GCS, Glasgow Coma Scale.
+Mr. Reddington ([02:51:00]):
+Okay. Slow down because I don't understand. What is a GCS?
+Michael Volfovich ([02:51:01]):
+It's a Glasgow Coma Scale. It's a series of things that we look at to determine how responsive somebody is, whether their eyes are opening spontaneously, whether they're able to speak on their own, and whether you're able to understand what they're saying, and then how much, if at all, they're moving, whether they're moving spontaneously, whether they can follow commands, that kind of thing.
+Mr. Reddington ([02:51:20]):
+Okay. So the Glasgow Coma Scale, GCS of 10, what does that tell you as an emergency room doctor?
+Michael Volfovich ([02:51:26]):
+Tells us that she was not very responsive on arrival. It sounds like she was not speaking intelligibly, and the doctors at South Shore Hospital were concerned about her ability to maintain her own airway and made the decision to intubate her, which means putting a breathing tube down her throat into her lungs and placing her on a ventilator and sedating her.
+Mr. Reddington ([02:51:47]):
+Was she also, what would be, I guess, referred to as hypothermic?
+Michael Volfovich ([02:51:51]):
+She was.
+Mr. Reddington ([02:51:52]):
+What does that mean?
+Michael Volfovich ([02:51:53]):
+It means that her body temperature was below what's considered normal. So in her case, her core body temperature was, I believe, 82. 1 degrees, which would put her into severe hypothermia.
+Mr. Reddington ([02:52:04]):
+And did you note that she was tachycardic and hypotensive?
+Michael Volfovich ([02:52:09]):
+Yes.
+Mr. Reddington ([02:52:09]):
+What did that mean?
+Michael Volfovich ([02:52:10]):
+It means that her heart rate was above 100, and hypotensive means that her blood pressure was below what is considered normal.
+Mr. Reddington ([02:52:17]):
+And South Shore Hospital, were they able to stabilize her?
+Michael Volfovich ([02:52:22]):
+It sounds like they were able to stabilize her by placing a breathing tube in her neck, in her throat to help with her breathing. And then they basically proceeded to obtain a bunch of imaging, start her on medications to sedate her and artificially raise her blood pressure. They started working on rewarming her. And then in conjunction with the trauma team there, they made the decision that she would be better served at a hospital with a higher level of care.
+Mr. Reddington ([02:52:47]):
+Okay. Can you tell us what the injuries were that she presented herself with to the South Shore Hospital?
+Michael Volfovich ([02:52:54]):
+There were multiple injuries. She had lacerations to bilateral wrists.
+Mr. Reddington ([02:52:58]):
+When you say lateral, what does that mean?
+Michael Volfovich ([02:53:00]):
+Bilateral, both sides. So she had a laceration both to her left wrist and to her right wrist, and then multiple superficial lacerations as well. And then she also had multiple superficial lacerations to both sides of her neck, the front of her neck, and two deeper lacerations to the sides of her neck.
+Mr. Reddington ([02:53:17]):
+So when you say superficial lacerations and then deeper lacerations, do you recall... What's the standard? What do you look for in something like that?
+Michael Volfovich ([02:53:28]):
+It's tough. Everybody will describe them a little bit differently. In her case, I would describe multiple superficial lacerations, which would typically mean scrapes on the surface of the skin. Nothing that actually gets through the full thickness of the skin. And then she also had full thickness lacerations, meaning that she made it all the way through the skin, into the subcutaneous tissue, the fatty tissue. And then you would need to describe it further if any additional structures were injured, which in her case, they were not.
+Mr. Reddington ([02:53:55]):
+Now, in your experience for a number of years in the emergency room, have you had occasion to treat people that have tried to commit suicide or have successfully committed suicide by cutting their throat?
+Michael Volfovich ([02:54:07]):
+Multiple times.
+Mr. Reddington ([02:54:08]):
+Multiple times. And can you tell us, in your opinion, to a reasonable degree of medical certainty, sir, as to whether or not this injury or these injuries that you observed were consistent with what you've seen in other suicide attempts?
+Jennifer Sprague ([02:54:22]):
+Objection.
+Judge William Sullivan ([02:54:23]):
+Sustained.
+Mr. Reddington ([02:54:25]):
+Well, can you tell us, did that look like an effort to pretend or fake of suicide?
+Jennifer Sprague ([02:54:30]):
+Objection.
+Judge William Sullivan ([02:54:30]):
+Sustained.
+Mr. Reddington ([02:54:31]):
+Well, when you looked at the injuries, did you make a determination that they appeared to have some impact on the human body of Ms. Clancy?
+Michael Volfovich ([02:54:40]):
+Yes.
+Mr. Reddington ([02:54:41]):
+What was that?
+Michael Volfovich ([02:54:42]):
+They were consistent with self-injurious behavior. The intent, I can't gauge, but-
+Jennifer Sprague ([02:54:49]):
+Anything further?
+Mr. Reddington ([02:54:51]):
+Okay.
+Judge William Sullivan ([02:54:52]):
+Next question.
+Mr. Reddington ([02:54:53]):
+Yep. Thank you. How about the wrist? What did you observe about the wrist injuries, sir?
+Michael Volfovich ([02:54:58]):
+She had two full thickness lacerations, one on the left, one on the right.
+Mr. Reddington ([02:55:03]):
+What does that mean?
+Michael Volfovich ([02:55:04]):
+It means that she made it all the way through the epidermis of the dermis, which is what makes up the skin in the wrist and into the fatty tissue, which is the next layer.
+Mr. Reddington ([02:55:13]):
+Okay. Are you familiar, in your experience, sir, with hesitation wounds in a suicide attempt?
+Michael Volfovich ([02:55:22]):
+Yes, to some extent.
+Mr. Reddington ([02:55:23]):
+What does that mean?
+Michael Volfovich ([02:55:25]):
+It means typically that they're more subtle, weaker attempts to hurt yourself. Not necessarily anything that's going to be deep to the structures of the skin, but more just scrapes along the surface.
+Mr. Reddington ([02:55:37]):
+Okay. And you noticed some of those on the neck area as well. Is that correct?
+Michael Volfovich ([02:55:41]):
+There were multiple of those on both the neck and the wrists.
+Mr. Reddington ([02:55:45]):
+As it relates to the injuries to the wrists, did you observe any vascular obstructions or penetration of the fascia?
+Michael Volfovich ([02:55:57]):
+There was not.
+Mr. Reddington ([02:55:58]):
+Okay. What other injuries did you recall from reviewing the medical records?
+Michael Volfovich ([02:56:04]):
+She also had multiple fractures in her cervical spine, which are the vertebrae that make up her neck, including what's called a burst fracture of C1 and then other fractures of C4. She also had fractures of multiple levels of the thoracic spine. I believe she had multiple transverse process fractures on both the right and left.
+Mr. Reddington ([02:56:25]):
+What does that mean, transverse fractures?
+Michael Volfovich ([02:56:26]):
+Transverse processes are lateral projections, basically projections that go sideways off of the bone that allow the ribs to articulate, connect with the spine. And they also allow muscles to connect and they help support the basically overall ring structure of the spinal canal.
+Mr. Reddington ([02:56:44]):
+Was she then transported by Med Flight or Life Flight to a Boston hospital?
+Michael Volfovich ([02:56:50]):
+She was.
+Mr. Reddington ([02:56:51]):
+What does that tell you as an emergency surgeon when someone's transported by Med Flight or Life Flight?
+Michael Volfovich ([02:56:56]):
+Typically means that her injuries are felt to be severe enough that she needs immediate intervention and further treatment. That the hospital that is basically necessitating the transport is saying that they cannot provide at their facility.
+Mr. Reddington ([02:57:10]):
+She was then transported to what hospital?
+Michael Volfovich ([02:57:12]):
+Brigham Women's Hospital in Boston.
+Mr. Reddington ([02:57:14]):
+She was admitted to what unit?
+Michael Volfovich ([02:57:16]):
+Surgical ICU.
+Mr. Reddington ([02:57:17]):
+And you had a chance to review all those medical records as well?
+Michael Volfovich ([02:57:20]):
+I did.
+Mr. Reddington ([02:57:21]):
+Did she suffer a particular event that night that you recall from looking at the records?
+Michael Volfovich ([02:57:25]):
+She did. Shortly after arriving in the surgical ICU, it sounds like they were moving her. And when they moved her, they noticed that her blood pressure dropped, her pulse became faint. And subsequently she actually suffered a complete cardiac arrest and required two rounds of cardiopulmonary resuscitation with compressions and medications before she was able to be revived.
+Mr. Reddington ([02:57:48]):
+And she also, to your knowledge, had suffered significant hemorrhage and had to have a fairly massive blood transfusion?
+Michael Volfovich ([02:57:55]):
+Yes. They placed chest tubes, which are basically plastic tubes that go into the chest cavity on both sides and had about 300 CCs of blood come out from each side. And there was also noted to be significant hemorrhage around the spine and into the mediastinum, which is the portion of the chest that houses a lot of the organs like your esophagus, your trachea, blood vessels, that kind of thing.
+Mr. Reddington ([02:58:22]):
+Now, if there's a fracture or a serious fracture to, I believe it's C1, does that interfere possibly with a person's ability to breathe?
+Michael Volfovich ([02:58:30]):
+It does.
+Mr. Reddington ([02:58:31]):
+How does that work?
+Michael Volfovich ([02:58:32]):
+If you have a fracture that affects the spinal cord above a certain level, typically above the third cervical vertebrae, it basically removes your ability to initiate breathing on your own. Your third, fourth, and fifth cervical vertebrae, the nerves that lead from there are the ones that are responsible for telling your diaphragm to go up and down and help you breathe. And so if you lose the ability to send that signal down to your diaphragm, you lose the ability to breathe.
+Mr. Reddington ([02:59:01]):
+Now, as it relates to your review of the medical records and review of the history, are you aware of the mechanism of the injuries that she suffered that you just described for the jury?
+Michael Volfovich ([02:59:13]):
+I am.
+Mr. Reddington ([02:59:13]):
+Tell us what that was, to your knowledge.
+Michael Volfovich ([02:59:15]):
+That she went out of her second story window.
+Mr. Reddington ([02:59:18]):
+And going out of the window, obviously, did she strike the ground?
+Michael Volfovich ([02:59:23]):
+She did.
+Mr. Reddington ([02:59:23]):
+And that caused the injuries, the mechanism of injury?
+Michael Volfovich ([02:59:26]):
+Yes. It's consistent with all of her injuries.
+Mr. Reddington ([02:59:28]):
+Now, with your experience, sir, with, as you indicated, dealing with people in the emergency room and treating people that have been involved with sequential acts of self-harm, do you have an opinion to a reasonable degree of medical certainty as an emergency board certified physician as to the effect of the combination of the multiple sequential injuries that you saw?
+Jennifer Sprague ([02:59:52]):
+Objection.
+Judge William Sullivan ([02:59:54]):
+Can I see counsel at sidebar, please?
+Mr. Reddington ([02:59:57]):
+I can withdraw it, Judge. I'll withdraw it. Thank you very much.
+Jennifer Sprague ([03:00:04]):
+No questions.
+Judge William Sullivan ([03:00:05]):
+All right. Thank you, Doctor.
+Michael Volfovich ([03:00:06]):
+Thank you.
+Judge William Sullivan ([03:00:15]):
+All right. Counsel, now can I see you in sidebar?
+Mr. Reddington ([03:00:18]):
+Okay.
+Judge William Sullivan ([03:00:36]):
+All right. Members of the jury, I told you it was going to be stop and start, right? So we're going to stop now, but we're going to stop now for the day for you. I'm going to come back. I've got to talk to counsel about setting some things up logistically for tomorrow. All right. So tomorrow, the plan would be hopefully we'll start right at 9:00 or right as close as we can. And we'd hope to have a pretty full day in regards to the witnesses. All right? So I'm going to excuse you until tomorrow at 9:00. I'm going to remind you, don't talk about this case. Don't read anything about it or anything about any similar cases. Don't do any research. Don't listen to anything. Don't post anything. You know where I'm going, right? So I'm going to ask you to follow those instructions again. I'm going to give you those questions and I hope you have a nice evening. We'll see you tomorrow morning. Okay? Thank you.
+Speaker 14 ([03:01:35]):
+All rise. Please, jurors, exit.
+Madam Clerk ([03:01:36]):
+Jurors, the court is closing session. Be seated.
+Judge William Sullivan ([03:02:16]):
+Counsel, can I see you sidebar just really in regards to tomorrow? Not very long. These will be marked for identification. Those will be impounded.
+Mr. Reddington ([03:02:34]):
+Thank you, Your Honor.
+Judge William Sullivan ([03:02:34]):
+All right. Thank you, Counsel.
+([03:02:36])All right. Anything else you should address before tomorrow morning, Commonwealth?
+Jennifer Sprague ([03:02:43]):
+No, Your Honor.
+Judge William Sullivan ([03:02:45]):
+All right. Mr. Reddington?
+Mr. Reddington ([03:02:45]):
+No.
+Judge William Sullivan ([03:02:45]):
+All right. I appreciate everybody's patience and work on this this morning and this afternoon. We'll be in recess on this matter until 9:00 tomorrow. Thank you.
+Madam Clerk ([03:02:56]):
+Court, all rise.
+‍
+A confirmation email is on it’s way to your inbox.
+Copyright Disclaimer

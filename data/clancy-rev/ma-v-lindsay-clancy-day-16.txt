@@ -1,0 +1,2787 @@
+Bailiff ([00:00]):
+This court is now in session. You may be seated.
+Madam Clerk ([00:01]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([00:01]):
+Yes, please.
+Madam Clerk ([00:06]):
+Your Honor, [inaudible 00:00:05] in the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by Attorney Kevin Reddington. The Commonwealth is represented by Assistant District Attorney Jennifer Sprang and Assistant District Attorney Shannon Buckingham.
+Judge William Sullivan ([00:17]):
+Well, good morning everyone. Good morning, counsel.
+Shanan Buckingham ([00:18]):
+Good morning.
+Dr. Donald Condie ([00:19]):
+Good morning.
+Judge William Sullivan ([00:20]):
+Morning, Ms. Clancy.
+Lindsay Clancy ([00:20]):
+Good morning, Your Honor.
+Judge William Sullivan ([00:22]):
+Before we get going, we may have a little bit of a delay actually starting at this point through no fault really of anyone. So I just kind of wanted to come out so maybe we go sidebar, talk about what the day, the schedule is and just so everybody's aware that we're trying to get this moving. So counsel? All right. So at this point, what we're going to do is we're going to be in recess and we'll come back as soon as we can in regards to this. We'll resume the trial at that time. Okay. Thank you.
+Bailiff ([01:18]):
+Court, all rise. [inaudible 00:01:11] this court is back in session. You may be seated.
+Madam Clerk ([01:19]):
+Your Honor, for purpose of the record [inaudible 00:01:23] Commonwealth versus Lindsay Clancy. All parties are present excluding the jury.
+Judge William Sullivan ([01:27]):
+All right. Counsel, we ready for the jury?
+Kevin Reddington ([01:30]):
+Yes.
+Judge William Sullivan ([01:30]):
+All right.
+Kevin Reddington ([01:30]):
+Bailiff.
+Bailiff ([01:51]):
+Court, all rise, please. Hear ye, hear ye, hear ye. All persons having anything to do before the Honorable William Sullivan, Justice of the Superior Court now sitting in Plymouth within Florida Commonwealth. Draw nigh and give your attendance and you shall be heard. God save the Commonwealth of Massachusetts. This court is now in session. Please be seated.
+Madam Clerk ([02:39]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([02:41]):
+Yes, please.
+Madam Clerk ([02:41]):
+Your Honor, before the court today, we have a continuation of the jury trial in the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by attorney Kevin Reddington. And the Commonwealth is represented by Assistant District Attorney Jennifer Sprang and Assistant District Attorney Shannon Buckingham.
+Judge William Sullivan ([02:59]):
+All right. Thank you, Madam Clerk.
+Madam Clerk ([03:01]):
+You're welcome.
+Judge William Sullivan ([03:04]):
+Good morning, members of the jury.
+Jury ([03:04]):
+Good Morning, Judge.
+Judge William Sullivan ([03:06]):
+Nice to see all of you. I appreciate you being here. So what I'm going to do is we're going to go over the questions that you know are coming, and then what we'll do is we'll get right back into the case. So the first question, has any member of the jury read, seen, heard, or overheard anything from any source about any aspect of this case that would affect your ability to be fair and impartial? Next question. Is there any other serious matter or concern bearing on your service as a juror in this case that anybody needs to bring to my attention? Again, thank you so much for following those instructions. And so what we're going to do now is we broke yesterday. There was a witness on the stand who was testifying on behalf of the defense. We're going to return to that witness at this point. And so if the witness could retake the stand at this time. Yeah.
+Dr. Donald Condie ([03:57]):
+Good morning.
+Bailiff ([03:57]):
+Please stand in court.
+Madam Clerk ([03:57]):
+Good morning. Do you solemnly swear that the testimony you shall give to the court and the jury in the matter now pending between the Commonwealth and the defendant shall be the truth, the whole truth and nothing but the truth, so help you God?
+Dr. Donald Condie ([03:57]):
+I do.
+Madam Clerk ([03:57]):
+You may have a seat.
+Dr. Donald Condie ([03:57]):
+Thank you.
+Judge William Sullivan ([03:57]):
+Good morning, Doc.
+Dr. Donald Condie ([03:57]):
+Good morning, Your Honor.
+Judge William Sullivan ([03:57]):
+All right. Are you ready?
+Kevin Reddington ([04:21]):
+Thank you, Judge. Sir, I'm going to try to just redirect towards the interview that you had of Lindsay regarding her journey. On November 29th of 2022, do you recall which healthcare provider she visited?
+Dr. Donald Condie ([04:48]):
+I believe that Ms. Clancy saw Ms. Gelata for treatment.
+Kevin Reddington ([04:55]):
+That'd be Nurse Practitioner Gelata?
+Dr. Donald Condie ([04:57]):
+Yes.
+Kevin Reddington ([04:58]):
+Do you know what she complained on November 29th that her symptoms were?
+Dr. Donald Condie ([05:05]):
+She was having issues with unstable mood, depression, and psychotic symptoms of disassociation.
+Kevin Reddington ([05:15]):
+Did she also, on that date, November 29th of '22, complain that she had what is referred to as a flattened effect?
+Dr. Donald Condie ([05:24]):
+Yes. And that was also paired with derealization.
+Kevin Reddington ([05:28]):
+And what does that mean?
+Dr. Donald Condie ([05:30]):
+That an individual experiencing derealization doesn't feel things are real when they look around. They don't think that what they're seeing is in the reality that they're in.
+Kevin Reddington ([05:42]):
+Now at this time, towards the end of November into early December of '22, she was living in Duxbury. Is that correct?
+Dr. Donald Condie ([05:48]):
+That's correct.
+Kevin Reddington ([05:49]):
+And she's living with her husband and her three children, three young children, correct?
+Dr. Donald Condie ([05:53]):
+Yes.
+Kevin Reddington ([05:54]):
+And was the husband working?
+Dr. Donald Condie ([05:56]):
+Yes.
+Kevin Reddington ([05:56]):
+Where was he working?
+Dr. Donald Condie ([05:58]):
+Pardon me, Attorney-
+Kevin Reddington ([05:59]):
+Where was he working?
+Dr. Donald Condie ([06:00]):
+He was working for Microsoft, but in a home office that was in the basement of the house.
+Kevin Reddington ([06:06]):
+And she's obviously taking care of Callan, the infant and Dawson and Cora, correct?
+Dr. Donald Condie ([06:14]):
+Yes.
+Kevin Reddington ([06:15]):
+And the kids were in school a couple of days a week in the preschool, the Little Sprouts or something like that, right?
+Dr. Donald Condie ([06:22]):
+Yes.
+Kevin Reddington ([06:24]):
+So did she improve at that point, sir, or did she end up going to South Shore Perinatal Clinic on December 2nd?
+Dr. Donald Condie ([06:33]):
+She did not improve. She was getting worse. She did go to the South Shore Perinatal Clinic.
+Kevin Reddington ([06:40]):
+And would that be on December 2nd?
+Dr. Donald Condie ([06:42]):
+December 2nd, yes.
+Kevin Reddington ([06:44]):
+And what was the reason? What were her complaints that brought her to South Shore Perinatal Clinic on December 2nd?
+Dr. Donald Condie ([06:51]):
+She felt that her brain was damaged. She felt that she should kill herself, and she's never going to get any better.
+Kevin Reddington ([07:03]):
+Did she also express fear that people could hear her thoughts and that anything adverse would happen in her life regarding being a mother and having children?
+Dr. Donald Condie ([07:14]):
+Yes. That's called thought broadcasting.
+Kevin Reddington ([07:19]):
+And what was her concern about the children?
+Dr. Donald Condie ([07:22]):
+Her concern was that when people could hear her thoughts, her children would be removed from her care.
+Kevin Reddington ([07:28]):
+Now, and keep your voice up, please.
+Dr. Donald Condie ([07:29]):
+Yes.
+Kevin Reddington ([07:31]):
+Did she indicate, and I quote, that she had "Bad and intrusive thoughts" and she "Didn't even feel that they were like mine, telling me I should kill myself? My brain is damaged. You're never going to get better."
+Dr. Donald Condie ([07:42]):
+Yes.
+Kevin Reddington ([07:43]):
+And did that type of intrusive thought or persecutory thought continue for a period of time?
+Dr. Donald Condie ([07:52]):
+Yes. It got worse.
+Kevin Reddington ([07:54]):
+Did it get so bad that she ended up doing something?
+Dr. Donald Condie ([07:59]):
+Yes, that's correct.
+Kevin Reddington ([08:00]):
+What did she do?
+Dr. Donald Condie ([08:02]):
+She called the suicide hotline.
+Kevin Reddington ([08:04]):
+And do you know when that was, sir?
+Dr. Donald Condie ([08:07]):
+That was December 4th, 2022.
+Kevin Reddington ([08:11]):
+Did she receive any help from the suicide hotline?
+Dr. Donald Condie ([08:15]):
+She did not.
+Kevin Reddington ([08:16]):
+Why is that?
+Dr. Donald Condie ([08:18]):
+They told her she did not meet the standard of care because she did not have a plan.
+Kevin Reddington ([08:23]):
+Did she call the suicide hotline again, if you're aware?
+Dr. Donald Condie ([08:27]):
+Yes, she did.
+Kevin Reddington ([08:28]):
+Do you know when that was? Was that in December?
+Dr. Donald Condie ([08:33]):
+Yes. I believe that was perhaps the following week around the 15th, but I'm not positive about that.
+Kevin Reddington ([08:39]):
+Did she receive help on the second call that she call the suicide hotline?
+Dr. Donald Condie ([08:44]):
+No, she did not.
+Kevin Reddington ([08:45]):
+Can you tell us at this point now, we're talking about in December, let's say towards December 15th or thereabouts, what were her symptoms at that time regarding any complaints or observations that she had about paranoia or things of that nature?
+Dr. Donald Condie ([09:04]):
+Yes. She was having paranoid symptoms of psychosis and she was getting more depressed.
+Kevin Reddington ([09:13]):
+Did she make any comments about DCF or the police at that point?
+Dr. Donald Condie ([09:17]):
+Yes.
+Kevin Reddington ([09:18]):
+Now, to your knowledge, did she ever have any involvement in her entire life with the police?
+Dr. Donald Condie ([09:23]):
+Never.
+Kevin Reddington ([09:24]):
+And did she express that she was in fear or concerned about DCF and/or the police in middle of December '22?
+Dr. Donald Condie ([09:31]):
+Very much so.
+Kevin Reddington ([09:32]):
+What did she say?
+Dr. Donald Condie ([09:34]):
+She was worried that her children would be removed from her and that she would never see them again.
+Kevin Reddington ([09:40]):
+Now at this point, what medication was she on? First paragraph, page nine.
+Dr. Donald Condie ([09:58]):
+She started to take, at that point, Seroquel, Remeron, and Klonopin.
+Kevin Reddington ([10:03]):
+Did she make any complaints at that point about the effect, if any, of medications?
+Dr. Donald Condie ([10:08]):
+Yes.
+Kevin Reddington ([10:09]):
+What did she say?
+Dr. Donald Condie ([10:12]):
+She said she felt like a zombie.
+Kevin Reddington ([10:15]):
+Did she present with any particular medical observation that you refer to?
+Dr. Donald Condie ([10:24]):
+I'm not sure I understand your question.
+Kevin Reddington ([10:26]):
+Well, paragraph one on page nine, you indicate she presented with anhedonia.
+Dr. Donald Condie ([10:31]):
+Yeah.
+Kevin Reddington ([10:32]):
+What does that mean?
+Dr. Donald Condie ([10:33]):
+Anhedonia is a word that means without pleasure. When someone has anhedonia, they cannot enjoy life, they don't laugh, they have no pleasure.
+Kevin Reddington ([10:45]):
+Continuing on into December, what was her status of her condition of depression and symptoms of paranoia and intrusive thoughts, et cetera, that we've talked about?
+Dr. Donald Condie ([10:57]):
+It continued unabated.
+Kevin Reddington ([11:00]):
+On December 15th of '22, right before the holidays, did she go somewhere?
+Dr. Donald Condie ([11:06]):
+Yes, she did.
+Kevin Reddington ([11:07]):
+Where did she go?
+Dr. Donald Condie ([11:08]):
+She went to the clinic in Rhode Island, Parents and Women's Clinic, partial day hospitalization program.
+Kevin Reddington ([11:15]):
+And she didn't get any help there either, right?
+Dr. Donald Condie ([11:18]):
+That's correct.
+Kevin Reddington ([11:19]):
+Did she go at some point around that same timeframe to Mass General Hospital?
+Dr. Donald Condie ([11:24]):
+Yes, she did.
+Kevin Reddington ([11:24]):
+Well, you knew that she worked at Mass General Hospital for nine years, right?
+Dr. Donald Condie ([11:28]):
+That's correct, in labor and delivery.
+Kevin Reddington ([11:30]):
+She wasn't there visiting friends, right?
+Dr. Donald Condie ([11:32]):
+That's correct.
+Kevin Reddington ([11:33]):
+Why was she there?
+Dr. Donald Condie ([11:34]):
+She was there in the emergency room to seek help.
+Kevin Reddington ([11:36]):
+Did she get help on that day?
+Dr. Donald Condie ([11:39]):
+She did not.
+Kevin Reddington ([11:41]):
+So after going to the MGH ER, at some point in December 30th, what did she do?
+Dr. Donald Condie ([11:49]):
+She went back to the emergency room at Mass General.
+Kevin Reddington ([11:54]):
+Now, for example, on December 15th, did Pat Clancy, her husband, get involved with her medical treatment?
+Dr. Donald Condie ([12:03]):
+Yes.
+Kevin Reddington ([12:04]):
+And did the medical records indicate that he did something with her?
+Dr. Donald Condie ([12:09]):
+Yes, he brought her to the partial hospitalization program in Rhode Island.
+Kevin Reddington ([12:13]):
+Did he also bring her to the Mass General Hospital ER?
+Dr. Donald Condie ([12:17]):
+Yes, he did.
+Kevin Reddington ([12:18]):
+Did he also bring her to see the doctor or the nurse practitioner, Gelata, and complain about the medication?
+Dr. Donald Condie ([12:25]):
+Yes.
+Kevin Reddington ([12:29]):
+So December 30th or 31st of 2022, she was admitted voluntarily to McLean, right?
+Dr. Donald Condie ([12:39]):
+That's correct, yes.
+Kevin Reddington ([12:39]):
+How long was she there for?
+Dr. Donald Condie ([12:41]):
+She was there till the 5th. She was discharged January 5th, 2023.
+Kevin Reddington ([12:47]):
+Was that a voluntary discharge? They cleared her as well to be discharged?
+Dr. Donald Condie ([12:52]):
+Yes.
+Kevin Reddington ([12:53]):
+That was not what is referred to as AMA or against medical advice, right?
+Dr. Donald Condie ([12:56]):
+Yes.
+Kevin Reddington ([12:56]):
+Yes, what?
+Dr. Donald Condie ([12:58]):
+Yes, it's not AMA. It's not against medical advice. She was following hospital guidelines. She was discharged accordingly.
+Kevin Reddington ([13:06]):
+And she wanted to go to her daughter's, some function?
+Dr. Donald Condie ([13:10]):
+She wanted to go to her daughter, Cora's birthday party, which was held on the 7th of January.
+Kevin Reddington ([13:14]):
+Now, at this point, what was her status? Was she weaned off of medication or on her way to being weaned off of medication when she got out of McLean?
+Dr. Donald Condie ([13:26]):
+I believe so, yes. She was being tapered down on her medication.
+Kevin Reddington ([13:30]):
+And what was the medication that she was tapered down on?
+Dr. Donald Condie ([13:33]):
+I believe it was Seroquel and Klonopin.
+Kevin Reddington ([13:37]):
+Did her intrusive thoughts and the paranoia, did that abate? Did that stop?
+Dr. Donald Condie ([13:43]):
+It did not.
+Kevin Reddington ([13:45]):
+Now, when she was home in the month of January after Cora's birthday, which I think was on January 7th, did she continue to have these intensive, intrusive thoughts?
+Dr. Donald Condie ([13:58]):
+Yes.
+Kevin Reddington ([13:59]):
+Can you tell us, when we say intrusive thoughts, is she referring to intrusive thoughts like you might think of something coming up next week that's bothersome? Or is this a indication, in your opinion, to a reasonable degree of medical certainty as to what she was experiencing at that point in January of 2023?
+Dr. Donald Condie ([14:26]):
+She wasn't just having everyday thoughts that we all have, reminding ourselves to do something which we make note of, and then we move on. Intrusive thoughts are unrelenting. They don't stop. They're what we call ego dystonic. You don't want them. They keep interfering with your ability to get through the day.
+Kevin Reddington ([14:46]):
+Did she have, at this point, intrusive thoughts continuing regarding voices in her head that she heard constantly?
+Dr. Donald Condie ([14:57]):
+Yes.
+Kevin Reddington ([14:58]):
+What were these voices saying to her?
+Dr. Donald Condie ([15:00]):
+They were getting worse and they were telling her to kill herself.
+Kevin Reddington ([15:04]):
+And as January continued, she was, to your knowledge, using her computer to look up drugs and interactions and side effects and things of that nature?
+Dr. Donald Condie ([15:18]):
+Yes.
+Kevin Reddington ([15:21]):
+If a person is in a psychosis or as I think you said premorbidly psychosis, are they able to do things like look up things on a computer?
+Dr. Donald Condie ([15:31]):
+Yes.
+Kevin Reddington ([15:32]):
+And are you aware that she actually at one point looked up, can you cure, I think a sociopath, a psychopath or something like that?
+Dr. Donald Condie ([15:41]):
+A sociopath. Yes. She was-
+Kevin Reddington ([15:42]):
+Was that indicative of her feeling that she is a homicidal maniac and has to have some help or is that in the same timeframe that she was Googling all of the effects of medications on a human being?
+Shanan Buckingham ([15:56]):
+Objection.
+Judge William Sullivan ([16:00]):
+Is it an objection?
+Shanan Buckingham ([16:01]):
+Yes.
+Judge William Sullivan ([16:01]):
+Yeah. Sustained.
+Kevin Reddington ([16:03]):
+So during the period that she was Googling... Well, let me ask you, what was she Googling?
+Dr. Donald Condie ([16:10]):
+Googling words about sociopath, sociopathy. Can you treat a sociopath? What are hallucinations?
+Kevin Reddington ([16:20]):
+What else?
+Dr. Donald Condie ([16:31]):
+Bear with me one moment. It's in her mind.
+Kevin Reddington ([16:35]):
+Well, you had a chance. Did you look at the Google searches that she had done that's in evidence and the jurors were able to look at it?
+Dr. Donald Condie ([16:42]):
+Yes.
+Kevin Reddington ([16:45]):
+Did she continue to Google the effects of medication, psychosis, numbness, heaviness, unable to... Things like that?
+Dr. Donald Condie ([16:55]):
+Yes. All things that are related to the ones she was healing-
+Kevin Reddington ([16:58]):
+And if a person is in a psychotic state, are they able to continue to Google and use a computer to look things up?
+Dr. Donald Condie ([17:04]):
+Yes.
+Kevin Reddington ([17:05]):
+They're able to use a phone?
+Dr. Donald Condie ([17:07]):
+Yes. People who are in that state can do things they've done before. New tasks may be difficult like changing a tire, but if you looked up things on the internet, you can look them up again. If you drove a car, you can drive her car.
+Kevin Reddington ([17:19]):
+Now the morning of January 24th, I believe she went somewhere. Is that right?
+Dr. Donald Condie ([17:27]):
+Yes.
+Kevin Reddington ([17:28]):
+Where did she go?
+Dr. Donald Condie ([17:29]):
+She'd taken her daughter to a pediatrician, a standing pediatrician appointment.
+Kevin Reddington ([17:34]):
+And is it your understanding to a reasonable degree of medical certainty that a person who's in a psychotic state is able to drive a car for a short distance, go to an appointment and interact and talk to people?
+Dr. Donald Condie ([17:47]):
+Yes. They can do everyday tasks of living.
+Kevin Reddington ([17:50]):
+So the fact that she's not talking about the unicorns in the corner and she's not slurring her speech and she's not unable to walk, to your opinion, to a reasonable degree of medical certainty, does that mean that she's not in a psychotic state?
+Dr. Donald Condie ([18:05]):
+It does not.
+Kevin Reddington ([18:07]):
+Would you tell us after she took Cora to the doctors and the jurors have had a chance to look at the exhibits, there's photographs between her and her husband, Pat, back and forth. In the afternoon, what did she do?
+Dr. Donald Condie ([18:19]):
+She built a snowman in the backyard with two of her kids.
+Kevin Reddington ([18:24]):
+Did she later in that day Google directions to a restaurant, 3V Restaurant, I believe?
+Dr. Donald Condie ([18:32]):
+Yes.
+Kevin Reddington ([18:33]):
+Is that something that a person can do when they're in that type of a state?
+Dr. Donald Condie ([18:37]):
+Easily. Yes.
+Kevin Reddington ([18:38]):
+Did the voices or the intrusive thoughts to your interview and your understanding abate a stop at that point on January 24th?
+Dr. Donald Condie ([18:46]):
+No.
+Kevin Reddington ([18:47]):
+Did they continue?
+Dr. Donald Condie ([18:49]):
+Yes.
+Kevin Reddington ([18:50]):
+And did she communicate by text with her husband about getting dinner and getting something from CVS?
+Dr. Donald Condie ([19:00]):
+Yes.
+Kevin Reddington ([19:00]):
+And what was it? Was it Pedia-Lax?
+Dr. Donald Condie ([19:04]):
+Pedia-Lax or Flexilax. It's a stool softener for her child.
+Kevin Reddington ([19:09]):
+And that's something that was prescribed by the doctor, right?
+Dr. Donald Condie ([19:12]):
+Yes.
+Kevin Reddington ([19:12]):
+Does that make sense that if somebody is in a state where they're having these symptoms, that they're able to remember that the doctor wanted the child to have Pedia-Lax and she tells her husband to get Pedia-Lax?
+Dr. Donald Condie ([19:24]):
+Yes. It does not interfere with that type of everyday living.
+Kevin Reddington ([19:31]):
+She indicated to you, sir, that that evening after the husband had... Oh, by the way, was it your understanding from talking to her that the husband had taken trips, gone away for weekends, gone on ski trips, had brunches with his friends and was out of the house on a regular basis?
+Dr. Donald Condie ([19:50]):
+Yes.
+Kevin Reddington ([19:51]):
+That night is when the children were killed. Is that correct?
+Dr. Donald Condie ([19:56]):
+Yes.
+Kevin Reddington ([19:57]):
+And we've heard repeatedly about the circumstances of the going out the window and the weather and the damages and the injuries and going to the hospital. Doctor, based on your review of all of the medical records, did you administer any testing, by the way, to her, like you were talking about psychological testing?
+Dr. Donald Condie ([20:22]):
+Yes.
+Kevin Reddington ([20:23]):
+And what were the psychological tests that you performed?
+Dr. Donald Condie ([20:26]):
+Initially, I did a mini mental status exam, MMSE. It's just a common test of orientation.
+Kevin Reddington ([20:33]):
+I'm sorry, I didn't understand. MMSE? What's that?
+Dr. Donald Condie ([20:36]):
+MMSE, Mini Mental Status Examination. Very common test.
+Kevin Reddington ([20:41]):
+Okay.
+Dr. Donald Condie ([20:41]):
+Demonstrating whether someone has a field of knowledge, who's the president, what direction should you travel, and basic things like, where are you? What day is today? Who are you? And then I did another test as well.
+Kevin Reddington ([20:53]):
+What other test was that, sir?
+Dr. Donald Condie ([20:54]):
+That's the Hare Psychopathy Checklist, H-A-R-E.
+Kevin Reddington ([21:00]):
+What does that do?
+Dr. Donald Condie ([21:02]):
+That's a measure of antisocial personality disorder.
+Kevin Reddington ([21:05]):
+And do you have an opinion to a reasonable degree of medical certainty based upon the scale that you used to assess whether or not Lindsey Clancy had anti-personality disorder?
+Dr. Donald Condie ([21:16]):
+Yes.
+Kevin Reddington ([21:17]):
+What was the result?
+Dr. Donald Condie ([21:18]):
+The result is that she does not have any type of antisocial personality disorder, also known as sociopathy.
+Kevin Reddington ([21:28]):
+In addition to reviewing the medical records and testing and meeting with her, did you also interview third parties?
+Dr. Donald Condie ([21:37]):
+Yes.
+Kevin Reddington ([21:38]):
+Is that referred to in the psychology as collateral contacts?
+Dr. Donald Condie ([21:42]):
+Yes.
+Kevin Reddington ([21:42]):
+And you reviewed and interviewed a number of people in her family or friends or people in her social circle. Is that correct?
+Dr. Donald Condie ([21:49]):
+Yes.
+Kevin Reddington ([21:50]):
+Can you tell the juror, sir, to a reasonable degree... Well, let me ask you this. Are you familiar with Mass General Hospital doing a major research program on postpartum psychosis?
+Dr. Donald Condie ([22:06]):
+Yes.
+Kevin Reddington ([22:07]):
+And did they publish an article, a significant article regarding the circumstances, symptomology, and things of that nature of postpartum psychosis?
+Dr. Donald Condie ([22:19]):
+Yes.
+Kevin Reddington ([22:21]):
+And would you agree, sir, that the symptoms of postpartum psychosis would be depression? Is that one?
+Dr. Donald Condie ([22:32]):
+Yes.
+Kevin Reddington ([22:32]):
+Did Lindsay, to your opinion, have depression?
+Dr. Donald Condie ([22:36]):
+Yes.
+Kevin Reddington ([22:37]):
+And were there indications from your review of the medical records that she felt low, flat, tearful, emotional, crying?
+Dr. Donald Condie ([22:46]):
+All of those things, yes.
+Kevin Reddington ([22:48]):
+Did she also express anxiety, feeling tense, nervousness?
+Dr. Donald Condie ([22:53]):
+All of those things, yes.
+Kevin Reddington ([22:55]):
+Did she also express feelings that she was withdrawn, not able to socialize with people, wanting to talk or be near others?
+Dr. Donald Condie ([23:03]):
+All of those things as well, yes.
+Kevin Reddington ([23:04]):
+She indicate that she felt tired, heavy, without energy?
+Dr. Donald Condie ([23:09]):
+Absolutely, yes.
+Kevin Reddington ([23:10]):
+Did she indicate that she was having a harder time taking care of her children?
+Dr. Donald Condie ([23:14]):
+Yes.
+Kevin Reddington ([23:15]):
+Did she indicate that she was having issues regarding personal hygiene, not bathing, things of that nature?
+Dr. Donald Condie ([23:22]):
+Yes.
+Kevin Reddington ([23:23]):
+Did she indicate that she had severe confusion and actually hearing or seeing things that aren't there? In her case, who would not be saying that would be visual hallucinations, but did she complain of hearing things that weren't there, hallucinations?
+Dr. Donald Condie ([23:38]):
+Yes.
+Kevin Reddington ([23:39]):
+Did she complain of thoughts and beliefs that were not within reality and that she was in a disassociated state out of reality?
+Dr. Donald Condie ([23:46]):
+Yes.
+Kevin Reddington ([23:47]):
+Did she indicate that. Did you observe that there were circumstances where she exhibited increased energy, activity, productivity, otherwise known as hypomania?
+Dr. Donald Condie ([23:58]):
+Yes.
+Kevin Reddington ([24:00]):
+Did she complain that she had racing thoughts, a quote, "busy brain," end quote, increased creativity?
+Dr. Donald Condie ([24:08]):
+Yes.
+Kevin Reddington ([24:09]):
+And when she said in your review of the medical records that she was having a busy brain, did she express the fact that she would get confused and that she though her brain was damaged?
+Dr. Donald Condie ([24:20]):
+Yes, that's correct.
+Kevin Reddington ([24:21]):
+Was she restless and agitated, unable to keep still?
+Dr. Donald Condie ([24:25]):
+Yes.
+Kevin Reddington ([24:26]):
+Unable to sleep?
+Dr. Donald Condie ([24:28]):
+Yes, extremely unable to sleep.
+Kevin Reddington ([24:33]):
+So can you tell this jury, sir, in your opinion to a reasonable degree of medical certainty based upon all of what you have reviewed, all of what we have talked about, all of what you have considered as to whether or not at the time of this incident resulting in the killing of these three little kids, that she was suffering from a mental disease or a defect such as that she lost substantial capacity to appreciate the wrongfulness of her act or in the disjunctive was unable to conform her conduct to the requirements of the law?
+Dr. Donald Condie ([25:15]):
+Yes.
+Kevin Reddington ([25:16]):
+Tell the jury what your opinion is, please.
+Dr. Donald Condie ([25:17]):
+My opinion is that she did have indeed a mental disease or a defect. That's a legal construct, not a DSM-5 one, but she had bipolar disorder with postpartum psychosis. In addition, she was unable to conform her behaviors to the rule of law, and she had no appreciation for the wrongfulness of her act.
+Kevin Reddington ([25:41]):
+Thank you, sir.
+Dr. Donald Condie ([25:42]):
+You're welcome.
+Judge William Sullivan ([25:45]):
+All right, come off.
+Shanan Buckingham ([26:07]):
+Good morning, sir.
+Dr. Donald Condie ([26:08]):
+Good morning.
+Shanan Buckingham ([26:14]):
+So yesterday, when you first took the stand, Attorney Reddington asked you a little bit about your background. Recall that?
+Dr. Donald Condie ([26:25]):
+Yes.
+Shanan Buckingham ([26:25]):
+And you, in this field of being a psychologist and a forensic psychologist, you circulate a curriculum vitae where all that is outlined, right?
+Dr. Donald Condie ([26:40]):
+Yes.
+Shanan Buckingham ([26:40]):
+And fair to say you testified yesterday, and on your curriculum vitae, you speak briefly about the fact that you have previously testified for the Commonwealth, you said, as well as for the defense, correct?
+Dr. Donald Condie ([26:57]):
+Yes.
+Shanan Buckingham ([26:57]):
+You referred to defendants and respondents, right?
+Dr. Donald Condie ([27:01]):
+Yes.
+Shanan Buckingham ([27:02]):
+And so one of the things that you've done in the past is to be what's called a qualified examiner, right?
+Dr. Donald Condie ([27:10]):
+Yes.
+Shanan Buckingham ([27:10]):
+You are currently not actively doing those examinations, are you?
+Dr. Donald Condie ([27:16]):
+I actually have done one, but I don't actively do that anymore.
+Shanan Buckingham ([27:20]):
+Okay. And so in those respects, when you say you testify for the Commonwealth, is that primarily the work that you would do where you say you testify for the Commonwealth?
+Dr. Donald Condie ([27:31]):
+Yes.
+Shanan Buckingham ([27:31]):
+And in those evaluations that you do, is it fair to say that you're actually an independent contractor with a company that contracts with the Department of Correction on those cases?
+Dr. Donald Condie ([27:45]):
+Those are what qualified examiners are, that's correct. That's how you become a qualified examiner through the DOC.
+Shanan Buckingham ([27:52]):
+Right. But an examiner, a qualified examiner, is retained or takes work in doing evaluations in order to perform independent assessments, are they not?
+Dr. Donald Condie ([28:04]):
+Yes.
+Shanan Buckingham ([28:04]):
+So they're not hired by the Commonwealth?
+Dr. Donald Condie ([28:08]):
+They are because the company that retains the qualified examiners is hired by the Commonwealth, and these forensic psychologists are then appointed cases to do these types of examinations. So it's under the big umbrella of the Commonwealth.
+Shanan Buckingham ([28:25]):
+So yeah, big umbrella, Commonwealth meaning Department of Correction, an agency that is under the seal of the Commonwealth of Massachusetts. But as far as when we talk about Commonwealth, like Commonwealth versus Lindsay Clancy, that's the prosecution. In those proceedings, the Department of Corrections sometimes is the moving party, right?
+Dr. Donald Condie ([28:44]):
+Yes.
+Shanan Buckingham ([28:44]):
+And sometimes it's the district attorney's office who's the moving party.
+Dr. Donald Condie ([28:47]):
+Yes.
+Shanan Buckingham ([28:48]):
+But it's never the defendant who's the moving party.
+Dr. Donald Condie ([28:52]):
+Never.
+Shanan Buckingham ([28:53]):
+And in those types of proceedings, sometimes if you opine a person is what they call sexually dangerous, you would testify for the Commonwealth, right?
+Dr. Donald Condie ([29:03]):
+Yes.
+Shanan Buckingham ([29:04]):
+And if they're not, or if you find they're not sexually dangerous, you'd testify for the respondent?
+Dr. Donald Condie ([29:09]):
+Yes. We're neutral.
+Shanan Buckingham ([29:11]):
+So you're not testifying for the Commonwealth as in the prosecution, you're testifying under the big umbrella of the Commonwealth.
+Dr. Donald Condie ([29:21]):
+I think it's a matter of semantics because if you do an evaluation and you rendered an opinion that this patient is sexually dangerous, when you testify, you are working with the district attorney's office and you review your case with the DA. And the way I see it is that you're testifying for the Commonwealth as an independent examiner, but on that day you're testifying for the Commonwealth or that DA's office.
+Shanan Buckingham ([29:49]):
+And you haven't done that work in closely rough a decade, fair to say?
+Dr. Donald Condie ([29:54]):
+No, that's not true.
+Shanan Buckingham ([29:56]):
+Well, pre-pandemic, correct?
+Dr. Donald Condie ([29:58]):
+That's not true.
+Shanan Buckingham ([29:59]):
+So when was the last time you testified for the Commonwealth, meaning the prosecution, in an SDP proceeding?
+Dr. Donald Condie ([30:07]):
+So I was assigned a case through Suffolk County, the Sexual Dangerousness Unit by ADA Kelly Ryan, K-E-L-L-Y. And I did that evaluation on July 2nd, 2026.
+Shanan Buckingham ([30:26]):
+And have you testified at a probable cause hearing for that?
+Dr. Donald Condie ([30:29]):
+No. I wrote a report which was in lieu of testifying.
+Shanan Buckingham ([30:33]):
+Where you opines that somebody was sexually dangerous?
+Dr. Donald Condie ([30:35]):
+Yes.
+Shanan Buckingham ([30:36]):
+Okay. Fair to say though, the majority of your work here in Massachusetts over the last few years is contracted with the Committee for Public Council Services, correct?
+Dr. Donald Condie ([30:48]):
+Yes.
+Shanan Buckingham ([30:49]):
+And for the fiscal year of 2024, you were paid by CPCS in the open checkbook for approximately $340,000 worth of time and work?
+Dr. Donald Condie ([31:01]):
+That's about right. We get paid a fixed rate. It's a government rate that's assigned to all examiners.
+Shanan Buckingham ([31:07]):
+And for the fiscal year of 2025, it was approximately 300,000 that you were paid through the Committee of Public Council Services?
+Dr. Donald Condie ([31:15]):
+That sounds about right.
+Shanan Buckingham ([31:20]):
+You also indicated yesterday that you have known Attorney Reddington for a number of years, correct?
+Dr. Donald Condie ([31:26]):
+Yes.
+Shanan Buckingham ([31:26]):
+Fair to say you've done quite a bit of work with him over the years?
+Dr. Donald Condie ([31:32]):
+That's an expansive term, but I work with him.
+Shanan Buckingham ([31:36]):
+It just requires a yes or a no.
+Dr. Donald Condie ([31:37]):
+Yes.
+Shanan Buckingham ([31:39]):
+Okay. And you've also testified that you have your doctorate in clinical psychology, right?
+Dr. Donald Condie ([31:46]):
+Yes.
+Shanan Buckingham ([31:46]):
+And you testified yesterday, or you told us a lot about your military experience, but as you sit here today, you are not a prescriber of medications here in the Commonwealth, are you?
+Dr. Donald Condie ([31:57]):
+I am not.
+Shanan Buckingham ([31:57]):
+You don't have any-
+Dr. Donald Condie ([32:01]):
+I was not yesterday either when I was asked about that.
+Shanan Buckingham ([32:03]):
+Right. You told us all about your experience in the military and having that limited ability to prescribe years ago. But as far as you sit here today, and in your evaluations that you do today, you don't do forensic psychiatry evaluations, do you?
+Dr. Donald Condie ([32:19]):
+That's correct, but I just want to clarify for a point of accuracy. I was not in the military. I worked for the Department of State.
+Shanan Buckingham ([32:26]):
+I believe I said your work with the military, but thank you. So here in Massachusetts, you conduct evaluations in forensic psychology, correct?
+Dr. Donald Condie ([32:43]):
+Yes, for the most part.
+Shanan Buckingham ([32:49]):
+Okay. And you are aware that there are particular standards for forensic psychologists working within the criminal justice system, right?
+Dr. Donald Condie ([33:00]):
+Yes, but just to be a little more clear, forensic psychologists such as myself also work for police departments doing evaluations for fitness for duty. So though they're law enforcement, they're not engaged or accused of any criminal activity.
+Shanan Buckingham ([33:19]):
+Well, I'm referring to your role when you come into the court and you testify as you are today as a forensic psychologist. That's what I'm referring to. You're aware that there are particular standards in place by the ABA Criminal Justice, Mental Health Standards is one of them, right? You're familiar with that?
+Dr. Donald Condie ([33:37]):
+Yes.
+Shanan Buckingham ([33:38]):
+And you're familiar with the American Psychological Association Specialty Guidelines for Forensic Psychology?
+Dr. Donald Condie ([33:44]):
+Yes.
+Shanan Buckingham ([33:45]):
+And fair to say that with those standards, they're not required, but people are encouraged to follow them, right?
+Dr. Donald Condie ([33:55]):
+I think that's fair to say.
+Shanan Buckingham ([34:00]):
+And the ABA Criminal Justice Mental Health Standards actually identify the different types of roles that forensic evaluators have in the criminal justice system, including evaluating, consulting, and treating, right?
+Dr. Donald Condie ([34:16]):
+Yes.
+Shanan Buckingham ([34:17]):
+And so fair to say Standard 7-1.3 indicates that for evaluative experts, the obligation is to make a thorough and impartial assessment based on sound evaluative methods to reach an objective opinion. Would you agree with that?
+Dr. Donald Condie ([34:33]):
+Yes.
+Shanan Buckingham ([34:34]):
+And so again, in the American Psychological Association Specialty Guidelines, Section 1.02 indicates that forensic practitioners strive to be unbiased and impartial and avoid partisan presentations of unrepresentative, incomplete, or inaccurate evidence. Would you agree with that?
+Dr. Donald Condie ([34:55]):
+Yes.
+Shanan Buckingham ([34:56]):
+Is that a standard you strive to follow?
+Dr. Donald Condie ([34:58]):
+Yes.
+Shanan Buckingham ([34:59]):
+Okay. In this case, you indicated that...
+Shanan Buckingham ([35:01]):
+In this case, you indicated that you've been with the case since February 4th of the year 2023, correct?
+Dr. Donald Condie ([35:10]):
+Yes, 41 months.
+Shanan Buckingham ([35:12]):
+And you've authored a report, you said, in June, I believe, of 2026, correct?
+Dr. Donald Condie ([35:19]):
+Yes.
+Shanan Buckingham ([35:19]):
+But you've also offered other reports or updates of the defendant's condition over the years. Is that fair to say? Yes. And you provided a report, an update, I should say, in July of 2025?
+Dr. Donald Condie ([35:38]):
+Yes.
+Shanan Buckingham ([35:38]):
+Do you recall that? And in that report, you identify that as of July 23, 2025, that the defendant was residing at Tewksbury Hospital. Do you recall that, putting that in?
+Dr. Donald Condie ([35:54]):
+Yes. Yes.
+Shanan Buckingham ([35:54]):
+And that there was a planned transfer to Worcester Recovery Hospital or Worcester Recovery Center and Hospital. Do you recall writing that?
+Dr. Donald Condie ([36:02]):
+I don't know if it was a plan. It was a hope and a goal, but it was not a official plan.
+Shanan Buckingham ([36:08]):
+Well, I can provide you with your report if you'd like to review, but it reads, "Currently, Ms. Clancy resides at Tewksbury Hospital with a planned transfer to Worcester Recovery Center and Hospital."
+Dr. Donald Condie ([36:19]):
+That sounds right.
+Shanan Buckingham ([36:19]):
+Does that sound right?
+Dr. Donald Condie ([36:20]):
+Yes.
+Shanan Buckingham ([36:20]):
+Okay. And that she is presently medication stabilized and is in the process of discontinuing most, if not all, psychotropic medications demonstrating an emerging capacity to stabilize without them. Do you recall writing that?
+Dr. Donald Condie ([36:33]):
+Yes.
+Shanan Buckingham ([36:34]):
+So in July of 2025, it was your opinion that she was stable and she would be hopefully, as you say, transferred to a different facility, correct?
+Dr. Donald Condie ([36:45]):
+Yes.
+Shanan Buckingham ([36:45]):
+And you're aware that currently she's still at Tewksbury Hospital?
+Dr. Donald Condie ([36:49]):
+Yes.
+Shanan Buckingham ([36:50]):
+And currently she's still taking psychotropic medications?
+Dr. Donald Condie ([36:54]):
+That's true. Yes.
+Shanan Buckingham ([37:04]):
+I think you also write in that report... Well, strike that. Going back to your most recent evaluation in June of 2026, you would agree with me that in an evaluation for criminal responsibility, being a forensic psychologist, it's really important to be as accurate as possible in your reports, correct?
+Dr. Donald Condie ([37:32]):
+Yes.
+Shanan Buckingham ([37:33]):
+You want to make sure you get the facts right, right?
+Dr. Donald Condie ([37:36]):
+Yes.
+Shanan Buckingham ([37:37]):
+Because your evaluation's not just based on what you learn from the individual you're evaluating, but also an independent review, an unbiased review of the records of the facts. Is that fair to say?
+Dr. Donald Condie ([37:48]):
+Yes.
+Shanan Buckingham ([37:48]):
+Okay. So in your report, you indicate that the period of evaluation that you had with this individual is approximately 45 hours. Do you recall writing that and testifying about that yesterday?
+Dr. Donald Condie ([38:03]):
+I think I actually said I've met with her a total of 45 hours, but the evaluation was more than 35 hours and I think it was 37 hours.
+Shanan Buckingham ([38:13]):
+Okay. And you also said yesterday that in addition to that, you've met with her several other times for a total of approximately 60 times at least?
+Dr. Donald Condie ([38:21]):
+Not 60 additional times, but in total, yes, since the court trial has started a few weeks back.
+Shanan Buckingham ([38:27]):
+Okay. Is that typical for you to spend 35 hours with the person that you're evaluating?
+Dr. Donald Condie ([38:32]):
+It does happen, but it's not typical.
+Shanan Buckingham ([38:37]):
+You also indicated yesterday that how you became involved in this case is Attorney Reddington called you and asked you to go check on the, I think you said mental wellbeing. Is that what your testimony is?
+Dr. Donald Condie ([38:54]):
+Mental health or mental wellbeing at the time of her admittance to Brigham Women's Hospital, which was roughly late January 2023.
+Shanan Buckingham ([39:08]):
+And your first time there was February 4th, correct?
+Dr. Donald Condie ([39:12]):
+Yes.
+Shanan Buckingham ([39:12]):
+Were you examining her as a potential patient at that point?
+Dr. Donald Condie ([39:17]):
+I was examining her as a colleague and friend of Attorney Reddington to see how she was faring. There was no predetermined notion whether I would be interested or willing or even offered the opportunity to take the case. I was just going to meet with her given the fact that she was in a bed, an ICU, locked to the bed frame, and no one was able to visit her.
+Shanan Buckingham ([39:50]):
+So you went in to visit her?
+Dr. Donald Condie ([39:54]):
+Yes.
+Shanan Buckingham ([39:56]):
+And when you went in to visit her, you indicated that she had recently been extubated in your testimony yesterday. You're aware from the review of the records that she was extubated on January 28th?
+Dr. Donald Condie ([40:06]):
+Yes. So the difference between January 28th and February 4th, I didn't know the date at that time, but I knew she was able to breathe on her own and express verbal language. Yes, expressive language.
+Shanan Buckingham ([40:21]):
+You're aware that she had been communicating with staff at the hospital, including psychiatrists, right?
+Dr. Donald Condie ([40:31]):
+I don't know if I knew at that time, but I knew she had been speaking with the doctors and staff.
+Shanan Buckingham ([40:33]):
+Well, a person who-
+Dr. Donald Condie ([40:34]):
+But not specifically who it was.
+Shanan Buckingham ([40:36]):
+A person who goes through major trauma and is at a hospital and has made suicidal attempts, in your opinion, it would behoove the hospital to have that person talk to a psychiatrist, correct?
+Speaker 1 ([40:50]):
+Objection.
+Speaker 2 ([40:52]):
+Overruled.
+Dr. Donald Condie ([40:53]):
+Yes.
+Shanan Buckingham ([40:54]):
+Now, in addition to meeting with the staff and the psychiatry team, prior to your arrival, were you aware that she had an attorney that had came to visit her a few times? Not Mr. Reddington, but a different attorney.
+Dr. Donald Condie ([41:09]):
+Yes. I don't know how many times, but I am aware that there was an attorney, Gelb, who was somehow involved in the case.
+Shanan Buckingham ([41:15]):
+Okay. So there was somebody that came in to see her prior to you coming in to see her?
+Dr. Donald Condie ([41:19]):
+Yes.
+Shanan Buckingham ([41:20]):
+Now you testified yesterday that you performed a mental status exam that day on February 4th. Do you recall that?
+Dr. Donald Condie ([41:29]):
+I do.
+Shanan Buckingham ([41:30]):
+Where in your report or the previous report from July or your June report do you outline the results of your mental status exam?
+Dr. Donald Condie ([41:40]):
+There is none because if someone's not capable of just explaining who they are, where they are, and if they're clear of mentition and thinking, then I'll meet with them. But if they're not, I won't. So it's a sine qua non. You do that just to make sure you can keep meeting with them and that they are able to understand what you're talking about. Standard practice.
+Shanan Buckingham ([42:02]):
+But you indicated yesterday that she did know who she was, right?
+Dr. Donald Condie ([42:06]):
+Yes.
+Shanan Buckingham ([42:07]):
+She didn't know where she was.
+Dr. Donald Condie ([42:09]):
+Yes.
+Shanan Buckingham ([42:09]):
+But I believe your testimony was that she did remember what happened, but she was foggy as to what happened.
+Dr. Donald Condie ([42:15]):
+Yes, that's correct.
+Shanan Buckingham ([42:16]):
+‍
+And she actually, according to your testimony yesterday, asked you for your phone or to access your phone to make a phone call. Is that correct?
+Dr. Donald Condie ([42:25]):
+Yes.
+Shanan Buckingham ([42:26]):
+So she was able to communicate with you?
+Dr. Donald Condie ([42:29]):
+Yes.
+Shanan Buckingham ([42:29]):
+She asked you for something and you clearly understood what she was asking for?
+Dr. Donald Condie ([42:33]):
+Yes.
+Shanan Buckingham ([42:34]):
+And you indicated that she asked to call her husband, right?
+Dr. Donald Condie ([42:37]):
+Yes.
+Shanan Buckingham ([42:38]):
+Had you spoken with her husband before that time?
+Dr. Donald Condie ([42:41]):
+I did not speak with him at that time. I didn't know him, and I had not spoken to him prior to that time.
+Shanan Buckingham ([42:47]):
+So how'd you get the phone number to call him?
+Dr. Donald Condie ([42:49]):
+I did not have the phone number to call.
+Shanan Buckingham ([42:51]):
+So she provided you with a phone number to dial so that she could call him on speakerphone, right?
+Dr. Donald Condie ([42:56]):
+Yes.
+Shanan Buckingham ([42:57]):
+And she remembered the number?
+Dr. Donald Condie ([42:59]):
+Yes.
+Shanan Buckingham ([42:59]):
+And so you indicated on that day, on February 4th, that she left a voicemail, right?
+Dr. Donald Condie ([43:03]):
+Yes.
+Shanan Buckingham ([43:04]):
+So in that voicemail message, were you able to identify that it was Patrick Clancy's phone? Did it say, "Hey, this is Pat, leave a message," or something to that effect?
+Dr. Donald Condie ([43:14]):
+I don't remember the salutation from the voice recording, but there was no evidence that it was not Patrick Clancy.
+Shanan Buckingham ([43:24]):
+And as far as her confidence in the number, she gave it to you with no issue, did she not?
+Dr. Donald Condie ([43:31]):
+That's correct.
+Shanan Buckingham ([43:32]):
+She didn't have her own cell phone to refer to, did she?
+Dr. Donald Condie ([43:35]):
+That's correct.
+Shanan Buckingham ([43:36]):
+Or a pad of paper where all the numbers were written down?
+Dr. Donald Condie ([43:38]):
+She didn't.
+Shanan Buckingham ([43:43]):
+You indicated that she left a message. Do you recall what the message was?
+Dr. Donald Condie ([43:48]):
+She expressed a love for him, want to know how he was doing, and that was pretty much it.
+Shanan Buckingham ([43:56]):
+And again, you said that you didn't write down what the mental status exam was, but the fact that she was able to relay that message, was it clear and coherent what she was saying?
+Dr. Donald Condie ([44:07]):
+Yes. Mental status exams are multiple levels. Different things are asked. If you don't know where you are, it doesn't mean you can't have a conversation with someone.
+Shanan Buckingham ([44:16]):
+And she was able to have a conversation with you that day?
+Dr. Donald Condie ([44:19]):
+Yes.
+Shanan Buckingham ([44:21]):
+Now, you said you went back on February 6th and met with her again, correct?
+Dr. Donald Condie ([44:27]):
+Yes.
+Shanan Buckingham ([44:28]):
+And you guys made another attempt at calling Patrick?
+Dr. Donald Condie ([44:33]):
+Yes.
+Shanan Buckingham ([44:34]):
+Again, did you remember the number?
+Dr. Donald Condie ([44:37]):
+No.
+Shanan Buckingham ([44:37]):
+Did you have it stored in your phone?
+Dr. Donald Condie ([44:40]):
+No.
+Shanan Buckingham ([44:40]):
+Did she provide you his phone number to call?
+Dr. Donald Condie ([44:42]):
+Well, it was in my phone. I could just look it up in my phone. I didn't write it down. I didn't enter his name. Either she gave it to me again or I just looked it up from two days prior.
+Shanan Buckingham ([44:53]):
+But you don't recall, as you sit here today, which it was, do you?
+Dr. Donald Condie ([44:55]):
+No.
+Shanan Buckingham ([44:56]):
+And you didn't write a report about that interaction, did you?
+Dr. Donald Condie ([44:59]):
+I did not.
+Shanan Buckingham ([45:00]):
+So in the second phone call, you were able to actually hear that she was talking with Patrick on the other end, right?
+Dr. Donald Condie ([45:09]):
+Yes.
+Shanan Buckingham ([45:10]):
+And at that time when you were now second time meeting with her and having this phone call, were you aware that she had already changed her healthcare proxy from Patrick to her parents?
+Dr. Donald Condie ([45:22]):
+I did not know that.
+Shanan Buckingham ([45:27]):
+Did you talk to Patrick in between the 4th and the 6th to find out if he had tried to come in to visit her?
+Dr. Donald Condie ([45:35]):
+I didn't speak to him at all, so I knew nothing about what his plans or intentions were.
+Shanan Buckingham ([45:40]):
+Your testimony yesterday was that she had called him to tell him that she loved him and to see where they were at, right?
+Dr. Donald Condie ([45:48]):
+Yes.
+Shanan Buckingham ([45:49]):
+That was your testimony? Meaning what? Their relationship?
+Dr. Donald Condie ([45:56]):
+I made no interpretation of what that meant. She left the message and we left it at that.
+Shanan Buckingham ([46:02]):
+But in that subsequent conversation that you were a witness to where they were speaking on the phone and she told them about these voices or explained about the voices, did she ask about the kids?
+Dr. Donald Condie ([46:19]):
+She did not, as I recall.
+Shanan Buckingham ([46:28]):
+Now, in all of the times over the course of the last few years that you've met with Ms. Clancy, how many times has she told you since the incident that she's heard a voice currently?
+Dr. Donald Condie ([46:44]):
+She has not heard voices since the event took place in 2023.
+Shanan Buckingham ([46:54]):
+And you've now testified that over the course of a period of time that she did hear voices, right?
+Dr. Donald Condie ([47:04]):
+Yes.
+Shanan Buckingham ([47:05]):
+And is that based on one of these 35 hours worth of conversations you had with her? How do you know that?
+Dr. Donald Condie ([47:14]):
+Well, they were collateral contacts. I spoke to other people who I asked the nature of their interactions with Ms. Clancy, and it was not a fishing expedition. I asked them if they can tell me what happened.
+Shanan Buckingham ([47:34]):
+I'm asking you-
+Speaker 1 ([47:34]):
+But they disclosed. Pardon me.
+Speaker 2 ([47:36]):
+You have to let them finish.
+Dr. Donald Condie ([47:37]):
+So they disclosed information to me that Ms. Clancy shared that information with them.
+Shanan Buckingham ([47:42]):
+So who did she tell that she had a voice that told her to kill herself?
+Dr. Donald Condie ([47:50]):
+She spoke to a chaplain named Sheila Cavanaugh, who I spoke with. And Chaplain Cavanaugh told me that Ms. Clancy told her that she heard a male voice instructing her to first kill her children and then to kill herself.
+Shanan Buckingham ([48:17]):
+So the same message that she delivered to Patrick that day on the phone, you heard from a chaplain at Brigham and Women's Hospital after the incident occurred in January of 2023?
+Dr. Donald Condie ([48:31]):
+Yes.
+Shanan Buckingham ([48:32]):
+And so, from all of the records that you reviewed of her treatment and all of the interviews with her family, who did she tell that she heard voices telling her to kill herself?
+Dr. Donald Condie ([48:45]):
+I believe she told family members.
+Shanan Buckingham ([48:48]):
+Which family members?
+Dr. Donald Condie ([48:49]):
+I believe she may have said that to her mother. She, I believe, told her husband that she felt like killing herself as well.
+Shanan Buckingham ([48:58]):
+In the records with the providers, you're aware you've reviewed them all and you've sat through all of their testimony. You're aware that when she described intrusive thoughts, she never referred to them as a voice telling her to kill herself, did they? Did she?
+Dr. Donald Condie ([49:19]):
+No, she was referring to-
+Shanan Buckingham ([49:19]):
+It's just a yes or no.
+Dr. Donald Condie ([49:19]):
+No.
+Shanan Buckingham ([49:20]):
+So as far as her reports of these intrusive thoughts that appear over and over in the notes, you would agree that it was simply when asked about what they were, it was simply that she felt like she wanted to die, right?
+Dr. Donald Condie ([49:39]):
+Yes. And-
+Shanan Buckingham ([49:39]):
+It's just a yes or no.
+Dr. Donald Condie ([49:40]):
+Yes.
+Shanan Buckingham ([49:44]):
+Now, in your report, you go through what's called the sources of information. You're familiar with that part? It's pretty standard in a forensic report, right?
+Dr. Donald Condie ([49:58]):
+Yes.
+Shanan Buckingham ([49:58]):
+Where you list all of the things that you've gone through and reviewed in compiling the information for your report.
+Dr. Donald Condie ([50:04]):
+So in my sources of information, I reviewed the following, but that list is not limited to the following. So there might be other pieces of information that I may have reviewed, but didn't put in the list.
+Shanan Buckingham ([50:17]):
+Okay. So not on the list are the Tewksbury Hospital records that you said you reviewed recently, correct?
+Dr. Donald Condie ([50:25]):
+Yes. The 7,000 pages of those hospital notes. I didn't review all of them at the time of the report.
+Shanan Buckingham ([50:31]):
+Did you review records from the Spaulding Rehab facility?
+Dr. Donald Condie ([50:35]):
+Yes.
+Shanan Buckingham ([50:35]):
+That's not contained though in your list in your report, is it?
+Dr. Donald Condie ([50:40]):
+I don't think it is.
+Shanan Buckingham ([50:41]):
+And you don't cite to any of the Spaulding Rehab records in your report coming to your ultimate conclusions, do you?
+Dr. Donald Condie ([50:50]):
+I do not.
+Shanan Buckingham ([50:52]):
+And how about the women and infant records? Did you list that in your sources of information section?
+Dr. Donald Condie ([50:59]):
+I do not. She was there for one day.
+Shanan Buckingham ([51:03]):
+Okay. But you've testified about that, right?
+Dr. Donald Condie ([51:07]):
+Yes.
+Shanan Buckingham ([51:08]):
+Did you review them at all?
+Dr. Donald Condie ([51:09]):
+Yes.
+Shanan Buckingham ([51:10]):
+And as far as the McLean records, you don't list the McLean records as a source of information in your report, do you?
+Dr. Donald Condie ([51:18]):
+I did not, but I did review them.
+Shanan Buckingham ([51:24]):
+Now, you've described and you describe in your report that you believe that Ms. Clancy was hypomanic, right?
+Dr. Donald Condie ([51:31]):
+Yes.
+Shanan Buckingham ([51:32]):
+And I believe you testified to some extent, and you've written in your report that you identify her as euphoric, excessively energetic for three months postpartum. Do you remember writing that in your report?
+Dr. Donald Condie ([51:45]):
+Yes.
+Shanan Buckingham ([51:46]):
+That you note that she exercised early, right?
+Dr. Donald Condie ([51:50]):
+Yes.
+Shanan Buckingham ([51:51]):
+But you're aware that she exercised pretty frequently before birth?
+Dr. Donald Condie ([51:56]):
+Yes.
+Shanan Buckingham ([51:57]):
+And while pregnant with Callan?
+Dr. Donald Condie ([51:59]):
+And while post- pregnancy with her children as well, yes.
+Shanan Buckingham ([52:04]):
+So it was part of her routine, fair to say, right?
+Dr. Donald Condie ([52:10]):
+It's part of everyday living. Things sometimes change when you have a baby and a few weeks later, if you're still doing the same exercise, it's sometimes a reflection of something other than committed to fitness.
+Shanan Buckingham ([52:24]):
+And you identify what you refer to as a marketing scam being that Beachbody business, right?
+Dr. Donald Condie ([52:32]):
+Yes.
+Shanan Buckingham ([52:33]):
+But you're aware that that's a series of workouts in a line of nutritional shakes and exercise plans that millions of people engage in across the country?
+Dr. Donald Condie ([52:43]):
+Yes.
+Shanan Buckingham ([52:46]):
+So it's not a scam. It's just a way of a lifestyle choice.
+Dr. Donald Condie ([52:51]):
+If you do something for marketing and you lose all your money and there's no effort to get that back, it's a scam.
+Speaker 2 ([52:58]):
+You've asked some, you figure out what its definition is.
+Shanan Buckingham ([53:03]):
+Sorry. Did she tell you she lost money with a Beachbody?
+Dr. Donald Condie ([53:06]):
+Yes.
+Shanan Buckingham ([53:06]):
+When was that?
+Dr. Donald Condie ([53:10]):
+It was summer of 2022 after her third child was born.
+Shanan Buckingham ([53:16]):
+No. When did she tell you that she lost money?
+Dr. Donald Condie ([53:18]):
+I don't recall that.
+Shanan Buckingham ([53:20]):
+And is it in your report?
+Dr. Donald Condie ([53:22]):
+It may be, but I'm not sure.
+Shanan Buckingham ([53:25]):
+Well, I have it with me or do you have it up there? Can you look and point to me where she told you, at what point she told you she lost money in this endeavor?
+Dr. Donald Condie ([53:39]):
+I don't know where it is, if it's here. It didn't seem relevant whether she lost money in a scam after her child was born in terms of the big picture of what we're here for today.
+Shanan Buckingham ([53:50]):
+You've described it as a scam because you said she lost money. So wouldn't it be important to know if she actually lost money?
+Dr. Donald Condie ([53:59]):
+I don't really think so.
+Shanan Buckingham ([54:01]):
+Okay. You also identify the five-mile race that she completed. Was it a five-mile race or a 5K race?
+Dr. Donald Condie ([54:11]):
+Well, I wasn't sure which it was. I was told initially it was a five-mile race. After my report was submitted, it may have been with reflection, a 5K race.
+Shanan Buckingham ([54:26]):
+And you've sat in the courtroom each and every day of this trial, so you've heard all the testimony about the evidence, right?
+Dr. Donald Condie ([54:32]):
+Actually, I've not been here every day, but I've been here most days. Yes.
+Shanan Buckingham ([54:37]):
+You're also aware that prior to the kids being born, that she considered herself a runner?
+Dr. Donald Condie ([54:47]):
+Yes.
+Shanan Buckingham ([54:47]):
+Right? She had a treadmill at her house. She went to the gym and used the treadmill. She ran other races.
+Dr. Donald Condie ([54:52]):
+Yes.
+Shanan Buckingham ([54:56]):
+Now in your report, you indicate that part of the timeline of her medication and her decline is the September time period where she was prescribed the Zoloft, right?
+Dr. Donald Condie ([55:20]):
+Yes.
+Shanan Buckingham ([55:20]):
+And you indicate that she had reported, and it's reflected in the records, that she increased the Zoloft and that's when she couldn't sleep for 48 hours straight, right?
+Dr. Donald Condie ([55:32]):
+Yes.
+Shanan Buckingham ([55:32]):
+And you're aware of what the instructions were having reviewed everything in this case, what the pill bottle said as far as the plan for the Zoloft?
+Dr. Donald Condie ([55:41]):
+I'm not sure specifically the incremental plan to go from 25 milligrams to 50 milligrams of Zoloft.
+Shanan Buckingham ([56:09]):
+Well, I have the bottle. Exhibit number two. Sertraline, that's Zoloft, right? Brand named Zoloft?
+Dr. Donald Condie ([56:17]):
+Yes.
+Shanan Buckingham ([56:18]):
+It says, "Take one oral tablet once a day for one week, then increase to two tablets daily thereafter."
+Dr. Donald Condie ([56:23]):
+Right.
+Shanan Buckingham ([56:24]):
+Right on the label.
+Dr. Donald Condie ([56:25]):
+Right. That's 25 milligrams to 50 milligrams.
+Shanan Buckingham ([56:29]):
+And again, having been at the majority of this trial, are you aware that there were 30 in that prescription and 23 left in the bottle when they were inventoried?
+Dr. Donald Condie ([56:42]):
+Yes.
+Shanan Buckingham ([56:43]):
+And those are pills that were in Patrick Clancy's possession at the time of these events in January, you're aware, right?
+Dr. Donald Condie ([56:50]):
+Yes. I believe they were in the middle console on the lower part of his truck. The lower part of the middle console in his truck.
+Shanan Buckingham ([56:58]):
+So if there's only seven pills missing from a prescription that requires the person to take a particular dosage for one week or seven days, how did she double the dose?
+Dr. Donald Condie ([57:08]):
+Well, sometimes when you are given medication, you may have medication of the same exact dosage and the same exact medication another time. And you therefore may have pills that you didn't take the previous month or the month before that. And sometimes people just finish what they've had before and before they go on to the most current dose. So I am aware of what you're referring to, but I don't know if there are other bottles there that she may have had medication still in those pill bottles.
+Shanan Buckingham ([57:42]):
+Well, I'm looking at exhibit number one, a record from CVS Pharmacy, which all of these bottles are from. And the only time a prescription for sertraline is spelled is on September 15th, 2022 for 30 pills. You aware of that?
+Dr. Donald Condie ([58:00]):
+Yes.
+Shanan Buckingham ([58:00]):
+So there's no prior prescription for sertraline, is there?
+Dr. Donald Condie ([58:04]):
+I don't think so.
+Shanan Buckingham ([58:08]):
+Now in your report, you also refer to 11/29. And your report on page eight, paragraph two says on 11/29 Paula Gelata. Is that supposed to be Rebecca Gelata?
+Dr. Donald Condie ([58:24]):
+Yes.
+Shanan Buckingham ([58:25]):
+Okay. So it also says that she prescribed Seroquel to treat Ms. Clancy's anxiety, depressed and unstable mood and psychotic symptoms of disassociation and derealization. Where is that in Rebecca Gelata's record that that's why she prescribed Seroquel?
+Dr. Donald Condie ([58:40]):
+I'm not sure.
+Shanan Buckingham ([58:41]):
+And in fact, you were present when Ms. Gelata testified and said that she prescribed it at 25 milligrams for insomnia, not for anxiety, depression, unstable mood, or psychotic symptoms. Did she not?
+Dr. Donald Condie ([58:57]):
+It's used off-label. It's sometimes medications are made from anything. Sometimes they're used off-label, not for what they're prescribed for. So that's a medication that is used for sleeping, although it's an antipsychotic.
+Shanan Buckingham ([59:09]):
+But you're aware from reviewing the records and hearing testimony that that initial prescription was for a 25 milligram dose, correct?
+Dr. Donald Condie ([59:15]):
+Yes.
+Shanan Buckingham ([59:16]):
+I know you're not a prescriber, but you're aware that a dose for treatment of bipolar is significantly higher than 25 milligrams?
+Dr. Donald Condie ([59:24]):
+Yes.
+Shanan Buckingham ([59:35]):
+Now, you've described in your testimony in this court repeated auditory hallucinations about wanting to kill herself or that she should kill herself and that she is damaged or her brain is damaged, right?
+Dr. Donald Condie ([59:53]):
+That's correct.
+Shanan Buckingham ([59:54]):
+Now, did you have a conversation with her in one of these 35 hours about that particular voice or thought or belief?
+Dr. Donald Condie ([01:00:02]):
+So when I meet with Ms. Clancy, it's not as if I have one conversation on one of the 35 hours. To have thoroughness and exactitude, one does what we call intra-rater reliability. In other words, over the period of time to confirm what someone says to you to help endorse the veracity or accuracy of that, you'll ask that question in a multitude of different ways. So I don't just ask once, "Did you hear a voice on that day?" I asked in different ways over time, and her answers pretty much remain the same.
+Shanan Buckingham ([01:00:47]):
+So when you quote in your report, when questioned about the nature and content of these horrible thoughts, Ms. Clancy stated, "Like a really bad and intrusive thought that I didn't feel like it was mine telling me I should kill myself. Your brain is damaged. You're never going to get better." Where does the quote come from?
+Dr. Donald Condie ([01:01:06]):
+Where does the quote come from?
+Shanan Buckingham ([01:01:08]):
+Right.
+Dr. Donald Condie ([01:01:08]):
+She had said that to me.
+Shanan Buckingham ([01:01:10]):
+To you at some point?
+Dr. Donald Condie ([01:01:12]):
+Yes.
+Shanan Buckingham ([01:01:13]):
+Okay. And this is well after the incident occurred, correct?
+Dr. Donald Condie ([01:01:18]):
+Yes.
+Shanan Buckingham ([01:01:19]):
+And you reviewed all the records to know that she did not endorse that she was hearing a voice to any of her providers between September and January 23, 2023.
+Dr. Donald Condie ([01:01:32]):
+So when someone-
+Shanan Buckingham ([01:01:33]):
+Yes or no, sir.
+Dr. Donald Condie ([01:01:36]):
+That's a difficult question to say yes or no from, because sometimes if someone says something that's inaccurate, it's not an affirmatory or a negative response, that's misleading.
+Shanan Buckingham ([01:01:48]):
+My question to you though was where in the records from September to January 23, 2022 did she tell any of the providers she saw that she heard a voice telling her to kill herself?
+Dr. Donald Condie ([01:02:02]):
+It's not in the records.
+Shanan Buckingham ([01:02:03]):
+Okay. And you're aware that she has spoken to several forensic psychiatrists and psychologists over the course of this case, right, not just yourself?
+Dr. Donald Condie ([01:02:13]):
+Yes. She spoke to three retained experts in April 10th and April 12, 2026. And then on June 12, 2026, 1, 172 days after I initially met with her, then 1,220 days after I met with her. That's the third examiner.
+Shanan Buckingham ([01:02:44]):
+Well, you're aware that she. You're referring to Dr. Heilbrun, Dr. Mack, and Dr. Saathoff, correct?
+Dr. Donald Condie ([01:02:51]):
+Correct.
+Shanan Buckingham ([01:02:51]):
+But you're aware that she also spoke with Dr. Resnick and Dr. Spinelli well before that?
+Dr. Donald Condie ([01:02:57]):
+On May 5, 2023, approximately 90 days more or less later. Yes.
+Shanan Buckingham ([01:03:07]):
+And you're also aware, sir, that she never told Dr. Resnick in a recorded interview, nor Dr. Heilbrun, Dr. Mack, or Dr. Saathoff that she heard.
+Speaker 1 ([01:03:20]):
+Objection.
+Speaker 2 ([01:03:20]):
+Sustained.
+Shanan Buckingham ([01:03:25]):
+Your testimony is that she told you that she heard this voice. Fair to say she identified to you that it was her own voice that she heard, correct?
+Dr. Donald Condie ([01:03:36]):
+That's not correct.
+Shanan Buckingham ([01:03:38]):
+So she told you that she heard a male's voice?
+Dr. Donald Condie ([01:03:42]):
+That's correct.
+Shanan Buckingham ([01:03:42]):
+When?
+Dr. Donald Condie ([01:03:44]):
+On the night of the incident, January 24, 2023.
+Shanan Buckingham ([01:03:49]):
+No, I'm referring to the fact that you've now testified that she heard this, as you call it, a persistent... What's the word you used? Persecutorial voice over the course of time. Was that your testimony?
+Dr. Donald Condie ([01:04:03]):
+So you're referring to the ongoing negative voices or intrusive thoughts that she was hearing where she felt, in fact, other people could hear those voices, thought broadcasting. So there are multiple layers here of hearing intrusive thoughts.
+Shanan Buckingham ([01:04:23]):
+But I'm asking-
+Dr. Donald Condie ([01:04:25]):
+Hearing voices so loud that she believed other people could hear her. Those are two separate phenomenon, if you will.
+Shanan Buckingham ([01:04:34]):
+In those voices that you are saying she told you she heard about wanting to die or to kill herself or her brain was damaged prior to January 24, 2023, did she say it was her own voice she could hear? It was her own thoughts.
+Dr. Donald Condie ([01:04:50]):
+She did not identify whose voice it was.
+Shanan Buckingham ([01:04:53]):
+Fair to say the only time she specifically said she heard a male voice was when she recounts the events on January 24, 2023.
+Dr. Donald Condie ([01:05:03]):
+Yes, that's accurate.
+Shanan Buckingham ([01:05:05]):
+And you'd agree that there's a difference between the idea that somebody believes their thoughts would be or could be heard by others and the belief that they are being heard by others, right?
+Dr. Donald Condie ([01:05:18]):
+Yes. It's a matter of semantics and it's a level of degreeism. Believing and knowing, two totally separate things.
+Shanan Buckingham ([01:05:28]):
+And believing, having a fixed belief like that would be a delusion, right?
+Dr. Donald Condie ([01:05:35]):
+That's correct. A delusion is a fixed false belief that is unshakeable and not something you get rid of either through your own efforts to tell the voice to go away or other people saying, just for example, try to stop thinking about it.
+Shanan Buckingham ([01:05:53]):
+And the idea that she believed that something was wrong with her brain or that if people could know what was happening, that the police might get involved, that is something that could happen if somebody articulates those things, right?
+Dr. Donald Condie ([01:06:12]):
+Absolutely. It's common sense.
+Shanan Buckingham ([01:06:16]):
+Now in your report, you also indicate that in your testimony, you indicated that on January 5, 2023, that that's when Ms. Clancy was discharged from McLean Hospital. And I think your testimony was that she went in there on Seroquel and I think you indicated Klonopin, correct?
+Dr. Donald Condie ([01:06:42]):
+Yes.
+Shanan Buckingham ([01:06:43]):
+And your report says Seroquel and Klonopin. You recall that?
+Dr. Donald Condie ([01:06:47]):
+Yes.
+Shanan Buckingham ([01:06:48]):
+You're aware that based on the medication journal that is in evidence, that she hadn't taken Klonopin since November 27, 2022?
+Dr. Donald Condie ([01:06:59]):
+She had a prescription for that and I think she may have taken some, but may not have been on a regular basis.
+Shanan Buckingham ([01:07:06]):
+But you have seen the pages of her journal to know that she's pretty diligent about saying exactly what she took on each particular date?
+Dr. Donald Condie ([01:07:14]):
+Yes.
+Shanan Buckingham ([01:07:14]):
+Leading up to her stay at McLean and even after.
+Dr. Donald Condie ([01:07:17]):
+Yes.
+Shanan Buckingham ([01:07:23]):
+Now, sticking with these medications for a second, you have testified, I think this was yesterday, you testified that you were familiar that after Dawson's birth that she had sought some medication, correct?
+Dr. Donald Condie ([01:07:41]):
+Yes.
+Shanan Buckingham ([01:07:42]):
+And I believe you testified yesterday that she was on trazodone, but in fact, she was prescribed Zoloft after Dawson and reported she didn't ever take it, right?
+Dr. Donald Condie ([01:07:51]):
+That's correct. So after my testimony, I reviewed that and I confabulated the trazodone with another medication, the Zoloft.
+Shanan Buckingham ([01:08:03]):
+And again, you've talked a lot about that the medications that she was taking, the different medications didn't provide her with any sort of relief. So it's important to know the different medications she was taking and what the reactions were, right?
+Dr. Donald Condie ([01:08:16]):
+I don't know if I talked a lot about it. I was asked questions. I answered them honestly. They didn't provide relief. I would agree with that. And that was the whole point of her seeking help.
+Shanan Buckingham ([01:08:27]):
+And her history, whether it be medication history, a social history, a family history, those are all important things overall for you to look at and examine when coming to ultimate conclusions, right?
+Dr. Donald Condie ([01:08:41]):
+For everyone, yes, of course.
+Shanan Buckingham ([01:08:43]):
+So it's important to be accurate when you are recalling or reporting that information?
+Dr. Donald Condie ([01:08:47]):
+As much as possible as one can be. Yes, that's true.
+Shanan Buckingham ([01:08:50]):
+And as far as the medication goes, I think you testified yesterday that she also took medication in nursing school, correct?
+Dr. Donald Condie ([01:08:58]):
+Yes, she did.
+Shanan Buckingham ([01:08:59]):
+And having met with her as many times as you did in reviewing all these records, you're aware that those were in fact Prozac, Wellbutrin, and propranolol that she took in nursing school?
+Dr. Donald Condie ([01:09:08]):
+That's correct. That was for what's called glossophobia. G-O-L-L-O-S-P-H-O-B-I-A. It's fear of public speaking. Most common fear for Americans. 85% Americans have public speaking phobia. Pretty commonplace. But yes, those are the medications that she took while she was in nursing school to go through the program.
+Shanan Buckingham ([01:09:33]):
+But that's not what she testified to yesterday.
+Dr. Donald Condie ([01:09:35]):
+I think I mentioned only one or two medications, she had taken three.
+Shanan Buckingham ([01:09:59]):
+Okay. And you also mentioned-
+Shanan Buckingham ([01:10:00]):
+... you also mentioned, today in your testimony, you were asked about the date of December 15th. And I believe your testimony was, "That's the day she went to Women and Infants." Is that correct?
+Dr. Donald Condie ([01:10:14]):
+I believe so, yes.
+Shanan Buckingham ([01:10:17]):
+If I show you the record, is it fair to say she didn't go to Women and Infants on the 15th, but it was actually December 20th?
+Dr. Donald Condie ([01:10:22]):
+Right. I believe she went to the Mass General Hospital ER on the 15th.
+Shanan Buckingham ([01:10:28]):
+And you said in your testimony today, that at the Mass General ER, she did not get any help. Do you recall that testimony?
+Dr. Donald Condie ([01:10:34]):
+She declined admission to the inpatient. She didn't want to do that.
+Shanan Buckingham ([01:10:39]):
+She didn't not get help.
+Kevin Reddington ([01:10:41]):
+Can he answer? Can he answer?
+Bailiff ([01:10:41]):
+Go ahead.
+Dr. Donald Condie ([01:10:44]):
+Thank you, Your Honor. We have something called the subjective baseline. The cognitive appraisal theme. Help is in the eye of the beholder. If she felt she didn't get help, that's how she felt.
+Shanan Buckingham ([01:10:58]):
+Well, sir, that wasn't the question. And your testimony was, "She went to the ER and did not get help." That was your testimony, not hers.
+Dr. Donald Condie ([01:11:07]):
+Well, my testimony is based on my evaluation of her. This is what Ms. Clancy shared with me. Who am I to doubt what she believes, or doesn't believe, about the offer for treatment or help? It's her opinion.
+Shanan Buckingham ([01:11:24]):
+She chose to decline the bed at McLean on December 15th, did she not?
+Dr. Donald Condie ([01:11:28]):
+Yes.
+Shanan Buckingham ([01:11:29]):
+And she then indicated to the Mass General Hospital that she was going to opt for an outpatient program at the Women and Infants, correct?
+Dr. Donald Condie ([01:11:38]):
+Yes.
+Shanan Buckingham ([01:11:39]):
+That's what's in the records?
+Dr. Donald Condie ([01:11:41]):
+Yes.
+Shanan Buckingham ([01:11:41]):
+And did she tell you that as well?
+Dr. Donald Condie ([01:11:43]):
+Yes.
+Shanan Buckingham ([01:11:44]):
+And, as it pertains to the Women and Infants, again, after your review of the records, you're aware that a referral had been made to her well before her visit to the ER on the 15th for that same program?
+Dr. Donald Condie ([01:11:57]):
+I believe so.
+Shanan Buckingham ([01:12:17]):
+Now, you've indicated in your testimony that it's your opinion that her diagnosis is bipolar disorder with psychotic symptoms, correct?
+Dr. Donald Condie ([01:12:27]):
+Yes.
+Shanan Buckingham ([01:12:28]):
+And fair to say, prior to your report, you had reviewed Dr. Resnick's report?
+Dr. Donald Condie ([01:12:38]):
+I'm not-
+Kevin Reddington ([01:12:39]):
+Objection.
+Bailiff ([01:12:50]):
+Can I see counsel step up?
+([01:12:59])Go ahead, counsel.
+Shanan Buckingham ([01:13:02]):
+So the question I believe was, did you review a report of Dr. Resnick in all your sources of information and before you came to a conclusion about diagnosis?
+Dr. Donald Condie ([01:13:13]):
+No, I did not.
+Shanan Buckingham ([01:14:32]):
+Well...
+([01:14:32])One moment. Sorry. On page four of your report, were you-
+Bailiff ([01:14:33]):
+Hold on one second. Okay. I'm sorry, counsel.
+Shanan Buckingham ([01:14:48]):
+On page four of your report where you list the sources of information, you do identify as number 24, forensic psychiatric evaluation of Philip J. Resnick from 9/27/24, do you not?
+Dr. Donald Condie ([01:15:00]):
+I do.
+Shanan Buckingham ([01:15:01]):
+And so that's something you reviewed?
+Dr. Donald Condie ([01:15:04]):
+I didn't draw my opinion.
+Shanan Buckingham ([01:15:06]):
+That wasn't the question, sir.
+Kevin Reddington ([01:15:07]):
+[inaudible 01:15:08] Objection.
+Bailiff ([01:15:08]):
+All right. Hold on. Ask the question again. Go ahead.
+Shanan Buckingham ([01:15:12]):
+Did you review his report?
+Kevin Reddington ([01:15:12]):
+Can we have a sidebar? That's not the question.
+Shanan Buckingham ([01:16:24]):
+So the question, sir, is did you review Dr. Resnick's report prior to authoring your report or coming to your conclusions about diagnosis?
+Dr. Donald Condie ([01:16:33]):
+I reviewed part of that report. And in my report, I perused through the reports. I did not review all of that report from Dr. Resnick or Dr. Spinelli for that matter.
+Shanan Buckingham ([01:16:48]):
+Okay. Now in talking about your review of records, you indicated that there are several thousand pages of Tewksbury Hospital records, correct?
+Dr. Donald Condie ([01:17:05]):
+7,001 page.
+Shanan Buckingham ([01:17:07]):
+And did you review all of those?
+Dr. Donald Condie ([01:17:11]):
+I would say I looked through them, but I did not read every word on every page. They do have a tendency to hang together and are replicative as well.
+Shanan Buckingham ([01:17:23]):
+Were you aware that on May 26th, 2023, that the defendant was observed by staff in a note stating that she was visible along the unit hallways, self-propelling her wheelchair with her one-to-one staff, that she had a visit with her mother who brought dinner for her? They ate and played games during the visit. Are you aware of that?
+Dr. Donald Condie ([01:17:45]):
+On May 26th?
+Shanan Buckingham ([01:17:46]):
+May 26th of 2023.
+Dr. Donald Condie ([01:17:51]):
+May '23. So three years ago and a few months. I don't know that. I don't remember.
+Shanan Buckingham ([01:17:56]):
+That would've been approximately four months after the incident and on the date of Callan's first birthday, right?
+Dr. Donald Condie ([01:18:05]):
+Yes. But you asked if I remember that event and I don't.
+Shanan Buckingham ([01:18:10]):
+You don't or you do?
+Dr. Donald Condie ([01:18:12]):
+I don't remember that she was seen with her mother on that day who brought food and she was seen using a wheelchair to travel down the hallway at the hospital. I don't remember.
+Shanan Buckingham ([01:18:26]):
+If I tell you that was read from page 176 of the Tewksbury Hospital records, would you agree with that?
+Dr. Donald Condie ([01:18:33]):
+I would not doubt that.
+Shanan Buckingham ([01:18:35]):
+Okay. And on December 24th of 2023, were you aware that the defendant was observed at Tewksbury monitored on one-to-one for safety, that she accepted medication, meals, and snacks. She spent time in the TV room or sitting outside her room utilizing phone and visited with family. Do you recall that, reading that note on page 613 of the Tewksbury records?
+Dr. Donald Condie ([01:19:01]):
+Of 2023?
+Shanan Buckingham ([01:19:02]):
+Yes.
+Dr. Donald Condie ([01:19:04]):
+Honestly, I don't.
+Shanan Buckingham ([01:19:05]):
+And that would've been Cora's birthday.
+Dr. Donald Condie ([01:19:10]):
+Okay.
+Shanan Buckingham ([01:19:10]):
+But would you agree with me that if I read that from page 613 in the records, that that would be within that 7,001 page of the record?
+Dr. Donald Condie ([01:19:18]):
+I would not doubt that.
+Shanan Buckingham ([01:19:20]):
+How about on January 24th, 2024, where she's observed in a note from Tewksbury State Hospital on page 674 where the note reads, "Patient was visible in the milieu, engageable with both staff and select peers. Patient accepted select medications as her baseline. That she was pleasant during interactions. Self-propelling in wheelchair in the halls, spending much of the morning and early afternoon in her room and hall on her electronics." Do you recall reading that record?
+Dr. Donald Condie ([01:19:53]):
+Not specifically.
+Shanan Buckingham ([01:19:54]):
+And January 24th, 2024 would've been the year anniversary of the incident, correct?
+Dr. Donald Condie ([01:19:59]):
+Yes.
+Shanan Buckingham ([01:20:01]):
+But if I read from page 674, you would agree with me that that's part of the Tewksbury record?
+Dr. Donald Condie ([01:20:07]):
+Yes, I believe it's part of the record.
+Shanan Buckingham ([01:20:11]):
+And on, excuse me, May 26th of 2024 from page 922 of the Tewksbury record, "Patient monitored one-to-one for safety. She's been monitored for high suicide risks, accepted medication." It says, "BFK and snacks. She spent some time in the TV room or sitting outside her room utilizing phone." Would you agree that that's a fair reading of page 922?
+Dr. Donald Condie ([01:20:40]):
+I have no reason to doubt that.
+Shanan Buckingham ([01:20:43]):
+Okay. And that she's also observed on that same day visible on the unit while utilizing her phone outside her room. Was able to make her needs known appropriately. Patient was observed playing dominoes with peers in the TV room. That was later in the day on May 26th, 2024, which would've been Callan's second birthday.
+Dr. Donald Condie ([01:21:06]):
+I would believe that that record's probably accurate. I don't remember looking at that record specifically.
+Shanan Buckingham ([01:21:13]):
+How about on September 30th of 2024, page 1,229 of the Tewksbury record where it's noted that, "She was visible in the unit, attended startup/coffee group, she was assisted with ADLs as needed. She was in safe behavioral control for the duration of the shift." And that later it reads, "Patient visible in the hallways, seated in her wheelchair outside her bedroom using her cell phone. Pleasant upon approach. Social with select peers." That would've been on September 30th, 2024, which would've been Dawson's fifth birthday. Do you recall reviewing that in the record?
+Dr. Donald Condie ([01:21:55]):
+Not off the top of my head, but I have no reason to doubt that's not an accurate record.
+Shanan Buckingham ([01:22:03]):
+December 24th, 2024, page 1,442 of the Tewksbury records says, "The patient was visible on the unit utilizing her phone. Her parents were in to visit and they brought dinner with them. Patient accepted medications and fluids. Patient in good behavioral control, maintaining safety. No SIB noted or reported." Do you have reason to doubt that that's on page 1,442 of the Tewksbury record?
+Dr. Donald Condie ([01:22:31]):
+I have no reason to doubt that that's not an accurate reflection of what took place that day.
+Shanan Buckingham ([01:22:36]):
+And what's SIB?
+Dr. Donald Condie ([01:22:38]):
+Self-injurious behavior.
+Shanan Buckingham ([01:22:44]):
+And so December 24th, 2024, that would've been Cora's seventh birthday, right?
+Dr. Donald Condie ([01:22:50]):
+Yes.
+Shanan Buckingham ([01:22:51]):
+So January 24th, 2025 from page 1,514 of the Tewksbury records where it reads, "Inpatient treatment goal: To work on my mental health and to feel better." It says, "She participated in morning ADL routine with staff assistance. Patient was visible on the milieu at times in the hallway utilizing her phone. No SIB has been reported this shift." Do you have any reason to doubt that that's contained on page 1,514?
+Dr. Donald Condie ([01:23:28]):
+I have no reason to doubt that.
+Shanan Buckingham ([01:23:30]):
+And the further observations on that day were that the patient was visible on the unit. She was social with select staff and peers and also seen utilizing her phone. Her parents were in to visit and brought her dinner. Or excuse me, and they brought dinner with them. That was again on January 24th, 2025, which would've been the second anniversary of this incident, correct?
+Dr. Donald Condie ([01:23:52]):
+Yes.
+Shanan Buckingham ([01:23:54]):
+May 26th, 2025, page 1,782 of the Tewksbury records. It says, "She did not engage in any SIB. She was visited by her parents this shift. She attended startup group and watched TV." That would've been on May 26th, 2025, which would've been Callan's third birthday. Do you have any reason to doubt that in the record?
+Dr. Donald Condie ([01:24:21]):
+I have no reason to doubt that.
+Shanan Buckingham ([01:24:26]):
+And on September 30th, 2025 of the Tewksbury record on page 2056 reads, "Patient was visible in the hallway using her phone. No SIB or behavioral issues observed or reported." Do you have reason to doubt that that is an accurate read of page 2,056?
+Dr. Donald Condie ([01:24:52]):
+I have no reason to doubt that that's not accurate.
+Shanan Buckingham ([01:24:55]):
+And that would've been September 30th, which would've been Dawson's sixth birthday, right?
+Dr. Donald Condie ([01:25:00]):
+Yes.
+Shanan Buckingham ([01:25:01]):
+And on December 24th of 2025, page 76 of the patient notes in the Tewksbury Hospital records reads, "At breakfast, refused lunch, took snacks, utilizing phone, assisted with ADLs, spent some time in the TV room, attended PT, resting in bed after lunch." Do you have any reason to doubt that is contained within the Tewksbury records on page 76?
+Dr. Donald Condie ([01:25:34]):
+No.
+Shanan Buckingham ([01:25:36]):
+And December 24th would've been Corey's eighth birthday, correct?
+Dr. Donald Condie ([01:25:44]):
+Yes.
+Shanan Buckingham ([01:25:47]):
+And on page 152 of the Tewksbury records, January 24th, 2026 of this year, "Patient observed her safety, assessmental status, encouraged safe behavioral control, monitoring for abrupt behavior change in attempt to prevent escalation or self-harm. Encouraged patient to participate in groups. That and on this particular day, she was also observed compliant with meds, ate breakfast, participated in coffee group, visible in the hallway utilizing her phone. Later visited with parents and had an early lunch." That was on January 24th of 2026. Do you have any reason to doubt that's within the records?
+Dr. Donald Condie ([01:26:38]):
+No.
+Shanan Buckingham ([01:26:38]):
+And that she was later observed to not have any SIB or behavioral issues again on January 24th, 2026. Do you have any reason to doubt that's contained within the Tewksbury records?
+Dr. Donald Condie ([01:26:50]):
+No. No.
+Shanan Buckingham ([01:26:54]):
+And again, you reviewed or looked at some of them, but not every one of these, but these are already currently in evidence, correct?
+Dr. Donald Condie ([01:27:04]):
+Yes.
+Shanan Buckingham ([01:27:06]):
+Your Honor, I would move to admit these excerpts as the next exhibit, please.
+Bailiff ([01:27:11]):
+Any objection?
+Kevin Reddington ([01:27:12]):
+No problem.
+Bailiff ([01:27:12]):
+All right. They may be admitted.
+Speaker 3 ([01:27:20]):
+283.
+Bailiff ([01:27:20]):
+Okay. Thank you.
+Shanan Buckingham ([01:27:24]):
+And Dr. Zeizel, as far as the records that I just read in, do you know if in those records it indicates that she slept well on all of those occasions?
+Dr. Donald Condie ([01:27:58]):
+I wouldn't know. I don't know how...
+Shanan Buckingham ([01:28:03]):
+Well, you would agree that noting her sleeping habits based on this particular individual's history would be important thing for the hospital to monitor, correct?
+Dr. Donald Condie ([01:28:14]):
+I would agree with that.
+Shanan Buckingham ([01:28:22]):
+Now, in this particular case... Well, let me ask you, are you familiar with the concept of confirmation bias?
+Dr. Donald Condie ([01:28:31]):
+Of course.
+Shanan Buckingham ([01:28:32]):
+And fair to say it's pretty prevalent in most areas of science and forensic psychology and psychiatry, correct?
+Dr. Donald Condie ([01:28:43]):
+It courses all domains of work and life.
+Shanan Buckingham ([01:28:48]):
+And as far as confirmation bias for psychiatry or providers, fair to say that clinicians are warned that they may lean towards or support their own theories and overlook contradictory evidence and that you have to be aware of that, correct?
+Dr. Donald Condie ([01:29:06]):
+Yes.
+Shanan Buckingham ([01:29:06]):
+And again, in forensic psychology, the goal is to render an objective opinion, right?
+Dr. Donald Condie ([01:29:11]):
+Yes. The facts come to you. You don't go to the facts.
+Shanan Buckingham ([01:29:15]):
+Okay. And there's a danger for clinicians and forensic psychologists of quickly forming an initial diagnosis before having all the information, correct?
+Dr. Donald Condie ([01:29:29]):
+Yes.
+Shanan Buckingham ([01:29:30]):
+And that confirmation bias accounts for the fact that a lot of times people, clinicians and providers will cling to diagnoses and interpret subsequent information in light of that kind of already perceived idea. Is that fair to say?
+Dr. Donald Condie ([01:29:45]):
+They cling... I just want to make sure I understand what you're saying. They cling to a diagnosis?
+Shanan Buckingham ([01:29:51]):
+Well, once a diagnosis is reached, they cling to that diagnosis when interpreting subsequent information.
+Dr. Donald Condie ([01:30:01]):
+That happens, yes.
+Shanan Buckingham ([01:30:04]):
+But you would agree that in practice of forensic psychology, that it's important not to do that, right?
+Dr. Donald Condie ([01:30:10]):
+Particularly with the guidelines of criminal responsibility where you don't need a diagnosis. You just need a mental disease or defect.
+Shanan Buckingham ([01:30:18]):
+A diagnosis are helpful in understanding whether the person was suffering from this legal construct of a mental disease or defect, correct?
+Dr. Donald Condie ([01:30:26]):
+That's fair to say.
+Shanan Buckingham ([01:30:27]):
+And it's fairly accepted in the field that if somebody has a disorder or a diagnosed mental illness, that they then in turn suffer from a mental disease or defect? Or could.
+Dr. Donald Condie ([01:30:45]):
+Or could, because you can have a phobia. Doesn't mean you have a mental disease or defect. If you're afraid to jump out of airplanes, it can make you ineffective and have a defect or a disease. So yes, it could.
+Bailiff ([01:30:57]):
+Could I ask you to keep your voice up?
+Dr. Donald Condie ([01:30:58]):
+Yes, Your Honor.
+Bailiff ([01:30:59]):
+Thank you.
+Dr. Donald Condie ([01:31:00]):
+So it could, but it doesn't always have to.
+Bailiff ([01:31:01]):
+Thank you.
+Dr. Donald Condie ([01:31:02]):
+Of course.
+Shanan Buckingham ([01:31:04]):
+And you are aware of the danger, this idea of confirmation bias of having multiple relationships and conflicts in this type of work, correct?
+Dr. Donald Condie ([01:31:14]):
+‍
+Yes.
+Shanan Buckingham ([01:31:14]):
+And that's why it's important not to be treating somebody as a patient when you're also evaluating them for this type of legal issue, right?
+Dr. Donald Condie ([01:31:24]):
+Of course. You cannot be the therapist and the examiner. The therapist is an advocate. The examiner looks for the truth.
+Shanan Buckingham ([01:31:35]):
+And do you recall in this case submitting recommendations to the court in November of 2025 about the defendant regarding accommodations for her?
+Dr. Donald Condie ([01:31:53]):
+I know in general, but I don't know specifically what those accommodations requests were. I can't remember them.
+Shanan Buckingham ([01:32:00]):
+But you wrote, you authored and signed a letter dated November 13th, 2025 to the court, correct?
+Dr. Donald Condie ([01:32:06]):
+Yes, but I'm saying I don't remember specifically what those recommendations were. I know I did that.
+Shanan Buckingham ([01:32:11]):
+I'm not asking you that. I'm just asking if you wrote the letter.
+Bailiff ([01:32:19]):
+Can I please... Hold on. Just re-ask the question. Doctor, if you listen to the question.
+Dr. Donald Condie ([01:32:19]):
+Yes, sir.
+Shanan Buckingham ([01:32:20]):
+I'm asking if you wrote the letter, sir.
+Dr. Donald Condie ([01:32:21]):
+Yes.
+Shanan Buckingham ([01:32:22]):
+And in that letter, you refer to providing essential clinical findings regarding the transportation of my patient, Lindsay Clancy. Do you recall writing that?
+Dr. Donald Condie ([01:32:31]):
+Yes.
+Shanan Buckingham ([01:32:33]):
+And so at various points over the years of this case, you have referred to her as your patient, have you not?
+Dr. Donald Condie ([01:32:39]):
+I wouldn't be, I think, able to define her as something else. She was a patient who I did a forensic evaluation of.
+Shanan Buckingham ([01:32:56]):
+Well, you referred to the court outside of this evaluation you're testifying about to her as your patient in this letter from November 13th of 2025.
+Dr. Donald Condie ([01:33:05]):
+Right. I evaluated Ms. Clancy, who is a patient. If I evaluated her, then she's my patient. As she is other doctor's patients at Tewksbury and other places that she's been at.
+Shanan Buckingham ([01:33:23]):
+But you call her my patient in the letter.
+Dr. Donald Condie ([01:33:27]):
+I wrote the letter. Whose patient would I be referring to, if I'm speaking about Ms. Clancy, given that she's my patient? Yes, I wrote she was my patient. That's correct.
+Shanan Buckingham ([01:33:39]):
+Okay. And you're aware of, again, the APA guidelines on forensic psychology where it warns, "Therapeutic forensic role conflicts. Providing forensic and therapeutic psychological services to the same individual involves multiple relationships that may impair objectivity and/or cause exploitation or other harm." You're aware of that section 4. 02?
+Dr. Donald Condie ([01:34:01]):
+Yes.
+Shanan Buckingham ([01:34:03]):
+And in this particular case, since the beginning, you've appeared regularly in court hearings, right?
+Dr. Donald Condie ([01:34:14]):
+Yes.
+Shanan Buckingham ([01:34:14]):
+You've appeared with Attorney Reddington at arraignment proceedings?
+Dr. Donald Condie ([01:34:19]):
+At his request, yes.
+Shanan Buckingham ([01:34:20]):
+Both here and at Tewksbury State Hospital where you were sitting next to the defendant?
+Dr. Donald Condie ([01:34:26]):
+Yes.
+Shanan Buckingham ([01:34:27]):
+And you also, on February 8th of 2023, participated in a news conference, did you not?
+Dr. Donald Condie ([01:34:37]):
+Yes.
+Shanan Buckingham ([01:34:38]):
+It was outside the courthouse here.
+Dr. Donald Condie ([01:34:40]):
+Yes.
+Shanan Buckingham ([01:34:41]):
+And you gave an interview with the Daily News where you commented on this event?
+Dr. Donald Condie ([01:34:44]):
+I just made a comment. That's correct.
+Shanan Buckingham ([01:34:46]):
+Okay. And at this time, Your Honor, I'd like to play a clip of the news conference, please.
+Bailiff ([01:34:52]):
+Mr. Reddington?
+Kevin Reddington ([01:34:56]):
+Why not?
+Bailiff ([01:34:57]):
+All right. I can't see the TV. Thanks.
+Video ([01:35:50]):
+Dr. Paul Zeizel: It's recording. So I've been reviewing [inaudible 01:35:51] over the past few days, multiple hours each day. What I can say without going too far is that her affect is absolutely flattened. She's in a very surreal state. It feels dream like to her as she's described to me on multiple occasions.
+([01:36:06])And individuals who can present as being lucid and linear and clear thinking do not make those people not mentally ill. They have the capacity for on occasion to be able to do things that they've been doing for a long period of time. When you have delusional thinking, fixed beliefs that are unchangeable, and hallucinations, namely command hallucinations, telling you to do things, telling you to do things that are malevolent, and you believe those voices that are telling you you need to control what they say, that's when things go downhill behaviorally, psychiatrically, and familiarly.
+([01:36:50])And that's what we see in the most tragic of cases for individuals who could be healthy and normal. And quite frankly, unless they're paranoid and worried about what others think, they hold back on their care. And in some cases throughout the country and the world, these are people who one day will be functioning well, but because they have the onset of command hallucinations which they adhere to and they believe the voice that they have to do something, that's when tragedy occurs. And I think that is under the overriding rubric that this case falls under.
+Shanan Buckingham ([01:37:30]):
+So sir, on December 8th of 2023, when you provided your observations, you had met with the defendant on two occasions, correct?
+Dr. Donald Condie ([01:37:45]):
+I believe three occasions.
+Shanan Buckingham ([01:37:47]):
+Okay. Had you any of the records that have been presented in the course of this trial?
+Dr. Donald Condie ([01:37:54]):
+No.
+Shanan Buckingham ([01:37:55]):
+Any of the records that are listed in your sources of information?
+Dr. Donald Condie ([01:37:59]):
+No.
+Shanan Buckingham ([01:38:00]):
+And as you sit here and testify today, you've testified to the same conclusions, correct?
+Dr. Donald Condie ([01:38:07]):
+What I said was, "Individuals like that present this way." I was not referring to Ms. Clancy. I said, "Individuals who have these symptoms like the ones I clarified present that way." That was not an assessment of Ms. Clancy. That was an assessment of people who go through major mental health crises.
+Shanan Buckingham ([01:38:38]):
+But as you sat here today, you've talked about the fact that she had delusional thinking, the fact that she had command hallucinations, the fact that she believed that these voices and that she was paranoid and worried. You've consistently testified about that throughout the course of yesterday and today, correct?
+Dr. Donald Condie ([01:39:01]):
+So-
+Shanan Buckingham ([01:39:02]):
+It's a yes or no.
+Dr. Donald Condie ([01:39:04]):
+You make it impossible to answer that question.
+Bailiff ([01:39:05]):
+All right. The next question.
+Shanan Buckingham ([01:39:12]):
+In addition to... Well, you testified today that a person in a psychotic state can do things they've done before, but it might be hard for them to do new tasks, right?
+Dr. Donald Condie ([01:39:27]):
+Yes.
+Shanan Buckingham ([01:39:28]):
+So if it's something that is part of their daily life, getting up, caring for the kids, feeding, making a meal, driving a car, those are things that people do every day and a lot of times don't even have to think about, right?
+Dr. Donald Condie ([01:39:43]):
+Yes. No thinking necessary. It's a physical response, automatic response.
+Shanan Buckingham ([01:39:48]):
+You're aware that on this particular day of this incident on January 24th of 2023, that the defendant took Cora to the doctors, right?
+Dr. Donald Condie ([01:39:59]):
+Yes.
+Shanan Buckingham ([01:39:59]):
+And you indicated in your testimony today that it was for a regular checkup, but in your report you identified that it was for a stomach ache, right?
+Dr. Donald Condie ([01:40:08]):
+Yes, she had a stomach ache.
+Shanan Buckingham ([01:40:10]):
+But in addition to maybe her having a stomach ache, she had previously had this visit scheduled. And you're aware of that now, correct?
+Dr. Donald Condie ([01:40:18]):
+Yes.
+Shanan Buckingham ([01:40:19]):
+And at the doctor, there was a recommendation made for an over-the-counter medication, right?
+Dr. Donald Condie ([01:40:26]):
+Yes.
+Shanan Buckingham ([01:40:27]):
+And the defendant was able to process that information, take it back with her. And then later, not immediately after the visit, but later in the day, search for where to get that medication, right?
+Dr. Donald Condie ([01:40:39]):
+Psychosis doesn't lower your intellectual functioning, so you can do all those things, so that's correct.
+Shanan Buckingham ([01:40:44]):
+Well, that wasn't my question. My question was, did she do those things?
+Dr. Donald Condie ([01:40:47]):
+Yes, I said, "That's correct."
+Shanan Buckingham ([01:40:47]):
+Okay. And you've talked a lot about that a person can operate as normally as they can, but fair to say if you're in a psychotic state, that person themselves has a significant amount of distress, right?
+Dr. Donald Condie ([01:41:06]):
+Yes.
+Shanan Buckingham ([01:41:06]):
+And that in order to mask those symptoms, it requires an enormous amount of control, does it not?
+Dr. Donald Condie ([01:41:13]):
+It depends on the level and the extremism of the psychotic processing. So some people will hear voices that are nominal, they whisper. Some people hear voices that are yelling and screaming. So it's on a range, it's a continuum. So the more upsetting, more powerful, demanding the voice, the more difficult it might be to resist it and do other things. The less, the easier it is.
+Shanan Buckingham ([01:41:45]):
+In all of the time between September of 2022 and January 23rd of 2023, at any point in which the defendant heard these voices about harming herself, she didn't act on them then, did she?
+Dr. Donald Condie ([01:42:02]):
+That's correct, yes. She did not act on those. She sought help instead.
+Shanan Buckingham ([01:42:16]):
+One moment, please. Your Honor, I would move to admit the recording played as the next exhibit.
+Bailiff ([01:42:31]):
+I'm sorry, is the what?
+Shanan Buckingham ([01:42:31]):
+The recording that was played. I move to enter it-
+Bailiff ([01:42:33]):
+Yeah.
+Shanan Buckingham ([01:42:33]):
+... as the next exhibit, please.
+Bailiff ([01:42:34]):
+That may be admitted.
+Shanan Buckingham ([01:42:56]):
+If I can find it. Here it is.
+Bailiff ([01:42:56]):
+All right.
+Shanan Buckingham ([01:42:56]):
+Thank you.
+Speaker 3 ([01:42:56]):
+Exhibit 284.
+Bailiff ([01:42:58]):
+Thank you.
+Shanan Buckingham ([01:43:03]):
+I have no further questions at this time.
+Kevin Reddington ([01:43:05]):
+Let's talk about confirmation bias.
+Shanan Buckingham ([01:43:07]):
+Can I sit down please?
+Bailiff ([01:43:08]):
+Hold on. Let Ms. Buckingham-
+Shanan Buckingham ([01:43:11]):
+Thank you.
+Bailiff ([01:43:12]):
+... have a seat.
+Kevin Reddington ([01:43:17]):
+Confirmation bias. In the field of forensics, interfaces, science and the law, trial of cases, hiring experts, having people give an opinion that a jury's going to listen to, confirmation bias means that the individual might want to help out the person that they're testifying for. Is that right?
+Dr. Donald Condie ([01:43:44]):
+It can be, yes.
+Kevin Reddington ([01:43:45]):
+So in other words, if you have a shooting case and you're a ballistics guy, and without the ballistics showing that the defendant's gun shot the victim, the government has no case. They may send an email to that witness and say, "Hey, I really need your help here." And that might influence them, right?
+Dr. Donald Condie ([01:44:07]):
+Yes.
+Kevin Reddington ([01:44:08]):
+Now you got involved with this case as you indicated out of my request, obviously.
+Dr. Donald Condie ([01:44:16]):
+Yes.
+Kevin Reddington ([01:44:17]):
+Compassion.
+Dr. Donald Condie ([01:44:18]):
+Correct.
+Kevin Reddington ([01:44:19]):
+The fact you had a young lady that was literally in extreme condition, emotionally, physically, you went to speak with her, correct?
+Dr. Donald Condie ([01:44:31]):
+I did, yes.
+Kevin Reddington ([01:44:32]):
+Do you care for her?
+Dr. Donald Condie ([01:44:36]):
+I do.
+Kevin Reddington ([01:44:37]):
+And is that a violation of the canon of ethics for professionals like you, if you care for your patient?
+Dr. Donald Condie ([01:44:45]):
+Not at all. Within the ethical standards, it's also noted to do a appropriate and meaningful forensic evaluation. It's strongly suggested you develop empathy and rapport-
+Dr. Donald Condie ([01:45:00]):
+Empathy and rapport. And when you have those two psychological constructs, you get more information from the respondent. You do not cherry-pick the information. You include warts and all in your report. That avoids confirmatory bias. And you avoid confirmatory bias by also not looking at conclusions that other examiners come up with when they render their opinions. And you do your evaluations independent of anyone else. You do it by yourself.
+Kevin Reddington ([01:45:36]):
+How many times did you see her?
+Dr. Donald Condie ([01:45:41]):
+At the time that my report was-
+Kevin Reddington ([01:45:43]):
+No, no. Right about now.
+Dr. Donald Condie ([01:45:45]):
+60 times.
+Kevin Reddington ([01:45:46]):
+How Many hours have you put in sitting with Lindsay either in the hospital or evaluating her?
+Dr. Donald Condie ([01:45:50]):
+More than that, roughly.
+Kevin Reddington ([01:45:55]):
+And you have all of that information that you have brought here today and yesterday to testify to this jury. Is that correct?
+Dr. Donald Condie ([01:46:03]):
+Yes.
+Kevin Reddington ([01:46:04]):
+Are you confirmed bias? Are you not telling the truth just to help Lindsay out, or is this your opinion based upon your review of the records, your interview of her, whether or not you care for her or not?
+Judge ([01:46:19]):
+Overruled. Overruled.
+Dr. Donald Condie ([01:46:21]):
+I am telling the truth. She-
+Shanan Buckingham ([01:46:23]):
+[inaudible 01:46:26].
+Judge ([01:46:25]):
+Yeah. You can re-ask that question. That answer will be stricken.
+Kevin Reddington ([01:46:31]):
+So you can't tell someone you're telling the truth. That's up to the jury to decide. Your opinion is based upon all of the times that you met with Lindsay, right?
+Dr. Donald Condie ([01:46:41]):
+Yes.
+Kevin Reddington ([01:46:43]):
+All of the documents that you've reviewed, all of this, all the exhibits that you're aware of, right?
+Dr. Donald Condie ([01:46:47]):
+Yes. As well as collateral contacts.
+Kevin Reddington ([01:46:50]):
+And in the course of your treatment and evaluation of her, one of the things the DA asked you about is the request that we brought to the court for accommodations. Do you recall that question from her?
+Dr. Donald Condie ([01:47:05]):
+Yes.
+Kevin Reddington ([01:47:06]):
+And is it your understanding that the request that we had seeking help from the judge was that she not be chained to a van when she's brought into this courthouse?
+Shanan Buckingham ([01:47:18]):
+Objection.
+Judge ([01:47:18]):
+Overruled.
+Kevin Reddington ([01:47:19]):
+The five-week trial?
+Dr. Donald Condie ([01:47:21]):
+Yes. From Tewksbury to Plymouth.
+Kevin Reddington ([01:47:23]):
+And her medical condition with her paralysis and all of the rest of the bodily functions that you lose, that's a concern. Isn't that right?
+Dr. Donald Condie ([01:47:32]):
+Very much so, yes.
+Kevin Reddington ([01:47:33]):
+And we also had to have the help of nurses that would be available in the event that there was any type of emergency issue, correct?
+Shanan Buckingham ([01:47:40]):
+Objection.
+Kevin Reddington ([01:47:40]):
+We ask of the court.
+Judge ([01:47:42]):
+Overruled.
+Dr. Donald Condie ([01:47:42]):
+Yes. They're here every day.
+Kevin Reddington ([01:47:49]):
+So confirmation bias. Can you tell this jury, is your opinion based upon money? Maybe you like me? Maybe you want to help her? Or is that based to your best ability as a professional of many, many years?
+Dr. Donald Condie ([01:48:08]):
+Yes. Confirmation bias is coming up with a conclusion before you reach an opinion. It's in Latin as Tabula Rasa, a blank slate. You draw no conclusion. The conclusion finds you. And if you don't do that, you are at risk of having confirmation bias.
+Kevin Reddington ([01:48:35]):
+I'm going to ask you a hypothetical and see if the hypothetical fits within your understanding as an expert of confirmation bias. Let's say hypothetically that a young woman is involved in an incident such as this that results in the death of her three babies. And that young woman is paralyzed. And that young woman is in a hospital. That young woman is facing indictments for triple homicide. And the incident occurred on January 24th, 2023. And it's not until 2026 that the district attorney's office hires three doctors.
+Shanan Buckingham ([01:49:31]):
+Objection.
+Judge ([01:49:32]):
+Yeah. Sustained.
+Kevin Reddington ([01:49:34]):
+Sidebar?
+Judge ([01:49:49]):
+You've been sitting here for a little bit. We're going to take a short break at this point, give you a chance to take a break, and then we'll come right back and we'll continue with the testimony of this witness. Okay?
+Dr. Donald Condie ([01:50:02]):
+All rise, please. Jurors exit.
+Bailiff ([01:50:38]):
+Jurors have exited the courtroom. This court's in session.
+Judge ([01:50:39]):
+All right. We'll be in a short recess at this time. Thank you.
+([01:50:39])Yeah.
+Bailiff ([01:52:54]):
+[inaudible 01:50:59].
+([01:52:54])All rise, please. Jurors entering. Court is back in session. You may be seated.
+Shanan Buckingham ([01:52:56]):
+Your Honor, for the purpose of the record, we returned back to the trial of Commonwealth versus Lindsay Clancy. All parties are present, including the defendant and including the [inaudible 01:53:05].
+Judge ([01:53:05]):
+All right. We'll return now to redirect counsel.
+Kevin Reddington ([01:53:08]):
+Thank you. So as it relates to the concept of confirmatory bias, sir, in your opinion, with your experience, does the period of time within which an expert is hired by one side or another to evaluate a person and give an opinion, in other words, if it's a compressed period of time as opposed to an expanded period of time, is that one indication of confirmatory bias?
+Shanan Buckingham ([01:53:43]):
+Objection.
+Judge ([01:53:45]):
+Overruled.
+Dr. Donald Condie ([01:53:48]):
+It depends on the examiner and the situation. It can be, but individuals who pay attention to that concern should maintain healthful boundaries and not have any confirmatory bias.
+Kevin Reddington ([01:54:07]):
+What does that mean?
+Dr. Donald Condie ([01:54:08]):
+It means stay in your lane.
+Kevin Reddington ([01:54:11]):
+That's better. Now, one of the things that the district attorney did is took the 7,001 pages of the records from Tewksbury Hospital and read excerpts from them to you. Is that correct?
+Dr. Donald Condie ([01:54:30]):
+Yes.
+Kevin Reddington ([01:54:32]):
+And Lindsay, after she was taken from South Shore Hospital to Brigham and Woman's, then from Brigham and Women's to the rehab, Spalding Rehab, she ended up in Tewkesbury. Is that correct?
+Dr. Donald Condie ([01:54:48]):
+Yes.
+Kevin Reddington ([01:54:48]):
+And Tewksbury's been very good. I mean, in your opinion, have they been good with her?
+Dr. Donald Condie ([01:54:54]):
+Fantastic.
+Kevin Reddington ([01:54:55]):
+Fantastic. But nevertheless, that is still a facility that is a state facility, right?
+Dr. Donald Condie ([01:55:02]):
+Yes.
+Kevin Reddington ([01:55:03]):
+And the district attorney asked you about the plan to have Lindsay go to another facility. Worcester, I think it was.
+Dr. Donald Condie ([01:55:11]):
+Worcester Recovery Center Hospital.
+Kevin Reddington ([01:55:13]):
+Is that a relatively new facility?
+Dr. Donald Condie ([01:55:15]):
+It's, I believe, the newest facility in the Commonwealth.
+Kevin Reddington ([01:55:18]):
+And did we have Lindsay evaluated to have her transferred to Worcester Hospital?
+Dr. Donald Condie ([01:55:24]):
+Yes.
+Kevin Reddington ([01:55:25]):
+Was she allowed to make entry into Worcester facility?
+Dr. Donald Condie ([01:55:29]):
+She was not.
+Kevin Reddington ([01:55:30]):
+Why is that?
+Dr. Donald Condie ([01:55:31]):
+She was not allowed because she-
+Shanan Buckingham ([01:55:33]):
+[inaudible 01:55:34].
+Judge ([01:55:33]):
+Overruled.
+Dr. Donald Condie ([01:55:34]):
+She was not allowed because she has pending criminal charges.
+Kevin Reddington ([01:55:38]):
+That'd be this case here, right?
+Dr. Donald Condie ([01:55:39]):
+That's this case here.
+Kevin Reddington ([01:55:41]):
+And the district attorney took the 7,000 pages in one of the records and apparently went through them to the anniversary of the death of her three children, correct?
+Dr. Donald Condie ([01:55:57]):
+Yes.
+Kevin Reddington ([01:55:57]):
+Went through them to highlight each birthday of her three children. Is that correct?
+Dr. Donald Condie ([01:56:03]):
+Yes.
+Kevin Reddington ([01:56:05]):
+In your opinion, you've been in a lot of mental institutions and facilities in the Commonwealth and out of the state, correct?
+Judge ([01:56:12]):
+Yes.
+Kevin Reddington ([01:56:14]):
+Is it your understanding to a reasonable degree of medical certainty that the fact that a woman who is paralyzed is propelling herself down the hall from one room to another is indicative of anything?
+Dr. Donald Condie ([01:56:30]):
+Not at all.
+Kevin Reddington ([01:56:31]):
+How about the fact that her mother and father, who have been with her for three years and practically missed not one day of sitting with her and bringing her dinner or lunch, is that something that would be indicative of undercutting the fact that the woman was suffering from mental disease or defect?
+Dr. Donald Condie ([01:56:51]):
+That's indicative of love.
+Kevin Reddington ([01:56:53]):
+How about the fact that she's talking to other inmates or people that are patients? In your review of the records, would you tell us your opinion as to her level of degree of popularity, bluntly, in that particular ward?
+Dr. Donald Condie ([01:57:11]):
+She is extremely, extremely well regarded and well liked on that unit by everyone.
+Judge ([01:57:21]):
+Overruled.
+Kevin Reddington ([01:57:22]):
+How about in reviewing the records? I didn't hear that she's laughing and partying and having a good time while she's in the Tewksbury Hospital. Did you see anything like that?
+Dr. Donald Condie ([01:57:33]):
+No. Lindsay Clancy has bad days and worse days.
+Kevin Reddington ([01:57:39]):
+And when you speak with her and meet with her doctor, has she ever mentioned her children? Because apparently according to the questioning that you underwent, she never talks about her kids.
+Dr. Donald Condie ([01:57:53]):
+She does speak about her children.
+Kevin Reddington ([01:57:55]):
+What does she say?
+Dr. Donald Condie ([01:58:00]):
+She really loves them and misses them and thinks of them every single day, almost every moment of the day.
+Kevin Reddington ([01:58:13]):
+And finally, doctor, I'm holding up what has been marked as Exhibit 1 or I. I don't know for identification. Have you seen this before?
+Dr. Donald Condie ([01:58:24]):
+Yes, I have.
+Kevin Reddington ([01:58:28]):
+And in your dealing with Lindsay and interview of collateral contacts such as Patrick, do you know what that is?
+Dr. Donald Condie ([01:58:36]):
+Yes, I do.
+Kevin Reddington ([01:58:37]):
+What is it?
+Dr. Donald Condie ([01:58:39]):
+It's called a wish vase.
+Kevin Reddington ([01:58:43]):
+And what does that mean and what is it?
+Dr. Donald Condie ([01:58:46]):
+This is a vase that Ms. Clancy and her husband purchased in Hawaii when they went on their honeymoon shortly after getting married.
+Shanan Buckingham ([01:58:57]):
+Your Honor, I would object. [inaudible 01:59:00].
+Judge ([01:59:00]):
+Yeah, sure. See sidebar, please.
+Kevin Reddington ([01:59:20]):
+Your Honor, I would hand this to Chrissy to have it marked as an exhibit.
+Judge ([01:59:24]):
+All right. Over the Commonwealth's objection, that may be admitted.
+Speaker 4 ([01:59:31]):
+285.
+Kevin Reddington ([01:59:33]):
+Thank you very much. All right. Commonwealth?
+Shanan Buckingham ([01:59:38]):
+Very briefly please. Doctor, how many defendants that you've evaluated for criminal responsibility have you spent 35 hours evaluating?
+Dr. Donald Condie ([01:59:51]):
+One. One other one. One other person.
+Shanan Buckingham ([01:59:52]):
+And how many other defendants have you evaluated that you've testified that you cared deeply for them?
+Dr. Donald Condie ([02:00:05]):
+I would say one other one.
+Shanan Buckingham ([02:00:08]):
+And how many other defendants have you given press conferences about?
+Dr. Donald Condie ([02:00:14]):
+None.
+Shanan Buckingham ([02:00:14]):
+And how many other defendants that you've evaluated have you gone back every day until the lockup to check on?
+Dr. Donald Condie ([02:00:25]):
+I was sequestered on all those other trials. I was not even allowed in the court.
+Shanan Buckingham ([02:00:31]):
+Now, you were asked about confirmation bias and given a hypothetical about if somebody was asked to examine a gun, right? You recall that line of questioning?
+Dr. Donald Condie ([02:00:43]):
+Yes.
+Shanan Buckingham ([02:00:45]):
+You were hired by the defense in this case, were you not?
+Dr. Donald Condie ([02:00:47]):
+Yes.
+Shanan Buckingham ([02:00:50]):
+And as far as your conversations with the defendant about her children, you're also aware that she continually refers to this situation as, "My tragedy," does she not?
+Dr. Donald Condie ([02:01:03]):
+That moniker of, "My tragedy," that's just one of the things that she'll say.
+Shanan Buckingham ([02:01:08]):
+All right. Thank you.
+Dr. Donald Condie ([02:01:09]):
+You're welcome.
+Kevin Reddington ([02:01:13]):
+And what's the reason that with the understanding of the court permission that you go to the lockup and see her during this trial?
+Dr. Donald Condie ([02:01:19]):
+I go to the lock-
+Judge ([02:01:20]):
+Sustained.
+Kevin Reddington ([02:01:23]):
+Well, while she's in Tewkesbury, counsel kept referring to SIDSISI. What is SI?
+Dr. Donald Condie ([02:01:33]):
+SI is suicide intention or suicide ideation.
+Kevin Reddington ([02:01:42]):
+Excuse me. In Tewksbury, has there been a concern of suicidal ideation?
+Dr. Donald Condie ([02:01:50]):
+Yes.
+Kevin Reddington ([02:01:50]):
+And what, as a result of that SI, as counsel repeating to you through the records, is her status at Tewksbury?
+Dr. Donald Condie ([02:02:00]):
+She's on a constant one-to-one to ensure that Ms. Clancy doesn't take her own life.
+Kevin Reddington ([02:02:06]):
+And that is somewhat similar to the reference in Brigham and Women's Hospital when you were talking with her, that there was a nurse that was sitting in the corner of the room at all times. Is that right?
+Dr. Donald Condie ([02:02:18]):
+Yes, that's correct.
+Kevin Reddington ([02:02:19]):
+Inferentially was able to hear any conversation that you had with Lindsay, right?
+Dr. Donald Condie ([02:02:25]):
+I asked those people to leave.
+Kevin Reddington ([02:02:27]):
+Thank you.
+Judge ([02:02:28]):
+Counsel, can I see just one?
+Kevin Reddington ([02:03:11]):
+So finally, I will ask you again, what, to your understanding, is the purpose of you during this trial going back as the counsel asked you about to lockup with Lindsay?
+Dr. Donald Condie ([02:03:23]):
+To ensure that Ms. Clancy is stable and competent to stand trial.
+Kevin Reddington ([02:03:28]):
+Any concerns as far as her SI?
+Dr. Donald Condie ([02:03:33]):
+She's in good hands at the moment, but there's always a concern that sits directly below the surface.
+Kevin Reddington ([02:03:40]):
+Thank you.
+Dr. Donald Condie ([02:03:40]):
+You're welcome.
+Judge ([02:03:41]):
+Attorney Buckingham, please.
+Shanan Buckingham ([02:03:42]):
+Dr. Zeizel, in three years, she's never made an attempt to harm herself, has she? Other than January 24th of 2023?
+Dr. Donald Condie ([02:03:48]):
+No.
+Shanan Buckingham ([02:03:49]):
+Thank you.
+Judge ([02:03:50]):
+All right. Anything further?
+Kevin Reddington ([02:03:51]):
+[inaudible 02:03:51] questions, Judge. Thank you.
+Judge ([02:03:52]):
+All right. Thank you, Doctor.
+Dr. Donald Condie ([02:03:52]):
+Thank you, Your Honor.
+Judge ([02:04:06]):
+All right. Attorney Reddington?
+Kevin Reddington ([02:04:09]):
+It's up to Your Honor as to the voir dire on McLean Hospital witness or Dr. Spinelli. I know.
+Judge ([02:04:16]):
+All right. Counsel, let me CC in regards to the timing on.
+([02:04:18])Members of the jury, this is another one of those moments I've got to talk to counsel about a matter that I've got to talk to them outside of your presence. All right. So I thought we'd do it at this point and excuse you till two o'clock. We'll take up the next witness. We're going to stay in here and we're going to take up that other matter. All right? And so with that, during the break, remember, same instructions. Don't talk about it. Don't do any research about it. Don't read anything. Don't go anywhere in regards to this. And I'll see everybody at two o'clock. Okay?
+Bailiff ([02:05:59]):
+All rise, please. Jurors exit. Jurors have exited the courtroom. This court's in session. Please be seated.
+Shanan Buckingham ([02:06:39]):
+All right.
+Judge ([02:06:50]):
+All right. Counsel, are we ready to do the voir dire of Ms. Thorndike?
+Kevin Reddington ([02:06:56]):
+Thank you. She should be right outside.
+Speaker 4 ([02:07:42]):
+Raise your right hand. Do you solemnly swear that you shall make true answers to such questions [inaudible 02:07:49].
+Emily Thorndike ([02:07:54]):
+Yes.
+Speaker 4 ([02:07:54]):
+You may have a seat.
+Judge ([02:07:54]):
+Good afternoon.
+Emily Thorndike ([02:07:54]):
+Good afternoon.
+Judge ([02:07:54]):
+All right. Attorney Reddington.
+Kevin Reddington ([02:07:57]):
+Thank you, Judge. Tell us your name. Spell your last name for the record, please.
+Emily Thorndike ([02:08:01]):
+Emily Thorndike. T-H-O-R-N-D-I-K-E.
+Kevin Reddington ([02:08:05]):
+And what town do you live in?
+Emily Thorndike ([02:08:06]):
+I actually live in Brooklyn, New York, but I summer on Cape Cod. I'm spoiled like that. So I'm in Chatham.
+Kevin Reddington ([02:08:11]):
+So where do you live now?
+Emily Thorndike ([02:08:13]):
+Brooklyn.
+Kevin Reddington ([02:08:14]):
+But where are you living? Are you-
+Emily Thorndike ([02:08:15]):
+In Chatham.
+Kevin Reddington ([02:08:15]):
+Chatham.
+Emily Thorndike ([02:08:16]):
+Yes.
+Kevin Reddington ([02:08:17]):
+And what do you do for work?
+Emily Thorndike ([02:08:18]):
+I own my own therapy practice right now, so I'm practicing as a business owner and a therapist.
+Kevin Reddington ([02:08:24]):
+And what is the name of the business?
+Emily Thorndike ([02:08:25]):
+It's called Wise Mind Therapy Practice.
+Kevin Reddington ([02:08:27]):
+What is it?
+Emily Thorndike ([02:08:28]):
+Wise Mind.
+Kevin Reddington ([02:08:29]):
+Wise Mind?
+Emily Thorndike ([02:08:30]):
+Yep.
+Kevin Reddington ([02:08:30]):
+Okay. And where is that located?
+Emily Thorndike ([02:08:33]):
+It's a virtual practice, so yeah.
+Kevin Reddington ([02:08:35]):
+And how long have you been doing that?
+Emily Thorndike ([02:08:38]):
+So I had my own private practice for. I opened that January 2023. And then this past May I expanded. I hired somebody. So technically it's a group practice, but I've owned my own business technically for, what is that? Four years.
+Kevin Reddington ([02:08:54]):
+So tell us your educational background, please.
+Emily Thorndike ([02:08:57]):
+I went to Dover Sherburn High School and I went to Hartwick College. And then I went to Boston College School of Social Work.
+Kevin Reddington ([02:09:04]):
+And what degrees do you have?
+Emily Thorndike ([02:09:05]):
+So I have my master's in social. Well, my BA in sociology. I have my master's in social work, and then I have two social work licenses, I guess. You have to get one before the other. So I only go by a licensed independent clinical social worker. But you have to get your... It's very confusing. You have to get two licenses, essentially.
+Kevin Reddington ([02:09:26]):
+But you have those licenses?
+Emily Thorndike ([02:09:27]):
+Yes.
+Kevin Reddington ([02:09:28]):
+Within the Commonwealth of Massachusetts?
+Emily Thorndike ([02:09:29]):
+Yes.
+Kevin Reddington ([02:09:30]):
+Now your employment, can you tell us what your employment history was since I guess you got your master's at BC or something?
+Emily Thorndike ([02:09:38]):
+Since I got my master's at BC, I did my final year internship at McLean Hospital at their trauma program. And then once I graduated, got my MSW, my Master's of Social Work, and then my social work license, I was offered a per diem position at that program. And I did that position for, I think it was two to three months. And then I was rehired. I went back to the short-term unit at McLean, which I had previously worked at.
+Kevin Reddington ([02:10:08]):
+So when you say the short-term unit, is that also referred to as the STU?
+Emily Thorndike ([02:10:13]):
+Yes. We call it the STU. It's just short-term unit. It's also referred to as AB1, which is admissions building first floor.
+Kevin Reddington ([02:10:22]):
+Now, are you familiar with this case of Lindsay Clancy?
+Emily Thorndike ([02:10:26]):
+I'm only familiar about it from what I watched before I was sequestered, but other than that, I don't know the case at all.
+Kevin Reddington ([02:10:33]):
+And when you say what you watched before you were sequestered, what does that mean? What did you watch?
+Emily Thorndike ([02:10:39]):
+I think it was not this past Thursday, but the one before that, I'm not going to recall the date off the top of my head, but that's when you had told me that I'm sequestered and to no longer watch the trial or consume any of it.
+Kevin Reddington ([02:10:53]):
+So what were you watching?
+Emily Thorndike ([02:10:54]):
+I had just been watching the day-to-day, like the live stream and just. Yeah.
+Kevin Reddington ([02:10:59]):
+Why is that?
+Emily Thorndike ([02:11:00]):
+I'm interested in the case. I honestly got into sort of watching trials from the Karen Reed trial, and then I wanted to watch this case and obviously. Well, I worked at McLean, so I was curious to watch it.
+Kevin Reddington ([02:11:12]):
+And when did you work at McLean?
+Emily Thorndike ([02:11:15]):
+I started there in 2014, and then I left there in December 2021.
+Kevin Reddington ([02:11:23]):
+So how many years is that?
+Emily Thorndike ([02:11:26]):
+Seven years, seven, eight months, I think.
+Kevin Reddington ([02:11:27]):
+And what was the nature of your work? What'd you do?
+Emily Thorndike ([02:11:31]):
+I started as a mental health specialist there, which I think you can sort of try to summarize as those are the counselors are sort of directly on the unit with the patients. Our main role is to keep patients safe, really. So you're doing a lot of safety checks. You are putting eyes on patients to make sure they're not trying to harm or kill themselves. And we do crisis intervention. So when those things are happening, because they do, we are the ones to intervene. And unfortunately, there are a lot of restraints that happen on those units, and that's one of our main jobs.
+‍
+Kevin Reddington ([02:12:06]):
+So the STU that you referred to, are there a couple of them at McClean?
+Emily Thorndike ([02:12:13]):
+So I'll try to explain it. When I first started there in 2014, it was one unit with 28 beds. During the time I was there, there was a renovation. They expanded the unit. It's a little confusing, but in 2016, I believe it was, it became two separate units operating the same way. So there's short-term unit north and then there's short-term unit south. And now south has 22 beds and north has 23. So that's why you'll see AB1S. So they're the same unit, but there's a south side and a north side, if that makes sense.
+Kevin Reddington ([02:12:50]):
+When you were working in that particular unit, is that the same unit that Lindsay Clancy was in for the four to five-day period?
+Emily Thorndike ([02:12:58]):
+Yes. I worked on both north and south for a significant amount of time.
+Kevin Reddington ([02:13:02]):
+And for all those years that you worked there, did you work days, nights, weekends, holidays?
+Emily Thorndike ([02:13:09]):
+So days and evenings. I preferred the evening shift, but you're supposed to do both day and evening. I didn't do night. Sometimes you get mandated and you have to work an evening and a night shift, which is always pretty brutal, but I was day and evening.
+Kevin Reddington ([02:13:29]):
+Now, how about the staffing at STU, your experience?
+Emily Thorndike ([02:13:30]):
+So there's always during the... I can sort of start with the week, I guess. There's always four mental health specialists and four nurses during the week for the day shift. And then in the evening, it's four mental health specialists and three nurses. And then there's one and a half. It's hard to explain. At night, there's three mental health specialists and then there's one nurse on north and one nurse on south. And then there's a nurse that goes in between at night to help both sides.
+Kevin Reddington ([02:14:05]):
+And how many beds are in the north and the south?
+Emily Thorndike ([02:14:08]):
+North is 23. South is 22.
+Kevin Reddington ([02:14:10]):
+And which one was Lindsay in?
+Emily Thorndike ([02:14:12]):
+South.
+Kevin Reddington ([02:14:14]):
+Are you familiar with the code of mask regulations or regulations that mandate or require certain staffing levels within that particular unit, the STU of McLean?
+Emily Thorndike ([02:14:24]):
+Yes, like the Department of Mental Health regulations there.
+Kevin Reddington ([02:14:26]):
+Can you tell the judge what your understanding of the regulations from the DMH would be on staffing?
+Emily Thorndike ([02:14:32]):
+Yeah. So the Department of Mental Health has to oversee all of the mental health facilities in Massachusetts, and they have specific requirements for safety regulation, for staffing ratios, how the unit has to be set up. For example, there was a renovation while I was there to adjust handles on a sink because you could use it to harm yourself. So DMH, there's usually an annual or biannual inspection, and they will go around and they will look at charts, they will look at the unit, so they oversee everything.
+Kevin Reddington ([02:15:08]):
+And did they mandate how many doctors or nurses or safety people would be on a particular unit?
+Emily Thorndike ([02:15:16]):
+Yeah, they definitely have those requirements.
+Kevin Reddington ([02:15:19]):
+And what's your understanding of those requirements?
+Emily Thorndike ([02:15:23]):
+I believe, I'm not sure exactly. I know McClean follows those regulations, but I guess there's potential that McLean might go higher than the ratio. I'm not sure. So you have to at minimum have a certain amount of staff, but I'm not exactly sure on that.
+Kevin Reddington ([02:15:42]):
+So are you aware in this case that McClean forwarded to the district attorney's office and the court certain discovery?
+Emily Thorndike ([02:15:52]):
+Yes.
+Kevin Reddington ([02:15:53]):
+Indicating how many doctors, nurses-
+Emily Thorndike ([02:15:55]):
+Yes.
+Kevin Reddington ([02:15:55]):
+... and safety workers. Did you have a chance to read that?
+Emily Thorndike ([02:15:59]):
+I did.
+Kevin Reddington ([02:16:00]):
+All right. Is it your understanding that the requirements of the DMH and minimum staffing on, well, let's say on weekends and holidays, for example, does that change year to year or is that pretty static?
+Emily Thorndike ([02:16:12]):
+It's never changed. I mean, it didn't change from when I was there and with that document. So I guess that goes to what 2023 it was. So that was how it was when I started. Well, I guess one caveat. When it changed from a 28 bed unit to 22 and 23, there was different numbers because with 28 patients you have to have a certain number of staff. But so since it's been 22 and 23 patients on those two units, the staffing has not changed from when I started there and from that document that I reviewed.
+Kevin Reddington ([02:16:44]):
+Now you indicated that you, because of your interest, were watching the proceedings on this case.
+Emily Thorndike ([02:16:51]):
+Yes.
+Kevin Reddington ([02:16:52]):
+On what, YouTube or something or TV?
+Emily Thorndike ([02:16:55]):
+[inaudible 02:16:56]. Yeah.
+Kevin Reddington ([02:16:57]):
+And you had the occasion to hear the cross-examination of Patrick Clancy by the district attorney. Is that right?
+Emily Thorndike ([02:17:04]):
+Yes.
+Judge ([02:17:05]):
+You mean the direct?
+Kevin Reddington ([02:17:07]):
+I'm sorry?
+Judge ([02:17:07]):
+The direct of Patrick Clancy?
+Kevin Reddington ([02:17:08]):
+Sorry, you're right. It's been a long week. Okay. Direct examination. And the focus was on the fact that when Lindsay went into the hospital, it was on New Year's Eve. Is that correct?
+Emily Thorndike ([02:17:23]):
+Right.
+Kevin Reddington ([02:17:24]):
+And that she was there for that holiday weekend and I think the following Monday was a holiday.
+Emily Thorndike ([02:17:29]):
+Yes.
+Kevin Reddington ([02:17:30]):
+Okay. And you heard the direct examination of the district attorney asking about McClean being number one hospital in the country. McClean having all of these services available to the inmates that are in there, treating them, offering all these fantastic programs on the holiday weekends and the holidays, as opposed to what Patrick had testified to. Do you see that?
+Emily Thorndike ([02:18:01]):
+Will you re-ask that question? I think I understand, but.
+Kevin Reddington ([02:18:04]):
+Okay. When you were watching on the television, you saw, or the computer, you saw the questioning of the district attorney of Patrick Clancy.
+Emily Thorndike ([02:18:14]):
+Yep.
+Kevin Reddington ([02:18:16]):
+You heard Patrick Clancy make reference to the fact that his wife admitted herself into the STU on the holiday weekend, [inaudible 02:18:24].
+Emily Thorndike ([02:18:24]):
+Yes. Yes.
+Kevin Reddington ([02:18:25]):
+Was there all that weekend into a holiday.
+Emily Thorndike ([02:18:27]):
+Right.
+Kevin Reddington ([02:18:28]):
+And the district attorney then questioning Patrick, inquired as to whether he was aware that it was the best hospital in the country, that there were many doctors and nurses and staff available and programs available. And Lindsay wasn't interested in any of that, right?
+Emily Thorndike ([02:18:43]):
+Yes, that's what I took from it.
+Kevin Reddington ([02:18:45]):
+Now in your however many years of experience that you had, is that what your understanding was in that unit?
+Emily Thorndike ([02:18:53]):
+No. Yeah, no, that's not what I was understanding. No.
+Kevin Reddington ([02:18:57]):
+So tell the judge what your understanding was from your experience, hands-on, day after day, working in the STU for all of those years, but you also were a supervisor of the STU at one time.
+Emily Thorndike ([02:19:09]):
+I actually wasn't. I became a social worker there, so I guess one way to look at it is that the social worker and the psychiatrist, you are the treatment team. So you're making all the decisions for the patients. And so the nurses and the mental health specialists, I don't like to create a hierarchy, but they are operating underneath you. So in a way I'm supervising, but I was never a direct supervisor.
+Kevin Reddington ([02:19:32]):
+Now you came out with a TikTok or-
+Emily Thorndike ([02:19:38]):
+I did.
+Kevin Reddington ([02:19:38]):
+A reel or whatever you call it.
+Emily Thorndike ([02:19:40]):
+Yeah, TikTok.
+Kevin Reddington ([02:19:41]):
+And would you agree with me that you were pretty angry when you did that?
+Emily Thorndike ([02:19:44]):
+Yeah, definitely emotional.
+Kevin Reddington ([02:19:46]):
+Tell the judge, why were you emotional when you did that TikTok?
+Emily Thorndike ([02:19:48]):
+Well, it's a lengthy TikTok. It's about 10 minutes. And I was emotional because I felt like what was discussed in court was not aligned with what my experience was. I noted several things. I'll try-
+Emily Thorndike ([02:20:00]):
+... not aligned with what my experience was. I noted several things. I'll try to summarize some of them. There was mention that there's individual therapy on the unit. There is not. There was mention of seeing a doctor every day. I felt like there was some misleading of that. You do see a doctor every day, but on the weekends and on a holiday, it's one doctor who's seeing all of the patients. The meetings can be as short as one minute. Many patients decline those meetings. And the doctor who's there on the weekend and holidays is seeing 23 patients. So I felt it was misleading to indicate that there's a in-depth doctor session when it's very brief.
+Kevin Reddington ([02:20:43]):
+How about programs that are offered, like making things out of clay and crayons and stuff like that?
+Emily Thorndike ([02:20:48]):
+Yes. There's clay on the unit. It's called Model Magic. It's a non-toxic kid... I mean, it's advertised for kids, but it's on the unit. It's in the nursing station, it's out on the unit. There is a lot of coloring. There's a specific group that I saw in the documents I reviewed called Music and Mandalas. Mandalas are basically adult coloring books. The designs are abstract. You could compare it to looking through a kaleidoscope or something, and you color them in. And Music and Mandalas is a group where you play music and the patients color.
+Kevin Reddington ([02:21:26]):
+So you understand from watching the proceedings that you became emotional over, is that Lindsay went in on New Year's Eve with some fairly serious symptomology. Is that correct?
+Emily Thorndike ([02:21:38]):
+Yes.
+Kevin Reddington ([02:21:39]):
+And Patrick indicated that they were, quite frankly, pretty bluntly disgusted with the help and the care that was allegedly offered to her, right?
+Emily Thorndike ([02:21:46]):
+Right.
+Kevin Reddington ([02:21:47]):
+And you were upset about what you felt was a misleading of this witness based on the questions that were asked. Is that right?
+Emily Thorndike ([02:21:55]):
+Yes.
+Kevin Reddington ([02:21:58]):
+And Patrick had made reference to the fact that she was doing coloring and she was in the groups that were sitting there dealing with the clay, and that basically they felt that it was not, bluntly, any help.
+Emily Thorndike ([02:22:13]):
+Yes. And there's very minimal family contact when the main treatment team is not there. So it's not abnormal that families wouldn't be getting regular or in-depth updates of what's going on. You're supposed to wait until the treatment team comes back, whether it's on a Monday, or in this case, a Tuesday since Monday was a holiday. That's the team who's going to be working with the patient. So most updates and communication with family and with providers aren't going to happen over the weekend either.
+Kevin Reddington ([02:22:45]):
+Now, one of the things that occurred, just for the background, is that your TikTok was observed by me, and I tried to reach out to you and couldn't find you.
+Emily Thorndike ([02:22:58]):
+That's correct.
+Kevin Reddington ([02:22:59]):
+And then I had a private investigator, Bob Jones, hunt you down kind of, and ended up in front of your house.
+Emily Thorndike ([02:23:05]):
+No, Bob and I were chuckling about that, because he never ended up outside of my house, but the rest of it is all accurate. Yeah. So he wasn't outside of my house, but the rest of that was true.
+Kevin Reddington ([02:23:16]):
+So he was able to locate you.
+Emily Thorndike ([02:23:18]):
+He was, yes.
+Kevin Reddington ([02:23:19]):
+He was able to talk to you.
+Emily Thorndike ([02:23:20]):
+He was, yes.
+Kevin Reddington ([02:23:20]):
+Get your contact information.
+Emily Thorndike ([02:23:22]):
+Yes.
+Kevin Reddington ([02:23:22]):
+Provide that to me.
+Emily Thorndike ([02:23:23]):
+Yep.
+Kevin Reddington ([02:23:26]):
+And as a result of that, I reached out to you, and then you indicated that you, initially somewhat reluctant, but then ultimately agreed to get involved and talk to the judge, right?
+Emily Thorndike ([02:23:38]):
+Yes. Yes.
+Kevin Reddington ([02:23:39]):
+Now, the district attorney is objecting to your testimony, and I believe they're going to argue the change from that one year period. When did you leave working there?
+Emily Thorndike ([02:23:49]):
+I want to say my last date was December 18th. Since working there, you don't get a lot of holidays off. So out of all my time there, I said, "I'm going to leave right before the holidays and be able to enjoy that." So I believe it was December 18th, but mid-December.
+Kevin Reddington ([02:24:02]):
+What year?
+Emily Thorndike ([02:24:03]):
+2021.
+Kevin Reddington ([02:24:04]):
+2021.
+Emily Thorndike ([02:24:04]):
+Yeah.
+Kevin Reddington ([02:24:06]):
+And when was Lindsay in there?
+Emily Thorndike ([02:24:09]):
+December 31st, right? She came in on New Year's Eve. What would that be? 2022, right? Yeah.
+Kevin Reddington ([02:24:15]):
+Two.
+Emily Thorndike ([02:24:16]):
+Yeah.
+Kevin Reddington ([02:24:17]):
+So in your opinion, is there a change that is significant in the staffing, in the nurse to patient ratio, in the safety issues, the crayons, the coloring and all of that? Is there any change from that one year that you left, to the time that she was in there?
+Emily Thorndike ([02:24:37]):
+From the records I reviewed as well, those are exactly the same staffing ratios and all of the groups are the same.
+Kevin Reddington ([02:24:45]):
+So there's no change whatsoever?
+Emily Thorndike ([02:24:46]):
+Not from what I can tell from what I reviewed.
+Kevin Reddington ([02:24:49]):
+Thank you.
+Emily Thorndike ([02:24:50]):
+Mm-hmm.
+Judge William Sullivan ([02:24:50]):
+Okay. Commonwealth?
+Shanan Buckingham ([02:25:01]):
+Good afternoon.
+Emily Thorndike ([02:25:02]):
+Hello.
+Shanan Buckingham ([02:25:03]):
+So you are currently a social worker who does their own... By licensed independent clinical social worker, right?
+Emily Thorndike ([02:25:14]):
+Yes.
+Shanan Buckingham ([02:25:14]):
+That's the license when you're saying that's really what you go by.
+Emily Thorndike ([02:25:18]):
+Yes. I'm a social worker by trade, you could say, but I'm practicing as a therapist.
+Shanan Buckingham ([02:25:23]):
+And you do that virtually?
+Emily Thorndike ([02:25:25]):
+Yes.
+Shanan Buckingham ([02:25:26]):
+So you don't have a brick and mortar where clients come and engage in therapy with you, right?
+Emily Thorndike ([02:25:31]):
+No, rent is expensive. So right now I'm all virtual.
+Shanan Buckingham ([02:25:35]):
+And you indicated that in your time at McLean Hospital that you first started as a per diem, and that was as a mental health specialist, right?
+Emily Thorndike ([02:25:46]):
+I didn't start per diem there. I started at a 32-hour position. The per diem, there's another position I held at McLean, which is called a community residence counselor. That was a per diem position. And then the social work position I took after graduating and before I went back to McLean, or sorry, the short-term unit, that was a per diem position.
+Shanan Buckingham ([02:26:07]):
+So the per diem role that you had, how long did you do that role?
+Emily Thorndike ([02:26:15]):
+On which unit?
+Shanan Buckingham ([02:26:17]):
+Well, you just said, when I asked you about working per diem, you said you were the community resident counselor.
+Emily Thorndike ([02:26:24]):
+Right. Yes.
+Shanan Buckingham ([02:26:24]):
+How long did you do that?
+Emily Thorndike ([02:26:25]):
+I mentioned two per diem positions, so I just wanted to be clear. I believe it was around a year. It was on the side while I was working on the short-term unit. That was the main unit I worked on. But since I was 32 hours, I was interested in that particular McLean program. So I picked up a shift every so often, but I was primarily on the short-term unit.
+Shanan Buckingham ([02:26:49]):
+As what though? As a mental health-
+Emily Thorndike ([02:26:51]):
+As a mental health specialist. Yep.
+Shanan Buckingham ([02:26:52]):
+And so you said once you got your master's, you took on a role of clinical social worker there, right?
+Emily Thorndike ([02:26:59]):
+So, yes. Yes, I did.
+Shanan Buckingham ([02:27:00]):
+And that was in September of 2019?
+Emily Thorndike ([02:27:03]):
+Yes.
+Shanan Buckingham ([02:27:04]):
+And you said you had a chance to review the records that were sent over by McLean, right?
+Emily Thorndike ([02:27:10]):
+Right.
+Shanan Buckingham ([02:27:11]):
+Now, when you were a social worker from September of 2019 to December of 2021, what was your schedule?
+Emily Thorndike ([02:27:20]):
+So I would come in around 9:00. You could view it as normal business hours. My clinical rounds that I did with all the multidisciplinary staff was at 9:55. So that was a little bit of my start time. But generally, probably like 9:00 to 5:00 you could say.
+Shanan Buckingham ([02:27:39]):
+And was that Monday through Friday?
+Emily Thorndike ([02:27:40]):
+Yes. I did cover weekends on occasion. Social workers, you're not required to, but it's highly encouraged. So every once in a while I would cover a weekend as a social worker.
+Shanan Buckingham ([02:27:52]):
+And you are aware that the records that came from McLean Hospital indicate that during the time period of January 1st to January 15th of 2023, that the social worker role was a day position that was Monday through Friday?
+Emily Thorndike ([02:28:07]):
+Yeah.
+Shanan Buckingham ([02:28:08]):
+And that on January 1st, which was a Sunday, there was no social worker there.
+Emily Thorndike ([02:28:12]):
+Yeah, I saw that.
+Shanan Buckingham ([02:28:13]):
+And on January 2nd, which would've been the observed holiday for New Year's, there was no social worker there.
+Emily Thorndike ([02:28:19]):
+That's what I saw.
+Shanan Buckingham ([02:28:19]):
+Okay. And while you would pick up shifts, the majority of your schedule was 09:00 to 05:00, Monday through Friday?
+Emily Thorndike ([02:28:28]):
+Yeah.
+Shanan Buckingham ([02:28:29]):
+From 2019 to 2021?
+Emily Thorndike ([02:28:32]):
+Yeah. I mean, I did regularly pick up weekends, but yes, primarily I was there during the week.
+Shanan Buckingham ([02:28:37]):
+Okay. Now you provided Attorney Reddington with some kind of typed up notes. Do you recall that?
+Emily Thorndike ([02:28:42]):
+Yes.
+Shanan Buckingham ([02:28:43]):
+Where you outlined what your experience was on the unit and how inpatient experiences went, like the schedule and that kind of thing. And you noted that as far as the treatment team, which you referred to yourself as a social worker, worked with a psychiatrist, right?
+Emily Thorndike ([02:29:03]):
+Right. Right.
+Shanan Buckingham ([02:29:04]):
+And you identified that in your experience, there was three teams, red, green or blue.
+Emily Thorndike ([02:29:09]):
+Yes.
+Shanan Buckingham ([02:29:10]):
+But you are also aware that the records show that every day during the week, that the treatment team of a social worker and a psychiatrist, there was four social workers and four psychiatrists that were on shift.
+Emily Thorndike ([02:29:22]):
+Right.
+Shanan Buckingham ([02:29:22]):
+So where's the fourth?
+Emily Thorndike ([02:29:24]):
+So the numbers aren't equal. So the medical director often took residents, so he would have a little bit less of a caseload. The lead social worker on the unit, she would go in between the different units. So she would take a smaller caseload on one unit. So for example, I had eight patients on my caseload, but one of my social work colleagues would have six. So it's not an even distribution of the three... Some of the doctors and some of the social workers just carried a different number of caseloads.
+Shanan Buckingham ([02:29:57]):
+But your testimony today, after having now reviewed the records, is that it's always been four social workers, four doctors.
+Emily Thorndike ([02:30:06]):
+Yeah. I didn't say that there wasn't before.
+Shanan Buckingham ([02:30:10]):
+Well, that's why you're here, because we don't know what you said before.
+Emily Thorndike ([02:30:13]):
+Yeah, I just thought I answered your question, but yes.
+Shanan Buckingham ([02:30:17]):
+And you came aware of this case by watching the trial, right?
+Emily Thorndike ([02:30:22]):
+Yes.
+Shanan Buckingham ([02:30:23]):
+And so would you say that you were... How many days of the trial did you watch?
+Emily Thorndike ([02:30:29]):
+All of them up until that point.
+Shanan Buckingham ([02:30:32]):
+At what point? What day?
+Emily Thorndike ([02:30:35]):
+I'm not remembering the date exactly. Not last Thursday, but the Thursday before.
+Shanan Buckingham ([02:30:39]):
+What was the last content of testimony that you remember watching?
+Emily Thorndike ([02:30:42]):
+I believe it was maybe Patrick's friends. I was aware that there were doctors testifying. Mr. Reddington made sure I was not watching anymore and that there were doctors coming up that were particularly important for me to not watch.
+Shanan Buckingham ([02:31:01]):
+And you were asked by Attorney Reddington here about observing that testimony or the direct examination of Patrick. And I think he mentioned where it was referred to that McLean was the best hospital in the country. Do you recall that being the question that was asked of Patrick Clancy?
+Emily Thorndike ([02:31:22]):
+I don't recall.
+Shanan Buckingham ([02:31:23]):
+And in fact, the Commonwealth didn't ask about his opinions of the status of the hospital, but did just verify with reference to records whether or not he knew his wife participated in particular things that were contained within the records. Did you see that in the testimony?
+Emily Thorndike ([02:31:41]):
+Yes.
+Shanan Buckingham ([02:31:41]):
+And so you're aware that the testimony actually was that... Or the question was, were you aware that she declined groups?
+Emily Thorndike ([02:31:49]):
+Yes.
+Shanan Buckingham ([02:31:50]):
+And that's based on records you've never seen, right?
+Emily Thorndike ([02:31:52]):
+Correct.
+Shanan Buckingham ([02:31:53]):
+And as far as the contact with the staff and the doctors, meaning nurses or social workers or whatnot, you haven't reviewed any of those records, right?
+Emily Thorndike ([02:32:03]):
+I have not.
+Shanan Buckingham ([02:32:07]):
+And so you don't know the extent of what the interaction was with the nurse and the patient, do you?
+Emily Thorndike ([02:32:14]):
+I mean, there are some general guidelines that you have to follow. I can't tell you the content within them, but for example, mental health specialists, you are not supposed to meet with a patient longer than 20 minutes, because you have other things to do. So I can't speak specifically to what happened in those conversations, but I know the general gist of how everybody's role works.
+Shanan Buckingham ([02:32:36]):
+But when you say everybody's role, did you ever perform the role of a nurse?
+Emily Thorndike ([02:32:41]):
+No, but I work directly with them. I'm operating on the job description. It says specifically you're under the direction of the nurse. So I worked directly with nurses.
+Shanan Buckingham ([02:32:51]):
+Do you go through the same training as a nurse?
+Emily Thorndike ([02:32:52]):
+No.
+Shanan Buckingham ([02:32:54]):
+As far as what's your knowledge as a mental health specialist, fair to say the last time you were employed as a mental health specialist there, and did that work yourself, was in May of 2019?
+Emily Thorndike ([02:33:05]):
+Yep.
+Shanan Buckingham ([02:33:06]):
+And then you transitioned to being a social worker where you worked closely with the psychiatrist and primarily Monday through Friday?
+Emily Thorndike ([02:33:14]):
+Yeah. Psychiatrists, the nurses and the mental health specialists, you all really work together.
+Shanan Buckingham ([02:33:19]):
+And you can only attest to what you would put in a note, right? As far as your contact with the patient as a social worker?
+Emily Thorndike ([02:33:29]):
+No, you have access to all of the patients on the unit. So I'm able, and it's not a HIPAA violation to do that because we all work together. Sometimes I cover other social workers' patients. So I do have access. You have access to all of the records in every patient's file. So you can read everybody's notes.
+Shanan Buckingham ([02:33:46]):
+I guess my question, and that probably was a bad question, but my question is to you, when you are the social worker for a patient on the treatment team that you've described, you enter the information into the note for the social worker that becomes part of the record.
+Emily Thorndike ([02:34:02]):
+Correct.
+Shanan Buckingham ([02:34:03]):
+And those are your words, your observations, your contact.
+Emily Thorndike ([02:34:06]):
+Correct.
+Shanan Buckingham ([02:34:06]):
+You don't write them for other people, do you?
+Emily Thorndike ([02:34:09]):
+No, but we have to follow a certain format. So for example, we have to write a biopsychosocial note, which is a fairly lengthy assessment, but that's a social work... I learned that in grad school, so I don't know how everybody writes their notes, but we have to follow a pretty strict format to write our notes.
+Shanan Buckingham ([02:34:27]):
+And is it your testimony that McLean requires only that each social worker spends a particular period of time, or a maximum amount of time with each patient to do that?
+Emily Thorndike ([02:34:38]):
+Yeah. I mean, I have eight patients on my caseload, so I have to see eight patients every day. And so you are limited with how much time you can spend with them because there's several other tasks I have to do. So you really can't spend a significant amount of time with your patients.
+Shanan Buckingham ([02:34:51]):
+But that wasn't my question. My question was, does McLean tell you that you can only spend five, 10 or 15 minutes with a patient?
+Emily Thorndike ([02:34:57]):
+Yes. It's directly told from the people above me. It's something that's communicated in a way where you could get in trouble if you're not doing that. So yes, it comes directly from McLean.
+Shanan Buckingham ([02:35:08]):
+And do you have any information, having left there in 2021, that the same people supervising the social workers were giving those same instructions?
+Emily Thorndike ([02:35:21]):
+I mean, no, I don't know that.
+Shanan Buckingham ([02:35:40]):
+Do you know anything about how many people were actually occupying beds between January 1st and January 5th of 2023?
+Emily Thorndike ([02:35:52]):
+No, it obviously has a max of... Yeah. So I don't know how many patients were there, but you can have up to 22 there. So yeah.
+Shanan Buckingham ([02:35:59]):
+And you've also indicated in your notes to Attorney Reddington that sometimes the people that are there for a particular period of time have the ability to go out on passes for weekends.
+Emily Thorndike ([02:36:10]):
+Correct. Yes.
+Shanan Buckingham ([02:36:13]):
+In your experience, did that tend to happen around holidays?
+Emily Thorndike ([02:36:15]):
+Yes.
+Shanan Buckingham ([02:36:16]):
+And so you don't know between January 1st and January 5th of 2023 who might've been assigned to a bed there, but out on a pass that weekend, do you?
+Emily Thorndike ([02:36:27]):
+No, I don't know what happened that weekend.
+Shanan Buckingham ([02:36:29]):
+And that would affect... How many people are actually occupying the beds would affect the ratio of staff to patient during that time period, right?
+Emily Thorndike ([02:36:39]):
+If I'm understanding the question correctly, I mean, it's the same amount of staff there. Are you saying they're meeting with patients-
+Shanan Buckingham ([02:36:47]):
+Right. It's the same amount of staff regardless, because it's by shift, right?
+Emily Thorndike ([02:36:50]):
+Right.
+Shanan Buckingham ([02:36:50]):
+So if the unit has 22 beds in it, but say five people are off on a pass for that weekend, then the same staff that are there for the entire weekend have five less patients.
+Emily Thorndike ([02:37:03]):
+No, no, no. You're still assigned... Every patient has to be assigned to a mental health specialist and a nurse. And so when you go on a pass, there's a limit. And day and evening shift, the limit of the pass is eight hours. So no matter what, you have to check in with your staff person before you leave for your pass, and you have to check in with your assigned staff when you come back. So there's no patient who's not assigned to somebody. It's just they might not be on the unit the whole time when you're on your shift.
+Shanan Buckingham ([02:37:31]):
+Okay. So they might not lose a patient on their load, for instance, but that person isn't there that they have to check in with every so often, or they have to check in with about groups or keep track of or meet with, right? If they're on a pass and they're out of the facility for eight hours, they're physically not present, and that worker doesn't have eyes on them.
+Emily Thorndike ([02:37:55]):
+Yeah. You only check in once per shift anyways. So if they're going, you check in with them before. And when they come back, you check in with them after. But yes, you're not checking in with them when they're off the unit.
+Shanan Buckingham ([02:38:07]):
+And you don't know what the numbers were...
+Emily Thorndike ([02:38:09]):
+No, I don't.
+Shanan Buckingham ([02:38:10]):
+... during that time period? I don't have any other questions. Thank you.
+Judge William Sullivan ([02:38:24]):
+All right. All right. Mr. Reddington, I'll hear you on the motion. You may step down. Thank you very much.
+Emily Thorndike ([02:38:35]):
+Okay. Thank you.
+Kevin Reddington ([02:38:37]):
+Your Honor, I think it's obvious that the witness has an educational background. She certainly has the experience. Interestingly enough of that very unit that Lindsay was on for that period of time. She's well aware of the staffing indicated to you that the staffing ratio to patient, et cetera, has not changed according to the items that the government has brought here today. That at the time that she was there, it was on a weekend. She indicated about the weekend staffing, the holiday staffing. Indicated that they have these coloring programs and programs that Patrick was relating to and indicates the skeleton crew, if you will, in a sense, on that particular period of time in the holidays, which is very corroborative of what Patrick had indicated in his testimony. So I'm not looking to bring her into disparage McLean Hospital. They've done a good job of that themselves.
+([02:39:41])I'm bringing her in to just have evidence as to what Patrick's testimony was relating to what his wife went through when she was in McLean, to corroborate the fact as opposed to what was raised on direct exam with the government when they were questioning him about all of these wonderful programs that she apparently was not interested in participating in, which is very, very, I would argue, improper inference for the jury to consider.
+Judge William Sullivan ([02:40:14]):
+All right. Commonwealth.
+Shanan Buckingham ([02:40:14]):
+Your Honor, I would object to the witness. And even now after the voir dire, I think it's clear that the best evidence of what the defendant was provided by way of care, treatment, however you want to call it, is the record in and of itself. It's the record from McLean that documents each and every contact she had with each and every person that was on staff during the time period she was there. Now, just to be clear, there's been some indication that she went there on the 31st of December, but the records are clear to say she was transported and she didn't arrive at McLean until the early morning hours of January 1st. So that's when the records start. And they document her each and every day in each and every step of the way consistent with how Dr. Goodheart described the process of how... Your intake and then how you go through the day and what the general schedule is, and the contact with the treatment team.
+([02:41:07])This witness is offering no more information than what's contained within the record, and no more information that's what's contained in the records that were just received for the trial subpoena. And I would suggest to you that the fact that she, in her last role as a social worker from 2019 to 2021, where she was a day staffed person that worked Monday through Friday, that wasn't there on the weekends, that she does have a limited amount of information and it's attenuated, more attenuated than we initially believe from the dates in which the defendant was at this particular hospital. So I would suggest, or I would object and argue that the best evidence is the records in and of themselves, the records that now have been subpoenaed that can be admitted to identify the particular staff. I'd also like to point out that counsel's referring to offering this to rebut certain inferences or certain statements that the Commonwealth made in the direct examination of Mr. Clancy, but no one has said that McLean is a number one hospital.
+([02:42:05])That wasn't the testimony. That wasn't the question put before him. It was simply what he knew, what he observed, and if he knew what was contained within the record. So there's been no presentation of evidence that would suggest that a person needs to come in to dispute that the groups are the groups. The court and the jury can see from the record what the groups were and they can make their own decisions based on what they described them to be in the record, if that was treatment or not treatment. I don't believe that the Commonwealth presented it as treatment. I believe the Commonwealth presented it as resources available to the individual while they were there at the hospital. The treatment piece, or the therapy, comes from the psychiatrist, which this witness can't testify to because she's not. So I would object for her to being called as a witness for those reasons.
+Judge William Sullivan ([02:42:58]):
+All right. All right. Well, I'm looking at this really as two issues. First is late disclosure of the witness. And that goes into a whole different analysis. And also analysis under Rule 403, which is relating to relevant evidence. And as that rule, proposed rule says, "Evidence may be excluded if its probative value is substantially outweighed by the danger of unfair prejudice, confusion of the issues, or misleading the jury, or by considerations of..." Well, that part doesn't apply. First off, I find this witness credible. I find that... And I appreciate her being willing to offer the information that she has, but that's not always the whole finding on this. And so under cases such as Taylor v. Illinois, Commonwealth v. Dunning, Commonwealth v. Steinmeier, a couple other cases, I have to look at a number of factors. The first is prevention of surprise. Well, the Commonwealth has been aware of this issue for at least a week or so. So I'm not considering that evidence of bad faith. There's no bad faith I see from either side in naming this or calling this person at this time.
+([02:44:17])The prejudice to the other party. I think there's just limited prejudice, if any, to the Commonwealth. However though, the final two are the issues that I think are more relevant in this. One is the materiality of the testimony in this. And I find that there's limited materiality, that's hard to say, because mainly this witness hadn't worked there for a year. So there's at least a gap between when she worked there and when the relevant time period is here. There's also, I imagine, different personnel that are working on different shifts. And so there's limited value to that testimony. I also, I don't remember any five star type inferences in fact. So I'm not going to...
+([02:45:17])That's going to be measured by the jury, but I didn't see any mentions that this was a five star facility. And then also, the concern is, or the factor is the effectiveness of less severe sanctions. And I would find that the records that have been brought in pursuant to the subpoena in the last couple of days from McLean's, talks about the staffing levels on holidays and not on holidays. So if there's a question of whether or not there was a, quote unquote, skeleton crew that was on for those, at least the first two days of this time that Ms. Clancy was there, that's reflected in the records. There also in the records here is a list of whatever programs were offered, and also when they were offered. So if there's a question of less programs being offered on a holiday than during the week, those are contained in the records.
+([02:46:24])And so I'm going to deny the defendant's motion to call this witness, but I am going to allow the defendant, if the defendant wishes, to submit those McLean's records specifically regarding the staffing and the programs that are available, not just on that weekend, but for the week. And I think there's records in there for the week before. So there could be a comparison between what was available to Ms. Clancy during the week, and what was available to her on a holiday weekend. So that's going to be my finding. I'll issue a written ruling on this, but I just wanted to give the parties at least some idea, as well as the witness who's been here I know a couple of days. I just wanted to thank her for that. So with that, we'll be in recess till 2:15 and we'll come back and resume the trial. Okay?
+Shanan Buckingham ([02:47:27]):
+Thank you.
+Bailiff ([02:47:29]):
+All rise.
+Kevin Reddington ([02:47:30]):
+I know it's a technicality. Note my objection.
+Judge William Sullivan ([02:47:33]):
+Duly noted. Thank you.
+Bailiff ([02:47:34]):
+Back in session. You may be seated.
+Judge William Sullivan ([02:47:50]):
+All right.
+Shanan Buckingham ([02:47:56]):
+Your Honor [inaudible 02:47:57] all parties are present, excluding the jury.
+Judge William Sullivan ([02:47:58]):
+All right. Counsel?
+Kevin Reddington ([02:48:00]):
+I would ask if we could approach, sir.
+Judge William Sullivan ([02:48:00]):
+All right. Sure.
+Bailiff ([02:48:00]):
+All rise please, jurors entering. Court is back in session. You may be seated.
+Speaker 5 ([02:48:00]):
+Your Honor, the purpose of the record was returned back to the title of Commonwealth v. Lindsay Clancy. All parties are present, including the 18 jurors.
+Judge William Sullivan ([02:50:34]):
+All right. Well, everyone, thank you for your patience, and I'm going to ask you for some more patience. All right? Due to an unforeseen circumstance, we're going to excuse you until tomorrow morning. All right? This is not something we saw coming, but you're not to speculate about what it is. You're not to hold it against either side. It's just something that we have to deal with. All right? And so I'm going to excuse you until tomorrow morning. I'm going to remind you, as I have every night for the last number of weeks, don't do any research about this case. Don't talk about it. Don't read anything. Don't watch anything about this case or similar cases. And with that, we'll bring you back here. We will deal what we have to deal with and we'll get right back on track. We are still well within the timeline that I gave you regarding this case, but it's just something we can't control. So I'm going to excuse you till tomorrow with my thanks for your patience, and I'll see you tomorrow morning. All right, thank you.
+Bailiff ([02:51:49]):
+All rise, please.
+Judge William Sullivan ([02:52:28]):
+All right. All right. Maybe we can be seated. Anything we need to address before tomorrow morning?
+Shanan Buckingham ([02:52:38]):
+No, Your Honor.
+Judge William Sullivan ([02:52:39]):
+All right. So we'll be in recess till tomorrow morning at 9: 00. Thank you everyone.
+Kevin Reddington ([02:53:00]):
+Thank you, Judge.
+Shanan Buckingham ([02:53:00]):
+Thank you.
+Bailiff ([02:53:00]):
+All rise.
+‍
+A confirmation email is on it’s way to your inbox.
+Copyright Disclaimer

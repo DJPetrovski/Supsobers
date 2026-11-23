@@ -72,7 +72,7 @@ function e(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"
 function fd(s){if(!s)return"";var p=s.split("-"),mo=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
  if(p.length==1)return p[0];var m=mo[+p[1]-1];return p.length==2?m+" "+p[0]:m+" "+(+p[2])+", "+p[0]}
 function vid(id,t){return'<button class="play" type="button" data-yt="'+e(id)+'" style="background-image:url(https://i.ytimg.com/vi/'+e(id)+'/hqdefault.jpg)" aria-label="Play video: '+e(t)+'"></button>'}
-var TABS=[["trial","Trial days"],["hearings","Hearings"],["press","Press"],["documents","Documents"],["civil","Civil cases"],["updates","Updates"],["photos","Photos"]];
+var TABS=[["trial","Trial days"],["hearings","Hearings"],["press","Press"],["documents","Documents"],["transcripts","Transcripts"],["civil","Civil cases"],["updates","Updates"],["photos","Photos"]];
 document.getElementById("tabs").innerHTML=TABS.map(function(t){return'<button role="tab" data-t="'+t[0]+'">'+t[1]+'</button>'}).join("");
 function render(){
  var n=q.value.trim().toLowerCase(),h="",c=0;
@@ -83,6 +83,7 @@ function render(){
   h+='<div class="row"><span class="k">'+lab+(x.date?" · "+fd(x.date):"")+'</span><h3>'+e(x.title)+'</h3>'+(x.yt?vid(x.yt,x.title)+'<div class="links"><a href="https://www.youtube.com/watch?v='+e(x.yt)+'" target="_blank" rel="noopener">Watch on YouTube</a></div>':'')+'</div>'});
  if(tab==="hearings")D.hearings.forEach(function(x){if(!ok(x.title+" "+x.note))return;c++;
   h+='<div class="row"><span class="k">'+(fd(x.date)||"Date not published")+'</span><h3>'+e(x.title)+'</h3><p>'+e(x.note)+'</p>'+(x.links||[]).map(function(l){return l.yt?vid(l.yt,l.t)+'<div class="links"><a href="https://www.youtube.com/watch?v='+e(l.yt)+'" target="_blank" rel="noopener">'+e(l.t)+'</a></div>':'<div class="links"><a href="'+e(l.u)+'" target="_blank" rel="noopener">'+e(l.t)+'</a></div>'}).join("")+'</div>'});
+ if(tab==="transcripts"){h+='<p class="meta">Full transcripts of the trial days and hearings, hosted by Rev. Rev posted dates are shown, which can be a day or more after the court date. Search a word above and the transcripts containing it are listed under the video results.</p>';(D.transcripts||[]).forEach(function(x){if(!ok(x.t+" "+fd(x.date)))return;c++;h+='<div class="row"><span class="k">Rev \u00b7 posted '+fd(x.date)+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3></div>'})}
  if(tab==="documents")D.documents.forEach(function(x){if(!ok(x.t+" "+x.s))return;c++;
   h+='<div class="row"><span class="k">'+e(x.s)+(x.copy?' · saved copy':'')+'</span><h3><a href="'+e(x.u)+'" target="_blank" rel="noopener">'+e(x.t)+'</a></h3>'+(x.copy?'<div class="links"><a href="'+e(x.orig)+'" target="_blank" rel="noopener">Original source</a></div>':'')+'</div>'});
  if(tab==="updates"){var U=D.updates.slice().sort(function(a,b){return(a.date<b.date?-1:a.date>b.date?1:0)*(old?1:-1)}),yr="";h+='<div class="tlbar"><button type="button" id="tlflip">'+(old?"Show newest first":"Show oldest first")+'</button><span class="meta" style="margin:0">'+U.length+' events, Jan. 24, 2023 to today</span></div><div class="tl">';
@@ -108,6 +109,10 @@ function ask(qs,hits){var box=document.getElementById("ans");if(!box||!window.As
  AskAI.ask(qs,ps,"clancy").then(function(t){if(q.value.trim()!==qs)return;box.innerHTML="<b>Answer from the testimony and documents</b>";var d=document.createElement("div");box.appendChild(d);
   AskAI.render(d,t,function(n){if(n<1||n>ps.length)return null;var a=document.createElement("a");a.href="#hit-"+n;a.textContent="["+n+"]";return a});
   var s=document.createElement("small");s.textContent="Written by AI from the passages below, which are automatic captions and scanned documents and may contain errors. Testimony is what witnesses said, not established fact. Check the numbered passages and the video.";box.appendChild(s)}).catch(function(){box.hidden=true})})}
+var REV=null;function revIdx(){return REV?Promise.resolve(REV):fetch("data/clancy-rev-index.json?v=1").then(function(r){return r.json()}).then(function(j){REV=j;return j})}
+function revLinks(qs){var rs=ClancySearch.roots(qs);if(!rs.length)return;revIdx().then(function(R){if(q.value.trim()!==qs)return;var m={};rs.forEach(function(w,k){(R.w[w]||"").split(",").forEach(function(p){if(!p)return;var a=p.split(":");m[a[0]]=m[a[0]]||{n:0,k:{}};m[a[0]].n+=+a[1];m[a[0]].k[k]=1})});
+ var hits=Object.keys(m).filter(function(i){return Object.keys(m[i].k).length===rs.length}).sort(function(a,b){return m[b].n-m[a].n});var box=document.getElementById("revx");if(!box||!hits.length)return;
+ box.innerHTML='<div class="row"><span class="k">Full transcripts containing these words \u00b7 Rev</span>'+hits.map(function(i){var t=R.t[i];return'<div class="links"><a href="'+e(t.u)+'" target="_blank" rel="noopener">'+e(t.t)+'</a> <span class="meta" style="margin:0">posted '+fd(t.date)+' \u00b7 about '+m[i].n+' mentions</span></div>'}).join("")+'</div>'}).catch(function(){})}
 function deep(){var qs=q.value.trim();[].forEach.call(document.querySelectorAll("#tabs button"),function(b){b.setAttribute("aria-selected","false")});
  list.innerHTML='<p class="meta">Searching the transcripts and documents\u2026</p>';
  ClancySearch.search(qs).then(function(r){if(q.value.trim()!==qs)return;var o="";
@@ -115,7 +120,7 @@ function deep(){var qs=q.value.trim();[].forEach.call(document.querySelectorAll(
   window.CL_HITS=r.hits;r.hits.forEach(function(x,ix){var c=x.c,N=ix+1;
    if(c.k==="v")o+='<div class="row hit" id="hit-'+N+'"><span class="why">'+x.why+'</span><span class="k">['+N+'] '+e(c.l)+' · '+ts(c.at)+'</span><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="https://www.youtube.com/watch?v='+e(c.id)+'&t='+c.at+'s" target="_blank" rel="noopener">Watch from '+ts(c.at)+'</a><button type="button" class="seek" data-yt="'+e(c.id)+'" data-at="'+c.at+'" style="all:unset;color:var(--ember);cursor:pointer;text-decoration:underline">Play here</button></div></div>';
    else o+='<div class="row hit" id="hit-'+N+'"><span class="why">'+x.why+'</span><span class="k">['+N+'] Document · page '+c.at+'</span><h3>'+e(c.l)+'</h3><p style="color:var(--ink)">'+hl(snip(c.x,qs),qs)+'</p><div class="links"><a href="'+e(c.u)+'#page='+c.at+'" target="_blank" rel="noopener">Open page '+c.at+'</a></div></div>'});
-  list.innerHTML='<div id="ans" hidden></div>'+(o||'<p class="meta">Nothing found. Try different words, or ask it as a question.</p>');ask(qs,r.hits);document.getElementById("m").textContent=r.hits.length+" result"+(r.hits.length===1?"":"s")})}
+  list.innerHTML='<div id="ans" hidden></div>'+(o||'<p class="meta">Nothing found. Try different words, or ask it as a question.</p>')+'<div id="revx"></div>';ask(qs,r.hits);revLinks(qs);document.getElementById("m").textContent=r.hits.length+" result"+(r.hits.length===1?"":"s")})}
 
 list.addEventListener("click",function(ev){var sk=ev.target.closest(".seek");if(sk){var fr=document.createElement("iframe");fr.src="https://www.youtube-nocookie.com/embed/"+sk.dataset.yt+"?autoplay=1&rel=0&start="+sk.dataset.at;fr.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";fr.allowFullscreen=true;sk.closest(".row").appendChild(fr);sk.remove();return}
  var gb=ev.target.closest("[data-lb]");if(gb){lb(+gb.dataset.lb);return}

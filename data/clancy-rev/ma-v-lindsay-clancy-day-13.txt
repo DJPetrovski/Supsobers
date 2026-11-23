@@ -1,0 +1,3332 @@
+Bailiff ([00:01]):
+This court is now in session, please be seated.
+Madam Clerk ([00:04]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([00:05]):
+Yes, please.
+Madam Clerk ([00:06]):
+Your Honor, before the court today, we have the matter of Commonwealth v. Lindsay Clancy. Ms. Clancy is present. She is represented by Attorney Kevin Reddington. The Commonwealth is represented by Assistant District Attorney Jennifer Sprague, and Assistant District Attorney Shanan Buckingham.
+Judge William Sullivan ([00:19]):
+All right. Well, good morning everyone. Good morning, counsel.
+Kevin Reddington ([00:21]):
+Morning, Your Honor.
+Judge William Sullivan ([00:22]):
+Morning, Ms. Clancy.
+Lindsay Clancy ([00:23]):
+Morning, Your Honor.
+Judge William Sullivan ([00:24]):
+All right. Before we bring the jury in, could I talk to counsel over here just for a few minutes?
+Bailiff ([03:57]):
+[inaudible 00:03:08].
+([03:57])Court, all rise. Jurors in.
+([03:57])Hey-e, hey-e, hey-e. All persons having anything to do before the Honorable William Sullivan, Justice of the Superior Court, now City of Plymouth, within and for the Commonwealth, [inaudible 00:04:06], give your attendance, and you shall be heard. God save the Commonwealth of Massachusetts. This court is now in session, please be seated.
+Madam Clerk ([04:14]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([04:16]):
+Yes, please.
+Madam Clerk ([04:17]):
+Your Honor, before the court today, we have the continuation of the jury trial in the matter of Commonwealth v. Lindsay Clancy. Ms. Clancy is present, she is represented by attorney Kevin Reddington. The Commonwealth is represented by Assistant District Attorney Jennifer Sprague and Assistant District Attorney Shanan Buckingham.
+Judge William Sullivan ([04:32]):
+All right. Well, thank you, Madam Clerk. Well, good morning.
+Jury ([04:33]):
+Good morning.
+Judge William Sullivan ([04:36]):
+So, here's what I'm going to do. I'm going to ask you those questions, and then we'll talk about our schedule for today. But first off, good morning, nice to see everyone, thank you for your patience with us and all the work that you've done so far. So, the first question, has any member of the jury read, seen, heard or overheard anything from any source that would affect your ability to be a fair and impartial juror in this case?
+Jury ([05:00]):
+No.
+Judge William Sullivan ([05:02]):
+Last question. Is there any other serious matter or concern bearing on your service as a juror in this case that anybody needs to bring to my attention at this time?
+Jury ([05:10]):
+No.
+Judge William Sullivan ([05:11]):
+Again, thank you for following those instructions. And in regards to our schedule today, it's going to be, I think it's a little bit different. All right. And a lot of it is because of the progress of the case and where we're going. I anticipate we're going to hear a number of witnesses today, and we may break early. All right? And then, because of some of these issues, we're not going to be sitting tomorrow. All right? So, you don't have to come in, you can come in if you want, but we're not going to be sitting on this case. So, my suggestion would be not to come in, and to take that and just relax as best you can. And then, we'll come in on Monday at 9:00.
+([05:57])And then expect most of those days then going forward will be mostly the schedule we had the last maybe three or four days. All right? So, I just wanted to give you that information as early as I can so that we confirm that today. So, probably an earlier day today and we're not sitting tomorrow. Okay? And so, with that, we're going to return to the Commonwealth's presentation of evidence. And Commonwealth, will you call your next witness, please?
+Jennifer Sprague ([06:24]):
+Thank you. Commonwealth calls Kyle Pavao.
+Kevin Reddington ([06:54]):
+Your Honor, while we're waiting, I apologize, can we just approach real quick?
+Judge William Sullivan ([06:55]):
+Sure. Yeah.
+Kevin Reddington ([06:55]):
+[inaudible 00:07:50].
+Bailiff ([08:09]):
+Good morning, sir.
+Kevin Pavao ([08:09]):
+Morning, sir.
+Bailiff ([08:09]):
+Can you stop right here, raise your right hand for the clerk?
+Madam Clerk ([08:09]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury [inaudible 00:08:09] the whole truth and nothing but the truth so help you God?
+Kevin Pavao ([08:09]):
+Yes.
+Madam Clerk ([08:09]):
+Thank you, sir. You may have a seat.
+Bailiff ([08:09]):
+[inaudible 00:08:10]. Watch your step please.
+Judge William Sullivan ([08:09]):
+Good morning, sir.
+Kevin Pavao ([08:09]):
+Good morning, Your Honor.
+Judge William Sullivan ([08:09]):
+All right. Ms. Sprague, please.
+Jennifer Sprague ([08:14]):
+Thank you. Good morning. Can you please state and spell your name for the record?
+Kevin Pavao ([08:16]):
+Kyle Pavao. K-Y-L-E, last name P-A-V-A-O.
+Jennifer Sprague ([08:22]):
+And where do you work?
+Kevin Pavao ([08:23]):
+Massachusetts State Police.
+Jennifer Sprague ([08:24]):
+How long have you worked there?
+Kevin Pavao ([08:27]):
+Eight years, with 18 total law enforcement experience.
+Jennifer Sprague ([08:30]):
+So, you worked in law enforcement prior to the state police?
+Kevin Pavao ([08:33]):
+Correct.
+Jennifer Sprague ([08:33]):
+in what department?
+Kevin Pavao ([08:35]):
+Town of Mattapoisett.
+Jennifer Sprague ([08:36]):
+And are you in a specific role or unit at this time?
+Kevin Pavao ([08:42]):
+I was.
+Jennifer Sprague ([08:43]):
+What do you do now?
+Kevin Pavao ([08:45]):
+Now, I'm a sergeant in field assigned to the Bourne Barracks.
+Jennifer Sprague ([08:49]):
+And previously, where were you assigned?
+Kevin Pavao ([08:51]):
+I was a trooper in the Cyber Crime Unit.
+Jennifer Sprague ([08:54]):
+How long were you in the Cyber Crime Unit?
+Kevin Pavao ([08:56]):
+Roughly three and a half years or so.
+Jennifer Sprague ([08:59]):
+And what is the Cyber Crime Unit?
+Kevin Pavao ([09:01]):
+It's the state's primary child exploitation unit, assigned to that, or included in that is also a forensic branch which deals with multiple other crimes other than child exploitation.
+Jennifer Sprague ([09:17]):
+Would it be accurate to state that you are able to examine digital forensics like computers and phones that are related to other cases?
+Kevin Pavao ([09:27]):
+Yes, correct.
+Jennifer Sprague ([09:28]):
+Do you have to have specialized training to be in that unit?
+Kevin Pavao ([09:31]):
+Yes.
+Jennifer Sprague ([09:31]):
+What type of specialized training did you have?
+Kevin Pavao ([09:34]):
+So, I am a certified forensic computer examiner, I'm a certified forensic Mac examiner, I'm a Cellebrite certified mobile examiner, and I'm a Magnet certified digital video examiner.
+Jennifer Sprague ([09:48]):
+What is Cellebrite?
+Kevin Pavao ([09:49]):
+Cellebrite, it's a company that has proprietary software that parses through data. Most people know it for cell phones, there is a branch that does computers, but it's mostly known for cell phones, extracting data and also parsing that data out.
+Jennifer Sprague ([10:08]):
+What about Magnet?
+Kevin Pavao ([10:10]):
+Magnet's the same thing. So, Magnet is also another proprietary company, they have software, imaging software. They mainly focus on computers, they can do some cell phone stuff, but they primarily focus on computers.
+Jennifer Sprague ([10:28]):
+To be certified in Cellebrite and Magnet, did you have to take classes and pass exams?
+Kevin Pavao ([10:34]):
+Yeah. So, my forensic computer certification is probably a six-month-long process. It's two weeks of schooling down in Florida, is then a one-on-one peer review for four months, of practicals of different file systems and computers, once you get through that, it then is a practical exam. And then, once you pass the practical, it turns into a written exam.
+Jennifer Sprague ([11:02]):
+Did you have an opportunity to examine the extraction of a Surface Pro that was seized from 47 Summer Street in Duxbury, on or about September 16th, 2025?
+Kevin Pavao ([11:14]):
+I did.
+Jennifer Sprague ([11:15]):
+And to be clear, the Surface Pro was seized from 47 Duxbury Street in 2023, it was in 2025 that you examined the extraction, correct?
+Kevin Pavao ([11:25]):
+That is correct. I was provided those files.
+Jennifer Sprague ([11:28]):
+And what is an extraction?
+Kevin Pavao ([11:30]):
+So, these are actually, it's a computer image, extractions usually typically referred to as cell phones. So, this is a computer image. So, this was an actually EO1 file, which is an EnCase forensic file. So, what it does is it copies out the bit for bit data on the particular drive that you targeted at, and then... The EnCase file sort of compresses the forensic image, it also adds some metadata to it, you can type in case files, it keeps some integrity to it.
+Jennifer Sprague ([12:07]):
+So, is it basically you take a computer or a cell phone and you make an exact copy of the data that's on that cell phone or computer?
+Kevin Pavao ([12:18]):
+Yes. Computers, yes. Cell phones, no.
+Jennifer Sprague ([12:21]):
+But you were working on a computer or Surface Pro?
+Kevin Pavao ([12:24]):
+Correct.
+Jennifer Sprague ([12:24]):
+And so, the extraction for the Surface Pro would be, the extraction would be a copy of the data that was on the Surface Pro?
+Kevin Pavao ([12:31]):
+Yes. So, the image in this case is a bit for bit copy of that drive.
+Jennifer Sprague ([12:35]):
+And when you do the extraction or when you view the extraction, are you changing any of the data?
+Kevin Pavao ([12:42]):
+No, that's why we use these types of images so we don't touch the actual data on that computer.
+Jennifer Sprague ([12:51]):
+Did your initial review of the extraction show a visit to a website entitled, Suicide Methods, on August 23rd, 2022?
+Kevin Pavao ([12:59]):
+It did.
+Jennifer Sprague ([13:00]):
+Were you recently asked to look at that visit to that site to get a better understanding of how that website was accessed?
+Kevin Pavao ([13:08]):
+That is correct.
+Jennifer Sprague ([13:08]):
+And how did you approach that?
+Kevin Pavao ([13:11]):
+I set a parameter... I went to that artifact that I had previously tagged when I did the initial analysis.
+Jennifer Sprague ([13:20]):
+Let me just stop you there.
+Kevin Pavao ([13:20]):
+Sorry.
+Jennifer Sprague ([13:22]):
+What's an artifact and what is a tagging?
+Kevin Pavao ([13:24]):
+So, an artifact is every single piece of data on that computer is an artifact. So, a computer could have a half a million artifacts, let's say, that's a low end, but as an example. So, tagging would be something you would flag that one particular artifact as evidence.
+Jennifer Sprague ([13:50]):
+So, in this case, the artifact was the visit to the website. Is that correct?
+Kevin Pavao ([13:54]):
+Correct.
+Jennifer Sprague ([13:55]):
+And then the tagging was just so that you could find it when you went back into the extraction looking for it?
+Kevin Pavao ([13:59]):
+Yes, correct.
+Jennifer Sprague ([14:00]):
+And so, if you could continue telling us about how you approached that.
+Kevin Pavao ([14:04]):
+So, I set a parameter of 12 hours before the visit and then 12 hours after the visit, and looked at the correlating other digital artifacts related to that.
+Jennifer Sprague ([14:20]):
+And can you tell us what's a Chrome history database?
+Kevin Pavao ([14:27]):
+So, a database essentially, this is a very slimmed down version of what this is. So, if you think of an Excel sheet, and each Excel page is a section of the database. So, the database would be the whole thing, and there's a scheme or like a roadmap, let's say, of how these pages interlink with each other, that would be an entire database. Everything pretty much has database, it's just easy for file expansion and disc saving space and things of that nature.
+Jennifer Sprague ([15:02]):
+And what about Chrome web history table?
+Kevin Pavao ([15:06]):
+So, a table would essentially be the Excel sheet that I explained before, it's a portion of the entire database. That particular one captures, without being a database engineer for Google who created it, but that table tracks URLs, webpage titles, dates and times.
+Jennifer Sprague ([15:31]):
+So, is it basically a table that you get from the extraction that shows which websites that computer has visited?
+Kevin Pavao ([15:38]):
+Correct. Each table has its own functions on different data it tracks, and then eventually it puts it all together.
+Jennifer Sprague ([15:44]):
+And what about a Chrome web visits table?
+Kevin Pavao ([15:47]):
+So, the visits table tracks things of were the webpages synced to the device? Were they local to the device? Are they typed? Was it generated? Was it gone there through a hyperlink?
+Jennifer Sprague ([16:08]):
+So, basically is it a table telling how each website was accessed, whether someone typed in a search for it or clicked a link?
+Kevin Pavao ([16:18]):
+Correct.
+Jennifer Sprague ([16:19]):
+And you mentioned a couple different ways typed, linked, generated... So, typed would just be someone typing in the search bar something to search?
+Kevin Pavao ([16:29]):
+Yeah. So, typed could be a few different things. So, typed would be somebody typed in an exact phrase or word. It also could flag the typed version, a typed flag if you copied and pasted something into the URL address bar.
+Jennifer Sprague ([16:50]):
+So, if you're looking at a recipe for say cookies, and you copied cookies and pasted it into the search bar, would that be considered a typed event?
+Kevin Pavao ([17:01]):
+Yes, correct.
+Jennifer Sprague ([17:02]):
+Or if you just typed cookies, that would be a typed event?
+Kevin Pavao ([17:05]):
+Or cookies, or if you typed in, say you put C-O for cookies, and then Chrome tried to auto-populate what they think you want to type, that would also create a typed event as well.
+Jennifer Sprague ([17:18]):
+And then you mentioned linked, what is a link to access?
+Kevin Pavao ([17:22]):
+Link would be that you clicked on a hyperlink, which brought you to a different page.
+Jennifer Sprague ([17:28]):
+And what is a hyperlink?
+Kevin Pavao ([17:30]):
+That would be a... It's a word phrasing, and then behind the word phrasing, there is a website coded behind that.
+Jennifer Sprague ([17:41]):
+Is that like when you go on a website and there are certain words that are underlined that you can click on and it will take you to another page?
+Kevin Pavao ([17:47]):
+Yes, correct.
+Jennifer Sprague ([17:49]):
+Okay. What about generated?
+Kevin Pavao ([17:52]):
+Generated is something that Google would suggest, or chrome would suggest.
+Jennifer Sprague ([18:00]):
+Now, what is the Wayback Machine?
+Kevin Pavao ([18:03]):
+The Wayback Machine is a website that is a... I won't say monitored. It's created and maintained by the Internet Archive as a company. It's a 501(c)(3) nonprofit. And what that does is it goes out on the internet, it takes snapshots of the internet webpages all over the entire internet, and then archives that. So, you can go back in later... It started in the mid '90s or so, but you can go back to, pick a date, pick a year, and you can see what that website looked like at that time, or approximate. It doesn't copy minute for minute, day for day, but you'll get something around the time that you were looking for, of what a particular page looked like at that date and time you want to see.
+Jennifer Sprague ([18:52]):
+So, with regard to this case and looking into how that site, Suicide Methods, was accessed, what did you learn? Or what did you see?
+Kevin Pavao ([19:04]):
+When I went back?
+Jennifer Sprague ([19:05]):
+Yeah. Go ahead.
+Kevin Pavao ([19:07]):
+So, the first thing I saw was a Facebook visit at 9:40 that morning.
+Jennifer Sprague ([19:17]):
+9:40 AM on August 23rd, 2022?
+Kevin Pavao ([19:21]):
+Correct.
+Jennifer Sprague ([19:21]):
+And what was the Facebook?
+Kevin Pavao ([19:25]):
+The link was lind.say. I believe it was 968.
+Jennifer Sprague ([19:30]):
+So, Lindsay with a dot in between the D and the S, 969?
+Kevin Pavao ([19:35]):
+969, correct.
+Jennifer Sprague ([19:37]):
+And after the visit to the Lind.say.969 Facebook page, what happened next?
+Kevin Pavao ([19:46]):
+There was a search in Spotify music for the singer Tom Hall.
+Jennifer Sprague ([19:52]):
+What time was that at?
+Kevin Pavao ([19:55]):
+It was shortly after...
+Jennifer Sprague ([19:58]):
+Is your memory exhausted?
+Kevin Pavao ([19:59]):
+Yes.
+Jennifer Sprague ([20:00]):
+Do you have your report with you?
+Kevin Pavao ([20:01]):
+I do.
+Jennifer Sprague ([20:02]):
+With permission?
+Judge William Sullivan ([20:13]):
+Yes, that's fine.
+Kevin Pavao ([20:13]):
+That was at 9:42.
+Jennifer Sprague ([20:15]):
+So, approximately two minutes after the Facebook account was accessed?
+Kevin Pavao ([20:19]):
+Correct.
+Jennifer Sprague ([20:19]):
+And that website, was that a Wikipedia page?
+Kevin Pavao ([20:26]):
+No, that was Spotify music.
+Jennifer Sprague ([20:29]):
+Oh, I'm sorry. Spotify. Spotify Music. And then, what did you see next?
+Kevin Pavao ([20:32]):
+There was a song off of that search in Spotify.
+Jennifer Sprague ([20:39]):
+Was that the, That's How I got to Memphis, song?
+Kevin Pavao ([20:41]):
+Yes.
+Jennifer Sprague ([20:42]):
+And was that at 9:44:18 AM?
+Kevin Pavao ([20:46]):
+Yes.
+Jennifer Sprague ([20:47]):
+Then what happened next?
+Kevin Pavao ([20:49]):
+There was a Google search for Tom Hall.
+Jennifer Sprague ([20:55]):
+And was that at 9:44:30 AM?
+Kevin Pavao ([20:58]):
+Yes.
+Jennifer Sprague ([21:00]):
+And what did you learn from that Google search?
+Kevin Pavao ([21:04]):
+Off of that Google search, there was the Wikipedia page for Tom Hall was visited.
+Jennifer Sprague ([21:11]):
+And were you able to use the Wayback website to see what that Tom Hall page on Wikipedia looked like around the time of August 23rd, 2022?
+Kevin Pavao ([21:22]):
+I did.
+Jennifer Sprague ([21:29]):
+Is this a copy of that Wikipedia page from the Wayback Machine?
+Kevin Pavao ([21:33]):
+Yes.
+Jennifer Sprague ([21:35]):
+If we can have this marked as the next exhibit.
+Kevin Reddington ([21:37]):
+No objection.
+Judge William Sullivan ([21:38]):
+All right.
+Kevin Reddington ([21:39]):
+I have no objection to any of the documents.
+Judge William Sullivan ([21:41]):
+It says Tom T. Hall.
+Jennifer Sprague ([21:43]):
+Tom Hall, yes.
+Judge William Sullivan ([21:51]):
+All right. That may be-
+Speaker 1 ([21:52]):
+232.
+Judge William Sullivan ([21:53]):
+Thank you.
+Jennifer Sprague ([22:01]):
+Could you see what happened next once the Wikipedia page for Tom Hall was visited?
+Kevin Pavao ([22:07]):
+So, I saw there was an anchor on the URL to the Death section.
+Jennifer Sprague ([22:11]):
+What does that mean, an anchor to the Death section?
+Kevin Pavao ([22:14]):
+So, an anchor would be put at the end of a URL, so a web address. So, what an anchor does, it's a pound sign followed by a section of that page. So, if you think of it as, say you go on your banking website and it lists a table of contents, and it has login, mortgages, rates. If you click on, let's say rates, it's going to jump all the way down to that page, just to that section. So, it's a table of contents that's going to direct you directly to a certain section of the webpage.
+Jennifer Sprague ([22:51]):
+And so, on the Wikipedia, someone clicked on Death and it brought them down to that portion?
+Kevin Pavao ([22:56]):
+Correct.
+Jennifer Sprague ([22:56]):
+And in the Death section, could you tell what happened once the person was in that area of the webpage?
+Kevin Pavao ([23:05]):
+Yes.
+Jennifer Sprague ([23:05]):
+What happened there?
+Kevin Pavao ([23:06]):
+So, in the description that described, the Wikipedia page described of Tom Hall's death, there was some wording regarding a shooting related to his ultimate suicide. Go ahead.
+Jennifer Sprague ([23:24]):
+Showing you what's been marked now as 232. This portion here under Death, where it's, "Self-inflicted gunshot wound to the head," is underlined, is that the portion you're referring to?
+Kevin Pavao ([23:39]):
+Yes, correct.
+Jennifer Sprague ([23:40]):
+And that portion there with the underlining, is that what you were describing earlier as a hyperlink that you can click and it takes you somewhere else?
+Kevin Pavao ([23:48]):
+Yes. So, inside that phrasing, there's actually a URL behind that, with an anchor as well.
+Jennifer Sprague ([23:57]):
+Now, something like that, that type of hyperlink, can you hover over that with the arrow that the mouse directs hover over that and automatically be taken to that site, or would you actually have to click on that link?
+Kevin Pavao ([24:10]):
+No, you would have to click on that phrase with the link behind it.
+Jennifer Sprague ([24:15]):
+And so, based on your examination of the Surface Pro in that area, was the hyperlink clicked on?
+Kevin Pavao ([24:24]):
+Yes.
+Jennifer Sprague ([24:25]):
+And where did the hyperlink bring the person?
+Kevin Pavao ([24:29]):
+We now got to the original artifact I had located, which was the Wikipedia Suicide Method, but it directed it directly to the shooting section of that page.
+Jennifer Sprague ([24:40]):
+Could you tell how long the person spent on that page, the Suicide Methods page, or how long it was accessed?
+Kevin Pavao ([24:49]):
+No.
+Jennifer Sprague ([24:52]):
+Could you tell what time it was accessed?
+Kevin Pavao ([24:53]):
+Yes.
+Jennifer Sprague ([24:55]):
+What time was that?
+Kevin Pavao ([24:57]):
+I don't recall the specific time.
+Jennifer Sprague ([24:59]):
+Want to look at your report?
+Kevin Pavao ([25:10]):
+At 9:45 AM.
+Jennifer Sprague ([25:12]):
+So, 9:45 AM, the Suicide Methods page was accessed, correct?
+Kevin Pavao ([25:21]):
+Correct. And did you use the Wayback Machine to see what it would look like on August 23rd, 2023?
+Jennifer Sprague ([25:26]):
+I did.
+Kevin Pavao ([25:30]):
+Is this a copy of what you produced?
+Jennifer Sprague ([25:31]):
+Yes.
+Kevin Pavao ([25:31]):
+If we could have this marked as the next exhibit.
+Judge William Sullivan ([25:39]):
+It may be admitted.
+Speaker 1 ([25:39]):
+233.
+Judge William Sullivan ([25:39]):
+Thank you.
+Speaker 1 ([25:55]):
+And what could you see happening from that page?
+Kevin Pavao ([26:00]):
+I observed after that another Wikipedia page that went to the Grafton Bridge.
+Jennifer Sprague ([26:06]):
+And was that from a hyperlink within the Suicide Methods page?
+Kevin Pavao ([26:10]):
+Yes.
+Jennifer Sprague ([26:23]):
+Showing you page eight of Exhibit 233. So, within this jumping section is where there was the hyperlink to that bridge?
+Kevin Pavao ([26:42]):
+Correct.
+Jennifer Sprague ([26:43]):
+Here?
+Kevin Pavao ([26:44]):
+Yes.
+Jennifer Sprague ([26:45]):
+Grafton bridge. So, again, the person had to click on that hyperlink to access Grafton Bridge?
+Kevin Pavao ([26:51]):
+Yes, that would be correct.
+Jennifer Sprague ([26:52]):
+Now, you said that the Suicide Methods page was accessed at 9:45 AM, what time was the Grafton Bridge webpage accessed?
+Kevin Pavao ([27:03]):
+It was shortly after that.
+Jennifer Sprague ([27:04]):
+Do you want to look at your report?
+Kevin Pavao ([27:10]):
+At 9:48.
+Jennifer Sprague ([27:12]):
+9:48?
+Kevin Pavao ([27:13]):
+Correct.
+Jennifer Sprague ([27:13]):
+And so, approximately three minutes after first accessing the Suicide Methods page, the hyperlink for the Grafton Bridge is clicked?
+Kevin Pavao ([27:22]):
+Correct.
+Jennifer Sprague ([27:23]):
+Was there any other activity besides going to the Suicide Methods page and then the Grafton Bridge page, any other activity that you saw within those three minutes?
+Kevin Pavao ([27:34]):
+I did not, no.
+Jennifer Sprague ([27:37]):
+Okay. And so, did you do the Wayback Machine again for the Grafton Bridge?
+Kevin Pavao ([27:39]):
+I did.
+Jennifer Sprague ([27:42]):
+Is this a fair and accurate copy of that page?
+Kevin Pavao ([27:45]):
+Yes.
+Jennifer Sprague ([27:48]):
+If we could have this marked as Exhibit 234, please.
+Judge William Sullivan ([27:51]):
+It may be admitted.
+Speaker 1 ([27:55]):
+Exhibit 234.
+Jennifer Sprague ([28:15]):
+You're not able to tell who's actually at the computer doing all of this, correct?
+Kevin Pavao ([28:20]):
+No.
+Jennifer Sprague ([28:21]):
+You can only see what data there is and what's been accessed, correct?
+Kevin Pavao ([28:25]):
+Correct.
+Jennifer Sprague ([28:26]):
+Thank you.
+Judge William Sullivan ([28:28]):
+All right, Mr. Reddington.
+Kevin Reddington ([28:30]):
+That's it? That's your testimony? That's why you're here today to talk about a search that was involving Tom Hall or Tim Hall?
+Judge William Sullivan ([28:38]):
+Sustained. If you could-
+Kevin Reddington ([28:40]):
+I apologize. Your testimony today is based on that search on August 23rd, right?
+Kevin Pavao ([28:46]):
+Correct.
+Kevin Reddington ([28:47]):
+Of '22, right? And you were working as a state police officer back then, right?
+Kevin Pavao ([28:59]):
+Yes, sir.
+Kevin Reddington ([29:00]):
+And were you attached to the Plymouth County DA's office or were you working somewhere else?
+Kevin Pavao ([29:05]):
+I was assigned to the Cyber Crime Unit.
+Kevin Reddington ([29:07]):
+And the Cyber Crime Unit works with the DA's office in Plymouth?
+Kevin Pavao ([29:12]):
+The Cyber Crime Unit is its own independent statewide unit.
+Kevin Reddington ([29:15]):
+So, in the sense that you're independent, it's still the district attorney and his assistant DAs that would reach out to the Cyber Crime Unit and ask for help, right?
+Kevin Pavao ([29:27]):
+Or it could be the troopers assigned to the State Police Detective Unit.
+Kevin Reddington ([29:32]):
+Joshua McKelligan, he was the lead investigator on this case, right?
+Kevin Pavao ([29:37]):
+I assume so.
+Kevin Reddington ([29:39]):
+Okay. So, you were tasked to analyze the computer, the Surface Pro computer, right?
+Kevin Pavao ([29:47]):
+Yes, correct.
+Kevin Reddington ([29:48]):
+And by all accounts, that was owned by Pat Clancy, is that correct?
+Kevin Pavao ([29:54]):
+That is correct.
+Kevin Reddington ([29:55]):
+And it was located in his office, right?
+Kevin Pavao ([29:58]):
+I don't know where it was located.
+Kevin Reddington ([29:59]):
+Okay. It's fair to say that when you analyzed the computer back in September, October of 2025, it was an investigatory role that you were using to locate potential evidence, right?
+Kevin Pavao ([30:12]):
+Correct.
+Kevin Reddington ([30:13]):
+And what is it you were looking for?
+Kevin Pavao ([30:15]):
+I was provided a search warrant with search terms, and that's as far as I knew of the case.
+Kevin Reddington ([30:25]):
+Okay. And what were the search terms?
+Kevin Pavao ([30:26]):
+I don't recall specifically, but they were spelled out in the search warrant.
+Kevin Reddington ([30:30]):
+So, when you have search terms, you take a person's computer and then what do you do? You access it through a device?
+Kevin Pavao ([30:39]):
+So, I was provided the images, I never saw the physical computer.
+Kevin Reddington ([30:45]):
+So, when you got the images, you were able to load them up onto your computer, I imagine?
+Kevin Pavao ([30:52]):
+Yes. We'll use a tool to help parse through that data. Correct.
+Kevin Reddington ([30:55]):
+And then as a result of that, you were able to plug in words that you could search for, right?
+Kevin Pavao ([31:02]):
+Yes.
+Kevin Reddington ([31:03]):
+For example, like suicide?
+Kevin Pavao ([31:05]):
+Suicide would be one.
+Kevin Reddington ([31:07]):
+Drugs?
+Kevin Pavao ([31:09]):
+I mean, I don't think that pertained in this case, but you could search-
+Kevin Reddington ([31:12]):
+Well, yeah, [inaudible 00:31:13] did.
+Kevin Pavao ([31:14]):
+I don't recall the specific terms in the search warrant.
+Kevin Reddington ([31:17]):
+Okay. Okay. So, after you did your search for whatever it is that you were looking for, suicide and other, you were unable to tell us what else you looked for, but in any event, you came across this entry on August 23rd, and you indicated that the timeframe that you're dealing with on that computer, the Surface Pro computer, was 9:40 in the morning, is that right?
+Kevin Pavao ([31:47]):
+The... Can you rephrase that?
+Kevin Reddington ([31:51]):
+Yeah. You can look at your report too, I mean, if you have documents in front of you, do you have-
+Kevin Pavao ([31:57]):
+I do.
+Kevin Reddington ([31:58]):
+All right. So, you can take a look at it. You have a document that's captioned, Matching Results, is that right?
+Kevin Pavao ([32:06]):
+I do not have that in front of me, but yes.
+Kevin Reddington ([32:08]):
+And would that be the search that you conducted?
+Kevin Pavao ([32:14]):
+Is that the Magnet tool report?
+Kevin Reddington ([32:17]):
+I don't know what it is. And I got cataract surgery and I can hardly see, so it's just... What is that?
+Kevin Pavao ([32:26]):
+This is the main page of the forensic tool.
+Kevin Reddington ([32:30]):
+Okay. And looking at the main page of the forensic tool, does it indicate the date is August 23rd?
+Kevin Pavao ([32:42]):
+That's an inbox. This also doesn't. Are we talking about this highlight here?
+Kevin Reddington ([32:49]):
+Yeah. What does that indicate?
+Kevin Pavao ([32:51]):
+That's an inbox, that's not that.
+Kevin Reddington ([32:54]):
+All right. So, what time-
+Judge William Sullivan ([32:57]):
+[inaudible 00:32:57], could you keep your voice up or make sure you speak into that microphone?
+Kevin Pavao ([33:02]):
+Sorry.
+Unknown ([33:02]):
+[inaudible 00:33:04].
+Judge ([33:00]):
+... microphone.
+Kevin Pavao ([33:03]):
+So that highlight is a mail inbox.
+Kevin Reddington ([33:06]):
+Okay. And that would be the HTTPS. And then underneath that it makes reference to at some point that you were able to see that Lindsay or Lynn's Facebook account was accessed. And it wasn't even the account, it was actually the homepage, right?
+Kevin Pavao ([33:25]):
+Correct. It navigated to the Facebook person's account.
+Kevin Reddington ([33:31]):
+Okay. So that would tell us that that particular Facebook account was accessed and then that conducted the search that you just testified to, is that the next thing?
+Kevin Pavao ([34:05]):
+This here does not have a Facebook visit.
+Kevin Reddington ([34:07]):
+All right. You can use this if you want. How about this next one? Does that have the Facebook visit?
+Kevin Pavao ([34:11]):
+This one does, yes, correct.
+Kevin Reddington ([34:12]):
+Okay. If you just want to take a look at that.
+Kevin Pavao ([34:13]):
+We're both [inaudible 00:34:15].
+Kevin Reddington ([34:13]):
+Yeah, both of us, blind.
+Kevin Pavao ([34:20]):
+Yes, that'd be right here.
+Kevin Reddington ([34:21]):
+All right. Thank you. Now, just before I leave, above that, does that also indicate these two top... What are these two top lines?
+Kevin Pavao ([34:33]):
+That was a CNBC web visit, which was typed in. And then there's a access to a Google Gmail account inbox.
+Kevin Reddington ([34:44]):
+And whose Google Gmail account was that?
+Kevin Pavao ([34:46]):
+That I don't know.
+Kevin Reddington ([34:48]):
+Because those two lines and references to the Google account were not in your report, right? You started off with the Facebook search, if you will.
+Kevin Pavao ([34:59]):
+Yes.
+Kevin Reddington ([35:00]):
+So you started off with Lindsay Facebook that was signed into the homepage on Patrick Clancy's Surface Pro computer, right?
+Kevin Pavao ([35:13]):
+So my tool report has all of the artifacts tagged as evidence.
+Kevin Reddington ([35:20]):
+Okay. So when you tagged the actual data from the Surface Pro and the HP laptop as well, right?
+Kevin Pavao ([35:27]):
+Yes, correct.
+Kevin Reddington ([35:28]):
+And your October report back in 20... Was it '25 or was it '22?
+Kevin Pavao ([35:32]):
+'25.
+Kevin Reddington ([35:35]):
+But nothing changes on the computers. I mean, whatever your searches are and your records don't change over the years, right?
+Kevin Pavao ([35:42]):
+No, as long as it's preserved in that state, the images of that computer will remain the same.
+Kevin Reddington ([35:49]):
+Okay. And it's fair to say that with this investigation, obviously happening back in 2022, that the computers were hermetically sealed and stuck somewhere with an evidence locker to make sure that they're preserved, right?
+Kevin Pavao ([36:05]):
+Yes, that would be best practice. That would be correct.
+Kevin Reddington ([36:08]):
+So then in October of '25, the district attorney's office asked you to conduct a search of the computer apparently. Is that right?
+Kevin Pavao ([36:16]):
+The trooper in the Plymouth State Police Detective Unit reached out.
+Kevin Reddington ([36:21]):
+And that would be McElligan, right?
+Kevin Pavao ([36:22]):
+No, it was not.
+Kevin Reddington ([36:23]):
+Okay. Do you know who it was?
+Kevin Pavao ([36:25]):
+Trooper Justin Paul.
+Kevin Reddington ([36:26]):
+Justin Paul.
+Kevin Pavao ([36:27]):
+Correct.
+Kevin Reddington ([36:27]):
+Okay. And as a result of that, you then went, prepared your report. And one of the things that you did is you noted that on August 23rd of 2022 at 9:40 and 08 seconds, that there was an access to the Lindsay Facebook account, right?
+Kevin Pavao ([36:50]):
+Oh, there was a visit to that page, correct.
+Kevin Reddington ([36:51]):
+Right. And then that page continued on to look for Tom Hall and Walking to Memphis or whatever and the songs, right?
+Kevin Pavao ([37:01]):
+Yes.
+Kevin Reddington ([37:02]):
+On Spotify?
+Kevin Pavao ([37:03]):
+Yeah. Yes. After that was a Spotify search.
+Kevin Reddington ([37:06]):
+And then the timeframe of that would be that he went to a hyperlink that took him to methods of suicide. Is that correct?
+Kevin Pavao ([37:18]):
+That is correct.
+Kevin Reddington ([37:19]):
+Now, were there any searches on that computer, for example, ways to kill?
+Kevin Pavao ([37:25]):
+No, there was not.
+Kevin Reddington ([37:27]):
+To your knowledge, and I understand that you might be stuck with what you investigated, but are you aware that there were any searches from Lindsay Clancy or a Patrick Clancy on ways to kill? You ever heard that?
+Kevin Pavao ([37:42]):
+In my initial report back in October that contains all of the evidence artifacts that I had tagged as evidence and provided, I did not come across that, no.
+Kevin Reddington ([37:52]):
+Right. So basically what you are leaving with the jury would be that on that date of August 23rd at approximately 9:40 in the morning, and then carrying forward with jumping from Tom Hall to the Wikipedia account, to the underlined name, suicide, jumping to that page, that all occurred between 9:40 and say 10 o'clock in the morning, right?
+Kevin Pavao ([38:21]):
+Correct.
+Kevin Reddington ([38:29]):
+Did you know, sir, that on August 23rd, prior to your report indicating the Facebook account, that Mr. Clancy signed in and it was Mr. Clancy's email that accessed the Facebook account for Lindsay Clancy?
+Kevin Pavao ([38:51]):
+I did not.
+Kevin Reddington ([38:53]):
+And that was not included in your report, was it?
+Kevin Pavao ([38:56]):
+No, it was not.
+Kevin Reddington ([38:58]):
+And you know that the Clancys had three children, right?
+Kevin Pavao ([39:06]):
+I did not.
+Kevin Reddington ([39:07]):
+Well, you knew that you were working on a case where Lindsay Clancy was the mother and she was married to Patrick Clancy, right?
+Kevin Pavao ([39:16]):
+Correct.
+Kevin Reddington ([39:17]):
+And did you know, sir, that on August 23rd of 2022, that two- year-old child was brought by Lindsay to South Shore Health for Dawson's ear recheck, that he had problems with congestion, but no complaints of ear pain, no fever. And that was on August 23rd, 2022, that he was examined at 10:15 in the morning.
+Kevin Pavao ([39:51]):
+I'm not privy to those facts.
+Kevin Reddington ([39:56]):
+So you don't know that Patrick Clancy's email signed into Lindsay Clancy's Facebook account. You're not aware of that, right?
+Kevin Pavao ([40:05]):
+It's whatever the default profile was signed into the Chrome browser.
+Kevin Reddington ([40:09]):
+And then that accessed the Facebook account, which looked up Tom Hall the singer, right?
+Kevin Pavao ([40:14]):
+Yes, correct.
+Kevin Reddington ([40:15]):
+That then led to the Wikipedia talking about suicide?
+Kevin Pavao ([40:18]):
+That is correct.
+Kevin Reddington ([40:19]):
+Led to the Spotify talking about somewhere in Memphis, whatever the song was, right?
+Kevin Pavao ([40:23]):
+Yes.
+Kevin Reddington ([40:25]):
+And this was all occurring from 9:40 in the morning until, like I said, 10 o'clock thereabouts, right?
+Kevin Pavao ([40:34]):
+Correct.
+Kevin Reddington ([40:40]):
+You tagged actual data from the Surface Pro as well as the HP laptop, right?
+Kevin Pavao ([40:45]):
+I did.
+Kevin Reddington ([40:46]):
+And your October report contained searches from the Surface Pro, right?
+Kevin Pavao ([40:50]):
+Yes.
+Kevin Reddington ([40:51]):
+And you recall, for example, just a representative sample that, and this would be on the Surface Pro computer, now we're jumping ahead to December 5, not August, of '22, December of '22. One of the inquiries of the Google searches was what to do when a psychiatrist over-prescribed, right?
+Kevin Pavao ([41:12]):
+Yes.
+Kevin Reddington ([41:13]):
+Searches for medications, right?
+Kevin Pavao ([41:14]):
+Yes.
+Kevin Reddington ([41:15]):
+Including Lamictal, right?
+Kevin Pavao ([41:17]):
+Correct.
+Kevin Reddington ([41:17]):
+Can bipolar disorder be temporary? Right?
+Kevin Pavao ([41:20]):
+Yes.
+Kevin Reddington ([41:20]):
+Can benzos reveal bipolar disorder? Right?
+Kevin Pavao ([41:23]):
+Yes.
+Kevin Reddington ([41:24]):
+How long are detox programs? Right?
+Kevin Pavao ([41:26]):
+Yes.
+Kevin Reddington ([41:27]):
+What is DBT? I'm just saying that's a search, I don't know [inaudible 00:41:32].
+Kevin Pavao ([41:32]):
+Oh yeah. I had to look that one up too.
+Kevin Reddington ([41:34]):
+Okay. Lamictal versus, it says Zolofy, but I would suggest it would be Zoloft. That was a search, right?
+Kevin Pavao ([41:40]):
+Yes, correct.
+Kevin Reddington ([41:41]):
+What is mania? It was a search, right?
+Kevin Pavao ([41:44]):
+Yes.
+Kevin Reddington ([41:44]):
+Ketamine for benzo withdrawal. January 18th of 2023 was a search, right?
+Kevin Pavao ([41:50]):
+Yes.
+Kevin Reddington ([41:51]):
+Ketamine therapy on January 18th of 2023, correct?
+Kevin Pavao ([41:55]):
+Yes.
+Kevin Reddington ([41:58]):
+Now, you know, maybe not personally, but you know Steve Verronneau, who's also a gentleman who does what you do with computers and laptops and stuff, right?
+Kevin Pavao ([42:10]):
+Yes.
+‍
+Kevin Reddington ([42:11]):
+Now you've worked on cases and you know Steve, you recognize him right here, right?
+Kevin Pavao ([42:14]):
+Yes.
+Kevin Reddington ([42:15]):
+You know that Steve was working with me and Lindsay on accessing information from cell phones and computers. And he actually, through me, reached out about a month ago to the DA's office and raised some questions, correct?
+Kevin Pavao ([42:32]):
+I'm not privy to that.
+Kevin Reddington ([42:34]):
+Oh. Well, the DA reached out to you about a month ago and asked you to revisit your investigation, and as a result of that, you created another report, didn't you?
+Kevin Pavao ([42:42]):
+I did.
+Kevin Reddington ([42:44]):
+And that would just be on July 26th of '26, right?
+Kevin Pavao ([42:47]):
+Yes.
+Kevin Reddington ([42:48]):
+And that was after DA reached out to you, but didn't tell you it was because we had questions that Mr. Verronneau asked me to find out about, right?
+Kevin Pavao ([42:56]):
+Yes, I was not privy to that.
+Kevin Reddington ([42:57]):
+So as a result of dealing with the DA in July 26th of '26, you then prepared your report. And the purpose of that report was to find out more details if you could pertaining to the "methods of suicide" page, right?
+Kevin Pavao ([43:13]):
+Correct.
+Kevin Reddington ([43:14]):
+And in your July 26th report, you then went into detail about your findings, correct?
+Kevin Pavao ([43:20]):
+Yes.
+Kevin Reddington ([43:20]):
+And we would agree that that particular webpage was not a search for methods of suicide, it was actually the Tom Hall and the music, right?
+Kevin Pavao ([43:29]):
+That is correct.
+Kevin Reddington ([43:30]):
+And then the URL shows access to Lindsay's Facebook profile, correct? You accessed and found out that Lindsay's Facebook profile...
+Kevin Pavao ([43:43]):
+Was a web visit.
+Kevin Reddington ([43:44]):
+Right.
+Kevin Pavao ([43:44]):
+Yes, correct.
+Kevin Reddington ([43:45]):
+But you don't know that it was Lindsay that was actually using that computer to search for Tom Hall, right?
+Kevin Pavao ([43:50]):
+I don't know who was sitting behind that.
+Kevin Reddington ([43:52]):
+You don't know that Patrick Clancy plays a guitar, do you?
+Kevin Pavao ([43:55]):
+I do not.
+Kevin Reddington ([43:55]):
+You don't know that Patrick Clancy is a music aficionado, right?
+Kevin Pavao ([43:58]):
+I do not.
+Kevin Reddington ([43:59]):
+You don't know that Patrick Clancy enjoyed Tom Hall music, do you?
+Kevin Pavao ([44:03]):
+I do not know that.
+Kevin Reddington ([44:04]):
+And you certainly don't want to leave it with this jury that Lindsay was looking up ways to commit suicide in August of '22, do you?
+Kevin Pavao ([44:11]):
+All I'm presenting is the facts that were presented in front of me.
+Kevin Reddington ([44:19]):
+And a couple more questions, sir. When a user logs into their Facebook, their own Facebook account, it doesn't populate or bring you directly to the actual profile page. It brings you to the homepage, right? That shows you followers and things like that?
+Kevin Pavao ([44:34]):
+I think so. I don't have Facebook or social media, so maybe. I don't know.
+Kevin Reddington ([44:53]):
+That's all I have for this gentleman, Your Honor.
+Judge ([44:55]):
+All right. Commonwealth...
+Kevin Reddington ([44:58]):
+I would ask if I could, Judge, the two documents that I was questioning him from, could I introduce those into evidence? I think he agreed that that was part of the search.
+Jennifer Sprague ([45:10]):
+Could we just approach?
+Judge ([46:21]):
+Sure. Yeah. All right, thank you. That may be admitted.
+Kevin Reddington ([46:25]):
+And Your Honor, I would offer, if I could, the medical records from the Pediatrics Associates that...
+Jennifer Sprague ([46:33]):
+They're already in evidence.
+Kevin Reddington ([46:35]):
+Well, I'd like to have it focused on that. You don't mind if we put that particular...
+Judge ([46:39]):
+Why don't we mark that for identification? We can address whether or not... I want to double check, I haven't gone through all the records either.
+Kevin Reddington ([46:46]):
+[inaudible 00:46:47].
+Judge ([46:47]):
+Oh, I understand. We'll mark that for identification.
+Kevin Reddington ([46:53]):
+Thank you, Judge. Thank you, sir.
+Judge ([46:54]):
+Thank you.
+Clerk ([46:54]):
+Exhibit 235, exhibit for identification.
+Jennifer Sprague ([47:05]):
+Sir, just for clarification, before when I was doing direct, if at any point I said August 23rd, 2023, what you did when you did the way back machine was searches for around the time period of August 22nd, 2022, correct?
+Kevin Pavao ([47:22]):
+Correct.
+Jennifer Sprague ([47:23]):
+And anything that you looked at that day regarding the search for suicide methods or any of the other places that were visited were August 23rd, 2022, correct?
+Kevin Pavao ([47:31]):
+Correct, 2022.
+Jennifer Sprague ([47:33]):
+And the visit to the Grafton Bridge Wikipedia page was at 9:48 AM, correct? Not 10:00 AM?
+Kevin Pavao ([47:45]):
+That visit was at 9:48, correct.
+Jennifer Sprague ([47:47]):
+Okay. And defense counsel asked you about the defendant being at the doctor's at 10:15 AM. Are you aware that it only takes four minutes to drive from her home at 47 Summer Street in Duxbury to the Kingston location of the pediatrics?
+Kevin Pavao ([48:02]):
+I was not, and I also wasn't aware that they went to the doctor's.
+Jennifer Sprague ([48:09]):
+And you can't tell us who was behind the computer at different times, correct?
+Kevin Pavao ([48:14]):
+No.
+Jennifer Sprague ([48:15]):
+You can't tell us whether people used the computer, then got up and let someone else use it, and then went back to using it, correct?
+Kevin Pavao ([48:21]):
+No, you cannot.
+Jennifer Sprague ([48:22]):
+You can only show us the data that you observed that day, correct?
+Kevin Pavao ([48:26]):
+That is it. Yes.
+Jennifer Sprague ([48:27]):
+Okay. Thank you.
+Kevin Reddington ([48:27]):
+Thank you. What has been marked for P for identification, which would constitute the health information records from the South Shore Health pertinent to the child. You're aware, sir, that the records... You're aware, sir or you're not aware that the child was brought to the doctors, not at 10:15, but was brought to the doctors around 10 o'clock in the morning. You're aware of that?
+Kevin Pavao ([49:12]):
+I'm not aware of any of that.
+Kevin Reddington ([49:13]):
+And did you know how old the child was?
+Kevin Pavao ([49:16]):
+Sir, my testimony is related to the...
+Kevin Reddington ([49:18]):
+So you don't? The answer is no?
+Kevin Pavao ([49:19]):
+I do not.
+Kevin Reddington ([49:20]):
+Okay. So is it fair to say, sir, that, I mean, from your life experience, that when someone has to bring a child, a young baby to a doctor, you got to get him dressed, you got to feed them, you got to get in the car, you got to drive. And that's the four-minute ride as well, right?
+Kevin Pavao ([49:38]):
+I'm not privy to any of that information.
+Kevin Reddington ([49:43]):
+Thank you.
+Judge ([49:44]):
+All right. Anything further?
+Jennifer Sprague ([49:45]):
+No.
+Judge ([49:45]):
+All right. Thank you, sir. You may step down.
+Kevin Pavao ([49:46]):
+Thank you.
+Jennifer Sprague ([49:52]):
+Commonwealth calls Timothy Chiappini.
+Judge ([49:53]):
+Good morning, sir. Stop right there [inaudible 00:50:25].
+Clerk ([50:25]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury now coming between the Commonwealth and the defendant [inaudible 00:50:27]?
+Timothy Chiappini ([50:27]):
+I do.
+Clerk ([50:27]):
+Thank you, sir. You may have a seat.
+Judge ([50:38]):
+Watch your step, please. All right. Good morning, sir. Attorney Sprague, please.
+Jennifer Sprague ([50:42]):
+Thank you. Good morning. Can you please state and spell your name for the record?
+Timothy Chiappini ([50:46]):
+My name is Timothy Chiappini. Last name is spelled C-H-I-A-P as in Peter, P as in Peter, I-N-I.
+Jennifer Sprague ([50:53]):
+Where do you work?
+Timothy Chiappini ([50:55]):
+I work for the Commonwealth of Massachusetts for the Department of State Police.
+Jennifer Sprague ([50:58]):
+How long have you worked for the State Police?
+Timothy Chiappini ([51:00]):
+I graduated the academy in March of 2012.
+Jennifer Sprague ([51:03]):
+What is your current assignment?
+Timothy Chiappini ([51:06]):
+I am currently the unit commander for the Critical Incident Technical Investigations Team.
+Jennifer Sprague ([51:10]):
+How long have you been doing that?
+Timothy Chiappini ([51:12]):
+Since approximately April of this year.
+Jennifer Sprague ([51:15]):
+What was your assignment in January of 2023?
+Timothy Chiappini ([51:19]):
+I was assigned to the State Police Detective Unit for the Plymouth County District Attorney's Office.
+Jennifer Sprague ([51:24]):
+Do you have specialized training in cell phone forensics?
+Timothy Chiappini ([51:27]):
+I do.
+Jennifer Sprague ([51:28]):
+And could you describe that please?
+Timothy Chiappini ([51:30]):
+I was initially certified as a Cellebrite physical operator and a Cellebrite... Excuse me. Cellebrite certified operator, Cellebrite Certified Physical Analyst in March of 2017.
+Jennifer Sprague ([51:42]):
+And are you also trained in GrayKey and Magnet?
+Timothy Chiappini ([51:47]):
+I have been trained in GrayKey examination since August of 2021. And I've been familiar with the forensic program known as Axiom in that course, but I'm not certified in Axiom.
+Jennifer Sprague ([52:00]):
+And regarding Cellebrite, can you describe that software for us?
+Timothy Chiappini ([52:05]):
+Cellebrite is a forensic access and acquisition tool for cell phone or mobile device forensic extractions. It also has an analysis component as well.
+Jennifer Sprague ([52:14]):
+And were you asked to do a forensic analysis on a cell phone belonging to Lindsay Clancy in 2023? [inaudible 00:52:22]. Oh, I'm sorry.
+Timothy Chiappini ([52:25]):
+Yes, ma'am. Cellebrite is an access and acquisition tool for mobile device forensics and cell phone extractions. It also has an analysis component for extractions.
+Jennifer Sprague ([52:38]):
+And were you asked to do a forensic analysis on a cell phone belonging to Lindsay Clancy in 2023?
+Timothy Chiappini ([52:45]):
+I was.
+Jennifer Sprague ([52:46]):
+Did you do that?
+Timothy Chiappini ([52:47]):
+I did.
+Jennifer Sprague ([52:48]):
+And how did you do that?
+Timothy Chiappini ([52:49]):
+I performed an advanced logical extraction on the iPhone device belonging to Lindsay Clancy.
+Jennifer Sprague ([52:55]):
+Can you tell us what that means in just lay terms that we could all understand?
+Timothy Chiappini ([53:00]):
+An advanced logical extraction of an iPhone is essentially an iTunes backup. It is the information or data from the phone that you as a user can see, including images, calls, text messages, browser artifacts, basically everything that the person would see that uses an iPhone.
+Jennifer Sprague ([53:18]):
+And is it just making a copy of everything that you could see on that phone?
+Timothy Chiappini ([53:24]):
+That's correct.
+Jennifer Sprague ([53:25]):
+And what is the analysis portion of... You mentioned you do Cellebrite extraction and Cellebrite Analysis, what's the analysis portion?
+Timothy Chiappini ([53:35]):
+In January of 2023, the analysis software would be Cellebrite Physical Analyzer, and with that, you can also export a report to be utilized in Cellebrite Reader.
+Jennifer Sprague ([53:47]):
+So basically, are you just taking someone's phone, making a copy of the data that's on it, and then looking through the data?
+Timothy Chiappini ([53:53]):
+That's correct.
+Jennifer Sprague ([53:55]):
+Is it an exact copy?
+Timothy Chiappini ([53:58]):
+Yes. When the phone is forensically extracted by the Cellebrite software, a hash value is created. A hash value is a unique digital fingerprint of the extraction. It's an alphanumeric string of characters, and every time the extraction is open in the Cellebrite software, that hash value is verified. If the data in the extraction is changed by just one bit, the hash value would be changed and the extraction would no longer be valid.
+Jennifer Sprague ([54:24]):
+So basically you look at those numbers, the number chain, to make sure they're the same, and then you know it's an exact copy?
+Timothy Chiappini ([54:31]):
+That's correct.
+Jennifer Sprague ([54:31]):
+And did you do that in this case?
+Timothy Chiappini ([54:31]):
+I did.
+Jennifer Sprague ([54:31]):
+And was it an exact copy?
+Timothy Chiappini ([54:31]):
+It was.
+Jennifer Sprague ([54:36]):
+And are you able on the extraction to change any of the data while you're analyzing it?
+Timothy Chiappini ([54:42]):
+No. That would invalidate the hash. I can use filters in the analysis to look at particular data that I want, but I can never change the contents of the extraction.
+Jennifer Sprague ([54:54]):
+And so when you say use different filters, can you put things in categories to organize it so that, for example, can you put all the photos together and all the text messages together?
+Timothy Chiappini ([55:08]):
+The Cellebrite physical analyzer tool automatically parses the data into various categories, and it processes media, various forms of media, images, videos. It processes different direct communication, whether it be through a web application such as Instagram or the native messaging application on the device known as iMessage. So it parses the information automatically and you're allowed to look at different categories.
+Jennifer Sprague ([55:36]):
+So does it create a report with all the data?
+Timothy Chiappini ([55:42]):
+I can create a report from the extraction and it has all the data contained in the report and I can filter it based on the parameters that I'm allowed to look at legally.
+Jennifer Sprague ([55:55]):
+And when you do that extraction of a phone, do you get everything that's on the phone?
+Timothy Chiappini ([56:04]):
+Depending on the type of extraction, I get all the data that's available to me by the forensic tool that I'm using at the time.
+Jennifer Sprague ([56:10]):
+So do forensic tools improve over time to allow examiners to get more and more data from phones?
+Timothy Chiappini ([56:17]):
+Yes.
+Jennifer Sprague ([56:18]):
+So basically what you were able to get from Ms. Clancy's phone was what the tool you were using at the time was capable of getting at that time?
+Timothy Chiappini ([56:27]):
+I performed the most comprehensive extraction type that I was able to do at the time of the examination.
+Jennifer Sprague ([56:33]):
+And then there were improvements to that system following what you did that may have allowed other examiners to get more information?
+Timothy Chiappini ([56:41]):
+That's correct.
+Jennifer Sprague ([56:43]):
+Were you asked to generate some reports about certain sections of the defendant's phone?
+Timothy Chiappini ([56:48]):
+I was.
+Jennifer Sprague ([56:50]):
+If you could pull up the... Could you look at the screen please. Were you able to create a report regarding data on Ms. Clancy's phone from November of 2022 to December of 2022?
+Timothy Chiappini ([57:16]):
+Yes.
+Jennifer Sprague ([57:23]):
+Can you zoom in on that please? And could you just explain for us the different columns we're seeing here?
+Timothy Chiappini ([57:28]):
+The columns are automatically generated by the software when you create a supplemental report. This is a supplemental report created through the Cellebrite Physical Analyzer Software Analysis Tool. When you create the supplemental report, you can stipulate to certain parameters, certain content, certain timeframes based on your investigation. In this case, there are multiple columns at the top reflecting the different types of data, the timestamp for that data, a description in the source file for the data. This is a timeline report and therefore it reflects those exact columns and that is predetermined by the software.
+Jennifer Sprague ([58:13]):
+So for example, where it says type, what is that telling us?
+Timothy Chiappini ([58:16]):
+That's where Cellebrite has parsed the data and categorized it based on the forensic extraction.
+Jennifer Sprague ([58:22]):
+So there at number one where it says activity sensor data, what is that?
+Timothy Chiappini ([58:27]):
+That would be the data from the health database within the phone.
+Jennifer Sprague ([58:34]):
+If there was something in the direction box, what is direction?
+Timothy Chiappini ([58:39]):
+Direction could be related to a call incoming to the device or outgoing from the device.
+Jennifer Sprague ([58:45]):
+So if one was a phone call, it would say to or from?
+Timothy Chiappini ([58:48]):
+I believe the exact categorization would be incoming or outgoing.
+Jennifer Sprague ([58:52]):
+Incoming or outgoing. Okay. And then the attachment box?
+Timothy Chiappini ([58:56]):
+Attachment box would be associated with a message, typically a MMS message or multimedia message. A text message that contains a photo would be listed as an attachment. It could also be associated with an email that has an attachment or some type of transaction on the phone that resulted in something being attributed as an attachment.
+Jennifer Sprague ([59:18]):
+And then what about the location box?
+Timothy Chiappini ([59:20]):
+If the data source has location information associated with it, then that box would have data filled out. This report is 768 pages, so there's a variety of sources of data within this report.
+Jennifer Sprague ([59:33]):
+And what about timestamp? Where it says timestamp, the date and time, is that Eastern Standard Time?
+Timothy Chiappini ([59:39]):
+It is. It's UTC minus five as the time of this search warrant... Excuse me, the timeframe of this incident occurred in January of 2023, therefore, the extraction reflects the exact timeframe of the time zone of the device at the time of the extraction.
+Jennifer Sprague ([01:00:00]):
+And where it says party, what would be in that column?
+Timothy Chiappini ([01:00:06]):
+Again, this is a timeline report, therefore, there's a variety of data sources contained within it. There is chats or messages that occur from the user of the device to other people, and those parties would be listed within the chat, otherwise known as a group message.
+Jennifer Sprague ([01:00:26]):
+So if there was a text message, the direction would say incoming or outgoing, and the party would say who the text was to or from?
+Timothy Chiappini ([01:00:35]):
+It would say who the participants are on the conversation.
+Jennifer Sprague ([01:00:38]):
+So if it's one person you're texting, it would have that person's name. But if you're in a group text, it would have all of the names?
+Timothy Chiappini ([01:00:43]):
+Correct.
+Jennifer Sprague ([01:00:44]):
+And then what about the description box?
+Timothy Chiappini ([01:00:48]):
+Description box is based on the database information. It has some information associated with the actual data that was parsed by Cellebrite. It also provides the source file. The source file is the database that Cellebrite parsed the data from. Everything that you see as far as activity sensor data or any other categorizations, that's done by the software. The software parses that data to make it more readable for the examiner, but everything is associated with an actual database within the device.
+Jennifer Sprague ([01:01:22]):
+And so for example, where it says source health, that's coming from the health section of the phone?
+Timothy Chiappini ([01:01:30]):
+Specifically the health database, HealthDB.
+Jennifer Sprague ([01:01:33]):
+And where it says source file, Lindsay's, how does that name populate there for source file?
+Timothy Chiappini ([01:01:39]):
+Indicating that it comes from Lindsay's iPhone. That is the name that the software detects from the name of the device when it conducts the extraction.
+Jennifer Sprague ([01:01:51]):
+The box for party, if it's a phone call or a text message and it has a person's name in there, say I text you and your name is there, how does that populate? How does your name get into that box? Is it something that the phone gets from incoming information or is it something that's in my phone?
+Timothy Chiappini ([01:02:09]):
+The tool is only able to take the information that is present on the device at the time. In order for contact to be in a phone, it would have to be entered by the user.
+Jennifer Sprague ([01:02:20]):
+So would it be whatever I name your phone number is what will show up in the party?
+Timothy Chiappini ([01:02:24]):
+Correct.
+Jennifer Sprague ([01:02:25]):
+So if I have say my mother's phone number in there and I say Mom for her contact information, it will show up as Mom?
+Timothy Chiappini ([01:02:33]):
+The software will display the phone number and the contact name that was detected by the tool from the extraction.
+Jennifer Sprague ([01:02:42]):
+So if I've put a contact in, Mom, and the phone number, the phone number will show up in Mom?
+Timothy Chiappini ([01:02:48]):
+Correct.
+Jennifer Sprague ([01:02:51]):
+Can you search within this PDF?
+Timothy Chiappini ([01:02:54]):
+Yes.
+Jennifer Sprague ([01:02:55]):
+And do you do that by clicking on the search bar there at the top?
+Timothy Chiappini ([01:02:59]):
+Yes, this is my Microsoft Edge, and that is the proper method within this application.
+Jennifer Sprague ([01:03:05]):
+And so if we were to search, for example, the [inaudible 01:03:11].
+Timothy Chiappini ([01:03:15]):
+I'm not sure of the spelling.
+Jennifer Sprague ([01:03:21]):
+There we go. Sometimes it takes a second to populate.
+Timothy Chiappini ([01:03:23]):
+It does. It's a large document. As I said, it's 768 pages, so depending on the machine that you're using to conduct your analysis, it could take some time for the document to load.
+Jennifer Sprague ([01:03:34]):
+Okay. And do you use these arrows here up and down to go to each spot that that word is located?
+Timothy Chiappini ([01:03:44]):
+Correct. The application Microsoft Edge has detected four entries for the spelling that is in the search box, and you can navigate to each of those four entries by using those arrows.
+Jennifer Sprague ([01:03:57]):
+So for example, here at message 6951, it says it's an instant message, it's outgoing, meaning it's going out from Lindsay's phone?
+Timothy Chiappini ([01:04:06]):
+That's correct.
+Jennifer Sprague ([01:04:08]):
+It's on December 21st, 2022 at 2:57 PM, correct?
+Timothy Chiappini ([01:04:13]):
+Yes. Eastern Time.
+Jennifer Sprague ([01:04:15]):
+And then it says from Lindsay owner to Allison, correct?
+Timothy Chiappini ([01:04:18]):
+Yes.
+Jennifer Sprague ([01:04:19]):
+So that indicates that it's a text message from Lindsay to someone named Allison, correct?
+Timothy Chiappini ([01:04:25]):
+Yes, with the corresponding phone number.
+Jennifer Sprague ([01:04:26]):
+And then here where it says more of a general depression mental health program like at McLean Hospital, is that the body of the text message that would've been sent from Lindsay's phone to Allison?
+Timothy Chiappini ([01:04:38]):
+Correct.
+Jennifer Sprague ([01:04:43]):
+And you can search through the PDF for whatever term you're looking for, whether it be Patrick or medications or anything that you're searching for, it will populate any text messages or searches about those keywords?
+Timothy Chiappini ([01:04:58]):
+Yes.
+Jennifer Sprague ([01:05:07]):
+If we could have the next one, please. Did you also do a report regarding things that were downloaded onto Ms. Clancy's phone?
+Timothy Chiappini ([01:05:17]):
+Yes.
+Jennifer Sprague ([01:05:21]):
+You can look here. Is this that report?
+Timothy Chiappini ([01:05:25]):
+Yes. Again, this is a supplemental report created within the physical analyzer analysis tool from Cellebrite.
+Jennifer Sprague ([01:05:32]):
+And what is this report showing us?
+Timothy Chiappini ([01:05:35]):
+A singular item from the documents section of the Project Tree, otherwise known as the analysis component of Cellebrite Physical Analyzer. And it's one single document.
+Jennifer Sprague ([01:05:49]):
+And this blue hyperlink here at the top, 2022, 10, 12, 15, 28, is that what you click on to access the document?
+Timothy Chiappini ([01:06:00]):
+Yes. When you create a supplemental report within physical analyzer...
+Timothy Chiappini ([01:06:00]):
+Yes. When you create a supplemental report within the physical analyzer, when it creates the PDF, if it has an attachment associated with it, that attachment will be in a separate folder within the report. That way when you click on the actual hyperlink, you're brought to the physical document itself.
+Jennifer Sprague ([01:06:18]):
+And for example, in this report, there was a request for medical leave form that was downloaded to the defendant's phone?
+Timothy Chiappini ([01:06:27]):
+Yes.
+Jennifer Sprague ([01:06:32]):
+If we could go to the next one, please. What are we seeing here in this report from December 26th, 2022 to January 24th, 2023? Is this the same type of search for any information and data on the phone during that time period?
+Timothy Chiappini ([01:07:06]):
+Again, a timeline report is a chronological report of a sequence of events on the device, and it has the same categories as the previous exhibit. In here, the first item within the date parameters happens to be a calendar entry.
+Jennifer Sprague ([01:07:31]):
+And so if we go here to page 846 of the document, can you explain for us here, is this web history, website visits that are documented on the phone?
+Timothy Chiappini ([01:07:45]):
+That's one of the categories listed as an artifact. The items shown here on the screen are all associated with web browsing.
+Jennifer Sprague ([01:08:00]):
+And here where you see 10773 and 10774, and they both state, "Can you treat a sociopath?" Those are two entries that have basically the same search term, correct?
+Timothy Chiappini ([01:08:10]):
+Yes.
+Jennifer Sprague ([01:08:11]):
+And that was on January 20th, 2023?
+Timothy Chiappini ([01:08:14]):
+Yes.
+Jennifer Sprague ([01:08:15]):
+And they both say 8:28:29 PM. So is it possible to do two searches at the same time like is displayed there?
+Timothy Chiappini ([01:08:28]):
+The Cellebrite Physical Analyzer tool parses the information in ways that the information could be categorized in a multitude of ways. Simply because there is more than one entry does not mean that something was done more than once. It's simply just a category that Cellebrite has identified. You could have an item that's in searched items because that's what the tool has identified as a searched item. Also within web history, as in the search item occurred within the web history. Does not necessarily mean that it was done more than once. It's the job of the examiner to be able to look at the timestamps and the associated databases to determine is this more than one entry or the same action just categorized in multiple ways.
+Jennifer Sprague ([01:09:12]):
+And when reviewing Ms. Clancy's phone, did you see numerous occasions where it looked like something was searched multiple times, but it all had the same exact timestamp?
+Timothy Chiappini ([01:09:23]):
+That's correct.
+Jennifer Sprague ([01:09:24]):
+And so what you just testified to make sure I'm understanding it, would it be accurate to state that one search could be documented and located in many different areas of the phone?
+Timothy Chiappini ([01:09:35]):
+It could be parsed in multiple ways by the analysis tool.
+Jennifer Sprague ([01:09:39]):
+So basically categorized?
+Timothy Chiappini ([01:09:41]):
+Correct.
+Jennifer Sprague ([01:09:42]):
+So it's one search that's categorized as multiple different things?
+Timothy Chiappini ([01:09:46]):
+That's possible.
+Jennifer Sprague ([01:09:48]):
+And so here where we had the search at the same exact time down to the second, that appears to be one search for can you treat a sociopath, not two, correct?
+Timothy Chiappini ([01:09:59]):
+Yes.
+Jennifer Sprague ([01:10:07]):
+We can go to the next one, please. Now this area here, this separate report, is this the notes that were found on Ms. Clancy's phone?
+Timothy Chiappini ([01:10:23]):
+That's correct.
+Jennifer Sprague ([01:10:25]):
+And if we could zoom in on that please. And it's basically detailed in journal form, correct?
+Timothy Chiappini ([01:10:35]):
+Yes.
+Jennifer Sprague ([01:10:36]):
+Starting October 24th, 2022 and moving down, correct?
+Timothy Chiappini ([01:10:41]):
+The summary portion that you just pointed to is automatically generated by the application. When it reads the first few lines of text, the more relevant date is in the column to the left.
+Jennifer Sprague ([01:10:59]):
+So over here where it says created October 25th, 2022, that's when the note is first created?
+Timothy Chiappini ([01:11:02]):
+That is the date that's detected by the analysis tool from the operating system of the device.
+Jennifer Sprague ([01:11:07]):
+What does modified mean?
+Timothy Chiappini ([01:11:09]):
+That's the date that was detected by the forensic tool and the last time that this note was modified according to the operating system.
+Jennifer Sprague ([01:11:19]):
+Modified mean that it was changed in some way?
+Timothy Chiappini ([01:11:22]):
+Yes.
+Jennifer Sprague ([01:11:23]):
+And so if I start a note in my phone on October 25th and I go in there every day and change it, and the last time I change it is November 3rd, will it show every modification or just the last modification?
+Timothy Chiappini ([01:11:38]):
+The only date timestamp that will show is the last modification. Unless the forensic tool is able to categorize each time the note was changed, I'm only able to detect the modified timestamp or last modified timestamp, and just the entirety of the note.
+Jennifer Sprague ([01:11:52]):
+And excuse me. You don't know how many times this note was modified, correct?
+Timothy Chiappini ([01:12:00]):
+Based on this forensic tool and this artifact, no.
+Jennifer Sprague ([01:12:04]):
+Can you tell what within the note was changed?
+Timothy Chiappini ([01:12:07]):
+I cannot.
+Jennifer Sprague ([01:12:09]):
+So everything could have been the same and maybe a date changed, or there could have just been a date and everything was changed on November 3rd. You just don't know?
+Timothy Chiappini ([01:12:17]):
+It could have just been a one character change on the last modified date. But with this forensic tool and this artifact-
+Speaker 2 ([01:12:23]):
+What's the date?
+Jennifer Sprague ([01:12:24]):
+November 3rd.
+Speaker 2 ([01:12:30]):
+Thank you.
+Jennifer Sprague ([01:12:30]):
+And if we could just scroll down to the October 25th entry. And I would just like you to read this portion of the note. I would read it. I'm sorry, but I'm having some difficulty here.
+Timothy Chiappini ([01:12:45]):
+"Okay. I'm sad and depressed because I am not able to parent my third child like my first. I want to treat any one of my babies like my first, but I know that's not a feasible possibility. I'm sad that I stopped breastfeeding. I feel not as connected with Cal now. I think I sort of resent my other children because they prevent me from treating Cal like my first baby. And I know that's not fair to them. I know that."
+([01:13:08])"I was feeling so depressed last evening when Cora and Dawson came home from school. I know it runs off on them so we had a pretty rough evening. I want to feel love and connection with all my kids. I'm also probably having a bit of an internal conflict because my whole life I wanted to have a lot of kids. I still don't want Cal to be our last, but I have a lot of figuring out what to do before I have another."
+([01:13:30])"I'm on the fence about starting a new medication for anxiety/depression. I just want to feel happy. I want to be able to relax and take care of my kids. And when they go to bed at night, I want to deeply relax and hang out with Pat and then fall into a deep sleep for eight hours. Get up and pour hard into myself for an hour and a half. Cal was so very planned and desired. I want to be able to give him all the love he deserves."
+([01:13:55])"I guess that's what it's like to be the third child though. He's not the first third child to ever exist. I think I know he'll be okay, but it's really hard for me. I hate that he has to put himself to sleep. I'm sad I'm not breastfeeding anymore, but I think deep down these are the right choices."
+Jennifer Sprague ([01:14:18]):
+If you could continue.
+Timothy Chiappini ([01:14:21]):
+"As with the sleep training, I needed a baby that slept through the night because I simply do not have the opportunity in my life to catch up on sleep. I just don't. If there was a time for me to nap every day, then that may not have been the case, but there really isn't. When Cal naps, I have to take care of Cora and Dawson. That's just how it is. It feels cruel to me that we did not do that to Cal, but the reality is we did what we had to do."
+([01:14:44])"I guess I also feel slightly traumatized by the sleep training, but that feeling was only really present when I was severely sleep deprived and paranoid. I know what we did was the right thing and okay. As for the breastfeeding, it kind of goes hand in hand with the sleep training. Once he started sleeping most of the night, it was then a daily struggle to keep up my milk supply. I was having to take a ton of supplements and constantly think about eating and drinking enough to keep the supply up. And then I was having to think about pumping extra to keep it up and that was really hard to do with Cora and Dawson around."
+([01:15:14])"When I tried to leave Cal to go out with Cora and Dawson, I was stressed about the pumping and not to mention the fact that Cal was at home and not taking a bottle. So it was a battle of if I should pump or not. I know I did the right thing because I need to be able to leave Cal with someone and get fed. As much as I don't want to leave him, I need to be able to. I need to be able to be present with my other kids."
+([01:15:40])"I still really, really want a fourth child, but I need a really good therapist before then. I'm on the fence about starting a new med or not. I want to feel happy, but it would be nice to feel authentically happy and not fake. But I need to feel happier than I did last evening because then I was pretty depressed and not enjoying any of my children. It was really sad. I needed the breastfeeding off of my plate."
+([01:16:02])"I'm struggling so hard because I wanted to parent each of my kids like my first. And since I can't, that's depressing to me. This is definitely the root cause of all our problems. Now I feel like I'm not parenting any of my kids the way I want to, and that makes me sad too. But I'm going to try my best today."
+([01:16:19])"Things I love doing that help me love and appreciate and enjoy my kids or activities with them. I definitely started having some depression after Cora, but once I started getting up and out with her, I felt much better. I think signing Cal up for baby music class would be a great thing. Maybe Fridays can be my day with him. I've just fallen out of the habit of doing anything fun, anything for myself, anything with Pat, and I need to work on that."
+([01:16:48])"On a positive note, I had a great deep night of sleep. I'm terrified of something happening to my kids or doing something wrong to mess up their development. Our generation is inundated with information about every aspect of parenting and everything that can go wrong if you don't get it right. And all the scary things happening in the world. It's insane. For the last five years, I've just filled my mind with all things parenting and it's just unhealthy."
+Jennifer Sprague ([01:17:13]):
+Thank you. And so everything that you just read would've been written and filled in by the user, correct?
+Timothy Chiappini ([01:17:22]):
+Correct.
+Jennifer Sprague ([01:17:26]):
+If we could go to the next one. This is another note. Is that correct?
+Timothy Chiappini ([01:17:40]):
+That's correct.
+Jennifer Sprague ([01:17:41]):
+And this note, it says it was created December 22nd, 2022. Then it was modified on January 23rd, 2023, correct?
+Timothy Chiappini ([01:17:50]):
+Yes.
+Jennifer Sprague ([01:17:52]):
+And this note here, again, we don't know how many times it was modified. You just know the last date it was modified, correct?
+Timothy Chiappini ([01:18:00]):
+That's correct.
+Jennifer Sprague ([01:18:01]):
+And you don't know what was changed in the note, you just know that something was?
+Timothy Chiappini ([01:18:05]):
+Correct.
+Jennifer Sprague ([01:18:05]):
+Okay. If we could go to the next one. Now, in this report, we're seeing some photographs. Is that correct?
+Timothy Chiappini ([01:18:20]):
+Yes.
+Jennifer Sprague ([01:18:21]):
+And why did you flag these photographs?
+Timothy Chiappini ([01:18:28]):
+The photographs had multiple modification dates relevant to the investigation.
+Jennifer Sprague ([01:18:34]):
+How so?
+Timothy Chiappini ([01:18:37]):
+The photographs have created, modified, and access date that are all the same. However, the metadata indicates a much earlier time.
+Jennifer Sprague ([01:18:49]):
+What is metadata?
+Timothy Chiappini ([01:18:52]):
+Metadata is data about data. An image is data. And with the Cellebrite Physical Analyzer tool, you're able to see the data about, in this case, an image. Metadata would be the device used to capture the image. It would be potentially based on the user settings, location data associated where the image was when it was taken. Excuse me, where the device was when the image was taken. A lot of times it'll tell the size of the image or the type of image file that it is.
+Jennifer Sprague ([01:19:26]):
+And so basically when you look at the metadata of a photograph, you can tell what device was used to take it and the date that the photograph was taken on?
+Timothy Chiappini ([01:19:35]):
+Correct.
+Jennifer Sprague ([01:19:36]):
+And can you also tell if that photograph has been changed or modified in any way and when it was changed?
+Timothy Chiappini ([01:19:46]):
+Using the forensic tool, I can make inferences based on certain modifications.
+Jennifer Sprague ([01:19:54]):
+And how do you do that?
+Timothy Chiappini ([01:19:54]):
+In this case, the image here is a .jpg. That's the file type of this image. Therefore, I know that the image that I'm seeing is created, modified and accessed on this date. However, it has a capture time of November 2nd, 2022 at 11:27:15 AM.
+Jennifer Sprague ([01:20:17]):
+And is there something on here that says when it was modified?
+Timothy Chiappini ([01:20:28]):
+Where the cursor is now indicates it's a modification date.
+Jennifer Sprague ([01:20:32]):
+So above it is when it was created, below it's when it's modified? Or no, down here, capture time and the metadata is when it was initially created, correct?
+Timothy Chiappini ([01:20:43]):
+Correct. And if you look at the source file, you can see the source file indicates that the image was modified under the component where it says adjustments.
+Jennifer Sprague ([01:20:53]):
+So just for the jurors looking at this report, here in the metadata, capture time is when the photo was taken. Above it, the 1/23/23, that's the date that the picture was changed in some way?
+Timothy Chiappini ([01:21:11]):
+Yes.
+Jennifer Sprague ([01:21:12]):
+And are you able to tell how the photograph was changed?
+Timothy Chiappini ([01:21:16]):
+I can do analysis based on an image and see that an image from its native format was modified.
+Jennifer Sprague ([01:21:24]):
+So basically if I'm on my phone and looking at photos and I brighten something or I crop someone out of a photo, that would show it as being modified?
+Timothy Chiappini ([01:21:36]):
+It would show it as being modified. In this instance, it created a new file, which is why it has the created modified date being the same.
+Jennifer Sprague ([01:21:45]):
+And so would it be accurate to state that on this type of phone, when you modify a photo, you can change that photo and leave it there changed? Or you can create a new image with that changed photo?
+Timothy Chiappini ([01:21:58]):
+Well, with an iOS device, Apple has the capability of taking what's known as a live photo. It's a proprietary name with Apple. But the exact file type is HEIC file. HEIC stands for high efficiency image container. HEIC or a live photo is essentially that. It's a container or a burst of images that are taken over a very short period of time. It's a more effective way to store an image file within a device. Takes up less room. It also allows the user to have a multitude of pictures to choose from at a single point in time. If you modify an HEIC image to be a singular photo, you can save it to the file type known as a JPEG or JPG.
+Jennifer Sprague ([01:22:42]):
+So a live photo is one of those photos that's taken. Did you see a little movement before it settles into the photo when you look at it?
+Timothy Chiappini ([01:22:50]):
+Yes, ma'am.
+Jennifer Sprague ([01:22:51]):
+And is that an automatic setting on iPhones that it's set to live and you have to change it if you don't want that feature?
+Timothy Chiappini ([01:22:58]):
+That's correct.
+Jennifer Sprague ([01:23:00]):
+And so if you modify the photo and save that photo, that modified photo is not live?
+Timothy Chiappini ([01:23:07]):
+Correct.
+Jennifer Sprague ([01:23:08]):
+And is that what you saw here, that there were a lot of photographs of the children that were accessed and modified in some way?
+Timothy Chiappini ([01:23:14]):
+Yes.
+Jennifer Sprague ([01:23:15]):
+And during what timeframe were these photographs accessed and changed?
+Timothy Chiappini ([01:23:20]):
+During the evening hours of January 23rd, 2023.
+Jennifer Sprague ([01:23:43]):
+Okay. If we could go to the next please. And what is this report displaying?
+Timothy Chiappini ([01:23:56]):
+This is another timeline report with the first event starting January 24th, 2023 at 4:00 PM.
+Jennifer Sprague ([01:24:05]):
+And does it go on January 24th, 2023 from 4:00 PM to 8:00 PM?
+Timothy Chiappini ([01:24:18]):
+That's correct. It encompasses everything that would be before that timeframe. It appears the last entry is 7:02:01 PM.
+Jennifer Sprague ([01:24:28]):
+And this would contain all of the things that were done with the phone between 4:00 and 8:00 PM on January 24th, 2023. Is that correct?
+Timothy Chiappini ([01:24:40]):
+Everything that was detected by the forensic tool based on the extraction type.
+Jennifer Sprague ([01:24:49]):
+Okay. And if we could go to the timeframe, 4:30 to 4: 35. Using the tool, we'll search MiraLax. Looking here, starting at item 37 at 4:46 PM, is there a search for MiraLAX for kids on the phone?
+Timothy Chiappini ([01:25:48]):
+Yes.
+Jennifer Sprague ([01:25:49]):
+And again, we're seeing this, the search for MiraLAX for kids, 4:46:55, 4:46:55, the same time over and over again. Is that another example of one search showing up in multiple categories?
+Timothy Chiappini ([01:26:04]):
+Correct. As an examiner, I would be looking at the timestamp and also the category second box in from the left, indicating that the Cellebrite software has parsed it in multiple locations.
+Jennifer Sprague ([01:26:25]):
+If you could search ThreeV. In searching ThreeV in the document, we see here multiple sources. You could do a search with the number ThreeV. So we see here at 4:43 PM on January 24th, a search for the ThreeV menu, correct?
+Timothy Chiappini ([01:26:58]):
+Yes.
+Jennifer Sprague ([01:26:59]):
+And if we could scroll down a little. And again, those are all at the same time, so they indicate one search for the menu?
+Timothy Chiappini ([01:27:09]):
+Yes. And the tools parsed it in multiple categories.
+Jennifer Sprague ([01:28:33]):
+And if we could go back. Was there also a search in Apple Maps for ThreeV?
+Timothy Chiappini ([01:28:34]):
+Yes.
+Jennifer Sprague ([01:28:34]):
+And what time was that?
+Timothy Chiappini ([01:28:34]):
+I'm sorry, there's a glare.
+Jennifer Sprague ([01:28:35]):
+If we could go to 4:13 PM. And here in Apple Maps, do we see ThreeV Restaurant at 4:13 PM?
+Timothy Chiappini ([01:28:57]):
+Yes.
+Jennifer Sprague ([01:28:59]):
+And when you're using a map feature to look up a location such as Apple Maps, what type of information do you learn when you plug in a location or an address into Apple Maps?
+Timothy Chiappini ([01:29:17]):
+A route preview.
+Jennifer Sprague ([01:29:19]):
+And does that route preview give you a length of time it would take to travel to that location?
+Timothy Chiappini ([01:29:25]):
+Depending on what you indicate here as your originating location, yes.
+Jennifer Sprague ([01:29:29]):
+And so if you plug in ThreeV Restaurant to Apple Maps and it maps out a route to get there, does it tell you from your location to ThreeV how long it would take to get there?
+Timothy Chiappini ([01:29:42]):
+Based on traffic conditions, yes.
+Jennifer Sprague ([01:29:44]):
+Because that changes constantly, correct?
+Timothy Chiappini ([01:29:46]):
+Yes.
+Jennifer Sprague ([01:29:46]):
+So if I open up my Apple Maps and I put in ThreeV right now from here, at this time, the time it takes to get there might be different than say at six o'clock tonight?
+Timothy Chiappini ([01:29:57]):
+Yes.
+Jennifer Sprague ([01:30:08]):
+And so if we can go to 4:47 PM. And here at 4:47 PM, again, we're seeing the search for Kids MiraLax, correct?
+Timothy Chiappini ([01:30:29]):
+Yes.
+Jennifer Sprague ([01:30:30]):
+Is there also a visit to a CVS website here at 4:47:04?
+Timothy Chiappini ([01:30:40]):
+Yes. It's categorized in multiple categories within the tool, but it parsed an artifact at that time.
+Jennifer Sprague ([01:30:50]):
+If you could scroll down a little please to the phone call, the next phone call right here. This outgoing phone call at 4:48:21 to 781-585-6581. Did you learn that that was a phone call to the CVS at 189 Summer Street in Kingston?
+Timothy Chiappini ([01:31:13]):
+Yes.
+Jennifer Sprague ([01:31:15]):
+And so that would be an outgoing phone call from the defendant's phone to CVS?
+Timothy Chiappini ([01:31:19]):
+Yes.
+Jennifer Sprague ([01:31:22]):
+Can we go to 4:53 PM please? And then there's a message. It says message 80 outgoing from the defendant's phone at 4:53:09 from Lindsay to Patrick Clancy, correct?
+Timothy Chiappini ([01:31:40]):
+Yes.
+Jennifer Sprague ([01:31:41]):
+And it says, "Any chance you want to do takeout from ThreeV? I didn't cook anything. It's been a long day." Correct?
+Timothy Chiappini ([01:31:46]):
+That's the content of the message.
+Jennifer Sprague ([01:31:48]):
+Is there a response in message 82 from Patrick to Lindsay?
+Timothy Chiappini ([01:31:53]):
+Yes, there is.
+Jennifer Sprague ([01:31:54]):
+And what is the answer?
+Timothy Chiappini ([01:31:55]):
+"Yeah."
+Jennifer Sprague ([01:31:56]):
+And then is there a response from Lindsay to Patrick at message 84?
+Timothy Chiappini ([01:32:02]):
+Yes.
+Jennifer Sprague ([01:32:02]):
+What is that?
+Timothy Chiappini ([01:32:04]):
+"Okie dokie."
+Jennifer Sprague ([01:32:05]):
+And then message 86, again from Lindsay to Patrick, does she send him another message?
+Timothy Chiappini ([01:32:10]):
+She does.
+Jennifer Sprague ([01:32:11]):
+And what does that say?
+Timothy Chiappini ([01:32:13]):
+"Check the menu when you can."
+Jennifer Sprague ([01:32:16]):
+And then if you could scroll down to the next message. Is that message 90 from Patrick to Lindsay asking if Callan just got up?
+Timothy Chiappini ([01:32:25]):
+It is.
+Jennifer Sprague ([01:32:26]):
+And then message number 92, is that from Patrick to Lindsay saying, "Awesome. What are you getting?"
+Timothy Chiappini ([01:32:33]):
+Yes.
+Jennifer Sprague ([01:32:34]):
+And then 94 at 5:06 PM. Is that from Lindsay to Patrick stating, "But it was just a short nap," in message 96.
+Timothy Chiappini ([01:32:44]):
+Yes.
+Jennifer Sprague ([01:32:50]):
+And then at message 97 at 5:06, is ThreeV menu searched?
+Timothy Chiappini ([01:32:52]):
+Yes.
+Jennifer Sprague ([01:32:54]):
+And that source says Safari. Is that a Safari web search for the ThreeV menu?
+Timothy Chiappini ([01:32:58]):
+Safari is the default web browser on an iOS device, and iOS stands for iPhone operating system.
+Jennifer Sprague ([01:33:04]):
+So that's a basic search on your iPhone for the ThreeV menu?
+Timothy Chiappini ([01:33:07]):
+Utilizing the Safari web application, correct.
+Jennifer Sprague ([01:33:10]):
+And then number 98, is that another search for Pedia-Lax?
+Timothy Chiappini ([01:33:15]):
+Correct.
+Jennifer Sprague ([01:33:15]):
+Excuse me. Now both the search for ThreeV menu and the search for Pedia-Lax are at 5:06:45. How does that happen, that they're two searches for two different things at the same time?
+Timothy Chiappini ([01:33:31]):
+Can you repeat the question?
+Jennifer Sprague ([01:33:33]):
+So you have in message 97. You have on January 24th, 2023 at 5:06:45, a search for ThreeV menu. Then the same date at the same time, a search for Pedia-Lax.
+Timothy Chiappini ([01:33:53]):
+And what's the question?
+Jennifer Sprague ([01:33:54]):
+How does it happen that you have two searches at the same time?
+Timothy Chiappini ([01:33:59]):
+I would only be able to make an inference from here without having the forensic tool available to me.
+Jennifer Sprague ([01:34:03]):
+And what would the inference be?
+Timothy Chiappini ([01:34:06]):
+That there was more than one tab open.
+Jennifer Sprague ([01:34:07]):
+Okay. So on your phone or a computer, when you're doing web searches, you can have multiple pages open, correct?
+Timothy Chiappini ([01:34:14]):
+Yes.
+Jennifer Sprague ([01:34:14]):
+And you can just click on whatever page you want to open, you can click on and that will open up?
+Timothy Chiappini ([01:34:22]):
+Correct. You can select which tab you want within the Safari application.
+Jennifer Sprague ([01:34:26]):
+Tabs, right. Okay. So how many tabs can you have open at any one time?
+Timothy Chiappini ([01:34:32]):
+I'm not sure the number, but I've seen iOS devices capable of having more than 30 or 40 tabs open at a time.
+Jennifer Sprague ([01:34:43]):
+So it wouldn't be uncommon or unusual to have at least two open to two different web searches?
+Timothy Chiappini ([01:34:48]):
+No.
+Jennifer Sprague ([01:34:49]):
+Okay. If we could scroll down a little please. And then we have in 106 and 105, both messages. First 105, we have a web history. At 5:06:47, the menu at ThreeV restaurant. Again, the source Safari. And then we have cookies at 50648.ThreeVrestaurant.com. Can you tell us what the difference between those two are?
+Timothy Chiappini ([01:35:27]):
+They're both from different databases. They're both associated with web browsing. Web history is from the history component of the Safari application. Cookies are installed through web browsing, through legislation. When you visit a website for the first time, you'll typically be prompted do you want to allow the website to download cookies onto your device. Cookies downloaded on your device serve a multitude of reasons. One might be that it allows the website or the company to be able to track your activity while on their website. Which helps them for marketing and business purposes.
+([01:36:02])Another component of cookies would be to enhance the web browsing experience for website you go to on a regular basis. It would increase the load time. So it is an artifact that is indicative of web browsing.
+Jennifer Sprague ([01:36:16]):
+And so message 108. Again, we have at 5:06:49, we have a message from Patrick to Lindsay saying, "Oh, okay." Is that correct?
+Timothy Chiappini ([01:36:25]):
+Yes.
+Jennifer Sprague ([01:36:27]):
+And then message 112, we have a message from Lindsay to Patrick where she says, "Mediterranean Power Bowl, correct?
+Timothy Chiappini ([01:36:35]):
+Yes.
+Jennifer Sprague ([01:36:37]):
+And that was at 5:07 PM. We have a message 115 from Patrick to Lindsay at 5:08 PM. "Okay, I'll do Scallop and Pork Belly Risotto." Is that right?
+Timothy Chiappini ([01:36:48]):
+Yes.
+Jennifer Sprague ([01:36:51]):
+All right. And then if we could go to 5:10 PM, the phone call right there. Oh, go back for me. And so we have two phone calls here, one at 5:09 PM and one at 5:10 PM. The first to 508-747-4950, and the other to 508-927-4046. The first one is for 11 seconds, correct?
+Timothy Chiappini ([01:37:19]):
+That's the duration, yes.
+Jennifer Sprague ([01:37:21]):
+And that's noted here above source?
+Timothy Chiappini ([01:37:23]):
+Yes.
+Jennifer Sprague ([01:37:24]):
+And then the second is 47 seconds. Is that correct?
+Timothy Chiappini ([01:37:26]):
+Correct.
+Jennifer Sprague ([01:37:28]):
+Did you look into these two phone calls?
+Timothy Chiappini ([01:37:32]):
+I don't recall.
+Jennifer Sprague ([01:37:34]):
+Okay. Do you recall the 508-927-4046 being the number for the ThreeV restaurant?
+Timothy Chiappini ([01:37:41]):
+Yes.
+Jennifer Sprague ([01:37:41]):
+And if we could scroll down a little bit. Are there further searches at 5:13 PM starting at number 128 for Pedia-Lax?
+Timothy Chiappini ([01:37:56]):
+That's correct.
+Jennifer Sprague ([01:37:57]):
+And again, we're seeing that same thing with the same time, but multiple different categories that that one search is located in, correct?
+‍
+Timothy Chiappini ([01:38:07]):
+Correct. Single artifact, multiple categories that the tool parsed it as.
+Jennifer Sprague ([01:38:13]):
+Can we go to 5:33 PM please? Oh, I'm sorry. Stop there. Thank you. 146, message 146, a message from Lindsay to Patrick at 5:15 PM, which states, "Pedia-Lax liquid stool softener," correct?
+Timothy Chiappini ([01:38:34]):
+Yes.
+Jennifer Sprague ([01:38:35]):
+All right. And then at 1:47, we have 5:33:51 PM. Is that a phone call from Patrick's phone to Lindsay's phone?
+Timothy Chiappini ([01:38:48]):
+Yes.
+Jennifer Sprague ([01:38:48]):
+And that has zeros in it for duration. Does that indicate the call wasn't answered?
+Timothy Chiappini ([01:38:55]):
+It would be an inference.
+Jennifer Sprague ([01:38:57]):
+And then going down to 150, we have an outgoing call from-
+Jennifer Sprague ([01:39:01]):
+We have an outgoing call from the defendant's phone to Patrick Clancy for 14 seconds at 5:34 PM, correct?
+Timothy Chiappini ([01:39:11]):
+Yes.
+Jennifer Sprague ([01:39:12]):
+That means the call lasted approximately 14 seconds?
+Timothy Chiappini ([01:39:15]):
+Correct.
+Jennifer Sprague ([01:39:16]):
+And then the last item there, item 152, that is an incoming call to the defendant's phone from Patrick Clancy, correct?
+Timothy Chiappini ([01:39:29]):
+Yes.
+Jennifer Sprague ([01:39:30]):
+And again, we have zeros here indicating that the call wasn't answered, correct?
+Timothy Chiappini ([01:39:36]):
+It's an inference, yes.
+Jennifer Sprague ([01:39:37]):
+If I could have these reports that I just went over, submitted on this disk as the next exhibit.
+Kevin Reddington ([01:39:53]):
+No objection.
+Judge William Sullivan ([01:39:54]):
+That may be admitted.
+Jennifer Sprague ([01:39:58]):
+Exhibit 236. Did you also, looking through the defendant's phone, access the information on the calendar portion of the phone?
+Timothy Chiappini ([01:40:13]):
+I did.
+Jennifer Sprague ([01:40:16]):
+And the calendar portion of the phone, does that have different types of data, both populated by the phone itself and Apple, and then items populated by the user?
+Timothy Chiappini ([01:40:27]):
+Yes.
+Jennifer Sprague ([01:40:27]):
+Could you give us an example of something that would be populated by Apple and not the user?
+Timothy Chiappini ([01:40:33]):
+A national holiday such as Christmas Day would be populated by the operating system through the application of Calendar.
+Jennifer Sprague ([01:40:41]):
+And then if I'm using my phone and I'm putting in appointments or parties or things I'm going to, that would be something that the user is putting into the calendar?
+Timothy Chiappini ([01:40:51]):
+Correct.
+Jennifer Sprague ([01:40:51]):
+And did you do a report of all the calendar activity for Lindsey Clancy's phone from August 4th, 2022, to January 31st, 2023?
+Timothy Chiappini ([01:41:05]):
+I did.
+Jennifer Sprague ([01:41:05]):
+If I could have this marked as the next exhibit.
+Bailiff ([01:41:08]):
+No objection.
+Judge William Sullivan ([01:41:08]):
+All right. That may be admitted. Ms. Spring, is this a good time to take the morning break?
+Jennifer Sprague ([01:41:13]):
+I just have one more exhibit to put in and then I would be done.
+Judge William Sullivan ([01:41:15]):
+Okay. That's fine.
+Jennifer Sprague ([01:41:16]):
+Did you... I'm sorry.
+Speaker 3 ([01:41:17]):
+[inaudible 01:41:18] 37.
+Judge William Sullivan ([01:41:17]):
+All right. Thank you.
+Jennifer Sprague ([01:41:23]):
+Did you also do a report on all the text messages between the defendant's phone and an individual that had been labeled mommy?
+Timothy Chiappini ([01:41:31]):
+Yes.
+Jennifer Sprague ([01:41:32]):
+And was that for the month of January 2023?
+Timothy Chiappini ([01:41:34]):
+I did.
+Jennifer Sprague ([01:41:35]):
+We move to have these admitted as the next exhibit.
+Timothy Chiappini ([01:41:38]):
+All right.
+Judge William Sullivan ([01:41:38]):
+That may be admitted.
+Speaker 4 ([01:41:38]):
+[inaudible 01:41:42].
+Jennifer Sprague ([01:41:42]):
+I have nothing further.
+Judge William Sullivan ([01:41:43]):
+All right. So why don't we take the morning recess at this time? All right? So members of the jury, we're going to take a short recess and then we'll return back to the case.
+Bailiff ([01:41:55]):
+Court, all rise. [inaudible 01:41:57], please. [inaudible 01:42:02] the courtroom.
+Judge William Sullivan ([01:42:33]):
+All right. We'll be in recess on this matter. Thank you.
+Bailiff ([01:42:39]):
+All rise. This court is back in session. You may be seated.
+Judge William Sullivan ([01:42:49]):
+All right. Counsel, you ready for the jury?
+Kevin Reddington ([01:42:51]):
+Yeah. Thank you.
+Bailiff ([01:42:52]):
+Court, all rise. Jurors in. The court is now in session. Please be seated.
+Speaker 5 ([01:44:09]):
+Your Honor, for the purpose of the record, we return back to the trial of Commonwealth v. Lindsey Clancy. All parties are present, including the defendant, and including the 18 jurors.
+Judge William Sullivan ([01:44:19]):
+All right. Mr. Reddington?
+Kevin Reddington ([01:44:20]):
+Yes, Your Honor. Thank you. Morning.
+Timothy Chiappini ([01:44:23]):
+Morning, sir.
+Kevin Reddington ([01:44:26]):
+So you are part of the prosecution team that handles the downloads of computers and cell phones and things like that, right?
+Timothy Chiappini ([01:44:37]):
+Specifically mobile devices, sir, not computers.
+Kevin Reddington ([01:44:39]):
+Mobile devices. Okay. And the other gentleman that testified, Pavo, is that his name?
+Timothy Chiappini ([01:44:44]):
+Paveo, sir.
+Kevin Reddington ([01:44:45]):
+Paveo. And he did the laptops that were found in the office in the home, right?
+Timothy Chiappini ([01:44:51]):
+Correct. He has those certifications.
+Kevin Reddington ([01:44:53]):
+Okay. Now, the district attorney had asked you some questions about different searches that you had done on Cellebrite and on Axiom. All your searches dealt with Lindsey's cell phone, right?
+Timothy Chiappini ([01:45:11]):
+To clarify, sir, I did no searches on Axiom.
+Kevin Reddington ([01:45:14]):
+Okay. You did searches on Cellebrite?
+Timothy Chiappini ([01:45:17]):
+This is the only forensic tool I used, correct.
+Kevin Reddington ([01:45:19]):
+All right. And basically, I'm just trying to get a handle on, that you and your other brother or sister officers would examine, for example, the computers that were found in Patrick's office in the house, right? You didn't, but the other people did, right?
+Timothy Chiappini ([01:45:39]):
+That's correct.
+Kevin Reddington ([01:45:40]):
+And then you got the computer... Strike that. You got the cell phone that was Lindsey's cell phone, right?
+Timothy Chiappini ([01:45:47]):
+Yes, sir.
+Kevin Reddington ([01:45:48]):
+And you then did what's called an advanced logical of Lindsey's phone. Is that right?
+Timothy Chiappini ([01:45:56]):
+That's correct.
+Kevin Reddington ([01:45:56]):
+And what is an advanced logical? What does that mean?
+Timothy Chiappini ([01:45:59]):
+It's an extraction that utilizes the iTunes backup of an iOS device and it acquires most of the user-facing content, meaning calls, texts, images, browser history.
+Kevin Reddington ([01:46:14]):
+Okay. So you lost me on user-facing. What does that mean?
+Timothy Chiappini ([01:46:17]):
+What the user sees when they're using the phone.
+Kevin Reddington ([01:46:20]):
+Okay. So if you pick up a phone and you open it up, then you're interfacing with the phone and you're looking at different things such as photographs, emails, texts, things like that?
+Timothy Chiappini ([01:46:29]):
+Yes, sir.
+Kevin Reddington ([01:46:29]):
+Okay. In addition to trooper, now Sergeant Paveo and yourself, there also was another trooper that you were working with, a guy by the name of Rabbit, like Roger Rabbit, right?
+Timothy Chiappini ([01:46:44]):
+Yes. Joseph Rabbit was assigned to the unit at the time.
+Kevin Reddington ([01:46:47]):
+And he also conducted a search, but he did what's called a full file system extraction, right?
+Timothy Chiappini ([01:46:55]):
+I don't recall.
+Kevin Reddington ([01:46:56]):
+Okay. What is a full file system extraction, as opposed to advanced logical extraction?
+Timothy Chiappini ([01:47:01]):
+A full file system extraction would acquire the databases and information that you cannot see as a user on a device.
+Kevin Reddington ([01:47:08]):
+I see. So your extraction was done on January 30th, is that correct?
+Timothy Chiappini ([01:47:14]):
+Yes, sir.
+Kevin Reddington ([01:47:15]):
+And Rabbit's extraction was done on January 27th, right?
+Timothy Chiappini ([01:47:19]):
+I'm not aware of Trooper Rabbit's extraction.
+Kevin Reddington ([01:47:21]):
+Did you ever collaborate with him as investigator investigating Lindsey Clancy on this case and talk about what you located or what he located?
+Timothy Chiappini ([01:47:29]):
+I had no discussion with him about the phone extraction.
+Kevin Reddington ([01:47:32]):
+All right. Is he still working for the state police?
+Timothy Chiappini ([01:47:34]):
+He is.
+Kevin Reddington ([01:47:36]):
+Would you agree with me that the full file extraction actually gets more information than the Advanced Logical? In other words, Rabbit's extraction would've got more information than you got on your Advanced Logical?
+Timothy Chiappini ([01:47:49]):
+That's correct.
+Kevin Reddington ([01:47:52]):
+So one of the things a district attorney had asked you about was in reference to Exhibit 237. And that would be the Cellebrite report. Is that correct? Basically the caption for the extraction on the Cellebrite report?
+Timothy Chiappini ([01:48:21]):
+This is a supplemental report that I completed from the Physical Analyzer software.
+Kevin Reddington ([01:48:30]):
+Okay. And would that be Cellebrite?
+Timothy Chiappini ([01:48:32]):
+Yes.
+Kevin Reddington ([01:48:32]):
+It's Cellebrite, that's why I asked. Looking at Exhibit 237, the second page, that on the very top that I'm looking at here, can you tell me on the right, what is it depicting on the right? This little box.
+Jennifer Sprague ([01:49:04]):
+Yeah, on your right there, [inaudible 01:49:05].
+Kevin Reddington ([01:49:05]):
+Yeah, I know that. You see the little box? Well, [inaudible 01:49:09]. I'm just going to quote you. This here is the exhibit that the district attorney asked you to look at, 237, right?
+Timothy Chiappini ([01:49:14]):
+Yes, sir.
+Kevin Reddington ([01:49:14]):
+Okay. And it's a Cellebrite report, right?
+Timothy Chiappini ([01:49:20]):
+It's a supplemental report, yes.
+Kevin Reddington ([01:49:21]):
+And that would be the calendar search, right?
+Timothy Chiappini ([01:49:24]):
+The calendar supplemental report, correct.
+Kevin Reddington ([01:49:26]):
+Okay. So that means that if Lindsey had appointments anywhere, it would've been presumably, if she put it in the phone, in her calendar, right?
+Judge William Sullivan ([01:49:34]):
+Yes.
+Kevin Reddington ([01:49:34]):
+Okay. So when you looked at your investigation, directing your attention to the start time, what date are we talking about here?
+Timothy Chiappini ([01:49:49]):
+The start time is August 14th, 2022 at midnight. End time would be August 14th, 2022, 11:59: 59 PM.
+Kevin Reddington ([01:49:58]):
+Okay. So if you look down to the next one, it says what date?
+Timothy Chiappini ([01:50:04]):
+August 23rd, 2022. 10:00 AM.
+Kevin Reddington ([01:50:07]):
+Okay. And did she make an entry on her-
+Timothy Chiappini ([01:50:10]):
+She did.
+Kevin Reddington ([01:50:10]):
+... computer on that date and time?
+Timothy Chiappini ([01:50:13]):
+She did, sir.
+Kevin Reddington ([01:50:14]):
+And can you tell me what the entry was?
+Timothy Chiappini ([01:50:16]):
+The subject is 10:00 AM Callan Kingston Vaccine.
+Kevin Reddington ([01:50:21]):
+So Callan would be the son. She had it in her phone that he had an appointment to get a vaccine at 10:00 PM?
+Timothy Chiappini ([01:50:31]):
+The time is 10:00 AM.
+Kevin Reddington ([01:50:32]):
+10:00 AM. Okay. And the next one, what is the next one?
+Timothy Chiappini ([01:50:38]):
+Would you like to know the subject, sir, or the date?
+Kevin Reddington ([01:50:39]):
+Yeah, sure. Just whatever the date is and then what the subject is.
+Timothy Chiappini ([01:50:43]):
+Okay. The start time is August 23rd, 2022, 5:00 PM. The subject of the entry is 9:45 Kingston Dawson, ear check.
+Kevin Reddington ([01:50:53]):
+And that would be indicative of an appointment that she had at the pediatrician's office for Dawson's ear check at 9:45 in the morning. Is that correct?
+Timothy Chiappini ([01:51:03]):
+Could be an inference. I'm not sure, but that's the entry.
+Kevin Reddington ([01:51:18]):
+Okay. Now looking at Exhibit 235, you can tell me what is this document.
+Timothy Chiappini ([01:51:34]):
+I recognize it as a screen capture from an Axiom phone extraction.
+Kevin Reddington ([01:51:40]):
+All right. And you did indicate you were Axiom qualified, right?
+Timothy Chiappini ([01:51:44]):
+I am not, sir. I'm familiar with the program as a result of my training at Graykey. Magnet Forensics owns Graykey Technology. And in the training course for GrayKey [inaudible 01:51:53] process extractions using Axiom, but I'm not certified in the software of Axiom.
+Kevin Reddington ([01:51:57]):
+But you can interpret it. You understand what that shows you? It's just a listing of different activities on the phone, right?
+Timothy Chiappini ([01:52:05]):
+I'm aware of what the screenshot depicts, yes.
+Kevin Reddington ([01:52:07]):
+All right. See the highlighted one. Can you tell us what that is? The date and the time and what it's referencing. Do you need a magnifying glass?
+Timothy Chiappini ([01:52:15]):
+It references a website, sir.
+Kevin Reddington ([01:52:18]):
+And what's the website?
+Timothy Chiappini ([01:52:21]):
+Mail.google.com.
+Kevin Reddington ([01:52:23]):
+That mail, like M-A-I-L, right?
+Timothy Chiappini ([01:52:25]):
+Yes, sir.
+Kevin Reddington ([01:52:26]):
+Okay. Does it indicate whose mail it is? Does it show it on the right-hand side of the box?
+Timothy Chiappini ([01:52:46]):
+I can't definitively determining whose mailbox it is.
+Kevin Reddington ([01:52:50]):
+Okay.
+Judge William Sullivan ([01:52:51]):
+Trooper, I'm going to ask you to make sure you keep your voice up. Okay?
+Timothy Chiappini ([01:52:53]):
+Yes, Your Honor.
+Kevin Reddington ([01:53:11]):
+The next page is pretty much the same thing, the same day. Okay. Can you tell us on that page who signed in under what email?
+Timothy Chiappini ([01:53:18]):
+The artifact is indicating that there is a title with an email.
+Kevin Reddington ([01:53:24]):
+What's the name?
+Timothy Chiappini ([01:53:27]):
+I'm sorry. P- A-T-R-I-C-K-W, .clancy@gmail.com.
+Kevin Reddington ([01:53:36]):
+So that's fair to say that that would be patrickwclancy@gmail.com. That's his email that signed in on Lindsey's Facebook.
+Timothy Chiappini ([01:53:49]):
+I can't confirm that.
+Kevin Reddington ([01:53:49]):
+Okay. And when you were going through her phone, is it fair to say that, I mean, there wasn't much in her life that wasn't exposed to the state police and the DA's office and the investigators? I mean, your report initially was 180,000 pages of PDF, right?
+Timothy Chiappini ([01:54:17]):
+It was a very large download, sir.
+Kevin Reddington ([01:54:19]):
+Does 180,000 sound about right?
+Timothy Chiappini ([01:54:22]):
+It does.
+Kevin Reddington ([01:54:23]):
+So 180,000 pages on a PDF, you do a number of extractions, and then you get into the one that you were testifying about. District attorney indicated, or you stated that it was 768 pages of text messages that she had, along with photographs perhaps?
+Timothy Chiappini ([01:54:40]):
+That was a timeline search. The number of items in that report are indicative of only of the timeframe in which I was utilizing it within the software.
+Kevin Reddington ([01:54:49]):
+Okay. So when you went through her phone, did you come across on a Cellebrite report, searching for, "Where is the carotid artery?"
+Timothy Chiappini ([01:55:07]):
+I don't recall.
+Kevin Reddington ([01:55:08]):
+Might be easier this way. This is a Cellebrite report on Lindsey's phone, right? Now I understand that you might not have been standing next to another cop, going through the records and documents on her phone, but on this, you're able to recognize that as being the Cellebrite report, right?
+Timothy Chiappini ([01:55:35]):
+It is a Cellebrite report, sir.
+Kevin Reddington ([01:55:35]):
+And it's a Cellebrite report for her phone. You can tell by the numbers, right? Maybe this would help a little bit. You see this here where it talks about source file and it's got a number, quadruple 00008110-000925E and all the rest of them? That would be her phone, right?
+Timothy Chiappini ([01:56:10]):
+I don't have that number memorized.
+Kevin Reddington ([01:56:12]):
+Of course not. But it would be in your report?
+Timothy Chiappini ([01:56:14]):
+Yes, sir.
+Kevin Reddington ([01:56:14]):
+Okay. That would be a Cellebrite extraction report?
+Timothy Chiappini ([01:56:30]):
+It would depend on the supplemental report that you have, sir, whether or not that character was displayed.
+Kevin Reddington ([01:56:36]):
+[inaudible 01:56:35], because this we agree is Lindsey's cell phone. Cellebrite extraction report.
+Timothy Chiappini ([01:56:41]):
+This item you have here, sir?
+Kevin Reddington ([01:56:44]):
+No, no. I'm sorry. The exhibit.
+Timothy Chiappini ([01:56:45]):
+This is the calendar supplemental report. Yes.
+Kevin Reddington ([01:56:47]):
+So Lindsey, so what's the number? You must have a number that would connect to her phone, like an address, like your home address, but in fact it would be a number, right?
+Timothy Chiappini ([01:56:57]):
+It's a device identifier, it is not presented in this supplemental report.
+Kevin Reddington ([01:57:03]):
+Okay. Where would the device identifier be presented?
+Timothy Chiappini ([01:57:08]):
+It'd be presented in the front page of the initial extraction report.
+Kevin Reddington ([01:57:12]):
+And that's the 780,000 or whatever it is, pages, right? You don't have that here. Certainly 180,000 pages. You don't have that here, right?
+Timothy Chiappini ([01:57:21]):
+No, sir.
+Kevin Reddington ([01:57:24]):
+Excuse me, Your Honor.
+Judge William Sullivan ([01:57:25]):
+Sure.
+Kevin Reddington ([01:57:25]):
+Speak with Mr. Barano for a minute. Did you bring your report today with you? Just the report, not all the exhibits.
+Timothy Chiappini ([01:57:51]):
+No, sir.
+Kevin Reddington ([01:57:53]):
+So you would agree with me, sir, that one of the concerns as an investigator that you had, is things such as looking for buzzwords like suicide, right?
+Timothy Chiappini ([01:58:08]):
+I'm not sure I understand the question.
+Kevin Reddington ([01:58:10]):
+When you're looking on the target's phone, and out of this whole courtroom, the target would be Lindsey Clancy, right?
+Timothy Chiappini ([01:58:17]):
+Yes, sir.
+Kevin Reddington ([01:58:19]):
+All right. And you had access to her phone, right?
+Timothy Chiappini ([01:58:21]):
+Yes, sir.
+Kevin Reddington ([01:58:22]):
+And you all went into it with a search warrant, right?
+Timothy Chiappini ([01:58:24]):
+Yes, sir.
+Kevin Reddington ([01:58:25]):
+And you were looking for different topics such as suicide, drugs, killing kids, I imagine, to investigate, right? You had buzzwords.
+Timothy Chiappini ([01:58:35]):
+Yes, sir.
+Kevin Reddington ([01:58:35]):
+And did you come across, for example, a search that indicates carotid artery?
+Timothy Chiappini ([01:58:45]):
+I don't recall.
+Kevin Reddington ([01:58:47]):
+Did you come across a search on Safari, "How to slit your throat to die?"
+Timothy Chiappini ([01:58:55]):
+I don't recall.
+Kevin Reddington ([01:58:57]):
+Did you come across a search, "Can you turn airbags off on Kia Sorento?"
+Timothy Chiappini ([01:59:03]):
+I don't recall.
+Kevin Reddington ([01:59:04]):
+Did you know that she had a Kia Sorento?
+Timothy Chiappini ([01:59:06]):
+I did not.
+Kevin Reddington ([01:59:11]):
+If I approach you with this Cellebrite report, sir, does that give you the numbers for what I just went through with these surgeons?
+Timothy Chiappini ([01:59:24]):
+The universal device identifier is a match.
+Kevin Reddington ([01:59:27]):
+It is a... Okay.
+Timothy Chiappini ([01:59:28]):
+Yes, between this document in my hand and the ones that you're holding.
+Kevin Reddington ([01:59:31]):
+So what's the first search on the first box?
+Timothy Chiappini ([01:59:36]):
+The value associated with the source file is "Carotid artery."
+Kevin Reddington ([01:59:40]):
+And the next box?
+Timothy Chiappini ([01:59:42]):
+"How to slit your throat to die."
+Kevin Reddington ([01:59:46]):
+And the next box.
+Timothy Chiappini ([01:59:49]):
+"Can you turn airbags off on Kia Sorento?"
+Kevin Reddington ([01:59:53]):
+And these all came from Lindsey's phone, right?
+Timothy Chiappini ([01:59:55]):
+I can't confirm that.
+Kevin Reddington ([01:59:56]):
+Well, it's a pretty good inference, right?
+Timothy Chiappini ([01:59:59]):
+Yes, sir.
+Kevin Reddington ([02:00:24]):
+Okay. You want to read off of these?
+Jennifer Sprague ([02:00:29]):
+If we could just see them at [inaudible 02:00:30].
+Judge William Sullivan ([02:00:29]):
+Sure. Yeah.
+Jennifer Sprague ([02:00:29]):
+U, R, S, T, and [inaudible 02:00:30].
+Kevin Reddington ([02:00:33]):
+Thank you. And just drag the [inaudible 02:00:31] down. Thanks. And if I can, just for continuity, sir, looking at what has been marked as Exhibit R, S, and T for identification, not an exhibit yet the jury would have, but nevertheless, we can question you about it. You do agree with me that the phone identifier numbers are listed here, and they're pretty much the same on these three exhibits, right?
+Timothy Chiappini ([02:01:04]):
+Yes, sir.
+Kevin Reddington ([02:01:04]):
+Okay. And that would be Lindsey Clancy's phone, right?
+Timothy Chiappini ([02:01:07]):
+I can't confirm that.
+Kevin Reddington ([02:01:08]):
+Hold that. The exhibit [inaudible 02:01:15].
+Timothy Chiappini ([02:01:16]):
+Yes, sir.
+Kevin Reddington ([02:01:18]):
+So I've just handed you Exhibit 237, sir. Can you tell me what that exhibit is? The district attorney questioned you about it.
+Timothy Chiappini ([02:01:25]):
+It's a supplemental report that I compiled from the Cellebrite software on the calendar application.
+Kevin Reddington ([02:01:35]):
+Do you have access to what was referred to as the mommy text messages?
+Timothy Chiappini ([02:01:43]):
+Not with this document, sir.
+Kevin Reddington ([02:01:45]):
+So that document is the calendar that we had already gone through as far as seeing the doctor, 9:45 and 10:00 appointments, right?
+Timothy Chiappini ([02:01:55]):
+That's correct.
+Kevin Reddington ([02:01:59]):
+All right. Here's the [inaudible 02:02:02] mommy documents.
+Speaker 6 ([02:02:05]):
+The [inaudible 02:02:07] documents?
+Kevin Reddington ([02:02:08]):
+Mommy texts. Mommy. Mommy [Inaudible 02:02:10].
+Jennifer Sprague ([02:02:31]):
+Exhibit 238.
+Kevin Reddington ([02:02:32]):
+There you go.
+Speaker 6 ([02:02:32]):
+[inaudible 02:02:33].
+Kevin Reddington ([02:02:32]):
+[inaudible 02:02:33].
+Speaker 6 ([02:02:32]):
+[inaudible 02:02:33].
+Kevin Reddington ([02:02:35]):
+[inaudible 02:02:33]. Exhibit 238, sir, if I may. On the exhibit, sir, this would be captioned the mommy text message thread between Lindsey and her mother. Is that fair to say?
+Timothy Chiappini ([02:02:43]):
+For January of 2023, sir, yes.
+Kevin Reddington ([02:02:45]):
+Okay. So this search was limited by the police to January of 2023 for the texts between Lindsey and her mother, right?
+Timothy Chiappini ([02:02:56]):
+Correct, sir. It's a filtered supplemental report from Cellebrite.
+Kevin Reddington ([02:02:59]):
+Filtered supplemental report. Okay. So when the jury's looking at these in the jury room, who would be the blue texter? Would it be Lindsey or her mother?
+Timothy Chiappini ([02:03:13]):
+You could just look at the participant delivered, status sent from Lindsey owner to mommy. So the green would be from the owner of the phone, to the recipient, mommy.
+Kevin Reddington ([02:03:25]):
+Okay. So green would be Lindsey, blue would be the mother. Is that right?
+Timothy Chiappini ([02:03:29]):
+That's correct.
+Kevin Reddington ([02:03:30]):
+All right. [inaudible 02:03:31] give you Exhibit 238. And just for a representative example, I mean, looking through, will you look at September 28th at 6:18 in the morning?
+Timothy Chiappini ([02:03:49]):
+Sir, can you repeat that date?
+Kevin Reddington ([02:03:51]):
+Yeah, sure. September 28th. Oh, that's right. You didn't do September. You only did January, right?
+Timothy Chiappini ([02:03:57]):
+Sir, this exhibit is just for January of 2023.
+Kevin Reddington ([02:03:59]):
+Okay. I apologize. Let's jump to January then. Now, let's say January 3rd, 8:35 in the morning. Do you have that?
+Timothy Chiappini ([02:04:16]):
+One moment, sir.
+Kevin Reddington ([02:04:17]):
+Sure.
+Timothy Chiappini ([02:04:29]):
+Yes, sir.
+Kevin Reddington ([02:04:30]):
+And what did Lindsey say to her mother on January 3rd at 8:35 in the morning?
+Timothy Chiappini ([02:04:35]):
+At 59 seconds, sir?
+Kevin Reddington ([02:04:37]):
+Yeah.
+Timothy Chiappini ([02:04:38]):
+"I'm all right. Anxious about meeting with the whole psychiatry team."
+Kevin Reddington ([02:04:45]):
+How about the next message that she sent at January 3rd at 8:37 in the morning?
+Timothy Chiappini ([02:04:52]):
+In 31 seconds?
+Kevin Reddington ([02:04:55]):
+Sure.
+Timothy Chiappini ([02:04:57]):
+"I'm just worried they won't send me home soon."
+Kevin Reddington ([02:04:59]):
+Now, do you know as a police officer working on this case, what she meant? "Send me home," do you know where she was on January 3rd?
+Timothy Chiappini ([02:05:08]):
+It would be an inference only, sir.
+Kevin Reddington ([02:05:09]):
+That's all right. You can infer.
+Timothy Chiappini ([02:05:11]):
+I believe she was in a medical facility.
+Kevin Reddington ([02:05:14]):
+McLean Hospital.
+Timothy Chiappini ([02:05:15]):
+I recall that hospital being mentioned.
+Kevin Reddington ([02:05:18]):
+And then on January 8th, sir, at 10:44 in the morning, was there a text from her mother to Lindsey, if you know? 10: 44. When the mother asked, "Did you sleep good?"
+Timothy Chiappini ([02:05:37]):
+One second, sir. It's cut off by the clip here. 10:44:30 AM?
+Kevin Reddington ([02:05:43]):
+Yeah.
+Timothy Chiappini ([02:05:45]):
+From mommy to Lindsey, "Great. That will be fun. Sleep good last night?"
+Kevin Reddington ([02:05:50]):
+And did she respond? She, meaning Lindsey.
+Timothy Chiappini ([02:05:52]):
+She did.
+Kevin Reddington ([02:05:53]):
+What'd she say?
+Timothy Chiappini ([02:05:54]):
+"I actually did."
+Kevin Reddington ([02:05:56]):
+And this was on January 8th, sir?
+Timothy Chiappini ([02:05:58]):
+That's correct.
+Kevin Reddington ([02:05:59]):
+January 10th, could you pull that up please, at 9:48 in the morning?
+Timothy Chiappini ([02:06:14]):
+I apologize, sir. Can you repeat the time on the 10th?
+Kevin Reddington ([02:06:17]):
+Sure. 9:48 in the morning, beginning with mother asking questions of Lindsey. "Still sleeping good?"
+Timothy Chiappini ([02:06:40]):
+I have a message at 9:48:15 from mommy to Lindsey.
+Kevin Reddington ([02:06:44]):
+Okay. What is that?
+Timothy Chiappini ([02:06:46]):
+"Good morning. How are you doing today?"
+Kevin Reddington ([02:06:48]):
+And what did she say in response?
+Timothy Chiappini ([02:06:51]):
+"Good.. At the gym with the kids."
+Kevin Reddington ([02:06:54]):
+And what was the date? Was that January 10th?
+Timothy Chiappini ([02:06:56]):
+2023, 9:48:21 AM.
+Kevin Reddington ([02:07:02]):
+So do you have January 10th in front of you? Not the 23rd.
+Timothy Chiappini ([02:07:07]):
+My correction, sir. January 10th, 2023 at 9:48:21.
+Kevin Reddington ([02:07:12]):
+All right. And what did the mother ask her?
+Timothy Chiappini ([02:07:15]):
+Nice, still sleeping good.
+Kevin Reddington ([02:07:18]):
+Did she ask, "Are you feeling better during the day?" And she said, "So far, a little bit"?
+Timothy Chiappini ([02:07:28]):
+Would you like me to read that, sir?
+Kevin Reddington ([02:07:29]):
+Yeah.
+Timothy Chiappini ([02:07:30]):
+At January 10th, 2023, 9:53:01 AM, "Are you feeling any better during the day?" From mommy to Lindsey.
+Kevin Reddington ([02:07:39]):
+And go to January 12th, 11:09 in the morning.
+Timothy Chiappini ([02:07:50]):
+Yes, sir.
+Kevin Reddington ([02:07:51]):
+What did mommy say?
+Timothy Chiappini ([02:07:53]):
+From mommy to Lindsey, January 12th, 2023, 11:09:32 AM. "Still feeling a little better?"
+Kevin Reddington ([02:08:01]):
+And how did she respond? How did Lindsey respond?
+Timothy Chiappini ([02:08:04]):
+"A little bit."
+Kevin Reddington ([02:08:05]):
+And then on January 16th... Well, wait a minute. January 14th at 1:05, I think in the afternoon. Can you pull that one up?
+Timothy Chiappini ([02:08:13]):
+Yes, sir. One moment.
+Kevin Reddington ([02:08:14]):
+Okay. Do you recall where it starts as, "I'm waiting for the day"? And that would be from Lindsey to her mother.
+Timothy Chiappini ([02:08:23]):
+Can you repeat the time one more time, sir?
+Kevin Reddington ([02:08:24]):
+1:05
+Timothy Chiappini ([02:08:26]):
+AM or PM?
+Kevin Reddington ([02:08:28]):
+PM.
+Timothy Chiappini ([02:08:31]):
+And this is on the 14th?
+Kevin Reddington ([02:08:32]):
+Yes, sir. Yep. January 14th.
+Timothy Chiappini ([02:08:38]):
+I have a message from Lindsey to mommy, January 14th, 2023, 1:05:13 PM.
+Kevin Reddington ([02:08:44]):
+Saying?
+Timothy Chiappini ([02:08:46]):
+"About the same... Hanging in there and waiting for the day I wake up and feel me."
+Kevin Reddington ([02:08:52]):
+So she says, "Waiting for the day I wake up feeling like me," right?
+Timothy Chiappini ([02:08:57]):
+That's correct, sir.
+Kevin Reddington ([02:08:58]):
+Okay. And Then on the 16th of January, if you can pull that one up. January 16th at 10:20.
+Timothy Chiappini ([02:09:42]):
+I have a message from Lindsey to mommy, January 16th, 2023, 10:20:24 AM.
+Kevin Reddington ([02:09:50]):
+What did it say?
+Timothy Chiappini ([02:09:51]):
+"It was fun... Cora and Dawson enjoyed..."
+Kevin Reddington ([02:09:57]):
+Now did it make reference at any point in the text that that was a reference to the Cape Codder? Is that in there at all? Do you see it? "It was fun," referring to what was fun, if you know?
+Timothy Chiappini ([02:10:11]):
+Not in this particular message, sir.
+Kevin Reddington ([02:10:13]):
+Okay. Then continuing on, sir, January 18th, would you agree that she inquired of her mother or the mother asked, "Are you starting a new med?" She said, "I did. I started it two nights ago." And that basically the mother was asking her about her medications and how she felt and how she was doing, right?
+Timothy Chiappini ([02:10:35]):
+One moment, sir, I just have to get to that point.
+Kevin Reddington ([02:10:46]):
+You know what? That's okay, because it's an exhibit and the jurors are going to have it, and they can take a look at it, so that's okay, we're good on that.
+Timothy Chiappini ([02:10:52]):
+Okay. Don't I answer the question?
+Kevin Reddington ([02:10:53]):
+No, you don't have to answer. It's all right.
+Timothy Chiappini ([02:10:55]):
+Okay, sir.
+Kevin Reddington ([02:10:58]):
+Now, on January 24th, district attorney asked you about the Google searches, Googling 3V restaurant, looking at the distance from the house, the 3V restaurant, looking at menus. You recall answering her questions on that?
+Timothy Chiappini ([02:11:29]):
+I do, sir.
+Kevin Reddington ([02:11:31]):
+And you're familiar also prior to that on the same day, that she had taken the baby to a doctor and that texted her and asked basically how'd it work out. Do you recall that?
+Timothy Chiappini ([02:11:45]):
+I recall the doctor's appointment. I don't recall the text.
+Kevin Reddington ([02:11:48]):
+Do you recall that Lindsey sent a picture of her and her children taken that afternoon?
+Timothy Chiappini ([02:11:55]):
+I recall the snowman photo.
+Kevin Reddington ([02:11:57]):
+I'm sorry?
+Timothy Chiappini ([02:11:58]):
+I recall the snowman photo.
+Kevin Reddington ([02:11:59]):
+Okay. And that was on the 24th of January, right?
+Timothy Chiappini ([02:12:02]):
+It was, sir.
+Kevin Reddington ([02:12:03]):
+Do you recall...
+Kevin Reddington ([02:12:00]):
+... Yeah, and that was on the 24th of January, right?
+Timothy Chiappini ([02:12:02]):
+It was, sir.
+Kevin Reddington ([02:12:03]):
+Do you recall that Pat texted back and said something like, "Oh wow, you're a good mom," do you recall that?
+Timothy Chiappini ([02:12:09]):
+I don't recall the texts.
+Kevin Reddington ([02:12:21]):
+One of the other searches that you did would be, or are you aware that there were searches for medical, such as questions regarding bipolar symptoms, psychosis? Can you be in DKA without high blood sugar? Page after page after page. Trazodone, Trazodone. What is the effect of Trazodone? Wellbutrin. How do you feel on Trazodone? Ativan addiction. Prozac, Trazodone, going on and on and on. You guys saw this on her search on her phone, the Cellebrite, right?
+Timothy Chiappini ([02:13:01]):
+I recall those searches, sir.
+Kevin Reddington ([02:13:02]):
+Okay. Could I offer this, Your Honor? This would be medical searches on her phone.
+Judge ([02:13:06]):
+Any objection?
+Jennifer Sprague ([02:13:07]):
+No.
+Judge ([02:13:08]):
+All right. That may be admitted.
+Clerk ([02:13:14]):
+Exhibit 239.
+Judge ([02:13:15]):
+Great. Thank you.
+Kevin Reddington ([02:13:19]):
+Do you recall, sir, that there was also a search for schizophrenia? Recall saying that?
+Timothy Chiappini ([02:13:30]):
+Not specifically.
+Kevin Reddington ([02:13:32]):
+Well, if I approach you, sir, in your extraction report, does that refresh your memory that there would be a search on her phone with schizophrenia? See where it says "schizophrenia", right there?
+Timothy Chiappini ([02:13:52]):
+Yes, sir.
+Kevin Reddington ([02:13:54]):
+Okay. What was the date of that search?
+Timothy Chiappini ([02:13:56]):
+January 19th, 2023, 9:58:01 AM.
+Kevin Reddington ([02:14:01]):
+Okay. Put that right here for a minute. How about psychosis? Did she search for psychosis as well?
+Timothy Chiappini ([02:14:09]):
+If I may?
+Kevin Reddington ([02:14:10]):
+Yeah, of course.
+Timothy Chiappini ([02:14:15]):
+There is a keyword search, "psychosis," in a Google search.
+Kevin Reddington ([02:14:17]):
+And that would be a keyword search, as you said, in a Google search, on the January 20th?
+Timothy Chiappini ([02:14:24]):
+January 20th, 2023, 8:39:00 PM.
+Kevin Reddington ([02:14:29]):
+Okay. Then there, is there also a search for Seroquel?
+Timothy Chiappini ([02:14:39]):
+Seroquel is part of a search, yes.
+Kevin Reddington ([02:14:42]):
+And what was the rest of the search?
+Timothy Chiappini ([02:14:44]):
+On Seroquel, "Feel like I can't have a conversation."
+Kevin Reddington ([02:14:48]):
+Okay. And then it goes on on a number of other inquiries as well, correct? Dealing with Seroquel.
+Timothy Chiappini ([02:14:53]):
+That's correct, sir.
+Kevin Reddington ([02:14:53]):
+Okay. And then further, do you recall that there were a number of pages where she Googled and was inquiring about suicide?
+Timothy Chiappini ([02:15:07]):
+Yes, sir.
+Kevin Reddington ([02:15:08]):
+And can you tell us when she was Googling suicide?
+Timothy Chiappini ([02:15:12]):
+December 29th, 2022, 1:02:14 PM.
+Kevin Reddington ([02:15:19]):
+Okay. And would you agree that she also Googled on a number of occasions, "Sleep"?
+Timothy Chiappini ([02:15:32]):
+" Sleep" is one keyword in part of a Google search, correct.
+Kevin Reddington ([02:15:35]):
+And then there's a number of pages that are attached to that dealing with a search for "sleep," correct?
+Timothy Chiappini ([02:15:44]):
+That's correct, sir.
+Kevin Reddington ([02:15:45]):
+Do you know the timeframe that we're talking about, from the Cellebrite search?
+Timothy Chiappini ([02:15:58]):
+Multiple entries, sir. A majority of them are in January of 2023.
+Kevin Reddington ([02:16:03]):
+Okay. Also, a much larger package of searches for "Trazodone." Is that correct?
+Timothy Chiappini ([02:16:16]):
+Yes, sir. "Trazodone" is one keyword as part of multiple Google searches.
+Kevin Reddington ([02:16:22]):
+Okay. Zoloft?
+Timothy Chiappini ([02:16:27]):
+Correct.
+Kevin Reddington ([02:16:28]):
+What's the timeframe?
+Timothy Chiappini ([02:16:31]):
+If I may just remove this, sir.
+Kevin Reddington ([02:16:33]):
+Yeah, sure.
+Timothy Chiappini ([02:16:35]):
+Earliest entry is December 31st, 2022, 4:07:48 PM. Last entry, all on the same date, December 31st, 2022, 7:06:39 PM.
+Kevin Reddington ([02:16:47]):
+Okay. Thank you. She also, on her phone, there's a search for "benzo withdrawals," right?
+Timothy Chiappini ([02:16:57]):
+Yes, sir. "Benzo" is listed as a keyword as part of another search.
+Kevin Reddington ([02:17:01]):
+Also after benzo, it says "withdrawals," right?
+Timothy Chiappini ([02:17:05]):
+Correct.
+Kevin Reddington ([02:17:07]):
+Okay. And what's the timeframe for that, please?
+Timothy Chiappini ([02:17:10]):
+January 20th, 2023, 8:11:57 PM.
+Kevin Reddington ([02:17:14]):
+Okay. Thank you. And also a search for "Wellbutrin"?
+Timothy Chiappini ([02:17:23]):
+Yes, sir. "Wellbutrin" is a keyword as part of a Google search.
+Kevin Reddington ([02:17:26]):
+Does it say what the timeframe is?
+Timothy Chiappini ([02:17:26]):
+It does.
+Kevin Reddington ([02:17:26]):
+What is it?
+Timothy Chiappini ([02:17:29]):
+January 16th, 2023, 9:14:47 AM.
+Kevin Reddington ([02:17:34]):
+Okay. And a search for "McLean"? [inaudible 02:17:42].
+Timothy Chiappini ([02:17:42]):
+Correct, sir. "McLean" is part of a keyword of a Google search.
+Kevin Reddington ([02:17:45]):
+What's the timeframe?
+Timothy Chiappini ([02:17:46]):
+December 29th, 2022, 8:52:37 AM.
+Kevin Reddington ([02:17:57]):
+Thank you. Is there also a search for " insomnia"?
+Timothy Chiappini ([02:18:03]):
+Yes, sir. "Insomnia" is part of a keyword of a Google search.
+Kevin Reddington ([02:18:05]):
+What's the timeframe?
+Timothy Chiappini ([02:18:07]):
+December 31st, 2022, 7:12:58 PM.
+Kevin Reddington ([02:18:12]):
+That's December 21st, did you say, or 31st?
+Timothy Chiappini ([02:18:15]):
+December 31st, 2022, sir.
+Kevin Reddington ([02:18:17]):
+Okay. And is there a search for keyword, "ketamine"? K-E-T-A-M-I-N-E?
+Timothy Chiappini ([02:18:29]):
+Yes, sir. "Ketamine" is part of a Google search. It's a keyword within the Google search.
+Kevin Reddington ([02:18:33]):
+What's the timeframe?
+Timothy Chiappini ([02:18:35]):
+For this entry, January 20th, 2023, 8:39:00 PM.
+Kevin Reddington ([02:18:41]):
+Is there also a search pulled up on Cellebrite for "Lamictal"?
+Timothy Chiappini ([02:18:51]):
+Yes. The word "Lamictal" was part of a Google search.
+Kevin Reddington ([02:18:54]):
+And what's the timeframe?
+Timothy Chiappini ([02:18:56]):
+January 16th, 2023, 9:23:13 AM.
+Kevin Reddington ([02:19:02]):
+Okay. Was there also a keyword search for "postpartum," and Google searches for "postpartum depression" and various aspects of postpartum?
+Timothy Chiappini ([02:19:22]):
+Yes, sir.
+Kevin Reddington ([02:19:23]):
+What's the timeframe for that?
+Timothy Chiappini ([02:19:33]):
+They all occur within January of 2023 with the earliest date being the 11th of January 2023, and proceeding all the way to the 19th of January 2023.
+Kevin Reddington ([02:19:43]):
+Thank you. And keyword "benzo," is that on the Cellebrite report for Lindsey's cell phone?
+Timothy Chiappini ([02:19:54]):
+It is, sir.
+Kevin Reddington ([02:19:55]):
+Can you tell us what the timeframe is?
+Timothy Chiappini ([02:19:58]):
+Sir, would you like it for the first entry or all the entries?
+Kevin Reddington ([02:20:01]):
+Give me the idea, brackets. Starting on when, ending on when. We don't have to go through all of them.
+Timothy Chiappini ([02:20:08]):
+The earliest entry appears to be December 6th, 2022, 9:17:05 AM, with the last entry being January 20th, 2023, 8:13:48 PM.
+Kevin Reddington ([02:20:20]):
+Thank you. And search for "bipolar." That was on her phone?
+Timothy Chiappini ([02:20:29]):
+Keyword "bipolar" is part of a Google search, correct.
+Kevin Reddington ([02:20:31]):
+Bracketed in, what's the time that it started and when did it end?
+Timothy Chiappini ([02:20:36]):
+The earliest entry from this report is December 29th, 2022, 9:00 AM, 37 seconds. And the last entry is January 13th, 2023, 1:38:42 PM.
+Kevin Reddington ([02:20:50]):
+Okay. Thank you. And "clonazepam" was a search as well, correct?
+Timothy Chiappini ([02:20:58]):
+That's correct, sir.
+Kevin Reddington ([02:20:58]):
+And can you just give me an idea what's the timeframe on that?
+Timothy Chiappini ([02:21:03]):
+All of the searches in this report indicate January 18th, 2023 in the morning hours from 11:26 AM to 11:27 AM.
+Kevin Reddington ([02:21:11]):
+Okay. And the next one would be "Ativan." See where it says Ativan? Just give me the first month. What's the stat, search for Ativan?
+Timothy Chiappini ([02:21:24]):
+The earliest timeframe, sir?
+Kevin Reddington ([02:21:25]):
+Yeah.
+Timothy Chiappini ([02:21:26]):
+December 31st, 2022, 7:06:30 PM.
+Kevin Reddington ([02:21:31]):
+Okay. Next one would be "amitriptyline," correct? Right there?
+Timothy Chiappini ([02:21:37]):
+I'm not sure on the pronunciation, but it appears to be that way.
+Kevin Reddington ([02:21:40]):
+Okay. And when was the amitriptyline search? When did it start, when did it end?
+Timothy Chiappini ([02:21:47]):
+January 16th, 2023, 11:01:28 AM, with the last entry being January 23rd, 2023, 8:17:58 PM.
+Kevin Reddington ([02:21:59]):
+And then on January 20th, 2023, was she searching "intrusive"?
+Timothy Chiappini ([02:22:13]):
+That's correct.
+Kevin Reddington ([02:22:13]):
+Okay. And then finally, sir, on January 19th of 2023, was she searching "hallucinations"?
+Timothy Chiappini ([02:22:24]):
+Yes, sir. 10:33:49 AM.
+Kevin Reddington ([02:22:29]):
+Your Honor, I would offer these.
+Jennifer Sprague ([02:22:29]):
+If I could just look them over.
+Judge ([02:22:32]):
+Sure, yeah.
+Timothy Chiappini ([02:22:36]):
+You're welcome, sir.
+Jennifer Sprague ([02:23:10]):
+No objection.
+Judge ([02:23:24]):
+Okay. Those may be admitted. Do you want to admit, it's individual?
+Kevin Reddington ([02:24:03]):
+Is one individual or all one? I don't care.
+Judge ([02:24:06]):
+All right. Why don't we do that? I hate to do this to you. Why don't we do it individually? Just might be easier down the road.
+Kevin Reddington ([02:24:15]):
+Okay.
+Clerk ([02:24:15]):
+Exhibits 240 through 260, submarked.
+Kevin Reddington ([02:24:15]):
+Thank you.
+Judge ([02:24:15]):
+Thank you.
+Kevin Reddington ([02:26:14]):
+‍
+I apologize, I neglected to ask about this Cellebrite extraction report from Lindsay's phone. Does he agree with me it's another extraction search on her phone?
+Timothy Chiappini ([02:26:32]):
+Yes, sir. It's a supplemental report for searched items.
+Kevin Reddington ([02:26:37]):
+Okay. And looking at that, if you can, basically there are a number of search terms in there such as, "Pre-made goodie bags," and that would've been on December 31st. Is that right?
+Timothy Chiappini ([02:26:55]):
+Yes, sir.
+Kevin Reddington ([02:26:56]):
+All right. And what's the next one underneath that, that would be on December 31st?
+Timothy Chiappini ([02:27:00]):
+" Child with bloated belly and lethargy."
+Kevin Reddington ([02:27:03]):
+How about the next one on December 31st?
+Timothy Chiappini ([02:27:07]):
+"Children's Motrin stores."
+Kevin Reddington ([02:27:09]):
+What about the next one on the 31st?
+Timothy Chiappini ([02:27:12]):
+"Children's Motrin."
+Kevin Reddington ([02:27:13]):
+Next one.
+Timothy Chiappini ([02:27:14]):
+"Is children's Tylenol the same as infants?"
+Kevin Reddington ([02:27:17]):
+Next one.
+Timothy Chiappini ([02:27:18]):
+"Six month old wale windows."
+Kevin Reddington ([02:27:22]):
+That would be W-A-L-E, whatever that means.
+Timothy Chiappini ([02:27:25]):
+Yes, sir.
+Kevin Reddington ([02:27:26]):
+Okay. Next one.
+Timothy Chiappini ([02:27:28]):
+"Earth's Best Organic Baby Food."
+Kevin Reddington ([02:27:31]):
+Next one.
+Timothy Chiappini ([02:27:32]):
+"Earth's Best Organic Infant."
+Kevin Reddington ([02:27:35]):
+Next one.
+Timothy Chiappini ([02:27:36]):
+"Earth's Best Organic Infant Formula."
+Kevin Reddington ([02:27:39]):
+Next one.
+Timothy Chiappini ([02:27:41]):
+"Nova Plymouth," N-O-V-A.
+Kevin Reddington ([02:27:43]):
+Next one.
+Timothy Chiappini ([02:27:44]):
+"Best kids movies."
+Kevin Reddington ([02:27:45]):
+Next one.
+Timothy Chiappini ([02:27:47]):
+"Nova Trampoline Lark."
+Kevin Reddington ([02:27:49]):
+Next one.
+Timothy Chiappini ([02:27:50]):
+"Unicorn picture."
+Kevin Reddington ([02:27:54]):
+Next one, if you can.
+Timothy Chiappini ([02:27:56]):
+Yes, sir. "Unicorn picture free coloring."
+Kevin Reddington ([02:28:01]):
+Just read them right down.
+Timothy Chiappini ([02:28:03]):
+Yes, sir.
+Kevin Reddington ([02:28:03]):
+Just rip right through it.
+Timothy Chiappini ([02:28:05]):
+"Paw Patrol Saves..." I can't. I'll spell it. "Paw Patrol saves the M-E-R-E-K-R." "Twin girls' bed," "Cape Codder Resort." "How much formula for eight M-I-N-T-H?" "Chuck E. Cheese." "Chuck E. Cheese." "Children's Motrin." "Children's Motrin Stores." "ADC Temple Touch Thermometer."
+Kevin Reddington ([02:28:31]):
+Can I just interrupt you?
+Timothy Chiappini ([02:28:32]):
+Yes, sir.
+Kevin Reddington ([02:28:32]):
+Who do we have to for date right now?
+Timothy Chiappini ([02:28:34]):
+The last item I read was ADC Temple Touch Thermometer, sir. And the date was January 17th, 2023. Time 2:19:03 PM.
+Kevin Reddington ([02:28:43]):
+Okay. I just want to get a frame on the time.
+Timothy Chiappini ([02:28:44]):
+Yes, sir.
+Kevin Reddington ([02:28:45]):
+Okay. Go ahead and finish that.
+Timothy Chiappini ([02:28:46]):
+"Eight month milestones." "Fluffy slime recipe." "Fluffy slime recipe." "UTI symptoms children." "Kids MiraLAX." "MiraLAX for kids."
+Kevin Reddington ([02:28:59]):
+And what was the date on that?
+Timothy Chiappini ([02:29:00]):
+The last date on the page for, "MiraLAX for kids," January 24th, 2023. 4:47:31 PM.
+Kevin Reddington ([02:29:09]):
+Yeah. And go ahead, finish, there's three more.
+Timothy Chiappini ([02:29:11]):
+Yes, sir. "CVS Pharmacy," "Pedia-Lax," "Pedia-Lax."
+Kevin Reddington ([02:29:15]):
+Okay. Thank you, sir. I'd offer this, Judge.
+Judge ([02:29:19]):
+All right, that may be admitted.
+Clerk ([02:29:19]):
+[inaudible 02:29:27].
+Judge ([02:29:19]):
+Yeah, 261. Yes.
+Timothy Chiappini ([02:29:19]):
+Yeah.
+Clerk ([02:29:28]):
+Exhibit 262.
+Kevin Reddington ([02:29:44]):
+And then finally, sir, approaching you with... It would be a report. You can recognize that document, right?
+Timothy Chiappini ([02:29:56]):
+Yes, sir.
+Kevin Reddington ([02:29:57]):
+Right. And what is that? It doesn't have the thing, the header on the top of it, so.
+Timothy Chiappini ([02:30:02]):
+It's a supplemental report, sir, and appears to be text messages.
+Kevin Reddington ([02:30:05]):
+Okay. Are you able to know when the photograph of the two kids and the snowman was sent to Pat by Lindsay? Do you know when? Was it on the 24th? If you know.
+Timothy Chiappini ([02:30:18]):
+I would have to look at the extraction.
+Kevin Reddington ([02:30:19]):
+All right. So, understanding jury would be able to be looking at the photo and has a little history. If we look at this report, you see where it says, "Lindsay owner," and then over here it says, "Cutie."
+Timothy Chiappini ([02:30:40]):
+Yes, sir.
+Kevin Reddington ([02:30:40]):
+So is that from Pat to Lindsay?
+Timothy Chiappini ([02:30:43]):
+That's correct.
+Kevin Reddington ([02:30:44]):
+And what's the date and the time?
+Timothy Chiappini ([02:30:47]):
+January 24th, 2023, 8:19:45 AM.
+Kevin Reddington ([02:30:54]):
+Okay. And what's the next one that you see? And just say to us like, "It's Pat to Lindsay," or, "Lindsay to Pat." And what is the message? You don't have to go through all the numbers.
+Timothy Chiappini ([02:31:01]):
+Yes, sir. Next item. Do you want me to read the date, sir?
+Kevin Reddington ([02:31:05]):
+Yeah, sure.
+Timothy Chiappini ([02:31:05]):
+Next item, January 24th, 2023, 8:36:17 AM. Lindsay to Pat, loved an image, which is a reflection that someone used the feature within iMessage to like an image.
+Kevin Reddington ([02:31:20]):
+Like an image, like a photograph, right?
+Timothy Chiappini ([02:31:22]):
+Correct, sir.
+Kevin Reddington ([02:31:22]):
+Okay, yep. What else?
+Timothy Chiappini ([02:31:24]):
+You want me to keep going?
+Kevin Reddington ([02:31:25]):
+Sure.
+Timothy Chiappini ([02:31:27]):
+January 24th, 2023, 8:42: 16 AM. From Patrick to Lindsay, "How's it going?"
+Kevin Reddington ([02:31:37]):
+And you know what? If it's the same date rather than taking the time, just go right down and read the messages. That would be-
+Timothy Chiappini ([02:31:43]):
+[inaudible 02:31:43], sir.
+Kevin Reddington ([02:31:43]):
+... [inaudible 02:31:43] timeframe.
+Timothy Chiappini ([02:31:44]):
+The date is the same for all the messages.
+Kevin Reddington ([02:31:45]):
+Okay, good.
+Timothy Chiappini ([02:31:48]):
+From Patrick to Lindsay, "How's it going?" Lindsay to Patrick, "Good." Lindsay to Patrick, "Okay. Her urine looked good, so nothing going wrong with her kidneys. Phew." Patrick to Lindsay, "Good," with a smiley face. Lindsay to Patrick, no message content. Patrick to Lindsay, "Oh, wow." Patrick to Lindsay, "You're a good mama." Lindsay to Patrick, a smiley face with hearts. Lindsay to Patrick, blank. Patrick to Lindsay, laughed at an image. Lindsay to Patrick, "Any chance you want to do takeout from 3V... I didn't cook anything. It's been a long day." Smiley face. Patrick to Lindsay, "Yeah," smiley face. Lindsay to Patrick, "Okey-dokey," smiley face.
+Kevin Reddington ([02:32:43]):
+Okay. I'd offer that, Your Honor. Thank you.
+Timothy Chiappini ([02:32:44]):
+Yes, sir.
+Jennifer Sprague ([02:32:44]):
+Your Honor, these text messages are already in evidence as exhibit 23.
+Kevin Reddington ([02:32:48]):
+Well, I'd like to have this.
+Judge ([02:32:49]):
+I'll allow that.
+Kevin Reddington ([02:32:50]):
+Thank you.
+Clerk ([02:32:50]):
+[inaudible 02:32:51].
+Kevin Reddington ([02:32:50]):
+Thank you. Finally, district attorney spent some time asking you about modifications to a photograph, and I think it was of the little baby. Do you recall that line of questioning?
+Timothy Chiappini ([02:33:10]):
+Yes, sir.
+Kevin Reddington ([02:33:11]):
+What did that mean? Does that mean that someone or Lindsay or someone on her phone changed the photograph of the little baby? Is that what that means?
+Timothy Chiappini ([02:33:21]):
+It means that the photo was edited in some fashion.
+Kevin Reddington ([02:33:23]):
+So that could be like coloring?
+Timothy Chiappini ([02:33:26]):
+It could be a variety of things.
+Kevin Reddington ([02:33:27]):
+Like what?
+Timothy Chiappini ([02:33:29]):
+As I indicated in my earlier testimony, it could be that someone took a live photo and instead of having it be a live photo, which is a multiple burst of images, they took it down to just a single photo.
+Kevin Reddington ([02:33:40]):
+Okay. Anything else that can be modified?
+Timothy Chiappini ([02:33:44]):
+Multiple things, but from the extraction, that's the only thing I was able to determine.
+Kevin Reddington ([02:33:49]):
+So, you weren't involved in the search of the Clancy house on the 24th, 25th, were you?
+Timothy Chiappini ([02:33:54]):
+No, sir.
+Kevin Reddington ([02:33:55]):
+Were you aware that there are photographs of the kids hanging in virtually every room, kitchen, living room, bedrooms? Do you know that, as an investigator on this case?
+Timothy Chiappini ([02:34:06]):
+Sir, I was not involved in the search.
+Kevin Reddington ([02:34:08]):
+You know that there were dozens and dozens of photographers, [inaudible 02:34:15] little babies were all over the house? Did you know that?
+Timothy Chiappini ([02:34:20]):
+I was not aware of that, sir.
+Kevin Reddington ([02:34:24]):
+Thank you.
+Judge ([02:34:26]):
+Commonwealth redirect.
+Jennifer Sprague ([02:34:28]):
+Yep. All of the exhibits that defense counsel just put in about the searches for psychosis or certain drugs, are those all available in the disc Exhibit 236 in some of those reports where you can search the word and all of those mentions will come up?
+Timothy Chiappini ([02:34:48]):
+Yes.
+Jennifer Sprague ([02:35:19]):
+[inaudible 02:35:00]. Thank you.
+([02:35:19])Sir, on exhibit, is that 258? Thank you. The search is about psychosis. Some of those searches were for psychosis symptoms on January 19th, 2023. Is that correct?
+Timothy Chiappini ([02:35:40]):
+That's correct.
+Jennifer Sprague ([02:35:41]):
+So the person using the phone looking it up was looking up to find out what the symptoms of someone would be experiencing if they had psychosis, correct?
+Timothy Chiappini ([02:35:51]):
+It's a keyword search for psychosis symptoms.
+Jennifer Sprague ([02:35:57]):
+You were asked some questions about the chats between Lindsay and her mother in exhibit 238, correct?
+Timothy Chiappini ([02:36:08]):
+Yes, ma'am.
+Jennifer Sprague ([02:36:36]):
+There's a text message from her mother to Lindsay on January 19th, 2023, which states, "I'll bring it Saturday. Never know what treasures I'll find in the attic," correct?
+Timothy Chiappini ([02:36:51]):
+That's correct, ma'am.
+Jennifer Sprague ([02:36:52]):
+Seeming to indicate that her mother's going to visit her that Saturday, correct? From the text message content?
+Timothy Chiappini ([02:37:00]):
+It's an inference.
+Jennifer Sprague ([02:37:17]):
+Was there also a text message from Lindsay's mother to Lindsay on January 22nd, 2023, which would've been the Sunday after the Saturday visit in which her mother says, "Enjoyed seeing everyone this weekend. Nice to see you doing better."
+Timothy Chiappini ([02:37:52]):
+That's correct.
+Jennifer Sprague ([02:37:52]):
+I have nothing further.
+Judge ([02:38:08]):
+All right. Mr. Reddington?
+Kevin Reddington ([02:38:09]):
+Just very briefly, kind of like a housekeeping thing, if I could, Judge. I'm approaching you with [inaudible 02:38:19] text messages. Would you agree with me, again, that this came off of Lindsay's phone and it would be text messages between Patrick Clancy and Lindsay? You can flip through them all. Trust me, one or the other. It's up to you.
+Timothy Chiappini ([02:38:33]):
+Yes, sir. That's correct, sir.
+Kevin Reddington ([02:38:50]):
+Okay. And then finally, I'm handing you, again, extractions from Lindsay's phone that, you can flip through them if you wish, would be between Lindsay and Sue Clancy, her mother-in-law, Patrick's mother. It said Sue Clancy.
+Timothy Chiappini ([02:39:12]):
+That's correct, sir.
+Kevin Reddington ([02:39:13]):
+Okay. I'd offer these too, Your Honor.
+Jennifer Sprague ([02:39:14]):
+Objection.
+Judge ([02:39:14]):
+If I can see counsel, sidebar.
+Clerk ([02:39:15]):
+It's UND [inaudible 02:39:29] application.
+Kevin Reddington ([02:39:29]):
+Right. So, that's all I have. Thank you, sir.
+Judge ([02:39:31]):
+All right. Attorney Sprague, anything further?
+Jennifer Sprague ([02:39:33]):
+No, Your Honor.
+Judge ([02:39:33]):
+All right. Thank you, sir. You may step down.
+Timothy Chiappini ([02:39:35]):
+Thank you.
+Judge ([02:39:46]):
+All right. So members of the jury, it's 1:00, 1:01, so don't hold that against me. So we're going to take the afternoon recess at this point. I'm going to ask you to be ready to come back 2:00, until the next witness. My instructions are the same. During the break, don't talk about this case, don't do any research, don't read anything, don't listen to anything. And then we'll see you back here about 2:00. Okay, thank you.
+Bailiff ([02:40:13]):
+Court, all rise. Jurors, are you closing notebooks? Face them on the chairs, please. This way, please.
+([02:40:52])Jurors, [inaudible 02:40:52].
+Kevin Reddington ([02:40:52]):
+Before we break, Judge, I apologize.
+Judge ([02:40:52]):
+Yeah.
+Kevin Reddington ([02:40:53]):
+Just when I introduced the records from South Shore Health, actually I put in a cover page in the wrong page that does not reference the actual medical record that I have. So, do you have any objection to the substitute status? The appointment.
+Jennifer Sprague ([02:41:15]):
+Right. I'm sorry, I just missed the part where you said it's different than what you submitted?
+Kevin Reddington ([02:41:19]):
+Yeah, what I submitted is just like a cover letter and some other things. I thought I submitted the medical records.
+Jennifer Sprague ([02:41:24]):
+Oh, no objection.
+Judge ([02:41:26]):
+All right. So you want to substitute those?
+Kevin Reddington ([02:41:27]):
+Yeah, sure.
+Clerk ([02:41:28]):
+Is it from this new batch?
+Kevin Reddington ([02:41:30]):
+Yeah. Thank you. [inaudible 02:41:33].
+Judge ([02:41:33]):
+All right. All right. Thank you. All right. So we'll be in recess till about 2:00.
+Bailiff ([02:41:35]):
+Court, all rise.
+Clerk ([02:41:37]):
+[inaudible 02:41:43].
+Bailiff ([02:41:51]):
+This court is back in session. You may be seated.
+Clerk ([02:41:54]):
+Your Honor, for the purpose of the record, we will turn back to the matter of Commonwealth versus Lindsay Clancy. All parties are present, excluding the Jury.
+Judge ([02:42:00]):
+All right. Counsel, are we ready for the jury?
+Jennifer Sprague ([02:42:01]):
+Yes.
+Judge ([02:42:01]):
+All right.
+Bailiff ([02:42:01]):
+[inaudible 02:42:07].
+([02:42:01])Court, all rise. Jury's entering.
+Clerk ([02:42:01]):
+Your Honor, [inaudible 02:42:43].
+Judge ([02:42:01]):
+Yeah, actually, that'd be helpful.
+Bailiff ([02:42:01]):
+This court's now in session. Please be seated.
+Clerk ([02:43:06]):
+Your Honor, for the purpose of the record, we will return back to the trial of Commonwealth versus Lindsay Clancy. All parties are present, including the defendant and including the 18 jurors.
+Judge ([02:43:13]):
+All right. Thank you, Madam Clerk. Thank you, members of the jury. We're going to now return to the Commonwealth's presentation. Ms. Sprague?
+Jennifer Sprague ([02:43:20]):
+Thank you, Your Honor. Commonwealth calls Joshua McKelligan.
+Bailiff ([02:43:43]):
+Good afternoon, sir. Can you stop right here and raise your right hand for the clerk please?
+Clerk ([02:43:46]):
+Good afternoon. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury [inaudible 02:43:49] the whole truth, and nothing but the truth, so help you God?
+Joshua McKelligan ([02:43:49]):
+[inaudible 02:43:50].
+Clerk ([02:43:50]):
+Thank you, sir. You may now proceed.
+Bailiff ([02:43:57]):
+Watch your step, please.
+Judge ([02:43:57]):
+All right. Good afternoon, sir. [inaudible 02:44:03].
+Jennifer Sprague ([02:44:03]):
+Thank you, Your Honor. Good afternoon. Can you please state and spell your name for the record?
+Joshua McKelligan ([02:44:07]):
+Joshua McKelligan. M-C-K-E-L-L-I-G-A-N.
+Jennifer Sprague ([02:44:11]):
+Where do you work?
+Joshua McKelligan ([02:44:12]):
+Massachusetts State Police.
+Jennifer Sprague ([02:44:14]):
+How long have you been with the state police?
+Joshua McKelligan ([02:44:15]):
+Since December of 2013.
+Jennifer Sprague ([02:44:18]):
+In January of 2023, where were you assigned?
+Joshua McKelligan ([02:44:22]):
+To the Plymouth County District Attorney's Office.
+Jennifer Sprague ([02:44:24]):
+And what was your role there?
+Joshua McKelligan ([02:44:25]):
+I was a trooper assigned to the homicide and major crimes section.
+Jennifer Sprague ([02:44:29]):
+And could you tell us within that unit what the role of a case officer is?
+Joshua McKelligan ([02:44:35]):
+A case officer is assigned cases as they come in, and the case officer then is the point of contact to the district attorney's office, the state police, other agencies.
+Jennifer Sprague ([02:44:49]):
+And as a case officer for a homicide, for example, when you respond to a scene and you're doing the investigation as time progresses, is the case officer doing every part of the investigation?
+Joshua McKelligan ([02:45:02]):
+No.
+Jennifer Sprague ([02:45:03]):
+What is the-
+Jennifer Sprague ([02:45:00]):
+... you're doing every part of the investigation?
+Joshua McKelligan ([02:45:02]):
+No.
+Jennifer Sprague ([02:45:03]):
+What is the role of a case officer in terms of managing or collecting information?
+Joshua McKelligan ([02:45:08]):
+Is to try to gather everything and then we try to keep track of what's been going on with the investigation.
+Jennifer Sprague ([02:45:15]):
+And so, within the State Police Detective Unit at the Plymouth County DA's office, there are a group of troopers that work there, correct?
+Joshua McKelligan ([02:45:22]):
+Yes.
+Jennifer Sprague ([02:45:23]):
+And do you work as a team on any homicide investigations you're working on?
+Joshua McKelligan ([02:45:26]):
+Yes.
+Jennifer Sprague ([02:45:27]):
+And the case officer, is it their role to collect information and evidence from the other troopers as they gather it?
+Joshua McKelligan ([02:45:33]):
+Yes.
+Jennifer Sprague ([02:45:33]):
+Do you have a supervisor when you are the case officer?
+Joshua McKelligan ([02:45:37]):
+Yes.
+Jennifer Sprague ([02:45:38]):
+I want to direct your attention to January 24th, 2023. Did you learn that day of an incident that had happened at 47 Summer Street in Duxbury?
+Joshua McKelligan ([02:45:49]):
+I did.
+Jennifer Sprague ([02:45:50]):
+What time did you learn about that approximately?
+Joshua McKelligan ([02:45:52]):
+About 6:45 PM.
+Jennifer Sprague ([02:45:52]):
+PM?
+Joshua McKelligan ([02:45:52]):
+PM.
+Jennifer Sprague ([02:45:57]):
+And how did you learn that information?
+Joshua McKelligan ([02:45:59]):
+The duty lieutenant in the state police headquarters in Middleborough called me.
+Jennifer Sprague ([02:46:04]):
+Once you had that information, what did you do?
+Joshua McKelligan ([02:46:06]):
+I called my supervisor and then responded to Duxbury.
+Jennifer Sprague ([02:46:12]):
+And where in Duxbury did you respond?
+Joshua McKelligan ([02:46:14]):
+I went to Duxbury Police Station.
+Jennifer Sprague ([02:46:16]):
+And at that point in time, did you know that you were going to be the case officer for this case?
+Joshua McKelligan ([02:46:20]):
+Not when I responded, but at the police station I was informed I was going to be.
+Jennifer Sprague ([02:46:26]):
+Okay. And at some point in time, did you go to 47 Summer Street in Duxbury?
+Joshua McKelligan ([02:46:31]):
+I did.
+Jennifer Sprague ([02:46:31]):
+And when was that?
+Joshua McKelligan ([02:46:35]):
+After I got a search warrant, I went to the house. It was probably, I think around early morning between three and four, sometime like that.
+Jennifer Sprague ([02:46:44]):
+Between three and 4 AM?
+Joshua McKelligan ([02:46:45]):
+Yes.
+Jennifer Sprague ([02:46:46]):
+So it'd be the early morning hours of January 25th, 2023?
+Joshua McKelligan ([02:46:49]):
+Yes.
+Jennifer Sprague ([02:46:51]):
+And did you take part in the search of the home?
+Joshua McKelligan ([02:46:54]):
+I did not.
+Jennifer Sprague ([02:46:55]):
+What was your role there at the home that night or in the early morning hours?
+Joshua McKelligan ([02:47:00]):
+I just went to observe the house, just to see what the scene and the house looked like.
+Jennifer Sprague ([02:47:04]):
+Okay. So other officers were conducting the search?
+Joshua McKelligan ([02:47:07]):
+Yes.
+Jennifer Sprague ([02:47:09]):
+At the scene, did you eventually walk through the house?
+Joshua McKelligan ([02:47:12]):
+Yes.
+Jennifer Sprague ([02:47:14]):
+And was that before or after the search was executed?
+Joshua McKelligan ([02:47:16]):
+After the search.
+Jennifer Sprague ([02:47:19]):
+At some point in time, did you go into the master bedroom on the second floor?
+Joshua McKelligan ([02:47:23]):
+Yes.
+Jennifer Sprague ([02:47:24]):
+And what did you observe in that room?
+Joshua McKelligan ([02:47:27]):
+I remember a tent style covering a crib, I believe. There was a mirror in front of me. To the left, there was the bed, and then I remember blood on the floor.
+Jennifer Sprague ([02:47:41]):
+And you said to the left, but pointed with your right arm?
+Joshua McKelligan ([02:47:46]):
+No, it was my left hand.
+Jennifer Sprague ([02:47:47]):
+Your left? Okay.
+Joshua McKelligan ([02:47:47]):
+Yes.
+Jennifer Sprague ([02:47:48]):
+All right. So you go into the bedroom and do you see anything on the floor, on the walls, the bedding, anything?
+Joshua McKelligan ([02:47:55]):
+Yes. Just going off of memory, I remember there was blood on the floor and the mirror was kind of straight ahead from the entrance of the door.
+Jennifer Sprague ([02:48:01]):
+Okay. And was a video taken of the house that included that room in particular?
+Joshua McKelligan ([02:48:07]):
+Yes.
+Jennifer Sprague ([02:48:08]):
+I'd like to move to submit the scene video from the home as the next exhibit.
+William Sullivan ([02:48:12]):
+Any objection?
+Kevin Reddington ([02:48:13]):
+No.
+William Sullivan ([02:48:13]):
+All right. That may be admitted.
+Speaker 7 ([02:48:13]):
+264.
+Jennifer Sprague ([02:48:14]):
+And if we could play the portion of the video for the master bedroom.
+William Sullivan ([02:48:22]):
+Sure.
+Jennifer Sprague ([02:51:49]):
+Thank you. Sir, when you went into the master bedroom, did you see blood sprayed all over the walls and everywhere?
+Joshua McKelligan ([02:51:55]):
+No.
+Jennifer Sprague ([02:51:56]):
+And fair to say that the video shows all of the walls in the bedroom and doesn't show any spatter or anything on the walls?
+Joshua McKelligan ([02:52:02]):
+Yes.
+Jennifer Sprague ([02:52:06]):
+Did you also go outside into the backyard and look at the exterior of the home?
+Joshua McKelligan ([02:52:11]):
+Yes.
+Jennifer Sprague ([02:52:11]):
+If we could have the photos, please? If we could zoom in on the top window. Does this photo show the condition of the upstairs window, the second floor window that leads to the master bedroom?
+Joshua McKelligan ([02:52:42]):
+Yes.
+Jennifer Sprague ([02:52:43]):
+And the screen there in the video, is that how it was when you saw it that night?
+Joshua McKelligan ([02:52:47]):
+Yes.
+Jennifer Sprague ([02:52:48]):
+Pushed up?
+Joshua McKelligan ([02:52:49]):
+Yes.
+Jennifer Sprague ([02:52:51]):
+And if we could see the next photo. If we could go back to the first one. Actually, we can go back to the first one and zoom in the middle there between the two windows. These areas of red brown stains on the exterior of the house, did you observe those that night, in the early morning hours of January 25th, 2023?
+Joshua McKelligan ([02:53:29]):
+Yes.
+Jennifer Sprague ([02:53:31]):
+And then the third photo, please. If we could zoom in on there. This third photo, would this be the first floor window below the master bedroom window?
+Joshua McKelligan ([02:53:43]):
+Yes.
+Jennifer Sprague ([02:53:44]):
+And these red brown stains on the shingles and then on the window ledge there, were those there in the early morning hours of January 25th, 2023?
+Joshua McKelligan ([02:53:57]):
+Yes.
+Jennifer Sprague ([02:53:58]):
+Could we have these three photos marked as the next exhibit on the disc?
+William Sullivan ([02:54:02]):
+Any objection to the fact that they may be admitted?
+Speaker 7 ([02:54:04]):
+Exhibit 265.
+Jennifer Sprague ([02:54:15]):
+Now, as the investigation proceeded, did you learn or did other officers learn from Patrick Clancy that the defendant was on some psychiatric medication?
+Joshua McKelligan ([02:54:26]):
+Yes.
+Jennifer Sprague ([02:54:27]):
+And was that information relayed to you in terms of preparing the search warrant?
+Joshua McKelligan ([02:54:31]):
+Yes.
+Jennifer Sprague ([02:54:32]):
+And is that why you included prescription medication in the search warrant?
+Joshua McKelligan ([02:54:37]):
+Yes.
+Jennifer Sprague ([02:54:38]):
+At that point in time, did you or any of the other officers know that the defendant had crushed up pills and taken them that night?
+Joshua McKelligan ([02:54:48]):
+No.
+Jennifer Sprague ([02:54:52]):
+At some point in time, did Patrick Clancy bring pill bottles to the state police and turn them over?
+Joshua McKelligan ([02:54:58]):
+Yes, he did.
+Jennifer Sprague ([02:54:59]):
+And where did he say those were from?
+Joshua McKelligan ([02:55:01]):
+In the center console of his truck, not the top section, the section underneath it.
+Jennifer Sprague ([02:55:10]):
+Did he tell you at some point that pills had been found in the nightstand drawer?
+Joshua McKelligan ([02:55:16]):
+Yes, he did.
+Jennifer Sprague ([02:55:17]):
+And that was in the master bedroom?
+Joshua McKelligan ([02:55:18]):
+Yes.
+Jennifer Sprague ([02:55:20]):
+And did he tell you who he found those with?
+Joshua McKelligan ([02:55:22]):
+Yes, he did.
+Jennifer Sprague ([02:55:23]):
+And who was that?
+Joshua McKelligan ([02:55:23]):
+His attorney.
+Jennifer Sprague ([02:55:24]):
+And did he tell you why he gave those pills-
+Kevin Reddington ([02:55:29]):
+Objection. I believe it was me, and I'm not his attorney.
+William Sullivan ([02:55:34]):
+But that's what... Why don't you re-ask that? What it was that Patrick Clancy said.
+Jennifer Sprague ([02:55:41]):
+What was it that Patrick Clancy said? Did he give you a name or just say my attorney?
+Joshua McKelligan ([02:55:45]):
+He said Kevin Reddington.
+Jennifer Sprague ([02:55:48]):
+And did he tell you why he gave the pills to Attorney Reddington instead of giving them to you like he gave the other pills?
+Joshua McKelligan ([02:55:54]):
+No, he did not.
+Jennifer Sprague ([02:56:00]):
+He never attempted to turn those pills into the state police or those bottles into the state police? Is that correct?
+Joshua McKelligan ([02:56:05]):
+Correct.
+Jennifer Sprague ([02:56:08]):
+At some point in time, did you learn that the Clancy family had gone to the Museum of Science on January 8th, 2023?
+Joshua McKelligan ([02:56:15]):
+Yes.
+Jennifer Sprague ([02:56:16]):
+And was a video obtained?
+Joshua McKelligan ([02:56:17]):
+Yes.
+Jennifer Sprague ([02:56:19]):
+Did you watch that video?
+Joshua McKelligan ([02:56:20]):
+Yes.
+Jennifer Sprague ([02:56:21]):
+Okay. Did you observe the family, including the defendant, interacting with each other and the defendant specifically interacting with the children and exhibits at the museum?
+Joshua McKelligan ([02:56:30]):
+Yes.
+Jennifer Sprague ([02:56:31]):
+Your Honor, at this point in time, Exhibit 14, I'd ask to play just a small portion of that. It has not been played previously.
+William Sullivan ([02:56:40]):
+All right.
+Jennifer Sprague ([02:56:45]):
+If we could pause here for just a moment. Do you see the Clancy family in this video footage?
+Joshua McKelligan ([02:56:56]):
+Yes.
+Jennifer Sprague ([02:56:57]):
+And if you could just get up and point to them, with the court's permission.
+William Sullivan ([02:57:00]):
+Sure.
+Jennifer Sprague ([02:57:05]):
+Okay. We could press play. And at this point in time in the video, are we seeing Patrick Clancy take Dawson Clancy out of that room, leaving Lindsey Clancy with Callan and Cora?
+Joshua McKelligan ([02:57:22]):
+Yes.
+Jennifer Sprague ([02:57:30]):
+Is that Cora there in the red skirt?
+Joshua McKelligan ([02:57:32]):
+Yes.
+Jennifer Sprague ([02:57:37]):
+Now, at this point in the video at approximately 11:58:30, what is happening in the video footage now?
+Joshua McKelligan ([02:57:47]):
+Cora's beginning to play with the exhibit. Patrick's standing off by himself. Lindsay Clancy is with Callan and Dawson is watching.
+Jennifer Sprague ([02:57:58]):
+Could you just point out where Patrick and Dawson are?
+Joshua McKelligan ([02:58:01]):
+Patrick, Dawson.
+Jennifer Sprague ([02:58:03]):
+For the record, you've pointed to Patrick towards the top of the screen and Dawson near the entrance to the exhibit?
+Joshua McKelligan ([02:58:11]):
+Yes. Yes.
+Jennifer Sprague ([02:58:14]):
+And throughout this video, in this portion of the video, can the defendant be seen instructing the children, pointing to them, showing them how to work the exhibit and operating some type of control panel?
+Joshua McKelligan ([02:58:25]):
+Yes.
+Jennifer Sprague ([02:58:54]):
+And at some point, does the switch and the defendant helps Dawson with the same exhibit?
+Joshua McKelligan ([02:58:59]):
+Yes.
+Jennifer Sprague ([02:59:00]):
+And that goes on for several minutes?
+Joshua McKelligan ([02:59:03]):
+Yes, I believe so.
+Jennifer Sprague ([02:59:05]):
+And showing, I think we've gone forward to approximately noon in the video timer. Thank you. Excuse me. Sir, during the grand jury process, did you attend a meeting with the medical examiner in this case?
+Joshua McKelligan ([03:00:21]):
+Yes.
+Jennifer Sprague ([03:00:22]):
+And did you participate in interviewing her, specifically Dr. Barbara Vidal Olson?
+Joshua McKelligan ([03:00:30]):
+Yes.
+Jennifer Sprague ([03:00:30]):
+And did you participate in interviewing her specifically the portion of her proposed testimony where she was explaining how someone dies from strangulation?
+Joshua McKelligan ([03:00:42]):
+Yes.
+Jennifer Sprague ([03:00:44]):
+And would it be fair to say that at some point in time she was asked-
+Kevin Reddington ([03:00:50]):
+Objection.
+William Sullivan ([03:00:50]):
+Counsel, sidebar.
+Jennifer Sprague ([03:01:57]):
+Sir, in that meeting with the medical examiner, did she tell you that constant pressure would need to be applied even after the person went unconscious in a strangulation in order to affect death?
+Joshua McKelligan ([03:02:10]):
+Yes.
+Jennifer Sprague ([03:02:11]):
+Did she tell you that it takes several minutes of continuous pressure to cause death?
+Kevin Reddington ([03:02:14]):
+[inaudible 03:02:15]... we have leading questions. If this is going to be admitted, can we not have leading questions? It's her witness.
+William Sullivan ([03:02:21]):
+[inaudible 03:02:20]. Ask him what she said and then-
+Jennifer Sprague ([03:02:23]):
+Do you recall. Sorry.
+William Sullivan ([03:02:25]):
+Go ahead.
+Jennifer Sprague ([03:02:25]):
+Do you recall what she said about the time it takes to strangle someone to death?
+Joshua McKelligan ([03:02:32]):
+After unconsciousness, I think she said several minutes. It would take several more minutes for someone to die.
+Jennifer Sprague ([03:02:38]):
+And would that be several more minutes of strangulation?
+Joshua McKelligan ([03:02:40]):
+Yes.
+Jennifer Sprague ([03:02:43]):
+I have no further questions. Thank you.
+William Sullivan ([03:02:44]):
+All right. Mr. Reddington.
+Kevin Reddington ([03:02:46]):
+So, she asked you about the pills that were located in the master bedroom by Patrick when I was with him, right?
+Joshua McKelligan ([03:02:55]):
+Yes.
+Kevin Reddington ([03:02:56]):
+And you know that Patrick indicated that after you guys had cleared the scene, finished with your investigation, seized all the pill bottles that you were able to locate, that I went in the house with him and I took a number of items, photographs, albums, things on the wall and stuff like that, right?
+Joshua McKelligan ([03:03:13]):
+All I know is the pill bottles. I don't know what else you took.
+Kevin Reddington ([03:03:16]):
+Oh, just the pill bottles. And at some point, I imagine the DA must have shown you this. Recognize this as being the nightstand drug?
+Joshua McKelligan ([03:03:27]):
+It looks similar to the one that was in the video.
+Kevin Reddington ([03:03:29]):
+Did you see it? Did you look at it?
+Joshua McKelligan ([03:03:31]):
+It looks similar to the one... I've never seen that. I don't know...
+Kevin Reddington ([03:03:32]):
+Okay. So these would be the [inaudible 03:03:37] that were in there, right?
+Joshua McKelligan ([03:03:38]):
+I don't know.
+Kevin Reddington ([03:03:39]):
+You don't know? And do you know that when these were seized, the first thing that was done is I contacted the DA's office and said that I had them?
+Joshua McKelligan ([03:03:47]):
+I don't know what you said to them.
+Kevin Reddington ([03:03:48]):
+If you want to come by my office and pick up anything they had, you're welcome to look at it, seize it, have it analyzed and send it to a crime lab. I didn't care.
+Joshua McKelligan ([03:03:54]):
+I don't know what you said.
+Kevin Reddington ([03:03:54]):
+That's all I have. Thank you.
+William Sullivan ([03:04:05]):
+All right. Any redirect?
+Jennifer Sprague ([03:04:06]):
+No, your Honor.
+William Sullivan ([03:04:12]):
+All right. Thank you, sir. Thank you, [inaudible 03:04:08]. Thank you. All right. And counsel, could I see you?
+([03:04:13])The jury, I told you we might break a little bit early today and finally, again, I was right. And so, we're going to recess on this matter for you at this point. So I'm going to excuse you Monday morning. All right? So you don't have to come in here tomorrow. So, I'm going to suggest that, take these next couple of days, rest up. I know it's been a long couple of weeks for you. I appreciate all the work that you've done. I'm going to really remind you of those instructions because now, we've got a longer stretch that you're going to be at home, you're going to be talking to people.
+([03:06:22])So, I just want to remind you, do not talk about this case with anyone. Don't do any research about this case or similar cases. If you have any questions, don't do any research. Don't try and educate yourself on any of the issues or facts that you've heard so far in this case. Don't make any little road trips to go by any places or try and fill in any gaps. The other thing I want to remind you, you have to still keep an open mind. All right? It was probably easy to nod and say yes when I said that at the very beginning of the case, but now you've heard a lot of evidence, but you haven't heard all the evidence. All right? You haven't heard the closing arguments of the attorneys. You haven't heard the law that you do apply. So I'm just reminded you have to do that. It's so important. And so I just kind of wanted to remind you on that.
+([03:07:16])I want to thank you so much for, so far, all the work that you've done and all the work that you're going to do. And so I hope you have a very nice weekend and we will see you on Monday. Just in case you're wondering, we are still well on track, but we'll see you on Monday. We'll continue with the trial at that point. And again, have a nice weekend. All right. Thank you.
+Speaker 8 ([03:07:41]):
+The court, all rise. The jury, [inaudible 03:07:45]. This way, please.
+William Sullivan ([03:08:19]):
+All right. SI want to see counsel again over at the sidebar. We're going to address the Commonwealth's motion regarding trial court security logs.
+Shanan Buckingham ([03:09:03]):
+Thank you.
+William Sullivan ([03:09:04]):
+Counsel?
+Shanan Buckingham ([03:09:05]):
+Your Honor, the Commonwealth is asking the court to allow the Commonwealth and the defense to have copies of a log that we were advised that, or we've seen, that the trial court security has for people who go back into the lockup area to visit with or tend to or what have you, with the defendant during the course of this trial. Both myself and ADA Sprague have witnessed at several points. Obviously, we know there are medical staff that go back with the defendant, but in addition to medical staff, which are not really the primary thrust of this motion, it's that there have been other individuals that are not counsel that are permitted to go back there. And we're not alleging that that's inappropriate in any way, shape or form. Clearly, the staff here, the security staff has followed all appropriate protocols.
+([03:09:53])But we are aware that Dr. Zeizel has been back there. We witnessed a priest being allowed back there the other day. And we are advised that these visitors are kept as a log when they come, when they exit, what days, what times. And the Commonwealth is alleging that that's information that might be necessary for us to effectively cross-examine some of the defense witnesses that are going to be presented. Certainly, with Dr. Zeizel, it could pose as a potential bias that he's there, that he's back there. He's being presented as an expert witness on the concept of criminal responsibility. And there are certain ethical rules that forensic psychiatrists and psychologists follow that he might be subject to cross-examination about. And this and the nature of his relationship with the defendant could be an area for cross-examination.
+([03:10:42])Because these court records, I would suggest, are not in the care, custody and control of the Commonwealth, procedurally, we have filed the motion as a rule 17 motion asking for access to the records just for this defendant during the course of the trial.
+William Sullivan ([03:10:58]):
+You're not looking for the name of the priest who went back there, are you?
+Kevin Reddington ([03:11:04]):
+[inaudible 03:11:05].
+William Sullivan ([03:11:07]):
+Oh, my God... I'm just trying to figure out what the scope of this is. I understand the request for Dr. Zeizel's amount of visits because he's slated to possibly be a witness. So, I understand how that might be relevant.
+Shanan Buckingham ([03:11:23]):
+Right.
+William Sullivan ([03:11:24]):
+The priest, I'm struggling with.
+Shanan Buckingham ([03:11:26]):
+Well, at this point, Your Honor, we haven't been furnished with exactly who defense is going to be calling as witnesses in their case. We have an idea from a witness list that was filed that keeps evolving as the trial progresses. So we don't know, for instance, if that person for some reason, has a relationship to the defendant and he wishes to call him for some reason. So with the exception of, again, the nurses, we don't necessarily need their information. We know the purpose for why they're there and that they don't have a role in this case. But anyone else who has been permitted back there that is outside the medical staff, I would suggest the Commonwealth is entitled to at least know. And whether we are able to use that information, if it becomes more apparent when the defense was underway with their case, that would come to... We'd have to wait and see if that's the case. But certainly, the fact that counsel has announced Dr. Zeizel as a testifying witness, that's information we believe we're entitled to.
+William Sullivan ([03:12:24]):
+All right. Mr. Reddington?
+Kevin Reddington ([03:12:31]):
+So, first of all, here's the list. They want the list. We don't need a rule 17 and a court order. They can just go over from there to there and get the list and see who's been going in and out to see Lindsay. I don't have a problem with that by no means whatsoever. Father Bob is a Roman Catholic priest who baptized these kids, who is very, very close to Lindsay. Not in a religious sense. They just like each other. She went to mass sporadically. She's not a devout Catholic. She's a Catholic. She has a relationship with the father... I haven't even talked to the guy since last week. First time I ever met him. Shook his hand. Nice, nice man. After that debacle yesterday that we went through with the public-
+William Sullivan ([03:13:38]):
+Let's stay focused on-
+Kevin Reddington ([03:13:39]):
+I am staying focused. This is what I'm dealing with.
+William Sullivan ([03:13:42]):
+I guess I'll tell you right now, so I can save you. I'm not ordering the name or address of anyone other than Dr. Zeizel.
+Kevin Reddington ([03:13:53]):
+Can I call him as a witness right now? [inaudible 03:13:57] his involvement is with going to the back?
+William Sullivan ([03:14:00]):
+No, no. I'm going to allow that so the Commonwealth can take a look at that record. Nobody else though. And then at some point if the doctor is called, if we have to address that, we can address it. So I'm going to allow the Commonwealth to have the information regarding Dr. Zeizel. And that's it though.
+([03:14:25])Anyone else who went back there has been admitted pursuant to the appropriate rules of the security department in this case. Especially, I'm not ordering the name, address or frequency of this Roman Catholic priest. I'm just not going to do it, based on the record that I have now. If for some reason, he's called as a witness, which I haven't seen that, I haven't seen an expectation even regards to that. If that comes up, then the Commonwealth can renew this and I may reevaluate. But right now, the Commonwealth's motion regarding security logs is allowed as to Dr. Paul Zeizel only. All right? Anything else we need to address before Monday? Commonwealth?
+Shanan Buckingham ([03:15:18]):
+No, your Honor.
+William Sullivan ([03:15:18]):
+All right, Mr. Reddington?
+Kevin Reddington ([03:15:21]):
+No, thank you.
+William Sullivan ([03:15:22]):
+All right. So we'll see everybody on Monday. Thank you.
+Speaker 8 ([03:15:25]):
+The court, all rise.
+‍
+A confirmation email is on it’s way to your inbox.
+Copyright Disclaimer

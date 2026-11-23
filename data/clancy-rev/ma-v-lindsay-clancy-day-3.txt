@@ -1,0 +1,3757 @@
+Judge William Sullivan ([00:00]):
+Good morning, counsel.
+Kevin Reddington ([00:00]):
+Morning.
+Attorney Sprague ([00:01]):
+Morning.
+Judge William Sullivan ([00:02]):
+Good morning, Ms. Clancy.
+Ms. Clancy ([00:02]):
+Good morning.
+Judge William Sullivan ([00:03]):
+We ready for the jury?
+Attorney Sprague ([00:04]):
+Yes.
+Judge William Sullivan ([00:04]):
+Okay.
+Speaker 1 ([01:32]):
+[inaudible 00:00:07]. Court all rise. Jurors in. Hear ye, hear ye, hear ye. All persons having anything to do before the Honorable William Sullivan, Justice of the Superior Court now sitting in Plymouth [inaudible 00:01:39] bond law.[inaudible 00:01:41] give your attendance and you shall be heard. God save the Commonwealth of Massachusetts. This court is now in session. Please be seated.
+Clerk ([01:48]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([01:49]):
+Yes, please.
+Clerk ([01:50]):
+Your Honor, before the court today, we have a continuation of the jury trial in the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by attorney Kevin Reddington. The Commonwealth is represented by Assistant District Attorney Jennifer Sprague and Assistant District Attorney Shannon Buckingham.
+Judge William Sullivan ([02:06]):
+All right. Well, good morning everyone.
+Jurors ([02:09]):
+Good morning.
+Judge William Sullivan ([02:09]):
+I hope everybody had a nice, restful evening last night. Thank you for your patience with us. What I'm going to do is just I'm going to ask you those questions to make sure everybody was able to follow my instructions. Then I'll go over briefly our schedule for today and the schedule for tomorrow. All right? So the first, let me get to those questions. The first question is any member of the jury read, seen, or heard anything from any source that would affect your ability to be fair and impartial in this case?
+Jurors ([02:38]):
+No.
+Judge William Sullivan ([02:38]):
+All right. Next question. Is there any other serious matter or concern bearing on your service as a juror in this case that anybody needs to bring my attention at this time?
+Jurors ([02:46]):
+No.
+Judge William Sullivan ([02:48]):
+All right, good. Thank you for following those instructions. Now in regards to our schedule today, it's the anticipated, as you know in these cases, sometimes the best laid plans, but it's anticipated that we'll go this morning to about 11 o'clock. We'll take a break at 11:00, we'll come back. We'll take our afternoon break at one o'clock and we'll go into the afternoon probably somewhere between 3:00 and 4:00. All right? So that's today's schedule. Tomorrow's schedule, as best we can tell, we're going to do that view sometime probably in the morning. We're going to go to a couple of spots that have been mentioned in the testimony. Like I said, we'll go over a little bit more tomorrow, but you'll be getting out of... We're all going together in a bus with the court officers, the staff, the attorneys, myself, and we're going to get out of the bus.
+([03:41])So that's just a word for the wise for footwear and to double check the weather. I'll go into that a little bit more probably by the end of the day, but just in case I forget, that's what we're going to do. And then the thought would be after that, we'll come back. We'll probably go again till sometime around in between 3:00 and 4:00. Okay? So that's the schedule. And then at the end of the day tomorrow, I'll address kind of where we are in regards to the timeline and the kind of overall schedule, just so you have some kind of idea where we are. All right. So with that, we're going to return to the case on trial. Commonwealth is presenting its evidence. Attorney Sprague.
+Attorney Sprague ([04:21]):
+Thank you, Your Honor. Commonwealth calls Officer Stephen Hall.
+Speaker 1 ([04:24]):
+Good morning.
+Stephen Hall ([04:24]):
+Good morning.
+Speaker 1 ([04:24]):
+Stop right here and raise your right hand for the clerk, please.
+Clerk ([04:24]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give [inaudible 00:05:06] shall be the truth, the whole truth, and nothing but the truth, so help you God?
+Stephen Hall ([04:24]):
+I do.
+Judge William Sullivan ([04:24]):
+[inaudible 00:05:13].
+Clerk ([04:24]):
+Thank you sir. You may have a seat.
+Stephen Hall ([04:24]):
+Thank you.
+Judge William Sullivan ([05:16]):
+All right. Good morning.
+Stephen Hall ([05:16]):
+Morning.
+Judge William Sullivan ([05:17]):
+All right. Sir, I'm going to ask you to keep your voice up so the jury can hear you.
+Stephen Hall ([05:20]):
+Yes.
+Judge William Sullivan ([05:21]):
+And with that, Attorney Sprague.
+Attorney Sprague ([05:23]):
+Thank you, Your Honor. Good morning. Can you please state and spell your name for the record?
+Stephen Hall ([05:28]):
+My name is Stephen Hall. S-T-E-P-H-E-N H-A-L-L.
+Attorney Sprague ([05:33]):
+And your date of birth?
+Stephen Hall ([05:34]):
+3/ 26/1983.
+Attorney Sprague ([05:36]):
+Where do you work?
+Stephen Hall ([05:38]):
+I work at the Duxbury Police Department.
+Attorney Sprague ([05:39]):
+How long have you been a Duxbury Police officer?
+Stephen Hall ([05:42]):
+Since 2015, so roughly 11 years.
+Attorney Sprague ([05:46]):
+I want to direct your attention to January 24th, 2023. Were you working that day?
+Stephen Hall ([05:52]):
+I was.
+Attorney Sprague ([05:53]):
+What shift were you working?
+Stephen Hall ([05:55]):
+The 4:00 to midnight.
+Attorney Sprague ([05:56]):
+And would that be 4:00 PM to midnight?
+Stephen Hall ([05:58]):
+Yes.
+Attorney Sprague ([05:59]):
+And were you in uniform?
+Stephen Hall ([06:01]):
+Yes.
+Attorney Sprague ([06:02]):
+Were you in a marked cruiser?
+Stephen Hall ([06:03]):
+Yes.
+Attorney Sprague ([06:04]):
+And were you on patrol?
+Stephen Hall ([06:06]):
+Yes.
+Attorney Sprague ([06:07]):
+And being on patrol, were you alone or with a partner?
+Stephen Hall ([06:10]):
+I was alone.
+Attorney Sprague ([06:13]):
+Further directing your attention to approximately 6:11 PM. At that time, did you receive a dispatch to go to 47 Summer Street in Duxbury?
+Stephen Hall ([06:22]):
+I did.
+Attorney Sprague ([06:23]):
+And do you recall approximately where you were when you received that dispatch?
+Stephen Hall ([06:28]):
+I was at the Lincoln Street Fields in Duxbury.
+Attorney Sprague ([06:30]):
+And so how long did it take you to get from there to 47 Summer Street?
+Stephen Hall ([06:34]):
+Seven to 10 minutes.
+Attorney Sprague ([06:38]):
+And did you go to 47 Summer Street?
+Stephen Hall ([06:41]):
+Yes.
+Attorney Sprague ([06:41]):
+And what did you see when you arrived there?
+Stephen Hall ([06:44]):
+When I arrived, it was just a house. There was a gate open on the left side of the house.
+Attorney Sprague ([06:52]):
+I'll show you a few exhibits that have already been marked. Exhibit 32 and Exhibit 33. Is this the house you responded to?
+Stephen Hall ([07:11]):
+Yes.
+Attorney Sprague ([07:13]):
+I'm showing you Exhibit 34. Is that the left side of the house?
+Stephen Hall ([07:18]):
+It is.
+Attorney Sprague ([07:19]):
+And Exhibit 35 is the gate that you went in depicted in this exhibit?
+Stephen Hall ([07:24]):
+It is.
+Attorney Sprague ([07:36]):
+First officer on scene?
+Stephen Hall ([07:38]):
+I arrived simultaneously with Officer Josephine.
+Attorney Sprague ([07:42]):
+And is he also an officer with Duxbury Police?
+Stephen Hall ([07:46]):
+Yes.
+Attorney Sprague ([07:47]):
+And so did you both head to that same direction or did you go in different directions?
+Stephen Hall ([07:51]):
+Both went to the backyard as we were dispatched to.
+Attorney Sprague ([07:55]):
+And you said you went to the left, correct?
+Stephen Hall ([07:57]):
+Yes. We heard a male voice calling for us on the left side.
+Attorney Sprague ([08:03]):
+And that's where you headed?
+Stephen Hall ([08:04]):
+Yes.
+Attorney Sprague ([08:05]):
+Okay. And did you encounter a male in the backyard?
+Stephen Hall ([08:08]):
+Yes.
+Attorney Sprague ([08:09]):
+And did you later learn his name was Patrick Clancy?
+Stephen Hall ([08:11]):
+I did.
+Attorney Sprague ([08:12]):
+What was his demeanor?
+Stephen Hall ([08:14]):
+He was upset. Didn't know what was going on.
+Attorney Sprague ([08:19]):
+And did you see anyone else in the backyard?
+Stephen Hall ([08:21]):
+No. Okay.
+Attorney Sprague ([08:22]):
+Did you see anyone on the ground?
+Stephen Hall ([08:24]):
+Yes.
+Attorney Sprague ([08:25]):
+And who was on the ground?
+Stephen Hall ([08:26]):
+Ms. Clancy.
+Attorney Sprague ([08:28]):
+Is that Lindsay Clancy?
+Stephen Hall ([08:28]):
+Yes.
+Attorney Sprague ([08:29]):
+And do you see her in the courtroom today?
+Stephen Hall ([08:31]):
+I do.
+Attorney Sprague ([08:31]):
+Could you point to her?
+Kevin Reddington ([08:32]):
+No issue with ID, Your Honor.
+Judge William Sullivan ([08:34]):
+Record may reflect the witness has identified the defendant.
+Attorney Sprague ([08:38]):
+Thank you. Where was she positioned?
+Stephen Hall ([08:41]):
+She was on the ground if you were looking at the backyard on the right side.
+Attorney Sprague ([09:00]):
+Showing you what's been previously marked as Exhibit 38. Is this the back of the house?
+Stephen Hall ([09:07]):
+It is.
+Attorney Sprague ([09:08]):
+And showing you what's been marked as Exhibit 37. Do you see the area where the defendant was when you entered the backyard?
+Stephen Hall ([09:17]):
+Yes.
+Attorney Sprague ([09:17]):
+Do you mind standing up at the court permission and just pointing that out to the jurors?
+Stephen Hall ([09:21]):
+Sitting in this area.
+Attorney Sprague ([09:26]):
+And if the record could reflect he's pointing near the window well to the far right side of the back of the house.
+Judge William Sullivan ([09:32]):
+Record may reflect that.
+Attorney Sprague ([09:35]):
+When you saw her in that location, do you remember where her head was?
+Stephen Hall ([09:43]):
+Her head was towards the house.
+Attorney Sprague ([09:46]):
+And where were her feet?
+Stephen Hall ([09:47]):
+Pointing out away from the house.
+Attorney Sprague ([09:55]):
+Are you trained in first aid as part of your job?
+Stephen Hall ([09:57]):
+Yes.
+Attorney Sprague ([09:58]):
+And do you carry equipment with you in case you have to provide first aid to someone?
+Stephen Hall ([10:02]):
+Yes.
+Attorney Sprague ([10:04]):
+When you saw the defendant on the ground, did you go to her and observe any injuries?
+Stephen Hall ([10:10]):
+She had cuts to both wrists and to the left side of her neck.
+Attorney Sprague ([10:15]):
+The cuts to her wrists, were those actively bleeding when you saw them?
+Stephen Hall ([10:18]):
+No, they were not.
+Attorney Sprague ([10:19]):
+When you saw the cuts to her neck, were those actively bleeding?
+Stephen Hall ([10:22]):
+No.
+Attorney Sprague ([10:24]):
+Did you, based on your training and experience, feel the need to provide any medical care to those cuts or use any of the equipment you had to tend to those cuts?
+Stephen Hall ([10:32]):
+Not at that time.
+Attorney Sprague ([10:35]):
+Was she conscious?
+Stephen Hall ([10:37]):
+Semi-conscious, she was in and out of consciousness.
+Attorney Sprague ([10:40]):
+And what was she doing that gave you that indication?
+Stephen Hall ([10:43]):
+She would wake up and move around and then kind of just go still again.
+Attorney Sprague ([10:49]):
+And when you say she would move around, what parts of her body was she moving?
+Stephen Hall ([10:53]):
+Just her head, really.
+Attorney Sprague ([10:57]):
+Was she able to speak to you?
+Stephen Hall ([10:59]):
+She wasn't, no.
+Attorney Sprague ([11:01]):
+Was she making any sounds?
+Stephen Hall ([11:05]):
+It sounded like she was in pain.
+Attorney Sprague ([11:07]):
+So something like moaning or something like that?
+Stephen Hall ([11:09]):
+Yes.
+Attorney Sprague ([11:14]):
+While you and Officer Josephine are there, do other first responders such as firefighters start to arrive?
+Stephen Hall ([11:20]):
+Yes. They started to arrive and I went to gate to direct them where to go.
+Attorney Sprague ([11:26]):
+And how did you know they had arrived?
+Stephen Hall ([11:28]):
+You could hear the sirens.
+Attorney Sprague ([11:31]):
+So you heard the sirens and went to the gate to tell them to come to that side?
+Stephen Hall ([11:35]):
+Correct.
+Attorney Sprague ([11:39]):
+While you were doing this, did Patrick Clancy stay with you?
+Stephen Hall ([11:43]):
+At one point, he went inside to say he was going to check on his children.
+Attorney Sprague ([11:48]):
+And did you see what entrance he used to go into the house?
+Stephen Hall ([11:51]):
+He went towards the backslider.
+Attorney Sprague ([11:59]):
+Shortly after Patrick Clancy went inside the home, did you receive a call on your radio?
+Stephen Hall ([12:06]):
+Yes.
+Attorney Sprague ([12:07]):
+And what did you hear on your radio?
+Stephen Hall ([12:11]):
+Dispatch said that he couldn't wake them up.
+Attorney Sprague ([12:15]):
+And did you know what they were talking about when you initially heard that?
+Stephen Hall ([12:20]):
+Not really, no.
+Attorney Sprague ([12:22]):
+Did something then catch your attention?
+Stephen Hall ([12:24]):
+Yeah, I heard a loud scream from inside.
+Attorney Sprague ([12:29]):
+And could you tell where it was coming from?
+Stephen Hall ([12:31]):
+Just inside the house.
+Attorney Sprague ([12:34]):
+And the screaming, was it words or just sound?
+Stephen Hall ([12:37]):
+It was just a sound.
+Attorney Sprague ([12:39]):
+When you heard that screaming, what did you do?
+Stephen Hall ([12:42]):
+Myself and Officer Josephine ran towards the slider and entered into the house.
+Attorney Sprague ([12:47]):
+And when you entered into the house, do you remember what room you entered into?
+Stephen Hall ([12:51]):
+Into a kitchen.
+Attorney Sprague ([12:53]):
+And when you entered into the kitchen, could you still hear that screaming?
+Stephen Hall ([12:57]):
+No. We could hear he was talking, but there was screaming was done.
+Attorney Sprague ([13:02]):
+When you said he was talking, who was talking?
+Stephen Hall ([13:04]):
+Patrick Clancy.
+Attorney Sprague ([13:06]):
+So you could hear Patrick Clancy talking at that time?
+Stephen Hall ([13:08]):
+Yes.
+Attorney Sprague ([13:09]):
+And could you tell where he was?
+Stephen Hall ([13:11]):
+Yes, he was in the basement.
+Attorney Sprague ([13:13]):
+And did you head to the basement stairs?
+Stephen Hall ([13:16]):
+Yes.
+Attorney Sprague ([13:20]):
+Showing you what's been marked as Exhibit 41. Are these the stairs that you went to?
+Stephen Hall ([13:26]):
+Yes.
+Attorney Sprague ([13:36]):
+Did you go to the bottom of the stairs?
+Stephen Hall ([13:37]):
+I did.
+Attorney Sprague ([13:38]):
+Once you got to the bottom of the stairs, is it accurate that you either have to go right or left?
+Stephen Hall ([13:42]):
+Correct.
+Attorney Sprague ([13:43]):
+Which direction did you go?
+Stephen Hall ([13:45]):
+We heard Patrick Clancy talking from the right, so we went in that direction.
+Attorney Sprague ([13:51]):
+Could you hear what he was saying?
+Stephen Hall ([13:55]):
+Oh, God. Do you mind if I...
+Attorney Sprague ([14:04]):
+You don't recall?
+Stephen Hall ([14:04]):
+Yes.
+Kevin Reddington ([14:06]):
+I have no objection, Your Honor. You need to read further or let him look at this report.
+Attorney Sprague ([14:12]):
+Do you recall him saying, "I can't wake them up. I can't get them Up?"
+Stephen Hall ([14:16]):
+Yes.
+Attorney Sprague ([14:20]):
+And do you remember his demeanor as he was saying that?
+Stephen Hall ([14:25]):
+He seemed very upset.
+Attorney Sprague ([14:26]):
+What did you do in response to that?
+Stephen Hall ([14:29]):
+He came from a back room, so we ran into that back room.
+Attorney Sprague ([14:39]):
+Just going back to when you came down the stairs and turned to the right, do you recall what type of room that was when you went to the right?
+Stephen Hall ([14:49]):
+It looks like a workout room, like a workout area.
+Attorney Sprague ([14:52]):
+I'm Going to show you a few pictures here. If you could just look at them and tell me if you recognize what they depict?
+Stephen Hall ([14:59]):
+Yes.
+Attorney Sprague ([15:13]):
+And do you recognize these to be photographs of that workout room that you entered into when you went to the right?
+Stephen Hall ([15:19]):
+Yes.
+Attorney Sprague ([15:20]):
+We could have these marked as the next few exhibits.
+Kevin Reddington ([15:24]):
+No objection.
+Judge William Sullivan ([15:24]):
+Those may be admitted.
+Attorney Sprague ([15:26]):
+Four exhibits.
+Clerk ([15:26]):
+Exhibits 89 to 92.
+Attorney Sprague ([15:49]):
+Sir, showing you exhibit 89. Is that the view when you first come down the stairs and turn to the right?
+Stephen Hall ([15:57]):
+Yes.
+Attorney Sprague ([15:59]):
+And then showing you exhibit 90. Are those exercise bands there tied to the closet door?
+Stephen Hall ([16:05]):
+Yes.
+Attorney Sprague ([16:08]):
+91, just a closeup of that, correct?
+Stephen Hall ([16:11]):
+Yes.
+Attorney Sprague ([16:11]):
+Then 92, what are we seeing in this photograph, sir?
+Stephen Hall ([16:17]):
+That was the back room that he seemed to be coming from.
+Attorney Sprague ([16:20]):
+That Patrick was coming from?
+Stephen Hall ([16:21]):
+Yes.
+Attorney Sprague ([16:24]):
+And you also looked at two photographs from that room. Are those fair and accurate depictions of how the room looked that day?
+Stephen Hall ([16:28]):
+Yes.
+Attorney Sprague ([16:29]):
+If we could have these marked as the next two exhibits, please.
+Kevin Reddington ([16:31]):
+No objection.
+Judge William Sullivan ([16:32]):
+All right. They may be admitted.
+Clerk ([16:33]):
+Exhibit 93 and 94.
+Attorney Sprague ([16:33]):
+Sir, did you head to that back room?
+Stephen Hall ([16:45]):
+I did.
+Attorney Sprague ([16:47]):
+And what did you see when you got to that back room?
+Stephen Hall ([16:50]):
+Just past the door on the left side, there was a body of a young child.
+Attorney Sprague ([16:54]):
+And do you remember what position the child was in?
+Stephen Hall ([16:58]):
+He had his feet towards a door and his head towards the wall.
+Attorney Sprague ([17:02]):
+And was he on his back or his stomach?
+Stephen Hall ([17:05]):
+He was on his back.
+Attorney Sprague ([17:07]):
+And do you recall what he was wearing?
+Stephen Hall ([17:10]):
+He was shirtless. I believe he was just in a diaper or underwear of some sort.
+Attorney Sprague ([17:15]):
+And showing you-
+Stephen Hall ([17:16]):
+Thank you.
+Attorney Sprague ([17:20]):
+... Exhibit 93. If you wouldn't mind just pointing out where you saw his body.
+Stephen Hall ([17:26]):
+Just of this area.
+Attorney Sprague ([17:28]):
+Record reflect he's pointed to the area of the yellow exercise band.
+Judge William Sullivan ([17:31]):
+It may reflect that.
+Attorney Sprague ([17:34]):
+And sir, that yellow exercise band, did you see that in that position when you saw the body of the child on the floor?
+Stephen Hall ([17:43]):
+Yes.
+Attorney Sprague ([17:43]):
+Exhibit number four was at that position. Sir, did you later learn that child's name was Dawson Clancy?
+Stephen Hall ([18:01]):
+I did.
+Attorney Sprague ([18:03]):
+And can you describe his physical appearance when you saw him?
+Stephen Hall ([18:09]):
+He was discolored, like a bluish purple.
+Attorney Sprague ([18:13]):
+Do you remember what his face and neck looked like?
+Stephen Hall ([18:15]):
+No.
+Attorney Sprague ([18:21]):
+What happened next?
+Stephen Hall ([18:24]):
+I called for paramedics to come to the basement. I also called for a supervisor and Officer Josephine picked up the child and we ran him outside through the front door to the ambulance.
+Attorney Sprague ([18:37]):
+And did you do anything after that after giving Dawson to EMTs?
+Stephen Hall ([18:45]):
+We ran back down into the basement to check to see if we could find other children.
+Attorney Sprague ([18:50]):
+And what made you think there were other children to find?
+Stephen Hall ([18:53]):
+When Patrick Clancy said, "Well, I can't wake them up," instead of just the singular.
+Attorney Sprague ([18:59]):
+And so when you went back inside, did you go back down the basement stairs?
+Stephen Hall ([19:04]):
+Correct.
+Attorney Sprague ([19:05]):
+And this time, did you go to the left?
+Stephen Hall ([19:07]):
+Yes.
+Attorney Sprague ([19:14]):
+Sir, showing you a series of photographs. If you could just tell me if they clearly and accurately reflect how the left side of the basement looked on January 24th, 2023 when you went in there.
+Kevin Reddington ([19:27]):
+Your Honor, just for the record, they don't need to lay a foundation. I agree to the photographs. No objection to any of them so we don't have to go through all the foundations.
+Judge William Sullivan ([19:34]):
+All right. Thank you. Right.
+Attorney Sprague ([19:34]):
+Do you recognize those photos?
+Stephen Hall ([19:34]):
+Yes.
+Attorney Sprague ([19:34]):
+Would have these marked as the next exhibits, please?
+Jurors ([19:34]):
+Exhibits 95 to 102, so marked.
+Judge William Sullivan ([19:34]):
+Thank you.
+Attorney Sprague ([20:36]):
+Sure. Sir, showing you what's been marked as Exhibit 95. Is this what you saw when you went down the stairs and went to the left, that first view?
+Stephen Hall ([20:44]):
+Yes.
+Attorney Sprague ([20:46]):
+And then showing you exhibit 96, is that a further view as you go into the room?
+Stephen Hall ([20:52]):
+Yes.
+Attorney Sprague ([20:56]):
+Now, when you went into that room, what did you see?
+Stephen Hall ([21:00]):
+There were two children on the floor, motionless, and EMTs and paramedics were working on them.
+Attorney Sprague ([21:10]):
+And did you later learn that those children were Cora Clancy and Callan Clancy?
+Stephen Hall ([21:14]):
+Yes.
+Attorney Sprague ([21:20]):
+Did you do anything to assist the medics at that time?
+Stephen Hall ([21:24]):
+Excuse me. I asked if they needed any equipment.
+Attorney Sprague ([21:28]):
+And did they ask you to get some equipment?
+Stephen Hall ([21:30]):
+They asked me to grab a heart monitor.
+Attorney Sprague ([21:33]):
+And did you do that?
+Stephen Hall ([21:34]):
+I went and found the fire captain to ask where I could grab one. And he was pretty upset. So I ended up going back downstairs into the basement.
+Attorney Sprague ([21:49]):
+At some point in time. Well, actually, if I could show you Exhibit 96 again and just ask if you could just point to us where you saw each child.
+Stephen Hall ([22:11]):
+Okay. Here. And another was [inaudible 00:22:13] in that area.
+Attorney Sprague ([22:14]):
+So for the record, the first area you pointed to was in between the blood stain and the black exercise band. Is that correct?
+Stephen Hall ([22:23]):
+Correct.
+Attorney Sprague ([22:24]):
+And then the second area was over in front of that small nightstand or some type of shelving unit?
+Stephen Hall ([22:33]):
+Yes.
+Attorney Sprague ([22:56]):
+At some point in time, did you go back outside?
+Stephen Hall ([22:59]):
+Yes. They stated they need an officer with Lindsay Clancy.
+Attorney Sprague ([23:05]):
+And I'm going to show you a photo here outside near that window well that's towards the right of the house. Is that where Lindsay Clancy was where that medical debris is?
+Stephen Hall ([23:21]):
+Yes.
+Attorney Sprague ([23:23]):
+And just showing you another photograph. Is that just showing further to the right in a broader area of that same scene?
+Stephen Hall ([23:31]):
+Yes.
+Attorney Sprague ([23:31]):
+If I could have the closeup marked as the next exhibit and the broader photo as the following-
+Judge William Sullivan ([23:39]):
+All right. They may be admitted.
+Clerk ([23:43]):
+Exhibits 103 and 104.
+Attorney Sprague ([23:50]):
+While you were out there with the defendant, were medical staff, paramedics treating her?
+Stephen Hall ([23:57]):
+Yes.
+Attorney Sprague ([23:58]):
+And did you happen to look up?
+Stephen Hall ([24:00]):
+Yes, I did.
+Attorney Sprague ([24:01]):
+What did you see when you looked up?
+Stephen Hall ([24:03]):
+There was an open window with blood marks around the window.
+Attorney Sprague ([24:08]):
+And did you also see blood marks on the shingles below that window?
+Stephen Hall ([24:12]):
+I did.
+Attorney Sprague ([24:16]):
+Showing you a photograph here. So up at the top, is this the open window you're referring to?
+Stephen Hall ([24:22]):
+Yes.
+Attorney Sprague ([24:26]):
+Zooming in on the shingles here to the left and right, just below that window, are those the blood marks you're referring to?
+Stephen Hall ([24:34]):
+Yes.
+Attorney Sprague ([24:40]):
+And here in this photograph you had mentioned marks, blood marks on the upper window. Is that what you're referring to?
+Stephen Hall ([24:45]):
+Yes.
+Attorney Sprague ([24:54]):
+And then here at the top of the lower window, these marks here, are those the other blood marks that you saw?
+Stephen Hall ([25:04]):
+Yes.
+Attorney Sprague ([25:10]):
+If we could have these photos marked as the next exhibits.
+Judge William Sullivan ([25:17]):
+All right. They may be admitted.
+Attorney Sprague ([25:39]):
+While you were out there in the backyard, did you see a ripped or... Oh, I'm sorry.
+Clerk ([25:46]):
+Exhibit 105 through 108.
+Attorney Sprague ([25:50]):
+While you were outside, did you see any ripped or torn screens on the ground?
+Stephen Hall ([25:56]):
+No.
+Attorney Sprague ([25:56]):
+What did you do next?
+Stephen Hall ([26:04]):
+I just went over to the paramedic, asked what I can help him with. He said she was good, but she kept taking her face mask off for oxygen. And so I just kept replacing it back onto her face.
+Attorney Sprague ([26:19]):
+And when you say she, are you referring to Lindsay Clancy?
+Stephen Hall ([26:21]):
+Yes.
+Attorney Sprague ([26:22]):
+And did you then help them get the stretcher to the ambulance?
+Stephen Hall ([26:26]):
+Yes.
+Attorney Sprague ([26:30]):
+I have nothing further.
+Judge William Sullivan ([26:35]):
+All right. Reddington.
+Kevin Reddington ([26:49]):
+Thank you for your incredible service.
+Stephen Hall ([26:52]):
+Thanks.
+Judge William Sullivan ([26:57]):
+All right, sir, you may step down. Thank you.
+Stephen Hall ([26:58]):
+Thank you.
+Kevin Reddington ([26:58]):
+Thank you, sir.
+Judge William Sullivan ([26:58]):
+Attorney Sprague
+Attorney Sprague ([26:58]):
+Commonwealth calls Officer Brian Josephine.
+Speaker 1 ([26:58]):
+Good morning. Stop right here. Right here next to the clerk, please.
+Clerk ([26:58]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court [inaudible 00:28:18] the truth, the whole truth, and nothing but the truth, so help you God?
+Brian Josephine ([26:58]):
+I do.
+Clerk ([26:58]):
+Thank you, sir. You may be seated.
+Speaker 1 ([26:58]):
+Watch your step please, sir?
+Brian Josephine ([28:32]):
+Hi. Good morning, sir. All right, counsel.
+Attorney Sprague ([28:33]):
+Thank you. Good morning. Could you please state and spell your name for the record?
+Brian Josephine ([28:38]):
+Brian, B-R-I-A-N, Josephine, J-O-S-E-P-H-I-N-E. And
+Attorney Sprague ([28:45]):
+What's your date of birth, sir?
+Brian Josephine ([28:46]):
+June 13th, 1990.
+Attorney Sprague ([28:48]):
+And where do you work?
+Brian Josephine ([28:50]):
+I work at the Duxbury Police Department.
+Attorney Sprague ([28:51]):
+How long have you been a police officer?
+Brian Josephine ([28:54]):
+I started there in April of 2020.
+Attorney Sprague ([28:58]):
+And did you work for the Plymouth Police before that?
+Brian Josephine ([29:00]):
+Yes, I did.
+Attorney Sprague ([29:01]):
+And how long did you do that?
+Brian Josephine ([29:03]):
+Almost five years.
+Attorney Sprague ([29:07]):
+What is your current role?
+Brian Josephine ([29:09]):
+I am patrol officer.
+Attorney Sprague ([29:11]):
+Back in January of 2023, what was your role with the Duxbury Police Department?
+Brian Josephine ([29:16]):
+I was a school resource officer for Alden and Chandler. I worked with kids kindergarten through fifth grade.
+Attorney Sprague ([29:23]):
+Directing your attention specifically to January 24th, 2023, were you working an overtime shift that day?
+Brian Josephine ([29:30]):
+Yes, I had picked up an overtime shift.
+Attorney Sprague ([29:33]):
+And what shift was that?
+Brian Josephine ([29:35]):
+It was four to midnight, but I was scheduled to work till 8:00 PM.
+Attorney Sprague ([29:39]):
+8:00 PM?
+Brian Josephine ([29:41]):
+Yes, ma'am.
+Attorney Sprague ([29:41]):
+Okay. So you were scheduled to be there from 4:00 PM to 8:0 PM. Is that correct?
+Brian Josephine ([29:44]):
+That is correct.
+Attorney Sprague ([29:46]):
+And you were in a cruiser, in a marked cruiser and a uniform?
+Brian Josephine ([29:51]):
+Yes. I was fully dressed in Duxbury Police uniform. I was in a marked cruiser, Duxbury Police 172.
+Attorney Sprague ([29:59]):
+And did you receive a dispatch at approximately 6:11 PM to go to 47 Summer Street in Duxbury?
+Brian Josephine ([30:04]):
+Yes, we did.
+Attorney Sprague ([30:06]):
+And when you say we, were you with a partner or were you alone?
+Brian Josephine ([30:09]):
+No, I was by myself. We ride single in a cruiser there.
+Attorney Sprague ([30:12]):
+Okay. So when you say we, do you mean that it was dispatched to all officers on patrol?
+Brian Josephine ([30:16]):
+So usually with critical incidents calls, they put it over to dispatch and they'll say, Duxbury Police cars, start making your way to a certain address. That way everyone can get there as quickly as possible.
+Attorney Sprague ([30:30]):
+Okay. And so then you knew at that point to go to 47 Summer Street?
+Brian Josephine ([30:31]):
+Yes, ma'am.
+Attorney Sprague ([30:32]):
+And approximately how long did it take you to get there?
+Brian Josephine ([30:34]):
+I would say anywhere from three to four minutes.
+Attorney Sprague ([30:37]):
+So you were relatively close by when you received the dispatch?
+Brian Josephine ([30:39]):
+Yes, I was.
+Attorney Sprague ([30:41]):
+Okay. And when you arrived at 47 Summer Street, what did you observe?
+Brian Josephine ([30:47]):
+Dispatch was giving me description of the house. It took probably 15 seconds for me to identify the house. Parked in the street. I saw the number of the house and I made my way. I believe it was a mudroom that I went to.
+Attorney Sprague ([31:01]):
+Showing you Exhibit 33. When you say the mudroom that you went to, did you actually go inside the house or did you go to the door to the mudroom?
+Brian Josephine ([31:16]):
+I went to the door to the mudroom to check if that was unlocked so I could make my way to the back of the house.
+Attorney Sprague ([31:22]):
+And is that door depicted in this photograph?
+Brian Josephine ([31:24]):
+Yes, it is.
+Attorney Sprague ([31:25]):
+And is it the door to the left of the garage?
+Brian Josephine ([31:27]):
+Yes, it is.
+Attorney Sprague ([31:31]):
+And was the door locked or unlocked?
+Brian Josephine ([31:32]):
+It was locked at that time.
+Attorney Sprague ([31:33]):
+So what did you do next?
+Brian Josephine ([31:35]):
+I radioed dispatch just for confirmation of where that party we were trying to get to was located. They told me it was around back of the house, so I tried to make my way that way.
+Attorney Sprague ([31:45]):
+And when you went to the back of the house, how did you get there?
+Brian Josephine ([31:49]):
+Well, referring back to the picture where the car was parked, I went to the right side. And I went around the garage. There was a fence and I went over the fence, I believe.
+Attorney Sprague ([31:58]):
+So showing you Exhibit 33, again, you went by these cars and around the house to the right?
+Brian Josephine ([32:04]):
+Yes, that's correct.
+Attorney Sprague ([32:05]):
+And showing you Exhibit 37, does that mean that you would've been coming around the house over here by the garage on the left and in the porch, the deck?
+Brian Josephine ([32:24]):
+Yes, that's correct.
+Attorney Sprague ([32:26]):
+And when you came around there, what did you see?
+Brian Josephine ([32:31]):
+I made my way. I observed two parties, one lying in the ground and one standing over it. And I started to make my way towards the other end of the house, which is as towards this fence, as you guys can see in reference to that photo.
+Attorney Sprague ([32:45]):
+And so when you say the other end of the house, are you talking about this area here, the father's furthest right windows?
+Brian Josephine ([32:53]):
+Yes, that is correct.
+Attorney Sprague ([32:55]):
+And the person that was standing, did you later learn that was Patrick Clancy?
+Brian Josephine ([33:00]):
+Yes, I did.
+Attorney Sprague ([33:01]):
+And the person on the ground, did you later learn that was Lindsay Clancy?
+Brian Josephine ([33:04]):
+Yes, I did.
+Attorney Sprague ([33:06]):
+And at some point in time, was Officer Hall also back there with you?
+Brian Josephine ([33:10]):
+Yes. He came from this side over here, the opposite direction in which I came.
+Attorney Sprague ([33:16]):
+So facing the house, he would've come around the left side of the house if you're facing the house?
+Brian Josephine ([33:20]):
+Yes. He parked on the street and came from this side, the opposite of where I came from.
+Attorney Sprague ([33:26]):
+Okay. And do you recall what Patrick Clancy was doing when you first saw him?
+Brian Josephine ([33:35]):
+‍
+He was standing over Lindsay at that point. It appeared that he was trying to communicate with her. I observed him with a cell phone. It was kind of down by his side, so I don't know if they were talking or what, but it was probably a split second, and then he turned to my location, saw me because I was illuminating the yard with my flashlight, and then that's when me and him crossed paths.
+Attorney Sprague ([34:01]):
+Okay. And so you said you saw him with his cell phone by his side. Was it in his hand by his side?
+Brian Josephine ([34:05]):
+Yes, I believe it was in his left hand.
+Attorney Sprague ([34:08]):
+Okay. And you say you crossed paths with him. Approximately where did you cross paths with him?
+Brian Josephine ([34:12]):
+It was probably right by the bulkhead, I would say.
+Attorney Sprague ([34:17]):
+And so in the photograph to the right of the deck is the bulkhead. Is that correct?
+Brian Josephine ([34:23]):
+That is correct.
+Attorney Sprague ([34:24]):
+And where was he headed?
+Brian Josephine ([34:26]):
+He was heading, I believe, up towards the deck. Yeah. Obviously I didn't know it at that time, but he was just walking past me pretty fast in an abrupt manner.
+Attorney Sprague ([34:38]):
+And did he say anything to you as he passed?
+Brian Josephine ([34:40]):
+No, he did not.
+Attorney Sprague ([34:42]):
+And after you crossed paths with Patrick, where did you go?
+Brian Josephine ([34:46]):
+I went to the female party.
+Attorney Sprague ([34:48]):
+And did you speak to her?
+Brian Josephine ([34:50]):
+I attempted to.
+Attorney Sprague ([34:51]):
+And what did you say?
+Brian Josephine ([34:54]):
+I just was trying to get basic information where she was hurt, where she needed attention, anything I could do to kind of help her until fire arrived.
+Attorney Sprague ([35:03]):
+And did...
+Brian Josephine ([35:00]):
+... and to kind of help her until fire arrived.
+Shanan Buckingham ([35:03]):
+And did she respond to your questions?
+Brian Josephine ([35:06]):
+She mumbled and it wasn't a definitive answer.
+Shanan Buckingham ([35:10]):
+Did you observe any injuries?
+Brian Josephine ([35:12]):
+Yes. She was laying on the ground. There was cuts to her right wrist, I believe, and to the right side of her neck.
+Shanan Buckingham ([35:20]):
+And were those cuts actively bleeding at that time?
+Brian Josephine ([35:24]):
+They were bleeding, but not profusely.
+Shanan Buckingham ([35:28]):
+Are you trained in first aid?
+Brian Josephine ([35:29]):
+Yes.
+Shanan Buckingham ([35:30]):
+Did you feel the need to put pressure on those wounds immediately?
+Brian Josephine ([35:33]):
+No. We also carry medical equipment such as tourniquet, gauze, stuff like that. And I believe due to the circumstances that I didn't need to utilize those tools.
+Shanan Buckingham ([35:44]):
+And the tourniquet that you carry, is that in case someone has some type of cut where an artery has been damaged or cut?
+Brian Josephine ([35:54]):
+Yes, it is.
+Shanan Buckingham ([35:56]):
+Okay. And you're trained to recognize when it's something serious, like an artery spraying blood everywhere, versus a cut that doesn't need a tourniquet?
+Brian Josephine ([36:04]):
+Yes, we are.
+Shanan Buckingham ([36:05]):
+Okay. And you didn't see the need for a tourniquet?
+Brian Josephine ([36:06]):
+I did not, no.
+Shanan Buckingham ([36:15]):
+And based on your training in first aid and as a police officer, as a first responder, did those wounds appear life-threatening?
+Brian Josephine ([36:22]):
+No, they did not.
+Shanan Buckingham ([36:24]):
+Did other emergency personnel from the fire department begin to arrive?
+Brian Josephine ([36:28]):
+Yes. So I would say I tried to talk to Ms. Clancy for probably 30 seconds to a minute. And at that point, coming from that opposite side of the house, I observed Duxbury Fire personnel show up. And our protocol is to kind of turn the medical over to them because they're more highly trained than we are.
+Shanan Buckingham ([36:49]):
+Okay. And at some point in time, do you hear something?
+Brian Josephine ([36:52]):
+Yes.
+Shanan Buckingham ([36:52]):
+What do you hear?
+Brian Josephine ([36:54]):
+Myself and Officer Hall were standing by that window and we just started hearing loud screams.
+Shanan Buckingham ([37:02]):
+And what did you do when you heard those loud screams?
+Brian Josephine ([37:07]):
+We immediately were trying to figure out where they were coming from. I'm not sure if dispatch or something came over the air and said something about the basement, but we both just started making our way back towards the deck part of the house.
+Shanan Buckingham ([37:20]):
+Did you go in through the sliding glass doors?
+Brian Josephine ([37:22]):
+Yes. We went up the deck and through the sliding glass doors into the kitchen.
+Shanan Buckingham ([37:26]):
+And did you then head to the basement?
+Brian Josephine ([37:28]):
+Yes.
+Shanan Buckingham ([37:29]):
+Okay. And could you hear any sounds coming from the basement as you entered the kitchen?
+Brian Josephine ([37:35]):
+Yes, it was the exact screaming that I heard from the window.
+Shanan Buckingham ([37:38]):
+Okay. And did you go down the stairs to the basement?
+Brian Josephine ([37:44]):
+Yes, we did.
+Shanan Buckingham ([37:45]):
+And did you see anything after you went down the stairs?
+Brian Josephine ([37:48]):
+So we went down the stairs and there was a picture at the bottom of the stairs, I believe, of Lindsay and Patrick. And the basement splits off into two, a right and a left area. And the screams were coming from the right area. So that's where we directed our attention to first.
+Shanan Buckingham ([38:04]):
+Okay. And did you see Patrick?
+Brian Josephine ([38:07]):
+Yes. That right side opens up and it's like two rooms, I believe. So we went into the first room, which was kind of dark, and there was some cluttered stuff around, and Patrick was in that back room at the time.
+Shanan Buckingham ([38:35]):
+Sir, showing you what's been marked as Exhibit 92, is that the doorway into that bathroom?
+Brian Josephine ([38:42]):
+Yes, it is.
+Shanan Buckingham ([38:43]):
+And then Exhibit 93, is that the inside of that bathroom?
+Brian Josephine ([38:47]):
+Yes, it is.
+Shanan Buckingham ([38:51]):
+And do you recall what, if anything, Patrick was saying as you encountered him?
+Brian Josephine ([38:56]):
+Upon his observation of us, myself and Officer Hall, he proceeded to head in our direction, leaving that room. And at that point he looked up and he screamed, "She killed the fucking kids."
+Shanan Buckingham ([39:10]):
+And after he said that, where did you go?
+Brian Josephine ([39:15]):
+Once he cleared himself from the doorframe, we were able to look inside the room where we observed what appeared to be a child laying motionless on the floor.
+Shanan Buckingham ([39:24]):
+And did you later learn his name was Dawson Clancy?
+Brian Josephine ([39:27]):
+Yes, I did.
+Shanan Buckingham ([39:28]):
+And how was he positioned?
+Brian Josephine ([39:30]):
+He was laying on his back kind of close to the gym bag for reference of that.
+Shanan Buckingham ([39:38]):
+Showing you Exhibit 93 again, you referenced a gym bag. Is that the bag to the left of the child's toy?
+Brian Josephine ([39:46]):
+Yes.
+Shanan Buckingham ([39:50]):
+And so you're saying that he was in that area when you first saw him?
+Brian Josephine ([39:54]):
+Yes, he was.
+Shanan Buckingham ([39:55]):
+And do you recall whether he was on his back or his stomach or something else?
+Brian Josephine ([39:58]):
+He was on his back.
+Shanan Buckingham ([40:00]):
+And do you recall his physical appearance?
+Brian Josephine ([40:04]):
+Like I said, he was laying on his back. His head was tilted to the right-hand side. Looked at him kind of in the face area once we got closer and his face was white, gray. Lips were blue. Eyes were bloodshot. Looked like blood vessels were popped in his eyes.
+Shanan Buckingham ([40:25]):
+Did you notice any injuries to his neck?
+Brian Josephine ([40:28]):
+Seeing that, my first instinct was to kind of grab his head and tilt it to the side, see if I can get a pulse. But, I mean, based on my training and experience from previous incidents, I knew it wasn't going to be good. So I moved the head. That's where I observed some red marks on that right-hand side.
+Shanan Buckingham ([40:45]):
+Of the neck?
+Brian Josephine ([40:45]):
+Yes.
+Shanan Buckingham ([40:46]):
+And in that Exhibit 94, there was a yellow exercise band, correct?
+Brian Josephine ([40:46]):
+Yes.
+Shanan Buckingham ([40:51]):
+And I believe in prior testimony, you may have called it a blue exercise band. Is that correct?
+Brian Josephine ([41:01]):
+Yes.
+Shanan Buckingham ([41:02]):
+But it's clearly yellow in the photo, right?
+Brian Josephine ([41:04]):
+Yes, it's clearly yellow. I mean, there was-
+Mr. Reddington ([41:07]):
+[inaudible 00:41:07] color of the exercise band.
+Judge ([41:09]):
+[inaudible 00:41:09]. All right, go ahead.
+Shanan Buckingham ([41:10]):
+So what was your focus at the time?
+Brian Josephine ([41:12]):
+The child.
+Shanan Buckingham ([41:13]):
+And once you saw him there with these injuries, what did you do?
+Brian Josephine ([41:22]):
+Based on my observations, I knew there wasn't really much I could do. So I picked the child up, went chest to chest. And as I did that, it was kind of like a mucus or a foam that leaked out of his mouth onto me. I grabbed him, went back towards the way. We came down into the basement and I headed up to the stairs where Sergeant Homestead was coming down the stairs and I started yelling to him to get out of the way. Went back up the stairs and then into the kitchen directly adjacent to the stairs is the front foyer hallway, and I went out that, out the main door into the driveway.
+Shanan Buckingham ([42:04]):
+And was there an ambulance in the driveway at that time?
+Brian Josephine ([42:07]):
+Yes. The ambulance was backing up and had pretty much just parked and one of the fire was walking around to the stretcher out back. So I rushed over with Dawson and I put him on the stretcher and that's when Sergeant Homestead and fire personnel started working further on him.
+Shanan Buckingham ([42:26]):
+What did you do next?
+Brian Josephine ([42:28]):
+I went back into the house.
+Shanan Buckingham ([42:29]):
+And why did you go back into the house?
+Brian Josephine ([42:31]):
+I remember hearing something about kids and multiple and I just went back.
+Shanan Buckingham ([42:37]):
+And when you went back at the house, did you go to the basement?
+Brian Josephine ([42:39]):
+Yes, I went back in that front door, back down to the basement, and this time I went to the left-hand side.
+Shanan Buckingham ([42:45]):
+And when you went to the left-hand side of the basement, what did you see?
+Brian Josephine ([42:49]):
+Pretty much directly in my sight was an older female laying on the ground and then in the corner there was a younger baby.
+Shanan Buckingham ([43:00]):
+And when you say an older female, you're referring to that she was older than Dawson?
+Brian Josephine ([43:04]):
+That's correct.
+Shanan Buckingham ([43:05]):
+And did you later learn her name was Cora Clancy?
+Brian Josephine ([43:08]):
+I did.
+Shanan Buckingham ([43:09]):
+And did you assist in treating her?
+Brian Josephine ([43:12]):
+Yes, I did.
+Shanan Buckingham ([43:13]):
+What did you do?
+Brian Josephine ([43:15]):
+So when I got down to the basement, two fire personnel were already on scene. One was working on the baby and one was working on Cora. Communicated with them. We worked together and I took over doing chest compressions of Cora.
+Shanan Buckingham ([43:33]):
+And were you able to see any injuries on Cora at that time?
+Brian Josephine ([43:37]):
+Yes. She had kind of the same injuries that I explained with Dawson. The pale tint, bluish lips, bloodshot eyes, blood vessels popped. But this time she also had dried blood around her mouth.
+Shanan Buckingham ([43:55]):
+And did you also see an area of blood near her on the floor?
+Brian Josephine ([44:00]):
+Yes, there was a relatively large area of blood on the floor. Actually, when doing CPR on her [inaudible 00:44:08] and that blood seeped through my pants, so I ended up moving her a little off to the side so I could position myself better.
+Shanan Buckingham ([44:18]):
+Just showing you what's been marked as Exhibit 97. This red-brown stain on the rug. Is that what you're referring to?
+Brian Josephine ([44:25]):
+Yes.
+Shanan Buckingham ([44:35]):
+Okay. While you were doing chest compressions on Cora, what was the firefighter doing?
+Brian Josephine ([44:40]):
+The one that had previously been attending to Cora then went to the child that was in the corner.
+Shanan Buckingham ([44:48]):
+And, eventually, was Cora put on a stretcher and brought out?
+Brian Josephine ([44:57]):
+Yes, eventually. I think the baby was brought out first because I think they mentioned at some point they might've found a faint pulse or something like that, so they got him out first and then we were able to get Cora out.
+Shanan Buckingham ([45:12]):
+So that entire time while you're in the basement, are you still giving chest compressions to Cora?
+Brian Josephine ([45:17]):
+Yes. Yeah. I mean, it felt like forever to the point where I think I radioed for assistance for another officer to come down.
+Shanan Buckingham ([45:27]):
+And did others come down to assist?
+Brian Josephine ([45:29]):
+Yes. Officer Cahill came down to further assist where I continued with chest compressions and he used a bag valve mask to give rescue breaths.
+Shanan Buckingham ([45:41]):
+And a bag valve mask, is that something that goes over someone's face, a mask that's attached to a bag and you squeeze it to give air?
+Brian Josephine ([45:48]):
+Yes, it's an alternative breathing apparatus.
+Shanan Buckingham ([45:53]):
+Okay. At some point, do you go back upstairs to the first floor?
+Brian Josephine ([45:57]):
+Yes.
+Shanan Buckingham ([45:59]):
+And do you encounter Patrick Clancy when you go upstairs?
+Brian Josephine ([46:03]):
+Yes. So when they removed Cora, myself and Officer Cahill went back upstairs where I encountered Mr. Clancy in the kitchen.
+Shanan Buckingham ([46:13]):
+And what was his demeanor in the kitchen?
+Brian Josephine ([46:17]):
+He was still frantic, kind of in shock, still screaming and losing himself. And I think at that point, I don't know, one of us requested that we get an ambulance for him as well.
+Shanan Buckingham ([46:31]):
+Thank you, sir. Nothing further.
+Judge ([46:32]):
+Attorney Reddington?
+Mr. Reddington ([46:36]):
+I'm sorry. I have no questions.
+Judge ([46:38]):
+All right. Thank you, sir. You may step down.
+Brian Josephine ([46:39]):
+Thank you.
+Judge ([46:39]):
+Thank you.
+Shanan Buckingham ([46:39]):
+Commonwealth calls PJ Hussey.
+Mr. Reddington ([46:49]):
+Your Honor, at this point, I'm objecting. Renewing my objection that I filed on the repetitious nature-
+Judge ([46:54]):
+All right, if we could [inaudible 00:46:56] sidebar.
+Clerk ([47:07]):
+Back to the trial of Commonwealth v. Lindsay Clancy. All parties are present, including the defendant and the 18 jurors.
+Judge ([47:12]):
+All right. Commonwealth, ready to call your next witness?
+Shanan Buckingham ([47:14]):
+Yes. Commonwealth calls PJ Hussey.
+PJ Hussey ([47:34]):
+Thank you.
+Speaker 2 ([47:34]):
+Good morning, sir.
+PJ Hussey ([47:34]):
+Good morning.
+Speaker 2 ([47:34]):
+Stop right here and raise your right hand for the clerk, please.
+Clerk ([47:35]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending between the Commonwealth [inaudible 00:47:37] shall be the truth, the whole truth, and nothing but the truth? Thank you, sir. You may have a seat.
+Speaker 2 ([47:45]):
+Watch your step, please.
+Judge ([47:50]):
+All right. Good morning, sir.
+PJ Hussey ([47:50]):
+Morning.
+Shanan Buckingham ([47:51]):
+If I may?
+Judge ([47:53]):
+Yes, please.
+Shanan Buckingham ([47:55]):
+Thank you. Good morning. Could you please state and spell your name for the record?
+PJ Hussey ([47:58]):
+PJ Hussey, H-U-S-S- E-Y.
+Shanan Buckingham ([48:00]):
+And your date of birth?
+PJ Hussey ([48:02]):
+5/5/1963.
+Shanan Buckingham ([48:04]):
+Where do you work?
+PJ Hussey ([48:05]):
+Duxbury Fire Department.
+Shanan Buckingham ([48:06]):
+And how long have you been a firefighter?
+PJ Hussey ([48:08]):
+32 years.
+Shanan Buckingham ([48:10]):
+Are you also a paramedic?
+PJ Hussey ([48:11]):
+Yes.
+Shanan Buckingham ([48:12]):
+What's the difference between an EMT and a paramedic?
+PJ Hussey ([48:15]):
+Paramedic has advanced lifesaving skills, intubation, and medicine we can use on the patients.
+Shanan Buckingham ([48:22]):
+And is there a certain type of training that you have to have as a paramedic?
+PJ Hussey ([48:26]):
+Yes, every two years.
+Shanan Buckingham ([48:28]):
+And to first qualify as a paramedic, what do you have to do?
+PJ Hussey ([48:32]):
+There's a paramedic class that you take upwards of two years.
+Shanan Buckingham ([48:37]):
+So you take that paramedic class. Is there a test you have to take at the end of-
+PJ Hussey ([48:40]):
+A state test, yep.
+Shanan Buckingham ([48:41]):
+And once you pass that state test and become a paramedic, you have to do continuing education. Is that correct?
+PJ Hussey ([48:47]):
+Yep.
+Shanan Buckingham ([48:48]):
+Okay. And did you take that initial training, pass that initial test, and then pass all subsequent training to be a paramedic?
+PJ Hussey ([48:54]):
+Yes.
+Shanan Buckingham ([48:56]):
+And how long have you been a paramedic?
+PJ Hussey ([48:57]):
+About 17 years.
+Shanan Buckingham ([49:00]):
+What is your current role with the Duxbury Fire Department?
+PJ Hussey ([49:04]):
+I'm a captain, which is considered a shift commander.
+Shanan Buckingham ([49:07]):
+And in January of 2023, were you in that same role?
+PJ Hussey ([49:11]):
+Yes.
+Shanan Buckingham ([49:12]):
+What does a shift commander do?
+PJ Hussey ([49:13]):
+Oversees the operations of the town as far as firefighting and medical services.
+Shanan Buckingham ([49:20]):
+How many fire departments, or stations rather, how many stations does Duxbury Fire Department have?
+PJ Hussey ([49:26]):
+Duxbury has two.
+Shanan Buckingham ([49:27]):
+And how far apart are they?
+PJ Hussey ([49:29]):
+About 10 minutes apart.
+Shanan Buckingham ([49:31]):
+And are they staffed differently from each other?
+PJ Hussey ([49:33]):
+Yes. Yeah.
+Shanan Buckingham ([49:33]):
+And how are they staffed?
+PJ Hussey ([49:35]):
+At Central Station, there's a captain and usually three. And the other station has two, just two firefighters.
+Shanan Buckingham ([49:40]):
+And for Duxbury, are all the firefighters that work for Duxbury Fire Department also paramedics?
+PJ Hussey ([49:46]):
+Not all. We have two EMTs.
+Shanan Buckingham ([49:48]):
+Okay.
+PJ Hussey ([49:49]):
+Yeah.
+Shanan Buckingham ([49:51]):
+Now-
+PJ Hussey ([49:52]):
+The rest are medics.
+Shanan Buckingham ([49:53]):
+I'm sorry?
+PJ Hussey ([49:53]):
+The rest are medics.
+Shanan Buckingham ([49:55]):
+And when you say medics, you're talking about paramedics?
+PJ Hussey ([49:56]):
+Yeah, sorry.
+Shanan Buckingham ([49:59]):
+No, it's okay. So directing your attention to January 24th, 2023, were you working that day?
+PJ Hussey ([50:03]):
+Yes.
+Shanan Buckingham ([50:04]):
+And what shift were you working?
+PJ Hussey ([50:06]):
+My own shift. My group shift one.
+Shanan Buckingham ([50:08]):
+And what is shift one?
+PJ Hussey ([50:10]):
+We have four shifts and I'm just group one, shift one.
+Shanan Buckingham ([50:13]):
+Is there a certain time that spans? Time of day?
+PJ Hussey ([50:17]):
+Nope. 24-hour shift. 8:00 o'clock in the morning to 8:00 o'clock the next morning.
+Shanan Buckingham ([50:21]):
+Okay. So you were working 8:00 o'clock in the morning on January 24th?
+PJ Hussey ([50:24]):
+Yes.
+Shanan Buckingham ([50:25]):
+And your shift would end 8:00 o'clock in the morning on January 25th?
+PJ Hussey ([50:28]):
+Correct.
+Shanan Buckingham ([50:30]):
+Okay. And were you working in that capacity as a shift commander on the 24th?
+PJ Hussey ([50:34]):
+Yes.
+Shanan Buckingham ([50:35]):
+Now, do you recall a call coming in shortly after 6:00 PM dispatching you to 47 Summer Street in Duxbury?
+PJ Hussey ([50:42]):
+Yes.
+Shanan Buckingham ([50:43]):
+And did you respond to that scene?
+PJ Hussey ([50:45]):
+We did.
+Shanan Buckingham ([50:45]):
+And how many vehicles and personnel responded?
+PJ Hussey ([50:50]):
+My car, the shift commander car, ambulance 1, and engine number 2.
+Shanan Buckingham ([50:54]):
+And what was the personnel in each of those vehicles? Not names necessarily, but how many people?
+PJ Hussey ([51:00]):
+Usually it's two in the ambulance, but because of the severity of the call when it first came in, we put three people in the ambulance, a driver plus two medics in the ambulance, and then two people, two firefighter medics in the engine from the other station.
+Shanan Buckingham ([51:13]):
+So that would be six people in total?
+PJ Hussey ([51:14]):
+Six total. Yeah.
+Shanan Buckingham ([51:16]):
+And did you have anyone from the second station respond initially?
+PJ Hussey ([51:22]):
+They all came. We all came at the same time. We all got dispatched at the same time.
+Shanan Buckingham ([51:25]):
+So would that have been six people total from both stations or six people from the central station?
+PJ Hussey ([51:30]):
+Six people total from both.
+Shanan Buckingham ([51:35]):
+And when you arrived on scene, what did you see upon arrival?
+PJ Hussey ([51:41]):
+There was a couple police cruisers that were there already, just had just beat us in. And then we had to go out back to where the patient was located.
+Shanan Buckingham ([51:54]):
+And when you refer to the patient that was out back, was that Lindsay Clancy?
+PJ Hussey ([51:55]):
+Yes.
+Shanan Buckingham ([51:56]):
+And did you head to the backyard?
+PJ Hussey ([51:58]):
+Yes.
+Shanan Buckingham ([51:58]):
+And did you see her on the ground?
+PJ Hussey ([52:00]):
+I did.
+Shanan Buckingham ([52:00]):
+And were you personally treating her or was it the other paramedics that were doing-
+PJ Hussey ([52:05]):
+The paramedics were treating her.
+Shanan Buckingham ([52:06]):
+Okay. And what were you doing?
+PJ Hussey ([52:07]):
+Just supervising the call, just to make sure things are handled appropriately as a shift commander.
+Shanan Buckingham ([52:24]):
+Showing you what's been marked as Exhibit 37. Do you see the area where you were in the backyard that night on the screen?
+PJ Hussey ([52:34]):
+Yes.
+Shanan Buckingham ([52:35]):
+If you wouldn't mind standing up and just pointing where you were.
+PJ Hussey ([52:40]):
+The patient was approximately right here. I was over here in this area here.
+Shanan Buckingham ([52:45]):
+And let the record reflect, you pointed to the patient being to the right of the metal window well, and you were standing to the left of the window well. Is that correct?
+PJ Hussey ([52:52]):
+Yeah, she was right below this window, so at some point she was right in this area.
+Shanan Buckingham ([52:55]):
+Okay.
+PJ Hussey ([52:55]):
+And I was just a little bit further over.
+Shanan Buckingham ([52:58]):
+And when you said, "right below this window," you're pointing to the far right second story window?
+PJ Hussey ([53:02]):
+Yep. Yep. Yep.
+Shanan Buckingham ([53:02]):
+You can have a seat.
+PJ Hussey ([53:02]):
+Thank you.
+Shanan Buckingham ([53:06]):
+At some point in time while you were standing there, did you hear a loud noise?
+PJ Hussey ([53:11]):
+I heard a scream.
+Shanan Buckingham ([53:12]):
+Scream? And when you heard the scream, could you tell where it was coming from?
+PJ Hussey ([53:17]):
+It sounded like it was coming from the basement.
+Shanan Buckingham ([53:19]):
+And did you look anywhere in particular?
+PJ Hussey ([53:21]):
+Yeah, I was able to look through the basement window and able to see a male person downstairs.
+Shanan Buckingham ([53:29]):
+And when you say the basement window, are you referring to that first metal window well?
+PJ Hussey ([53:33]):
+Yes. Yes.
+Shanan Buckingham ([53:41]):
+That was in Exhibit 37. Just showing you again on the screen here, what's been marked as Exhibit 50. This window here on the right, does that fairly represent the window that you looked through and could see down into that basement office?
+PJ Hussey ([54:01]):
+Yes. Yeah.
+Shanan Buckingham ([54:05]):
+And was the light on in the basement office when you looked in?
+PJ Hussey ([54:07]):
+A light was on, yes.
+Shanan Buckingham ([54:09]):
+And what did you see when you looked in the window?
+PJ Hussey ([54:13]):
+After I heard the scream, I saw a male, older male gentleman now knowing it was Patrick Clancy unwrapping something from a child's head.
+Shanan Buckingham ([54:24]):
+And when you saw the male unwrapping something, can you demonstrate the motion that they were doing?
+PJ Hussey ([54:30]):
+Yeah, the child was on the ground. The head was towards the window, so the head was towards the back of the house. And he was, picked the child up and he was in a circular motion taking something off the head, around the head, around the neck.
+Shanan Buckingham ([54:46]):
+And could you see the child's face?
+PJ Hussey ([54:49]):
+Yes.
+Shanan Buckingham ([54:50]):
+And what observations did you make of the child's face?
+PJ Hussey ([54:54]):
+The head was blue.
+Shanan Buckingham ([54:56]):
+And did you later learn that child was Dawson Clancy?
+PJ Hussey ([54:59]):
+Yes.
+Shanan Buckingham ([54:59]):
+At that point, what did you do?
+PJ Hussey ([55:06]):
+Because of the severity of Ms. Clancy on the ground, and now we have another patient, I put a all call in, which is a recall of Duxbury personnel, all Duxbury personnel, if they're available, to come back to the town to help out for when I need help on the scene. And I also need help in the town to cover the town while I'm busy at this scene. And I also requested a Mutual Aid ambulance to respond to the scene.
+Shanan Buckingham ([55:32]):
+Because at that time there was only one ambulance that was-
+PJ Hussey ([55:35]):
+One ambulance for Ms. Clancy, yes. And then I called another. Seeing the next patient, I called another ambulance in.
+Shanan Buckingham ([55:42]):
+Okay. And what is Mutual Aid?
+PJ Hussey ([55:44]):
+Mutual Aid, it's a shared system that all the towns use, that if we get busy or busy with calls, we are able to call help in from surrounding towns to give us a hand, whether it be fire-related or medical-related.
+Shanan Buckingham ([55:58]):
+Does Duxbury only have one ambulance?
+PJ Hussey ([56:00]):
+We have three.
+Shanan Buckingham ([56:01]):
+Three, but you only had one staff that night?
+PJ Hussey ([56:03]):
+Yes.
+Shanan Buckingham ([56:03]):
+Okay. So you call in for an additional ambulance. At some point in time, do you learn that there are two other patients?
+PJ Hussey ([56:09]):
+Yes.
+Shanan Buckingham ([56:09]):
+Cora Clancy and Callan Clancy?
+PJ Hussey ([56:12]):
+Yes.
+Shanan Buckingham ([56:12]):
+At that point in time, do you have to do anything to call in more assistance?
+PJ Hussey ([56:16]):
+Well, the recall for Duxbury personnel was already put in, so I called two more ambulances at that point.
+Shanan Buckingham ([56:22]):
+And the scene that night, discovering another victim, another victim, was that a chaotic scene?
+PJ Hussey ([56:33]):
+It turned very chaotic very quickly.
+Shanan Buckingham ([56:35]):
+Okay. Yeah. And was it a situation where people would start treating a patient, but then have to move on to something else and someone would take over?
+PJ Hussey ([56:46]):
+Sort of. So I had myself as a shift commander, I had an EMT with me, but there's also four paramedics. So the way it ended up working, all the initial paramedics were with Ms. Clancy in the beginning. And then when we found the other patients, we left a paramedic with Ms. Clancy, a paramedic with Dawson, and then two paramedics were with the two other kids in the other room.
+Shanan Buckingham ([57:10]):
+And did someone eventually also have to be with Patrick Clancy?
+PJ Hussey ([57:16]):
+Eventually, yes. Yeah, but at the time, there was nobody with him in the beginning.
+Shanan Buckingham ([57:21]):
+I have nothing further. Thank you.
+Judge ([57:22]):
+Okay. All right, counsel?
+Mr. Reddington ([57:24]):
+No questions. Thank you, sir.
+Judge ([57:26]):
+All right. Thank you, sir.
+PJ Hussey ([57:26]):
+Thank you.
+Judge ([57:38]):
+Attorney Buckingham.
+Ms. Buckingham ([57:39]):
+Your Honor, the Commonwealth would call Loring Nudd as its next witness, please.
+Mr. Reddington ([57:44]):
+Same objection for the record, Judge.
+Judge ([57:45]):
+All right.
+Speaker 2 ([58:14]):
+Morning, sir. Stop right here and raise your right hand for the clerk, please.
+Clerk ([58:18]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury [inaudible 00:58:22] between the Commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth, so help you God?
+Loring Nudd ([58:19]):
+I do.
+Clerk ([58:19]):
+Thank you, sir. You may have a seat.
+Speaker 2 ([58:19]):
+Watch your step there, please.
+Judge ([58:32]):
+All right. Good morning, sir.
+Loring Nudd ([58:34]):
+Good morning.
+Ms. Buckingham ([58:35]):
+May I inquire?
+Judge ([58:36]):
+Yes, please, counsel.
+Ms. Buckingham ([58:37]):
+Thank you. Good morning.
+Loring Nudd ([58:39]):
+Good morning.
+Ms. Buckingham ([58:39]):
+Could you please tell the jurors your first and last name?
+Loring Nudd ([58:42]):
+My first name is Loring, L-O-R-I-N-G. My last name is Nudd, N-U-D-D.
+Ms. Buckingham ([58:48]):
+And do you have a nickname that you go by?
+Loring Nudd ([58:49]):
+I do.
+Ms. Buckingham ([58:50]):
+What's that?
+Loring Nudd ([58:50]):
+Everybody knows me as Chuck.
+Ms. Buckingham ([58:52]):
+Chuck. And do you work, sir?
+Loring Nudd ([58:56]):
+I do.
+Ms. Buckingham ([58:57]):
+What do you do for work?
+Loring Nudd ([58:58]):
+So I'm a firefighter EMT with the Duxbury Fire Department. I was at that time. I am now retired.
+Ms. Buckingham ([59:05]):
+Okay. So when did you retire?
+Loring Nudd ([59:06]):
+So I retired a year ago.
+Ms. Buckingham ([59:08]):
+A year ago?
+Loring Nudd ([59:09]):
+Mm-hmm.
+Ms. Buckingham ([59:10]):
+And so how long had you been working with Duxbury Fire before your retirement?
+Loring Nudd ([59:15]):
+A little over 30 years.
+Ms. Buckingham ([59:18]):
+30? And can you explain what your role was as a Duxbury firefighter?
+Loring Nudd ([59:26]):
+I was an EMT, which 80% of our calls are probably that related. So I would assist a paramedic or I would drive the ambulance or whatever was necessary at the time. And then we also did fire suppression and we were all trained in that and went to the academy and all that.
+Ms. Buckingham ([59:46]):
+Okay. And can you tell us what the difference is between an EMT and a paramedic?
+Loring Nudd ([59:50]):
+So a paramedic requires another year or two of training and they're able to prescribe meds. I mean, not prescribe meds, excuse me, give meds that they have according to what they need to do. They can also read the monitor that shows rhythms in the heart and what have you.
+Ms. Buckingham ([01:00:11]):
+Is it fair to say that as an EMT, you're trained in basic lifesaving techniques while a paramedic is advanced lifesaving techniques?
+Loring Nudd ([01:00:19]):
+Correct.
+Ms. Buckingham ([01:00:20]):
+And so at Duxbury Fire Department, is it also fair to say that each and every firefighter has that dual role of either being an EMT, a paramedic, and a firefighter?
+Loring Nudd ([01:00:32]):
+Yes. There might be one EMT, just a basic where most of them are the medics or the ... But we're all firefighters too.
+Ms. Buckingham ([01:00:44]):
+Okay. And in the town of Duxbury, does the town itself have its own ambulances?
+Loring Nudd ([01:00:50]):
+Yes.
+Ms. Buckingham ([01:00:51]):
+In addition to the fire engines?
+Loring Nudd ([01:00:52]):
+Yes.
+Ms. Buckingham ([01:00:52]):
+And there's also ladder trucks, correct?
+Loring Nudd ([01:00:54]):
+Correct.
+Ms. Buckingham ([01:00:56]):
+Now, when you were working as a Duxbury firefighter, what was the schedule? How did you work your shifts?
+Loring Nudd ([01:01:03]):
+So we worked 24-hour shifts.
+Ms. Buckingham ([01:01:05]):
+And then how many days on and how many days off?
+Loring Nudd ([01:01:08]):
+So we'd have one day on, one day off, one day on, and five off.
+Ms. Buckingham ([01:01:14]):
+And a 24-hour shift, when did it start and end?
+Loring Nudd ([01:01:18]):
+It was 8:00 o'clock in the morning to 8:00 o'clock the next morning.
+Ms. Buckingham ([01:01:21]):
+So if I direct your attention to January 24th of 2023, you were still working for the Duxbury Fire Department then, correct?
+Loring Nudd ([01:01:28]):
+Correct.
+Ms. Buckingham ([01:01:29]):
+And were you on a 24-hour shift that day?
+Loring Nudd ([01:01:31]):
+I was.
+Ms. Buckingham ([01:01:33]):
+At some point during the day, were you given kind of what your assignment was for that shift?
+Loring Nudd ([01:01:40]):
+Yes.
+Ms. Buckingham ([01:01:40]):
+What was your assignment?
+Loring Nudd ([01:01:42]):
+So that day, I mean, we all kind of float around a little bit, but we had a newer member that had made progress. He was an EMT and then made it to paramedic. So I was kind of what they called the backup guy. So I would do whatever fill-in needed to be done and I would assist with them if necessary.
+Ms. Buckingham ([01:02:03]):
+Okay. And so were you kind of assigned to the ambulance at the Central Station as that backup person?
+Loring Nudd ([01:02:08]):
+I was.
+Ms. Buckingham ([01:02:09]):
+And the person that you identified was kind of the newer employee, what was his name?
+Loring Nudd ([01:02:15]):
+Paramedic Dougherty.
+Ms. Buckingham ([01:02:16]):
+And that would be Daniel Dougherty?
+Loring Nudd ([01:02:17]):
+Daniel Dougherty. Yeah.
+Ms. Buckingham ([01:02:18]):
+And who was the other Duxbury firefighter that was assigned to the ambulance that shift?
+Loring Nudd ([01:02:24]):
+It would've been paramedic Kevin Heath.
+Ms. Buckingham ([01:02:26]):
+So at approximately 6:00 o'clock or just after 6:00 PM, were you advised of a dispatch to a residence in the town of Duxbury?
+Loring Nudd ([01:02:39]):
+Yes.
+Ms. Buckingham ([01:02:39]):
+And where was that dispatch going to take you?
+Loring Nudd ([01:02:42]):
+So it was going to take us to Summer Street.
+Ms. Buckingham ([01:02:47]):
+And so you and Firefighter Heath and Firefighter Dougherty, you all get in the ambulance?
+Loring Nudd ([01:02:55]):
+Correct.
+Ms. Buckingham ([01:02:56]):
+And do you go to 47 Summer Street?
+Loring Nudd ([01:02:58]):
+We do.
+Ms. Buckingham ([01:03:01]):
+In the ambulance, who was assigned as kind of the driver and the tech?
+Loring Nudd ([01:03:05]):
+So at that time, because we had heard what kind of call, we had an idea of what call we were going to, the two medics sat up front and were able to converse while I sat in the back and again was that backup guy, more or less.
+Ms. Buckingham ([01:03:20]):
+Okay. And as far as the nature of the call that you believed you were coming into, is it fair to say that the initial call had to deal with a female that had gone out the window, possibly a suicide?
+Loring Nudd ([01:03:33]):
+Yeah. As I remember, it was a second-floor fall.
+Ms. Buckingham ([01:03:37]):
+At the time that you were dispatched to that location, did you know that there was any pediatric patients or children involved?
+Loring Nudd ([01:03:45]):
+No.
+Ms. Buckingham ([01:03:45]):
+Okay. Now, approximately how long did it take to get from the station, Central Station to 47 Summer Street, if you recall?
+Loring Nudd ([01:03:52]):
+I'm going to say four to five minutes.
+Ms. Buckingham ([01:03:55]):
+And when you arrived on scene, were there already other emergency personnel on scene?
+Loring Nudd ([01:03:59]):
+There were.
+Ms. Buckingham ([01:04:00]):
+Were you the first ambulance on scene?
+Loring Nudd ([01:04:02]):
+We were.
+Ms. Buckingham ([01:04:03]):
+How about fire trucks? Were there any other fire trucks from Duxbury?
+Loring Nudd ([01:04:06]):
+The firetruck, you could hear it in the background, but it wasn't there yet.
+Ms. Buckingham ([01:04:09]):
+So is it fair to say that there were some Duxbury police cruisers that had arrived just ahead of you?
+Loring Nudd ([01:04:14]):
+Correct.
+Ms. Buckingham ([01:04:15]):
+Where did you go with the ambulance when you got to that address of 47 Summer Street?
+Loring Nudd ([01:04:21]):
+So as we were pulling up, I could hear the two guys up front say, "The cruisers are in the way of the driveway." So I said, " Okay, you guys take the call," meaning get out of the truck and get started, and I'll take care of the truck.
+Ms. Buckingham ([01:04:37]):
+Okay. And so when you come to the address, are you able to at least pull into the driveway at some point?
+Loring Nudd ([01:04:45]):
+Not at that point. Because I was in the back, I switched to the driver's seat. And at that time I saw an officer coming and he was getting ready to move the vehicle that was in our way so that I could back in.
+Ms. Buckingham ([01:04:59]):
+And so Were you able to then back the vehicle, back the ambulance into the driveway?
+Loring Nudd ([01:05:03]):
+I was.
+Ms. Buckingham ([01:05:04]):
+And were there other vehicles that were not emergency personnel vehicles in the driveway?
+Loring Nudd ([01:05:09]):
+There might have been some of their vehicles, but there might have been, but I don't really ... I had enough room to put my vehicle there and that's all that mattered.
+Ms. Buckingham ([01:05:16]):
+Okay. So when you backed the ambulance in, Firefighter Heath and Firefighter Daugherty, what did they do?
+Loring Nudd ([01:05:23]):
+They had already jumped out. They had already jumped out, grabbed the gear, and taken off for the back of the house.
+Ms. Buckingham ([01:05:29]):
+Once you got the ambulance secured in the driveway, what did you do?
+Loring Nudd ([01:05:33]):
+So assuming that they were going to need a stretcher, I started pulling a stretcher out of the back of the ambulance.
+Ms. Buckingham ([01:05:39]):
+And again, you said you backed the ambulance in?
+Loring Nudd ([01:05:41]):
+Correct.
+Ms. Buckingham ([01:05:42]):
+As you were pulling the stretcher out of the back of the ambulance, did you observe somebody coming from the house?
+Loring Nudd ([01:05:48]):
+Yes. One of the-
+Ms. Buckingham ([01:05:49]):
+What did you see?
+Loring Nudd ([01:05:50]):
+One of the police officers was carrying a child.
+Ms. Buckingham ([01:05:54]):
+And so what did you do when you saw him carrying the child out of the house?
+‍
+Loring Nudd ([01:05:57]):
+So at that point, the stretcher was almost out of the vehicle, and I said, "Over here." And he placed him on the stretcher.
+Ms. Buckingham ([01:06:04]):
+Okay. Were you able to make observations of the child as he's being placed on the stretcher?
+Loring Nudd ([01:06:11]):
+I was.
+Ms. Buckingham ([01:06:12]):
+What did he look like?
+Loring Nudd ([01:06:13]):
+So his face was blue, he had marks around his neck, and his body was pale.
+Ms. Buckingham ([01:06:24]):
+And so once the officer ... Or first off, was the officer somebody you knew from Duxbury?
+Loring Nudd ([01:06:29]):
+Correct. It was Officer Homestead.
+Ms. Buckingham ([01:06:32]):
+Okay. And once the child was placed on the stretcher, what did you do after you made that initial observations of him?
+Loring Nudd ([01:06:40]):
+So we rolled it right inside so he could start doing CPR.
+Ms. Buckingham ([01:06:43]):
+Okay. Now, as an EMT, what is the first thing you generally do when you're observing a patient or assessing a patient?
+Loring Nudd ([01:06:52]):
+So you always look for response and you go for airway.
+Ms. Buckingham ([01:06:58]):
+Okay. And fair to say there's kind of what they call the ABCs?
+Loring Nudd ([01:07:00]):
+Correct.
+Ms. Buckingham ([01:07:01]):
+Can you tell the jurors what that means?
+Loring Nudd ([01:07:02]):
+So it's airway, breathing, circulation.
+Ms. Buckingham ([01:07:05]):
+And in this circumstance, were you able to observe the child breathing on his own?
+Loring Nudd ([01:07:12]):
+No.
+Ms. Buckingham ([01:07:12]):
+How about, were you able to secure an airway for him?
+Loring Nudd ([01:07:16]):
+Not at that time. We were still doing the preliminary.
+Ms. Buckingham ([01:07:23]):
+And how about circulation or pulse or cardiac activity? Were you able to determine any of that upon your initial assessment of him?
+Loring Nudd ([01:07:30]):
+At that point, no.
+Ms. Buckingham ([01:07:33]):
+Now, after you are in the back of the ambulance, do other EMTs or other paramedics come and assist you with this child?
+Loring Nudd ([01:07:40]):
+Yes. So when the patient was getting rolled in, I also yelled out to my captain, hoping that he was going to hear me, that I needed a medic in my truck because I needed him to know that there was someone in my truck. And I'm assuming someone heard me and they then directed a medic to my truck once one appeared.
+Ms. Buckingham ([01:08:00]):
+Okay. And so the medic that came to the truck, was that Keith Nettie?
+Loring Nudd ([01:08:07]):
+Yes.
+Ms. Buckingham ([01:08:08]):
+And that was not the original person who went to the scene with you in the ambulance, was it?
+Loring Nudd ([01:08:14]):
+Correct.
+Ms. Buckingham ([01:08:14]):
+Okay. And what happened when you had the child in the back of the ambulance? What did you guys do to try to tend to him?
+Loring Nudd ([01:08:27]):
+So we were doing CPR and then he wanted to check the monitor, so we got the monitor out.
+Ms. Buckingham ([01:08:36]):
+Okay. And with the monitor, what was the monitor supposed to be looking for?
+Loring Nudd ([01:08:45]):
+Heart rhythm.
+Ms. Buckingham ([01:08:45]):
+Okay. And so do you have to kind of hook that up to the patient in order to assess whether there's any activity?
+Loring Nudd ([01:08:52]):
+Correct.
+Ms. Buckingham ([01:08:53]):
+And those monitors that you have in your equipment, do they do anything more than just check for heart rate?
+Loring Nudd ([01:09:02]):
+The paramedic can then look and see what kind of, not just a heart rate, but a rhythm. And then-
+Ms. Buckingham ([01:09:07]):
+If there is not a rhythm, does that machine help you to do anything to try to restart somebody's heart?
+Loring Nudd ([01:09:16]):
+With the rhythm that they gave us, they said, "We can disconnect it," because they were concerned they needed the monitor downstairs, too, or elsewhere.
+Ms. Buckingham ([01:09:28]):
+And is it fair to say that at that point you are assisting the paramedic with their assessment and running-
+Mr. Reddington ([01:09:34]):
+[inaudible 01:09:35]-
+Ms. Buckingham ([01:09:35]):
+... that equipment and checking the monitor?
+Judge ([01:09:42]):
+No, I'll allow it, but let's kind of move on.
+Loring Nudd ([01:09:42]):
+I'm sorry.
+Ms. Buckingham ([01:09:42]):
+That's okay.
+Judge ([01:09:42]):
+[inaudible 01:09:44].
+Ms. Buckingham ([01:09:43]):
+Are you assisting the paramedic at that point to-
+Loring Nudd ([01:09:47]):
+Yes.
+Ms. Buckingham ([01:09:47]):
+... treat the child in the ambulance? At some point, do you leave the ambulance?
+Loring Nudd ([01:09:51]):
+I do.
+Ms. Buckingham ([01:09:52]):
+And where do you go after you leave the ambulance?
+Loring Nudd ([01:09:55]):
+I bring the monitor down to the basement.
+Ms. Buckingham ([01:09:58]):
+Are the other paramedics and the other responders still working on the child?
+Loring Nudd ([01:10:02]):
+Correct.
+Ms. Buckingham ([01:10:02]):
+And-
+Speaker 3 ([01:10:00]):
+The responders still working on the child?
+Speaker 5 ([01:10:02]):
+Correct.
+Speaker 3 ([01:10:02]):
+And [inaudible 01:10:03]
+Speaker 5 ([01:10:18]):
+Because they said they needed equipment in the bay.
+Speaker 3 ([01:10:29]):
+[inaudible 01:10:23]. Were you able to make observations of those children?
+Speaker 5 ([01:10:38]):
+Not really. I mean, they weren't crying.
+Speaker 3 ([01:10:42]):
+Okay. Fair to say they were being treated by others?
+Speaker 5 ([01:10:45]):
+Correct.
+Speaker 3 ([01:10:46]):
+And so, once you dropped off that equipment, did you go back outside?
+Speaker 5 ([01:10:51]):
+I did.
+Speaker 3 ([01:10:51]):
+And what ultimately was your role at the end of this call? What were you asked to do?
+Speaker 5 ([01:10:55]):
+I was asked to drive.
+Speaker 3 ([01:10:58]):
+So, the ambulance that responded from Duxbury, that's ambulance number one?
+Speaker 5 ([01:11:04]):
+Correct.
+Speaker 3 ([01:11:04]):
+Ambulance one? Did you drive that ambulance to a hospital?
+Speaker 5 ([01:11:07]):
+Correct.
+Speaker 3 ([01:11:08]):
+Which hospital was that?
+Speaker 5 ([01:11:10]):
+I forget if it was with Jordan or the BI now, but it's the Plymouth Hospital.
+Speaker 3 ([01:11:13]):
+Here in Plymouth?
+Speaker 5 ([01:11:13]):
+Correct.
+Speaker 3 ([01:11:15]):
+And that was with Dawson Clancy in the back, correct?
+Speaker 5 ([01:11:17]):
+Correct.
+Speaker 3 ([01:11:21]):
+No further questions. Thank you.
+Speaker 4 ([01:11:22]):
+All right.
+Speaker 5 ([01:11:22]):
+Thank you.
+Speaker 4 ([01:11:22]):
+Attorney Reddington?
+Kevin Reddington ([01:11:25]):
+No questions. Enjoy your retirement.
+Speaker 4 ([01:11:31]):
+All right. Thank you, sir.
+Speaker 5 ([01:11:43]):
+Thank you.
+Speaker 4 ([01:11:43]):
+Attorney Buckingham.
+Ms. Buckingham ([01:11:44]):
+Thank you. The Commonwealth would call Keith Nette as its next witness, please.
+Kevin Reddington ([01:11:47]):
+Same objection, Your Honor.
+Speaker 4 ([01:11:47]):
+Okay. [inaudible 01:11:47].
+Speaker 6 ([01:11:47]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending between the commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth?
+Keith Nette ([01:12:14]):
+I do.
+Speaker 6 ([01:12:14]):
+Thank you, Sir. You may have a seat.
+Speaker 4 ([01:12:22]):
+Watch your step please. Good morning, Sir.
+Keith Nette ([01:12:23]):
+Good morning.
+Speaker 4 ([01:12:25]):
+All right counsel.
+Ms. Buckingham ([01:12:25]):
+Thank you. Good morning.
+Keith Nette ([01:12:27]):
+Good morning.
+Ms. Buckingham ([01:12:28]):
+Could you please tell the jurors your first and last name please?
+Keith Nette ([01:12:30]):
+First name is Keith. Last name is Nette, N-E-T-T-E.
+Ms. Buckingham ([01:12:34]):
+And where do you work, sir?
+Keith Nette ([01:12:35]):
+I work for the Duxbury Fire Department.
+Ms. Buckingham ([01:12:37]):
+How long have you been with the Duxbury Fire Department?
+Keith Nette ([01:12:39]):
+About 17 years.
+Ms. Buckingham ([01:12:41]):
+And currently working for the Duxbury Fire Department, what is your role? What do you do there?
+Keith Nette ([01:12:48]):
+Right now, I'm a captain shift commander.
+Ms. Buckingham ([01:12:50]):
+Okay. And are you a firefighter as well as a trained paramedic?
+Keith Nette ([01:12:55]):
+Yes.
+Ms. Buckingham ([01:12:58]):
+At Duxbury Fire, you all work 24-hour shifts?
+Keith Nette ([01:13:02]):
+Correct.
+Ms. Buckingham ([01:13:03]):
+If I draw your attention to January 24th, 2023, do you recall working a 24-hour shift that day?
+Keith Nette ([01:13:09]):
+I was at home.
+Ms. Buckingham ([01:13:10]):
+Okay. And so, what was the shift that you were working that week, if you remember?
+Keith Nette ([01:13:19]):
+I believe I worked maybe two days prior. I don't really remember.
+Ms. Buckingham ([01:13:23]):
+Okay. So, you were on a day off?
+Keith Nette ([01:13:24]):
+Yes, correct.
+Ms. Buckingham ([01:13:25]):
+And how was it that you ended up being involved in the call at 47 Summer Street on January 24th?
+Keith Nette ([01:13:32]):
+We were recalled via a pager and text message that there was an incident going on and that we were to respond.
+Ms. Buckingham ([01:13:39]):
+So, can you explain to us how that works?
+Keith Nette ([01:13:43]):
+So, a tone goes off through dispatch that sends off a pager at our houses that alerts us. Then we also get text messages about the incident and then respond either to the station or to the scene, whichever they request.
+Ms. Buckingham ([01:13:56]):
+As a Duxbury firefighter, are part of your responsibilities to respond to these recalls?
+Keith Nette ([01:14:06]):
+Yes.
+Ms. Buckingham ([01:14:06]):
+Is it a voluntary thing?
+Keith Nette ([01:14:08]):
+Yes.
+Ms. Buckingham ([01:14:08]):
+So, if you weren't disposed or unavailable when a call went out or tone went out, would you be expected to respond to the scene?
+Keith Nette ([01:14:16]):
+No.
+Ms. Buckingham ([01:14:16]):
+But in this case, on January 24th, just after 6:00 PM, you heard that call go out, correct?
+Keith Nette ([01:14:21]):
+Correct.
+Ms. Buckingham ([01:14:22]):
+And so, then what did you do when you heard the call?
+Keith Nette ([01:14:24]):
+I drove to the scene in my personal truck.
+Ms. Buckingham ([01:14:27]):
+When you got to the scene, what did you see?
+Keith Nette ([01:14:29]):
+I saw police and fire vehicles. Then I walked up the driveway and walked into the back of the ambulance.
+Ms. Buckingham ([01:14:37]):
+Now, when you arrived and saw police, that was Duxbury Police?
+Keith Nette ([01:14:42]):
+Correct.
+Ms. Buckingham ([01:14:42]):
+And the fire personnel that was on scene, who was on scene, if you remember?
+Keith Nette ([01:14:48]):
+I only saw two people on scene initially. That was Kevin Heath and Sergeant Homestead.
+Ms. Buckingham ([01:14:55]):
+Okay. And Sergeant Homestead is a Duxbury officer?
+Keith Nette ([01:14:57]):
+Correct.
+Ms. Buckingham ([01:14:58]):
+Now, was there a Duxbury ambulance in the driveway when you pulled up?
+Keith Nette ([01:15:01]):
+Yes.
+Ms. Buckingham ([01:15:02]):
+And before even getting past that ambulance, were you asked to assist?
+Keith Nette ([01:15:07]):
+Yes.
+Ms. Buckingham ([01:15:08]):
+What did you see when you came to the back of that ambulance?
+Keith Nette ([01:15:11]):
+I saw an officer, Sergeant Homestead and Kevin Heath doing CPR on a child.
+Ms. Buckingham ([01:15:23]):
+Had you seen how the child ended up in the ambulance or did you come after?
+Keith Nette ([01:15:26]):
+I came after.
+Ms. Buckingham ([01:15:27]):
+Okay. Did you then help take over with treating that child in the back of the ambulance?
+Keith Nette ([01:15:33]):
+Yes.
+Ms. Buckingham ([01:15:35]):
+What was your initial observation of the patient? What did he look like?
+Keith Nette ([01:15:40]):
+Blue, white, non-responsive, not breathing, no pulse.
+Ms. Buckingham ([01:15:46]):
+And this particular patient, did you come to learn him to be the child named Dawson Clancy?
+Keith Nette ([01:15:51]):
+Yes.
+Ms. Buckingham ([01:15:51]):
+And he was approximately three years old?
+Keith Nette ([01:15:53]):
+Yes.
+Ms. Buckingham ([01:15:54]):
+What kind of treatment did you and the paramedic Heath offer to Dawson in the back of the ambulance? What did you do?
+Keith Nette ([01:16:03]):
+We tried to start an IV. Then we also started an IO, which is kind of like an IV. Tried intubation, which is an advanced airway, medications and continued CPR.
+Ms. Buckingham ([01:16:16]):
+So, an IV, that's just putting a needle into somebody and trying to pump fluids in medicine, correct?
+Keith Nette ([01:16:25]):
+Correct.
+Ms. Buckingham ([01:16:25]):
+Tell us what an IO is.
+Keith Nette ([01:16:27]):
+An IO is interosseous, which is basically into the bone marrow on the lower leg.
+Ms. Buckingham ([01:16:32]):
+So, what do you do to try to enter an IO?
+Keith Nette ([01:16:36]):
+Usually we have a drill, but we had a manual one instead.
+Ms. Buckingham ([01:16:42]):
+So, what do you do with the manual drill to enter the IO?
+Keith Nette ([01:16:46]):
+You just twist and then it goes into the bone.
+Ms. Buckingham ([01:16:48]):
+And what bone do you attempt to do this in? And were you able to that IO into Dawson?
+Keith Nette ([01:17:00]):
+Yes.
+Ms. Buckingham ([01:17:01]):
+What is the purpose of the IO versus the IV?
+Keith Nette ([01:17:05]):
+If the patient has difficult access, which pediatrics do.
+Ms. Buckingham ([01:17:10]):
+And in this circumstance, what kinds of medication were you trying to deliver through the IO to Dawson?
+Keith Nette ([01:17:17]):
+Epinephrine.
+Ms. Buckingham ([01:17:18]):
+What's the purpose of epinephrine?
+Keith Nette ([01:17:20]):
+Basically just kind of helps to restart the heart.
+Ms. Buckingham ([01:17:24]):
+And at this point, he had no heart activity?
+Keith Nette ([01:17:27]):
+Correct.
+Ms. Buckingham ([01:17:28]):
+You also mentioned attempts to intubate. Can you tell us what that means?
+Keith Nette ([01:17:32]):
+So, intubation is an advanced airway where you put a tube into the airway to secure it to deliver high flow oxygen.
+Ms. Buckingham ([01:17:40]):
+Were you able to intubate Dawson?
+Keith Nette ([01:17:43]):
+Yes, Kevin Heath did.
+Ms. Buckingham ([01:17:45]):
+And what do you do when you enter the tool to intubate?
+Keith Nette ([01:17:51]):
+You go into the mouth and you do a motion of pulling up to see the vocal cords so you can pass the tube through.
+Ms. Buckingham ([01:17:59]):
+And what do you attach to the tube to try to increase the breath?
+Keith Nette ([01:18:03]):
+Oxygen and a BVM, which is basically you're squeezing a bag.
+Ms. Buckingham ([01:18:07]):
+So, BVM would stand for bag valve mask?
+Keith Nette ([01:18:11]):
+Correct.
+Ms. Buckingham ([01:18:13]):
+While you were treating Dawson and doing the airway, intubating him, giving him the medicines, were you able to observe anything about the area of his neck?
+Keith Nette ([01:18:26]):
+Yes.
+Ms. Buckingham ([01:18:27]):
+What did you observe about his neck?
+Keith Nette ([01:18:30]):
+Dark red marks around his neck.
+Ms. Buckingham ([01:18:37]):
+Now, all of this is happening while you were in the back of the ambulance with Firefighter Heath, correct?
+Keith Nette ([01:18:45]):
+Correct.
+Ms. Buckingham ([01:18:46]):
+And do you recall another Duxbury officer being present, Dan Doherty?
+Keith Nette ([01:18:51]):
+Yes.
+Ms. Buckingham ([01:18:54]):
+Eventually, was that ambulance then sent to the local hospital?
+Keith Nette ([01:18:59]):
+Yes.
+Ms. Buckingham ([01:19:00]):
+Which hospital did you guys go to?
+Keith Nette ([01:19:02]):
+EI Plymouth.
+Ms. Buckingham ([01:19:02]):
+On the ride to the hospital, did you ever get a pulse for Dawson?
+Keith Nette ([01:19:07]):
+No.
+Ms. Buckingham ([01:19:08]):
+Were you ever able to resume breathing using that method with the bag valve mask?
+Keith Nette ([01:19:13]):
+No.
+Ms. Buckingham ([01:19:15]):
+The efforts to give him the medication, the epinephrine, did it ever do anything to start his heart?
+Keith Nette ([01:19:21]):
+No.
+Ms. Buckingham ([01:19:24]):
+When you arrived at the Beth Israel Hospital Emergency Department, tell us how you transferred the care of the patient.
+Keith Nette ([01:19:32]):
+We wheeled the stretcher in. We went into the first room, which is trauma one and trauma two. We moved the patient over to their bed and then transferred care.
+Ms. Buckingham ([01:19:40]):
+While you were at the emergency department at Beth Israel, did you see another child from that same home come in?
+Keith Nette ([01:19:48]):
+I did.
+Ms. Buckingham ([01:19:48]):
+And what department brought them in? What fire department?
+Keith Nette ([01:19:51]):
+Marshfield.
+Ms. Buckingham ([01:19:52]):
+Did you do anything to assist Marshfield when they came through the emergency department?
+Keith Nette ([01:19:56]):
+I assisted in compressions when they were getting the child out of the ambulance.
+Ms. Buckingham ([01:20:00]):
+And is that something that is ongoing during transportation when you're trying to transfer care to the emergency staff?
+Keith Nette ([01:20:09]):
+Yes.
+Ms. Buckingham ([01:20:16]):
+Seeing the father of the children at the emergency department that evening when you were there?
+Keith Nette ([01:20:20]):
+I did.
+Ms. Buckingham ([01:20:20]):
+And you came [inaudible 01:20:23]?
+Keith Nette ([01:20:20]):
+Correct.
+Ms. Buckingham ([01:20:20]):
+[inaudible 01:20:25].
+Keith Nette ([01:20:33]):
+And yeah, just basically visually upset.
+Ms. Buckingham ([01:20:35]):
+Did you do anything yourself to assist him when he was there?
+Keith Nette ([01:20:38]):
+I assisted to get a chair in case he needed to sit down.
+Ms. Buckingham ([01:20:41]):
+And was that before or after the children had passed, had been declared?
+Keith Nette ([01:20:47]):
+I believe it was after.
+Ms. Buckingham ([01:20:47]):
+Thank you.
+([01:20:47])All right. Attorney Reddington?
+Kevin Reddington ([01:20:54]):
+I have no questions. Thank you, sir.
+Speaker 4 ([01:20:55]):
+All right. Thank you, sir. You may step down.
+Keith Nette ([01:20:56]):
+Thank you.
+Speaker 3 ([01:20:57]):
+The Commonwealth would call Patrick Dwyer as its next witness.
+Kevin Reddington ([01:21:12]):
+Same objection for the record.
+Speaker 4 ([01:21:13]):
+Okay. Stop right there. Raise your right hand for the clerk.
+Speaker 6 ([01:21:38]):
+All right. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending between the commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth? Take a seat, sir.
+Speaker 4 ([01:21:52]):
+All right. Good morning, sir.
+Patrick Dwyer ([01:21:52]):
+Morning.
+Speaker 4 ([01:21:55]):
+Yes, counsel.
+Speaker 3 ([01:21:56]):
+Thank you. Good morning.
+Patrick Dwyer ([01:22:00]):
+Morning.
+Speaker 3 ([01:22:00]):
+Could you please tell the jury your first and last name?
+Patrick Dwyer ([01:22:03]):
+Patrick Dwyer.
+Speaker 3 ([01:22:04]):
+Can you please spell your last name for the record?
+Patrick Dwyer ([01:22:06]):
+D-W-Y-E-R.
+Speaker 3 ([01:22:08]):
+And how are you employed, sir?
+Patrick Dwyer ([01:22:10]):
+I'm a firefighter paramedic at the Duxbury Fire Department.
+Speaker 3 ([01:22:13]):
+And in what capacity are you a firefighter or paramedic? Do you have any supervisory roles?
+Patrick Dwyer ([01:22:22]):
+No, I'm not a supervisor at the department.
+Speaker 3 ([01:22:24]):
+Now, in your role as a firefighter and a paramedic, did you receive training for those roles?
+Patrick Dwyer ([01:22:32]):
+Yes.
+Speaker 3 ([01:22:33]):
+And how long have you worked for the Duxbury Fire Department?
+Patrick Dwyer ([01:22:38]):
+It's in my eighth year right now.
+Speaker 3 ([01:22:40]):
+I'm going to draw your attention to January 24th of 2023. Do you recall working that day?
+Patrick Dwyer ([01:22:46]):
+Yes.
+Speaker 3 ([01:22:47]):
+Were you on a 24-hour shift?
+Patrick Dwyer ([01:22:49]):
+Yes.
+Speaker 3 ([01:22:49]):
+And so, that would be an 8:00 AM to 8:00 AM, correct?
+Patrick Dwyer ([01:22:52]):
+Correct.
+Speaker 3 ([01:22:53]):
+At approximately 6:00 or just after 6:00 PM, were you dispatched to 47 Summer Street?
+Patrick Dwyer ([01:23:00]):
+Yes.
+Speaker 3 ([01:23:00]):
+What was your assignment that day on shift?
+Patrick Dwyer ([01:23:05]):
+I was working on the engine at out of our Station two.
+Speaker 3 ([01:23:08]):
+Where is Station two located in the town of Duxbury?
+Patrick Dwyer ([01:23:11]):
+On Franklin Street.
+Speaker 3 ([01:23:14]):
+When the dispatch came into 47 Summer Street, do you know approximately how long it took you to get from Station two to the location?
+Patrick Dwyer ([01:23:22]):
+A few minutes.
+Speaker 3 ([01:23:25]):
+Who was working with you at Station two that day?
+Patrick Dwyer ([01:23:28]):
+Jennifer Stratton.
+Speaker 3 ([01:23:29]):
+What were each of your designated roles?
+Patrick Dwyer ([01:23:32]):
+I believe Jen was driving the engine and I was in the officer's seat.
+Speaker 3 ([01:23:39]):
+Now at Station two in Duxbury, is it normal for just two of you to be on shifts at that station at any given time?
+Patrick Dwyer ([01:23:46]):
+Yes, correct.
+Speaker 3 ([01:23:46]):
+And fair to say there are other firefighters and paramedics that are on staff at the central station, correct?
+Patrick Dwyer ([01:23:52]):
+Correct.
+Speaker 3 ([01:23:54]):
+And in this dispatch, you at Station two on the engine were dispatched to 47 Summer Street, correct?
+Patrick Dwyer ([01:24:01]):
+That's correct.
+Speaker 3 ([01:24:03]):
+When you received the dispatch, did you have any information that there had been children involved?
+Patrick Dwyer ([01:24:10]):
+No, we did not.
+Speaker 3 ([01:24:11]):
+When you got to the scene, what did you see?
+Patrick Dwyer ([01:24:15]):
+When we got there, it was dark out. We started walking towards the house and the other firefighters were there before us. Then we were directed to go to the basement.
+Speaker 3 ([01:24:31]):
+Before going to the basement, were you directed towards the outside of the house and then redirected to the basement?
+Patrick Dwyer ([01:24:37]):
+We were walking towards the backyard, so I believe that's where the first person was located. So, we were kind of making our way back there.
+Speaker 3 ([01:24:45]):
+So, I'm just going to show you what's been previously marked as Exhibit number 34. Can you see it on the screen next to you?
+Patrick Dwyer ([01:24:53]):
+Yes.
+Speaker 3 ([01:24:54]):
+And so, would this be 47 Summer Street?
+Patrick Dwyer ([01:24:58]):
+Yes.
+Speaker 3 ([01:24:58]):
+And fair to say you were on your way to the backyard on the left side when you were redirected?
+Patrick Dwyer ([01:25:04]):
+Yes.
+Speaker 3 ([01:25:05]):
+Did you ever make it into the backyard?
+Patrick Dwyer ([01:25:08]):
+We went through the backyard to go into the residence.
+Speaker 3 ([01:25:13]):
+But you were directed to the basement, testified?
+Patrick Dwyer ([01:25:15]):
+Yes.
+Speaker 3 ([01:25:20]):
+If you could take a look at that screen again. I'm going to show you what's been marked as Exhibit 38. Can you see over here sliding glass doors?
+Patrick Dwyer ([01:25:30]):
+Yes.
+Speaker 3 ([01:25:30]):
+Is that where you entered the house?
+Patrick Dwyer ([01:25:32]):
+Yes.
+Speaker 3 ([01:25:34]):
+You indicated that you also went to the basement, correct?
+Patrick Dwyer ([01:25:37]):
+Correct.
+Speaker 3 ([01:25:39]):
+When you got into the house and went down into the basement, which side did you go to at the bottom of the stairs? The right or the left?
+Patrick Dwyer ([01:25:46]):
+We went down to the left.
+Speaker 3 ([01:25:52]):
+What did you observe when you went down into the basement?
+Patrick Dwyer ([01:25:57]):
+We saw two children on the ground and the father sitting on the couch next to them.
+Speaker 3 ([01:26:03]):
+Again, just going to show you what's been previously marked as Exhibit 95. Is that fair to be the left side basement?
+Patrick Dwyer ([01:26:11]):
+Yes.
+Speaker 3 ([01:26:13]):
+And Exhibit 96, where did you see the father?
+Patrick Dwyer ([01:26:24]):
+He was sitting on a couch or something in the area. Not sure exactly which one.
+Speaker 3 ([01:26:33]):
+Did you also observe the children on the floor?
+Patrick Dwyer ([01:26:37]):
+Yes.
+Speaker 3 ([01:26:37]):
+How many children?
+Patrick Dwyer ([01:26:39]):
+Two.
+Speaker 3 ([01:26:40]):
+What did you do when you observed the children?
+Patrick Dwyer ([01:26:44]):
+We started CPR in cardiac arrest.
+Speaker 3 ([01:26:48]):
+Okay. And so, which child did you work on?
+Patrick Dwyer ([01:26:51]):
+The five-year-old girl.
+Speaker 3 ([01:26:52]):
+Okay. Where was she located?
+Patrick Dwyer ([01:26:55]):
+On the floor in that room.
+Speaker 3 ([01:26:57]):
+So, as far as looking at exhibit number 96, does that depict the general area where you saw the five-year-old child?
+Patrick Dwyer ([01:27:04]):
+Yes.
+Speaker 3 ([01:27:05]):
+Where did you treat her? Where did you see her?
+Patrick Dwyer ([01:27:09]):
+Right in that area. I can't remember exactly where it was.
+Speaker 3 ([01:27:11]):
+Okay. In this photograph of exhibit number 96, do you see a lot of equipment?
+Patrick Dwyer ([01:27:19]):
+Yes.
+Speaker 3 ([01:27:19]):
+And I'm just going to show you Exhibit 101 too with some more equipment. Do you see all that equipment there?
+Patrick Dwyer ([01:27:27]):
+Yes.
+Speaker 3 ([01:27:28]):
+Is that equipment that was used to treat the five-year-old child?
+Patrick Dwyer ([01:27:34]):
+Yes.
+Speaker 3 ([01:27:35]):
+Did you learn her name to later be Cora Clancy?
+Patrick Dwyer ([01:27:38]):
+Yes.
+Speaker 3 ([01:27:39]):
+While you were assisting or working with Cora, what was Jen Stratton doing, your partner?
+Patrick Dwyer ([01:27:47]):
+She was with the other child.
+Speaker 3 ([01:27:50]):
+Do you recall where the other child was in relation to Cora?
+Patrick Dwyer ([01:27:54]):
+They're kind of right next to each other.
+Speaker 3 ([01:28:02]):
+So, again, showing you exhibit number 96, if you look to the middle of the photograph, there's a red spot on the floor. Is that a fair place where Cora was?
+Patrick Dwyer ([01:28:12]):
+Yes.
+Speaker 3 ([01:28:12]):
+And would the other child, the younger infant, was he closer to the couch or the bed area or was he in a different location in the basement?
+Patrick Dwyer ([01:28:23]):
+Probably more towards this side, I would say, if I could remember.
+Speaker 3 ([01:28:28]):
+When you say this side, what do you see in the picture to depict where?
+Patrick Dwyer ([01:28:32]):
+Probably closer to the cardiac monitor.
+Speaker 3 ([01:28:35]):
+Okay. And can you tell us which is the cardiac monitor? Is it here at the bottom?
+Patrick Dwyer ([01:28:40]):
+Yes. A piece of equipment right there.
+Speaker 3 ([01:28:42]):
+And again, in exhibit 101, can you see the cardiac monitor a little better?
+Patrick Dwyer ([01:28:50]):
+Yes.
+Speaker 3 ([01:28:50]):
+Where is it in this photograph?
+Patrick Dwyer ([01:28:53]):
+Right there.
+Speaker 3 ([01:28:55]):
+Do you mind just getting up and pointing to it on the screen? So, we're talking about this black bag that is sort of off center of the photograph next to a blue bag. Is that fair to say?
+Patrick Dwyer ([01:29:11]):
+Sorry, what was the question?
+Speaker 3 ([01:29:13]):
+I'm just trying to locate it on the picture for the record. So, you pointed to a black bag that's kind of off center in this photograph, correct?
+Patrick Dwyer ([01:29:24]):
+This is a cardiac monitor.
+Speaker 3 ([01:29:25]):
+Okay. Thank you. When you started to treat Cora, what were your observations of her when you came upon her?
+Patrick Dwyer ([01:29:41]):
+I noticed she kind of looked like she had some blood vessels around her eyes.
+Speaker 3 ([01:29:48]):
+Did you make any observations of the color of her skin?
+Patrick Dwyer ([01:29:52]):
+It was kind of pale, bluish.
+Speaker 3 ([01:29:57]):
+When you approached the patient, what's the first thing that you do to assess them?
+Patrick Dwyer ([01:30:02]):
+I check for breathing, check for a pulse.
+Speaker 3 ([01:30:05]):
+Did she have a pulse?
+Patrick Dwyer ([01:30:07]):
+No.
+Speaker 3 ([01:30:07]):
+Was she breathing?
+Patrick Dwyer ([01:30:08]):
+No.
+Speaker 3 ([01:30:09]):
+And when you're doing those things, are you able to make observations of the area around their face, like their nose and their mouth?
+Patrick Dwyer ([01:30:17]):
+Yes.
+Speaker 3 ([01:30:18]):
+In this circumstance with Cora, did you notice anything around her mouth?
+Patrick Dwyer ([01:30:23]):
+Around her mouth? Not that I can recall.
+Speaker 3 ([01:30:43]):
+When you were trying to assess her breathing, is there anything that you do to try to resuscitate somebody or get them to breathe?
+Patrick Dwyer ([01:30:51]):
+Yes, we would use a bag valve mask to help them breathe.
+Speaker 3 ([01:30:56]):
+Did you do that for Cora?
+Patrick Dwyer ([01:30:57]):
+Eventually when we got the equipment down there, yes.
+Speaker 3 ([01:31:02]):
+And were you able to use that device and get her to breathe on her own?
+Patrick Dwyer ([01:31:08]):
+No.
+Speaker 3 ([01:31:08]):
+And while you're utilizing that bag valve mask, fair to say you're in close contact and making observations of the patient's face and mouth, correct?
+Patrick Dwyer ([01:31:17]):
+Yes.
+Speaker 3 ([01:31:18]):
+And you indicated that you're not sure if you recalled seeing anything around her mouth?
+Patrick Dwyer ([01:31:24]):
+Nothing particularly that I can think of.
+Speaker 3 ([01:31:27]):
+Okay. If I may approach. You may. I'm just going to show you page nine, and if you could read lines 17 through 19 to yourself. Does that refresh your memory?
+Patrick Dwyer ([01:31:47]):
+Yes.
+Speaker 3 ([01:31:49]):
+What did you observe in or around Cora's mouth?
+Patrick Dwyer ([01:31:52]):
+That she did have some blood in her mouth.
+Speaker 3 ([01:31:59]):
+Did eventually other emergency staff come down and help you with rendering aid on Cora?
+Patrick Dwyer ([01:32:05]):
+Yes.
+Speaker 3 ([01:32:06]):
+And fair to say one of the things that you do is maintain compressions and CPR?
+Patrick Dwyer ([01:32:11]):
+Yes.
+Speaker 3 ([01:32:12]):
+And can you do that by yourself or do you often have to have somebody help?
+Patrick Dwyer ([01:32:15]):
+Oh, we usually have multiple people working.
+Speaker 3 ([01:32:18]):
+And in this circumstance with the treatment of Cora, other people came in and helped you with those things?
+Patrick Dwyer ([01:32:23]):
+Yes.
+Speaker 3 ([01:32:23]):
+Were you eventually able to prepare her to leave the basement area?
+Patrick Dwyer ([01:32:27]):
+Yes, once we got more first responders down there.
+Speaker 3 ([01:32:31]):
+And fair to say there was first responders from other departments that came and helped prepare to bring Cora out of the basement, correct?
+Patrick Dwyer ([01:32:39]):
+Yes.
+Speaker 3 ([01:32:40]):
+Do you recall how she left the basement?
+Patrick Dwyer ([01:32:43]):
+We took her out of the basement on a backboard up the bulkhead stairs.
+Speaker 3 ([01:32:49]):
+And the firefighters that were assisting putting her on the backboard, do you remember where they were from? What town?
+Patrick Dwyer ([01:32:54]):
+Marshfield.
+Speaker 3 ([01:32:57]):
+When Cora was placed into an ambulance, do you remember what ambulance she was placed into?
+Patrick Dwyer ([01:33:03]):
+Marshfield Ambulance.
+Speaker 3 ([01:33:04]):
+Did you continue to help assist them when she was put in the ambulance?
+Patrick Dwyer ([01:33:07]):
+Yes, I went to the hospital with them.
+Speaker 3 ([01:33:10]):
+And do you remember who the firefighters were that were from Marshfield that were helping you?
+Patrick Dwyer ([01:33:16]):
+Yes. Andrew Wilkins, Ryan Henry, and Carrie Cover.
+Speaker 3 ([01:33:23]):
+And fair to say Andrew and Ryan were in the back of the ambulance with you, correct?
+Patrick Dwyer ([01:33:27]):
+Yes.
+Speaker 3 ([01:33:28]):
+And Carrie was driving?
+Patrick Dwyer ([01:33:31]):
+I believe she was in the back also.
+Speaker 3 ([01:33:33]):
+Okay. At some point, somebody hopped in the front seat and drove?
+Patrick Dwyer ([01:33:38]):
+Yes.
+Speaker 3 ([01:33:39]):
+And when you got to the hospital, which hospital did you transport to?
+Patrick Dwyer ([01:33:43]):
+Beth Israel Plymouth.
+Speaker 3 ([01:33:45]):
+Were efforts continued to be made in that transport from Duxbury to Beth Israel and Plymouth?
+Patrick Dwyer ([01:33:51]):
+Yes.
+Speaker 3 ([01:33:53]):
+While inside the ambulance, did you try to use one of those cardiac machines to shock or defibrillate Cora?
+Patrick Dwyer ([01:34:02]):
+Yes.
+Speaker 3 ([01:34:03]):
+Was there any result for that?
+Patrick Dwyer ([01:34:06]):
+We shocked once, but did not regain pulses.
+Speaker 3 ([01:34:10]):
+And when you got to the hospital, did you transfer care to the emergency staff at Beth Israel?
+Patrick Dwyer ([01:34:16]):
+Yes.
+Speaker 3 ([01:34:17]):
+And did you do anything further on the care and treatment of Cora?
+Patrick Dwyer ([01:34:21]):
+Not once we transferred care, no.
+Speaker 3 ([01:34:22]):
+I have nothing further.
+Speaker 4 ([01:34:22]):
+Mr. Reddington?
+Kevin Reddington ([01:34:38]):
+I have no questions. Thank you, sir.
+Speaker 4 ([01:34:40]):
+All right. Thank you, sir. You may step down. Thanks.
+Patrick Dwyer ([01:34:41]):
+Thanks.
+Speaker 7 ([01:35:00]):
+Watch your steps.
+Speaker 3 ([01:35:29]):
+Commonwealth calls Jennifer Stratton.
+Kevin Reddington ([01:35:29]):
+Same objection, Your Honor.
+Speaker 4 ([01:35:29]):
+Stop right here. Raise your right hand for the clerk.
+Speaker 6 ([01:35:29]):
+Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending between the commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth?
+Jennifer Stratton ([01:35:29]):
+I do.
+Speaker 6 ([01:35:29]):
+You may have a seat
+Speaker 7 ([01:35:29]):
+Watch your step right there please.
+Speaker 4 ([01:35:29]):
+Hey, good morning.
+Jennifer Stratton ([01:35:29]):
+Morning.
+Speaker 4 ([01:36:32]):
+All right. I'm going to ask you to keep your voice up so the jury can hear you, okay?
+Jennifer Stratton ([01:36:35]):
+Okay.
+Speaker 4 ([01:36:36]):
+Great. Thank you. Yeah, Treesh Brake.
+Speaker 3 ([01:36:38]):
+Thank you. Good morning. Can you please state and spell your name for the record?
+Jennifer Stratton ([01:36:41]):
+Yes. Jennifer Stratton. J-E-N-N-I-F-E-R S-T-R-A-T-T-O-N.
+Speaker 3 ([01:36:48]):
+‍
+And your date of birth?
+Jennifer Stratton ([01:36:49]):
+July 11th, 1986.
+Speaker 3 ([01:36:51]):
+Where do you work?
+Jennifer Stratton ([01:36:52]):
+Duxbury Fire Department.
+Speaker 3 ([01:36:53]):
+And how long have you been a Duxbury firefighter?
+Jennifer Stratton ([01:36:55]):
+12 years.
+Speaker 3 ([01:36:56]):
+Are you also a paramedic?
+Jennifer Stratton ([01:36:57]):
+Yes.
+Speaker 3 ([01:36:58]):
+And how long have you been a paramedic?
+Jennifer Stratton ([01:36:59]):
+About 13.
+Speaker 3 ([01:37:01]):
+And have you completed all the training and certification required to be a paramedic?
+Jennifer Stratton ([01:37:05]):
+Yes.
+Speaker 3 ([01:37:06]):
+I want to direct your attention to January 24th, 2023. Were you working that day?
+Jennifer Stratton ([01:37:12]):
+Yes, I was.
+Speaker 3 ([01:37:12]):
+And were you working a 24-hour shift that started at 8:00 AM?
+Jennifer Stratton ([01:37:15]):
+Yes.
+Speaker 3 ([01:37:16]):
+And were you part of a crew that was dispatched to 47 Summer Street just after 6:00 PM?
+Jennifer Stratton ([01:37:22]):
+Yes.
+Speaker 3 ([01:37:23]):
+And who was with you in that crew?
+Jennifer Stratton ([01:37:25]):
+Firefighter Patrick Dwyer was with me in the engine that night.
+Speaker 3 ([01:37:31]):
+And approximately how long did it take you to get from the station you were located at 247 Summer Street?
+Jennifer Stratton ([01:37:37]):
+Maybe four or five minutes.
+Speaker 3 ([01:37:39]):
+And were you driving?
+Jennifer Stratton ([01:37:40]):
+I was driving that night.
+Speaker 3 ([01:37:42]):
+What did you see when you arrived?
+Jennifer Stratton ([01:37:44]):
+Pulled up to the address, saw our ambulance crew. They had arrived just before we did. They were starting to walk to the back of the house.
+Speaker 3 ([01:37:53]):
+And did you follow?
+Jennifer Stratton ([01:37:55]):
+Yes.
+Speaker 3 ([01:37:55]):
+And what did you see in the backyard?
+Jennifer Stratton ([01:37:57]):
+Came to the backyard, saw firefighter Dan Doherty kneeling next to a person. It was very dark. Ended up being Ms. Clancy. That was all we saw for a few seconds.
+Speaker 3 ([01:38:10]):
+And at that point, did you hear something?
+Jennifer Stratton ([01:38:12]):
+We did. Heard a voice yelling for us to get inside of the house, that there was a kid hanging in the basement.
+Speaker 3 ([01:38:18]):
+And did you go into the house?
+Jennifer Stratton ([01:38:19]):
+We did.
+Speaker 3 ([01:38:20]):
+And what entrance did you go in?
+Jennifer Stratton ([01:38:22]):
+Through the slider doors in the rear.
+Speaker 3 ([01:38:24]):
+And did that lead you into the kitchen?
+Jennifer Stratton ([01:38:26]):
+Yes.
+Speaker 3 ([01:38:26]):
+And then did you proceed to the basement?
+Jennifer Stratton ([01:38:28]):
+Yes.
+Speaker 3 ([01:38:29]):
+When you got down the basement stairs, would it be accurate to state that you can either go right or left?
+Jennifer Stratton ([01:38:35]):
+Yes.
+Speaker 3 ([01:38:35]):
+Which direction did you go?
+Jennifer Stratton ([01:38:37]):
+We took a left.
+Speaker 3 ([01:38:38]):
+And what did you see when you went left?
+Jennifer Stratton ([01:38:41]):
+We took a left and we saw Callan and Cora face up on the ground.
+Speaker 3 ([01:38:47]):
+And when you saw them, what did you do?
+Jennifer Stratton ([01:38:50]):
+I immediately jumped on the radio to ask for two additional ambulances, that we needed more help. And Patrick ran to Cora and I went to Callan.
+Speaker 3 ([01:39:01]):
+And showing you what's been marked as Exhibit 100. Is this the room that you entered?
+Jennifer Stratton ([01:39:24]):
+Yes.
+Speaker 3 ([01:39:25]):
+And where was Cora, to your memory?
+Jennifer Stratton ([01:39:29]):
+Cora was just to the left in this picture, and Callan was just to the right.
+Speaker 3 ([01:39:35]):
+And when you say just to the left, are you putting over towards the equipment against the wall in the picture?
+Jennifer Stratton ([01:39:41]):
+Yes.
+Speaker 3 ([01:39:42]):
+And when you say to the right, are you pointing to the area to the right of the dresser?
+Jennifer Stratton ([01:39:47]):
+Yes.
+Speaker 3 ([01:39:48]):
+I'm showing you Exhibit 98. Is that the area where Callan was found?
+Jennifer Stratton ([01:39:56]):
+Yes.
+Speaker 3 ([01:39:58]):
+And close up Exhibit 98 nine, do you see the pajamas there, the stethoscope and the blue exercise bands?
+Jennifer Stratton ([01:40:04]):
+Yes.
+Speaker 3 ([01:40:05]):
+Do you recall removing Callan's pajamas to treat him?
+Jennifer Stratton ([01:40:11]):
+I did, yes.
+Speaker 3 ([01:40:17]):
+So, when you went over to Callan, you remove his clothing, what do you do after that?
+Jennifer Stratton ([01:40:23]):
+I didn't remove his entire onesie right away, checked him for a pulse. He did not have one. Immediately started chest compressions on him.
+Speaker 3 ([01:40:32]):
+Now this is an eight-month-old baby, correct?
+Jennifer Stratton ([01:40:35]):
+Yes.
+Speaker 3 ([01:40:35]):
+Is the way you do chest compressions for a baby different than other people, other ages?
+Jennifer Stratton ([01:40:40]):
+Yes, because of the size, you have to scoop your arms around and you compress with your thumbs in the center.
+Speaker 4 ([01:40:44]):
+I'll allow it.
+Speaker 3 ([01:40:49]):
+So, you said you have to put your hands underneath on the back of the child and then use your thumbs to do compressions? Yes. And is that what you did for Callan?
+Jennifer Stratton ([01:40:56]):
+Yes.
+Speaker 3 ([01:40:57]):
+And what did you do next?
+Jennifer Stratton ([01:41:00]):
+Continued CPR on him until more help and hands started to arrive on scene. We had an off-duty firefighter, Tom Brandt, come in and he started to assist me. He took over compressions briefly while more help started to arrive.
+Speaker 3 ([01:41:15]):
+When Brandt took over chest compressions, what did you do?
+Jennifer Stratton ([01:41:19]):
+At that point, someone had brought down a bag valve mask to help us deliver oxygen to the child, and we started delivering oxygen to the child.
+Speaker 3 ([01:41:29]):
+And at some point, did you remove the pajamas completely? Yes. And when you removed the pajamas completely, was that so someone could attempt to get IO access through the baby's legs? And was that successful?
+Jennifer Stratton ([01:41:51]):
+That was not successful, no.
+Speaker 3 ([01:41:52]):
+Is that difficult to do with a child that age?
+Jennifer Stratton ([01:41:56]):
+It's a little more difficult. It's a less frequent practice skill.
+Speaker 3 ([01:42:00]):
+Were multiple attempts made to get the IV access into the bone in Callan's leg?
+Jennifer Stratton ([01:42:07]):
+I attempted once and another provider attempted a second time. I don't remember who that was.
+Speaker 3 ([01:42:13]):
+And neither attempt was successful? What did you do next? Sorry, I didn't get her answer. Oh, what was your answer?
+Jennifer Stratton ([01:42:22]):
+For which part?
+Speaker 3 ([01:42:23]):
+I'm sorry. Was either attempt successful?
+Jennifer Stratton ([01:42:25]):
+No. No.
+Speaker 3 ([01:42:26]):
+What did you do next?
+Jennifer Stratton ([01:42:29]):
+Eventually, Kingston Fire arrived on scene to provide the ambulance for transport for Callan. I don't know how long we were in the basement for, but we did make the decision eventually it was time to get moving to the truck and start going to the hospital.
+Speaker 3 ([01:42:46]):
+While you were working on Callan, did you notice any injuries on him?
+Jennifer Stratton ([01:42:49]):
+Yes. He had deep strangulation marks around the entire circumference of his neck.
+Speaker 3 ([01:42:54]):
+And throughout the entire time that you're in the basement, are chest compressions being done and you're trying to assist him with breathing?
+Jennifer Stratton ([01:43:02]):
+Yes.
+Speaker 3 ([01:43:02]):
+Did he in the home ever gain a pulse or the ability to breathe?
+Jennifer Stratton ([01:43:06]):
+No, he did not.
+Speaker 3 ([01:43:08]):
+Was he eventually taken to the ambulance?
+Jennifer Stratton ([01:43:10]):
+Yes.
+Speaker 3 ([01:43:11]):
+And how was he removed from the basement and brought to the ambulance?
+Jennifer Stratton ([01:43:14]):
+I scooped him up in my arms and carried him outside to the truck.
+Speaker 3 ([01:43:20]):
+And did you go with him in that transport to the hospital?
+Jennifer Stratton ([01:43:23]):
+Yes.
+Speaker 3 ([01:43:24]):
+And at any point in time, did he regain the ability to breathe or heartbeat during that transport?
+Jennifer Stratton ([01:43:29]):
+No, he did not.
+Speaker 3 ([01:43:31]):
+Was care transferred to medical staff at Beth Israel Deaconess Plymouth?
+Jennifer Stratton ([01:43:37]):
+Yes, they were.
+Speaker 3 ([01:43:40]):
+Nothing further. Thank you.
+Speaker 4 ([01:43:41]):
+Mr. Reddington? Thank you. You may step down. Thank you.
+Jennifer Stratton ([01:43:45]):
+Thank you.
+Speaker 7 ([01:43:45]):
+Yeah, please.
+Jennifer Stratton ([01:43:55]):
+Thank you.
+Speaker 3 ([01:43:57]):
+Commonwealth calls Robert Costanzo.
+Kevin Reddington ([01:44:08]):
+Can we approach the standby, please?
+Speaker 4 ([01:44:18]):
+Sure. Yeah.
+Speaker 3 ([01:44:18]):
+Costanzo.
+Speaker 7 ([01:44:20]):
+Right this way.
+Speaker 6 ([01:44:20]):
+Morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending between the commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth? Thank you, Sir. You may have a seat.
+Speaker 7 ([01:44:20]):
+Watch your step right.
+Speaker 4 ([01:44:20]):
+All right. Good morning, sir.
+Robert Costanzo ([01:44:50]):
+Morning.
+Speaker 3 ([01:44:50]):
+If I may?
+Speaker 4 ([01:44:53]):
+Yes, please.
+Speaker 3 ([01:44:54]):
+Thank you. Good morning. Can you please state and spell your name for the record?
+Robert Costanzo ([01:44:57]):
+It's Robert Costanzo, C-O-S-T-A-N- Z-O.
+Speaker 3 ([01:45:01]):
+And your date of birth, please?
+Robert Costanzo ([01:45:02]):
+04/24/1985.
+Shanan Buckingham ([01:45:01]):
+And your date of birth please?
+Robert Costanzo ([01:45:02]):
+4/24/1985.
+Shanan Buckingham ([01:45:04]):
+Where do you work?
+Robert Costanzo ([01:45:05]):
+Pembroke Fire Department.
+Shanan Buckingham ([01:45:07]):
+And how long have you been a Pembroke firefighter?
+Robert Costanzo ([01:45:09]):
+I've been there since 2011.
+Shanan Buckingham ([01:45:11]):
+And are you also a paramedic?
+Robert Costanzo ([01:45:12]):
+I am.
+Shanan Buckingham ([01:45:13]):
+How long have you been a paramedic?
+Robert Costanzo ([01:45:15]):
+I've been with Pembroke since 2011 and I started in EMS in 2006.
+Shanan Buckingham ([01:45:21]):
+And have you done all the training and certification required to be a paramedic?
+Robert Costanzo ([01:45:25]):
+Yes.
+Shanan Buckingham ([01:45:26]):
+I want to direct your attention to January 24th, 2023. Were you working that day?
+Robert Costanzo ([01:45:32]):
+Yes, I was.
+Shanan Buckingham ([01:45:33]):
+And were you working an overtime shift that day?
+Robert Costanzo ([01:45:34]):
+Yes.
+Shanan Buckingham ([01:45:36]):
+What was your role on that shift?
+Robert Costanzo ([01:45:37]):
+I was assigned to the ambulance.
+Shanan Buckingham ([01:45:40]):
+And at some point after 6:00 PM that day, was there a call put out by Duxbury Fire Department for mutual aid?
+Robert Costanzo ([01:45:48]):
+Yes.
+Shanan Buckingham ([01:45:49]):
+And being members of the Pembroke Fire Department, did you respond to that request for mutual aid?
+Robert Costanzo ([01:45:55]):
+Yes, we did.
+Shanan Buckingham ([01:45:56]):
+Who responded?
+Robert Costanzo ([01:45:57]):
+It was me and my partner.
+Shanan Buckingham ([01:45:59]):
+Who was your partner?
+Robert Costanzo ([01:46:00]):
+Dan Smith.
+Shanan Buckingham ([01:46:01]):
+And did you go in an ambulance or some type of engine?
+Robert Costanzo ([01:46:06]):
+An ambulance.
+Shanan Buckingham ([01:46:07]):
+Okay. And did you respond to the area of 47 Summer Street?
+Robert Costanzo ([01:46:10]):
+Yes, we did.
+Shanan Buckingham ([01:46:11]):
+And approximately how long did it take you to get there?
+Robert Costanzo ([01:46:15]):
+Between five and eight minutes.
+Shanan Buckingham ([01:46:17]):
+When you arrived, what did you see?
+Robert Costanzo ([01:46:20]):
+There were multiple pieces of equipment, other ambulances, police cars.
+Shanan Buckingham ([01:46:26]):
+When you arrived, were you directed to the backyard?
+Robert Costanzo ([01:46:30]):
+Yes.
+Shanan Buckingham ([01:46:31]):
+And did you see a patient there in the backyard?
+Robert Costanzo ([01:46:34]):
+Yes, we did.
+Shanan Buckingham ([01:46:35]):
+And where was she located?
+Robert Costanzo ([01:46:37]):
+She was on the ground with a Duxbury firefighter. She was already C-spined on a long board with a collar. She was unresponsive, but breathing on the ground.
+Shanan Buckingham ([01:46:45]):
+And did you learn her name was Lindsay Clancy?
+Robert Costanzo ([01:46:47]):
+Yes.
+Shanan Buckingham ([01:46:48]):
+And when you say she was already on a board with a C-spine, what type of equipment are we talking about? And if you could just explain to the jurors.
+Robert Costanzo ([01:46:55]):
+So it's just a long flat board that we use to secure people when there's possible spinal injury. And she already had the collar on her neck. They had already started treatment prior to our arrival, so they had her all secured to the long backboard with the collar applied.
+Shanan Buckingham ([01:47:13]):
+And did you notice anything about her wrists at that time?
+Robert Costanzo ([01:47:16]):
+Yes. Her wrists were bandaged previously, assuming some kind of injury. There was no active bleeding or anything through the bandage, but her wrists were bandaged.
+Shanan Buckingham ([01:47:27]):
+Was it white bandaging?
+Robert Costanzo ([01:47:27]):
+Yes.
+Shanan Buckingham ([01:47:29]):
+And so nothing was seeping through to your eye? Did you see anything on her neck area?
+Robert Costanzo ([01:47:35]):
+She had some superficial lacerations that we could see around the collar, but we don't typically remove equipment after it's already been placed. So I didn't investigate any further than that. There was no active bleeding that I could see, so we just left it alone.
+Shanan Buckingham ([01:47:50]):
+So even with the collar, there was no blood flowing out of the collar or pooling around her or anything like that?
+Robert Costanzo ([01:47:55]):
+Correct.
+Shanan Buckingham ([01:47:58]):
+Was she breathing?
+Robert Costanzo ([01:47:59]):
+She was.
+Shanan Buckingham ([01:48:00]):
+Was she responsive?
+Robert Costanzo ([01:48:01]):
+No.
+Shanan Buckingham ([01:48:02]):
+Was she making any noise at all?
+Robert Costanzo ([01:48:04]):
+She was moaning and groaning, but no words, no verbal response.
+Shanan Buckingham ([01:48:10]):
+Did you bring her to your ambulance?
+Robert Costanzo ([01:48:11]):
+Yes, we did.
+Shanan Buckingham ([01:48:13]):
+And when you got to the ambulance, what was your role?
+Robert Costanzo ([01:48:18]):
+I was the tech in charge. So we did as much of an assessment as we could without removing her from the board to look for any further injuries. Other than the injuries that the Duxbury Fire Department had already found, we didn't find any further injuries. And then we continued with treatment, vital signs and such.
+Shanan Buckingham ([01:48:38]):
+When you did the assessment, did you look at her head?
+Robert Costanzo ([01:48:41]):
+Yes.
+Shanan Buckingham ([01:48:41]):
+Were there any cuts or bumps or dents that you noticed in her head?
+Robert Costanzo ([01:48:44]):
+Not that we noticed, no.
+Shanan Buckingham ([01:48:46]):
+What about her arms? Other than the bandaging on her wrist, were there any cuts, obvious broken bones or injuries to her arms or her hands?
+Robert Costanzo ([01:48:56]):
+No obvious broken bones or anything, no.
+Shanan Buckingham ([01:49:03]):
+And you said you were the tech. What does that mean?
+Robert Costanzo ([01:49:06]):
+I was the medic that was in charge. [inaudible 01:49:13] medic that's in charge or you're the medic in charge. So I was the medic in charge.
+Shanan Buckingham ([01:49:16]):
+And was anyone else in the back of the ambulance with you treating Ms. Clancy?
+Robert Costanzo ([01:49:20]):
+Yes, my partner, Dan Smith.
+Shanan Buckingham ([01:49:21]):
+Who was driving the ambulance, if you recall?
+Robert Costanzo ([01:49:23]):
+It was our deputy chief, Jim Shea.
+Shanan Buckingham ([01:49:26]):
+And do you recall which hospital you went to?
+Robert Costanzo ([01:49:30]):
+South Shore Hospital.
+Shanan Buckingham ([01:49:33]):
+Well, let me ask you, how long approximately did it take you to get from 47 Summer Street in Duxbury to South Shore Hospital?
+Robert Costanzo ([01:49:42]):
+It's typically about, from Pembroke, it would be about 15 minutes, so it would be a little bit longer than that. I'm not sure of the exact time, so probably maybe 18 minutes.
+Shanan Buckingham ([01:49:51]):
+Okay. And while you're in that transport in the back of the ambulance, after you've done this examination of Lindsay Clancy to see if there are any other injuries, what do you do next?
+Robert Costanzo ([01:50:03]):
+So we would start treatment. So we put in two IVs as a precaution and any other treatment that was needed. So we noticed that her pupils were constricted and she was unresponsive. So we treated for a potential opioid overdose. We gave two milligrams of Narcan and she seemed to become a little bit more agitated, reaching, trying to grab, reaching out with her arms, but no verbal communication. She never fully woke up.
+Shanan Buckingham ([01:50:38]):
+And have you given Narcan to individuals in the past in your role as a paramedic?
+Robert Costanzo ([01:50:44]):
+Yes, I have.
+Shanan Buckingham ([01:50:45]):
+What is the typical reaction when you give a patient Narcan?
+Robert Costanzo ([01:50:49]):
+It depends on the drug that they took or the amount of drugs that they took, but depending on what they take, their respirations will go up, their pupils will get a little bigger. Sometimes they fully wake up.
+Kevin Reddington ([01:51:01]):
+Can we know who they are? Who's referred to?
+Robert Costanzo ([01:51:02]):
+The patient.
+Kevin Reddington ([01:51:02]):
+Yeah. All right.
+Shanan Buckingham ([01:51:07]):
+And you were referring to patients that you've dealt with in the past in your role as a paramedic, is that correct?
+Robert Costanzo ([01:51:11]):
+That's correct, yes.
+Shanan Buckingham ([01:51:14]):
+Okay. And so they would often wake up when given Narcan?
+Robert Costanzo ([01:51:16]):
+Yes.
+Shanan Buckingham ([01:51:18]):
+And what type of drugs, based on your training experience, does Narcan work on?
+Robert Costanzo ([01:51:24]):
+We're trained to use it for opioid overdoses. So heroin, fentanyl, other drugs like that.
+Shanan Buckingham ([01:51:30]):
+Okay. And does Narcan typically work on benzodiazepine?
+Robert Costanzo ([01:51:35]):
+We are not trained to use it for anything other than opioids.
+Shanan Buckingham ([01:51:38]):
+Okay. And when you gave Lindsay Clancy the Narcan, she did not wake up, correct?
+Robert Costanzo ([01:51:43]):
+No.
+Shanan Buckingham ([01:51:46]):
+Did you provide any other care to Lindsay Clancy on the way to the hospital?
+Robert Costanzo ([01:51:50]):
+Just continued to monitor her vitals and make sure there was no decline.
+Shanan Buckingham ([01:51:54]):
+And once you arrived at the hospital, did you transfer her care to the hospital staff?
+Robert Costanzo ([01:51:59]):
+Yes, we did.
+Shanan Buckingham ([01:52:03]):
+No other questions.
+Kevin Reddington ([01:52:04]):
+All right. So you're not trained in Narcan on benzodiazepines, is that correct?
+Robert Costanzo ([01:52:09]):
+Yeah, we don't give it for benzodiazepines.
+Kevin Reddington ([01:52:11]):
+And in any event, when you gave Narcan to the body that was laying on the ground, she had already been wrapped up on her wrist, right?
+Robert Costanzo ([01:52:17]):
+That's correct.
+Kevin Reddington ([01:52:17]):
+Already been wrapped up, had the thing on the neck to prevent the head from moving, right?
+Robert Costanzo ([01:52:22]):
+That's correct.
+Kevin Reddington ([01:52:23]):
+And also it had bandages perhaps on her neck area? I'm not sure.
+Robert Costanzo ([01:52:27]):
+There were no bandages that I could see because the collar blocks-
+Kevin Reddington ([01:52:30]):
+[inaudible 01:52:31].
+Robert Costanzo ([01:52:30]):
+Yeah. So most of it I could see. There are some holes in the collar that we could see some superficial lacerations through, but there was no active bleeding. Her wrists were already bandaged, so we don't take the bandages off after they're on. And there was no blood screws.
+Kevin Reddington ([01:52:42]):
+I ask the questions, you can answer them.
+Robert Costanzo ([01:52:44]):
+Okay.
+Kevin Reddington ([01:52:46]):
+Okay? Narcan administered to Lindsay Clancy on the ground, yes?
+Robert Costanzo ([01:52:50]):
+In the ambulance, but yes.
+Kevin Reddington ([01:52:52]):
+And there was no reaction. It didn't have any effect on her, right?
+Robert Costanzo ([01:52:56]):
+She appeared to become a little bit more... She started reaching and grabbing a little bit more than she was before.
+Kevin Reddington ([01:53:02]):
+That's consistent as well with a person who's had a head injury, right?
+Robert Costanzo ([01:53:07]):
+Could be.
+Kevin Reddington ([01:53:08]):
+Yeah. So in any event, the Narcan that you're trained would be dealing with opioids, right?
+Robert Costanzo ([01:53:14]):
+Yes, that's correct.
+Kevin Reddington ([01:53:16]):
+Now, did you know, sir, at all that she suffered a burst fracture of her cervical spine? Did you know that, sir?
+Robert Costanzo ([01:53:23]):
+No.
+Kevin Reddington ([01:53:23]):
+T5 through T6, T4, 6, 7, 8, all exploded, fractured. Did you know that?
+Robert Costanzo ([01:53:29]):
+No.
+Kevin Reddington ([01:53:30]):
+Did you know that there was a hemorrhaging into her body, that she fractured every rib in her body?
+Robert Costanzo ([01:53:34]):
+No.
+Kevin Reddington ([01:53:37]):
+It was pretty dark out there, wasn't it?
+Robert Costanzo ([01:53:38]):
+It was.
+Kevin Reddington ([01:53:40]):
+Did you obviously administer aid to her or did you also have a flashlight on your head? Were you holding a flashlight or what?
+Robert Costanzo ([01:53:47]):
+She was already packaged. She was already on the longboard and everything, so we picked her up, put her on the stretcher, and moved out of the backyard into the ambulance.
+Kevin Reddington ([01:53:54]):
+Okay. So how long did you handle, if you will, her while she was laying there?
+Robert Costanzo ([01:54:00]):
+On scene? We were only on scene for, I think it was seven minutes, I think total on scene from the time that we-
+Kevin Reddington ([01:54:06]):
+Very chaotic?
+Robert Costanzo ([01:54:06]):
+Yes.
+Kevin Reddington ([01:54:09]):
+And it was dark in the backyard, right?
+Robert Costanzo ([01:54:10]):
+Yes.
+Kevin Reddington ([01:54:11]):
+There was no exterior lighting, nothing on the house that was lit up, like spotlights or anything, right?
+Robert Costanzo ([01:54:17]):
+That's correct.
+Kevin Reddington ([01:54:18]):
+No flashlights, right?
+Robert Costanzo ([01:54:19]):
+No.
+Kevin Reddington ([01:54:21]):
+And you scrutinized a hole in the thing that goes around the neck when someone has a head injury, especially a cervical injury, thoracic injuries. You scrutinized a hole that noted that there was a superficial wound to her neck?
+Robert Costanzo ([01:54:36]):
+That's all we could see through the side of the collar.
+Kevin Reddington ([01:54:38]):
+Who's we?
+Robert Costanzo ([01:54:39]):
+Me and my partner.
+Kevin Reddington ([01:54:40]):
+Was your partner scrutinizing the hole as well?
+Robert Costanzo ([01:54:44]):
+The hole? I don't-
+Kevin Reddington ([01:54:45]):
+You said there's a hole in that and the thing that goes around the neck.
+Robert Costanzo ([01:54:47]):
+Yeah, there's holes in the collar that you can see through.
+Kevin Reddington ([01:54:50]):
+Right. And you were scrutinizing. You were looking through it, right?
+Robert Costanzo ([01:54:52]):
+Yeah.
+Kevin Reddington ([01:54:52]):
+You just told the jury you saw superficial pattern on the neck, right?
+Robert Costanzo ([01:54:56]):
+Yes.
+Kevin Reddington ([01:54:56]):
+Did your partner look through the hole as well?
+Robert Costanzo ([01:54:56]):
+Yes.
+Kevin Reddington ([01:55:01]):
+And you've talked about your testimony with the district attorneys in the past, haven't you?
+Robert Costanzo ([01:55:07]):
+Yes.
+Kevin Reddington ([01:55:08]):
+One of the things that they asked you is whether or not it appeared as though the injuries to her neck or wrist were superficial. Isn't that right?
+Robert Costanzo ([01:55:19]):
+Yes.
+Kevin Reddington ([01:55:20]):
+And other than looking through the little hole in the thing around her neck in the dark, you didn't see her neck after that was removed, did you?
+Robert Costanzo ([01:55:29]):
+No.
+Kevin Reddington ([01:55:31]):
+That's all I have.
+Judge William Sullivan ([01:55:33]):
+Commonwealth redirect.
+Shanan Buckingham ([01:55:34]):
+Sir, after the seven minutes that you were in the dark backyard, you were then in an ambulance for 18 minutes with the patient, correct?
+Robert Costanzo ([01:55:41]):
+That's correct.
+Shanan Buckingham ([01:55:42]):
+And there's lighting in the ambulance, correct?
+Robert Costanzo ([01:55:44]):
+There is.
+Shanan Buckingham ([01:55:45]):
+And during those 18 minutes in the well-lit ambulance, did you ever see blood seeping through the bandages on her wrists? No. During those 18 minutes in the well-lit ambulance, did you ever see blood pooling around her neck or flowing from the neck?
+Robert Costanzo ([01:55:59]):
+No.
+Shanan Buckingham ([01:56:00]):
+Thank you.
+Judge William Sullivan ([01:56:01]):
+All right. Anything further?
+Kevin Reddington ([01:56:03]):
+No.
+Judge William Sullivan ([01:56:03]):
+Okay. Thank you, sir. You may sit down. Thank you.
+Speaker 9 ([01:56:05]):
+Watch your step please, sir.
+Shanan Buckingham ([01:56:16]):
+Commonwealth calls Daniel Dougherty.
+Kevin Reddington ([01:56:19]):
+No objection.
+Judge William Sullivan ([01:56:19]):
+Go and testify.
+Speaker 8 ([01:56:21]):
+[inaudible 01:56:48].
+Speaker 9 ([01:56:21]):
+Good morning, sir.
+Daniel Dougherty ([01:56:21]):
+Good morning.
+Speaker 9 ([01:56:21]):
+[inaudible 01:56:52].
+Speaker 10 ([01:56:52]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury [inaudible 01:56:54] shall be the truth, the whole truth, and nothing but the truth, so help you God? Thank you. You may have a seat, sir.
+Speaker 9 ([01:57:02]):
+Watch your step, please.
+Daniel Dougherty ([01:57:02]):
+Thank you.
+Judge William Sullivan ([01:57:04]):
+All right. Good morning, sir.
+Daniel Dougherty ([01:57:05]):
+Good morning.
+Judge William Sullivan ([01:57:05]):
+All right.
+Shanan Buckingham ([01:57:09]):
+[inaudible 01:57:09]. Good morning. Can you please state and spell your name for the record?
+Daniel Dougherty ([01:57:11]):
+Daniel Dougherty, D-O-U-G-H-E-R-T-Y.
+Shanan Buckingham ([01:57:15]):
+And your date of birth?
+Daniel Dougherty ([01:57:16]):
+8/27/1986.
+Shanan Buckingham ([01:57:18]):
+Where do you work?
+Daniel Dougherty ([01:57:19]):
+Duxbury Fire Department.
+Shanan Buckingham ([01:57:20]):
+How long have you been with the Duxbury Fire Department?
+Daniel Dougherty ([01:57:23]):
+Five and a half years, full-time.
+Shanan Buckingham ([01:57:25]):
+Are you also a paramedic?
+Daniel Dougherty ([01:57:25]):
+Yes.
+Shanan Buckingham ([01:57:27]):
+And how long have you been a paramedic?
+Daniel Dougherty ([01:57:30]):
+Four years.
+Shanan Buckingham ([01:57:32]):
+And have you completed all the training and education and certification required to be a paramedic?
+Daniel Dougherty ([01:57:36]):
+Yes.
+Shanan Buckingham ([01:57:39]):
+I want to direct your attention to January 24th, 2023. Were you working that day?
+Daniel Dougherty ([01:57:43]):
+I was.
+Shanan Buckingham ([01:57:44]):
+And were you working a 24-hour shift?
+Daniel Dougherty ([01:57:48]):
+Yes.
+Shanan Buckingham ([01:57:48]):
+What was your role that day on shift?
+Daniel Dougherty ([01:57:50]):
+Firefighter paramedic.
+Shanan Buckingham ([01:57:52]):
+And sometime after 6:00 PM, did you respond to 47 Summer Street in Duxbury?
+Daniel Dougherty ([01:57:59]):
+Yes.
+Shanan Buckingham ([01:58:00]):
+And when you responded, who was with you?
+Daniel Dougherty ([01:58:03]):
+Firefighter Heath was driving and Firefighter Nudd was in the back.
+Shanan Buckingham ([01:58:07]):
+And so you're in ambulance one at that time.
+Daniel Dougherty ([01:58:09]):
+Mm-hmm.
+Shanan Buckingham ([01:58:09]):
+Is that a yes?
+Daniel Dougherty ([01:58:09]):
+Yes.
+Shanan Buckingham ([01:58:12]):
+And when you arrive at 47 Summer Street, what do you see?
+Daniel Dougherty ([01:58:17]):
+There was two police cruisers either blocking the driveway or near it. So we pulled ahead of it, stopped the truck and got out.
+Shanan Buckingham ([01:58:28]):
+And did you head to get equipment and head to the backyard?
+Daniel Dougherty ([01:58:30]):
+Yes.
+Shanan Buckingham ([01:58:32]):
+And what did you see in the backyard?
+Daniel Dougherty ([01:58:34]):
+We had Officer Hall directing us towards to the side gate. And from there we went around to the back of the house.
+Shanan Buckingham ([01:58:43]):
+And did you see a female on the ground?
+Daniel Dougherty ([01:58:44]):
+We did.
+Shanan Buckingham ([01:58:45]):
+And did you learn that was Lindsay Clancy?
+Daniel Dougherty ([01:58:47]):
+Yes.
+Shanan Buckingham ([01:58:48]):
+Do you recall what she was wearing?
+Daniel Dougherty ([01:58:50]):
+I believe it was jeans and a tank top.
+Shanan Buckingham ([01:58:52]):
+Did she also have socks on?
+Daniel Dougherty ([01:58:54]):
+I believe so.
+Shanan Buckingham ([01:58:56]):
+And did you examine her or assess her once you reached her?
+Daniel Dougherty ([01:59:02]):
+Yes.
+Shanan Buckingham ([01:59:02]):
+And what, if any, injuries did you observe?
+Daniel Dougherty ([01:59:06]):
+She had lacerations to both wrists as well as her neck.
+Shanan Buckingham ([01:59:10]):
+‍
+And were those lacerations actively bleeding?
+Daniel Dougherty ([01:59:13]):
+No.
+Shanan Buckingham ([01:59:15]):
+Can you describe the lacerations that you saw on her neck?
+Daniel Dougherty ([01:59:19]):
+There was dried blood, seemed to be somewhat superficial since there was no active bleed.
+Shanan Buckingham ([01:59:24]):
+And what about the cuts on her wrists?
+Daniel Dougherty ([01:59:27]):
+Same.
+Shanan Buckingham ([01:59:29]):
+And when you say same, are you saying that there was no active bleeding there?
+Daniel Dougherty ([01:59:36]):
+Correct.
+Shanan Buckingham ([01:59:38]):
+Okay. And what, if anything, did you do to treat those wounds?
+Daniel Dougherty ([01:59:41]):
+We bandaged them up. I believe we placed a ABD pad, just a sterile pad on her neck as well.
+Shanan Buckingham ([01:59:47]):
+You said an APD or a sterile pad. Is that just a type of gauze or something that you put on the wound?
+Daniel Dougherty ([01:59:55]):
+Yes. Yes.
+Shanan Buckingham ([01:59:59]):
+Okay. And so you did that, and then you bandaged the wrist or vice versa?
+Daniel Dougherty ([02:00:00]):
+It was the wrist first, I believe. But we did secure the airway first before bandaging her wrist.
+Shanan Buckingham ([02:00:08]):
+Okay. So when you first arrived, is she breathing on her own?
+Daniel Dougherty ([02:00:11]):
+She was.
+Shanan Buckingham ([02:00:12]):
+Was she responsive?
+Daniel Dougherty ([02:00:14]):
+Somewhat.
+Shanan Buckingham ([02:00:15]):
+And what does that mean?
+Daniel Dougherty ([02:00:16]):
+Not totally responsive. Pretty much the painful stimuli.
+Shanan Buckingham ([02:00:21]):
+And what is painful stimuli?
+Daniel Dougherty ([02:00:23]):
+As we were moving her, she somewhat regained consciousness on us.
+Shanan Buckingham ([02:00:27]):
+And painful stimuli, is that when someone reacts physically or verbally to pain?
+Daniel Dougherty ([02:00:35]):
+Yes.
+Shanan Buckingham ([02:00:37]):
+And so you said that you assess her when you first get there, you said you did the airway first, is that right?
+Daniel Dougherty ([02:00:43]):
+Yes.
+Shanan Buckingham ([02:00:43]):
+And how did you go about doing that?
+Daniel Dougherty ([02:00:45]):
+We placed an OPA device to secure her tongue down just to protect her airway.
+Shanan Buckingham ([02:00:50]):
+What's an OPA device?
+Daniel Dougherty ([02:00:51]):
+It's a plastic device that depresses the tongue just to keep the airway open.
+Shanan Buckingham ([02:00:56]):
+Okay. So it's not the tube that goes down?
+Daniel Dougherty ([02:00:58]):
+No.
+Shanan Buckingham ([02:00:58]):
+It's just something that holds the tongue down?
+Daniel Dougherty ([02:00:59]):
+That's correct.
+Shanan Buckingham ([02:01:00]):
+Okay. And after you did that, what was the next step?
+Daniel Dougherty ([02:01:04]):
+We placed a non-rebreather air mask on her and set the oxygen.
+Shanan Buckingham ([02:01:08]):
+So is that just a mask that goes on the face providing oxygen?
+Daniel Dougherty ([02:01:11]):
+Yes.
+Shanan Buckingham ([02:01:12]):
+And then what did you do next?
+Daniel Dougherty ([02:01:13]):
+From there, that's when we heard the scream.
+Shanan Buckingham ([02:01:17]):
+And so did you bandage the neck and the wrist before securing the breathing or after?
+Daniel Dougherty ([02:01:24]):
+That was after.
+Shanan Buckingham ([02:01:25]):
+Okay. So just to be clear, first is securing the tongue down, putting the oxygen mask on, and then you did the bandaging?
+Daniel Dougherty ([02:01:34]):
+That came later, yes.
+Shanan Buckingham ([02:01:35]):
+Later. Okay. So was the bandaging before or after you heard the screams?
+Daniel Dougherty ([02:01:39]):
+That was after.
+Shanan Buckingham ([02:01:40]):
+Okay. So when you hear the screaming, what, if anything, do you do?
+Daniel Dougherty ([02:01:45]):
+I looked at Captain Hussey and Firefighter Heath, and we all looked at each other trying to figure out what was going on.
+Shanan Buckingham ([02:01:56]):
+Okay. And did any of you leave the area after hearing the screaming?
+Daniel Dougherty ([02:01:59]):
+Captain Hussey did. Firefighter Heath went to go get a backboard for the patient.
+Shanan Buckingham ([02:02:04]):
+Okay. And did you stay with Lindsay Clancy?
+Daniel Dougherty ([02:02:06]):
+I did.
+Shanan Buckingham ([02:02:06]):
+Okay. And then is it at that point that you do the bandaging or after you get the backboard?
+Daniel Dougherty ([02:02:13]):
+Kevin was gone for a while, so that's when I started bandaging upper wrists.
+Shanan Buckingham ([02:02:18]):
+Okay. And did he eventually return with the backboard?
+Daniel Dougherty ([02:02:26]):
+He did not.
+Shanan Buckingham ([02:02:27]):
+So you bandaged the wrist. What happens next?
+Daniel Dougherty ([02:02:30]):
+I believe it was Officer Hall came to the backyard. He asked if I needed anything. I told him the board. Gave him a direction of where in the truck it was. And then he also left to go grab that for me.
+Shanan Buckingham ([02:02:42]):
+And when you say the board, are you referring to the backboard?
+Daniel Dougherty ([02:02:44]):
+Yes.
+Shanan Buckingham ([02:02:45]):
+And did he return with the backboard?
+Daniel Dougherty ([02:02:47]):
+Yes.
+Shanan Buckingham ([02:02:48]):
+And was Ms. Clancy loaded onto the backboard?
+Daniel Dougherty ([02:02:51]):
+She was.
+Shanan Buckingham ([02:02:52]):
+And who assisted you with that?
+Daniel Dougherty ([02:02:55]):
+It was Officer Hall, I believe, and our retired deputy.
+Shanan Buckingham ([02:02:59]):
+And is there a process that you follow when placing someone onto a board to ensure that you don't cause further damage?
+Daniel Dougherty ([02:03:06]):
+Yes.
+Shanan Buckingham ([02:03:07]):
+And what is that process?
+Daniel Dougherty ([02:03:09]):
+Just see spine precautions. So you secure the neck and make sure that it's immobilized as you move the patient.
+Shanan Buckingham ([02:03:16]):
+So what did you do to secure her neck?
+Daniel Dougherty ([02:03:19]):
+We had someone at her neck, I don't remember who it was, just hold steady that her neck didn't move in the process.
+Shanan Buckingham ([02:03:26]):
+Okay. And then did you follow that protocol, the C-spine protocol, to safely put her onto the backboard?
+Daniel Dougherty ([02:03:31]):
+Yes.
+Shanan Buckingham ([02:03:32]):
+Okay. And at some point was a collar placed around her neck?
+Daniel Dougherty ([02:03:34]):
+I believe so, yes.
+Shanan Buckingham ([02:03:36]):
+And then what happened next?
+Daniel Dougherty ([02:03:38]):
+I believe I got on the radio and asked our captain who was transporting first because we knew that there was multiple patients at that point.
+Shanan Buckingham ([02:03:47]):
+Okay. And what were you told?
+Daniel Dougherty ([02:03:50]):
+Pembroke was on its way in. They may have just arrived and she was going with Pembroke.
+Shanan Buckingham ([02:03:56]):
+Okay. And were you part of the team that transported her from the backyard to the Pembroke ambulance?
+Daniel Dougherty ([02:04:01]):
+Yes.
+Shanan Buckingham ([02:04:03]):
+And did you help load her into the Pembroke ambulance?
+Daniel Dougherty ([02:04:05]):
+Yes.
+Shanan Buckingham ([02:04:07]):
+And did you go with them during that transport?
+Daniel Dougherty ([02:04:09]):
+I did not.
+Shanan Buckingham ([02:04:15]):
+Okay. After Ms. Clancy was loaded into the ambulance, did it leave?
+Daniel Dougherty ([02:04:20]):
+Yes.
+Shanan Buckingham ([02:04:20]):
+What did you do next?
+Daniel Dougherty ([02:04:21]):
+I went to our ambulance that was in the driveway at that point.
+Shanan Buckingham ([02:04:26]):
+Okay. And was Dawson Clancy in that ambulance?
+Daniel Dougherty ([02:04:28]):
+He was.
+Shanan Buckingham ([02:04:29]):
+And did you ride in the ambulance to the hospital with Dawson Clancy?
+Daniel Dougherty ([02:04:33]):
+I did.
+Shanan Buckingham ([02:04:33]):
+What was your role in that ambulance?
+Daniel Dougherty ([02:04:35]):
+I was operating the bag valve mask for him.
+Shanan Buckingham ([02:04:38]):
+Okay. So you're trying to provide [inaudible 02:04:47].
+Kevin Reddington ([02:04:58]):
+Are you an EMT, a paramedic or-
+Daniel Dougherty ([02:05:01]):
+Paramedic.
+Kevin Reddington ([02:05:01]):
+Paramedic. And how long do you study for that?
+Daniel Dougherty ([02:05:06]):
+Two years plus.
+Kevin Reddington ([02:05:08]):
+Would that be full-time studying or are you working at the same time?
+Daniel Dougherty ([02:05:11]):
+I was working at the same time.
+Kevin Reddington ([02:05:12]):
+Okay. Do you know on that evening what the temperature was outside?
+Daniel Dougherty ([02:05:18]):
+It was cold.
+Kevin Reddington ([02:05:19]):
+Wicked cold, wasn't it?
+Daniel Dougherty ([02:05:20]):
+In the 30s.
+Kevin Reddington ([02:05:20]):
+It was lower than that, wasn't it?
+Daniel Dougherty ([02:05:21]):
+It was a couple-
+Kevin Reddington ([02:05:23]):
+It was really cold.
+Daniel Dougherty ([02:05:24]):
+Yeah.
+Kevin Reddington ([02:05:25]):
+And how long was she laying in the snow and on the ground?
+Daniel Dougherty ([02:05:29]):
+We got the call at six-ish or whatever time it was. We responded-
+Kevin Reddington ([02:05:33]):
+And the call came because her husband came home from picking up food and found her on the ground, right?
+Daniel Dougherty ([02:05:40]):
+Correct.
+Kevin Reddington ([02:05:40]):
+So you don't know how long she was laying in the snow on the ground, right?
+Daniel Dougherty ([02:05:44]):
+No.
+Kevin Reddington ([02:05:45]):
+In the cold?
+Daniel Dougherty ([02:05:46]):
+Correct.
+Kevin Reddington ([02:05:46]):
+And what's hemostasis? Do you know?
+Daniel Dougherty ([02:05:49]):
+What's that?
+Kevin Reddington ([02:05:50]):
+What's hemostasis? What does that mean?
+Daniel Dougherty ([02:05:52]):
+Just the coagulation.
+Kevin Reddington ([02:05:54]):
+And do you know what the effect of hypothermia... Let me ask you, what's hypothermia?
+Daniel Dougherty ([02:05:59]):
+It's just the body under temperature of the body.
+Kevin Reddington ([02:06:03]):
+Under temperature of the body?
+Daniel Dougherty ([02:06:04]):
+Or your body is not at temperature that it should be.
+Kevin Reddington ([02:06:09]):
+Right. Because of the environment, right? Cold, right?
+Daniel Dougherty ([02:06:13]):
+Yes.
+Kevin Reddington ([02:06:13]):
+Sometimes it can be medically induced, right. Hypothermia affects the blood flow, doesn't it?
+Daniel Dougherty ([02:06:19]):
+Yes.
+Kevin Reddington ([02:06:20]):
+In fact, you actually have a thing called therapeutic hypothermia, right.
+Daniel Dougherty ([02:06:25]):
+Mm-hmm.
+Kevin Reddington ([02:06:26]):
+If they have to restrict the blood flow to either a heart or a brain or something that a person can be induced medically to be cold-
+Daniel Dougherty ([02:06:33]):
+Yes.
+Kevin Reddington ([02:06:34]):
+... and it would restrict blood flow, right.
+Daniel Dougherty ([02:06:36]):
+Mm-hmm.
+Kevin Reddington ([02:06:41]):
+So all these questions about whether or not there's blood seeping through the wrist bandages and whether or not there's blood through the holes from the neck brace, you don't know what effect the hypothermia, if any, had on that, would you?
+Daniel Dougherty ([02:06:52]):
+No.
+Kevin Reddington ([02:06:52]):
+Thank you, sir. That's all I have.
+Judge William Sullivan ([02:06:52]):
+Redirect?
+Shanan Buckingham ([02:06:59]):
+Sir, there's typically heat in a hospital, correct?
+Daniel Dougherty ([02:07:01]):
+Usually, yes.
+Shanan Buckingham ([02:07:02]):
+And were you aware that Ms. Clancy went to South Shore Hospital, correct?
+Daniel Dougherty ([02:07:07]):
+Yes.
+Shanan Buckingham ([02:07:08]):
+And are you aware that the wounds on her wrist did not have to be sutured until the following day?
+Daniel Dougherty ([02:07:14]):
+I didn't get any of that information after.
+Shanan Buckingham ([02:07:16]):
+Were you aware that the wound on her neck never had to be sutured?
+Daniel Dougherty ([02:07:19]):
+Same answer.
+Shanan Buckingham ([02:07:21]):
+Thank you.
+Judge William Sullivan ([02:07:22]):
+Anything further? Thank you, sir.
+Daniel Dougherty ([02:07:24]):
+I can step down?
+Judge William Sullivan ([02:07:25]):
+Thank you.
+Speaker 9 ([02:07:27]):
+Watch your step please, sir.
+Shanan Buckingham ([02:07:35]):
+Commonwealth calls Vincent Cahill.
+Kevin Reddington ([02:08:07]):
+No objection.
+Judge William Sullivan ([02:08:08]):
+You may testify.
+Speaker 8 ([02:08:08]):
+[inaudible 02:08:08].
+Speaker 9 ([02:08:24]):
+Good morning, sir.
+Vincent Cahill ([02:08:24]):
+Good morning.
+Speaker 9 ([02:08:24]):
+[inaudible 02:08:25] raise your right hand for the clerk, please.
+Speaker 10 ([02:08:24]):
+Do you solemnly swear that the testimony [inaudible 02:08:25].
+Vincent Cahill ([02:08:24]):
+Yes, ma'am.
+Speaker 10 ([02:08:24]):
+Thank you, sir. You may have a seat.
+Speaker 9 ([02:08:24]):
+Mind the step please, sir.
+Judge William Sullivan ([02:08:24]):
+All right. Good morning, sir.
+Vincent Cahill ([02:08:24]):
+Morning, Your Honor.
+Shanan Buckingham ([02:08:24]):
+[inaudible 02:08:27].
+Judge William Sullivan ([02:08:24]):
+Sure.
+Shanan Buckingham ([02:08:37]):
+Good afternoon, sir. Can you please state and spell your name for the record?
+Vincent Cahill ([02:08:40]):
+Sure. My name is Vincent Cahill, to be V-I-N-C-E-N-T. Last name Cahill, that'll be C-A-H-I-L-L.
+Shanan Buckingham ([02:08:48]):
+And your date of birth, please?
+Vincent Cahill ([02:08:50]):
+11/11/1996.
+Shanan Buckingham ([02:08:52]):
+Where do you work?
+Vincent Cahill ([02:08:53]):
+I work at the Duxbury Police Department.
+Shanan Buckingham ([02:08:55]):
+How long have you been with the Duxbury Police Department?
+Vincent Cahill ([02:08:58]):
+About five and a half years.
+Shanan Buckingham ([02:08:59]):
+I want to direct your attention to January 24th, 2023. Were you working that day?
+Vincent Cahill ([02:09:03]):
+Yes, ma'am.
+Shanan Buckingham ([02:09:04]):
+Were you on patrol?
+Vincent Cahill ([02:09:05]):
+Yes.
+Shanan Buckingham ([02:09:06]):
+And directing your attention further to approximately 6:11 PM, were you dispatched to 47 Summer Street in Duxbury?
+Vincent Cahill ([02:09:15]):
+Yes, ma'am.
+Shanan Buckingham ([02:09:18]):
+How long did it take you to get there approximately?
+Vincent Cahill ([02:09:21]):
+A couple minutes.
+Shanan Buckingham ([02:09:22]):
+And when you arrived there, what did you see?
+Vincent Cahill ([02:09:25]):
+When I arrived there, I saw a cruiser in the driveway, as well as an ambulance and a fire captain.
+Shanan Buckingham ([02:09:32]):
+And did you head to the backyard?
+Vincent Cahill ([02:09:34]):
+Yes.
+Shanan Buckingham ([02:09:35]):
+And did you see a woman on the ground there being cared for?
+Vincent Cahill ([02:09:38]):
+Yes.
+Shanan Buckingham ([02:09:39]):
+And did you later learn that was Lindsay Clancy?
+Vincent Cahill ([02:09:41]):
+Yes.
+Shanan Buckingham ([02:09:42]):
+At some point, do you hear, or did you hear, loud screaming?
+Vincent Cahill ([02:09:46]):
+Yes.
+Shanan Buckingham ([02:09:47]):
+And as a result of that, did you go inside the home?
+Vincent Cahill ([02:09:49]):
+Yes.
+Shanan Buckingham ([02:09:50]):
+And did you go to the basement area?
+Vincent Cahill ([02:09:52]):
+Yes.
+Shanan Buckingham ([02:09:53]):
+And when you went down the basement stairs, did you go to the right or the left?
+Vincent Cahill ([02:09:57]):
+I initially went to the right and I was following the father.
+Shanan Buckingham ([02:10:01]):
+So as you're going down the stairs, you say the father, is that Patrick Clancy?
+Vincent Cahill ([02:10:04]):
+Yes.
+Shanan Buckingham ([02:10:05]):
+Do you see him as you're going down the basement stairs?
+Vincent Cahill ([02:10:07]):
+Yes.
+Shanan Buckingham ([02:10:08]):
+And where is he coming from and where is he going to?
+Vincent Cahill ([02:10:10]):
+He's coming from my left, heading to my right.
+Shanan Buckingham ([02:10:14]):
+And what is his demeanor?
+Vincent Cahill ([02:10:16]):
+He was screaming.
+Shanan Buckingham ([02:10:17]):
+And as you came down the stairs, did he point in a direction?
+Vincent Cahill ([02:10:21]):
+Yes.
+Shanan Buckingham ([02:10:22]):
+Where did he point to?
+Vincent Cahill ([02:10:23]):
+To the left side.
+Shanan Buckingham ([02:10:23]):
+And is that where you headed?
+Vincent Cahill ([02:10:25]):
+Yes.
+Shanan Buckingham ([02:10:25]):
+And when you went to the left, did you see two children on the floor in that area of the basement?
+Vincent Cahill ([02:10:30]):
+Yes.
+Shanan Buckingham ([02:10:31]):
+And what did you do?
+Vincent Cahill ([02:10:33]):
+I checked the pulse of the five-year-old girl and passed that information along. And then when fire came on scene, I then was backing away because fire was going to start taking over, taking care of the five-year-old girl. I then backed into the infant who was on the ground.
+Shanan Buckingham ([02:10:50]):
+So you said that you checked the five-year-old, was that Cora Clancy?
+Vincent Cahill ([02:10:54]):
+Yes.
+Shanan Buckingham ([02:10:54]):
+You checked her for a pulse. Did she have a pulse?
+Vincent Cahill ([02:10:56]):
+No.
+Shanan Buckingham ([02:10:57]):
+And you said fire came down and started taking over. Was that firefighters from Duxbury Fire Department?
+Vincent Cahill ([02:11:04]):
+Yes, ma'am.
+Shanan Buckingham ([02:11:05]):
+And you said you started backing up. Is that when you bumped into Callan Clancy?
+Vincent Cahill ([02:11:08]):
+Yes, ma'am.
+Shanan Buckingham ([02:11:09]):
+And at that point in time, what did you do next?
+Vincent Cahill ([02:11:14]):
+I checked Callan's pulse.
+Shanan Buckingham ([02:11:14]):
+And did he have a pulse?
+Vincent Cahill ([02:11:15]):
+No.
+Shanan Buckingham ([02:11:16]):
+Did firefighters take over care of Callan?
+Vincent Cahill ([02:11:19]):
+Yes.
+Shanan Buckingham ([02:11:19]):
+At that point, did you do something to make it easier for the people to fit in the room and treat the children?
+Vincent Cahill ([02:11:25]):
+Yes. I moved a large futon or ottoman piece of furniture.
+Shanan Buckingham ([02:11:30]):
+And I'm showing you Exhibit 96. Directing your attention to the couch bed and the ottoman on top of it, were you the one that placed that ottoman on top of the couch bed?
+Vincent Cahill ([02:11:40]):
+Yes, ma'am.
+Shanan Buckingham ([02:11:55]):
+After that, were you asked to help get some equipment for the children?
+Vincent Cahill ([02:12:00]):
+Yes.
+Shanan Buckingham ([02:12:01]):
+And did you do that?
+Vincent Cahill ([02:12:02]):
+Yes.
+Shanan Buckingham ([02:12:02]):
+And did you bring the equipment to the basement?
+Vincent Cahill ([02:12:04]):
+Yes.
+Shanan Buckingham ([02:12:05]):
+And after that, did you assist with getting Cora to the ambulance?
+Vincent Cahill ([02:12:11]):
+I assisted with rescue breaths with Cora as well as CPR. I aided with Officer Josephine.
+Shanan Buckingham ([02:12:18]):
+And how were you doing the rescue breaths and the CPR?
+Vincent Cahill ([02:12:21]):
+I was using a bag valve mask. Myself and Officer Josephine were timing it every couple seconds. It was 15 seconds I was doing rescue breaths on Cora.
+Shanan Buckingham ([02:12:31]):
+Okay. And at some point she's taken out of the basement into an ambulance, correct?
+Vincent Cahill ([02:12:37]):
+Yes.
+Shanan Buckingham ([02:12:37]):
+Did you assist with that?
+Vincent Cahill ([02:12:39]):
+I don't recall.
+Shanan Buckingham ([02:12:41]):
+And at any point, did she regain a pulse or ability to breathe while you were helping to assist her?
+Vincent Cahill ([02:12:47]):
+No.
+Shanan Buckingham ([02:12:51]):
+At some point in time, were you given the task of monitoring who came into the scene and who left the scene throughout the night?
+Vincent Cahill ([02:12:59]):
+Yes.
+Shanan Buckingham ([02:12:59]):
+And showing you what's entitled Crime Scene Entry and Exit Log, is this the form that you were in charge of just documenting every time someone came to the scene or left the scene?
+Vincent Cahill ([02:13:12]):
+Yes, ma'am.
+Shanan Buckingham ([02:13:14]):
+If I could have this marked as the next exhibit, please.
+Judge William Sullivan ([02:13:15]):
+Any objection?
+Kevin Reddington ([02:13:16]):
+No.
+Judge William Sullivan ([02:13:17]):
+All right. That may be admitted.
+Shanan Buckingham ([02:13:17]):
+Exhibit 109. I have nothing further. Thank you.
+Judge William Sullivan ([02:13:25]):
+Counsel?
+Kevin Reddington ([02:13:25]):
+No.
+Judge William Sullivan ([02:13:26]):
+All right. Thank you, sir. Be safe.
+Vincent Cahill ([02:13:27]):
+Thank you, Your Honor.
+Judge William Sullivan ([02:13:27]):
+Thank you.
+Shanan Buckingham ([02:13:28]):
+Your Honor, if we may approach sidebar.
+Judge William Sullivan ([02:13:29]):
+Sure. All right. Members of the jury, talking to counsel, there still is a couple of issues that we have to hammer out and get done. And rather than have you wait around, I'm not quite sure how long that's going to go, I'm going to excuse you for the day. All right? As I told you, sometimes the schedules don't always match up what I tell you they're going to do even a couple hours before. So I'm going to excuse you until tomorrow morning. All right? And so tomorrow morning, the plan is that we're going to go on this view. And I'll explain it a little bit more in detail tomorrow, but just so you can picture it in your head, I'm going to ask you to be here, to be ready to come out here at nine o'clock. I'm going to address you, probably ask you those same questions.
+([02:14:22])Then I'll give you a little bit of information about the view. I'll give you an instruction. What the view is, we're going to go to a couple of areas. You're going to be able to get out and look at these areas. The lawyers will be there. They'll be able to point out what they feel is significant. And at that point, we'll then come back. We'll continue with some of the testimony. We may end up a little bit early tomorrow as well in regards to the schedules. And at that point, I'm going to talk to counsel, see where we are in regards to the overall schedule. But It's my impression that we are ahead of schedule at this point. So I just wanted to let you know that. So I'm going to excuse you till tomorrow morning rather than have you sit here and just wait in regards to that.
+([02:15:11])So I'm going to excuse you till tomorrow. I'd ask you to be here at 9:00, check the weather, see, but you'll be on the view in the morning and then there'll be some witnesses in the afternoon. All right. So remember I'm going to ask you those questions. Don't read anything, don't talk about it, don't do any research, don't take any field trips, and I'll see you tomorrow morning. Okay? Thank you.
+Speaker 9 ([02:15:36]):
+Court, all rise. Jurors, close your notebooks, place them on the chairs, please. Follow me. Jurors have exited the floor. This court's in session.
+Judge William Sullivan ([02:16:14]):
+All right. In recess until tomorrow, the media the court had issued previously a specific order regarding the view. There was a supplemental order issued this morning, so everybody should just be aware of that. And I want to thank everybody for the consideration and that will be in recess until tomorrow morning.
+Speaker 9 ([02:16:39]):
+Court, all rise.
+‍
+A confirmation email is on it’s way to your inbox.
+Copyright Disclaimer

@@ -1,0 +1,2642 @@
+Court Clerk ([00:00]):
+This court is now in session. You may be seated.
+Court Reporter ([00:01]):
+Good morning, Your Honor. May I proceed?
+Judge William Sullivan ([00:03]):
+Yes, please.
+Court Reporter ([00:04]):
+Your Honor, before the court today, we have the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by attorney Kevin Reddington, the Commonwealth is represented by Assistant District Attorney Jennifer Sprague and Assistant District Attorney Shanan Buckingham.
+Judge William Sullivan ([00:16]):
+All right. Well, good morning, counsel.
+Kevin Reddington ([00:18]):
+Morning.
+Judge William Sullivan ([00:19]):
+Good morning, Ms. Clancy. Morning, Your Honor. All right. Before we bring the jury in, could I speak to counsel just for a couple of minutes?
+Court Clerk ([00:24]):
+... court. All rise. [inaudible 00:02:15].
+Court Reporter ([02:48]):
+Hear ye, hear ye, hear ye, all persons having anything to do before the Honorable William Sullivan, Justice of the Florida Superior Court, now sitting [inaudible 00:02:56] for the Commonwealth. Your Honor, may I give you attendance and you shall be heard. God save the Commonwealth of Massachusetts. This court is now in session. Please be seated.
+Court Reporter ([03:00]):
+Your Honor, may I proceed?
+Judge William Sullivan ([03:00]):
+Yes, please.
+Court Reporter ([03:03]):
+Your Honor, before the court today, we have the continuation of the jury trial in the matter of Commonwealth versus Lindsay Clancy. Ms. Clancy is present. She is represented by attorney Kevin Reddington. The Commonwealth is represented by Assistant District Attorney Jennifer Sprague and Assistant District Attorney Shannon Buckingham.
+Judge William Sullivan ([03:19]):
+All right. Well, good morning again. Nice to see everyone. Thank you for being here. What I'm going to do is I'm going to ask you those questions again and then go over the schedule. Don't forget, you are not sitting this afternoon. Okay? And that's not going to change, so you can count on that. So let me ask you that at this point, has any member of the jury read, seen, heard, or overheard anything from any source about any aspect of this case that would affect your ability to be fair and impartial as a juror?
+Jury ([03:54]):
+No.
+Judge William Sullivan ([03:54]):
+All right. Next, is there any other serious matter or concern bearing on your service as a juror in this case that anybody needs to bring to my attention?
+Jury ([04:03]):
+No.
+Judge William Sullivan ([04:05]):
+Great. Thank you again for following those instructions. And what we're going to do is we're going to return to the Commonwealth's case. And like I said, you're not going to be sitting this afternoon. The plan, and I'll double check when we get to that point, would be to return tomorrow at nine o'clock and pretty much relatively full day tomorrow and probably Friday as well. But I'll double check as we go through that. All right? And I'll let you know as soon as I can if there's any changes to that schedule. So with that, I'm going to ask the Commonwealth to call their next witness. Commonwealth?
+Shanan Buckingham ([04:47]):
+Thank you. The Commonwealth calls Eitan Negri.
+Court Clerk ([05:03]):
+Good morning. Can you stop right here. Raise your right hand for the clerk.
+Court Reporter ([05:07]):
+Good morning. Do you solemnly swear that the testimony and evidence you shall give to the court and the jury in the matter [inaudible 00:05:16] the truth, the whole truth, and nothing but the truth, so help you God? Thank you. You may have a seat.
+Court Clerk ([05:32]):
+Watch your step, please.
+Judge William Sullivan ([05:32]):
+All right. Good morning, sir.
+Eitan Negri ([05:33]):
+Good morning, sir.
+Judge William Sullivan ([05:33]):
+Can I just ask you to speak into that microphone.
+Eitan Negri ([05:33]):
+Sure.
+Judge William Sullivan ([05:33]):
+All right. Attorney Buckingham, please.
+Shanan Buckingham ([05:33]):
+Thank you. Good morning, sir.
+Eitan Negri ([05:34]):
+Good morning.
+Shanan Buckingham ([05:35]):
+Could you please tell the jurors your first and last name?
+Eitan Negri ([05:37]):
+My first name is Eitan. Last name is Negri.
+Shanan Buckingham ([05:40]):
+Can you spell your first name for the record?
+Eitan Negri ([05:42]):
+E-I-T-A-N.
+Shanan Buckingham ([05:44]):
+And your last name?
+Eitan Negri ([05:44]):
+N-E-G-R-I.
+Shanan Buckingham ([05:47]):
+And what do you do for work?
+Eitan Negri ([05:48]):
+I'm a physician associate, physician assistant.
+Shanan Buckingham ([05:50]):
+And did you go to school for that?
+Eitan Negri ([05:52]):
+Yes.
+Shanan Buckingham ([05:53]):
+Can you tell us about your educational background?
+Eitan Negri ([05:55]):
+I did my undergraduate at City College in New York, and I did a post-bacc at Brooklyn College followed by a PA program at Torah University in Manhattan.
+Shanan Buckingham ([06:05]):
+And do you currently work as a physician's assistant?
+Eitan Negri ([06:08]):
+Yes.
+Shanan Buckingham ([06:08]):
+And do you currently work in the state of Massachusetts?
+Eitan Negri ([06:12]):
+No, ma'am.
+Shanan Buckingham ([06:13]):
+Are you licensed in the state of Massachusetts?
+Eitan Negri ([06:15]):
+Yes, ma'am.
+Shanan Buckingham ([06:15]):
+Are you licensed in any other states?
+Eitan Negri ([06:17]):
+New York State.
+Shanan Buckingham ([06:18]):
+I'm going to go back to January of 2023. Were you working in Massachusetts then?
+Eitan Negri ([06:25]):
+Yes.
+Shanan Buckingham ([06:25]):
+And where were you working?
+Eitan Negri ([06:27]):
+Brigham and Women's Hospital.
+Shanan Buckingham ([06:29]):
+And were you in that same role as a physician's assistant?
+Eitan Negri ([06:31]):
+Yes.
+Shanan Buckingham ([06:32]):
+And what were you doing? What were your general duties in that role working at Brigham and Women's?
+Eitan Negri ([06:39]):
+Generally, you assess a patient, you diagnose, you formulate a plan with an attending physician, and you execute that plan throughout the day. It encompasses various things.
+Shanan Buckingham ([06:49]):
+Were you working in any particular department at Brigham and Women's back in January of 2023?
+Eitan Negri ([06:54]):
+Trauma burn surgical ICU.
+Shanan Buckingham ([06:58]):
+Now I'm going to draw your attention to a particular patient that came into the Brigham and Women's Hospital on January 24th of 2023. That patient was Lindsay Clancy. Do you recall encountering this patient on January 25th of 2023?
+Eitan Negri ([07:14]):
+Yes.
+Shanan Buckingham ([07:15]):
+And what did you do as it pertained to the care and treatment of this patient?
+Eitan Negri ([07:20]):
+I received the information from the shift before me, formulated a plan, examined her, assessed her, staffed that plan with the attending physician, and executed that plan throughout the day.
+Shanan Buckingham ([07:30]):
+And fair to say this particular patient had injuries that you were directed to observe, review, form that plan on?
+Eitan Negri ([07:39]):
+Correct.
+Shanan Buckingham ([07:39]):
+What were the injuries?
+Eitan Negri ([07:41]):
+She had multiple injuries. The most acute were injuries that were requiring consultation with other services. And the ones that I directly managed were the lacerations to her wrists and her ... Just her wrists, actually.
+Shanan Buckingham ([07:55]):
+And as far as when you say she had other acute injuries, you were not involved in the care of her for those, correct?
+Eitan Negri ([08:01]):
+I was involved in the care that involved consulting other services to manage those things, yes.
+Shanan Buckingham ([08:07]):
+Okay. And as far as any sort of repair work that you were doing as a physician's assistant working with the trauma surgeons, what repair work were you assigned to do?
+Eitan Negri ([08:19]):
+Laceration repair.
+Shanan Buckingham ([08:21]):
+And on this particular patient, where were the injuries or lacerations that you were going to repair?
+Eitan Negri ([08:27]):
+She had multiple lacerations on both of her wrists. She had superficial on her neck, which I did not repair.
+Shanan Buckingham ([08:34]):
+Okay. And as it pertained to the wrists, did you go through that process of observing, reviewing, coming up with a plan and then repairing those injuries?
+Eitan Negri ([08:42]):
+Yes.
+Shanan Buckingham ([08:45]):
+And were you directed to do that by any particular doctor?
+Eitan Negri ([08:50]):
+Not necessarily directed. A lot of those things fall within my scope, and since they were less acute, they kind of fell down the chain to me.
+Shanan Buckingham ([08:58]):
+Okay. And you're aware that she was being seen and treated by a host of other doctors, nurses, an entire team?
+Eitan Negri ([09:08]):
+Yes.
+Shanan Buckingham ([09:09]):
+As it pertains to the wrist injuries, what did you do to examine those areas?
+Eitan Negri ([09:18]):
+The first thing I do is assess the location, then I assess the severity, whether it requires intervention by someone other than myself. In this instance, it did not. So then I proceed with just kind of protocol laceration repair.
+Shanan Buckingham ([09:35]):
+When would it be a situation where you'd need somebody else to intervene?
+Eitan Negri ([09:40]):
+If it required surgical intervention or suturing repair beyond my skillset. In this instance, it did not.
+Shanan Buckingham ([09:48]):
+Okay. And so referring to these particular injuries, when you observed them, did you observe any areas of active bleeding?
+Eitan Negri ([09:55]):
+No.
+Shanan Buckingham ([09:55]):
+And fair to say they had been treated by nurses and other staff prior to you encountering these injuries, correct?
+Eitan Negri ([10:02]):
+Yes. They were dressed and covered before I got there.
+Shanan Buckingham ([10:05]):
+Now, when you assessed them, you noted that they were bilateral, correct?
+Eitan Negri ([10:09]):
+Yes.
+Shanan Buckingham ([10:10]):
+What does that mean?
+Eitan Negri ([10:11]):
+It means on both sides of the body, so both wrists.
+Shanan Buckingham ([10:14]):
+Okay. And so referring to the right wrist, what were your observations of the injuries to the right wrist?
+Eitan Negri ([10:25]):
+The right wrist, as far as my reference to the note, is that she had a few lacerations, one of which was severe and deep enough to require repair.
+Shanan Buckingham ([10:35]):
+And fair to say that that right wrist injury was, the one that you repaired, was three centimeters deep?
+Eitan Negri ([10:48]):
+Approximately. If that's what my note says, then that's what it was.
+Shanan Buckingham ([10:53]):
+Okay. And on a wrist or this area of the wrist where you observed the injuries, that depth of three centimeters, did that require further surgical intervention or were you able to suture that area?
+Eitan Negri ([11:05]):
+I was able to suture that area. As far as what happened subsequent to that, I wasn't there, so I'm not sure.
+Shanan Buckingham ([11:10]):
+Okay. And how many sutures did you use to repair that injury?
+Eitan Negri ([11:15]):
+I believe three.
+Shanan Buckingham ([11:16]):
+And in relation to any other cuts or lacerations that were on that right wrist, did any other of those lacerations require suturing?
+Eitan Negri ([11:23]):
+No.
+Shanan Buckingham ([11:24]):
+How did you treat those other injuries?
+Eitan Negri ([11:27]):
+Just irrigation, meaning cleaning them out, and then using a type of tape to close them shut.
+Shanan Buckingham ([11:32]):
+And that's generally referred to as a Steri-Strip, correct?
+Eitan Negri ([11:34]):
+Correct.
+Shanan Buckingham ([11:35]):
+Okay. May I approach the witness?
+Judge William Sullivan ([11:38]):
+You may.
+Shanan Buckingham ([11:42]):
+I'm showing you two photographs. Do those photographs depict the repairs or the sutures that you did on the right wrist of Lindsay Clancy?
+Eitan Negri ([11:54]):
+Yes.
+Shanan Buckingham ([11:55]):
+I would move to admit these as the next two exhibits.
+Judge William Sullivan ([11:57]):
+All right. Those may be admitted.
+Court Reporter ([11:58]):
+Exhibits 201 and 202.
+Judge William Sullivan ([11:58]):
+Yes.
+Shanan Buckingham ([12:15]):
+And I'm just going to show on the screen what's now been marked as Exhibit 201. And you should be able to see it, sir, on the screen in front of you. Can you see that?
+Eitan Negri ([12:23]):
+Yes.
+Shanan Buckingham ([12:25]):
+Okay. And so this is the right wrist, correct?
+Eitan Negri ([12:27]):
+Correct.
+Shanan Buckingham ([12:28]):
+And those black lines in the middle of the photograph, are those the sutures that you did?
+Eitan Negri ([12:33]):
+Correct.
+Shanan Buckingham ([12:35]):
+And just showing you 202, Exhibit 202, these white strips that are all around the injury, are those the Steri-Strips?
+Eitan Negri ([12:44]):
+Correct.
+Shanan Buckingham ([12:50]):
+Now on the left wrist, do you recall what you observed to be the injuries on that wrist?
+Eitan Negri ([12:58]):
+I believe there was a similar laceration, just shorter in length that required fewer sutures.
+Shanan Buckingham ([13:05]):
+Okay. And fair to say, if your notes reflect that the left wrist had one, meaning just a singular two centimeter deep linear cut, that that would've been what your observations were of the injury that you repaired?
+Eitan Negri ([13:22]):
+Correct.
+Shanan Buckingham ([13:23]):
+And how many sutures did that injury require?
+Eitan Negri ([13:25]):
+One suture.
+Shanan Buckingham ([13:26]):
+And were there other areas that you observed that had some sort of laceration?
+Eitan Negri ([13:31]):
+I believe similarly, just superficial ones that needed Steri-Strips.
+Shanan Buckingham ([13:37]):
+And again, in treating this particular injury, when you came upon it, was there active bleeding or any concern that you needed more intervention other than a suture?
+Eitan Negri ([13:46]):
+At that time, no.
+Shanan Buckingham ([13:49]):
+I'm going to show you two more photos. Are those familiar to you?
+Eitan Negri ([14:01]):
+Yes.
+Shanan Buckingham ([14:02]):
+And are those the suture that you did on the left wrist of Lindsay Clancy?
+Eitan Negri ([14:08]):
+Yes, ma'am.
+Shanan Buckingham ([14:10]):
+I move to admit these as the next two exhibits.
+Judge William Sullivan ([14:12]):
+All right. They may be admitted.
+Court Reporter ([14:14]):
+Exhibits 203 and 204.
+Judge William Sullivan ([14:24]):
+Thank you.
+Shanan Buckingham ([14:35]):
+And now again, just showing what's been now marked as Exhibit 203. And you see the injury there on the wrist near the ruler in the photograph?
+Eitan Negri ([14:45]):
+Yes.
+Shanan Buckingham ([14:46]):
+And Exhibit 204, which is just a closer upshot of that, is that correct?
+Eitan Negri ([14:52]):
+Yes.
+Shanan Buckingham ([14:53]):
+And again, you see the white strips. Those are also Steri-Strips that were applied?
+Eitan Negri ([14:59]):
+Correct.
+Shanan Buckingham ([15:00]):
+Now in relation to any of these wounds on the right or the left wrist, did you observe the lacerations to go any deeper than the subcutaneous tissue?
+Eitan Negri ([15:11]):
+On my observation, no.
+Shanan Buckingham ([15:12]):
+Okay. And when we talk subcutaneous tissue, we're talking about that fatty tissue underneath your skin, correct?
+Eitan Negri ([15:18]):
+Correct.
+Shanan Buckingham ([15:19]):
+And did you have to return at any point, to your knowledge, to readdress these issues or do any further laceration repair as it pertained to this patient?
+Eitan Negri ([15:29]):
+On that shift, no.
+Shanan Buckingham ([15:30]):
+Do you recall if you did it on any other shift?
+Eitan Negri ([15:32]):
+No.
+Shanan Buckingham ([15:39]):
+I have no further questions. Thank you.
+Judge William Sullivan ([15:40]):
+Mr. Reddington,
+Kevin Reddington ([15:44]):
+Is it Mr. Negri?
+Eitan Negri ([15:48]):
+Negri. Yes, sir.
+Kevin Reddington ([15:50]):
+And you're not a doctor, you're a physician assistant. Is that what it is?
+Eitan Negri ([15:53]):
+That's correct, yes.
+Kevin Reddington ([15:54]):
+Okay. And how long had you worked for Brigham and Women's prior to seeing Lindsay Clancy on January 24, '23?
+Eitan Negri ([16:02]):
+I believe I was in my second year of employment with Brigham and Women's.
+Kevin Reddington ([16:06]):
+Okay. And you got to keep your voice up because people back here have to be able to hear you too, okay?
+Eitan Negri ([16:10]):
+I believe I was in my second year of employment at Brigham and Women's.
+Kevin Reddington ([16:15]):
+You're not suggesting for one minute that after you did your butterfly stitches, Lindsay could have got up and walked out the door of the hospital, right?
+Eitan Negri ([16:22]):
+No, sir.
+Kevin Reddington ([16:23]):
+And would you agree with me that, in fact, she was critically ill when you saw her, right?
+Eitan Negri ([16:30]):
+Yes, sir.
+Kevin Reddington ([16:31]):
+And she certainly wasn't critically ill from COVID or a flu or something like that, right?
+Eitan Negri ([16:36]):
+No, not to my knowledge.
+Kevin Reddington ([16:37]):
+You know that there are notes that are prepared for the records from the hospital. For example, on January 24, 2023, a hospital admission form is filled out. Do you know a Dr. Jeffrey Andrew Anderson?
+Eitan Negri ([16:53]):
+Yes.
+Kevin Reddington ([16:59]):
+And what was his position that night?
+Eitan Negri ([17:01]):
+He was one of the trauma surgeons and also one of the intensivists, the attending physicians in the ICU.
+Kevin Reddington ([17:07]):
+All right. And you've had a chance to review a number of records and photographs with the DAs, I imagine, right?
+Eitan Negri ([17:15]):
+I've reviewed my own procedure note.
+Kevin Reddington ([17:18]):
+Okay. So what does that mean?
+Eitan Negri ([17:21]):
+It means I reviewed the note that I wrote myself regarding the laceration repairs.
+Kevin Reddington ([17:25]):
+Okay. Is that the note that indicates that it appears as though that, for example, on the right upper extremity, there's a three and a half centimeter deep laceration on the volar aspect of the wrist?
+Eitan Negri ([17:39]):
+I don't believe that I commented saying volar specifically, so I don't know if that's in regards to my note, but I believe my note did say about three centimeters deep, yes.
+Kevin Reddington ([17:46]):
+Okay. So do you recall indicating in your note that it was superficial laceration or did you indicate that it was a deep laceration?
+Eitan Negri ([17:55]):
+I indicated that some of them were superficial and the one that I repaired in particular was three centimeters deep.
+Kevin Reddington ([18:01]):
+And you've had occasion to speak to the prosecutors on this case and that they've asked you about the superficial, superficial, superficial injury to her wrist, right?
+Eitan Negri ([18:11]):
+Correct.
+Kevin Reddington ([18:12]):
+In addition to the, as indicated on page 75 of the Brigham Women's Hospital record that I have, and we can fix that with other records if it doesn't coincide, there's a note from Dr. Anderson that the right upper extremity, 3.5 centimeter deep laceration volar aspect of the wrist, left upper extremity, two centimeter deep laceration on the volar aspect of the wrist. Do you agree with that assessment?
+Eitan Negri ([18:39]):
+Yes, sir.
+Kevin Reddington ([18:39]):
+All right. And then you were able to, as you say, clean it up with saline or whatever, and then you stitched up what you had to stitch up, right?
+Eitan Negri ([18:47]):
+Yes, sir.
+Kevin Reddington ([18:48]):
+Did you have anything to do with the massive transfusion that she had?
+Eitan Negri ([18:52]):
+No, sir.
+Kevin Reddington ([18:52]):
+Do you have anything to do with the treatment of the transected spine that she had, the shattered spine?
+Eitan Negri ([18:58]):
+No, sir.
+Kevin Reddington ([18:58]):
+Do you have anything whatsoever to do with the insertion of tubes on both sides of her body and the draining of the blood that had pooled in her middle cavity?
+Eitan Negri ([19:07]):
+Just the management of those tubes after, but not the placement.
+Kevin Reddington ([19:10]):
+Okay. So you were there while that was done?
+Eitan Negri ([19:13]):
+I was there managing once they had been placed, but I was not there for the placement of the [inaudible 00:19:18].
+Kevin Reddington ([19:17]):
+Okay. But you knew that they were in there, that they were draining the blood?
+Eitan Negri ([19:19]):
+Correct. Yes.
+Kevin Reddington ([19:19]):
+Okay. And do you know where the blood came from that was in her middle extremity?
+Eitan Negri ([19:27]):
+I don't know specifically. I'd have to refer back to the imaging reports.
+Kevin Reddington ([19:31]):
+In any event, you know that shortly thereafter she coded, right?
+Eitan Negri ([19:34]):
+Yes.
+Kevin Reddington ([19:36]):
+Were you there for that?
+Eitan Negri ([19:37]):
+No, sir.
+Kevin Reddington ([19:38]):
+And basically that means that the patient has in effect died from cardiac arrest, right?
+Eitan Negri ([19:43]):
+Not necessarily died, but their heart has stopped beating for that person, yes.
+Kevin Reddington ([19:47]):
+And hen there's crash teams and everybody hopefully revives the person, right?
+Eitan Negri ([19:51]):
+Correct.
+Kevin Reddington ([19:51]):
+And you guys did that, or they did, and they were successful reviving her, correct?
+Eitan Negri ([19:55]):
+Yes.
+Kevin Reddington ([19:57]):
+So without going through everything, you'd agree with me, sir, that your observations would be of the wrist, the repair, and taking care of the tubes after they were inserted into both sides of her chest?
+Eitan Negri ([20:10]):
+That's correct.
+Kevin Reddington ([20:11]):
+And that was your involvement extended, correct? You're all done after that?
+Eitan Negri ([20:14]):
+I was involved in the ongoing management of her care throughout the day, but just as you stated, not the things that you asked me about.
+Kevin Reddington ([20:21]):
+Okay. Thank you, sir.
+Eitan Negri ([20:22]):
+Sure.
+Kevin Reddington ([20:22]):
+[inaudible 00:20:27].
+Shanan Buckingham ([20:27]):
+They're part of the record. [inaudible 00:20:31]. I wouldn't object if we could approach.
+Kevin Reddington ([20:32]):
+I don't want to have a jury having to go through 10...
+Judge William Sullivan ([20:35]):
+No, I know that. Listen, mark them for identification and then we can address that.
+Kevin Reddington ([20:42]):
+Thank you, sir.
+Judge William Sullivan ([20:42]):
+Okay.
+Shanan Buckingham ([20:42]):
+If I may, just got a few questions.
+Judge William Sullivan ([20:49]):
+Sure.
+Shanan Buckingham ([20:49]):
+Thank you. Mr. Negri, I'm just going to approach and show you.
+Judge William Sullivan ([20:50]):
+Hold on a second. Is that my...?
+Shanan Buckingham ([20:50]):
+[inaudible 00:20:51].
+Judge William Sullivan ([20:50]):
+Thank you. All right. Thank you.
+Shanan Buckingham ([20:50]):
+I'm going to show you a page from the records that's labeled Brigham and Women's Page 76. Can you just... You can hold it, that's fine.
+Eitan Negri ([21:06]):
+Specifically this highlighted area?
+Shanan Buckingham ([21:07]):
+Yeah, I would direct your attention to the bottom paragraph where it says exam.
+Eitan Negri ([21:11]):
+Okay.
+Shanan Buckingham ([21:20]):
+That's not your note from the record, correct?
+Eitan Negri ([21:23]):
+Correct.
+Shanan Buckingham ([21:24]):
+And when it's noted that the right upper extremity, left upper extremity has three and a half centimeter deep laceration, two centimeter deep laceration, "deep" in the medical notes is not a adjective of it, correct? It's more of a directionality of the injury.
+Eitan Negri ([21:43]):
+It's a description of... Yeah, basically an objective unit of measure.
+Shanan Buckingham ([21:48]):
+Okay. But when we say deep, it means that it goes down into the skin as opposed to across the skin.
+Kevin Reddington ([21:52]):
+It doesn't matter what we say, it's what the records say. I object to that.
+Judge William Sullivan ([21:56]):
+[inaudible 00:21:57]. If you could ask that question again.
+Shanan Buckingham ([21:58]):
+As far as your assessment of injuries, deep goes down in the skin as opposed to across the skin?
+Eitan Negri ([22:05]):
+Correct.
+Shanan Buckingham ([22:05]):
+Okay. And as far as Dr. Anderson goes, you knew him to be one of the attendings and a trauma surgeon in this case. Were you aware that on January 24th, he had examined these injuries and indicated they did not require repair at that time?
+Eitan Negri ([22:24]):
+I don't recall specifically. I'm sorry.
+Shanan Buckingham ([22:26]):
+But you came in to repair these on January 25th?
+Eitan Negri ([22:29]):
+Yes.
+Shanan Buckingham ([22:30]):
+Okay. Thank you.
+Judge William Sullivan ([22:30]):
+Mr. Reddington, anything on that?
+Kevin Reddington ([22:33]):
+No, thank you, Judge.
+Judge William Sullivan ([22:33]):
+All right. Thank you, sir.
+Eitan Negri ([22:34]):
+Thank you.
+Judge William Sullivan ([22:34]):
+You're welcome. You're all set. Attorney Buckingham, please.
+Shanan Buckingham ([22:47]):
+The Commonwealth would call Nicholas Roberts as its next witness, please.
+Judge William Sullivan ([23:20]):
+Good morning, sir.
+Nicholas Roberts ([23:21]):
+Morning.
+Court Clerk ([23:21]):
+Can you stop right there and raise your right hand for the clerk, please?
+Court Reporter ([23:24]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury in the matter now pending between the Commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth, so help you God? Have a seat.
+Court Clerk ([23:28]):
+Watch your step, please.
+Judge William Sullivan ([23:43]):
+Good morning, sir. All right, counsel.
+Shanan Buckingham ([23:43]):
+Thank you. Good morning.
+Nicholas Roberts ([23:45]):
+Good morning.
+Shanan Buckingham ([23:46]):
+Could you please tell the jurors your first and last name?
+Nicholas Roberts ([23:48]):
+It's Nicholas Roberts.
+Shanan Buckingham ([23:50]):
+And where do you currently work?
+Nicholas Roberts ([23:52]):
+I work for a company called Thermo Fisher.
+Shanan Buckingham ([23:54]):
+What is that? What do they do?
+Nicholas Roberts ([23:57]):
+They sell plenty of laboratory-based products, including refrigeration. They sell solvents. They do instruments as well.
+Shanan Buckingham ([24:06]):
+Prior to working for that company, did you work for the Massachusetts State Police Crime Lab?
+Nicholas Roberts ([24:10]):
+I did.
+Shanan Buckingham ([24:11]):
+And in what unit did you work for the crime lab?
+Nicholas Roberts ([24:13]):
+I was in the toxicology unit.
+Shanan Buckingham ([24:15]):
+How long did you work for the crime lab?
+Nicholas Roberts ([24:17]):
+For about nine years.
+Shanan Buckingham ([24:18]):
+And in working for the crime lab, what kind of training and experience did you have to work in the toxicology unit?
+Nicholas Roberts ([24:26]):
+So prior to being hired, I have both a bachelor's and a master's degree in applied forensic science with a concentration in chemistry and toxicology. I also have, the master's is in forensic toxicology. While being hired on the job, they provide training for all the in-house stuff that we test for, which includes not only a theory-based training, but also practical stuff so that you can analyze and run all the tests that we do in-house.
+Shanan Buckingham ([25:03]):
+And as far as your work in the toxicology unit, fair to say in January of 2023 or February of 2023, you were what's referred to as a forensic scientist too, correct?
+Nicholas Roberts ([25:15]):
+Yes.
+Shanan Buckingham ([25:16]):
+And throughout your time at the Massachusetts State Police Crime Lab, did you have to undergo competency tests and proficiency tests?
+Nicholas Roberts ([25:25]):
+Yes.
+Shanan Buckingham ([25:26]):
+And why is that? Why do you have to do that?
+Nicholas Roberts ([25:28]):
+So mainly it's to... [inaudible 00:25:33].
+Judge William Sullivan ([25:33]):
+One at a time, okay.
+Kevin Reddington ([25:35]):
+I'm just saying I know he's qualified and I have no problem with his credentials and his testimony.
+Judge William Sullivan ([25:40]):
+All right. All right. Counsel?
+Shanan Buckingham ([25:42]):
+Thank you. Sir, in working at the State Police Crime Lab, did you just work in the toxicology unit or did you work in any other units in your time there?
+Nicholas Roberts ([25:53]):
+No, only in toxicology.
+Shanan Buckingham ([25:54]):
+Okay. Now, as it pertains to the toxicology unit, fair to say the State Police Crime Lab has a specific set of protocols and procedures that are followed in every case?
+Nicholas Roberts ([26:04]):
+Yes.
+Shanan Buckingham ([26:04]):
+Okay. And at that time in February of 2023, was the State Police Crime Lab using the batch review process?
+Nicholas Roberts ([26:16]):
+Yes.
+Shanan Buckingham ([26:16]):
+And so when the state police use this process, there are a number of different technicians or forensic scientists that work on any given case. Is that fair to say?
+Nicholas Roberts ([26:24]):
+Yes.
+Shanan Buckingham ([26:25]):
+And at the end of it, one analyst is responsible for reviewing all the data and authoring a report?
+Nicholas Roberts ([26:31]):
+Yes.
+Shanan Buckingham ([26:32]):
+And based on your training and experience, if you're that person reviewing the data and authoring the report, do you have the ability to interpret some of the data in the report?
+Nicholas Roberts ([26:40]):
+Yes.
+Shanan Buckingham ([26:40]):
+Or data in the testing, I should say.
+Nicholas Roberts ([26:43]):
+Yes. We review all the data that is provided within the case file.
+Shanan Buckingham ([26:47]):
+And did you, during your time at the crime lab in the toxicology unit, stay up to date on various types of drugs and quantifications of those drugs and what that could mean for levels in a person's blood or urine?
+Nicholas Roberts ([27:05]):
+Yes. They keep us up to date on drugs that are commonly used.
+Shanan Buckingham ([27:12]):
+So one of the roles in the toxicology unit is for you to report whether substances are detected in blood and urine. Is that fair to say?
+Nicholas Roberts ([27:22]):
+Yes.
+Shanan Buckingham ([27:22]):
+And at some points, are you also called upon to interpret the levels of those drugs?
+Nicholas Roberts ([27:31]):
+So in blood, we report values. So we get concentrations of the different drugs. We mainly report them in blood.
+Shanan Buckingham ([27:38]):
+Okay. And as far as the concentration levels themselves, did you have training and experience on interpreting those levels?
+Nicholas Roberts ([27:46]):
+We usually get training on the effects of the drugs. It's hard to say with some drugs as well as some people what one level might mean for one person, it might differ and you have different effects on another.
+Shanan Buckingham ([28:02]):
+Okay. And fair to say that's a limitation of just reviewing blood and not knowing anything else about a case, right?
+Nicholas Roberts ([28:09]):
+Yes.
+Shanan Buckingham ([28:12]):
+At the toxicology unit, at the crime lab, is there a limitation as to how or what types of drugs can actually be quantified or given concentration levels?
+Nicholas Roberts ([28:24]):
+Yes, we only quantify certain drugs.
+Shanan Buckingham ([28:28]):
+And what happens if there are other drugs present and there's a request for quantification or concentration levels? What does your lab do with that?
+Nicholas Roberts ([28:35]):
+Usually they're sent out to another lab in order for testing.
+Shanan Buckingham ([28:38]):
+And are you familiar with the NMS lab?
+Nicholas Roberts ([28:40]):
+Yes.
+Shanan Buckingham ([28:41]):
+Is that, or was that at that time, a common lab that would be sent drugs that you could not quantify in your lab?
+Nicholas Roberts ([28:48]):
+Yes.
+Shanan Buckingham ([28:49]):
+I'm going to direct your attention to the lab number of 23-01, excuse me. 01723. It's a case that you were the reporting analyst on, correct?
+Nicholas Roberts ([29:07]):
+Yes.
+Shanan Buckingham ([29:08]):
+And fair to say that there were several items that were submitted to the toxicology unit as specimens?
+Nicholas Roberts ([29:16]):
+Yes.
+Shanan Buckingham ([29:16]):
+Including blood, plasma, and urine?
+Nicholas Roberts ([29:19]):
+Yes.
+Shanan Buckingham ([29:20]):
+And did you work with other members of the toxicology unit to have those specimens screened and then further tested?
+Nicholas Roberts ([29:31]):
+Yes. The batch process was followed.
+Shanan Buckingham ([29:34]):
+And as far as any screening tests, did you yourself do any screening tests on these items?
+Nicholas Roberts ([29:39]):
+Yes.
+Shanan Buckingham ([29:39]):
+What screening tests did you do?
+Nicholas Roberts ([29:41]):
+The screening for the alcohol.
+Shanan Buckingham ([29:43]):
+And was there any alcohol present?
+Nicholas Roberts ([29:45]):
+No.
+Shanan Buckingham ([29:46]):
+And in this screening for alcohol, does it just tell you whether it was detected or not detected?
+Nicholas Roberts ([29:52]):
+Yes.
+Shanan Buckingham ([29:52]):
+Okay. And so when you don't have a result, there's nothing further to do?
+Nicholas Roberts ([29:55]):
+Correct.
+Shanan Buckingham ([29:56]):
+Now, as far as the blood that was tested in this case, and the urine, you were aware that there were screening tests done for what's called the ELISA screen, benzodiazepines, and general unknown screens for these samples, correct?
+Nicholas Roberts ([30:14]):
+Yes, that's usually our protocol.
+Shanan Buckingham ([30:16]):
+And in any of those circumstances, were there positive results?
+Nicholas Roberts ([30:20]):
+Yes.
+Shanan Buckingham ([30:21]):
+And as it pertained to the positive results, what's your understanding of what was positive?
+Nicholas Roberts ([30:28]):
+So to my knowledge, it was positive for the benzodiazepine panel in ELISA. That would've gotten further confirmatory testing done on it to see the levels as well as the individual types of benzos that were present in the blood. And the same was for the urine as well. We also identified a few substances via our general unknown screen, which was confirmed in blood and urine.
+Shanan Buckingham ([30:57]):
+Now as far as...
+Judge William Sullivan ([30:57]):
+Counsel, wait, is there an agreement as to whose blood is being tested at this point instead of just by the number?
+Kevin Reddington ([31:04]):
+Yes.
+Judge William Sullivan ([31:05]):
+It might be easier for everybody, for the jury to follow.
+Shanan Buckingham ([31:13]):
+So would Your Honor just like me to read the results?
+Judge William Sullivan ([31:16]):
+No, just instead of referring to it by a number... Well, let me see in sidebar.
+Shanan Buckingham ([32:27]):
+Sir, I told you that your report was previously entered as Exhibit 183. Have you had the opportunity to review your report before coming today?
+Nicholas Roberts ([32:34]):
+Yes.
+Shanan Buckingham ([32:35]):
+And so the lab number that we've been referring to, you're aware that the person associated with that lab number was actually a woman by the name of Lindsay Clancy?
+Nicholas Roberts ([32:44]):
+Yes.
+Shanan Buckingham ([32:44]):
+Okay. Now, as far as the testing that was done, you received results to the positive benzodiazepines in the screen and then it was confirmed, correct?
+Nicholas Roberts ([32:55]):
+Correct.
+Shanan Buckingham ([32:55]):
+How many benzodiazepines were present?
+Nicholas Roberts ([32:59]):
+There were at least four or five.
+Shanan Buckingham ([33:03]):
+Okay. And were you able to get concentration levels from the blood samples after that screen and the confirmatory tests?
+Nicholas Roberts ([33:12]):
+Yes.
+Shanan Buckingham ([33:13]):
+And again, already in evidence, but the toxicology report for item 10-101 on the blood, with those benzodiazepines, there's diazepam, correct?
+Nicholas Roberts ([33:26]):
+Yes.
+Shanan Buckingham ([33:26]):
+Nordiazepam?
+Nicholas Roberts ([33:27]):
+Yes.
+Shanan Buckingham ([33:27]):
+Oxazepam?
+Nicholas Roberts ([33:27]):
+Yep.
+Shanan Buckingham ([33:27]):
+Temazepam?
+Nicholas Roberts ([33:27]):
+Yes.
+Shanan Buckingham ([33:28]):
+And Lorazepam?
+Nicholas Roberts ([33:29]):
+Yes.
+Shanan Buckingham ([33:36]):
+And as far as your review of the testing on those substances and the concentration levels, did anything about any of those levels stand out to you as far as based on your training and experience?
+Nicholas Roberts ([33:51]):
+Only that they were reportable.
+Shanan Buckingham ([33:53]):
+Okay. Are you familiar whether they're in any sort of therapeutic level for any of those drugs?
+Nicholas Roberts ([34:00]):
+I'm not sure.
+Shanan Buckingham ([34:01]):
+Okay. You mentioned there were also other substances that were detected in the general unknown screen, correct?
+Nicholas Roberts ([34:11]):
+Yes.
+Shanan Buckingham ([34:12]):
+And that would've been mirtazapine, lamotrigine, quetiapine, quetiapine metabolite, and Trazodone?
+Nicholas Roberts ([34:21]):
+Yes.
+Shanan Buckingham ([34:22]):
+And was your lab able to get concentration levels for those?
+Nicholas Roberts ([34:27]):
+No.
+Shanan Buckingham ([34:28]):
+And so what did you do or what was done with the samples or the specimens as it pertained to those substances?
+Nicholas Roberts ([34:37]):
+To my knowledge, they were sent to NMS labs.
+Shanan Buckingham ([34:45]):
+And you've previously stated that you are trained on effects of certain types of drugs, but your limitation is you don't know how it affects a particular individual, correct?
+Nicholas Roberts ([34:56]):
+Correct.
+Shanan Buckingham ([34:58]):
+These particular five benzodiazepines, do you know where they fall in the type of drug...
+Shanan Buckingham ([35:01]):
+... do you know where they fall in the type of drug, what the general effects of those drugs are?
+Nicholas Roberts ([35:06]):
+So benzos tend to be central nervous system depressants.
+Shanan Buckingham ([35:12]):
+Okay. And the ones that were detected, but you don't have the levels for, mirtazapine, in the list I read, what category are those drugs?
+Nicholas Roberts ([35:24]):
+Those tend to also be central nervous system depressants. Quetiapine in particular is usually known to treat bipolar disorder, schizophrenia.
+Shanan Buckingham ([35:34]):
+And as it pertains to the presence of the five benzodiazepines, your testing is limited in that you don't know whether that was from one medication or multiple medications, correct?
+Nicholas Roberts ([35:48]):
+Correct, because the nordazepam, oxazepam, and temazepam tend to be metabolites of diazepam.
+Shanan Buckingham ([36:01]):
+Okay. I have no further questions.
+Judge William Sullivan ([36:08]):
+All right. Attorney Reddington.
+Kevin Reddington ([36:09]):
+Morning.
+Nicholas Roberts ([36:09]):
+Morning.
+Kevin Reddington ([36:09]):
+How you doing?
+Nicholas Roberts ([36:10]):
+Not too bad. Yourself?
+Kevin Reddington ([36:12]):
+All right. Just a couple of brief questions. First of all, this would be a blood sample that was taken from Lindsay on a particular one day. This is not a panel of a bunch of different samples, right?
+Nicholas Roberts ([36:26]):
+To my knowledge, there would've been a few different test tubes submitted to us. [inaudible 00:36:32].
+Kevin Reddington ([36:31]):
+Okay. Test tubes. In other words, when you draw the blood, it would basically be the same time that they put it in different test tubes?
+Nicholas Roberts ([36:39]):
+Yes. I'm not familiar with these specific ones, like if they were done over a span of time, but usually-
+Kevin Reddington ([36:46]):
+That's fair. That's fair enough. But you have the test tubes and you know that it's Lindsay Clancy's blood, right?
+Nicholas Roberts ([36:50]):
+Yes.
+Kevin Reddington ([36:51]):
+And you'd agree with me that that's a fairly large number of drugs and metabolites that are in that particular blood sample, right?
+Nicholas Roberts ([36:59]):
+I have seen more.
+Kevin Reddington ([37:01]):
+I'm sure. But nevertheless, that's still a large number of drugs though, right?
+Nicholas Roberts ([37:05]):
+Yeah, that's quite a few.
+Kevin Reddington ([37:06]):
+And you don't know, as working your job for the state police at that time, you don't know how many of these drugs are coming from scripts, prescriptions and things of that nature, right?
+Eitan Negri ([37:17]):
+No.
+Kevin Reddington ([37:19]):
+One of the things that you had mentioned were metabolites, and you said that, because the district attorney asked you about different benzodiazepines, this pam, that pam, this pam, that pam, and then you responded and said, "Yeah, but there's a lot of metabolites involved in that." Right? What does that mean?
+Nicholas Roberts ([37:37]):
+So a metabolite is just a breakdown of anything usually by the body. So you have what we call a parent drug and the body, if you ingest that, the body would then break it down or put it into a more digestible form in order to get rid of it.
+Kevin Reddington ([37:53]):
+Okay. So when you have a number of metabolites, for example, someone may have a prescription for amitriptyline or a prescription for Zoloft or Ativan or something, and they take the pill and it's in their system, and then over time it would metabolize and there'd be different pams or whatever it is that would break down into the blood. Is that right?
+Nicholas Roberts ([38:16]):
+Yes.
+Kevin Reddington ([38:18]):
+How about tetrahydrocannabinols, THC, marijuana, what was the level on that?
+Nicholas Roberts ([38:26]):
+To my knowledge, we didn't find any.
+Kevin Reddington ([38:27]):
+No marijuana, right?
+Nicholas Roberts ([38:29]):
+Correct.
+Kevin Reddington ([38:29]):
+Thank you very much, sir.
+Judge William Sullivan ([38:30]):
+All right. Attorney Buckingham, any redirect?
+Shanan Buckingham ([38:33]):
+No, thank you.
+Judge William Sullivan ([38:34]):
+All right. Thank you, sir. Please sit down over there.
+Court Officer ([38:38]):
+Watch your step, sir.
+Kevin Reddington ([38:38]):
+Yeah?
+Shanan Buckingham ([38:38]):
+[inaudible 00:38:45]. Sorry.
+Jennifer Sprague ([38:38]):
+[inaudible 00:38:49].
+Kevin Reddington ([38:38]):
+[inaudible 00:38:50].
+Shanan Buckingham ([38:38]):
+[inaudible 00:38:51].
+Kevin Reddington ([38:38]):
+Thank you.
+Judge William Sullivan ([38:38]):
+Commonwealth.
+Shanan Buckingham ([38:52]):
+Your Honor, at this time, upon agreement, I'd ask to admit as the next exhibit, just a chart that the parties have agreed upon that lists the brand names of some of the drugs that have been spoken about throughout the course of the trial, as well as what they were also known as for the ease of the jurors.
+Judge William Sullivan ([39:07]):
+All right. [inaudible 00:39:09].
+Kevin Reddington ([39:07]):
+Yes, it's by agreement, Judge.
+Judge William Sullivan ([39:10]):
+All right. All right. So by agreement, that may be admitted.
+Speaker 1 ([39:11]):
+Exhibit 205.
+Shanan Buckingham ([39:18]):
+And the Commonwealth would call Dr. Jonathan Brower as its next witness.
+Court Officer ([39:36]):
+Good morning, sir.
+Eitan Negri ([39:36]):
+Morning.
+Court Officer ([39:37]):
+Can you stop right here and raise your right hand for the clerk, please?
+Clerk ([39:39]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give to the court and the jury [inaudible 00:39:44] between the Commonwealth and the defendant [inaudible 00:39:46] shall be the truth, the whole truth, and nothing but the truth?
+Eitan Negri ([39:49]):
+I do.
+Clerk ([39:49]):
+Thank you. You may have a seat.
+Court Officer ([39:50]):
+Watch your step, please.
+Judge William Sullivan ([39:50]):
+All right. Good morning, Doctor.
+Eitan Negri ([39:55]):
+Good morning.
+Judge William Sullivan ([39:55]):
+All right. Ask you to keep your voice up so the jury can hear you. And with that, counsel.
+Shanan Buckingham ([40:04]):
+Thank you. Good morning, sir. Can you please tell the jurors your first and last name?
+Eitan Negri ([40:07]):
+It's Justin Brower, B-R-O-W-E-R.
+Shanan Buckingham ([40:12]):
+‍
+And what do you do for work, sir?
+Eitan Negri ([40:14]):
+I am a forensic toxicologist for NMS Laboratories.
+Shanan Buckingham ([40:18]):
+And where is that laboratory located?
+Eitan Negri ([40:19]):
+The laboratory is located in Horsham, Pennsylvania, just north of Philadelphia.
+Shanan Buckingham ([40:25]):
+And what does your laboratory do?
+Eitan Negri ([40:27]):
+We are a reference laboratory. We do postmortem work, clinical work, and forensic drug work. So primarily, my role is on the forensic side. I'm a forensic toxicologist.
+Shanan Buckingham ([40:41]):
+And does your lab receive specimens from all across the country?
+Eitan Negri ([40:46]):
+We do. We have clients in all 50 states. We do approximately half of the postmortem work in the United States, as well as a large number of clinical clients.
+Shanan Buckingham ([40:56]):
+And is your lab accredited across several states and across the country?
+Eitan Negri ([41:02]):
+We are, because we deal with all the states in the country, we are accredited by just about every accrediting body that I'm aware of in the clinical and forensic aspects, as well as a lot of state certifications. So a lot of states have their own requirements. The most notable one is New York State. So we're accredited by, again, every accrediting body that I'm aware of.
+Shanan Buckingham ([41:27]):
+Okay. And how long have you worked for NMS Laboratory?
+Eitan Negri ([41:30]):
+Four years as of August 1st.
+Shanan Buckingham ([41:32]):
+And what's your educational background as a forensic toxicologist?
+Eitan Negri ([41:36]):
+I have a PhD in organic chemistry.
+Shanan Buckingham ([41:38]):
+Where did you get that from?
+Eitan Negri ([41:40]):
+The University of Nevada.
+Shanan Buckingham ([41:42]):
+And do you have any other professional experience in this field prior to working for NMS?
+Eitan Negri ([41:47]):
+I do. Before joining NMS Laboratories, I was a laboratory supervisor and then forensic toxicologist for the North Carolina Office of the Chief Medical Examiner, which is a statewide system. So we did the postmortem toxicology work for all 100 counties of the state of North Carolina.
+Shanan Buckingham ([42:05]):
+And when it comes to your role in the forensic area of doing the toxicology testing, what is your role in the NMS lab when it comes to cases that come to the laboratory for forensic analysis?
+Eitan Negri ([42:23]):
+So when a case comes into NMS and is logged in and the assigned or the requested test assigned and then run and reviewed multiple times in the laboratory, when all that testing is completed, it comes to the toxicology department. And my role is to review every aspect of that case. So I'm making sure that everything on the toxicology report is complete and accurate, such as all the demographic information that we have available to us, the name of the decedent or the patient, date of birth, where it's from, the specimens that we received. And then also that everything that is reported is complete and accurate. Making sure that all the drugs that we're tested for are reported, that the reported concentrations are correct and accurate, and looking at every piece of raw data accumulated from the laboratory associated with that case.
+Shanan Buckingham ([43:18]):
+Fair to say the NMS laboratory uses a batch review workflow?
+Eitan Negri ([43:25]):
+That is correct. So we not only run the cases in batches, so we don't run one case at a time. That's not very efficient. I don't really know of any laboratory that does that anymore. So we will run cases 10, 15, 30 or 40 at a time.
+Shanan Buckingham ([43:44]):
+So as far as running a particular test and getting the raw data, that's usually done by other people in the laboratory, correct?
+Eitan Negri ([43:52]):
+That is correct.
+Shanan Buckingham ([43:52]):
+And then you come in at the end and review everything and have the ability to interpret the data?
+Eitan Negri ([43:58]):
+That is correct.
+Shanan Buckingham ([43:59]):
+Your training and experience as a forensic toxicologist, does that allow you to interpret concentration levels of particular types of drugs?
+Eitan Negri ([44:08]):
+It does.
+Shanan Buckingham ([44:09]):
+Okay. Now, as far as the testing done at NMS Laboratories, the traditional testing is kind of the drug testing, the panels for different common drugs, correct?
+Eitan Negri ([44:22]):
+Typically, we have a clients request panels to be run where we're looking for multiple drugs and classes of drugs at a time.
+Shanan Buckingham ([44:30]):
+But are there circumstances when outside laboratories or outside individuals retain your lab in order to run specific tests?
+Eitan Negri ([44:39]):
+Oh, absolutely.
+Shanan Buckingham ([44:43]):
+Now, I'm going to draw your attention to this particular case. Was your laboratory provided a blood sample from the Massachusetts State Police Crime Lab in April of 2023?
+Eitan Negri ([44:55]):
+I believe so. I'd really like to see the toxicology report so I can just confirm all of that, please.
+Shanan Buckingham ([45:02]):
+Sure.
+Kevin Reddington ([45:02]):
+I have no objection to that.
+Judge William Sullivan ([45:02]):
+Sure.
+Eitan Negri ([45:07]):
+Thank you so much.
+Shanan Buckingham ([45:11]):
+You can hang on to that.
+Judge William Sullivan ([45:12]):
+That's fine.
+Eitan Negri ([45:14]):
+Okay. Correct. We received the specimens on April 7th, 2023.
+Shanan Buckingham ([45:17]):
+Okay. And it came from the Massachusetts State Police Crime Lab?
+Eitan Negri ([45:23]):
+No. I don't know where they were initially sent from, but the client or the submitting agency is the District Attorney's Office of Plymouth.
+Shanan Buckingham ([45:34]):
+Okay. Now, as it pertains to the requested testing that was done, was it that panel that you described or was it more specific testing?
+Eitan Negri ([45:44]):
+This is what we call direct testing, where they requested just for specific drugs to be tested for.
+Shanan Buckingham ([45:50]):
+And what were the four specific tests requested?
+Eitan Negri ([45:53]):
+Lamotrigine, mirtazapine, quetiapine, and trazodone.
+Shanan Buckingham ([45:57]):
+Are you familiar with those substances or those drugs?
+Eitan Negri ([46:00]):
+Yes, ma'am.
+Shanan Buckingham ([46:01]):
+Okay. And you reviewed all of the data and information done at your lab in regards to these tests, correct?
+Eitan Negri ([46:09]):
+Yes, ma'am.
+Shanan Buckingham ([46:09]):
+Were they able to identify concentration levels in the sample that was submitted for each one of those four substances?
+Eitan Negri ([46:16]):
+Yes, ma'am.
+Shanan Buckingham ([46:17]):
+And first, can you tell us what the result was?
+Eitan Negri ([46:22]):
+Would you like me just to run down the list?
+Shanan Buckingham ([46:24]):
+Sure.
+Eitan Negri ([46:25]):
+Okay. We detected lamotrigine in a concentration of 6.1 micrograms per milliliter. Mirtazapine at a concentration of 200, I'm sorry, 200 nanograms per milliliter. Quetiapine at a concentration of 1,800 nanograms per milliliter, and trazodone at a concentration of 0.44 micrograms per milliliter. And these were all in blood.
+Shanan Buckingham ([46:51]):
+In blood. And so with each drug that you just listed, are you familiar with what the common name is for the drugs?
+Eitan Negri ([47:02]):
+I'm not always that great with common names, but I can wing it.
+Shanan Buckingham ([47:06]):
+Okay. Well, the lamotrigine, and forgive me if I botch the-
+Eitan Negri ([47:12]):
+That's okay.
+Shanan Buckingham ([47:13]):
+... pronunciation. That's also referred to commonly as Lamictal.
+Eitan Negri ([47:18]):
+It is, correct. Lamictal.
+Shanan Buckingham ([47:19]):
+What kind of drug is that?
+Eitan Negri ([47:21]):
+It's typically used as an anti-seizure medication. So if somebody has a seizure disorder, it can be prescribed to alleviate seizures, but it is also used for bipolar disorder as well.
+Shanan Buckingham ([47:36]):
+And mirtazapine, fair to say that's commonly referred to as Remeron?
+Eitan Negri ([47:41]):
+Correct.
+Shanan Buckingham ([47:41]):
+And what kind of drug is that?
+Eitan Negri ([47:42]):
+That is typically an antidepressant.
+Shanan Buckingham ([47:46]):
+And quetiapine, what's that common drug?
+Eitan Negri ([47:51]):
+Quetiapine is known as Seroquel.
+Shanan Buckingham ([47:54]):
+And fair to say that's an antipsychotic as well for bipolar?
+Eitan Negri ([47:57]):
+Yes, ma'am.
+Shanan Buckingham ([47:59]):
+Are you familiar with whether that often can be prescribed in low doses for sleep?
+Eitan Negri ([48:04]):
+It can be for insomnia.
+Shanan Buckingham ([48:07]):
+And trazodone, what's the common name for trazodone, if you know?
+Eitan Negri ([48:14]):
+I am drawing a blank on the trazodone.
+Shanan Buckingham ([48:17]):
+If I suggest trazomine, is that familiar?
+Eitan Negri ([48:23]):
+Not the one that I'm most familiar with. And I apologize. I only-
+Shanan Buckingham ([48:26]):
+That's okay. But you're familiar with trazodone?
+Eitan Negri ([48:27]):
+Correct. Yeah.
+Shanan Buckingham ([48:28]):
+And what class of drug is that?
+Eitan Negri ([48:30]):
+That's an antidepressant.
+Shanan Buckingham ([48:33]):
+Okay. Now, in your review of the levels that were detected in these four tests for each of these substances, do any of these levels appear to be outside therapeutic concentration levels?
+Eitan Negri ([48:46]):
+The only one that's a little elevated would be the quetiapine.
+Shanan Buckingham ([48:49]):
+Okay.
+Judge William Sullivan ([48:51]):
+We're going to take a very short break at this time. All right? So this will be a short break, then we'll come right back. All right?
+Court Officer ([49:11]):
+Court, all rise. [inaudible 00:49:02] please close the notebook. [inaudible 00:49:04]. This way, please.
+Judge William Sullivan ([49:44]):
+All right. We'll be right... This will be a short break just for a short recess. We'll come right back up.
+Kevin Reddington ([49:50]):
+Half hour?
+Judge William Sullivan ([49:52]):
+Hopefully not. Mr. Stan, stand up.
+Court Officer ([50:03]):
+This court is back in session. You may be seated.
+Judge William Sullivan ([50:06]):
+All right. Are we all set for the jury? [inaudible 00:50:09].
+Kevin Reddington ([50:06]):
+[inaudible 00:50:11].
+Clerk ([50:06]):
+I think if you turn this on, you can watch it too.
+Judge William Sullivan ([50:06]):
+Yeah. Thanks.
+Court Officer ([50:06]):
+Court, all rise. Jurors entering. This court's now in session. Please be seated.
+Clerk ([51:18]):
+Your Honor, for the purpose of the record, we return back to the trial of Commonwealth versus Lindsay Clancy. All parties are present, including Ms. Clancy, and including the 18 jurors.
+Judge William Sullivan ([51:26]):
+All right. All right. Counsel?
+Shanan Buckingham ([51:29]):
+Thank you. Dr. Brower, before we broke, we mentioned the term therapeutic concentration. You familiar with that term?
+Eitan Negri ([51:40]):
+Correct.
+Shanan Buckingham ([51:40]):
+What does that mean?
+Eitan Negri ([51:42]):
+It's the typical concentration that one would achieve when they're taking the medication or drug as indicated by their prescriber.
+Shanan Buckingham ([51:51]):
+And are you familiar with toxic concentrations or suicidal concentrations?
+Eitan Negri ([51:55]):
+I am.
+Shanan Buckingham ([51:57]):
+And what does that mean?
+Eitan Negri ([51:58]):
+Those are concentrations that could lead to adverse events and potentially death.
+Shanan Buckingham ([52:03]):
+Now, in relation to the four substances that were tested at the NMS Laboratory, you identified the levels for each of the four substances. Were any of those levels, excuse me, concentration levels considered within therapeutic concentration?
+Eitan Negri ([52:23]):
+It would all be in what I would say a therapeutic concentration, except maybe the quetiapine, which is slightly elevated.
+Shanan Buckingham ([52:29]):
+Okay. And in your experience as a forensic toxicologist, have you had the occasion to review cases, postmortem cases in which suicide was a mechanism of death where the person consumed medication?
+Eitan Negri ([52:44]):
+Absolutely, yes.
+Shanan Buckingham ([52:45]):
+And so that level of the-
+Eitan Negri ([52:48]):
+Quetiapine.
+Shanan Buckingham ([52:52]):
+... quetiapine at the 800 nanograms per milliliter, would that have been in that toxic or suicidal level?
+Eitan Negri ([52:59]):
+No, ma'am.
+Shanan Buckingham ([53:02]):
+Would you generally expect to see that significantly greater in a suicide case?
+Eitan Negri ([53:07]):
+Typically, quetiapines in suicide cases might be in the close to 10,000 nanograms per milliliter. Usually, people take handfuls of pills when they're trying to harm themselves and take their own life, and this is not consistent with that.
+Shanan Buckingham ([53:23]):
+Now, are you also familiar in your training and experience with the class of drugs called benzodiazepines?
+Eitan Negri ([53:29]):
+Yes, ma'am.
+Shanan Buckingham ([53:30]):
+And do you have the occasion to interpret data as it pertains to concentration levels for those?
+Eitan Negri ([53:34]):
+Every single day.
+Shanan Buckingham ([53:36]):
+And as far as the substances diazepam, nordazepam, oxazepam, temazepam, lorazepam, you're familiar with those?
+Eitan Negri ([53:45]):
+I am.
+Shanan Buckingham ([53:46]):
+And if fair to say, nordazepam, oxazepam, temazepam, those are all metabolites of diazepam?
+Eitan Negri ([53:55]):
+Typically, yes, ma'am.
+Shanan Buckingham ([53:56]):
+And what's the common name for diazepam?
+Eitan Negri ([53:59]):
+Valium.
+Shanan Buckingham ([54:02]):
+Okay. If I show you what's been marked as Exhibit 183 already... Can you see that on the screen beside you?
+Eitan Negri ([54:15]):
+I can, yes.
+Shanan Buckingham ([54:15]):
+Okay.
+Eitan Negri ([54:15]):
+Right there.
+Shanan Buckingham ([54:32]):
+Can you see the levels?
+Eitan Negri ([54:35]):
+They're all blurry.
+Shanan Buckingham ([54:36]):
+Yep. Hold on one sec. There you go.
+Eitan Negri ([54:36]):
+My eyesight's not great too, so that's perfect.
+Shanan Buckingham ([54:41]):
+Okay. So that's best I can do with the autofocus.
+Eitan Negri ([54:43]):
+Don't touch it.
+Shanan Buckingham ([54:46]):
+Anything about the levels that you observed here regarding those substances, those benzodiazepines, that tell you that they're outside therapeutic concentration levels?
+Eitan Negri ([54:57]):
+The diazepam and the nordazepam, oxazepam, and temazepam metabolites. The diazepam looks to be sub-therapeutic, meaning lower than what is typically expected from a therapeutic dose. Most therapeutic doses of diazepam, which is an anxiolytic drug or an antianxiety drug are typically 200, 250, thereabouts nanogram per milliliter. The lorazepam, depending upon the dose, could be a therapeutic concentration, if not maybe a little bit lower than expected.
+Shanan Buckingham ([55:35]):
+Okay. Thank you. Now, when you're reviewing these cases as the reporting forensic toxicologist, are there limitations on what you can say about the effects of these types of medications?
+Eitan Negri ([55:51]):
+We can speak as to the general effects that drugs can have on the general population, but we try to restrict ourselves from saying with absolute certainty that a drug will have this effect on this specific person because we just aren't there to witness their behavior.
+Shanan Buckingham ([56:08]):
+Okay. So that was kind of the follow-up.
+Eitan Negri ([56:11]):
+I'm sorry.
+Shanan Buckingham ([56:12]):
+What are the things that are the unknowns for you when you're just looking at data?
+Eitan Negri ([56:17]):
+We say that we can't do toxicology in a vacuum. You can't know everything about the case just by looking at numbers on the toxicology report and drugs on a toxicology report. You need other information to have an informed opinion. In the postmortem world, that would be the investigation itself, the history of the case, the scene findings, interviews with families and friends of the decedent, as well as autopsy findings as well. In a case like this, where it's not a decedent and the person is alive, you still need to know some facts of the case, some sort of history of the case, like what happened. So just numbers on a page. You can just make very generalized types of opinions such as that looks to be therapeutic, it looks to be high, it looks to be low. And then again, just the general effects on the drugs on people.
+Shanan Buckingham ([57:17]):
+And in this particular instance, you were not provided any further information about the case or the investigation in order to make any more opinions about effects?
+Eitan Negri ([57:26]):
+I knew nothing about this case until we spoke, I think it was probably a few weeks ago.
+Shanan Buckingham ([57:30]):
+And as far as the information available to you, you only had the data from the specimen that was tested, correct?
+Eitan Negri ([57:36]):
+That is correct. Just these four drugs that were requested to be tested for.
+Shanan Buckingham ([57:39]):
+And as far as the drugs, the four drugs that were tested by your lab, what are the general characteristics of some of those drugs?
+Eitan Negri ([57:47]):
+So these are generally antidepressants and antipsychotic medications. So if somebody had, well, the lamotrigine, if somebody has say bipolar disorder, like wild mood swings, depressive episodes or psychotic episodes, these drugs could be prescribed. They also have depressant effects, so they could make people become lethargic or sleepy.
+Shanan Buckingham ([58:18]):
+Okay. And would any of the combination of these drugs cause a person to stop breathing?
+Eitan Negri ([58:25]):
+It's possible. Especially the mirtazapine, quetiapine, the trazodone, and then the two other benzodiazepines. Those are all central nervous system depressants. So they could, in large combinations or large concentrations and in combination with each other, cause central nervous system depression, which could reduce people's respiration rates.
+Shanan Buckingham ([58:50]):
+But in the levels that you observed in the testing that your lab did, as well as what I just showed you from Exhibit 183, is there anything about those concentration levels that would give you a sense that the person could have stopped breathing as a result of these?
+Eitan Negri ([59:06]):
+Not necessarily, but if I had the information that a patient presented to an emergency department and they had labored breathing and weren't breathing adequately and I had this information, then you could probably tie all that together. But without that extra information, then generally no.
+Shanan Buckingham ([59:24]):
+Based on the levels alone, you can't give any sort of opinion?
+Eitan Negri ([59:26]):
+I would like to not.
+Shanan Buckingham ([59:29]):
+Okay. And finally, are you familiar with the drug Narcan?
+Eitan Negri ([59:35]):
+I am.
+Shanan Buckingham ([59:36]):
+And what kind of effect does the drug Narcan have on a person who has consumed these drugs, if any?
+Eitan Negri ([59:45]):
+Just these drugs that we've talked about here today?
+Shanan Buckingham ([59:47]):
+Mm-hmm. Yes.
+Eitan Negri ([59:47]):
+Absolutely nothing.
+Shanan Buckingham ([59:54]):
+Can you explain to us why it is that Narcan wouldn't have an effect?
+Eitan Negri ([59:59]):
+Narcan is an opioid overdose reversal agent. It is an opioid antagonist. So it binds to the opioid receptors. So it doesn't allow other opioids like say fentanyl or oxycodone to bind to those receptors to have to exert its effects. So it only works on opioids. None of these drugs work on the opioid receptors. So Narcan would have no effect whatsoever on these drugs.
+Shanan Buckingham ([01:00:27]):
+Okay. Thank you.
+Judge William Sullivan ([01:00:27]):
+Attorney Reddington.
+Kevin Reddington ([01:00:27]):
+Good morning.
+Eitan Negri ([01:00:34]):
+Good morning.
+Kevin Reddington ([01:00:36]):
+Dr. Brower, so one of the things that you had mentioned is that you, and I think I would quote you, "I would like not to give an opinion without, basically, the underlying facts." In other words, what you're saying is that the numbers alone do not tell the tale of what happened to a particular individual, right?
+Eitan Negri ([01:00:57]):
+Correct. They don't tell the entire story.
+Kevin Reddington ([01:00:59]):
+Right. And you're for NMS Laboratory, you were retained or working for the DA's office, these people here, right?
+Eitan Negri ([01:01:08]):
+That was the submitting agency, correct.
+Kevin Reddington ([01:01:10]):
+And they certainly were not constrained from picking up the phone and calling you and telling you that this is blood from a woman that threw herself out a window and tried to kill herself after cutting her wrists and her neck. They could have told you that, right?
+Judge William Sullivan ([01:01:27]):
+Well, overruled.
+Eitan Negri ([01:01:29]):
+It's possible that does happen in rare occasions in high profile cases.
+Kevin Reddington ([01:01:33]):
+Right. And so that would have been something, for example, the facts that you wanted to know, that you would have liked to have known to kind of round out your opinion about the actual level of the drugs and the blood that you examined, right?
+Eitan Negri ([01:01:45]):
+It's not necessary.
+Kevin Reddington ([01:01:46]):
+Well, it's not necessary, but you did indicate that you would like to not give an opinion without the facts.
+Eitan Negri ([01:01:54]):
+Correct.
+Kevin Reddington ([01:01:54]):
+Okay.
+Eitan Negri ([01:01:55]):
+Today.
+Kevin Reddington ([01:01:57]):
+From the witness stand?
+Eitan Negri ([01:01:58]):
+Correct. I don't have all the information.
+Kevin Reddington ([01:02:00]):
+Of course. And the word therapeutic, is that consistent with, in other words, the treatment level of a particular narcotic or drug in the blood?
+Eitan Negri ([01:02:17]):
+Correct. It's the concentration of the drug in the body to elicit an effect or the desired effect.
+Kevin Reddington ([01:02:22]):
+[inaudible 01:02:26].
+Clerk ([01:02:22]):
+[inaudible 01:02:32].
+Kevin Reddington ([01:02:32]):
+Yeah, I think [inaudible 01:02:33]. Thank you. [inaudible 01:02:42]. One of these that I introduced [inaudible 01:02:46]. NMS Laboratory records that I introduced that they were marked for ID.
+Clerk ([01:02:57]):
+Which one, this?
+Kevin Reddington ([01:02:57]):
+Huh?
+Clerk ([01:02:57]):
+[inaudible 01:03:02]?
+Kevin Reddington ([01:02:57]):
+Yeah.
+Clerk ([01:03:04]):
+[inaudible 01:03:04]. Which one?
+Speaker X ([01:03:06]):
+Marked yesterday.
+Kevin Reddington ([01:03:12]):
+[inaudible 01:03:11] while she's trying to find the record. As it relates to the therapeutic level, sir, is it your understanding that the lorazepam, the alprazepam, clonazepam, counsel had asked you about the benzodiazepines were within therapeutic, thank you, within therapeutic level?
+Eitan Negri ([01:03:35]):
+I'm sorry, I had trouble hearing you.
+Kevin Reddington ([01:03:37]):
+Yeah, I'm sorry. They were within therapeutic level?
+Eitan Negri ([01:03:40]):
+I'm sorry, can you repeat the entire question?
+Kevin Reddington ([01:03:42]):
+Sure. What is lamotrigine?
+Eitan Negri ([01:03:45]):
+Lamotrigine is typically used as an anti-seizure medication and could also be used for bipolar disorder.
+Kevin Reddington ([01:03:51]):
+Okay. Do you have the results for your lab in front of you?
+Eitan Negri ([01:03:56]):
+Yes, sir.
+Kevin Reddington ([01:03:57]):
+Yeah, you can read along just so you can refresh your memory if it helps. The lamotrigine, it says 6.1. What does that mean?
+Eitan Negri ([01:04:07]):
+6.1 micrograms per milliliter. So there were 6.1 micrograms of lamotrigine per milliliter of blood.
+Kevin Reddington ([01:04:16]):
+All right. Is that above therapeutic, below therapeutic, or therapeutic?
+Eitan Negri ([01:04:20]):
+It's right in the middle of the therapeutic range.
+Kevin Reddington ([01:04:23]):
+So if somebody had a prescription, for example, for that narcotic or that drug, then they were taking the drug according to the recommended dose, right?
+Eitan Negri ([01:04:32]):
+That's what it would appear to me if they were prescribed it, correct.
+Kevin Reddington ([01:04:35]):
+How about the mirtazapine?
+Eitan Negri ([01:04:37]):
+The mirtazapine also looks to be probably used appropriately as prescribed.
+Kevin Reddington ([01:04:43]):
+And you need a prescription for that, don't you?
+Eitan Negri ([01:04:46]):
+Yes. You need a prescription for all three, I'm sorry, all four of these drugs.
+Kevin Reddington ([01:04:50]):
+Okay. And is there another name for mirtazapine?
+Eitan Negri ([01:04:52]):
+Remeron.
+Kevin Reddington ([01:04:54]):
+Remeron. All right. And what is the purpose or what do you use Remeron for?
+Eitan Negri ([01:04:59]):
+It's an antidepressant.
+Kevin Reddington ([01:05:02]):
+How about the quetiapine is the number three?
+Eitan Negri ([01:05:05]):
+The quetiapine is also known as Seroquel, and that is generally used as an antipsychotic.
+Kevin Reddington ([01:05:13]):
+And what does that mean when you say an antipsychotic? What does that mean?
+Eitan Negri ([01:05:18]):
+So if somebody has psychotic episodes, say like hallucinations or just not seeing reality like, "normal" person would, they could be prescribed quetiapine as an antipsychotic to try to kind of level out their brain chemistry.
+Kevin Reddington ([01:05:40]):
+And what was the result on the quetiapine?
+Eitan Negri ([01:05:46]):
+1,800, 1,800 nanograms per milliliter.
+Kevin Reddington ([01:05:48]):
+Now is that within therapeutic? Is that below or high?
+Eitan Negri ([01:05:51]):
+It looks high to me depending upon the dosage.
+Kevin Reddington ([01:05:55]):
+Okay. And trazodone is the next one. What is that?
+Eitan Negri ([01:05:59]):
+Trazodone is also an antidepressant.
+Kevin Reddington ([01:06:02]):
+And what's the result on that?
+Eitan Negri ([01:06:05]):
+Oh, I'm sorry. 0.44 micrograms per milliliter.
+Kevin Reddington ([01:06:10]):
+Okay. And is that therapeutic, below therapeutic, or above therapeutic?
+Eitan Negri ([01:06:14]):
+I would say that's a therapeutic concentration.
+Kevin Reddington ([01:06:17]):
+Okay. So basically, with the exception of the quetiapine that was 1,800 nanograms... What is a nanogram? What does that mean? Nanograms per milliliter. What does that mean?
+Eitan Negri ([01:06:28]):
+It's a very, very small amount. It's one-millionth of a milligram.
+Kevin Reddington ([01:06:37]):
+Okay. And that's how you measure the quantity of a particular substance that would be in a person's blood, correct?
+Eitan Negri ([01:06:43]):
+In the blood, correct.
+Kevin Reddington ([01:06:44]):
+So on the quetiapine at 1,800 nanograms per milliliter, that's the only one that was not therapeutic. That was a little higher than therapeutic. Is that correct?
+Eitan Negri ([01:06:57]):
+Correct. It's approximately maybe double what you might expect. So when I say it's a little elevated, it's not in a concentration that I would consider to be necessarily toxic or lethal.
+Kevin Reddington ([01:07:12]):
+Okay. And you don't know working for NMS Labs or whether or not a person had a prescription for these drugs or when they got the prescription or who gave them the... You don't know that, right?
+Eitan Negri ([01:07:31]):
+I have none of that information, no.
+Kevin Reddington ([01:07:32]):
+You could have known that if somebody had told you that, but you don't know it from looking at the numbers that we have here, right?
+Eitan Negri ([01:07:37]):
+Correct. It's possible if they would've given us that information. We don't always need to have it though.
+Kevin Reddington ([01:07:41]):
+Sure. Your Honor, this is what I [inaudible 01:07:45].
+Shanan Buckingham ([01:07:49]):
+Can I just see it again first?
+Judge William Sullivan ([01:07:49]):
+Oh, sure.
+Shanan Buckingham ([01:07:49]):
+[inaudible 01:07:53].
+Kevin Reddington ([01:07:49]):
+Yep.
+Shanan Buckingham ([01:08:02]):
+[inaudible 01:07:54]. If we can just approach briefly on the issue.
+Judge William Sullivan ([01:08:22]):
+Yeah. All right. So we're going to introduce that exhibit at this time.
+Kevin Reddington ([01:08:30]):
+Thank you.
+Speaker 1 ([01:08:30]):
+106.
+Kevin Reddington ([01:08:36]):
+So just if I may, excuse me, approaching. Which basically is an NMS Lab report.
+Eitan Negri ([01:08:40]):
+Same as this one.
+Kevin Reddington ([01:08:41]):
+Same numbers on the top, right? Where the square is?
+Eitan Negri ([01:08:44]):
+Correct.
+Kevin Reddington ([01:08:44]):
+Same numbers. Okay.
+Eitan Negri ([01:08:45]):
+Correct.
+Kevin Reddington ([01:08:45]):
+Thank you, sir. That's all I had.
+Eitan Negri ([01:08:46]):
+All right.
+Judge William Sullivan ([01:08:50]):
+All right. Yeah. Commonwealth?
+Shanan Buckingham ([01:08:53]):
+Dr. Brower, you in fact, once got this case for review, you authored a corrected report in regards to this case, correct?
+Eitan Negri ([01:09:03]):
+Correct.
+Shanan Buckingham ([01:09:04]):
+At this point, I would move to admit the report as such.
+Kevin Reddington ([01:09:06]):
+No objection.
+Judge William Sullivan ([01:09:07]):
+All right. That may be admitted as well.
+Shanan Buckingham ([01:09:08]):
+Thank you.
+Clerk ([01:09:08]):
+Exhibit [inaudible 01:09:11].
+Shanan Buckingham ([01:09:08]):
+Nothing further.
+Kevin Reddington ([01:09:13]):
+I have nothing further. Thank you, sir.
+Judge William Sullivan ([01:09:16]):
+All right. Thank you, Doctor.
+Eitan Negri ([01:09:16]):
+Am I released?
+Judge William Sullivan ([01:09:17]):
+Who else? Thank you.
+Eitan Negri ([01:09:18]):
+Thank you.
+Court Officer ([01:09:19]):
+Watch your step.
+Eitan Negri ([01:09:28]):
+[inaudible 01:09:28].
+Court Officer ([01:09:28]):
+[inaudible 01:09:28].
+Jennifer Sprague ([01:09:28]):
+Your Honor, prior to the next witness, the Commonwealth would move to submit four stipulations the parties have entered into. The first being a stipulation regarding DNA known standard samples. The second being a stipulation regarding DNA evidence for the blue exercise band and the red-brown stain on the basement floor. The third being the stipulation regarding DNA evidence for the yellow exercise band and the black exercise band. And the fourth being a stipulation regarding DNA comparisons for the blue exercise band and the red-brown stain in the basement.
+Kevin Reddington ([01:10:02]):
+That's right. We don't need to have all...
+Jennifer Sprague ([01:10:00]):
+... and in the red brown stain in the basement.
+Kevin Reddington ([01:10:02]):
+That's right. We don't need to have all those witnesses.
+Judge ([01:10:05]):
+All right. So those stipulations may be entered as exhibits. Counsel, do you want those published or read to the jury or satisfied that they'll have those? And the parties can refer to the contents of the stipulations.
+Kevin Reddington ([01:10:31]):
+[inaudible 01:10:34] Yeah.
+Jennifer Sprague ([01:10:38]):
+The only one we would like to have to have read to the jury... I'm sorry, are you all set?
+Clerk ([01:10:40]):
+[inaudible 01:10:42].
+Jennifer Sprague ([01:10:42]):
+Take your time.
+Kevin Reddington ([01:10:43]):
+That's on me. I kind of jumped in there. I'm sorry.
+Clerk ([01:10:46]):
+Exhibits 208 through 211.
+Jennifer Sprague ([01:10:55]):
+Will be the Exhibit 211, the stipulation regarding your comparisons for the blue band and the red brown stain?
+Kevin Reddington ([01:11:07]):
+Yeah. If she wants you to read it, I don't have a problem.
+Jennifer Sprague ([01:11:11]):
+I think it was defense that wanted you to read it. I'm fine reading it.
+Judge ([01:11:13]):
+Well, you know what? I want to read it. Great. All right. So that's what we'll do. All right. So members of the jury, remember I think it was yesterday or the day before, I talked a little bit about those stipulations. So the same instructions. These are facts that I'm going to read that the parties have agreed to that you can rely on in arriving at your verdict at the end of this case. This stipulation is one of four that was just introduced. You'll have all four of them with you back in the jury room when you deliberate. So let me just read this one stipulation. This doesn't mean this stipulation is any more important than any of the other ones, but the parties would like me to just read this one here. All right. So this is a stipulation regarding the DNA comparisons for the blue exercise ban and the red-brown stain. It was marked A.
+([01:12:05])Now in the above captioned matter, the parties agree to the following facts as it pertains to the DNA comparisons for the blue exercise band and the red-brown stain A in the basement. Number one, forensic scientist Emily Oliver reviewed and interpreted the data relating to the questioned items "2-4, blue exercise ban and item 3-3, the red-brown stain A, from the basement floor." And conducted comparison analysis to the known standards in this case. Number two. The parties agreed to the following conclusions regarding comparison analysis of these items. A, item 2-4. 1.1, sample from the ends of the blue exercise band. The DNA profile was interpreted as a mixture of three contributors. There are five individuals who have a likelihood ratio that indicates an inclusion in the profile. They are Dawson Clancy, Callan Clancy, Cora Clancy, Lindsay Clancy, and Patrick Clancy.
+([01:13:19])B, item 2-4.2.1, sample from the middle of the blue exercise band. The DNA profile was interpreted as a mixture of three contributors. Callan Clancy is included as a major contributor. And C, item 3-3.1, sample of swabs from the red brown stain A on the basement floor. The DNA profile was interpreted as originating from a single contributor. Cora Clancy is included as a contributor to this DNA profile. So that's the stipulation that the parties have agreed to. All right.
+Jennifer Sprague ([01:14:01]):
+And one last stipulation to be marked as the next exhibit, the stipulation regarding the batch work done at NMS Labs. We're not asking that this be read at this time.
+Judge ([01:14:11]):
+Okay. All right.
+Clerk ([01:14:11]):
+Exhibit 212.
+Jennifer Sprague ([01:14:18]):
+The Commonwealth would call Katarina Stashyn.
+Court Officer ([01:14:19]):
+Good morning, ma'am. Can you stop right there? Raise your right hand for the clerk, please.
+Clerk ([01:14:41]):
+Good morning. Do you solemnly swear that the testimony and the evidence you shall give for the court and the jury in the [inaudible 01:14:44] now pending between the Commonwealth and the defendant shall be the truth, the whole truth, and nothing but the truth, so help you God?
+Katarina Stashyn ([01:14:50]):
+Yes.
+Clerk ([01:14:51]):
+Thank you. You may have a seat, ma'am.
+Court Officer ([01:14:51]):
+Watch your step, please.
+Katarina Stashyn ([01:14:51]):
+Thank you.
+Court Officer ([01:14:51]):
+You're welcome.
+Judge ([01:14:55]):
+And good morning.
+Katarina Stashyn ([01:14:56]):
+Morning.
+Judge ([01:14:58]):
+All right. Attorney Sprague, please.
+Jennifer Sprague ([01:15:01]):
+Thank you, Your Honor. Good morning. Can you please state and spell your name for the record?
+Katarina Stashyn ([01:15:05]):
+Good morning. My name is Katarina Stashyn. My first name is spelled K-A-T-A-R-I-N-A. Last name is spelled S-T-A-S-H-Y-N.
+Jennifer Sprague ([01:15:17]):
+And can you describe for us your educational background?
+Katarina Stashyn ([01:15:20]):
+I have a bachelor's and master's degree in biotechnology from the University of Nevada, Reno.
+Jennifer Sprague ([01:15:26]):
+And what is your occupation?
+Katarina Stashyn ([01:15:27]):
+I'm currently employed by the Washoe County Sheriff's Office Forensic Science Division, which is located in Reno, Nevada. I'm a criminalist in the biology and forensic investigation sections.
+Jennifer Sprague ([01:15:39]):
+Back in January of 2023, where were you working?
+Katarina Stashyn ([01:15:44]):
+I previously worked for the Massachusetts State Police Crime Laboratory as a forensic scientist in the DNA unit, which is functionally the same role that I currently have in the biology section.
+Kevin Reddington ([01:15:56]):
+I'm sorry. We agree to the DNA. I'm just letting you know that.
+Judge ([01:16:00]):
+Okay. All right. Attorney Sprague.
+Jennifer Sprague ([01:16:01]):
+And I'm just giving that evidence to the jury.
+Judge ([01:16:03]):
+Go ahead.
+Jennifer Sprague ([01:16:06]):
+So when did you start working for the state police?
+Katarina Stashyn ([01:16:09]):
+I worked for the Massachusetts State Police from June 2021 to February of 2025.
+Jennifer Sprague ([01:16:16]):
+And what was the nature of your work for the lab at that time?
+Katarina Stashyn ([01:16:23]):
+As a DNA analyst, I processed evidence items obtained either from a crime scene or from an individual associated with a criminal investigation. These items of evidence would be processed through the laboratory. I then would perform interpretations, comparisons as needed, write reports. I also could perform administrative reviews of other analysts work and provide expert witness testimony as needed.
+Jennifer Sprague ([01:16:48]):
+And part of your employment at the Massachusetts State Police Crime Lab, did you take competency tests and proficiency tests to guarantee that you were capable and proficient in the areas you were working?
+Katarina Stashyn ([01:17:01]):
+Yes. I took both competency tests after my training and proficiency tests throughout my career at Massachusetts and at my current role.
+Jennifer Sprague ([01:17:09]):
+And have you passed all of those tests?
+Katarina Stashyn ([01:17:11]):
+Yes, I have passed all competency and proficiency tests that I've taken so far in my career.
+Jennifer Sprague ([01:17:16]):
+Can you tell us what is DNA?
+Katarina Stashyn ([01:17:19]):
+DNA stands for deoxyribonucleic acid. And this is genetic information that is stored in our cells. This is information that makes us who we are. It determines how we develop and grow. A person's DNA is inherited approximately half from their mom and half from their dad. DNA is forensically relevant because it is expected that no two individuals will have the same forensic DNA profile.
+Jennifer Sprague ([01:17:43]):
+And is DNA the same in every single cell in a person's body?
+Katarina Stashyn ([01:17:48]):
+Yes. The DNA profile obtained from different cells, different cell types like a blood cell or from a saliva cell or cell in your saliva would have the same DNA profile barring your mutation.
+Jennifer Sprague ([01:18:02]):
+And can you explain generally the process used to analyze evidence in this case, the testing involving the defendant, Lindsay Clancy?
+Katarina Stashyn ([01:18:13]):
+The items tested in this case and in all cases will go through a four step laboratory process of extraction, quantification, amplification and detection. And then profiles developed from that laboratory process will be interpreted and compared.
+Jennifer Sprague ([01:18:29]):
+Can you just briefly explain what is extraction and how it's done?
+Katarina Stashyn ([01:18:33]):
+Extraction is the first step of that laboratory process that involves applying a variation of heat and chemicals to a sample. This breaks open cells that are present and releases the DNA and then isolates that DNA.
+Jennifer Sprague ([01:18:46]):
+And was the next step quantification?
+Katarina Stashyn ([01:18:50]):
+Yes.
+Jennifer Sprague ([01:18:50]):
+And what is that and how do you do that?
+Katarina Stashyn ([01:18:52]):
+Quantification is the second step when we determine a reliable estimate for the amount of DNA in those samples that were extracted. And those values are then used to optimize the rest of the process with the goal to obtain a quality profile for that sample.
+Jennifer Sprague ([01:19:08]):
+And the third step amplification, can you explain that?
+Katarina Stashyn ([01:19:11]):
+Amplification is when we make millions and millions of copies of certain areas of DNA to make it able to be detected and visualized.
+Jennifer Sprague ([01:19:21]):
+And then detection, what is that?
+Katarina Stashyn ([01:19:23]):
+And then the fourth step is separation or detection. This is where we separate out all those millions and millions of copies that we made to make them visual. This produces a DNA profile that an analyst is then able to review and interpret.
+Jennifer Sprague ([01:19:38]):
+And when you worked at the Massachusetts State Police Crime Lab, were there certain standardized protocols and procedures that you used at that lab?
+Katarina Stashyn ([01:19:46]):
+Yes.
+Jennifer Sprague ([01:19:47]):
+And were there controls used in your testing?
+Katarina Stashyn ([01:19:51]):
+Yes.
+Jennifer Sprague ([01:19:51]):
+What does that mean?
+Katarina Stashyn ([01:19:53]):
+So there are two different types of controls that were used in our testing. The first is a positive control. This is a sample that contains a known DNA profile and it is processed alongside evidence samples. So when that known DNA profile is obtained at the end of the process, it confirms that the process is working appropriately. The second type of control is a negative control. And this is a sample that contains no DNA that is also processed alongside evidence samples. And this is able to monitor any contamination and confirm that clean technique is used during testing.
+Jennifer Sprague ([01:20:26]):
+And does your work undergo a review process at the lab or did it?
+Katarina Stashyn ([01:20:30]):
+Yes. All work goes through two stages of review, technical review and administrative review. Technical review is when another qualified analyst reviews all of the work done in the file and in the report. They confirm that all protocols were followed and that correct conclusions were drawn. And then administrative review is when another analyst reviews that file, all of the documentation in the report for overall clerical accuracy and completeness.
+Jennifer Sprague ([01:20:57]):
+And when you worked on lab number 23-01723, evidence involved in the deaths of Cora Clancy, Dawson Clancy and Callan Clancy, did you follow the standardized protocols and procedures?
+Katarina Stashyn ([01:21:13]):
+Yes.
+Jennifer Sprague ([01:21:13]):
+Were there any issues with the controls that were present when you did this testing?
+Katarina Stashyn ([01:21:18]):
+All controls were acceptable per the laboratory protocols.
+Jennifer Sprague ([01:21:21]):
+And did your work undergo and pass that review process you just described?
+Katarina Stashyn ([01:21:25]):
+Yes. All work went through both technical and administrative review.
+Jennifer Sprague ([01:21:29]):
+And if we could talk specifically about the work that you did in this case. First, I'd like to talk or I'd like you to talk about your work done on the yellow exercise band and the black exercise band. Now, you didn't actually handle those items, correct?
+Katarina Stashyn ([01:21:51]):
+I did a portion of the laboratory work for those samples, but I did not handle the actual bands themselves. I handled swabs of those bands.
+Jennifer Sprague ([01:22:00]):
+So at some point in time in the lab, someone took swabs from those bands and then that was forwarded to the DNA unit, the swabs?
+Katarina Stashyn ([01:22:07]):
+Yes.
+Jennifer Sprague ([01:22:08]):
+Okay. And specifically there was item 2-2.1.1 swabs from the ends of the yellow exercise band and item 2-2.2.1 swabs from the middle of the yellow exercise band, correct?
+Katarina Stashyn ([01:22:26]):
+Could I refer to my report to confirm that?
+Judge ([01:22:28]):
+Any objection?
+Kevin Reddington ([01:22:29]):
+Of course not.
+Jennifer Sprague ([01:22:30]):
+Thank you.
+Katarina Stashyn ([01:22:38]):
+Yes.
+Jennifer Sprague ([01:22:39]):
+And when doing your comparison work, did you also use some DNA profiles that had been generated in the lab for Dawson Clancy, Cora Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy?
+Katarina Stashyn ([01:22:54]):
+Yes. I utilized known standards that were developed from those individuals.
+Jennifer Sprague ([01:22:58]):
+And known standards, are those basically the DNA profiles for each of those individuals?
+Katarina Stashyn ([01:23:04]):
+Yes. Known standards are samples collected directly from a known individual for comparison purposes.
+Jennifer Sprague ([01:23:10]):
+And going to item 2-2.1.1, the swabs from the ends of the yellow exercise band, what were your findings?
+Katarina Stashyn ([01:23:29]):
+So I'm going to start with a general statement for this report as a whole. The presence of multiple first degree relatives in a mixture DNA profile can impact overall interpretation, including the determination of the number of contributors and likelihood ratios. Relatedness was considered for the following results. For item 2-2.1.1, sample from ends of yellow exercise band located in basement office 47 Summer Street. The DNA profile is a mixture including male DNA. Due to the possible relatedness of low level contributors to this profile, an alternate number of contributors was considered. First, assuming two contributors. The DNA profile is a mixture of at least two contributors, including male DNA. Contributors one and two are suitable for comparison. The DNA profile was interpreted as a mixture of two contributors. The DNA profile from this item is at least 1.7 nonillion times more likely if it originated from Dawson Clancy and an unknown individual than if it originated from two unknown unrelated individuals.
+([01:24:37])This provides support that Dawson Clancy is included as a contributor to this DNA profile. Cora Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy are excluded from this DNA profile. Assuming three contributors. The DNA profile was interpreted as a mixture of three contributors. Contributor one is suitable for comparison. Due to limited information and possible relatedness of contributors, contributors two and three are not suitable for comparison. The DNA profile from this item is at least 920 octillion times more likely if it originated from Dawson Clancy and two unknown individuals than if it originated from three unknown unrelated individuals. This provides support that Dawson Clancy is included to this DNA profile. Cora Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy are excluded from contributor one of this DNA profile.
+Jennifer Sprague ([01:25:33]):
+I'm going to ask you a few questions about what you've just told us. You mentioned the effect of relatedness. What does that mean?
+Katarina Stashyn ([01:25:42]):
+So as I mentioned, an individual's DNA is inherited approximately one half from their mom and one half from their dad. So this means that there's a lot of DNA shared between relatives, including between parent and children and between siblings. So this can affect the determination of the number of contributors. So when I review the profile to see how many people are in that profile, because there's so much DNA that is shared. So taking that into account, I did two different interpretations, first assuming two contributors and the second assuming three contributors. Again, just due to the complexity of relatedness and its effect on this profile, especially low level contributors.
+Jennifer Sprague ([01:26:27]):
+And would it be correct to state that when there is this level of relatedness where you have two parents and three siblings, that you can have false exclusions?
+Katarina Stashyn ([01:26:38]):
+If there is an underassignment of the number of contributors, meaning that the number of contributors is incorrectly assigned lower than it actually is, which is a possibility with relatedness because you're working with less information because that information is shared, the underassigning could lead to false exclusions of true contributors.
+Jennifer Sprague ([01:26:59]):
+Could you also miss some people to include?
+Katarina Stashyn ([01:27:05]):
+Due to the effects of relatedness, it could be difficult to determine number of contributors simply because so much information is shared. Therefore, it is more complex when assigning this number.
+Jennifer Sprague ([01:27:17]):
+And for item 2-2.1.1, the ends of the yellow exercise band, whether you considered two contributors or three contributors, both of your findings find that Dawson Clancy was a contributor? A potential contributor?
+Katarina Stashyn ([01:27:32]):
+Both propositions, either two contributors or three contributors, had high inclusionary stats for Dawson Clancy. Correct.
+Jennifer Sprague ([01:27:42]):
+Okay. What's a nonillion?
+Katarina Stashyn ([01:27:43]):
+Nonillion is a very large number.
+Jennifer Sprague ([01:27:49]):
+Do you know how many people are on earth?
+Katarina Stashyn ([01:27:54]):
+I know it's-
+Kevin Reddington ([01:27:55]):
+This is typical DNA gobbledygook at this point, Judge. I-
+Jennifer Sprague ([01:28:00]):
+I object to his objection. That's ridiculous.
+Judge ([01:28:02]):
+That's overruled, You can answer.
+Kevin Reddington ([01:28:03]):
+They're going to talk about nonillions and how many-
+Judge ([01:28:05]):
+Council can I see you over sidebar? All right. Attorney Sprague.
+Jennifer Sprague ([01:29:15]):
+Thank you, Your Honor. 1.7 nonillion. Is that more than there are people on the earth?
+Katarina Stashyn ([01:29:24]):
+That is more individuals that are on the earth, but I would like to clarify that a likelihood ratio is not a random match probability or a rarity of that profile. A likelihood ratio is a ratio that describes the probability of observing the DNA profile if a certain person is included versus the probability of observing that DNA profile if a certain person is excluded or if it is another unknown unrelated individual.
+Jennifer Sprague ([01:29:52]):
+And you said nonillion is a very high number, correct?
+Katarina Stashyn ([01:29:55]):
+Yes, that's a very large number in my opinion.
+Jennifer Sprague ([01:29:57]):
+So it's a very large probability that Dawson Clancy is a contributor to that mixture?
+Katarina Stashyn ([01:30:05]):
+It is a large likelihood ratio that provides support for the inclusion of Dawson Clancy to the profile.
+Jennifer Sprague ([01:30:13]):
+And then going to item 2-2.2.1, the swabs from the middle of the exercise band, what were your findings for that?
+‍
+Katarina Stashyn ([01:30:25]):
+The DNA profile was interpreted as a mixture of two contributors, including male DNA. The DNA profile from this item is at least 1.5 nonillion times more likely if it originated from Dawson Clancy and an unknown individual than if it originated from two unknown unrelated individuals. This provides support that Dawson Clancy is included as a contributor to this DNA profile. The DNA profile from this item is at least 3.6 million times more likely if it originated from Callan Clancy and an unknown individual than if it originated from two unknown unrelated individuals. This provides support that Callan Clancy is included as a contributor to this profile.
+([01:31:07])The DNA profile from this item is at least 1.4 billion times more likely if it originated from Patrick Clancy and an unknown individual than if it originated from two unknown unrelated individuals. This provides support that Patrick Clancy is included as a contributor to this DNA profile. Cora Clancy and Lindsay Clancy are excluded from this DNA profile. The mixture DNA profile from this item is consistent with having originated from two individuals. There are three individuals who have a likelihood ratio that indicates an inclusion. Though there is support for the individual inclusions of Dawson Clancy, Callan Clancy, and Patrick Clancy to the mixture DNA profile, under the stated assumptions, these individuals cannot be present in the mixture together. Assuming one, two contributors and two, Dawson Clancy is one of the contributors, Callan Clancy and Patrick Clancy cannot be present in the mixture together. Support for inclusion may be impacted by mixtures which contain relative, especially first degree relatives. Refer to the independent inclusionary statistics above.
+Jennifer Sprague ([01:32:15]):
+So this swab from the middle of the yellow exercise band, you stated was a mixture of two contributors, two people, correct?
+Katarina Stashyn ([01:32:24]):
+Yes. I determined using my training and experience that the profile was a mixture of two contributors.
+Jennifer Sprague ([01:32:30]):
+And then you had three possible contributors, Dawson, Callan and Patrick or the two person mixture. So is it accurate that that relatedness issue was having an effect on that data or that result?
+Katarina Stashyn ([01:32:48]):
+Yes. Relatedness of potential contributors was having an effect on this profile. And that is because so much DNA is shared between potential contributors.
+Jennifer Sprague ([01:32:59]):
+And what you stated at the end, that if Dawson Clancy is one of the contributors, then Callan Clancy and Patrick Clancy cannot be present together in that mixture, correct?
+Katarina Stashyn ([01:33:10]):
+Correct.
+Jennifer Sprague ([01:33:10]):
+And Dawson Clancy was the one who had the 1.5 nonillion times more likely if it originated from him, correct?
+Katarina Stashyn ([01:33:19]):
+Yes. The likelihood ratio for Dawson was 1.5 nonillion.
+Jennifer Sprague ([01:33:25]):
+And would it be accurate to state that with male relatives, they share the same YSTR profile?
+Katarina Stashyn ([01:33:39]):
+Yes, male relatives will share the same YSTR profile barring rare mutation, but YSTR analysis was not done in this case.
+Jennifer Sprague ([01:33:48]):
+Okay. And does that fact, when you have male relatives, does that affect the relatedness complications of your evaluation?
+Katarina Stashyn ([01:33:57]):
+The fact that they're male doesn't necessarily have an effect, but just in general, relatedness has an effect in this case because so much DNA is shared between potential contributors.
+Jennifer Sprague ([01:34:08]):
+And then going to item 2-3.1.1, the swabs from the ends of the black exercise band, you found that that sample was a mixture, but wasn't suitable for comparison, correct?
+Katarina Stashyn ([01:34:23]):
+Correct.
+Jennifer Sprague ([01:34:24]):
+And what does it mean to be not suitable for comparison?
+Katarina Stashyn ([01:34:27]):
+I'll read the statement in the report and then I'll clarify as needed. The DNA profile is a mixture including male DNA and is not suitable for comparison due to the complexity of the profile, the possibility of at least five contributors and the relatedness of potential contributors.
+Jennifer Sprague ([01:34:43]):
+So was it not suitable for comparison because there were so many potential contributors and many of them who were related?
+Katarina Stashyn ([01:34:52]):
+Yes, there was multiple factors that made this profile not suitable. Relatedness was definitely one of those factors. And per laboratory protocols and validation, if there is any indication of a fifth contributor or more, a profile is not suitable for comparison due to limitations of our technology and software used.
+Jennifer Sprague ([01:35:09]):
+Okay. So basically if you're examining a profile and it looks like there's five or more, your work stops because of the limitations of your equipment?
+Katarina Stashyn ([01:35:20]):
+Correct.
+Jennifer Sprague ([01:35:21]):
+And then going to item 2-3.2.1, the swabs from the middle of the exercise band, what were your findings there?
+Katarina Stashyn ([01:35:31]):
+The DNA profile was interpreted as a mixture of three contributors, including male DNA. The DNA profile from this item is at least 870 trillion times more likely if it originated from Dawson Clancy and two unknown individuals than if it originated from three unknown unrelated individuals. This provides support that Dawson Clancy is included as a contributor to this DNA profile. The DNA profile from this item is at least 1.6 nonillion times more likely if it originated from Cora Clancy and two unknown individuals than if it originated from three unknown unrelated individuals. This provides support that Cora Clancy is included as a contributor to this DNA profile. The DNA profile from this item is at least 2,600 times more likely if it originated from Callan Clancy and two unknown individuals than if it originated from three unknown unrelated individuals. This provides support that Callan Clancy is included as a contributor to this DNA profile.
+([01:36:31])The DNA profile from this item is at least 220,000 times more likely if it originated from Patrick Clancy and two unknown individuals than if it originated from three unknown unrelated individuals. This provides support that Patrick Clancy is included as a contributor to this DNA profile. The DNA profile from this item is at least 11 times more likely if it originated from Lindsay Clancy and two unknown individuals than if it originated from three unknown unrelated individuals. This provides limited support that Lindsay Clancy is included as a contributor to this DNA profile. The Massachusetts State Police Crime Lab DNA unit validation studies showed inclusions for known non-contributors in the likelihood ratio range of at least 2 to 1,000 adventitious support could be attributed to this conclusion.
+([01:37:28])The mixture DNA profile from this item is consistent with having originated from three individuals. There are five individuals who have a likelihood ratio that indicate an inclusion. Though there is support for the individual inclusions of Dawson Clancy, Cora Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy to the mixture DNA profile, under the stated assumptions, these individuals cannot be present in the mixture together. Assuming one, three contributors, and two, Cora Clancy is one of the contributors, Dawson Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy cannot be present in the mixture together. Support for inclusion may be impacted by mixtures which contain relatives, especially first degree relatives. Refer to the independent inclusionary statistics above.
+Jennifer Sprague ([01:38:18]):
+And so again here, you're dealing with the effect of the relatedness of the parties, correct?
+Katarina Stashyn ([01:38:24]):
+Correct. Relatedness is having an effect on potential contributors again to this profile. I'd just like to say that likelihood ratios are calculated independently for each person. They are not to show a likelihood ratio for more than one person or multiple people together in a profile. And again, because so much DNA is shared between potential contributors, that is why we're seeing some of the things we're seeing in this report.
+Jennifer Sprague ([01:38:51]):
+And for this item, the middle of the black exercise band, the highest number of possible inclusion was the 1. 6 nonillion times more likely if it originated from Cora Clancy and two unknown individuals, correct?
+Katarina Stashyn ([01:39:07]):
+Yes. The highest statistic for this item was a likelihood ratio of 1.6 nonillion for Cora Clancy.
+Jennifer Sprague ([01:39:14]):
+And based on your analysis of the data that you had, you determined it was a mixture of three contributors, correct?
+Katarina Stashyn ([01:39:23]):
+Correct.
+Jennifer Sprague ([01:39:23]):
+And so when you have the three contributors and Cora Clancy has the highest likelihood of being a contributor, if you include her in the mixture, the other four members of the family are excluded, correct?
+Katarina Stashyn ([01:39:39]):
+Assuming one, three contributors and two, Cora Clancy is one of the contributors. Dawson Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy cannot be present in the mixture together. Again, those statistics are all calculated independently and don't say anything about those people being in the mixture together.
+Jennifer Sprague ([01:40:00]):
+Okay. And moving on to some other work you did in this case, specifically some swabs from the backside of the house, some shingles on 47 Summer Street in Duxbury, items 14-1, 14-2, and 14-3. Did you do work on those samples as well and compare them to the known profiles of Dawson Clancy, Cora Clancy, Callan Clancy, Patrick Clancy, and Lindsay Clancy?
+Katarina Stashyn ([01:40:32]):
+Your Honor, may I refer to my second report for these items?
+Judge ([01:40:35]):
+You may.
+Katarina Stashyn ([01:40:35]):
+Thank you. Yes, I did work on those items in my second report.
+Jennifer Sprague ([01:40:45]):
+And directing your attention to item 14-1, a swab from stain B on the backside of the house, 47 Summer Street, what were your findings regarding that swab?
+Katarina Stashyn ([01:40:57]):
+The female DNA profile was interpreted as originating from a single contributor. The DNA profile from this item is at least 18 octillion times more likely if it originated from Lindsay Clancy than if it originated from an unknown unrelated individual. This provides support that Lindsay Clancy is included as a contributor to this DNA profile. Dawson Clancy, Cora Clancy, Callan Clancy, and Patrick Clancy are excluded from this DNA profile.
+Jennifer Sprague ([01:41:24]):
+And so unlike the samples and profiles we talked about earlier, this sample 14-1, the swab from stain B, wasn't a mixture, correct? It was just one person's DNA?
+Katarina Stashyn ([01:41:36]):
+Correct. This was a single contributor profile.
+Jennifer Sprague ([01:41:39]):
+And your findings was that Lindsay Clancy is at least 18 octillion times more likely if it originated from Lindsay Clancy than an unknown unrelated individual?
+Katarina Stashyn ([01:41:50]):
+The DNA profile from this item is at least 18 octillion times more likely if it originated from Lindsay Clancy than if it originated from an unknown unrelated individual. This provides support that Lindsay Clancy is included as a contributor to this DNA profile.
+Jennifer Sprague ([01:42:05]):
+And so it's support that she's included as a contributor to this profile of one person, correct?
+Katarina Stashyn ([01:42:13]):
+Yes. There are support with a likelihood ratio of 18 octillion for Lindsay Clancy.
+Jennifer Sprague ([01:42:19]):
+And the other members of the family were excluded, correct?
+Katarina Stashyn ([01:42:22]):
+Correct.
+Jennifer Sprague ([01:42:23]):
+And then item 14-2, the swab from stain C on the backside of the house, 47 Summer Street, that profile was a mixture and not suitable for comparison, correct?
+Katarina Stashyn ([01:42:33]):
+Correct. The DNA profile is a mixture and is not suitable for comparison due to the quality of the profile.
+Jennifer Sprague ([01:42:39]):
+And what does it mean when something's not suitable due to the quality of the profile?
+Katarina Stashyn ([01:42:43]):
+This was a low level profile with not enough information to be interpreted.
+Jennifer Sprague ([01:42:48]):
+Do you have to have a certain level of information in the data to make findings based on your protocols and procedures at the lab?
+Katarina Stashyn ([01:42:57]):
+Yes. There are protocols and procedures that determine how we can determine our number of contributors. And therefore, if there's not enough information, a profile's not suitable for interpretation or comparisons.
+Jennifer Sprague ([01:43:10]):
+And then item 14-3, the swab from stain D on the back of the home, 47 Summer Street, what were your findings for that swab?
+Katarina Stashyn ([01:43:18]):
+The female DNA profile was interpreted as originating from a single contributor. The DNA profile from this item is at least 96 trillion times more likely if originated from Lindsay Clancy than if it originated from an unknown unrelated individual. This provides support that Lindsay Clancy is included as a contributor to this DNA profile. Dawson Clancy, Cora Clancy, Callan Clancy, and Patrick Clancy are excluded from this DNA profile.
+Jennifer Sprague ([01:43:44]):
+And again, this is a single contributor. So the DNA profile of one person was found on the swab, correct?
+Katarina Stashyn ([01:43:52]):
+Correct.
+Jennifer Sprague ([01:43:57]):
+I have nothing further. Thank you.
+Judge ([01:43:58]):
+Reddington?
+Kevin Reddington ([01:43:58]):
+No.
+Judge ([01:44:03]):
+All right. Thank you. May step down. Thank you.
+Katarina Stashyn ([01:44:05]):
+Thank you.
+Court Officer ([01:44:12]):
+Watch your step, please.
+Katarina Stashyn ([01:44:12]):
+Okay.
+Jennifer Sprague ([01:44:19]):
+The Commonwealth would call Elaine Rossi as its next witness.
+Katarina Stashyn ([01:44:22]):
+Thank you.
+Bailiff ([01:45:04]):
+Good morning, ma'am. Please stop right there, raise your right hand for the clerk, please.
+Court Clerk ([01:45:23]):
+Good morning. Do you solemnly swear that the testimony and the evidence you should give to the court [inaudible 01:45:25]?
+Bailiff ([01:45:24]):
+Why don't you step right there, please?
+Judge William Sullivan ([01:45:24]):
+Good morning.
+Shanan Buckingham ([01:45:24]):
+Good morning.
+Judge William Sullivan ([01:45:26]):
+Thank you. All right. Counsel.
+Shanan Buckingham ([01:45:27]):
+Thank you. Good morning.
+Elaine Rossi ([01:45:31]):
+Good morning.
+Shanan Buckingham ([01:45:32]):
+Could you please tell the jurors your first and last name?
+Elaine Rossi ([01:45:34]):
+My first name is Elaine, Rossi.
+Shanan Buckingham ([01:45:37]):
+Can you spell your last name for the record?
+Elaine Rossi ([01:45:38]):
+R-O-S-S-I.
+Shanan Buckingham ([01:45:40]):
+And what city or town do you live in?
+Elaine Rossi ([01:45:42]):
+I live in Kingston.
+Shanan Buckingham ([01:45:44]):
+What do you do for work?
+Elaine Rossi ([01:45:45]):
+I'm a nanny.
+Shanan Buckingham ([01:45:47]):
+How long have you been a nanny?
+Elaine Rossi ([01:45:49]):
+For about 15 years now.
+Shanan Buckingham ([01:45:51]):
+In July of 2022, did you become familiar with the Clancy family?
+Elaine Rossi ([01:45:56]):
+I did.
+Shanan Buckingham ([01:45:57]):
+And how did you become involved with their family?
+Elaine Rossi ([01:45:58]):
+I answered a Facebook advertisement seeking a part-time nanny position.
+Shanan Buckingham ([01:46:03]):
+And who posted that advertisement?
+Elaine Rossi ([01:46:05]):
+Lindsay did.
+Shanan Buckingham ([01:46:07]):
+And did she respond to your message?
+Elaine Rossi ([01:46:12]):
+I responded to her message.
+Shanan Buckingham ([01:46:14]):
+Right. And so you said you were interested, right?
+Elaine Rossi ([01:46:16]):
+I did.
+Shanan Buckingham ([01:46:17]):
+And then did she respond to you?
+Elaine Rossi ([01:46:19]):
+She did.
+Shanan Buckingham ([01:46:20]):
+So did you have then communication back and forth with her about possibly taking on a nannying position for their family?
+Elaine Rossi ([01:46:28]):
+Yes, we did.
+Shanan Buckingham ([01:46:29]):
+Okay. That was on July 22nd of 2022 that that initial back and forth occurred, correct?
+Elaine Rossi ([01:46:36]):
+Correct.
+Shanan Buckingham ([01:46:37]):
+And as a result of your initial communication with her, did you end up setting up a time to come meet their family?
+Elaine Rossi ([01:46:44]):
+We did.
+Shanan Buckingham ([01:46:45]):
+And how did that happen? Where did you meet them?
+Elaine Rossi ([01:46:48]):
+I met at their residence in the backyard of their home.
+Shanan Buckingham ([01:46:52]):
+And that would have ... be 47 Summer Street in Duxbury?
+Elaine Rossi ([01:46:56]):
+Correct.
+Shanan Buckingham ([01:46:56]):
+And when you went to their home, were you able to meet the children?
+Elaine Rossi ([01:46:59]):
+Yes.
+Shanan Buckingham ([01:47:00]):
+And how many children were there?
+Elaine Rossi ([01:47:02]):
+Three.
+Shanan Buckingham ([01:47:02]):
+And who were they?
+Elaine Rossi ([01:47:03]):
+Cora, Dawson and Callan.
+Shanan Buckingham ([01:47:05]):
+And present at that meeting that you had in their backyard were also Patrick and Lindsay Clancy?
+Elaine Rossi ([01:47:10]):
+Yes.
+Shanan Buckingham ([01:47:11]):
+And what was the purpose of kind of meeting at their home in the backyard?
+Elaine Rossi ([01:47:15]):
+It was to get familiar with the kids just for an introductory meeting. I got to hold Callan, and play with Cora and Dawson a little bit, and talk to Lindsay and Patrick.
+Shanan Buckingham ([01:47:28]):
+And so, at that time, Cora was four, right?
+Elaine Rossi ([01:47:31]):
+Yes.
+Shanan Buckingham ([01:47:31]):
+And Dawson was three?
+Elaine Rossi ([01:47:33]):
+Yes.
+Shanan Buckingham ([01:47:34]):
+And Callan was an infant?
+Elaine Rossi ([01:47:37]):
+Yes.
+Shanan Buckingham ([01:47:37]):
+Now as a result of your kind of interview or interaction with them, what eventually happened with your relationship with the Clancy's? Did you become their nanny?
+Elaine Rossi ([01:47:47]):
+I did.
+Shanan Buckingham ([01:47:48]):
+And did you communicate with Lindsay about what the expectations of the job were going to be?
+Elaine Rossi ([01:47:55]):
+I did.
+Shanan Buckingham ([01:47:56]):
+So what was your role or your expectations of the role?
+Elaine Rossi ([01:48:01]):
+My role was to take care of Callan when she went back to work.
+Shanan Buckingham ([01:48:05]):
+Okay. And did you know when that was expected to happen?
+Elaine Rossi ([01:48:09]):
+I believe right around Thanksgiving.
+Shanan Buckingham ([01:48:13]):
+And did you start working for them prior to that, prior to November?
+Elaine Rossi ([01:48:18]):
+Yes, I did. I started first week in September of 2022.
+Shanan Buckingham ([01:48:23]):
+And so, while the original terms were for you to primarily watch Callan, did you take on a slightly different role in between September and November?
+Elaine Rossi ([01:48:32]):
+I did.
+Shanan Buckingham ([01:48:32]):
+And so, what were their responsibilities or what did the Clancy's ask you to do for the family during the time of September through, essentially, when you stopped working for them?
+Elaine Rossi ([01:48:43]):
+It was to get to know the family, to get to know how they worked as a family, to get to know their schedule, and essentially, mostly, to take care of Callan. Occasionally, Cora and Dawson would be home and I would interact with them as well.
+Shanan Buckingham ([01:48:59]):
+So going into it, you knew that you would sometimes be spending time with Cora and Dawson?
+Elaine Rossi ([01:49:04]):
+Yes.
+Shanan Buckingham ([01:49:04]):
+But to your understanding, were they at the home all the time?
+Elaine Rossi ([01:49:07]):
+No, they were at school.
+Shanan Buckingham ([01:49:10]):
+And other than caring for Callan, did you agree to take on some other responsibilities in the household?
+Elaine Rossi ([01:49:16]):
+I did.
+Shanan Buckingham ([01:49:17]):
+And what were those responsibilities?
+Elaine Rossi ([01:49:18]):
+It was food prep, light housekeeping, laundry, things like that.
+Shanan Buckingham ([01:49:25]):
+Was that something that you offered to do as part of your services or were you asked to do it?
+Elaine Rossi ([01:49:30]):
+I offered initially. I said those were things I did as a nanny for previous families.
+Shanan Buckingham ([01:49:37]):
+And what was your expected schedule going to be for the Clancy's?
+Elaine Rossi ([01:49:40]):
+It was three days a week. I believe it was 8:30 AM to 1:30 PM.
+Shanan Buckingham ([01:49:48]):
+And was the three days a set schedule or was the expectation that it might change?
+Elaine Rossi ([01:49:55]):
+Initially, it was set and then it changed.
+Shanan Buckingham ([01:49:59]):
+As far as your original expectation, fair to say you were originally asked to do Monday, Tuesdays and Thursdays?
+Elaine Rossi ([01:50:08]):
+Correct.
+Shanan Buckingham ([01:50:09]):
+And then, as you started working for them, you were asked to kind of adjust some of the days?
+Elaine Rossi ([01:50:15]):
+Yes.
+Shanan Buckingham ([01:50:15]):
+And was that something that you could do?
+Elaine Rossi ([01:50:18]):
+If I could, I would.
+Shanan Buckingham ([01:50:20]):
+And how about the time? You said from 8:30 to 1:30. Were the times flexible too?
+Elaine Rossi ([01:50:26]):
+Yeah. Sometimes it was 9:00 to 1:30. That was about the only difference. It was about a half hour.
+Shanan Buckingham ([01:50:35]):
+And how would you communicate with Lindsay?
+Elaine Rossi ([01:50:39]):
+So we communicated via text a lot. Lindsay also had a notebook in her kitchen that we communicate ... she would leave notes for me for the activities or the instructions from me for the day.
+Shanan Buckingham ([01:50:52]):
+Okay. And you started, you said, the week of Labor Day. That was your first week with the Clancy family, right?
+Elaine Rossi ([01:51:01]):
+Yes.
+Shanan Buckingham ([01:51:02]):
+And primarily, during that week, did you care for Callan?
+Elaine Rossi ([01:51:07]):
+Yes, I did.
+Shanan Buckingham ([01:51:09]):
+Did they come to call you something particular as far as like a nickname?
+Elaine Rossi ([01:51:15]):
+They called me Laney.
+Shanan Buckingham ([01:51:17]):
+And that was something the kids called you as well as Patrick and Lindsay?
+Elaine Rossi ([01:51:20]):
+Yes.
+Shanan Buckingham ([01:51:41]):
+So I'm going to just show you what's been marked as Exhibit 150.
+Elaine Rossi ([01:51:45]):
+Okay.
+Shanan Buckingham ([01:51:45]):
+Okay?
+Elaine Rossi ([01:51:45]):
+Mm-hmm.
+Shanan Buckingham ([01:51:45]):
+If you want to just take a quick look inside of it. You can flip through the pages, if that's helpful.
+Elaine Rossi ([01:51:58]):
+Okay.
+Shanan Buckingham ([01:52:04]):
+Does the handwriting in that notebook look familiar to you?
+Elaine Rossi ([01:52:07]):
+It does.
+Shanan Buckingham ([01:52:07]):
+And fair to say there's two different handwritings, right?
+Elaine Rossi ([01:52:10]):
+Right.
+Shanan Buckingham ([01:52:12]):
+Did you come to know one of the handwritings as Lindsay's handwriting?
+Elaine Rossi ([01:52:18]):
+I thought all of it was Lindsay's.
+Shanan Buckingham ([01:52:20]):
+Okay. But as far as the second set of handwriting, do you recognize-
+Elaine Rossi ([01:52:24]):
+Oh, it's mine. I'm sorry.
+Shanan Buckingham ([01:52:26]):
+No, it's okay. And so, is this the notebook that you would kind of communicate with her, back and forth, about Callan and his schedule?
+Elaine Rossi ([01:52:33]):
+It is.
+Shanan Buckingham ([01:52:34]):
+And fair to say she left you pretty detailed instructions-
+Elaine Rossi ([01:52:41]):
+She did.
+Shanan Buckingham ([01:52:41]):
+... on his care?
+Elaine Rossi ([01:52:41]):
+Yes, she did.
+Shanan Buckingham ([01:52:41]):
+And you were aware that she was very particular about sleep and food and keeping on a schedule, right?
+Elaine Rossi ([01:52:44]):
+Yes.
+Shanan Buckingham ([01:52:45]):
+And so, that's the purpose of this notebook?
+Elaine Rossi ([01:52:47]):
+Yes.
+Shanan Buckingham ([01:52:58]):
+When you would come to the household in the morning, would you often interact with Lindsay prior to taking care of taking the baby?
+Elaine Rossi ([01:53:08]):
+Sometimes if she was there, I would interact with her. Some mornings she wasn't there.
+Shanan Buckingham ([01:53:13]):
+If she wasn't there, was Patrick home?
+Elaine Rossi ([01:53:16]):
+Yes.
+Shanan Buckingham ([01:53:17]):
+And did you know where she was when she wasn't there?
+Elaine Rossi ([01:53:20]):
+Sometimes she'd leave in the notebook that she was in the basement working out. Sometimes she'd drop the kids off to school.
+Shanan Buckingham ([01:53:28]):
+And would you often see her throughout the day when you were there from your 9:00 to 1:00 shift?
+Elaine Rossi ([01:53:34]):
+Yes.
+Shanan Buckingham ([01:53:36]):
+But there would be times when you'd see her come back to the home?
+Elaine Rossi ([01:53:40]):
+Yes.
+Shanan Buckingham ([01:53:41]):
+And in those times when she left, sometimes she had the other two children with her, correct?
+Elaine Rossi ([01:53:46]):
+Correct.
+Shanan Buckingham ([01:53:47]):
+And sometimes she did not?
+Elaine Rossi ([01:53:48]):
+No.
+Shanan Buckingham ([01:53:49]):
+At times, were you left with all three children?
+Elaine Rossi ([01:53:53]):
+I think on one occasion I was.
+Shanan Buckingham ([01:53:57]):
+And would you get there before or after Cora and Dawson would be off to school usually?
+Elaine Rossi ([01:54:04]):
+Most times I would be pulling in the driveway and they would be waiting to say goodbye to me or hello to me.
+Shanan Buckingham ([01:54:10]):
+And you were aware that they did not have school on Tuesdays, right?
+Elaine Rossi ([01:54:17]):
+I don't-
+Shanan Buckingham ([01:54:17]):
+Were you aware?
+Elaine Rossi ([01:54:18]):
+I don't remember. Sorry.
+Shanan Buckingham ([01:54:25]):
+Okay. When you started working for the Clancy family, was there a conversation with Lindsay about Callan not taking a bottle?
+Elaine Rossi ([01:54:36]):
+I don't remember that.
+Shanan Buckingham ([01:54:37]):
+Did you often feed him a bottle when you were caring for him?
+Elaine Rossi ([01:54:40]):
+I did.
+Shanan Buckingham ([01:54:41]):
+And do you recall, at one point, that you actually videoed Callan taking a bottle and sent it to Lindsay?
+Elaine Rossi ([01:54:48]):
+Oh, yes, I did. Yes.
+Shanan Buckingham ([01:54:50]):
+And that would've been on September 9th, correct?
+Elaine Rossi ([01:54:53]):
+Yes.
+Shanan Buckingham ([01:54:56]):
+At this point, Your Honor, I'd like to just play a short video.
+Kevin Reddington ([01:54:59]):
+Really, I object. I don't have a ... let the jury see the video.
+Judge William Sullivan ([01:55:02]):
+Could I see? All right. Attorney Buckingham?
+Shanan Buckingham ([01:55:02]):
+Your Honor.
+Elaine Rossi ([01:55:13]):
+You happy about that? He's loving it.
+Shanan Buckingham ([01:55:25]):
+Ms. Rossi, is that the video that you took of Callan taking the bottle?
+Elaine Rossi ([01:55:28]):
+Yes, it was.
+Shanan Buckingham ([01:55:29]):
+And fair to say you sent that video to Lindsay Clancy on September 9th of 2022?
+Elaine Rossi ([01:55:34]):
+Yes, I did.
+Shanan Buckingham ([01:55:34]):
+At this point, I'd move to admit a copy of that clip as the next exhibit.
+Judge William Sullivan ([01:55:38]):
+All right. With no objection, that may be admitted.
+Speaker 2 ([01:55:42]):
+Exhibit 213.
+Shanan Buckingham ([01:55:49]):
+In your care of the children, were you ever permitted to take them outside of the household, like to the park or the library or anything?
+Elaine Rossi ([01:55:58]):
+I took Callan for a walk on one occasion, and I took Cora and Dawson to a Tumblefun Gymnastics class.
+Shanan Buckingham ([01:56:08]):
+Okay. And that would have been in October of 2022 that you took Cora and Dawson, correct?
+Elaine Rossi ([01:56:12]):
+Yes.
+Shanan Buckingham ([01:56:12]):
+When you went to Tumblefun, what is that?
+Elaine Rossi ([01:56:16]):
+It's a toddler gymnastics place, indoor gymnastics place.
+Shanan Buckingham ([01:56:23]):
+Did you only take Cora and Dawson or did you also take Callan?
+Elaine Rossi ([01:56:26]):
+Just Cora and Dawson.
+Shanan Buckingham ([01:56:28]):
+Okay. And why was it that you took them on this particular day?
+Elaine Rossi ([01:56:34]):
+Lindsay had mentioned to me that they had Tumblefun, but they wouldn't be going, because she couldn't drive, so I offered to take them.
+Shanan Buckingham ([01:56:43]):
+Did she tell you why she couldn't drive at that time?
+Elaine Rossi ([01:56:45]):
+She didn't.
+Shanan Buckingham ([01:56:47]):
+So you took them. Did you drive her car or your own car?
+Elaine Rossi ([01:56:51]):
+I drove her car.
+Shanan Buckingham ([01:56:52]):
+And you were able to bring them home, correct?
+Elaine Rossi ([01:56:56]):
+Correct.
+Shanan Buckingham ([01:56:57]):
+Did you notice anything different when you came back to the home on that day?
+Elaine Rossi ([01:57:00]):
+I didn't.
+Shanan Buckingham ([01:57:05]):
+During the course of the time in which you were at the Clancy's house, fair to say from September to early December is the time that you were there, three days a week.
+Elaine Rossi ([01:57:16]):
+Yes.
+Shanan Buckingham ([01:57:18]):
+Did you come to find out that Lindsay was having some issues?
+Elaine Rossi ([01:57:23]):
+I did.
+Shanan Buckingham ([01:57:24]):
+Did she talk to you about that?
+Elaine Rossi ([01:57:25]):
+She did.
+Shanan Buckingham ([01:57:26]):
+And what did she tell you about her issues?
+Elaine Rossi ([01:57:29]):
+She shared with me that she was suffering from postpartum.
+Shanan Buckingham ([01:57:34]):
+Now when she shared this information with you, had you noticed anything different about her demeanor or her presentation around the house?
+Elaine Rossi ([01:57:42]):
+I didn't at all.
+Shanan Buckingham ([01:57:44]):
+Had her trips out of the house, when you were there, stopped or decreased during that time period?
+Elaine Rossi ([01:57:49]):
+No.
+Shanan Buckingham ([01:57:52]):
+And did she tell you that, at that time, that she was seeing some doctors?
+Elaine Rossi ([01:57:56]):
+She did.
+Shanan Buckingham ([01:57:57]):
+What about medication? Did you have any conversations with her about her taking medication during that time period?
+Elaine Rossi ([01:58:02]):
+‍
+I think we talked about she was going to stop a medication, because she was trying to stop nursing.
+Shanan Buckingham ([01:58:12]):
+That she was going to stop medication or she was going to start medication?
+Elaine Rossi ([01:58:16]):
+I think she was trying to stop something, because she was going to ... oh, I'm sorry.
+Shanan Buckingham ([01:58:23]):
+That's okay. Take your time.
+Elaine Rossi ([01:58:25]):
+She was not going to nurse Callan anymore, because she was going to be starting a new medication.
+Shanan Buckingham ([01:58:32]):
+Did she ever give you any details about the medication?
+Elaine Rossi ([01:58:34]):
+She didn't.
+Shanan Buckingham ([01:58:35]):
+Do you recall seeing prescription bottles around the house?
+Elaine Rossi ([01:58:39]):
+I did.
+Shanan Buckingham ([01:58:41]):
+Did you ever learn, from Lindsay, that she had gone to the emergency room in November of 2022?
+Elaine Rossi ([01:58:48]):
+No.
+Shanan Buckingham ([01:58:49]):
+How about gone to the emergency room in December of 2022?
+Elaine Rossi ([01:58:52]):
+No.
+Shanan Buckingham ([01:58:54]):
+Did anything about your arrangements with coming on the three days, caring for Callan and sometimes Cora, did any of that ever change because of what she reported to you about having postpartum?
+Elaine Rossi ([01:59:09]):
+Only at the end of my time with them.
+Shanan Buckingham ([01:59:12]):
+Okay. We'll get there in a second.
+Elaine Rossi ([01:59:14]):
+Okay.
+Shanan Buckingham ([01:59:14]):
+But did you have the occasion to observe her interacting with the children?
+Elaine Rossi ([01:59:20]):
+I did.
+Shanan Buckingham ([01:59:21]):
+And did you have any concerns about her interacting with the children?
+Elaine Rossi ([01:59:23]):
+Not at all. She was a wonderful mom.
+Shanan Buckingham ([01:59:30]):
+Did she have any further conversation with you about maybe more specific sleep or sleep issues that she had been having during the time period you were nannying for them?
+Elaine Rossi ([01:59:40]):
+She did.
+Shanan Buckingham ([01:59:41]):
+And what did she tell you about that?
+Elaine Rossi ([01:59:43]):
+She told me she was having difficulty sleeping and that she was sleeping in the basement.
+Shanan Buckingham ([01:59:51]):
+Now when you would watch Callan and she would be in the basement, would you often see her in the basement?
+Elaine Rossi ([01:59:59]):
+No.
+Shanan Buckingham ([02:00:00]):
+And one of the things you said that you sometimes did was do some laundry, right?
+Elaine Rossi ([02:00:03]):
+I did.
+Shanan Buckingham ([02:00:04]):
+And where was the laundry in the Clancy house?
+Elaine Rossi ([02:00:06]):
+It was in the basement.
+Shanan Buckingham ([02:00:08]):
+And so you'd have to go through that living room area down there where the couch was to get back to the laundry room?
+Elaine Rossi ([02:00:14]):
+Yes, it was in the back.
+Shanan Buckingham ([02:00:18]):
+How about working out in the basement? Do you recall if you went down the basement stairs to the right that there'd be a little area where there'd be weights and that kind of thing? Did you ever see her working out there?
+Elaine Rossi ([02:00:31]):
+I don't recall if I did.
+Shanan Buckingham ([02:00:38]):
+Okay. As far as the medications, do you recall where you observed the medications in the house?
+Elaine Rossi ([02:00:44]):
+Yes. They were to the right of the refrigerator, I believe in a cabinet.
+Shanan Buckingham ([02:00:50]):
+And you had to go into the Clancy ... Patrick and Lindsay's bedroom, right?
+Elaine Rossi ([02:00:57]):
+I did.
+Shanan Buckingham ([02:00:58]):
+Fair to say, Callan's crib was in there?
+Elaine Rossi ([02:01:00]):
+It was.
+Shanan Buckingham ([02:01:01]):
+So do you recall ever seeing medications in the bedroom?
+Elaine Rossi ([02:01:05]):
+I didn't.
+Shanan Buckingham ([02:01:09]):
+Now you had mentioned that you knew Lindsay to be going back to work in November, correct? Were you advised or did you know that she was originally scheduled to go back in October, but then bumped it back to November?
+Elaine Rossi ([02:01:24]):
+I didn't know that.
+Shanan Buckingham ([02:01:27]):
+But as you began working for them, that November date was in mind, right?
+Elaine Rossi ([02:01:33]):
+Yes.
+Shanan Buckingham ([02:01:34]):
+Moving to Thanksgiving of 2022, did something change about the plan for her to go back to work?
+Elaine Rossi ([02:01:41]):
+Yes. I came in, I think it was a few days after ... maybe the day after Thanksgiving, and Lindsay was in the kitchen, and I had expected her to be asleep, because I-
+Shanan Buckingham ([02:01:54]):
+Why was that?
+Elaine Rossi ([02:01:54]):
+Because I thought she was working that shift, that Thanksgiving shift, and she told me that she wouldn't be going back to work.
+Shanan Buckingham ([02:02:04]):
+And was there any further conversation of what the plan was for you and the family during that time period?
+Elaine Rossi ([02:02:13]):
+No. I think I mentioned if she wasn't going back to work, and that if they didn't need me, if they could let me know.
+Shanan Buckingham ([02:02:19]):
+Okay. And so do you recall being at the home, at one point, where Patrick and Lindsay left the house and came back?
+Elaine Rossi ([02:02:26]):
+Yes.
+Shanan Buckingham ([02:02:27]):
+Can you tell us about that interaction?
+Elaine Rossi ([02:02:29]):
+Of course. Patrick and Lindsay went for a walk. And when they returned, I was in the living room on the floor with Callan. And they came in and told me that they would have to let me go, because Lindsay would not be going back to work, and the two of them would be home to care for the children.
+Shanan Buckingham ([02:02:47]):
+Okay. And so, did they give you anything else, any other information about why Lindsay wasn't going back to work during that meeting?
+Elaine Rossi ([02:02:55]):
+No.
+Shanan Buckingham ([02:02:55]):
+Okay. And did they give you some time to kind of make other arrangements after that?
+Elaine Rossi ([02:03:00]):
+They did. I believe they gave me two weeks.
+Shanan Buckingham ([02:03:04]):
+And during that time after Thanksgiving, did you have the occasion to see Lindsay interacting with the kids in the home?
+Elaine Rossi ([02:03:11]):
+I did.
+Shanan Buckingham ([02:03:12]):
+And was anything about your observations of her different?
+Elaine Rossi ([02:03:15]):
+Nothing.
+Shanan Buckingham ([02:03:25]):
+Now the kids themselves. You had the occasion to spend some time with Cora. And how would you describe Cora?
+Elaine Rossi ([02:03:36]):
+Oh, Cora was a girly girl who loved her babies very much. She was very sweet. And she loved arts and crafts, and loved playing with her Fresh Mart, which was a little children's supermarket. She was lovely.
+Shanan Buckingham ([02:03:52]):
+And Dawson, how about him? How would you describe him?
+Elaine Rossi ([02:03:54]):
+Dawson was full of energy, rambunctious, funny, silly.
+Shanan Buckingham ([02:04:00]):
+Did you ever have any problem watching Dawson or keeping him under control?
+Elaine Rossi ([02:04:07]):
+Not at all. I was only with him on a handful of occasions.
+Shanan Buckingham ([02:04:11]):
+Did you ever see Dawson kind of interacting with his siblings, with Cora or with Callan?
+Elaine Rossi ([02:04:16]):
+I did.
+Shanan Buckingham ([02:04:17]):
+And did you see anything, or could you tell us a little bit about Dawson's interactions with them?
+Elaine Rossi ([02:04:23]):
+Cora and Dawson played well. There was one occasion in the kitchen where they were playing and, I think, Cora took one of his Play-Doh something, he was playing with Play-Doh, and his reaction, he was frustrated and he reached out and slapped Callan.
+Shanan Buckingham ([02:04:42]):
+Now were you alone with the kids during this interaction or was Lindsay present too?
+Elaine Rossi ([02:04:46]):
+Lindsay was, I think, in the kitchen at the same time.
+Shanan Buckingham ([02:04:49]):
+Did you see her react to that when she saw that behavior?
+Elaine Rossi ([02:04:52]):
+She did.
+Shanan Buckingham ([02:04:53]):
+And what was their reaction? What did she do?
+Elaine Rossi ([02:04:55]):
+She went over and removed Callan, sorry, she removed Dawson from the room and came back and consoled Callan.
+Shanan Buckingham ([02:05:01]):
+Okay. And eventually, did you see her go back and kind of talk to Dawson about his behavior and address it? Okay. And was that appropriate in your opinion?
+Elaine Rossi ([02:05:09]):
+Of course, yes.
+Shanan Buckingham ([02:05:12]):
+How about how you would describe Callan? How would you describe him? You spent the most time with him, correct?
+Elaine Rossi ([02:05:18]):
+I did. He was the happiest, sweetest, easiest baby. He was just a love.
+Shanan Buckingham ([02:05:26]):
+Thank you. If Lindsay had told you, in one of these exchanges, and again, you exchanged mostly either in this notebook or via text, right?
+Elaine Rossi ([02:05:48]):
+Correct.
+Shanan Buckingham ([02:05:50]):
+If she told you about working out, do you know if she wasn't in the basement where she would go to work out?
+Elaine Rossi ([02:05:56]):
+I think it was the Kingsbury Club.
+Shanan Buckingham ([02:05:58]):
+Okay. And as far as when you stopped working for them, do you remember exactly when it was? You said maybe two weeks after Thanksgiving.
+Elaine Rossi ([02:06:07]):
+I think it was December 8th or December 10th.
+Shanan Buckingham ([02:06:12]):
+And in the time that you were with the Clancy's in their households, caring for their kids, interacting with Patrick and Lindsay, did you ever have any concerns that the children were not safe?
+Elaine Rossi ([02:06:26]):
+No.
+Shanan Buckingham ([02:06:28]):
+Thank you.
+Judge William Sullivan ([02:06:34]):
+All right. Cross.
+Kevin Reddington ([02:06:40]):
+Morning.
+Elaine Rossi ([02:06:40]):
+Good morning.
+Kevin Reddington ([02:06:48]):
+So you first met Lindsay and Patrick and the kids in, was it July of '22?
+Elaine Rossi ([02:06:54]):
+Yes.
+Kevin Reddington ([02:06:55]):
+And then you were hired, obviously, and you then took over as a nanny?
+Elaine Rossi ([02:07:00]):
+Yes.
+Kevin Reddington ([02:07:01]):
+You get a lot of years of experience as a nanny, don't you?
+Elaine Rossi ([02:07:03]):
+I do.
+Kevin Reddington ([02:07:05]):
+And this was that you wanted to kind of pick up some more hours and that's why you fortunately reached out to the two of them and ended up taking care of those kids?
+Elaine Rossi ([02:07:13]):
+Yes.
+Kevin Reddington ([02:07:13]):
+So from July until, what was it, November after Thanksgiving, or was it early December that they had the walk, and then they came in and told you that she was going to be home?
+Elaine Rossi ([02:07:24]):
+Early December.
+Kevin Reddington ([02:07:24]):
+Early December?
+Elaine Rossi ([02:07:26]):
+Yes.
+Kevin Reddington ([02:07:27]):
+And you all left on good terms, right?
+Elaine Rossi ([02:07:29]):
+Oh, wonderful terms.
+Kevin Reddington ([02:07:30]):
+Yeah. I mean, you guys stayed in touch with each other, you texted them Christmas, things of that nature, right?
+Elaine Rossi ([02:07:34]):
+I did reach out to Lindsay to wish her a Merry Christmas.
+Kevin Reddington ([02:07:37]):
+Did she respond?
+Elaine Rossi ([02:07:38]):
+She did.
+Kevin Reddington ([02:07:41]):
+Would you agree that on March 1st of 2023, the state police interviewed you for about a half hour or longer about your observations of the Clancy family?
+Elaine Rossi ([02:07:54]):
+Yes.
+Kevin Reddington ([02:07:56]):
+Do you recall that the trooper ... were there one or two of them, if you remember?
+Elaine Rossi ([02:08:01]):
+I believe there were two.
+Kevin Reddington ([02:08:02]):
+Yeah. Do you recall the trooper asking you questions about your observations of the Clancy family with particular focus on Lindsay? They were asking you about your ... how well you knew her, what you though of her, what she did, as far as a mother, in your presence.
+Elaine Rossi ([02:08:21]):
+I'm sorry, I can't really hear you.
+Kevin Reddington ([02:08:23]):
+I apologize. They wanted to know what kind of a mother she was, right?
+Elaine Rossi ([02:08:27]):
+Yes.
+Kevin Reddington ([02:08:28]):
+And you were able to respond to that, right?
+Elaine Rossi ([02:08:30]):
+I did.
+Kevin Reddington ([02:08:32]):
+They also wanted to know any observations that you had about her use of prescription drugs, right?
+Elaine Rossi ([02:08:37]):
+Yes.
+Kevin Reddington ([02:08:38]):
+And you were forthcoming on that as well, right?
+Elaine Rossi ([02:08:41]):
+I was.
+Kevin Reddington ([02:08:41]):
+They also wanted to know whether or not you observed or if she made any statements about any symptomology or symptoms that she might have been having that were causing her difficulty, right?
+Elaine Rossi ([02:08:50]):
+Yes.
+Kevin Reddington ([02:08:53]):
+Do you recall indicating to the troopers that, in your opinion, that she was a loving and a doting mother?
+Elaine Rossi ([02:09:00]):
+Yes.
+Kevin Reddington ([02:09:01]):
+Can you tell the jury what that means? I mean, what did you observe about her as a mother interacting with her kids?
+Elaine Rossi ([02:09:08]):
+I observed a wonderful mom who loved her kids. She was very concerned with their safety. She was very concerned with Callan's eating and sleeping. She was a wonderful mother.
+Kevin Reddington ([02:09:22]):
+And the district attorney asked you questions about what apparently is Exhibit 150 in this case. And that's the book that she would write notes to you on, and then you would on occasion write notes back to her. Is that right?
+Elaine Rossi ([02:09:38]):
+Yes.
+Kevin Reddington ([02:09:40]):
+So when the district attorney asked you to identify her writing ... so also there were photographs like that in the book as well, right? Do you know who would draw that? Would she draw that or would you draw that?
+Elaine Rossi ([02:09:52]):
+I think I drew that.
+Kevin Reddington ([02:09:53]):
+You drew that one?
+Elaine Rossi ([02:09:53]):
+Yeah, I think so.
+Kevin Reddington ([02:09:57]):
+And, for example, Thursday, September 29th, it says, "Callan last fed, time, put him down for a nap at 9:35 with a smiley face. We will be home. Clean the clothes and the dryer if you get to it." And then, "Callan up at 10:45." And then some scribbling mark on the bottom. That's an indication of the type of notes that she would leave for you?
+Elaine Rossi ([02:10:21]):
+Correct.
+Kevin Reddington ([02:10:23]):
+Would she also leave notes for you to the effect of cutting up sweet potatoes and cutting up celery and things in one inch squares so that the kids could eat?
+Elaine Rossi ([02:10:36]):
+Yes. Food prep, yes.
+Kevin Reddington ([02:10:37]):
+Did you find that to be overbearing or-
+Elaine Rossi ([02:10:40]):
+Not at all.
+Kevin Reddington ([02:10:41]):
+You didn't find that to be controlling, that she was trying to exert a control over you, did you?
+Elaine Rossi ([02:10:46]):
+Not at all.
+Kevin Reddington ([02:10:47]):
+You felt that was appropriate for her to tell you about the cutting up of the vegetables in squares and things?
+Elaine Rossi ([02:10:52]):
+Yes.
+Kevin Reddington ([02:10:53]):
+She also told you, during that period of time, that she was unable to sleep. Isn't that right?
+Elaine Rossi ([02:11:08]):
+Correct.
+Kevin Reddington ([02:11:09]):
+Told you that lack of sleep was becoming a significant impact on her life, and that she had to see doctors, and was on medication for that, right?
+Elaine Rossi ([02:11:20]):
+Correct.
+Kevin Reddington ([02:11:23]):
+Again, the troopers were questioning you and directing you on your questions or your answers. And, at one point, do you recall saying to the trooper, "I loved my Lindsay"?
+Elaine Rossi ([02:11:34]):
+I loved my Lindsay?
+Kevin Reddington ([02:11:35]):
+Yeah.
+Elaine Rossi ([02:11:36]):
+I don't recall saying that.
+Kevin Reddington ([02:11:37]):
+Okay. Did you?
+Elaine Rossi ([02:11:39]):
+Do I love Lindsay?
+Kevin Reddington ([02:11:40]):
+Yeah.
+Elaine Rossi ([02:11:40]):
+I did love Lindsay, yes.
+Kevin Reddington ([02:11:42]):
+Now when was she sleeping in the basement? Do you remember that?
+Elaine Rossi ([02:11:47]):
+Do I know when or why?
+Kevin Reddington ([02:11:50]):
+When. When was she sleeping in the basement?
+Elaine Rossi ([02:11:53]):
+I honestly don't remember.
+Kevin Reddington ([02:11:54]):
+Okay. Do you remember if I suggest to you that it was around the end of November, mid-December that she was sleeping in the basement for a period of time? If you remember.
+Elaine Rossi ([02:12:04]):
+I don't remember. I'm sorry.
+Kevin Reddington ([02:12:06]):
+Okay. Did she indicate to you why she was sleeping in the basement?
+Elaine Rossi ([02:12:13]):
+I don't think she did.
+Kevin Reddington ([02:12:15]):
+Would you agree that she was forthright with you as far as telling you what was going on in her life as far as her concentration and her inability to sleep and things of that nature?
+Elaine Rossi ([02:12:26]):
+Yes.
+Shanan Buckingham ([02:12:26]):
+Objection.
+Judge William Sullivan ([02:12:26]):
+Sustained.
+Kevin Reddington ([02:12:29]):
+Would she tell you about those problems that she was suffering?
+Elaine Rossi ([02:12:34]):
+She shared with me that she had postpartum and that she couldn't sleep.
+Kevin Reddington ([02:12:38]):
+And as a result of that, you were pretty concerned for her, weren't you?
+Elaine Rossi ([02:12:41]):
+I really don't know much about postpartum, but I would always ask her how she was feeling or how she was doing.
+Kevin Reddington ([02:12:48]):
+And, in fact, you noted that in addition to the inability to sleep, that she would speak about that she was unable to focus. Do you recall her ever saying she had difficulty focusing on things?
+Elaine Rossi ([02:12:57]):
+I don't recall her saying that to me.
+Kevin Reddington ([02:12:59]):
+How about thin? Did you notice that she appeared to be losing significant weight?
+Elaine Rossi ([02:13:08]):
+I did, and I commented to her about that.
+Kevin Reddington ([02:13:08]):
+Okay. And you had occasion to see her, as a mother, playing with the children, obviously, right?
+Elaine Rossi ([02:13:15]):
+Yes.
+Kevin Reddington ([02:13:18]):
+Would the two of you stay in touch with each other, by text, even when she was out and you were home, in their home, with the kids?
+Elaine Rossi ([02:13:26]):
+Yes.
+Kevin Reddington ([02:13:27]):
+Fair to say that you would take many, many videos of the kids and send them to Lindsay on her phone, right?
+Elaine Rossi ([02:13:35]):
+I did.
+Kevin Reddington ([02:13:36]):
+And fair to say that, during that period of time, from your involvement, Ms. Rossi, as a nanny, that you sent her videos of the children playing, and we saw the baby taking a bottle, and the baby eating, and things of that nature, right?
+Elaine Rossi ([02:13:56]):
+I did.
+Kevin Reddington ([02:13:57]):
+Did she ever send you any videos or did she ever respond to your emails or videos?
+Elaine Rossi ([02:14:03]):
+Yes. She responded to every ... most of my texts, she responded to.
+Kevin Reddington ([02:14:08]):
+Did she seem to be appreciative of your work?
+Elaine Rossi ([02:14:11]):
+Yes, very much so.
+Kevin Reddington ([02:14:15]):
+And, in fact, she was pretty vocal about that. She thought the world of you, right?
+Elaine Rossi ([02:14:18]):
+Yes.
+Kevin Reddington ([02:14:19]):
+Thank you. That's all I have.
+Judge William Sullivan ([02:14:21]):
+Redirect?
+Shanan Buckingham ([02:14:22]):
+Just one question. In all that she told you about postpartum, sleep, and all that you observed in the house, did you ever have any conversations with her about intrusive thoughts or thoughts of harming herself?
+Elaine Rossi ([02:14:36]):
+No.
+Shanan Buckingham ([02:14:38]):
+Thank you. No [inaudible 02:14:38].
+Judge William Sullivan ([02:14:38]):
+Anything on that?
+Kevin Reddington ([02:14:38]):
+No.
+Judge William Sullivan ([02:17:05]):
+All right. You may step down. Thank you. Thank you. Counsel, can I see you? All right. So members of the jury, as I told you, we're not going to sit this afternoon. So we're going to break at this point. All right? And so I'm going to ask you to come back tomorrow at nine o'clock. Remember those instructions. Don't talk about this, don't do any research about this, don't listen about anything, don't talk about it with anyone, and I'm going to ask you to come back tomorrow at nine o'clock, and we'll start with the testimony tomorrow. Okay? All right. Thank you very much.
+Bailiff ([02:17:35]):
+Court, all rise. Jurors, please fill the notebooks, please them on your chairs. This way.
+Court Officer ([02:17:39]):
+It's [inaudible 02:17:48] wholeheartedly.
+Bailiff ([02:18:09]):
+Jury just exited the court. This court is out of session.
+Judge William Sullivan ([02:18:13]):
+All right, Counsel, anything else we need to talk-
+Kevin Reddington ([02:18:14]):
+No, thank you.
+Judge William Sullivan ([02:18:14]):
+... about here before tomorrow morning? All right. So this case will be in recess until tomorrow morning at nine o'clock.
+Kevin Reddington ([02:18:21]):
+Thank you.
+Judge William Sullivan ([02:18:21]):
+Thank you.
+Bailiff ([02:18:22]):
+Court, all rise.
+Judge William Sullivan ([02:18:32]):
+There's nothing scheduled at two o'clock in this matter any further, okay? So this court, on this case, will be in recess until tomorrow at nine o'clock.
+Shanan Buckingham ([02:18:42]):
+Thank you.
+‍
+A confirmation email is on it’s way to your inbox.
+Copyright Disclaimer

@@ -404,6 +404,12 @@
   "updates": [
     {
       "date": "2026-11-22",
+      "t": "Added 28 full Rev.com transcripts (trial opening statements through Day 21, closing arguments, mistrial, emergency hearing, Sept. 30 and Nov. 3 and Nov. 18 hearings, Patrick Clancy wrongful death hearing). New Transcripts tab; searching a keyword now lists the transcripts that contain it under the video results.",
+      "u": "https://www.rev.com/category/legal-event",
+      "s": "Rev.com"
+    },
+    {
+      "date": "2026-11-22",
       "t": "Newly located docket-numbered PDF copy of the defense SJC petition (SJ-2026-0506, P001) added to documents. No new rulings, hearings or video found since Nov. 19.",
       "u": "https://lamag.com/wp-content/uploads/2026/11/SJ-2026-0506_P001_Petition-for-Relief-Pursuant-to-G.-L.-c.-211-sec.-3-with-Certificate-of-Service.pdf",
       "s": "LA Magazine (PDF)"
@@ -1033,6 +1039,148 @@
       "note": "Boston Globe explainer on both suits during the trial.",
       "u": "https://www.bostonglobe.com/2026/08/04/metro/lindsay-clancy-trial-patrick-civil-suits/",
       "s": "Boston Globe"
+    }
+  ],
+  "transcripts": [
+    {
+      "t": "MA v. Lindsay Clancy Opening Statements",
+      "date": "2026-07-29",
+      "u": "https://www.rev.com/transcripts/ma-v-linsday-clancy-opening-statements"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 2",
+      "date": "2026-07-30",
+      "u": "https://www.rev.com/transcripts/ma-v-linsday-clancy-day-2"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 3",
+      "date": "2026-08-02",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-3"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 4",
+      "date": "2026-08-02",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-4"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 5",
+      "date": "2026-08-04",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-5"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 6",
+      "date": "2026-08-05",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-6"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 7",
+      "date": "2026-08-06",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-7"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 8",
+      "date": "2026-08-10",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-8"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 9",
+      "date": "2026-08-10",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-9"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 10",
+      "date": "2026-08-11",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-10"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 11",
+      "date": "2026-08-12",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-11"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 12",
+      "date": "2026-08-13",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-12"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 13",
+      "date": "2026-08-17",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-13"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 14",
+      "date": "2026-08-18",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-14"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 15",
+      "date": "2026-08-20",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-15"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 16",
+      "date": "2026-08-20",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-16"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 17",
+      "date": "2026-08-21",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-17"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 18",
+      "date": "2026-08-23",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-18"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 19",
+      "date": "2026-08-25",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-19"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 20",
+      "date": "2026-08-26",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-20"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Day 21",
+      "date": "2026-08-27",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-day-21"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Closing Arguments",
+      "date": "2026-08-28",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-closing-arguments"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Emergency Hearing",
+      "date": "2026-09-06",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-emergency-hearing"
+    },
+    {
+      "t": "MA v. Lindsay Clancy Mistrial",
+      "date": "2026-09-06",
+      "u": "https://www.rev.com/transcripts/ma-v-lindsay-clancy-mistrial"
+    },
+    {
+      "t": "Lindsay Clancy Retrial",
+      "date": "2026-09-30",
+      "u": "https://www.rev.com/transcripts/lindsay-clancy-returns-to-court"
+    },
+    {
+      "t": "Patrick Clancy Wrongful Death Lawsuit",
+      "date": "2026-10-29",
+      "u": "https://www.rev.com/transcripts/patrick-clancy-wrongful-death-lawsuit"
+    },
+    {
+      "t": "Lindsay Clancy Retrial Hearing",
+      "date": "2026-11-03",
+      "u": "https://www.rev.com/transcripts/lindsay-clancy-retrial-hearing"
+    },
+    {
+      "t": "Lindsay Clancy Retrial Date Hearing",
+      "date": "2026-11-18",
+      "u": "https://www.rev.com/transcripts/lindsay-clancy-retrial-date-hearing"
     }
   ]
 }
