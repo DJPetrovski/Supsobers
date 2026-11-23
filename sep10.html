@@ -488,7 +488,13 @@ nav.controls{background:rgba(6,1,2,.55)}
 .card,.gtile,.listv .lrow,.axis,.ctx,details.submit,.tip{background:rgba(18,8,10,.88)!important;border-color:var(--line)}
 .card h3.headline,.stage .gtile{font-family:Georgia,serif}
 .stage{background:transparent}
-.stage.fs{background:#060102}
+.stage.fs{background:transparent}
+html.fs-lock .wrap,html.fs-lock footer.about{visibility:hidden}
+html.fs-lock .stage.fs,html.fs-lock .stage.fs *{visibility:visible}
+html.fs-lock #bgbar{z-index:150}
+html.fs-lock #bgnow{z-index:150}
+html.fs-lock #pl{z-index:160}
+.stage.fs .fsbtn{z-index:7}
 .stage-title b{font-family:"3rd Man",Georgia,serif;font-weight:400;color:var(--ember);letter-spacing:.04em;text-transform:none}
 .freedom{font-family:"3rd Man",Georgia,serif!important;font-weight:400!important}
 footer.about{background:rgba(6,1,2,.8)}
@@ -535,7 +541,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
 .blinks{display:flex;gap:14px;font:13px system-ui,sans-serif;margin-top:4px}
 .blinks a{color:var(--ember);padding:4px 0}
 .bmore{display:block;margin:0 14px 14px;font:14px system-ui,sans-serif;color:var(--ink);background:#2a0b0f;border:1px solid var(--ember);border-radius:6px;padding:11px 16px;cursor:pointer;width:calc(100% - 28px)}
-@media(max-width:560px){#bgbar{top:auto;bottom:0;left:0;right:0;max-width:none;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,1,2,.92);border-top:1px solid var(--line);gap:8px}#bgbar button{flex:none;white-space:nowrap;min-height:40px}body{padding-bottom:64px}.bgrid{grid-template-columns:1fr;padding:4px 10px 12px}.bnav{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4px;padding-bottom:4px;-webkit-overflow-scrolling:touch}.bnav button{flex:none;white-space:nowrap;min-height:40px}.bsec>summary{padding:12px}}
+@media(max-width:560px){.stage.fs .fsbtn{bottom:74px}#bgbar{top:auto;bottom:0;left:0;right:0;max-width:none;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,1,2,.92);border-top:1px solid var(--line);gap:8px}#bgbar button{flex:none;white-space:nowrap;min-height:40px}body{padding-bottom:64px}.bgrid{grid-template-columns:1fr;padding:4px 10px 12px}.bnav{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4px;padding-bottom:4px;-webkit-overflow-scrolling:touch}.bnav button{flex:none;white-space:nowrap;min-height:40px}.bsec>summary{padding:12px}}
 @media(min-width:561px) and (max-width:1000px){.bgrid{grid-template-columns:repeat(2,1fr)}}
 </style>
 <style id="pl-css">
@@ -1681,7 +1687,7 @@ body.lb-on{overflow:hidden}
     var btn = document.getElementById("fs-btn"), root = document.documentElement, auto = window.matchMedia && matchMedia("(orientation: landscape) and (max-height: 520px) and (pointer: coarse)");
     function setFs(on, native) {
       stage.classList.toggle("fs", on); root.classList.toggle("fs-lock", on); btn.setAttribute("aria-pressed", on ? "true" : "false"); btn.textContent = on ? "Exit full screen" : "Full screen";
-      if (native) { try { if (on && stage.requestFullscreen) stage.requestFullscreen().catch(function () {}); else if (!on && document.fullscreenElement) document.exitFullscreen(); } catch (er) {} }
+      if (native) { try { if (on && root.requestFullscreen) root.requestFullscreen().catch(function () {}); else if (!on && document.fullscreenElement) document.exitFullscreen(); } catch (er) {} }
       setTimeout(function () { update3d(); if (state.tab === "map") renderMap(); }, 60);
     }
     btn.addEventListener("click", function () { setFs(!stage.classList.contains("fs"), true); });
