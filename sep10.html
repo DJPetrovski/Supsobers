@@ -538,6 +538,43 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
 @media(max-width:560px){#bgbar{top:auto;bottom:0;left:0;right:0;max-width:none;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(6,1,2,.92);border-top:1px solid var(--line);gap:8px}#bgbar button{flex:none;white-space:nowrap;min-height:40px}body{padding-bottom:64px}.bgrid{grid-template-columns:1fr;padding:4px 10px 12px}.bnav{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4px;padding-bottom:4px;-webkit-overflow-scrolling:touch}.bnav button{flex:none;white-space:nowrap;min-height:40px}.bsec>summary{padding:12px}}
 @media(min-width:561px) and (max-width:1000px){.bgrid{grid-template-columns:repeat(2,1fr)}}
 </style>
+<style id="pl-css">
+#pl{position:sticky;top:0;z-index:15;margin:0 0 14px;background:rgba(6,1,2,.96);border:1px solid var(--ember);border-radius:8px;padding:10px 12px;box-shadow:0 8px 28px rgba(0,0,0,.6)}
+#pl[hidden]{display:none}
+.plbar{display:flex;align-items:center;gap:10px;font:14px system-ui,sans-serif;margin:0 0 8px}.plbar b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}.plbar span{color:var(--ink-dim)}
+.plbar button,.plctl button,.plctl a,.bpall,.bq button{font:14px system-ui,sans-serif;color:var(--ink);background:#2a0b0f;border:1px solid var(--line);border-radius:6px;padding:9px 13px;min-height:42px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.plbar button:hover,.plctl button:hover,.plctl a:hover,.bpall:hover,.bq button:hover{border-color:var(--ember)}
+.plbox{position:relative;aspect-ratio:16/9;width:min(100%,calc(46vh*16/9));margin:0 auto;background:#000;border-radius:6px;overflow:hidden}
+.plbox iframe,.plbox video,#pl-yt{position:absolute;inset:0;width:100%;height:100%;border:0}
+.plnow{margin:8px 2px 4px;font:600 15px/1.35 Georgia,serif;display:flex;flex-direction:column;gap:2px}.plnow small{font:13px system-ui,sans-serif;color:var(--ink-dim);font-weight:400}
+.plctl{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.plctl #pl-toggle{flex:1;justify-content:center;border-color:var(--ember)}
+.plq summary{cursor:pointer;font:14px system-ui,sans-serif;color:var(--ink-dim);padding:10px 2px;min-height:42px}
+#pl-list{list-style:none;margin:0;padding:0;max-height:220px;overflow-y:auto;position:relative;-webkit-overflow-scrolling:touch}
+#pl-list button{display:flex;flex-direction:column;align-items:flex-start;gap:1px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);color:var(--ink);padding:10px 8px;cursor:pointer;font:14px/1.3 Georgia,serif;min-height:44px}
+#pl-list small{font:12px system-ui,sans-serif;color:var(--ink-dim)}
+#pl-list li.cur button{background:#2a0b0f;border-left:3px solid var(--ember)}
+.bpa{padding:0 16px 10px}.bpall{background:#2a0b0f;border-color:var(--ember)}
+.bq{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 14px;padding:12px 14px;border:1px solid var(--ember);border-radius:8px;background:rgba(18,8,10,.9);font:15px system-ui,sans-serif}.bq span{flex:1 1 200px}
+.photosv{display:none}.photosv.on{display:block}
+.pnote{font:14px/1.5 system-ui,sans-serif;color:var(--ink-dim);margin:0 0 12px}
+.pgroup,.bphotos{margin:0 0 22px}.pgroup h2,.bphotos h2{font:600 clamp(19px,4.6vw,24px)/1.25 Georgia,serif;margin:0 0 4px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(46%,200px),1fr));gap:10px;margin-top:10px}
+.ptile{position:relative;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#000;cursor:pointer;aspect-ratio:4/3;display:block}
+.ptile img{width:100%;height:100%;object-fit:cover;display:block}
+.ptile span{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 7px;font:12.5px/1.3 system-ui,sans-serif;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.ptile:hover,.ptile:focus-visible{border-color:var(--ember);outline:none}
+#plb{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;padding:56px 8px 8px}
+#plb[hidden]{display:none}
+#plb figure{margin:0;max-width:min(1100px,100%);max-height:100%;display:flex;flex-direction:column;align-items:center;gap:8px;color:#f1e9e4;font:14px/1.45 system-ui,sans-serif;text-align:center;overflow:auto}
+#plb img{max-width:100%;max-height:70vh;object-fit:contain;display:block}
+#plb a{color:var(--ember)}
+#plb-x{position:absolute;top:8px;right:10px;font-size:32px;line-height:1;color:#fff;background:none;border:0;width:48px;height:48px;cursor:pointer}
+.plb-n{flex:none;font-size:22px;color:#fff;background:rgba(18,8,10,.8);border:1px solid var(--line);border-radius:50%;width:48px;height:48px;cursor:pointer;z-index:2}
+@media(max-width:560px){.plb-n{position:absolute;bottom:14px}#plb-p{left:12px}#plb-n{right:12px}#plb figure{padding-bottom:64px}.plbox{width:100%}#pl{margin-inline:-4px;padding:8px}.plctl a{display:none}}
+body.lb-on{overflow:hidden}
+.stage{overflow:visible;overflow:clip}
+.stage.fs{overflow:auto}
+</style>
 </head><body>
 <div id="bgfix" aria-hidden="true"><div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
 <svg class="backdrop" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -552,6 +589,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
 <div class="bgbar" id="bgbar"><button type="button" id="bg-watch">Watch debate</button><button type="button" id="bg-back">Back to archive</button><button type="button" id="bg-play">Pause background</button><button type="button" id="bg-sound">Sound on</button><button type="button" id="bg-hide">Hide video</button></div>
 <div class="bgnow" id="bgnow" aria-live="off"></div>
 
+<div id="plb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer"><button type="button" id="plb-x" aria-label="Close">&times;</button><button type="button" class="plb-n" id="plb-p" aria-label="Previous photo">&#9664;</button><figure><img id="plb-img" alt=""><figcaption id="plb-cap"></figcaption></figure><button type="button" class="plb-n" id="plb-n" aria-label="Next photo">&#9654;</button></div>
 <div class="wrap">
   <a class="toplink" href="./#archives">&larr; Back to Sup Sobers Archives</a>
   <div class="infopane" id="infopane">
@@ -602,6 +640,14 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
       <div class="axis" id="axis"></div>
       <div class="compare" id="compare"></div>
     </section>
+    <div id="pl" hidden role="region" aria-label="Video playlist">
+      <div class="plbar"><b id="pl-label">Playlist</b><span id="pl-count"></span><button type="button" id="pl-close" aria-label="Close player">Close &times;</button></div>
+      <div class="plbox"><div id="pl-yt"></div><video id="pl-vid" controls playsinline hidden></video></div>
+      <div class="plnow"><span id="pl-title"></span><small id="pl-src"></small></div>
+      <div class="plctl"><button type="button" id="pl-prev">&#9198; Back</button><button type="button" id="pl-toggle">&#9208; Pause</button><button type="button" id="pl-next">Next &#9197;</button><a id="pl-open" target="_blank" rel="noopener">Source</a></div>
+      <details class="plq"><summary>Up next</summary><ol id="pl-list"></ol></details>
+    </div>
+    <section id="photos-root" class="photosv" aria-label="Photo archive"></section>
     <section id="browse-root" class="browsev" aria-label="Videos organized by type"></section>
     <section id="grid-root" class="gridv" aria-label="Grid of entries"></section>
     <section id="list-root" class="listv" aria-label="List of entries"></section>
@@ -609,7 +655,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
       <div class="wbar"><span>Every video is a node, tied to the ones it shares a source with, was filmed near in time, or captured the shot itself. Drag to turn it, scroll or pinch to zoom, tap a node to see what it connects to.</span><button type="button" id="web-pop">Pop out</button></div>
       <div class="webbox" id="webbox"><canvas id="webcv"></canvas><button type="button" class="wclose" id="web-close">Close ×</button><div class="winfo" id="winfo"></div></div>
     </section>
-    <div class="crs" id="crs" hidden role="dialog" aria-modal="true" aria-label="Browse the archive">
+        <div class="crs" id="crs" hidden role="dialog" aria-modal="true" aria-label="Browse the archive">
       <div class="crs-top"><b id="crs-count">&nbsp;</b><span class="crs-hint">Swipe or use the arrows</span><button type="button" class="crs-x" id="crs-x" aria-label="Close">Close &times;</button></div>
       <div class="crs-wrap"><button type="button" class="crs-nav crs-prev" id="crs-prev" aria-label="Previous">&#9664;</button><div class="crs-track" id="crs-track" tabindex="0"></div><button type="button" class="crs-nav crs-next" id="crs-next" aria-label="Next">&#9654;</button></div>
     </div>
@@ -643,7 +689,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
   </main>
 
   <footer class="about">
-    <p><strong>How this works.</strong> This page doesn't rehost any video or photo files — every card links to where the footage or image actually lives (a news outlet, a press conference stream, or the Internet Archive's TV News Archive, which permanently and independently preserves U.S. broadcast news for exactly this kind of citation). If a source link goes dead, check the Internet Archive link on that entry before assuming the record is gone.</p>
+    <p><strong>How this works.</strong> Videos are not rehosted here (apart from a few clips added by the curator) — every card links to where the footage actually lives. Photos in the photo archive show their credit and link back to their source. Each entry links to where the original lives (a news outlet, a press conference stream, or the Internet Archive's TV News Archive, which permanently and independently preserves U.S. broadcast news for exactly this kind of citation). If a source link goes dead, check the Internet Archive link on that entry before assuming the record is gone.</p>
     <p>Entries are sourced from public reporting and official statements. Spotted an error or a broken link? Use the submit form above or email supsobers@gmail.com and it will be corrected.</p>
   </footer>
 </div>
@@ -754,7 +800,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
   // scroll stops (touch or wheel): preview the tile nearest the middle of the view
   var idleT = 0;
   function pickMiddle() {
-    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web" || tab === "browse") ? null : "#timeline-root .card";
+    var tab = state.tab, sel = tab === "grid" ? "#grid-root .gtile" : tab === "list" ? "#list-root .lrow" : (tab === "map" || tab === "web" || tab === "browse" || tab === "photo") ? null : "#timeline-root .card";
     if (!sel) return;
     var tlr = document.getElementById("timeline-root"), best = null, bd = 1e9, vw = window.innerWidth, vh = window.innerHeight;
     document.querySelectorAll(sel).forEach(function (c) {
@@ -794,14 +840,13 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
     { k: "candace", t: "Candace Owens", d: "Her own episodes first, then videos about what she has said." },
     { k: "shorts", t: "Shorts, reels & TikToks", d: "Short vertical clips." },
     { k: "creators", t: "Creators & commentary", d: "Independent commentators, podcasters and analysts. Views are those of their creators." },
-    { k: "aftermath", t: "Aftermath & tributes", d: "Memorials and the days that followed." },
-    { k: "photos", t: "Photos", d: "" }
+    { k: "aftermath", t: "Aftermath & tributes", d: "Memorials and the days that followed." }
   ];
   var NEWS_RE = /news|fox|cnn|abc|nbc|cbs|associated press|reuters|npr|ksl|kutv|tribune|times|post\b|telegraph|independent|\bthe hill\b|\bthe sun\b|c-span|bbc|gb news|lbc|hindustan|firstpost|ndtv|ctv|\bmint\b|scripps|journal|today|economic|broadcast|wham|republic|mirror|\bnow\b|diario|midday|7news|fbi|u\.s\. news|livestream|live stream/i;
   function isShort(e) { return /\/shorts\/|tiktok|instagram\.com|\/reel|fb\.watch/i.test(e.sourceUrl || "") || /\bshorts?\b/i.test(e.sourceName || ""); }
   function browseKey(e) {
     if (e.mediaType === "milestone") return null;
-    if (e.mediaType === "photo") return "photos";
+    if (e.mediaType === "photo") return null;
     var short = isShort(e), txt = (e.title || "") + " " + (e.sourceName || "") + " " + (e.description || "");
     if (e.clip || localVid(e.sourceUrl) || (e.category === "eyewitness" && !short)) return "footage";
     if (/candace/i.test((e.title || "") + " " + (e.sourceName || ""))) return "candace";
@@ -838,7 +883,11 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
         return s.k === "footage" ? a.timestamp.localeCompare(b.timestamp) : b.timestamp.localeCompare(a.timestamp);
       });
     });
+    BR.flat = []; BROWSE_SECS.forEach(function (s) { BR.flat = BR.flat.concat(secs[s.k]); }); BR.secs = secs;
     root.innerHTML = "";
+    var pcount = 0; if (window.PHOTOS) PHOTOS.forEach(function (ph) { if (!q || photoText(ph).indexOf(q) > -1) pcount++; });
+    if (q) { var qb = document.createElement("div"); qb.className = "bq"; qb.innerHTML = "<span><b>" + BR.flat.length + "</b> video" + (BR.flat.length === 1 ? "" : "s") + (pcount ? " and <b>" + pcount + "</b> photo" + (pcount === 1 ? "" : "s") : "") + " match &ldquo;" + escapeHtml(state.query) + "&rdquo;</span>"; if (BR.flat.length) { var pb2 = document.createElement("button"); pb2.type = "button"; pb2.textContent = "\u25B6 Play all results"; pb2.addEventListener("click", function () { plStart(BR.flat, null, "Search: " + state.query); }); qb.appendChild(pb2); } if (pcount) { var pb3 = document.createElement("button"); pb3.type = "button"; pb3.textContent = "See the photos"; pb3.addEventListener("click", function () { document.querySelector('[data-tab=photo]').click(); }); qb.appendChild(pb3); } root.appendChild(qb); }
+    else if (pcount) { var ps = document.createElement("div"); ps.className = "bphotos"; ps.innerHTML = '<h2>Photos</h2>'; var pg = document.createElement("div"); pg.className = "pgrid"; photoList("").slice(0, 8).forEach(function (ph, i, arr) { pg.appendChild(photoTile(ph, arr)); }); ps.appendChild(pg); var all = document.createElement("button"); all.type = "button"; all.className = "bmore"; all.textContent = "Open the photo archive (" + PHOTOS.length + ")"; all.addEventListener("click", function () { document.querySelector('[data-tab=photo]').click(); }); ps.appendChild(all); root.appendChild(ps); }
     var nav = document.createElement("nav"); nav.className = "bnav"; nav.setAttribute("aria-label", "Jump to a section");
     BROWSE_SECS.forEach(function (s) { if (!secs[s.k].length) return; var a = document.createElement("button"); a.type = "button"; a.textContent = s.t.replace(" & press conferences", "") + " " + secs[s.k].length; a.addEventListener("click", function () { var d = document.getElementById("bsec-" + s.k); d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); }); nav.appendChild(a); });
     root.appendChild(nav);
@@ -846,7 +895,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
     BROWSE_SECS.forEach(function (s) {
       var list = secs[s.k]; if (!list.length) return;
       var d = document.createElement("details"); d.className = "bsec"; d.id = "bsec-" + s.k; d.open = !!q || !!BR.open[s.k];
-      d.innerHTML = '<summary><h2>' + escapeHtml(s.t) + '</h2><span class="bn">' + list.length + '</span></summary>' + (s.d ? '<p class="bd">' + escapeHtml(s.d) + '</p>' : "") + '<div class="bgrid"></div><button type="button" class="bmore" hidden></button>';
+      d.innerHTML = '<summary><h2>' + escapeHtml(s.t) + '</h2><span class="bn">' + list.length + '</span></summary>' + (s.d ? '<p class="bd">' + escapeHtml(s.d) + '</p>' : "") + '<div class="bgrid"></div><button type="button" class="bmore" hidden></button>'; d.querySelector("summary").insertAdjacentHTML("afterend", '<div class="bpa"><button type="button" class="bpall">&#9654; Play all ' + list.length + "</button></div>"); d.querySelector(".bpall").addEventListener("click", function () { plStart(q ? BR.flat : list, null, q ? "Search: " + state.query : s.t); });
       var grid = d.querySelector(".bgrid"), more = d.querySelector(".bmore");
       more.addEventListener("click", function () { browseFill(s.k, list, grid, more); });
       var fill = function () { if (!BR.shown[s.k]) browseFill(s.k, list, grid, more); };
@@ -856,6 +905,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
   }
   document.getElementById("browse-root").addEventListener("click", function (ev) {
     var b = ev.target.closest(".bplay"); if (!b || !b._e) return;
+    if (BR.secs) { var q0 = (state.query || "").trim(), sec = b.closest(".bsec"), key = sec && sec.id.replace("bsec-", ""); plStart(q0 ? BR.flat : (BR.secs[key] || [b._e]), b._e, q0 ? "Search: " + state.query : (BROWSE_SECS.filter(function (x) { return x.k === key; })[0] || {}).t); return; }
     var e = b._e, id = (e.clip && e.clip.yt) || ytId(e.sourceUrl), host = document.createElement("div"); host.className = "bplay on";
     if (id) { host.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="' + escapeHtml(e.title) + '"></iframe>'; }
     else if (localVid(e.sourceUrl)) { host.innerHTML = '<video controls autoplay playsinline src="' + escapeHtml(e.sourceUrl) + '"></video>'; }
@@ -864,6 +914,92 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
     b.replaceWith(host);
   });
 
+
+  // ---------- playlist player ----------
+  var PL = { q: [], i: -1, yt: null, err: 0, state: -1 };
+  var plEl = document.getElementById("pl"), plVid = document.getElementById("pl-vid"), plTog = document.getElementById("pl-toggle");
+  function plId(e) { return (e.clip && e.clip.yt) || ytId(e.sourceUrl); }
+  function plOk(e) { return !!(plId(e) || localVid(e.sourceUrl)); }
+  function plStart(list, start, label) {
+    var q = (list || []).filter(plOk); if (!q.length) return;
+    var i = start ? q.indexOf(start) : 0; if (i < 0) i = 0;
+    PL.q = q; PL.err = 0; document.getElementById("pl-label").textContent = label || "Playlist"; plEl.hidden = false; document.body.classList.add("pl-on");
+    if (typeof bgStop === "function") bgStop(); stopPv();
+    var ol = document.getElementById("pl-list"); ol.innerHTML = "";
+    q.slice(0, 300).forEach(function (e, k) { var li = document.createElement("li"), b = document.createElement("button"); b.type = "button"; b.innerHTML = "<span>" + escapeHtml(e.title) + "</span><small>" + escapeHtml((e.sourceName || "").replace(/ \(YouTube[^)]*\)/, "")) + "</small>"; b.addEventListener("click", function () { plPlay(k); }); li.appendChild(b); ol.appendChild(li); });
+    plPlay(i); plEl.scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+  function plMark() {
+    var items = document.querySelectorAll("#pl-list li"); items.forEach(function (li, k) { li.classList.toggle("cur", k === PL.i); });
+    var cur = items[PL.i]; if (cur) { var l = document.getElementById("pl-list"); if (cur.offsetTop < l.scrollTop || cur.offsetTop + cur.offsetHeight > l.scrollTop + l.clientHeight) l.scrollTop = cur.offsetTop - 40; }
+  }
+  function plPlay(i) {
+    var n = PL.q.length; if (!n) return; i = (i % n + n) % n; PL.i = i; var e = PL.q[i];
+    document.getElementById("pl-title").textContent = e.title; document.getElementById("pl-src").textContent = (e.sourceName || "") + " · " + e.date;
+    document.getElementById("pl-count").textContent = (i + 1) + " of " + n; var op = document.getElementById("pl-open"); op.href = e.sourceUrl || e.archiveUrl || "#";
+    plMark(); plTog.innerHTML = "&#9208; Pause";
+    if (localVid(e.sourceUrl)) { try { if (PL.yt) PL.yt.stopVideo(); } catch (er) {} document.getElementById("pl-yt").hidden = true; plVid.hidden = false; plVid.src = e.sourceUrl; plVid.play().catch(function () {}); return; }
+    plVid.pause(); plVid.hidden = true; plVid.removeAttribute("src"); document.getElementById("pl-yt").hidden = false;
+    var id = plId(e);
+    ytReadyNow(function () {
+      if (PL.q[PL.i] !== e) return;
+      if (PL.yt && PL.yt.loadVideoById) { PL.yt.loadVideoById(id); return; }
+      var pv = { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1, cc_load_policy: 0 }; if (/^https?:/.test(location.origin)) pv.origin = location.origin;
+      PL.yt = new YT.Player("pl-yt", { width: "100%", height: "100%", videoId: id, playerVars: pv, events: {
+        onStateChange: function (ev) { PL.state = ev.data; if (ev.data === 1) { PL.err = 0; plTog.innerHTML = "&#9208; Pause"; } else if (ev.data === 2) plTog.innerHTML = "&#9654; Play"; else if (ev.data === 0) plPlay(PL.i + 1); },
+        onError: function () { PL.err++; if (PL.err >= PL.q.length) { document.getElementById("pl-src").textContent = "None of these videos allow embedding. Use Source to open them."; return; } document.getElementById("pl-src").textContent = "This video can't be played here. Skipping..."; setTimeout(function () { plPlay(PL.i + 1); }, 1200); }
+      } });
+    });
+  }
+  plVid.addEventListener("ended", function () { plPlay(PL.i + 1); }); plVid.addEventListener("play", function () { plTog.innerHTML = "&#9208; Pause"; }); plVid.addEventListener("pause", function () { plTog.innerHTML = "&#9654; Play"; });
+  document.getElementById("pl-prev").addEventListener("click", function () { plPlay(PL.i - 1); });
+  document.getElementById("pl-next").addEventListener("click", function () { plPlay(PL.i + 1); });
+  plTog.addEventListener("click", function () {
+    var e = PL.q[PL.i]; if (!e) return;
+    if (localVid(e.sourceUrl)) { if (plVid.paused) plVid.play(); else plVid.pause(); return; }
+    if (!PL.yt || !PL.yt.getPlayerState) return; if (PL.yt.getPlayerState() === 1) PL.yt.pauseVideo(); else PL.yt.playVideo();
+  });
+  document.getElementById("pl-close").addEventListener("click", function () { try { if (PL.yt) PL.yt.stopVideo(); } catch (er) {} plVid.pause(); plEl.hidden = true; PL.q = []; PL.i = -1; document.body.classList.remove("pl-on"); });
+  document.addEventListener("keydown", function (ev) { if (plEl.hidden || /INPUT|TEXTAREA/.test((ev.target || {}).tagName || "")) return; if (ev.key === "n" || ev.key === "N") plPlay(PL.i + 1); if (ev.key === "p" || ev.key === "P") plPlay(PL.i - 1); });
+
+  // ---------- photo archive ----------
+  var PHGROUPS = [
+    ["comparison", "Comparisons: Tyler Robinson and the person of interest", "Side-by-side images and comparisons. Each shows where it came from; the archive does not say what any comparison proves."],
+    ["fbi", "Images released by the FBI", "Photos and stills released by investigators."],
+    ["hearing", "Hearing & trial exhibits, and leaked material", "Exhibits shown in court and material reported from the hearings."],
+    ["day", "September 10: photos from the day", "Photos taken at Utah Valley University and around campus."],
+    ["tribute", "Tributes & aftermath", "Memorials and the days that followed."],
+    ["other", "More photos", ""]
+  ];
+  window.PHOTOS = [];
+  function photoText(ph) { return ((ph.title || "") + " " + (ph.caption || "") + " " + (ph.source || "") + " " + (ph.group || "")).toLowerCase(); }
+  function photoList(q) { q = (q || "").toLowerCase(); return PHOTOS.filter(function (ph) { return !q || photoText(ph).indexOf(q) > -1; }); }
+  var LB = { list: [], i: 0 }, lbEl = document.getElementById("plb");
+  function lbShow(i) { var n = LB.list.length; if (!n) return; LB.i = (i % n + n) % n; var ph = LB.list[LB.i]; var im = document.getElementById("plb-img"); im.src = ph.src; im.alt = ph.title || ph.caption || "";
+    document.getElementById("plb-cap").innerHTML = "<b>" + escapeHtml(ph.title || "") + "</b>" + (ph.caption ? "<br>" + escapeHtml(ph.caption) : "") + "<br><small>" + (LB.i + 1) + " of " + n + (ph.date ? " · " + escapeHtml(ph.date) : "") + (ph.source ? " · " + (ph.sourceUrl ? '<a href="' + escapeHtml(ph.sourceUrl) + '" target="_blank" rel="noopener">' + escapeHtml(ph.source) + "</a>" : escapeHtml(ph.source)) : "") + "</small>"; }
+  function lbOpen(list, i) { LB.list = list; lbEl.hidden = false; document.body.classList.add("lb-on"); lbShow(i); }
+  function lbClose() { lbEl.hidden = true; document.body.classList.remove("lb-on"); }
+  document.getElementById("plb-x").addEventListener("click", lbClose); document.getElementById("plb-p").addEventListener("click", function () { lbShow(LB.i - 1); }); document.getElementById("plb-n").addEventListener("click", function () { lbShow(LB.i + 1); });
+  lbEl.addEventListener("click", function (ev) { if (ev.target === lbEl) lbClose(); });
+  document.addEventListener("keydown", function (ev) { if (lbEl.hidden) return; if (ev.key === "Escape") lbClose(); if (ev.key === "ArrowRight") lbShow(LB.i + 1); if (ev.key === "ArrowLeft") lbShow(LB.i - 1); });
+  (function () { var x0 = null; lbEl.addEventListener("touchstart", function (ev) { x0 = ev.touches[0].clientX; }, { passive: true }); lbEl.addEventListener("touchend", function (ev) { if (x0 == null) return; var dx = ev.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) lbShow(LB.i + (dx < 0 ? 1 : -1)); }, { passive: true }); })();
+  function photoTile(ph, ctx) { var b = document.createElement("button"); b.type = "button"; b.className = "ptile"; b.setAttribute("aria-label", "Open photo: " + (ph.title || ph.caption || "")); var im = document.createElement("img"); im.loading = "lazy"; im.decoding = "async"; im.alt = ""; im.src = ph.thumb || ph.src; b.appendChild(im);
+    var t = document.createElement("span"); t.textContent = ph.title || ph.caption || ""; b.appendChild(t); b.addEventListener("click", function () { lbOpen(ctx, ctx.indexOf(ph)); }); return b; }
+  function renderPhotos() {
+    var root = document.getElementById("photos-root"), q = (state.query || "").trim(); root.innerHTML = "";
+    var list = photoList(q), linked = ENTRIES.filter(function (e) { return e.mediaType === "photo" && (!q || (e.title + " " + e.description + " " + e.sourceName).toLowerCase().indexOf(q.toLowerCase()) > -1); });
+    var head = document.createElement("p"); head.className = "pnote"; head.innerHTML = "Every photo shows its source. Use the search box above to find photos by caption, place or person. Tap a photo to open it, then use the arrows or swipe to move through the set."; root.appendChild(head);
+    if (!list.length && !linked.length) { root.insertAdjacentHTML("beforeend", '<p class="empty-state">' + (PHOTOS.length ? "No photos match that search." : "The photo archive is being built. Photos from official releases, court exhibits and submissions will appear here, grouped by topic, each with its source.") + "</p>"); return; }
+    var nav = document.createElement("nav"); nav.className = "bnav"; root.appendChild(nav);
+    PHGROUPS.forEach(function (g) {
+      var items = list.filter(function (ph) { return (ph.group || "other") === g[0]; }); if (!items.length) return;
+      var sec = document.createElement("section"); sec.className = "pgroup"; sec.id = "pg-" + g[0]; sec.innerHTML = "<h2>" + escapeHtml(g[1]) + ' <span class="bn">' + items.length + "</span></h2>" + (g[2] ? '<p class="bd">' + escapeHtml(g[2]) + "</p>" : ""); var grid = document.createElement("div"); grid.className = "pgrid"; items.forEach(function (ph) { grid.appendChild(photoTile(ph, items)); }); sec.appendChild(grid); root.appendChild(sec);
+      var nb = document.createElement("button"); nb.type = "button"; nb.textContent = g[1].split(":")[0] + " " + items.length; nb.addEventListener("click", function () { sec.scrollIntoView({ behavior: "smooth", block: "start" }); }); nav.appendChild(nb);
+    });
+    if (linked.length) { var sec2 = document.createElement("section"); sec2.className = "pgroup"; sec2.innerHTML = "<h2>Photos on other sites <span class=\"bn\">" + linked.length + '</span></h2><p class="bd">These open on the publisher\'s page.</p>'; var g2 = document.createElement("div"); g2.className = "bgrid"; linked.forEach(function (e) { var c = browseCard(e); c.querySelector(".bplay").remove(); g2.appendChild(c); }); sec2.appendChild(g2); root.appendChild(sec2); }
+    if (!nav.children.length) nav.remove();
+  }
+  fetch("data/photos.json?v=" + Date.now()).then(function (r) { return r.ok ? r.json() : []; }).then(function (a) { if (Array.isArray(a)) { window.PHOTOS = a; if (state.tab === "photo") renderPhotos(); else if (state.tab === "browse") renderBrowse(); } }).catch(function () {});
   function renderChips(activeCats) {
     var root = document.getElementById("category-chips");
     root.innerHTML = "";
@@ -905,7 +1041,7 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
   }
 
   function renderTimeline() {
-    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "browse") renderBrowse(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
+    if (state.tab === "map" || state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo") { document.getElementById("timeline-root").innerHTML = ""; document.getElementById("empty").hidden = true; stopPv(); if (state.tab === "photo") renderPhotos(); if (state.tab === "browse") renderBrowse(); if (state.tab === "grid") renderGrid(); if (state.tab === "list") renderList(); if (state.tab === "web") renderWeb(); return; }
     var list = filteredEntries();
     var root = document.getElementById("timeline-root");
     var empty = document.getElementById("empty");
@@ -1361,9 +1497,9 @@ button.bplay::after{content:"\25B6";position:absolute;inset:0;display:grid;place
     hideTip(true);
     if (isMap) setCtx(Date.parse("2025-09-10T18:23:30Z"));
     var lr = document.getElementById("list-root"), wr = document.getElementById("web-root");
-    document.getElementById("browse-root").classList.toggle("on", state.tab === "browse"); document.getElementById("category-chips").hidden = isMap || state.tab === "browse"; document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
+    document.getElementById("browse-root").classList.toggle("on", state.tab === "browse"); document.getElementById("photos-root").classList.toggle("on", state.tab === "photo"); document.getElementById("category-chips").hidden = isMap || state.tab === "browse" || state.tab === "photo"; document.getElementById("grid-root").classList.toggle("on", state.tab === "grid"); lr.classList.toggle("on", state.tab === "list"); wr.classList.toggle("on", state.tab === "web");
     if (state.tab !== "web") stopWeb();
-    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
+    if (isMap) renderMap(); else if (state.tab === "list" || state.tab === "web" || state.tab === "grid" || state.tab === "browse" || state.tab === "photo") { /* drawn by renderTimeline */ } else { requestAnimationFrame(function () { centerShot(); update3d(); }); }
   }
 
   renderChips(state.activeCats);
