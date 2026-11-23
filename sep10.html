@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>September 10 Archive | Sup Sobers</title><meta name="description" content="A free, timeline-organized archive of videos about the Charlie Kirk assassination, with raw footage lined up on the moment of the shot.">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Charlie Kirk Archive | Sup Sobers</title><meta name="description" content="A free, timeline-organized archive of videos about the Charlie Kirk assassination, with raw footage lined up on the moment of the shot.">
 <style>body{margin:0;background:var(--paper);color:var(--ink)}img{max-width:100%}[hidden]{display:none!important}</style>
 <style>
   :root {
@@ -596,7 +596,7 @@ body.lb-on{overflow:hidden}
   <div class="infopane" id="infopane">
   <header class="top">
     <p class="eyebrow">Research archive · not affiliated with any outlet</p>
-    <h1>September 10 Archive</h1>
+    <h1>Charlie Kirk Archive</h1>
     <p class="lede">A chronological, source-linked record of video and photo coverage of the assassination of Charlie Kirk on September&nbsp;10, 2025, and the days that followed — built so researchers and journalists can move through the case in the order it happened rather than however a search engine surfaces it. The Compare angles tab lines up raw clips on the moment of the shot so angles can be compared. Every entry links out to its original source; where a broadcast has an Internet Archive TV News copy, that's listed too, so a link going dead on the original site doesn't take the record with it.</p>
     <div class="stat-row">
       <span class="stat"><strong id="stat-count">0</strong> entries logged</span>
@@ -1628,7 +1628,7 @@ body.lb-on{overflow:hidden}
       if (!/^https?:\/\/\S+\.\S+/.test(link) || !about) { st.textContent = "Add the video link and a line about what it shows."; st.className = "form-msg error"; return; }
       btn.disabled = true; st.className = "form-msg"; st.textContent = "Sending...";
       fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ access_key: "6509a0cb-4051-4651-96eb-2f21a62cd916", subject: "September 10 Archive submission", from_name: who || "(not given)", replyto: email || undefined, video_link: link, what_it_shows: about, when_filmed: when, name: who || "(not given)", email: email || "(not given)" }) })
+        body: JSON.stringify({ access_key: "6509a0cb-4051-4651-96eb-2f21a62cd916", subject: "Charlie Kirk Archive submission", from_name: who || "(not given)", replyto: email || undefined, video_link: link, what_it_shows: about, when_filmed: when, name: who || "(not given)", email: email || "(not given)" }) })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === "false" || j.success === false) throw new Error("x"); }); })
         .then(function () { st.className = "form-msg"; st.textContent = "Sent. Thank you. Submissions are reviewed before anything is added."; form.reset(); })
         .catch(function () { st.className = "form-msg error"; st.innerHTML = "Could not send from here. Email the link to <b>" + TO + "</b> instead."; })
