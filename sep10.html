@@ -1576,7 +1576,7 @@ body.lb-on{overflow:hidden}
   // ---------- background video: highlights from the Owens / Wilson debate ----------
   var DEBATE = "aPOyk1i2LOc";
   var SEGS = [ /* add more clips as [start, end, "label", "youtubeId"] (the id is optional; the debate is the default) */ [167, 347, "Andrew Wilson, opening statement"], [568, 748, "Candace Owens, opening statement"], [821, 970, "Opening questions: the shot and the trajectory"], [1222, 1402, "Cross-examination: debris, fingerprints and DNA"], [1708, 1888, "Preliminary hearing and the hearsay rule dispute"], [3346, 3526, "The text messages"], [3842, 4022, "Sources and the charging document"] ];
-  var stage = document.body, bgBox = document.getElementById("bgv-box"), bgNow = document.getElementById("bgnow"), bgPlayBtn = document.getElementById("bg-play"), bgSoundBtn = document.getElementById("bg-sound"), bgHideBtn = document.getElementById("bg-hide");
+  var stage = document.querySelector(".stage"), bgRoot = document.body, bgBox = document.getElementById("bgv-box"), bgNow = document.getElementById("bgnow"), bgPlayBtn = document.getElementById("bg-play"), bgSoundBtn = document.getElementById("bg-sound"), bgHideBtn = document.getElementById("bg-hide");
   var yt = null, ytReady = false, segI = 4, bgState = { stopped: false, hidden: false, muted: true, visible: true };
   var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   function bgLabel() { if (bgNow) bgNow.innerHTML = bgState.stopped ? "" : "Background: Candace Owens vs. Andrew Wilson, highlights (" + (segI + 1) + " of " + SEGS.length + "): " + escapeHtml(SEGS[segI][2]) + ". <a href=\"https://www.youtube.com/watch?v=" + DEBATE + "&t=" + SEGS[segI][0] + "s\" target=\"_blank\" rel=\"noopener\" style=\"color:inherit\">Watch the full debate</a>"; }
@@ -1586,7 +1586,7 @@ body.lb-on{overflow:hidden}
     bgPlayBtn.textContent = bgState.stopped ? "Resume background" : "Pause background";
     bgSoundBtn.textContent = bgState.muted ? "Sound on" : "Sound off";
     bgHideBtn.textContent = bgState.hidden ? "Show video" : "Hide video";
-    stage.classList.toggle("bg-off", bgState.hidden || bgState.stopped);
+    bgRoot.classList.toggle("bg-off", bgState.hidden || bgState.stopped);
     if (bgState.stopped) bgLabel();
   }
   function bgStop() { if (!yt || !ytReady || bgState.stopped) return; bgState.stopped = true; try { yt.pauseVideo(); } catch (er) {} bgPaint(); }
@@ -1595,9 +1595,9 @@ body.lb-on{overflow:hidden}
     if (!bgBox || window.YT && YT.Player === undefined) return;
     yt = new YT.Player("bgv", { videoId: DEBATE, playerVars: { autoplay: 0, mute: 1, controls: 0, playsinline: 1, rel: 0, modestbranding: 1, iv_load_policy: 3, disablekb: 1, cc_load_policy: 1, fs: 0, origin: location.origin },
       events: {
-        onReady: function () { ytReady = true; yt.mute(); stage.classList.add("has-video"); bgPaint(); if (reduceMotion) { bgState.stopped = true; bgPaint(); } else { playSeg(); } },
+        onReady: function () { ytReady = true; yt.mute(); bgRoot.classList.add("has-video"); bgPaint(); if (reduceMotion) { bgState.stopped = true; bgPaint(); } else { playSeg(); } },
         onStateChange: function (e) { if (e.data === 0 && !bgState.stopped) { segI = (segI + 1) % SEGS.length; playSeg(); } },
-        onError: function () { if (SEGS.some(function (q) { return q[3]; })) { SEGS.splice(segI, 1); if (SEGS.length) { segI = segI % SEGS.length; playSeg(); return; } } stage.classList.remove("has-video"); bgBox.hidden = true; document.getElementById("bgbar").hidden = true; if (bgNow) bgNow.hidden = true; }
+        onError: function () { if (SEGS.some(function (q) { return q[3]; })) { SEGS.splice(segI, 1); if (SEGS.length) { segI = segI % SEGS.length; playSeg(); return; } } bgRoot.classList.remove("has-video"); bgBox.hidden = true; document.getElementById("bgbar").hidden = true; if (bgNow) bgNow.hidden = true; }
       } });
   }
   if (bgBox) {
