@@ -604,6 +604,11 @@ body.lb-on{overflow:hidden}
 .dcard h3{margin:0;font:600 17px/1.3 Georgia,serif;overflow-wrap:anywhere}.dcard p{margin:0;font:14px/1.5 system-ui,sans-serif;color:var(--ink-dim)}
 .dcard .dby{font-size:12.5px}.dcard .dof{color:#7fbcac;font-weight:600}.dcard .dsn{color:var(--ink);padding-top:6px;border-top:1px solid var(--line)}.dcard .dsn a{color:var(--ember);font-weight:600}.dcard .dmore{font-size:12.5px}
 .dcard mark{background:#6b1018;color:#fff;padding:0 2px;border-radius:2px}
+
+/* phones: 16px text stops iOS Safari zooming in when a field is tapped; plain look for the search field */
+.search input{-webkit-appearance:none;appearance:none;border-radius:0;font-family:system-ui,sans-serif}
+.search input::-webkit-search-decoration{-webkit-appearance:none}
+@media (pointer: coarse){.search{padding:8px 12px}.search input,.form-grid input,.form-grid textarea,.form-grid select,#off-in{font-size:16px}}
 </style>
 </head><body>
 <div id="bgfix" aria-hidden="true"><div class="bgv" id="bgv-box" aria-hidden="true"><div id="bgv"></div></div>
@@ -650,7 +655,7 @@ body.lb-on{overflow:hidden}
     <div class="filter-row">
       <div class="search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="search-input" placeholder="Search entries…" aria-label="Search entries">
+        <input type="search" id="search-input" placeholder="Search entries…" aria-label="Search entries" enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
       </div>
     </div>
   </nav>
@@ -1221,10 +1226,13 @@ body.lb-on{overflow:hidden}
     });
   });
 
-  document.getElementById("search-input").addEventListener("input", function (e) {
-    state.query = e.target.value;
-    renderTimeline();
-  });
+  (function () {
+    var si = document.getElementById("search-input"), st = null;
+    function run() { st = null; if (state.query === si.value) return; state.query = si.value; renderTimeline(); }
+    si.addEventListener("input", function () { if (st) clearTimeout(st); st = setTimeout(run, si.value ? 120 : 0); });
+    si.addEventListener("search", run);
+    si.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); if (st) clearTimeout(st); run(); if (matchMedia("(pointer: coarse)").matches) si.blur(); } });
+  })();
 
 
   // ---------- map of the courtyard with camera pins ----------
@@ -1834,7 +1842,7 @@ body.lb-on{overflow:hidden}
     btn.addEventListener("click", function () { setFs(!stage.classList.contains("fs"), true); });
     document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && stage.classList.contains("fs")) setFs(false, false); });
     document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && stage.classList.contains("fs") && !(auto && auto.matches)) setFs(false, false); });
-    if (auto) { var onTurn = function () { setFs(auto.matches, false); }; if (auto.addEventListener) auto.addEventListener("change", onTurn); else if (auto.addListener) auto.addListener(onTurn); if (auto.matches) onTurn(); }
+    if (auto) { var onTurn = function () { var a = document.activeElement; if (a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA" || a.tagName === "SELECT" || a.isContentEditable)) return; var land = auto.matches && (!(window.screen && screen.orientation && screen.orientation.type) || /landscape/.test(screen.orientation.type)); setFs(land, false); }; if (auto.addEventListener) auto.addEventListener("change", onTurn); else if (auto.addListener) auto.addListener(onTurn); if (auto.matches) onTurn(); }
   })();
   if (state.tab === "map") setCtx(Date.parse("2025-09-10T18:23:30Z"));
 })();
