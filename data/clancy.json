@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-26",
-  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected. Per CBS Boston (Nov. 16), prosecutors will retry on first-degree murder charges; next status hearing is Dec. 30, 2026; defense plans to renew its request for a split trial. On Nov. 19, 2026 SJC Justice Dewar found full-court review of the defense appeal warranted; briefs due Dec. 3, Dec. 17, Dec. 28 with oral argument expected January 2027. Jury notes from the first trial were released Nov. 18. On Nov. 24, 2026 prosecutors asked the SJC to postpone the retrial pending the double jeopardy appeal; the SJC denied the request on Nov. 25, keeping the March 29, 2027 date.",
+  "updated": "2026-11-27",
+  "status": "Mistrial declared Sept. 4, 2026 after a deadlocked jury (reported 11-1 for acquittal). On Nov. 9, 2026 Judge Sullivan denied the defense double jeopardy motion to dismiss, the motion to investigate the holdout juror, and the prosecution's gag order request. On Nov. 16, 2026 Judge Sullivan set the retrial to begin March 29, 2027 over the prosecution's objection (prosecutors had asked for May, then late April); final pretrial conference Feb. 18, 2027. The DA's office has not said what charges it will pursue; defense attorney Reddington expects first-degree murder counts and wants them reduced to second degree. Clancy remains in custody at a Massachusetts hospital. Defense appellate counsel Martin Weinberg says an appeal to the SJC is expected. Per CBS Boston (Nov. 16), prosecutors will retry on first-degree murder charges; next status hearing is Dec. 30, 2026; defense plans to renew its request for a split trial. On Nov. 19, 2026 SJC Justice Dewar found full-court review of the defense appeal warranted; briefs due Dec. 3, Dec. 17, Dec. 28 with oral argument expected January 2027. Jury notes from the first trial were released Nov. 18. On Nov. 24, 2026 prosecutors asked the SJC to postpone the retrial pending the double jeopardy appeal; the SJC denied the request on Nov. 25, keeping the March 29, 2027 date. Per WHDH (Nov. 27), the full SJC will hear oral argument on the double jeopardy appeal on January 8, 2027.",
   "trial": [
     {
       "day": 1,
@@ -396,6 +396,24 @@
     }
   ],
   "updates": [
+    {
+      "date": "2026-11-27",
+      "t": "WHDH 7News: the full Supreme Judicial Court will hear Lindsay Clancy's double jeopardy appeal on January 8 (2027). The defense seeks dismissal, arguing the holdout juror refused to apply reasonable doubt during deliberations; Judge Sullivan had denied the motion to dismiss and the SJC recently denied the prosecution's request to delay the March retrial.",
+      "u": "https://whdh.com/news/states-highest-court-to-hear-lindsay-clancy-appeal-on-january-8/",
+      "s": "WHDH 7News"
+    },
+    {
+      "date": "2026-11-27",
+      "t": "Patch (Joseph Hosey): recap of the SJC's rejection of the prosecution's bid to pause proceedings pending the double jeopardy appeal; retrial remains set for March 29, 2027.",
+      "u": "https://patch.com/massachusetts/plymouth/duxbury-mom-lindsay-clancys-triple-murder-case-heading-trial-after-pause",
+      "s": "Patch"
+    },
+    {
+      "date": "2026-11-25",
+      "t": "Fox News (Adam Sabes, Michael Ruiz, via Yahoo): SJC denied without explanation the prosecution's motion, filed Monday (Nov. 23), to pause the retrial. Quotes ADA Melissa Johnsen and defense attorneys Reddington and Weinberg (\"she wants to keep her trial date\"). Notes Judge Sullivan retires in June 2027 at the mandatory age of 70; retired judge Jack Lu called the prosecution's request \"a reasonable request.\" Article links the prosecution's motion.",
+      "u": "https://www.yahoo.com/news/us/articles/lindsay-clancy-retrial-moves-forward-192703270.html",
+      "s": "Fox News / Yahoo"
+    },
     {
       "date": "2026-11-25",
       "t": "ABC News (Aaron Katersky, Nadine El-Bawab): the SJC denied the prosecution's request to delay the retrial \"without explanation\"; jury selection stays set for March 29, 2027. ABC quotes ADA Melissa Johnsen's filing as calling a delay \"impractical, inefficient, and inconsistent with the purpose of the instant report,\" and dates the filing to Tuesday (Nov. 24). Recaps Judge Sullivan's refusal to investigate holdout juror Michael Desronvil (\"any further judicial inquiry is inappropriate\").",
